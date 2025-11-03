@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report DataSourceName="sqlDataSource1" Width="7.724in" Name="Top Ten tindakan operasi terbanyak " ShowSnapGrid="True" SnapToSnapLines="False" SnapGridSize="0.1cm" xmlns="http://schemas.telerik.com/reporting/2019/2.0">
+  <DataSources>
+    <SqlDataSource QueryDesignerState="null" ParameterValues="{&quot;@p_Top10&quot;:&quot;10&quot;,&quot;@p_FromDate&quot;:&quot;2020/08/01&quot;,&quot;@p_ToDate&quot;:&quot;2020/08/31&quot;}" ConnectionString="RSI" SelectCommand="dbo.sprpt_jumlahoperasiterbanyak_terbaru" SelectCommandType="StoredProcedure" Name="sqlDataSource1">
+      <Parameters>
+        <SqlDataSourceParameter DbType="AnsiString" Name="@p_Top10">
+          <Value>
+            <String>10</String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="DateTime" Name="@p_FromDate">
+          <Value>
+            <String>2020/08/01</String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="DateTime" Name="@p_ToDate">
+          <Value>
+            <String>2020/08/31</String>
+          </Value>
+        </SqlDataSourceParameter>
+      </Parameters>
+    </SqlDataSource>
+  </DataSources>
+  <Items>
+    <DetailSection Height="0.1in" Name="detailSection1">
+      <Style Visible="False" />
+    </DetailSection>
+    <ReportHeaderSection Height="3in" Name="reportHeaderSection1">
+      <Items>
+        <TextBox Width="2.2in" Height="0.2in" Left="0in" Top="1.2in" Value="Top Ten Tindakan Operasi " Name="textBox1">
+          <Style>
+            <Font Size="12pt" Bold="True" />
+          </Style>
+        </TextBox>
+        <TextBox Width="4.4in" Height="0.2in" Left="2.2in" Top="1.2in" Value="= Fields.periode" Name="textBox12" />
+        <Table DataSourceName="sqlDataSource1" Width="7.354in" Height="1.144in" Left="0.1in" Top="1.5in" Name="table1">
+          <Body>
+            <Cells>
+              <TableCell RowIndex="0" ColumnIndex="0" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.362in" Height="0.459in" Left="0in" Top="0in" Value="= RowNumber(1)" Name="textBox4">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Default="None" Top="Solid" Bottom="None" Left="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="1" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="5.468in" Height="0.459in" Left="0in" Top="0in" Value="= Fields.ProcedureName" Name="textBox10">
+                    <Style VerticalAlign="Middle">
+                      <BorderStyle Default="None" Top="Solid" Bottom="None" Left="None" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="2" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="1.524in" Height="0.459in" Left="0in" Top="0in" Value="= Fields.jumlah" Name="textBox14">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Default="None" Top="Solid" Bottom="None" Left="None" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="2" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="1.524in" Height="0.382in" Left="0in" Top="0in" Value="= Sum(Fields.jumlah)" Name="textBox17" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Font Bold="True" />
+                      <BorderStyle Default="None" Top="Solid" Bottom="Solid" Left="None" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="0" RowSpan="1" ColumnSpan="2">
+                <ReportItem>
+                  <TextBox Width="5.83in" Height="0.382in" Left="0in" Top="0in" Value="TOTAL" Name="textBox15" StyleName="">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="10pt" Bold="True" />
+                      <BorderStyle Default="None" Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+            </Cells>
+            <Columns>
+              <Column Width="0.362in" />
+              <Column Width="5.468in" />
+              <Column Width="1.524in" />
+            </Columns>
+            <Rows>
+              <Row Height="0.459in" />
+              <Row Height="0.382in" />
+            </Rows>
+          </Body>
+          <Corner />
+          <Style>
+            <BorderWidth Default="0.5pt" />
+          </Style>
+          <RowGroups>
+            <TableGroup Name="detailTableGroup">
+              <Groupings>
+                <Grouping />
+              </Groupings>
+            </TableGroup>
+            <TableGroup Name="group" />
+          </RowGroups>
+          <ColumnGroups>
+            <TableGroup Name="tableGroup">
+              <ReportItem>
+                <TextBox Width="0.362in" Height="0.303in" Left="0in" Top="0in" Value="No" Name="textBox2">
+                  <Style TextAlign="Center" VerticalAlign="Middle">
+                    <Font Bold="True" />
+                    <BorderStyle Default="None" Top="Solid" Bottom="None" Left="Solid" Right="Solid" />
+                    <BorderWidth Default="0.5pt" Right="0.5pt" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup Name="tableGroup1">
+              <ReportItem>
+                <TextBox Width="5.468in" Height="0.303in" Left="0in" Top="0in" Value="Procedure Name" Name="textBox7">
+                  <Style TextAlign="Center" VerticalAlign="Middle">
+                    <Font Bold="True" />
+                    <BorderStyle Default="None" Top="Solid" Bottom="None" Left="None" Right="Solid" />
+                    <BorderWidth Default="0.5pt" Right="0.5pt" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup Name="tableGroup2">
+              <ReportItem>
+                <TextBox Width="1.524in" Height="0.303in" Left="0in" Top="0in" Value="Jumlah" Name="textBox13">
+                  <Style TextAlign="Center" VerticalAlign="Middle">
+                    <Font Bold="True" />
+                    <BorderStyle Default="None" Top="Solid" Bottom="None" Left="None" Right="Solid" />
+                    <BorderWidth Default="0.5pt" Right="0.5pt" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+          </ColumnGroups>
+        </Table>
+      </Items>
+    </ReportHeaderSection>
+    <PageFooterSection Height="0.4in" Name="pageFooterSection1">
+      <Items>
+        <TextBox Width="4.3in" Height="0.3in" Left="0in" Top="0in" Value="=Now()" Angle="0" Format="Avicenna HIS, Print Date : {0:dd-MM-yyyy HH:mm}" Name="textBox52">
+          <Style VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" Italic="True" />
+            <BorderStyle Top="Solid" />
+            <BorderWidth Default="0.5pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="3.424in" Height="0.3in" Left="4.3in" Top="0in" Value="='Page : ' + PageNumber + '/' + PageCount" Name="textBox54">
+          <Style TextAlign="Right" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" Italic="True" />
+            <BorderStyle Top="Solid" />
+            <BorderWidth Default="0.5pt" />
+            <Padding Right="2mm" />
+          </Style>
+        </TextBox>
+      </Items>
+    </PageFooterSection>
+  </Items>
+  <PageSettings PaperKind="A4" Landscape="False" ColumnCount="1" ColumnSpacing="0in" ContinuousPaper="False">
+    <Margins>
+      <MarginsU Left="1cm" Right="5mm" Top="1cm" Bottom="1cm" />
+    </Margins>
+  </PageSettings>
+  <StyleSheet>
+    <StyleRule>
+      <Style>
+        <Padding Left="2pt" Right="2pt" />
+      </Style>
+      <Selectors>
+        <TypeSelector Type="TextItemBase" />
+        <TypeSelector Type="HtmlTextBox" />
+      </Selectors>
+    </StyleRule>
+  </StyleSheet>
+</Report>

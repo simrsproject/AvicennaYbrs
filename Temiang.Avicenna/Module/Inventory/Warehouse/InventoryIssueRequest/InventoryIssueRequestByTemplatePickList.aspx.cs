@@ -1,0 +1,225 @@
+﻿using System;
+using System.Data;
+using System.Linq;
+using System.Web.UI.WebControls;
+using Telerik.Web.UI;
+using Temiang.Avicenna.BusinessObject;
+using Temiang.Avicenna.BusinessObject.Common;
+using Temiang.Avicenna.Common;
+
+namespace Temiang.Avicenna.Module.Inventory
+{
+    public partial class InventoryIssueRequestByTemplatePickList : BasePageDialog
+    {
+        public int GetInt(object o)
+        {
+            return o.ToInt();
+        }
+
+        protected void Page_Init(object sender, EventArgs e)
+        {
+            ProgramID = AppConstant.Program.InventoryIssueRequest;
+
+            var locColl = new LocationCollection();
+            var locQ = new LocationQuery("a");
+            var slocQ = new ServiceUnitLocationQuery("b");
+            locQ.InnerJoin(slocQ).On(slocQ.LocationID == locQ.LocationID && slocQ.ServiceUnitID == Request.QueryString["fsu"]);
+            locQ.OrderBy(slocQ.IsLocationMain.Descending);
+            locColl.Load(locQ);
+            foreach (var l in locColl)
+            {
+                cboFromLocationID.Items.Add(new RadComboBoxItem(l.LocationName, l.LocationID));
+            }
+            var su = new ServiceUnit();
+            cboFromLocationID.SelectedValue = su.GetMainLocationId(Request.QueryString["fsu"]);
+
+            if (!string.IsNullOrEmpty(cboFromLocationID.SelectedValue))
+            {
+                var args = new RadComboBoxSelectedIndexChangedEventArgs(cboFromLocationID.Text, string.Empty, cboFromLocationID.SelectedValue, string.Empty);
+                cboFromLocationID_SelectedIndexChanged(cboFromLocationID, args);
+            }
+        }
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (IsPostBack)
+            {
+                StoreEntryValue();
+            }
+            else
+            {
+                Session.Remove("InventoryIssueRequest:Selection");
+                Session.Remove("InventoryIssueRequest:ItemSelected");
+            }
+        }
+
+        private void StoreEntryValue()
+        {
+            var dtb = RequestItemSelectionDataTable;
+            if (dtb == null) return;
+            foreach (GridDataItem dataItem in grdDetail.MasterTableView.Items)
+            {
+                var itemId = dataItem["ItemID"].Text;
+                var row = dtb.Rows.Find(itemId);
+                row["IsSelect"] = ((CheckBox)dataItem.FindControl("detailChkbox")).Checked;
+                row["QtyInput"] = Convert.ToDecimal(((RadNumericTextBox)dataItem.FindControl("txtQtyInput")).Value ?? 0);
+            }
+        }
+
+        protected void grdDetail_NeedDataSource(object source, GridNeedDataSourceEventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                RequestItemSelectionDataTable = LoadRequestItemSelectionDataTable();
+            }
+            grdDetail.DataSource = RequestItemSelectionDataTable;
+        }
+
+        private DataTable LoadRequestItemSelectionDataTable()
+        {
+            var query = new LocationTemplateItemQuery("a");
+            var qrRef = new AppStandardReferenceItemQuery("c");
+
+            if (Request.QueryString["it"] == BusinessObject.Reference.ItemType.Medical)
+            {
+                var qrItemMed = new ItemProductMedicQuery("b");
+                query.InnerJoin(qrItemMed).On(query.ItemID == qrItemMed.ItemID && qrItemMed.IsConsignment == false);
+                query.LeftJoin(qrRef).On(
+                    qrItemMed.SRItemUnit == qrRef.ItemID &&
+                    qrRef.StandardReferenceID == AppEnum.StandardReference.ItemUnit
+                    );
+
+                query.Select(
+                    qrItemMed.SRItemUnit,
+                    qrItemMed.SRPurchaseUnit,
+                    qrItemMed.ConversionFactor
+                    );
+
+            }
+            else if (Request.QueryString["it"] == BusinessObject.Reference.ItemType.NonMedical)
+            {
+                var qrItemMed = new ItemProductNonMedicQuery("b");
+                query.InnerJoin(qrItemMed).On(query.ItemID == qrItemMed.ItemID && qrItemMed.IsConsignment == false);
+                query.LeftJoin(qrRef).On(
+                    qrItemMed.SRItemUnit == qrRef.ItemID &&
+                    qrRef.StandardReferenceID == AppEnum.StandardReference.ItemUnit
+                    );
+
+                query.Select(
+                    qrItemMed.SRItemUnit,
+                    qrItemMed.SRPurchaseUnit,
+                    qrItemMed.ConversionFactor
+                    );
+            }
+            else
+            {
+                var qrItemMed = new ItemKitchenQuery("b");
+                query.InnerJoin(qrItemMed).On(query.ItemID == qrItemMed.ItemID);
+                query.LeftJoin(qrRef).On(
+                    qrItemMed.SRItemUnit == qrRef.ItemID &&
+                    qrRef.StandardReferenceID == AppEnum.StandardReference.ItemUnit
+                    );
+
+                query.Select(
+                    qrItemMed.SRItemUnit,
+                    qrItemMed.SRPurchaseUnit,
+                    qrItemMed.ConversionFactor
+                    );
+            }
+
+            var qrItem = new ItemQuery("d");
+            query.InnerJoin(qrItem).On(query.ItemID == qrItem.ItemID);
+
+            if (string.IsNullOrEmpty(cboTemplateNo.SelectedValue))
+                query.Where(
+                    query.TemplateNo == "XXX"
+                );
+            else
+                query.Where(
+                    query.TemplateNo == cboTemplateNo.SelectedValue
+                );
+
+            var qrBalTo = new ItemBalanceQuery("e");
+            query.InnerJoin(qrBalTo).On(qrBalTo.LocationID == Request.QueryString["tloc"] && qrBalTo.ItemID == query.ItemID);
+
+            query.Select(
+                @"<0 AS IsSelect>",
+                query.ItemID,
+                @"<CAST(0 AS NUMERIC(10,2)) AS QtyInput>",
+                qrItem.ItemName
+                );
+
+            query.OrderBy(qrItem.ItemName.Ascending);
+
+            var dtb = query.LoadDataTable();
+            dtb.PrimaryKey = new[] { dtb.Columns["ItemID"] };
+            return dtb;
+        }
+
+        public override bool OnButtonOkClicked()
+        {
+            RequestItemSelectedDataTable =
+                RequestItemSelectionDataTable.Select().Where(
+                    row => (1.Equals(row["IsSelect"]) && Convert.ToDecimal(row["QtyInput"]) > 0)).CopyToDataTable();
+            return true;
+        }
+
+        private DataTable RequestItemSelectedDataTable
+        {
+            set
+            {
+                Session["InventoryIssueRequest:ItemSelected"] = value;
+            }
+        }
+
+        private DataTable RequestItemSelectionDataTable
+        {
+            get
+            {
+                var result = Session["InventoryIssueRequest:Selection"];
+                if (result == null)
+                {
+                    return null;
+                }
+                return (DataTable)result;
+            }
+            set
+            {
+                Session["InventoryIssueRequest:Selection"] = value;
+            }
+        }
+
+        protected void ToggleSelectedState(object sender, EventArgs e)
+        {
+            //StoreEntryValue();
+            var dtb = RequestItemSelectionDataTable;
+            var value = ((CheckBox)sender).Checked;
+            foreach (DataRow row in dtb.Rows)
+            {
+                row["IsSelect"] = value;
+            }
+            grdDetail.Rebind();
+        }
+
+        protected void btnQuery_Click(object sender, EventArgs e)
+        {
+            RequestItemSelectionDataTable = LoadRequestItemSelectionDataTable();
+            grdDetail.Rebind();
+        }
+
+        protected void cboFromLocationID_SelectedIndexChanged(object o, RadComboBoxSelectedIndexChangedEventArgs e)
+        {
+            cboTemplateNo.Items.Clear();
+
+            var coll = new LocationTemplateCollection();
+            coll.Query.Where(coll.Query.LocationID == e.Value,
+                coll.Query.IsActive == true);
+            coll.LoadAll();
+            cboTemplateNo.Items.Add(new RadComboBoxItem(string.Empty, string.Empty));
+            foreach (var c in coll)
+            {
+                cboTemplateNo.Items.Add(new RadComboBoxItem(c.TemplateName, c.TemplateNo));
+            }
+        }
+    }
+}

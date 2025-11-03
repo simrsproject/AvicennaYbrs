@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report DataSourceName="sqlDataSource1" Width="11.0165873209635in" Name="userReport1" xmlns="http://schemas.telerik.com/reporting/2012/2">
+  <Style>
+    <BorderWidth Default="0.7pt" />
+    <Font Name="Tahoma" />
+  </Style>
+  <DataSources>
+    <SqlDataSource ConnectionString="Data Source=192.168.142.1\MSSQLSERVER2019;Initial Catalog=RSMP_LIVE;Persist Security Info=True;User ID=sa;Password=123" ProviderName="System.Data.SqlClient" SelectCommand="dbo.SpRpt_SalaryRecap" SelectCommandType="StoredProcedure" Name="sqlDataSource1">
+      <Parameters>
+        <SqlDataSourceParameter DbType="AnsiString" Name="@p_PayrollPeriodID">
+          <Value>
+            <String>2</String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="AnsiString" Name="@p_UserID">
+          <Value>
+            <String>sci</String>
+          </Value>
+        </SqlDataSourceParameter>
+      </Parameters>
+    </SqlDataSource>
+  </DataSources>
+  <Items>
+    <DetailSection Height="0.0416666666666667in" Name="detailSection1">
+      <Style Visible="False" />
+    </DetailSection>
+    <PageFooterSection Height="0.200000123182932in" Name="pageFooterSection1">
+      <Items>
+        <TextBox Value="='Page : ' + PageNumber + '/' + PageCount" Size="7.11551829973857in, 0.200000122189522in" Location="3.88444209098816in, 0in" Name="textBox40">
+          <Style TextAlign="Right" VerticalAlign="Middle">
+            <BorderStyle Top="Solid" />
+            <BorderWidth Default="0.5pt" />
+            <Font Name="Tahoma" Size="8pt" Italic="True" />
+            <Padding Right="2mm" />
+          </Style>
+        </TextBox>
+        <TextBox Value="=Now()" Format="Avicenna HIS, Print Date : {0:dd-MM-yyyy HH:mm}" Size="3.87599000930786in, 0.200000122189522in" Location="0.00837376900017262in, 0in" Name="textBox122">
+          <Style VerticalAlign="Middle">
+            <BorderStyle Top="Solid" />
+            <BorderWidth Default="0.5pt" />
+            <Font Name="Tahoma" Size="8pt" Italic="True" />
+          </Style>
+        </TextBox>
+      </Items>
+    </PageFooterSection>
+    <ReportHeaderSection Height="3.06666666666667in" Name="reportHeaderSection1">
+      <Items>
+        <TextBox Value="= Fields.ReportName" CanGrow="False" Size="10.9999593098958in, 0.199921162923177in" Location="-0.00000000000000018in, 0.458333333333333in" Name="textBox1">
+          <Style TextAlign="Left" VerticalAlign="Middle">
+            <Font Size="12pt" />
+          </Style>
+        </TextBox>
+        <TextBox Value="=HealthcareName" CanGrow="False" Size="10.9999593098958in, 0.199921162923177in" Location="0in, 0.258333396911621in" Name="textBox2">
+          <Style TextAlign="Left" VerticalAlign="Middle">
+            <Font Size="14pt" />
+          </Style>
+        </TextBox>
+        <Crosstab DataSourceName="sqlDataSource1" Size="3.23333301544189in, 0.624999856948853in" Location="0.00837376912434896in, 0.858333333333333in" Name="crosstab1" StyleName="Normal.TableNormal">
+          <Body>
+            <Cells>
+              <TableCell RowIndex="0" ColumnIndex="0" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="= Sum(Fields.CurrencyAmount)" Format="{0:N0}" Size="1.00833295703551in, 0.233333299547429in" Name="textBox14" StyleName="Normal.TableBody">
+                    <Style TextAlign="Right">
+                      <Font Size="8pt" />
+                      <Padding Left="1mm" Right="1mm" Top="1mm" Bottom="1mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="0" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="= Sum(Fields.CurrencyAmount)" Format="{0:N0}" Size="1.00833295703551in, 0.19166658902169in" Name="textBox10" StyleName="Normal.TableBody">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <Font Size="8pt" Bold="True" />
+                      <Padding Left="1mm" Right="1mm" Top="1mm" Bottom="1mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+            </Cells>
+            <Columns>
+              <Column Width="1.0083330335691in" />
+            </Columns>
+            <Rows>
+              <Row Height="0.233333299547429in" />
+              <Row Height="0.19166658902169in" />
+            </Rows>
+          </Body>
+          <Corner>
+            <Cells>
+              <TableCell RowIndex="0" ColumnIndex="2" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="Jml" Size="0.541666639999149in, 0.200000002649744in" Name="textBox12" StyleName="Normal.TableHeader">
+                    <Style TextAlign="Center">
+                      <Font Size="9pt" Bold="True" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="0" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="No." Size="0.391666754589062in, 0.200000021243707in" Name="textBox18" StyleName="Normal.TableHeader">
+                    <Style TextAlign="Center">
+                      <Font Size="9pt" Bold="True" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="1" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="Bagian" Size="1.29166671494174in, 0.19999998700618in" Name="textBox6" StyleName="Normal.TableHeader">
+                    <Style TextAlign="Center">
+                      <Font Size="9pt" Bold="True" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+            </Cells>
+          </Corner>
+          <RowGroups>
+            <TableGroup Name="Unit">
+              <Groupings>
+                <Grouping Expression="=Fields.ServiceUnitID" />
+              </Groupings>
+              <Sortings>
+                <Sorting Expression="=Fields.OrganizationUnitName" Direction="Asc" />
+              </Sortings>
+              <ReportItem>
+                <TextBox Value="=RowNUmber()" Size="0.391666754589062in, 0.233333353812878in" Name="textBox17" StyleName="Normal.TableGroup">
+                  <Style TextAlign="Center">
+                    <Font Size="8pt" />
+                    <Padding Left="1mm" Right="1mm" Top="1mm" Bottom="1mm" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+              <ChildGroups>
+                <TableGroup Name="Golongan1">
+                  <ReportItem>
+                    <TextBox Value="=OrganizationUnitName" Size="1.29166671494174in, 0.233333299547429in" Name="textBox5" StyleName="Normal.TableGroup">
+                      <Style TextAlign="Left">
+                        <Font Size="8pt" />
+                        <Padding Left="1mm" Right="1mm" Top="1mm" Bottom="1mm" />
+                      </Style>
+                    </TextBox>
+                  </ReportItem>
+                  <ChildGroups>
+                    <TableGroup Name="Group2">
+                      <ReportItem>
+                        <TextBox Value="=Jml" Size="0.541666600193294in, 0.233333345324651in" Name="textBox7" StyleName="Normal.TableGroup">
+                          <Style TextAlign="Center">
+                            <Font Size="8pt" />
+                            <Padding Left="1mm" Right="1mm" Top="1mm" Bottom="1mm" />
+                          </Style>
+                        </TextBox>
+                      </ReportItem>
+                      <ChildGroups>
+                        <TableGroup Name="PositionName1" />
+                      </ChildGroups>
+                    </TableGroup>
+                  </ChildGroups>
+                </TableGroup>
+              </ChildGroups>
+            </TableGroup>
+            <TableGroup Name="Group1">
+              <ReportItem>
+                <TextBox Size="0.391666772389635in, 0.191666594766914in" Name="textBox4" StyleName="Normal.TableGroup">
+                  <Style TextAlign="Center" VerticalAlign="Middle">
+                    <Font Size="8pt" />
+                    <Padding Left="1mm" Right="1mm" Top="1mm" Bottom="1mm" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+              <ChildGroups>
+                <TableGroup Name="Group3">
+                  <ReportItem>
+                    <TextBox Value="Total" Size="1.29166671494174in, 0.19166658902169in" Name="textBox8" StyleName="Normal.TableGroup">
+                      <Style TextAlign="Center" VerticalAlign="Middle">
+                        <Font Size="8pt" Bold="True" />
+                        <Padding Left="1mm" Right="1mm" Top="1mm" Bottom="1mm" />
+                      </Style>
+                    </TextBox>
+                  </ReportItem>
+                  <ChildGroups>
+                    <TableGroup Name="Group4">
+                      <ReportItem>
+                        <TextBox Value="=JmlKyw" Size="0.541666562825145in, 0.191666594766914in" Name="textBox9" StyleName="Normal.TableGroup">
+                          <Style TextAlign="Center" VerticalAlign="Middle">
+                            <Font Size="8pt" Bold="True" />
+                            <Padding Left="1mm" Right="1mm" Top="1mm" Bottom="1mm" />
+                          </Style>
+                        </TextBox>
+                      </ReportItem>
+                      <ChildGroups>
+                        <TableGroup Name="Group5" />
+                      </ChildGroups>
+                    </TableGroup>
+                  </ChildGroups>
+                </TableGroup>
+              </ChildGroups>
+            </TableGroup>
+          </RowGroups>
+          <ColumnGroups>
+            <TableGroup Name="SalaryComponentID1">
+              <Groupings>
+                <Grouping Expression="= Fields.SalaryComponentID" />
+              </Groupings>
+              <Sortings>
+                <Sorting Expression="= Fields.SalaryComponentCode" Direction="Asc" />
+              </Sortings>
+              <ReportItem>
+                <TextBox Value="= Fields.SalaryComponentName" Size="1.00833295703551in, 0.19999998700618in" Name="textBox3" StyleName="Normal.TableGroup">
+                  <Style TextAlign="Center" VerticalAlign="Middle">
+                    <Font Bold="True" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+          </ColumnGroups>
+        </Crosstab>
+        <TextBox Value="=Dirut" Size="3.49162721633911in, 0.200000002980232in" Location="0.00837376912434896in, 2.65833333333333in" Name="textBox11">
+          <Style TextAlign="Center">
+            <Font Underline="False" />
+            <Padding Left="0in" />
+          </Style>
+        </TextBox>
+        <TextBox Value="Direktur" Size="3.48329281806946in, 0.200000002980232in" Location="0.00837376912434896in, 2.86666666666667in" Name="textBox13">
+          <Style TextAlign="Center">
+            <Padding Left="0in" />
+          </Style>
+        </TextBox>
+        <TextBox Value="Menyetujui" Size="3.47495956420898in, 0.200000002980232in" Location="0.0167071024576823in, 1.75833333333333in" Name="textBox15">
+          <Style TextAlign="Center">
+            <Padding Left="0in" />
+          </Style>
+        </TextBox>
+        <TextBox Value="Mengetahui," Size="8.4166269938151in, 0.200000002980232in" Location="2.6in, 1.75833333333333in" Name="textBox16">
+          <Style TextAlign="Center">
+            <Padding Left="4in" />
+          </Style>
+        </TextBox>
+        <TextBox Value="=wkt" Format="" Size="3.4749596118927in, 0.200000002980232in" Location="0.0167071024576823in, 1.55833333333333in" Name="textBox25">
+          <Style TextAlign="Center">
+            <Padding Left="0in" />
+          </Style>
+        </TextBox>
+        <TextBox Value="=Wadir" Size="8.42496134440104in, 0.200000002980232in" Location="2.59166666666667in, 2.65833333333333in" Name="textBox35">
+          <Style TextAlign="Center">
+            <Font Underline="False" />
+            <Padding Left="4in" />
+          </Style>
+        </TextBox>
+        <TextBox Value="Wadir Keuangan" Size="8.4166269938151in, 0.200000002980232in" Location="2.59166666666667in, 2.86666666666667in" Name="textBox39">
+          <Style TextAlign="Center">
+            <Padding Left="4in" />
+          </Style>
+        </TextBox>
+      </Items>
+    </ReportHeaderSection>
+    <ReportFooterSection Height="0.158333587646489in" Name="reportFooterSection1" />
+    <PageHeaderSection Height="0.0416666666666667in" Name="pageHeaderSection1">
+      <Style>
+        <BorderStyle Bottom="None" />
+      </Style>
+    </PageHeaderSection>
+  </Items>
+  <StyleSheet>
+    <StyleRule>
+      <Style>
+        <Padding Left="2pt" Right="2pt" />
+      </Style>
+      <Selectors>
+        <TypeSelector Type="TextItemBase" />
+        <TypeSelector Type="HtmlTextBox" />
+      </Selectors>
+    </StyleRule>
+    <StyleRule>
+      <Style Color="Black">
+        <BorderStyle Default="Solid" />
+        <BorderColor Default="Black" />
+        <BorderWidth Default="1px" />
+        <Font Name="Tahoma" Size="9pt" />
+      </Style>
+      <Selectors>
+        <StyleSelector Type="Table" StyleName="Normal.TableNormal" />
+      </Selectors>
+    </StyleRule>
+    <StyleRule>
+      <Style>
+        <BorderStyle Default="Solid" />
+        <BorderColor Default="Black" />
+        <BorderWidth Default="1px" />
+        <Font Name="Tahoma" Size="9pt" />
+      </Style>
+      <Selectors>
+        <DescendantSelector>
+          <Selectors>
+            <TypeSelector Type="Table" />
+            <StyleSelector Type="ReportItem" StyleName="Normal.TableBody" />
+          </Selectors>
+        </DescendantSelector>
+      </Selectors>
+    </StyleRule>
+    <StyleRule>
+      <Style VerticalAlign="Middle">
+        <BorderStyle Default="Solid" />
+        <BorderColor Default="Black" />
+        <BorderWidth Default="1px" />
+        <Font Name="Tahoma" Size="10pt" />
+      </Style>
+      <Selectors>
+        <DescendantSelector>
+          <Selectors>
+            <TypeSelector Type="Table" />
+            <StyleSelector Type="ReportItem" StyleName="Normal.TableHeader" />
+          </Selectors>
+        </DescendantSelector>
+      </Selectors>
+    </StyleRule>
+    <StyleRule>
+      <Style>
+        <BorderStyle Default="Solid" />
+        <BorderColor Default="Black" />
+        <BorderWidth Default="1px" />
+        <Font Name="Tahoma" Size="9pt" />
+      </Style>
+      <Selectors>
+        <DescendantSelector>
+          <Selectors>
+            <TypeSelector Type="Table" />
+            <StyleSelector Type="ReportItem" StyleName="Normal.TableGroup" />
+          </Selectors>
+        </DescendantSelector>
+      </Selectors>
+    </StyleRule>
+  </StyleSheet>
+  <PageSettings>
+    <PageSettings PaperKind="A3Extra" Landscape="True">
+      <Margins>
+        <MarginsU Left="0.699999988079071cm" Right="0.699999988079071cm" Top="1cm" Bottom="1cm" />
+      </Margins>
+    </PageSettings>
+  </PageSettings>
+</Report>

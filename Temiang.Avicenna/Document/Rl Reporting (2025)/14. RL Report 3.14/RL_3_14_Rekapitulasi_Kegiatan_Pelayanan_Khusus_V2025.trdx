@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report DataSourceName="sqlDataSource1" Width="17cm" Name="RL_3_14_Rekapitulasi_Kegiatan_Pelayanan_Khusus" ShowSnapGrid="True" SnapGridSize="0.1cm" xmlns="http://schemas.telerik.com/reporting/2023/1.0">
+  <Style TextAlign="Center" VerticalAlign="Middle" />
+  <DataSources>
+    <SqlDataSource QueryDesignerState="null" ParameterValues="{&quot;@RlTxReportNo&quot;:&quot;RL/250312-0006&quot;}" ConnectionString="kerinci test" SelectCommand="spxml_RL3_14V2025" SelectCommandType="StoredProcedure" Name="sqlDataSource1">
+      <Parameters>
+        <SqlDataSourceParameter DbType="AnsiString" Name="@RlTxReportNo">
+          <Value>
+            <String>RL/250312-0006</String>
+          </Value>
+        </SqlDataSourceParameter>
+      </Parameters>
+    </SqlDataSource>
+  </DataSources>
+  <Items>
+    <DetailSection Height="0.132cm" Name="detailSection1" />
+    <PageFooterSection Height="0.132cm" Name="pageFooterSection1">
+      <Style Visible="False" />
+    </PageFooterSection>
+    <ReportHeaderSection Height="5.817cm" Name="reportHeaderSection1">
+      <Items>
+        <Table DataSourceName="sqlDataSource1" Width="17cm" Height="1.717cm" Left="0cm" Top="4.1cm" Name="table1">
+          <Body>
+            <Cells>
+              <TableCell RowIndex="0" ColumnIndex="0" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="1.453cm" Height="0.608cm" Left="7cm" Top="0.6cm" Value="= Fields.No" Name="textBox5" StyleName="">
+                    <Style VerticalAlign="Middle">
+                      <BorderStyle Default="Solid" />
+                    </Style>
+                    <ConditionalFormatting>
+                      <FormattingRule>
+                        <Style>
+                          <Font Bold="True" />
+                        </Style>
+                        <Filters>
+                          <Filter Expression="= Fields.No" Operator="Equal" Value="16" />
+                        </Filters>
+                      </FormattingRule>
+                    </ConditionalFormatting>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="1" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <HtmlTextBox Width="12.823cm" Height="0.608cm" Left="7cm" Top="0.6cm" Value="{Fields.JenisKegiatan}" Name="htmlTextBox1" StyleName="">
+                    <Style TextAlign="Left" VerticalAlign="Middle">
+                      <BorderStyle Default="Solid" />
+                    </Style>
+                  </HtmlTextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="2" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="2.724cm" Height="0.608cm" Left="8.3cm" Top="0.6cm" Value="= IIF(Fields.No = '16' ,'',Fields.Jumlah)" Name="textBox6" StyleName="">
+                    <Style VerticalAlign="Middle">
+                      <BorderStyle Default="Solid" />
+                    </Style>
+                    <ConditionalFormatting>
+                      <FormattingRule>
+                        <Style BackgroundColor="DarkGray" />
+                        <Filters>
+                          <Filter Expression="= Fields.No" Operator="Equal" Value="16" />
+                        </Filters>
+                      </FormattingRule>
+                    </ConditionalFormatting>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="0" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="1.453cm" Height="0.5cm" Left="0cm" Top="0cm" Value="99" Name="textBox4" StyleName="">
+                    <Style BackgroundColor="DarkGray" VerticalAlign="Middle">
+                      <BorderStyle Default="Solid" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="1" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="12.823cm" Height="0.5cm" Left="0cm" Top="0cm" Value="TOTAL" Name="textBox7" StyleName="">
+                    <Style BackgroundColor="DarkGray" VerticalAlign="Middle">
+                      <Font Bold="True" />
+                      <BorderStyle Default="Solid" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="2" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="2.724cm" Height="0.5cm" Left="0cm" Top="0cm" Value="=sum(Fields.Jumlah)" Name="textBox8" StyleName="">
+                    <Style BackgroundColor="DarkGray" VerticalAlign="Middle">
+                      <BorderStyle Default="Solid" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+            </Cells>
+            <Columns>
+              <Column Width="1.453cm" />
+              <Column Width="12.823cm" />
+              <Column Width="2.724cm" />
+            </Columns>
+            <Rows>
+              <Row Height="0.608cm" />
+              <Row Height="0.5cm" />
+            </Rows>
+          </Body>
+          <Corner />
+          <Style VerticalAlign="Middle">
+            <Font Name="Times New Roman" Size="12pt" />
+            <BorderStyle Default="Solid" />
+          </Style>
+          <RowGroups>
+            <TableGroup Name="detailTableGroup">
+              <Groupings>
+                <Grouping />
+              </Groupings>
+            </TableGroup>
+            <TableGroup Name="group1" />
+          </RowGroups>
+          <ColumnGroups>
+            <TableGroup Name="tableGroup">
+              <ReportItem>
+                <TextBox Width="1.453cm" Height="0.609cm" Left="0cm" Top="0cm" Value="No." Name="textBox1">
+                  <Style VerticalAlign="Middle">
+                    <Font Bold="True" />
+                    <BorderStyle Default="Solid" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup Name="tableGroup1">
+              <ReportItem>
+                <TextBox Width="12.823cm" Height="0.609cm" Left="0cm" Top="0cm" Value="Jenis Kegiatan" Name="textBox3">
+                  <Style VerticalAlign="Middle">
+                    <Font Bold="True" />
+                    <BorderStyle Default="Solid" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup Name="group">
+              <ReportItem>
+                <TextBox Width="2.724cm" Height="0.609cm" Left="0cm" Top="0cm" Value="Jumlah" Name="textBox2" StyleName="">
+                  <Style VerticalAlign="Middle">
+                    <Font Bold="True" />
+                    <BorderStyle Default="Solid" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+          </ColumnGroups>
+        </Table>
+        <TextBox Width="17cm" Height="0.6cm" Left="0cm" Top="2.5cm" Value="= Fields.ReportName" Name="textBox9">
+          <Style VerticalAlign="Middle">
+            <Font Size="12pt" Bold="True" />
+          </Style>
+        </TextBox>
+        <TextBox Width="17cm" Height="0.6cm" Left="0cm" Top="3.1cm" Value="= Fields.Periode" Name="textBox10">
+          <Style VerticalAlign="Middle">
+            <Font Size="12pt" Bold="True" />
+          </Style>
+        </TextBox>
+      </Items>
+    </ReportHeaderSection>
+  </Items>
+  <PageSettings PaperKind="A4" Landscape="False">
+    <Margins>
+      <MarginsU Left="2cm" Right="2cm" Top="2cm" Bottom="2cm" />
+    </Margins>
+  </PageSettings>
+  <StyleSheet>
+    <StyleRule>
+      <Style>
+        <Padding Left="2pt" Right="2pt" />
+      </Style>
+      <Selectors>
+        <TypeSelector Type="TextItemBase" />
+        <TypeSelector Type="HtmlTextBox" />
+      </Selectors>
+    </StyleRule>
+  </StyleSheet>
+</Report>

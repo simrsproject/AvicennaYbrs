@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report DataSourceName="sqlDataSource1" Width="3.7in" Name="QRAssetLabel" xmlns="http://schemas.telerik.com/reporting/2019/2.0">
+  <DataSources>
+    <SqlDataSource QueryDesignerState="null" ParameterValues="{&quot;@p_AssetID&quot;:&quot;UM/210329/A/0000002&quot;}" ConnectionString="RSIDEV" SelectCommand="spslp_ItemBarcodeAsset" SelectCommandType="StoredProcedure" Name="sqlDataSource1">
+      <Parameters>
+        <SqlDataSourceParameter DbType="AnsiString" Name="@p_AssetID">
+          <Value>
+            <String>UM/210113/A/0000001</String>
+          </Value>
+        </SqlDataSourceParameter>
+      </Parameters>
+    </SqlDataSource>
+  </DataSources>
+  <Items>
+    <PageHeaderSection Height="0.052in" Name="pageHeaderSection1" />
+    <DetailSection Height="0.8in" Name="detailSection1">
+      <Items>
+        <Barcode Width="0.8in" Height="0.8in" Left="0.017in" Top="0in" Value="= Fields.QR" Module="0.5pt" Checksum="False" Name="barcode1">
+          <Encoder>
+            <QRCodeEncoder ErrorCorrectionLevel="H" ECI="UTF8" />
+          </Encoder>
+        </Barcode>
+        <TextBox Width="2.783in" Height="0.8in" Left="0.817in" Top="0in" Value="= Fields.QR" Name="textBox1">
+          <Style>
+            <Font Name="Tahoma" Size="8pt" />
+          </Style>
+        </TextBox>
+      </Items>
+    </DetailSection>
+    <PageFooterSection Height="0.052in" Name="pageFooterSection1" />
+  </Items>
+  <PageSettings PaperKind="Custom" PaperSize="4.5in, 1.1in" Landscape="False" ColumnCount="1" ColumnSpacing="0in" ContinuousPaper="False">
+    <Margins>
+      <MarginsU Left="0.2cm" Right="0.2cm" Top="0.2cm" Bottom="0.2cm" />
+    </Margins>
+  </PageSettings>
+  <StyleSheet>
+    <StyleRule>
+      <Style>
+        <Padding Left="2pt" Right="2pt" />
+      </Style>
+      <Selectors>
+        <TypeSelector Type="TextItemBase" />
+        <TypeSelector Type="HtmlTextBox" />
+      </Selectors>
+    </StyleRule>
+  </StyleSheet>
+</Report>

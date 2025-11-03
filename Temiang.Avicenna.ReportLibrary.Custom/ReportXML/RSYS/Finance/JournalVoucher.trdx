@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report DataSourceName="sqlDataSource1" Width="8in" Name="userReport1" ShowSnapGrid="True" xmlns="http://schemas.telerik.com/reporting/2019/2.0">
+  <Style>
+    <Font Name="Tahoma" />
+  </Style>
+  <DataSources>
+    <SqlDataSource QueryDesignerState="null" ParameterValues="{&quot;@pEntityId&quot;:&quot;28255&quot;,&quot;@UserName&quot;:&quot;Imel&quot;}" ConnectionString="RSI" SelectCommand="spRpt_Accounting_Journals_Voucher" SelectCommandType="StoredProcedure" Name="sqlDataSource1">
+      <Parameters>
+        <SqlDataSourceParameter DbType="Int32" Name="@pEntityId">
+          <Value>
+            <String>28255</String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="AnsiString" Name="@UserName" />
+      </Parameters>
+    </SqlDataSource>
+  </DataSources>
+  <Items>
+    <DetailSection Height="0.2in" Name="detailSection1">
+      <Style Visible="True" />
+      <Items>
+        <TextBox Width="0.6in" Height="0.1in" Left="0in" Top="0in" Value="=ChartOfAccountCode" TextWrap="True" Name="ChartOfAccountCode">
+          <Style>
+            <Font Size="7pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="2.3in" Height="0.1in" Left="0.6in" Top="0in" Value="=ChartOfAccountName" TextWrap="True" Name="ChartOfAccountName">
+          <Style>
+            <Font Size="7pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.8in" Height="0.1in" Left="7.2in" Top="0in" Value="=Credit" Format="{0:N2}" TextWrap="True" Name="Credit">
+          <Style TextAlign="Right">
+            <Font Size="7pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.8in" Height="0.1in" Left="6.4in" Top="0in" Value="=Debit" Format="{0:N2}" TextWrap="True" Name="Debit">
+          <Style TextAlign="Right">
+            <Font Size="7pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="3.5in" Height="0.1in" Left="2.9in" Top="0in" Value="=Description" TextWrap="True" Name="textBox1">
+          <Style>
+            <Font Size="7pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="2.3in" Height="0.1in" Left="0.6in" Top="0.1in" Value="=SubLedgerName" TextWrap="True" Name="textBox4">
+          <Style>
+            <Font Size="7pt" />
+          </Style>
+        </TextBox>
+      </Items>
+    </DetailSection>
+    <PageFooterSection Height="0.248in" Name="pageFooterSection1">
+      <Items>
+        <TextBox Width="4.1in" Height="0.2in" Left="0in" Top="0in" Value="= Now()" Format="Avicenna_HIS, PrintDate : {0:dd-MM-yyyy HH:mm}" Name="textBox28">
+          <Style VerticalAlign="Middle" LineWidth="0.5pt">
+            <Font Size="7pt" Italic="True" />
+            <BorderStyle Top="Solid" Bottom="None" />
+            <BorderWidth Default="0.5pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="3.9in" Height="0.2in" Left="4.1in" Top="0in" Value="= &quot;Page &quot; + PageNumber + &quot; Of &quot; + PageCount" Format="{0:N2}" Name="textBox27">
+          <Style TextAlign="Right" VerticalAlign="Middle" LineWidth="0.5pt">
+            <Font Size="7pt" Italic="True" />
+            <BorderStyle Top="Solid" Bottom="None" />
+            <BorderWidth Default="0.5pt" />
+            <Padding Right="10pt" />
+          </Style>
+        </TextBox>
+      </Items>
+    </PageFooterSection>
+    <PageHeaderSection Height="1.3in" Name="pageHeaderSection1">
+      <Items>
+        <TextBox Width="4in" Height="0.2in" Left="0in" Top="0.1in" Value="JOURNAL VOUCHER" Name="txtReportTitle">
+          <Style Visible="True" Color="54, 119, 171" TextAlign="Left">
+            <Font Size="12pt" Bold="True" />
+            <BorderColor Bottom="Blue" />
+          </Style>
+        </TextBox>
+        <TextBox Width="4in" Height="0.2in" Left="4in" Top="0.1in" Value="" Name="txtCompanyName">
+          <Style Visible="True" TextAlign="Right" />
+        </TextBox>
+        <TextBox Width="3.5in" Height="0.2in" Left="2.9in" Top="1in" Value="Description" Name="txtDescription">
+          <Style Color="Black">
+            <Font Size="9pt" Bold="True" />
+            <BorderStyle Top="Solid" />
+            <BorderWidth Top="1px" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.8in" Height="0.2in" Left="6.4in" Top="1in" Value="Debit" Name="txtDebit">
+          <Style Color="Black" TextAlign="Right">
+            <Font Size="9pt" Bold="True" />
+            <BorderStyle Top="Solid" />
+            <BorderWidth Top="1px" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.8in" Height="0.2in" Left="7.2in" Top="1in" Value="Credit" Name="txtCredit">
+          <Style Color="Black" TextAlign="Right">
+            <Font Size="9pt" Bold="True" />
+            <BorderStyle Top="Solid" />
+            <BorderWidth Top="1px" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.6in" Height="0.2in" Left="0in" Top="1in" Value="Account" Name="txtAccountCode">
+          <Style Color="Black">
+            <Font Size="9pt" Bold="True" />
+            <BorderStyle Top="Solid" />
+            <BorderWidth Top="1px" />
+          </Style>
+        </TextBox>
+        <TextBox Width="2.3in" Height="0.2in" Left="0.6in" Top="1in" Value="Account Name" Name="txtAccountName">
+          <Style Color="Black">
+            <Font Size="9pt" Bold="True" />
+            <BorderStyle Top="Solid" />
+            <BorderWidth Top="1px" />
+          </Style>
+        </TextBox>
+        <TextBox Width="2.8in" Height="0.2in" Left="1.2in" Top="0.5in" Value="=TransactionNumberDisplay" Name="TransactionNumber">
+          <Style>
+            <Font Size="9pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="6.7in" Height="0.2in" Left="1.2in" Top="0.7in" Value="=description_detail" TextWrap="False" Name="Description">
+          <Style>
+            <Font Size="9pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1.2in" Height="0.2in" Left="0in" Top="0.5in" Value="Voucher Number" Name="txtTransactionNumber">
+          <Style Color="Black">
+            <Font Size="9pt" Bold="True" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1.2in" Height="0.2in" Left="0in" Top="0.7in" Value="Description" Name="txtDescriptionHeader">
+          <Style Color="Black">
+            <Font Size="9pt" Bold="True" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1in" Height="0.2in" Left="4in" Top="0.5in" Value="Voucher Date" Name="textBox20">
+          <Style Color="Black">
+            <Font Size="9pt" Bold="True" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1.296in" Height="0.2in" Left="5.1in" Top="0.5in" Value="=TransactionDate" Format="{0:d}" Name="textBox19">
+          <Style>
+            <Font Size="9pt" />
+          </Style>
+        </TextBox>
+      </Items>
+    </PageHeaderSection>
+    <ReportFooterSection Height="1.641in" Name="reportFooterSection1">
+      <Items>
+        <TextBox Width="1.9in" Height="0.2in" Left="6.1in" Top="0in" Value="=TransactionDate" Format="{0:D}" TextWrap="False" Name="TransactionDate">
+          <Style TextAlign="Left">
+            <Font Size="8pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1.9in" Height="1.4in" Left="6.1in" Top="0.2in" Value="Received By" Name="txtReceivedBy">
+          <Style Color="Black">
+            <Font Size="8pt" Bold="True" />
+            <BorderStyle Top="None" Bottom="Solid" />
+            <BorderWidth Top="1px" Bottom="1px" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1.9in" Height="1.4in" Left="4in" Top="0.2in" Value="Approved By" Name="txtApprovedBy">
+          <Style Color="Black">
+            <Font Size="8pt" Bold="True" />
+            <BorderStyle Top="None" Bottom="Solid" />
+            <BorderWidth Top="1px" Bottom="1px" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1.9in" Height="1.4in" Left="2in" Top="0.2in" Value="Checked By" Name="txtCheckedBy">
+          <Style Color="Black">
+            <Font Size="8pt" Bold="True" />
+            <BorderStyle Top="None" Bottom="Solid" />
+            <BorderWidth Top="1px" Bottom="1px" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1.9in" Height="1.4in" Left="0in" Top="0.2in" Value="Prepared By" Name="txtPreparedBy">
+          <Style Color="Black">
+            <Font Size="8pt" Bold="True" />
+            <BorderStyle Top="None" Bottom="Solid" />
+            <BorderWidth Top="1px" Bottom="1px" />
+          </Style>
+        </TextBox>
+      </Items>
+    </ReportFooterSection>
+  </Items>
+  <PageSettings PaperKind="A4" Landscape="False" ColumnCount="1" ColumnSpacing="0in" ContinuousPaper="False">
+    <Margins>
+      <MarginsU Left="4mm" Right="3mm" Top="0.5cm" Bottom="0in" />
+    </Margins>
+  </PageSettings>
+  <StyleSheet>
+    <StyleRule>
+      <Style>
+        <Padding Left="2pt" Right="2pt" />
+      </Style>
+      <Selectors>
+        <TypeSelector Type="TextItemBase" />
+        <TypeSelector Type="HtmlTextBox" />
+      </Selectors>
+    </StyleRule>
+  </StyleSheet>
+  <Groups>
+    <Group Name="JournalType">
+      <GroupHeader>
+        <GroupHeaderSection Height="0.1in" Name="groupHeaderSection" />
+      </GroupHeader>
+      <GroupFooter>
+        <GroupFooterSection Height="0.052in" Name="groupFooterSection" />
+      </GroupFooter>
+      <Groupings>
+        <Grouping Expression="= Fields.JournalType" />
+      </Groupings>
+    </Group>
+    <Group Name="group">
+      <GroupHeader>
+        <GroupHeaderSection Height="0.1in" Name="groupHeaderSection1" />
+      </GroupHeader>
+      <GroupFooter>
+        <GroupFooterSection Height="0.3in" Name="groupFooterSection1">
+          <Items>
+            <TextBox Width="0.8in" Height="0.2in" Left="7.2in" Top="0in" Value="=sum(Credit)" Format="{0:N2}" TextWrap="True" Name="TotalCredit">
+              <Style TextAlign="Right">
+                <Font Size="8pt" Bold="True" />
+                <BorderStyle Top="None" />
+                <BorderWidth Top="1px" />
+              </Style>
+            </TextBox>
+            <TextBox Width="0.8in" Height="0.2in" Left="6.4in" Top="0in" Value="=Sum(Debit)" Format="{0:N2}" TextWrap="True" Name="TotalDebit">
+              <Style TextAlign="Right">
+                <Font Size="8pt" Bold="True" />
+                <BorderStyle Top="None" />
+                <BorderWidth Top="1px" />
+              </Style>
+            </TextBox>
+          </Items>
+        </GroupFooterSection>
+      </GroupFooter>
+      <Groupings>
+        <Grouping Expression="= Fields.JournalId" />
+      </Groupings>
+    </Group>
+  </Groups>
+</Report>

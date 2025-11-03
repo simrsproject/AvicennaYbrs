@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report DataSourceName="sqlDataSource1" Width="10.4999605814616in" Name="userReport1" xmlns="http://schemas.telerik.com/reporting/2012/2">
+  <DataSources>
+    <SqlDataSource ConnectionString="Data Source=192.168.80.2;Initial Catalog=RSSMCB_LIVE;Persist Security Info=True;User ID=sa;Password=p@ssw0rd" ProviderName="System.Data.SqlClient" SelectCommand="sprpt_Accounting_Ledger_LedgerRecap" SelectCommandType="StoredProcedure" Name="sqlDataSource1">
+      <Parameters>
+        <SqlDataSourceParameter DbType="AnsiStringFixedLength" Name="@pYearOnlyPostingPeriode_Year">
+          <Value>
+            <String>2018</String>
+          </Value>
+        </SqlDataSourceParameter>
+      </Parameters>
+    </SqlDataSource>
+  </DataSources>
+  <Items>
+    <DetailSection Height="0.0520833333333333in" Name="detailSection1">
+      <Style Visible="False" />
+    </DetailSection>
+    <PageFooterSection Height="0.200039545694987in" Name="pageFooterSection1">
+      <Items>
+        <TextBox Value="= &quot;Page &quot; + PageNumber + &quot; Of &quot; + PageCount" Format="" Size="3.29996085166931in, 0.200000122189522in" Location="7.20003890991211in, 0.0000394185371988in" Name="txtPageNumber">
+          <Style TextAlign="Right" VerticalAlign="Middle">
+            <Font Size="8pt" />
+          </Style>
+        </TextBox>
+        <TextBox Value="= Now()" Format="{0:F}" Size="3.30000019073486in, 0.200000122189522in" Location="0.00003941853841146in, 0.00003941853841146in" Name="txtPrintDateTime">
+          <Style TextAlign="Left" VerticalAlign="Middle">
+            <Font Size="8pt" />
+          </Style>
+        </TextBox>
+      </Items>
+    </PageFooterSection>
+    <ReportHeaderSection Height="1.60000006357829in" Name="reportHeaderSection1">
+      <Items>
+        <TextBox Value="=Fields.CompanyName" Size="10.4999211629232in, 0.199999888737996in" Location="0in, 0.699999968210856in" Name="textBox1">
+          <Style VerticalAlign="Middle">
+            <Font Size="8pt" />
+          </Style>
+        </TextBox>
+        <TextBox Value="LEDGER SUMMARY" Size="4.99988174438477in, 0.200000122189522in" Location="0.00003941853841146in, 0.499921083450317in" Name="txtReportTitle">
+          <Style Color="54, 119, 171" TextAlign="Left">
+            <BorderColor Bottom="Blue" />
+            <Font Size="12pt" Bold="True" />
+          </Style>
+        </TextBox>
+        <Crosstab DataSourceName="sqlDataSource1" RowHeadersPrintOnEveryPage="False" ColumnHeadersPrintOnEveryPage="True" KeepTogether="False" Size="3.97500165303548in, 0.600000023841858in" Location="0in, 1in" Name="ctSummary" StyleName="">
+          <Style LineStyle="Solid" />
+          <Body>
+            <Cells>
+              <TableCell RowIndex="0" ColumnIndex="0" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="=Sum(Fields.FinalBalance)" Format="{0:N2}" Size="1.01875052274808in, 0.200000013907751in" Name="textBox5" StyleName="">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <BorderStyle Default="Solid" />
+                      <BorderColor Default="Silver" />
+                      <Font Size="8pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+            </Cells>
+            <Columns>
+              <Column Width="1.01875052274808in" />
+            </Columns>
+            <Rows>
+              <Row Height="0.200000013907751in" />
+            </Rows>
+          </Body>
+          <Corner>
+            <Cells>
+              <TableCell RowIndex="0" ColumnIndex="0" RowSpan="2" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="Chart Of Account Code" Size="2.95625125371904in, 0.400000015894572in" Name="txtChartOfAccountCode" StyleName="">
+                    <Style>
+                      <BorderStyle Default="Solid" />
+                      <BorderColor Default="Silver" />
+                      <Font Bold="True" />
+                      <Padding Left="2pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+            </Cells>
+          </Corner>
+          <Sortings>
+            <Sorting Expression="=Fields.ChartOfAccountCode" Direction="Asc" />
+          </Sortings>
+          <RowGroups>
+            <TableGroup Name="ChartOfAccountName" GroupKeepTogether="True">
+              <Groupings>
+                <Grouping Expression="=Fields.ChartOfAccountName" />
+              </Groupings>
+              <Sortings>
+                <Sorting Expression="=Fields.ChartOfAccountId" Direction="Asc" />
+              </Sortings>
+              <ReportItem>
+                <TextBox Value="=Fields.ChartOfAccountName" Size="2.95625125371904in, 0.200000013907751in" Name="textBox4" StyleName="">
+                  <Style VerticalAlign="Middle">
+                    <BorderStyle Default="Solid" />
+                    <BorderColor Default="Silver" />
+                    <Font Size="8pt" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+          </RowGroups>
+          <ColumnGroups>
+            <TableGroup Name="Year1">
+              <Groupings>
+                <Grouping Expression="=Fields.Year" />
+              </Groupings>
+              <Sortings>
+                <Sorting Expression="=Fields.Year" Direction="Asc" />
+              </Sortings>
+              <ReportItem>
+                <TextBox Value="=Fields.Year" Size="1.01875052274808in, 0.200000013907751in" Name="textBox2" StyleName="">
+                  <Style TextAlign="Center" VerticalAlign="Middle">
+                    <BorderStyle Default="Solid" />
+                    <BorderColor Default="Silver" />
+                    <Font Bold="True" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+              <ChildGroups>
+                <TableGroup Name="ItemName">
+                  <Groupings>
+                    <Grouping Expression="=Fields.ItemName" />
+                  </Groupings>
+                  <Sortings>
+                    <Sorting Expression="=Fields.ItemName" Direction="Asc" />
+                  </Sortings>
+                  <ReportItem>
+                    <TextBox Value="=Fields.ItemName" Size="1.01875052274808in, 0.200000013907751in" Name="textBox3" StyleName="">
+                      <Style TextAlign="Center" VerticalAlign="Middle">
+                        <BorderStyle Default="Solid" />
+                        <BorderColor Default="Silver" />
+                        <Font Size="8pt" />
+                        <Padding Right="0pt" />
+                      </Style>
+                    </TextBox>
+                  </ReportItem>
+                </TableGroup>
+              </ChildGroups>
+            </TableGroup>
+          </ColumnGroups>
+        </Crosstab>
+      </Items>
+    </ReportHeaderSection>
+  </Items>
+  <StyleSheet>
+    <StyleRule>
+      <Style>
+        <Padding Left="2pt" Right="2pt" />
+      </Style>
+      <Selectors>
+        <TypeSelector Type="TextItemBase" />
+        <TypeSelector Type="HtmlTextBox" />
+      </Selectors>
+    </StyleRule>
+  </StyleSheet>
+  <PageSettings>
+    <PageSettings PaperKind="Letter" Landscape="True">
+      <Margins>
+        <MarginsU Left="0.25in" Right="0.25in" Top="0.25in" Bottom="0.25in" />
+      </Margins>
+    </PageSettings>
+  </PageSettings>
+</Report>

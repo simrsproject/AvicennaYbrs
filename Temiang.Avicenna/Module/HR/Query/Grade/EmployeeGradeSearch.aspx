@@ -1,0 +1,69 @@
+﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage/MasterDialog.Master" AutoEventWireup="true"
+    CodeBehind="EmployeeGradeSearch.aspx.cs" Inherits="Temiang.Avicenna.Module.HR.Query.EmployeeGradeSearch" %>
+
+<%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <table width="100%">
+        <tr>
+            <td class="label">
+                <asp:Label ID="lblEmployeeNumber" runat="server" Text="Employee No" Width="100px"></asp:Label>
+            </td>
+            <td class="filter">
+
+                <telerik:RadComboBox ID="cboFilterEmployeeNumber" runat="server" Width="100%">
+                    <Items>
+                        <telerik:RadComboBoxItem runat="server" Text="Contains" Value="Contains" />
+                        <telerik:RadComboBoxItem runat="server" Text="Equal" Value="Equal" />
+                    </Items>
+                    <CollapseAnimation Duration="200" Type="OutQuint" />
+                </telerik:RadComboBox>
+
+            </td>
+            <td class="entry">
+                <telerik:RadTextBox ID="txtEmployeeNo" runat="server" Width="300px" />
+            </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="label">
+                <asp:Label ID="lblFirstName" runat="server" Text="First Name" Width="100px"></asp:Label>
+            </td>
+            <td class="filter">
+
+                <telerik:RadComboBox ID="cboFirstName" runat="server" Width="100%">
+                    <Items>
+                        <telerik:RadComboBoxItem runat="server" Text="Contains" Value="Contains" />
+                        <telerik:RadComboBoxItem runat="server" Text="Equal" Value="Equal" />
+                    </Items>
+                    <CollapseAnimation Duration="200" Type="OutQuint" />
+                </telerik:RadComboBox>
+
+            </td>
+            <td class="entry">
+                <telerik:RadTextBox ID="txtFirstName" runat="server" Width="300px" MaxLength="500" />
+            </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="label">
+                <asp:Label ID="lblEmployeeGradeCode" runat="server" Text="Position Grade" Width="100px"></asp:Label>
+            </td>
+            <td class="filter"></td>
+            <td class="entry">
+                <telerik:RadComboBox ID="cboPositionGradeID" runat="server" Width="300px" EnableLoadOnDemand="true"
+                    MarkFirstMatch="true" HighlightTemplatedItems="true" AutoPostBack="false" OnItemDataBound="cboPositionGradeID_ItemDataBound"
+                    OnItemsRequested="cboPositionGradeID_ItemsRequested">
+                    <ItemTemplate>
+                        <%# DataBinder.Eval(Container.DataItem, "PositionGradeCode")%> (<%# DataBinder.Eval(Container.DataItem, "RankName")%>)
+                    </ItemTemplate>
+                    <FooterTemplate>
+                        Note : Show max 30 items
+                    </FooterTemplate>
+                </telerik:RadComboBox>
+            </td>
+            <td></td>
+        </tr>
+
+    </table>
+</asp:Content>
+

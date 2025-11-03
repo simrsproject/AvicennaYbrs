@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report DataSourceName="sqlDataSource1" Width="8.106in" Name="userReport1" ShowSnapGrid="True" xmlns="http://schemas.telerik.com/reporting/2019/2.0">
+  <DataSources>
+    <SqlDataSource QueryDesignerState="null" ParameterValues="{&quot;@p_TransactionNo&quot;:&quot;BE/200826-0001&quot;}" ConnectionString="RSI" SelectCommand="dbo.spslp_BloodExtermination" SelectCommandType="StoredProcedure" Name="sqlDataSource1">
+      <Parameters>
+        <SqlDataSourceParameter DbType="AnsiString" Name="@p_TransactionNo">
+          <Value>
+            <String>BE/200826-0001</String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="AnsiString" Name="@p_UserID" />
+      </Parameters>
+    </SqlDataSource>
+  </DataSources>
+  <Items>
+    <PageHeaderSection Height="0.1in" Name="pageHeaderSection1">
+      <Style Color="Black" />
+    </PageHeaderSection>
+    <DetailSection Height="0.052in" Name="detailSection1">
+      <Style Visible="False" />
+    </DetailSection>
+    <PageFooterSection Height="0.3in" Name="pageFooterSection1">
+      <Items>
+        <TextBox Width="4in" Height="0.2in" Left="0in" Top="0in" Value="=Now()" Format="Avicenna HIS, Print Date : {0:dd-MM-yyyy HH:mm}" Name="textBox52">
+          <Style VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" Italic="True" />
+            <BorderStyle Top="Solid" />
+            <BorderWidth Default="0.5pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="4.106in" Height="0.2in" Left="4in" Top="0in" Value="='Page : ' + PageNumber + '/' + PageCount" Name="textBox54">
+          <Style TextAlign="Right" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" Italic="True" />
+            <BorderStyle Top="Solid" />
+            <BorderWidth Default="0.5pt" />
+            <Padding Right="2mm" />
+          </Style>
+        </TextBox>
+      </Items>
+    </PageFooterSection>
+    <ReportFooterSection Height="4.748in" Name="reportFooterSection1">
+      <Items>
+        <TextBox Width="5.3in" Height="0.3in" Left="0.521in" Top="0.148in" Value="Telah dilakukan pemusnahan/pembuangan darah dengan nomor kantong :" Name="textBox2" />
+        <Table DataSourceName="sqlDataSource1" Width="2.361in" Height="0.208in" Left="0.521in" Top="0.448in" Name="table1">
+          <Body>
+            <Cells>
+              <TableCell RowIndex="0" ColumnIndex="0" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.361in" Height="0.208in" Left="0in" Top="0in" Value="=RowNumber()" Format="{0}." Name="textBox7" />
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="1" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="2in" Height="0.208in" Left="0in" Top="0in" Value="=Fields.BagNo" Format="" Name="textBox11" StyleName="" />
+                </ReportItem>
+              </TableCell>
+            </Cells>
+            <Columns>
+              <Column Width="0.361in" />
+              <Column Width="2in" />
+            </Columns>
+            <Rows>
+              <Row Height="0.208in" />
+            </Rows>
+          </Body>
+          <Corner />
+          <RowGroups>
+            <TableGroup Name="DetailGroup">
+              <Groupings>
+                <Grouping />
+              </Groupings>
+            </TableGroup>
+          </RowGroups>
+          <ColumnGroups>
+            <TableGroup />
+            <TableGroup Name="Group1" />
+          </ColumnGroups>
+        </Table>
+        <TextBox Width="5.3in" Height="0.183in" Left="0.521in" Top="1.048in" Value="Alasan pemusnahan/pembuangan darah adalah :" Name="textBox5" />
+        <TextBox Width="3.6in" Height="0.2in" Left="1.221in" Top="1.231in" Value="=Fields.ItemName" Name="textBox6" />
+        <TextBox Width="5.3in" Height="0.2in" Left="0.521in" Top="1.431in" Value="=Fields.Berat" Format="Total Berat seluruhnya : {0:N2} Kg" Name="textBox8" />
+        <TextBox Width="5.3in" Height="0.183in" Left="0.521in" Top="1.631in" Value="Demikainlah berita acara ini kami buat dengan sebenar-benarnya." Name="textBox9" />
+        <TextBox Width="2.1in" Height="0.183in" Left="0.521in" Top="2.048in" Value="Pelaksana Pemusnahan" Name="textBox14" />
+        <TextBox Width="1.7in" Height="0.183in" Left="5.321in" Top="2.048in" Value="Perintah Pemusnahan" Name="textBox16" />
+        <TextBox Width="2.1in" Height="0.183in" Left="0.521in" Top="2.231in" Value="Operator Incenerator" Name="textBox18" />
+        <TextBox Width="1.7in" Height="0.183in" Left="5.321in" Top="2.231in" Value="Petugas Bank Darah" Name="textBox19" />
+        <TextBox Width="2.1in" Height="0.2in" Left="0.5in" Top="3.048in" Value="='(' + Fields.IncineratorOperator + ' )'" Name="textBox20" />
+        <TextBox Width="2.4in" Height="0.2in" Left="5.321in" Top="3.048in" Value="='( ' + Fields.UserName +' )'" Name="textBox21" />
+        <TextBox Width="2.046in" Height="0.183in" Left="2.854in" Top="3.527in" Value="P2K3" Name="textBox23">
+          <Style TextAlign="Center" />
+        </TextBox>
+        <TextBox Width="2.046in" Height="0.183in" Left="2.854in" Top="3.344in" Value="Mengetahui," Name="textBox24">
+          <Style TextAlign="Center" />
+        </TextBox>
+        <TextBox Width="2.046in" Height="0.2in" Left="2.854in" Top="4.448in" Value="='( ' + Fields.KnownBy +' )'" Name="textBox25">
+          <Style TextAlign="Center" />
+        </TextBox>
+      </Items>
+    </ReportFooterSection>
+    <ReportHeaderSection Height="1.9in" Name="reportHeaderSection1">
+      <Items>
+        <TextBox Width="3.482in" Height="0.3in" Left="3.1in" Top="1in" Value="BERITA ACARA" Name="textBox1">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="16pt" Bold="True" Underline="True" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1.3in" Height="0.2in" Left="2.184in" Top="1.6in" Value="=Fields.ApprovedDateTime" Format=": {0:dd-MMM-yyyy}" Name="textBox3" />
+        <TextBox Width="1.3in" Height="0.2in" Left="2.184in" Top="1.4in" Value="=Fields.Harike" Format=": {0}" Name="textBox17" />
+        <TextBox Width="0.482in" Height="0.2in" Left="0.782in" Top="1.4in" Value="Pada" Name="textBox10" />
+        <TextBox Width="0.8in" Height="0.2in" Left="1.264in" Top="1.6in" Value="Tanggal" Name="textBox12" />
+        <TextBox Width="0.8in" Height="0.2in" Left="1.264in" Top="1.4in" Value="Hari" Name="textBox15" />
+      </Items>
+    </ReportHeaderSection>
+  </Items>
+  <PageSettings PaperKind="Folio" Landscape="False" ColumnCount="1" ColumnSpacing="0in">
+    <Margins>
+      <MarginsU Left="0.5cm" Right="0.5cm" Top="1cm" Bottom="1cm" />
+    </Margins>
+  </PageSettings>
+  <StyleSheet>
+    <StyleRule>
+      <Style>
+        <Padding Left="2pt" Right="2pt" />
+      </Style>
+      <Selectors>
+        <TypeSelector Type="TextItemBase" />
+        <TypeSelector Type="HtmlTextBox" />
+      </Selectors>
+    </StyleRule>
+    <StyleRule>
+      <Style Color="Black">
+        <Font Name="Tahoma" Size="9pt" />
+        <BorderStyle Default="Solid" />
+        <BorderColor Default="Black" />
+        <BorderWidth Default="1px" />
+      </Style>
+      <Selectors>
+        <StyleSelector Type="Table" StyleName="Normal.TableNormal" />
+      </Selectors>
+    </StyleRule>
+  </StyleSheet>
+</Report>

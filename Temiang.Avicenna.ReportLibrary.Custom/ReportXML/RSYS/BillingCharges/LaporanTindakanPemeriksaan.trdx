@@ -1,0 +1,700 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report DataSourceName="sqlDataSource1" Width="7.868in" Name="userReport1" SnapGridSize="0.1cm" xmlns="http://schemas.telerik.com/reporting/2021/1.0">
+  <Style Color="Black" />
+  <DataSources>
+    <SqlDataSource QueryDesignerState="null" ParameterValues="{&quot;@p_FromDate&quot;:&quot;2022-05-01&quot;,&quot;@p_ToDate&quot;:&quot;2022-06-30&quot;,&quot;@p_ServiceUnitID&quot;:&quot;U03.05.01&quot;,&quot;@p_RegistrationType&quot;:&quot;IPR&quot;,&quot;@p_ItemID&quot;:&quot;ADF.0.0014&quot;,&quot;@p_GuarantorID&quot;:&quot;G-00049&quot;}" ConnectionString="RSYS_Live" SelectCommand="sprpt_xml_RSMM_LaporanTindakanPemeriksaan" SelectCommandType="StoredProcedure" Name="sqlDataSource1">
+      <Parameters>
+        <SqlDataSourceParameter DbType="DateTime" Name="@p_FromDate">
+          <Value>
+            <String>2022-05-01</String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="DateTime" Name="@p_ToDate">
+          <Value>
+            <String>2022-06-30</String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="AnsiString" Name="@p_ServiceUnitID">
+          <Value>
+            <String>U03.05.01</String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="AnsiString" Name="@p_RegistrationType">
+          <Value>
+            <String>IPR</String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="AnsiString" Name="@p_ItemID">
+          <Value>
+            <String>ADF.0.0014</String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="AnsiString" Name="@p_GuarantorID">
+          <Value>
+            <String>G-00049</String>
+          </Value>
+        </SqlDataSourceParameter>
+      </Parameters>
+    </SqlDataSource>
+  </DataSources>
+  <Items>
+    <DetailSection Height="0.052in" Name="detailSection1">
+      <Style Visible="False" />
+    </DetailSection>
+    <PageFooterSection Height="0.2in" Name="pageFooterSection1">
+      <Items>
+        <TextBox Width="3.836in" Height="0.2in" Left="4.031in" Top="0in" Value="='Page : ' + PageNumber + '/' + PageCount" Name="textBox54">
+          <Style TextAlign="Right" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" Italic="True" />
+            <BorderStyle Top="Solid" />
+            <BorderWidth Default="0.5pt" />
+            <Padding Right="2mm" />
+          </Style>
+        </TextBox>
+        <TextBox Width="4.031in" Height="0.2in" Left="0in" Top="0in" Value="='AVICENNA_HIS  ' + Now()" Format="Avicenna HIS, Print Date : {0:dd-MM-yyyy HH:mm}" Name="textBox36">
+          <Style VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" Italic="True" />
+            <BorderStyle Top="Solid" />
+            <BorderWidth Default="0.5pt" />
+          </Style>
+        </TextBox>
+      </Items>
+    </PageFooterSection>
+    <ReportHeaderSection Height="3.04in" Name="reportHeaderSection1">
+      <Style Color="Black" />
+      <Items>
+        <TextBox Width="7.868in" Height="0.2in" Left="0in" Top="0.9in" Value="=Fields.ReportName + ' ' + Fields.RegistrationTypeName" Name="textBox1">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="12pt" Bold="True" />
+          </Style>
+        </TextBox>
+        <TextBox Width="7.868in" Height="0.2in" Left="0in" Top="1.3in" Value="=Fields.Period" Name="textBox2">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Name="Tahoma" Bold="True" />
+          </Style>
+        </TextBox>
+        <Table DataSourceName="sqlDataSource1" Width="7.852in" Height="1.44in" Left="0in" Top="1.6in" ColumnHeadersPrintOnEveryPage="True" Name="table1">
+          <Body>
+            <Cells>
+              <TableCell RowIndex="3" ColumnIndex="6" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.677in" Height="0.2in" Left="0in" Top="0in" Value="=Price" Format="{0:N2}" CanShrink="True" Multiline="False" TextWrap="False" Name="textBox10" StyleName="">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" />
+                      <BorderStyle Default="None" Top="None" Bottom="None" Left="None" Right="None" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="0in" Right="0.7mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="3" ColumnIndex="5" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.453in" Height="0.2in" Left="0in" Top="0in" Value="=Qty" Format="{0:N2}" CanShrink="True" Multiline="False" TextWrap="False" Name="textBox12" StyleName="">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" />
+                      <BorderStyle Default="None" Top="None" Bottom="None" Left="None" Right="None" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="0in" Right="0.7mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="5" ColumnIndex="0" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="1.253in" Height="0.2in" Left="0in" Top="0in" Name="textBox30" StyleName="">
+                    <Style Color="147, 35, 32" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" />
+                    </Style>
+                    <ConditionalFormatting>
+                      <FormattingRule>
+                        <Style Visible="False" />
+                        <Filters>
+                          <Filter Expression="ServiceUnitName" Operator="Equal" Value="Z" />
+                        </Filters>
+                      </FormattingRule>
+                    </ConditionalFormatting>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="5" ColumnIndex="1" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.74in" Height="0.2in" Left="0in" Top="0in" Value="" Name="textBox31" StyleName="">
+                    <Style Color="147, 35, 32" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="5" ColumnIndex="2" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="1.036in" Height="0.2in" Left="0in" Top="0in" Name="textBox33" StyleName="">
+                    <Style Color="147, 35, 32" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="2" ColumnIndex="0" RowSpan="1" ColumnSpan="2">
+                <ReportItem>
+                  <TextBox Width="1.993in" Height="0.2in" Left="0in" Top="0in" Value="Pemeriksaan" Name="textBox75" StyleName="">
+                    <Style Color="170, 58, 55" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="9pt" Bold="True" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="5" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.453in" Height="0.2in" Left="0in" Top="0in" Name="textBox100" StyleName="">
+                    <Style Color="0, 112, 192" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="9pt" Bold="True" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="6" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.677in" Height="0.2in" Left="0in" Top="0in" Name="textBox101" StyleName="">
+                    <Style Color="0, 112, 192" TextAlign="Right" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="9pt" Bold="True" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="7" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.656in" Height="0.2in" Left="0in" Top="0in" Name="textBox121" StyleName="">
+                    <Style Color="0, 112, 192" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="9pt" Bold="True" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="8" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.99in" Height="0.2in" Left="0in" Top="0in" Name="textBox122" StyleName="">
+                    <Style Color="0, 112, 192" TextAlign="Right" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="9pt" Bold="True" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="0" RowSpan="1" ColumnSpan="2">
+                <ReportItem>
+                  <TextBox Width="1.993in" Height="0.2in" Left="0in" Top="0in" Value="Tanggal " Name="textBox70" StyleName="">
+                    <Style Color="0, 112, 192" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="9pt" Bold="True" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="2" RowSpan="1" ColumnSpan="3">
+                <ReportItem>
+                  <TextBox Width="3.083in" Height="0.2in" Left="0in" Top="0in" Value="=Fields.TransactionDate" Format=": {0:dd-MMMM-yyyy}" Name="textBox148" StyleName="">
+                    <Style Color="0, 112, 192" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="9pt" Bold="True" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="3" ColumnIndex="1" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.74in" Height="0.2in" Left="0in" Top="0in" Value="=Fields.MedicalNo" CanShrink="True" Multiline="False" TextWrap="False" Name="textBox4" StyleName="">
+                    <Style VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" />
+                      <BorderStyle Default="None" Bottom="None" Left="None" Right="None" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="0.7mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="2" ColumnIndex="2" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="1.036in" Height="0.2in" Left="0in" Top="0in" Value="=Fields.ItemID" Format=": {0}" Name="textBox15" StyleName="">
+                    <Style Color="170, 58, 55" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="9pt" Bold="True" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="3" ColumnIndex="2" RowSpan="1" ColumnSpan="2">
+                <ReportItem>
+                  <TextBox Width="1.791in" Height="0.2in" Left="0in" Top="0in" Value="=Fields.PatientName" CanShrink="True" Multiline="False" TextWrap="False" Name="textBox5" StyleName="">
+                    <Style VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" />
+                      <BorderStyle Default="None" Bottom="None" Left="None" Right="None" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="0.7mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="3" ColumnIndex="4" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="1.292in" Height="0.2in" Left="0in" Top="0in" Value="=Fields.PhysicianSenders" CanShrink="True" Multiline="False" TextWrap="False" Name="textBox7" StyleName="">
+                    <Style VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" />
+                      <BorderStyle Default="None" Bottom="None" Left="None" Right="None" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Right="0.7mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="3" ColumnIndex="7" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.656in" Height="0.2in" Left="0in" Top="0in" Value="=Fields.CitoAmount" Format="{0:N2}" CanShrink="True" Multiline="False" TextWrap="False" Name="textBox8" StyleName="">
+                    <Style Color="Black" TextAlign="Right" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" />
+                      <BorderStyle Default="None" Bottom="None" Left="None" Right="None" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="0in" Right="0.7mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="2" ColumnIndex="3" RowSpan="1" ColumnSpan="6">
+                <ReportItem>
+                  <TextBox Width="4.823in" Height="0.2in" Left="0in" Top="0in" Value="=Fields.ItemName" Name="textBox18" StyleName="">
+                    <Style Color="170, 58, 55" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="9pt" Bold="True" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="3" ColumnIndex="8" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.99in" Height="0.2in" Left="0in" Top="0in" Value="=Fields.Total" Format="{0:N2}" CanShrink="True" Multiline="False" TextWrap="False" Name="textBox9" StyleName="">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" />
+                      <BorderStyle Default="None" Bottom="None" Left="None" Right="None" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Right="0.7mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="5" ColumnIndex="3" RowSpan="1" ColumnSpan="5">
+                <ReportItem>
+                  <TextBox Width="3.833in" Height="0.2in" Left="0in" Top="0in" Value="='Total Pemeriksaan' + ' ' + Fields.ItemName" Name="textBox46" StyleName="">
+                    <Style Color="147, 35, 32" TextAlign="Right" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" Bold="True" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="5" ColumnIndex="8" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.99in" Height="0.2in" Left="0in" Top="0in" Value="=Sum(Fields.Total)" Format="{0:N2}" Name="textBox11" StyleName="">
+                    <Style Color="147, 35, 32" TextAlign="Right" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" Bold="True" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="6" ColumnIndex="0" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="1.253in" Height="0.2in" Left="0in" Top="0in" Name="textBox6" StyleName="">
+                    <Style Color="0, 112, 192" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="9pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="6" ColumnIndex="1" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.74in" Height="0.2in" Left="0in" Top="0in" Name="textBox13" StyleName="">
+                    <Style Color="0, 112, 192" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="9pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="6" ColumnIndex="2" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="1.036in" Height="0.2in" Left="0in" Top="0in" Name="textBox14" StyleName="">
+                    <Style Color="0, 112, 192" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="9pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="6" ColumnIndex="8" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.99in" Height="0.2in" Left="0in" Top="0in" Value="=Sum(Fields.Total)" Format="{0:N2}" Name="textBox17" StyleName="">
+                    <Style Color="0, 112, 192" TextAlign="Right" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="9pt" Bold="True" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="6" ColumnIndex="3" RowSpan="1" ColumnSpan="5">
+                <ReportItem>
+                  <TextBox Width="3.833in" Height="0.2in" Left="0in" Top="0in" Value="=Fields.TransactionDate" Format="{0:dd-MMMM-yyyy}" Name="textBox19" StyleName="">
+                    <Style Color="0, 112, 192" TextAlign="Right" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="9pt" Bold="True" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="3" ColumnIndex="0" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="1.253in" Height="0.2in" Left="0in" Top="0in" Value="=Fields.RegistrationNo" CanShrink="True" Multiline="False" TextWrap="False" Name="textBox16" StyleName="">
+                    <Style VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="0.7mm" Right="0.5mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="0" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="1.253in" Height="0.24in" Left="0in" Top="0in" Value="Registration No" Name="textBox3" StyleName="">
+                    <Style Color="Black" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="9pt" Bold="True" />
+                      <BorderStyle Top="Solid" Bottom="Solid" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="1" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.74in" Height="0.24in" Left="0in" Top="0in" Value="No. RM" Name="textBox20" StyleName="">
+                    <Style Color="Black" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="9pt" Bold="True" />
+                      <BorderStyle Top="Solid" Bottom="Solid" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="4" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="1.292in" Height="0.24in" Left="0in" Top="0in" Value="Dokter" Name="textBox23" StyleName="">
+                    <Style Color="Black" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="9pt" Bold="True" />
+                      <BorderStyle Top="Solid" Bottom="Solid" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="5" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.453in" Height="0.24in" Left="0in" Top="0in" Value="Qty" Name="textBox24" StyleName="">
+                    <Style Color="Black" TextAlign="Right" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="9pt" Bold="True" />
+                      <BorderStyle Top="Solid" Bottom="Solid" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="6" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.677in" Height="0.24in" Left="0in" Top="0in" Value="Tariff" Name="textBox25" StyleName="">
+                    <Style Color="Black" TextAlign="Right" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="9pt" Bold="True" />
+                      <BorderStyle Top="Solid" Bottom="Solid" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="7" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.656in" Height="0.24in" Left="0in" Top="0in" Value="Cito" Name="textBox26" StyleName="">
+                    <Style Color="Black" TextAlign="Right" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="9pt" Bold="True" />
+                      <BorderStyle Top="Solid" Bottom="Solid" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="8" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.99in" Height="0.24in" Left="0in" Top="0in" Value="Total" Name="textBox27" StyleName="">
+                    <Style Color="Black" TextAlign="Right" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="9pt" Bold="True" />
+                      <BorderStyle Top="Solid" Bottom="Solid" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="2" RowSpan="1" ColumnSpan="2">
+                <ReportItem>
+                  <TextBox Width="1.791in" Height="0.24in" Left="0in" Top="0in" Value="Nama Pasien" Name="textBox21" StyleName="">
+                    <Style Color="Black" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="9pt" Bold="True" />
+                      <BorderStyle Top="Solid" Bottom="Solid" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="4" ColumnIndex="0" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="1.253in" Height="0.2in" Left="0in" Top="0in" Name="textBox28" StyleName="">
+                    <Style VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" Bold="True" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="0.7mm" Right="0.5mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="4" ColumnIndex="1" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.74in" Height="0.2in" Left="0in" Top="0in" Name="textBox29" StyleName="">
+                    <Style VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" Bold="True" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="0.7mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="4" ColumnIndex="2" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="1.036in" Height="0.2in" Left="0in" Top="0in" Name="textBox32" StyleName="">
+                    <Style VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" Bold="True" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="0.7mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="4" ColumnIndex="3" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.755in" Height="0.2in" Left="0in" Top="0in" Name="textBox34" StyleName="">
+                    <Style VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" Bold="True" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="0.7mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="4" ColumnIndex="4" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="1.292in" Height="0.2in" Left="0in" Top="0in" Name="textBox35" StyleName="">
+                    <Style VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" Bold="True" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Right="0.7mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="4" ColumnIndex="6" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.677in" Height="0.2in" Left="0in" Top="0in" Name="textBox38" StyleName="">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" Bold="True" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Right="0.7mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="4" ColumnIndex="7" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.656in" Height="0.2in" Left="0in" Top="0in" Name="textBox39" StyleName="">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" Bold="True" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Right="0.7mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="4" ColumnIndex="8" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.99in" Height="0.2in" Left="0in" Top="0in" Name="textBox41" StyleName="">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" Bold="True" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Right="0.7mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="4" ColumnIndex="5" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.453in" Height="0.2in" Left="0in" Top="0in" Value="=Sum(Fields.Qty)" Format="{0:N2}" Name="textBox42" StyleName="">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="7pt" Bold="True" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Right="0.7mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+            </Cells>
+            <Columns>
+              <Column Width="1.253in" />
+              <Column Width="0.74in" />
+              <Column Width="1.036in" />
+              <Column Width="0.755in" />
+              <Column Width="1.292in" />
+              <Column Width="0.453in" />
+              <Column Width="0.677in" />
+              <Column Width="0.656in" />
+              <Column Width="0.99in" />
+            </Columns>
+            <Rows>
+              <Row Height="0.24in" />
+              <Row Height="0.2in" />
+              <Row Height="0.2in" />
+              <Row Height="0.2in" />
+              <Row Height="0.2in" />
+              <Row Height="0.2in" />
+              <Row Height="0.2in" />
+            </Rows>
+          </Body>
+          <Corner />
+          <RowGroups>
+            <TableGroup Name="Group13">
+              <ChildGroups>
+                <TableGroup Name="Group14">
+                  <ChildGroups>
+                    <TableGroup Name="Group15">
+                      <ChildGroups>
+                        <TableGroup Name="Group16">
+                          <ChildGroups>
+                            <TableGroup Name="Group17">
+                              <ChildGroups>
+                                <TableGroup Name="Group18" />
+                              </ChildGroups>
+                            </TableGroup>
+                          </ChildGroups>
+                        </TableGroup>
+                      </ChildGroups>
+                    </TableGroup>
+                  </ChildGroups>
+                </TableGroup>
+              </ChildGroups>
+            </TableGroup>
+            <TableGroup Name="Tanggal">
+              <ChildGroups>
+                <TableGroup Name="Group35">
+                  <ChildGroups>
+                    <TableGroup Name="Group37">
+                      <ChildGroups>
+                        <TableGroup Name="Group38">
+                          <ChildGroups>
+                            <TableGroup Name="Group39">
+                              <ChildGroups>
+                                <TableGroup Name="Group43" />
+                              </ChildGroups>
+                            </TableGroup>
+                          </ChildGroups>
+                        </TableGroup>
+                      </ChildGroups>
+                    </TableGroup>
+                  </ChildGroups>
+                </TableGroup>
+                <TableGroup Name="Pemeriksaan">
+                  <ChildGroups>
+                    <TableGroup Name="Group19">
+                      <ChildGroups>
+                        <TableGroup Name="Group20">
+                          <ChildGroups>
+                            <TableGroup Name="Group21">
+                              <ChildGroups>
+                                <TableGroup Name="Group22" />
+                              </ChildGroups>
+                            </TableGroup>
+                          </ChildGroups>
+                        </TableGroup>
+                      </ChildGroups>
+                    </TableGroup>
+                    <TableGroup Name="IsRefferal">
+                      <ChildGroups>
+                        <TableGroup Name="GroupItem">
+                          <ChildGroups>
+                            <TableGroup Name="ServiceUnitName">
+                              <ChildGroups>
+                                <TableGroup Name="DetailGroup">
+                                  <Groupings>
+                                    <Grouping />
+                                  </Groupings>
+                                </TableGroup>
+                                <TableGroup Name="Group23" />
+                                <TableGroup Name="Group8" />
+                              </ChildGroups>
+                            </TableGroup>
+                          </ChildGroups>
+                        </TableGroup>
+                      </ChildGroups>
+                    </TableGroup>
+                  </ChildGroups>
+                  <Groupings>
+                    <Grouping Expression="=Fields.ItemName" />
+                  </Groupings>
+                  <Sortings>
+                    <Sorting Expression="=Fields.ItemID" Direction="Asc" />
+                  </Sortings>
+                </TableGroup>
+                <TableGroup Name="Group7">
+                  <ChildGroups>
+                    <TableGroup Name="Group9">
+                      <ChildGroups>
+                        <TableGroup Name="Group10">
+                          <ChildGroups>
+                            <TableGroup Name="Group11">
+                              <ChildGroups>
+                                <TableGroup Name="Group12" />
+                              </ChildGroups>
+                            </TableGroup>
+                          </ChildGroups>
+                        </TableGroup>
+                      </ChildGroups>
+                    </TableGroup>
+                  </ChildGroups>
+                </TableGroup>
+              </ChildGroups>
+              <Groupings>
+                <Grouping Expression="=Fields.TransactionDate" />
+              </Groupings>
+              <Sortings>
+                <Sorting Expression="=Fields.TransactionDate" Direction="Asc" />
+              </Sortings>
+            </TableGroup>
+          </RowGroups>
+          <ColumnGroups>
+            <TableGroup />
+            <TableGroup Name="Group6" />
+            <TableGroup Name="Group4" />
+            <TableGroup Name="Group1" />
+            <TableGroup Name="Group25" />
+            <TableGroup Name="Group3" />
+            <TableGroup Name="Group2" />
+            <TableGroup Name="Group34" />
+            <TableGroup Name="Group5" />
+          </ColumnGroups>
+        </Table>
+        <TextBox Width="7.868in" Height="0.2in" Left="0in" Top="1.1in" Value="=Fields.ServiceUnitName" Format="Bagian : {0}" Name="textBox22">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Name="Tahoma" Bold="True" />
+          </Style>
+        </TextBox>
+      </Items>
+    </ReportHeaderSection>
+  </Items>
+  <PageSettings PaperKind="A4" Landscape="False" ColumnCount="1" ColumnSpacing="0in">
+    <Margins>
+      <MarginsU Left="0.2in" Right="0.2in" Top="0.2in" Bottom="0.2in" />
+    </Margins>
+  </PageSettings>
+  <StyleSheet>
+    <StyleRule>
+      <Style>
+        <Padding Left="2pt" Right="2pt" />
+      </Style>
+      <Selectors>
+        <TypeSelector Type="TextItemBase" />
+        <TypeSelector Type="HtmlTextBox" />
+      </Selectors>
+    </StyleRule>
+  </StyleSheet>
+</Report>

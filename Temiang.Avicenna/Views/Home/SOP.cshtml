@@ -1,0 +1,26 @@
+﻿
+<div class="row">
+    <div class="col-12 pl-0 pr-4 py-0">
+        <div id="divSOP"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        @{
+            if (!string.IsNullOrEmpty(((string)ViewBag.SOPDirectoryUrl).Trim())) {
+                @:CoreLoadContentToContainerDiv("@ViewBag.SOPDirectoryUrl", "divSOP", "GET", function () { RemoveParentDirectoryLink(); });
+            }
+         }
+
+    });
+
+    function RemoveParentDirectoryLink() {
+        $("h1").html("<i class=\"fa fa-book\"></i><span class=\"pl-4\">S O P</span>");
+        $("a:contains('.config')").remove();
+        $("#divSOP").html(ReplaceAll($("#divSOP").html(), '<a href="/">[To Parent Directory]</a><br><br>', ''));
+        $("#divSOP > pre > a").each(function () {
+            $(this).attr('target', '_blank');
+        });
+    }
+</script>

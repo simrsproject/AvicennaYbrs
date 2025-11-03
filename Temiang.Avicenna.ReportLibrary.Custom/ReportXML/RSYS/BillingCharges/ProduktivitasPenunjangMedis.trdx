@@ -1,0 +1,449 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report DataSourceName="sqlDataSource1" Width="9.693in" Name="userReport1" ShowSnapGrid="True" xmlns="http://schemas.telerik.com/reporting/2019/2.0">
+  <DataSources>
+    <SqlDataSource QueryDesignerState="null" ParameterValues="{&quot;@p_FromMonth&quot;:&quot;07&quot;,&quot;@p_Year&quot;:&quot;2020&quot;,&quot;@p_ServiceUnitOrderID&quot;:&quot;D3.0.02&quot;}" ConnectionString="RSISIMULATION" SelectCommand="sprpt_XML_RekapitulasiTindakanCaraBayarPerItem" SelectCommandType="StoredProcedure" Name="sqlDataSource1">
+      <Parameters>
+        <SqlDataSourceParameter DbType="AnsiStringFixedLength" Name="@p_FromMonth">
+          <Value>
+            <String>07</String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="AnsiStringFixedLength" Name="@p_Year">
+          <Value>
+            <String>2020</String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="AnsiString" Name="@p_ServiceUnitOrderID">
+          <Value>
+            <String>D3.0.02</String>
+          </Value>
+        </SqlDataSourceParameter>
+      </Parameters>
+    </SqlDataSource>
+  </DataSources>
+  <Items>
+    <DetailSection Height="0.052in" Name="detailSection1">
+      <Style Visible="False" />
+    </DetailSection>
+    <PageFooterSection Height="0.2in" Name="pageFooterSection1">
+      <Items>
+        <TextBox Width="3.76in" Height="0.2in" Left="0in" Top="0in" Value="=Now()" Format="Avicenna HIS, Print Date : {0:dd-MM-yyyy HH:mm}" Name="textBox3">
+          <Style>
+            <Font Name="Tahoma" Size="8pt" Italic="True" />
+            <BorderStyle Top="Solid" />
+            <BorderColor Top="Black" />
+            <BorderWidth Top="1pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="5.933in" Height="0.2in" Left="3.76in" Top="0in" Value="='Page : ' + PageNumber + '/' + PageCount" Name="textBox22">
+          <Style TextAlign="Right">
+            <Font Name="Tahoma" Size="8pt" Italic="True" />
+            <BorderStyle Top="Solid" />
+            <BorderColor Top="Black" />
+            <BorderWidth Top="1pt" />
+          </Style>
+        </TextBox>
+      </Items>
+    </PageFooterSection>
+    <ReportHeaderSection KeepTogether="True" Height="2.514in" Name="reportHeaderSection1">
+      <Items>
+        <TextBox Width="9.693in" Height="0.2in" Left="0in" Top="1in" Value="RUMAH SAKIT IMMANUEL" Name="textBox2">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="11pt" Bold="True" />
+          </Style>
+        </TextBox>
+        <Crosstab DataSourceName="sqlDataSource1" Width="4.052in" Height="1.214in" Left="0cm" Top="3.302cm" ColumnHeadersPrintOnEveryPage="True" KeepTogether="True" Name="crosstab1">
+          <Body>
+            <Cells>
+              <TableCell RowIndex="0" ColumnIndex="0" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.521in" Height="0.185in" Left="0in" Top="0in" Name="textBox11" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Font Size="8pt" Bold="True" />
+                      <BorderStyle Top="None" Bottom="Solid" Right="None" />
+                      <BorderWidth Default="0.7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="0" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.521in" Height="0.187in" Left="0in" Top="0in" Value="=Sum(Fields.Jumlah)" Name="textBox8" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Font Size="8pt" Bold="False" />
+                      <BorderStyle Top="Solid" Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="2" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.615in" Height="0.185in" Left="0in" Top="0in" Name="textBox15" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Font Size="8pt" Bold="True" />
+                      <BorderStyle Top="None" Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="2" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.615in" Height="0.187in" Left="0in" Top="0in" Value="=Sum(Fields.Jumlah)" Name="textBox5" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Font Size="8pt" />
+                      <BorderStyle Top="Solid" Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="1" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.52in" Height="0.185in" Left="0in" Top="0in" Name="textBox24" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Font Size="8pt" Bold="True" />
+                      <BorderStyle Bottom="Solid" />
+                      <BorderWidth Default="0.7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="1" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.52in" Height="0.187in" Left="0in" Top="0in" Value="=Sum(Fields.Jumlah)" Name="textBox25" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Font Size="8pt" />
+                      <BorderStyle Top="Solid" Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="2" ColumnIndex="0" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.521in" Height="0.188in" Left="0in" Top="0in" Value="=Sum(Fields.Jumlah)" Name="textBox23" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Font Size="8pt" />
+                      <BorderStyle Top="Solid" Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="2" ColumnIndex="1" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.52in" Height="0.188in" Left="0in" Top="0in" Value="=Sum(Fields.Jumlah)" Name="textBox26" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Font Size="8pt" />
+                      <BorderStyle Top="Solid" Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="2" ColumnIndex="2" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.615in" Height="0.188in" Left="0in" Top="0in" Value="=Sum(Fields.Jumlah)" Name="textBox27" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Font Size="8pt" />
+                      <BorderStyle Top="Solid" Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+            </Cells>
+            <Columns>
+              <Column Width="0.521in" />
+              <Column Width="0.52in" />
+              <Column Width="0.615in" />
+            </Columns>
+            <Rows>
+              <Row Height="0.185in" />
+              <Row Height="0.187in" />
+              <Row Height="0.188in" />
+            </Rows>
+          </Body>
+          <Corner>
+            <Cells>
+              <TableCell RowIndex="0" ColumnIndex="0" RowSpan="3" ColumnSpan="2">
+                <ReportItem>
+                  <TextBox Width="6.087cm" Height="0.654in" Left="0in" Top="0in" Value="Pemeriksaan" Name="textBox20" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Font Size="8pt" Bold="True" />
+                      <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+                      <BorderWidth Default="0.7pt" Top="0.5pt" Bottom="0.5pt" Left="0.5pt" Right="0.5pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+            </Cells>
+          </Corner>
+          <Style Color="Black">
+            <Font Name="Tahoma" />
+          </Style>
+          <RowGroups>
+            <TableGroup Name="ItemGroupName">
+              <ChildGroups>
+                <TableGroup Name="Penjamin4">
+                  <ChildGroups>
+                    <TableGroup Name="Group7">
+                      <ChildGroups>
+                        <TableGroup Name="Group5">
+                          <ChildGroups>
+                            <TableGroup Name="ItemGroupName3">
+                              <ChildGroups>
+                                <TableGroup Name="Penjamin3">
+                                  <ChildGroups>
+                                    <TableGroup Name="Penjamin1">
+                                      <ChildGroups>
+                                        <TableGroup Name="ItemGroupName2">
+                                          <ChildGroups>
+                                            <TableGroup Name="ItemGroupName1">
+                                              <ChildGroups>
+                                                <TableGroup Name="TransactionType">
+                                                  <ChildGroups>
+                                                    <TableGroup Name="Penjamin">
+                                                      <ReportItem>
+                                                        <TextBox Width="6.087cm" Height="0.185in" Left="0in" Top="0in" Value="=Fields.ItemGroupName" Name="textBox16" StyleName="">
+                                                          <Style>
+                                                            <Font Size="8pt" Bold="True" />
+                                                            <BorderStyle Bottom="Solid" Left="Solid" Right="Solid" />
+                                                            <BorderWidth Default="0.7pt" />
+                                                          </Style>
+                                                        </TextBox>
+                                                      </ReportItem>
+                                                      <ChildGroups>
+                                                        <TableGroup Name="Group1" />
+                                                      </ChildGroups>
+                                                    </TableGroup>
+                                                    <TableGroup Name="ItemGroupName4">
+                                                      <ReportItem>
+                                                        <TextBox Width="0.265cm" Height="0.187in" Left="0in" Top="0in" Value="" Name="textBox10" StyleName="">
+                                                          <Style TextAlign="Left">
+                                                            <Font Size="8pt" />
+                                                            <BorderStyle Top="None" Bottom="Solid" Left="Solid" Right="None" />
+                                                            <BorderWidth Default="0.7pt" />
+                                                          </Style>
+                                                        </TextBox>
+                                                      </ReportItem>
+                                                      <ChildGroups>
+                                                        <TableGroup Name="ItemName">
+                                                          <ChildGroups>
+                                                            <TableGroup Name="Group4">
+                                                              <ReportItem>
+                                                                <TextBox Width="2.292in" Height="0.187in" Left="0in" Top="0in" Value="=Fields.ItemName" Name="textBox14" StyleName="">
+                                                                  <Style>
+                                                                    <Font Size="9pt" />
+                                                                    <BorderStyle Bottom="Solid" Right="Solid" />
+                                                                    <BorderWidth Default="0.7pt" />
+                                                                  </Style>
+                                                                </TextBox>
+                                                              </ReportItem>
+                                                              <ChildGroups>
+                                                                <TableGroup Name="Penjamin2" />
+                                                              </ChildGroups>
+                                                            </TableGroup>
+                                                          </ChildGroups>
+                                                          <Groupings>
+                                                            <Grouping Expression="=Fields.ItemName" />
+                                                          </Groupings>
+                                                          <Sortings>
+                                                            <Sorting Expression="=Fields.ItemName" Direction="Asc" />
+                                                          </Sortings>
+                                                        </TableGroup>
+                                                      </ChildGroups>
+                                                    </TableGroup>
+                                                  </ChildGroups>
+                                                </TableGroup>
+                                              </ChildGroups>
+                                            </TableGroup>
+                                          </ChildGroups>
+                                        </TableGroup>
+                                      </ChildGroups>
+                                    </TableGroup>
+                                  </ChildGroups>
+                                </TableGroup>
+                              </ChildGroups>
+                            </TableGroup>
+                          </ChildGroups>
+                        </TableGroup>
+                      </ChildGroups>
+                    </TableGroup>
+                  </ChildGroups>
+                </TableGroup>
+                <TableGroup Name="Group10">
+                  <ChildGroups>
+                    <TableGroup Name="Group11">
+                      <ChildGroups>
+                        <TableGroup Name="Group14">
+                          <ChildGroups>
+                            <TableGroup Name="Group15">
+                              <ChildGroups>
+                                <TableGroup Name="Group16">
+                                  <ChildGroups>
+                                    <TableGroup Name="Group17">
+                                      <ChildGroups>
+                                        <TableGroup Name="Group18">
+                                          <ChildGroups>
+                                            <TableGroup Name="Group19">
+                                              <ChildGroups>
+                                                <TableGroup Name="Group20">
+                                                  <ChildGroups>
+                                                    <TableGroup Name="Group21">
+                                                      <ReportItem>
+                                                        <TextBox Width="6.087cm" Height="0.188in" Left="0in" Top="0in" Value="Total" Name="textBox18" StyleName="">
+                                                          <Style TextAlign="Center" VerticalAlign="Middle">
+                                                            <Font Size="8pt" Bold="True" />
+                                                            <BorderStyle Bottom="Solid" Left="Solid" Right="Solid" />
+                                                            <BorderWidth Default="0.7pt" />
+                                                          </Style>
+                                                        </TextBox>
+                                                      </ReportItem>
+                                                      <ChildGroups>
+                                                        <TableGroup Name="Group22" />
+                                                      </ChildGroups>
+                                                    </TableGroup>
+                                                  </ChildGroups>
+                                                </TableGroup>
+                                              </ChildGroups>
+                                            </TableGroup>
+                                          </ChildGroups>
+                                        </TableGroup>
+                                      </ChildGroups>
+                                    </TableGroup>
+                                  </ChildGroups>
+                                </TableGroup>
+                              </ChildGroups>
+                            </TableGroup>
+                          </ChildGroups>
+                        </TableGroup>
+                      </ChildGroups>
+                    </TableGroup>
+                  </ChildGroups>
+                </TableGroup>
+              </ChildGroups>
+              <Groupings>
+                <Grouping Expression="=Fields.ItemGroupName" />
+              </Groupings>
+              <Sortings>
+                <Sorting Expression="=Fields.ItemGroupName" Direction="Asc" />
+              </Sortings>
+            </TableGroup>
+          </RowGroups>
+          <ColumnGroups>
+            <TableGroup Name="Periode">
+              <ReportItem>
+                <TextBox Width="1.041in" Height="0.281in" Left="0in" Top="0in" Value="=Fields.Periode" Name="textBox6" StyleName="">
+                  <Style TextAlign="Left" VerticalAlign="Middle">
+                    <Font Size="8pt" Bold="True" />
+                    <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+                    <BorderWidth Default="0.7pt" Top="0.5pt" Bottom="0.5pt" Left="0.5pt" Right="0.5pt" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+              <ChildGroups>
+                <TableGroup Name="tanggal1">
+                  <ReportItem>
+                    <TextBox Width="2.644cm" Height="0.503cm" Left="0in" Top="0in" Value="=Fields.tanggal" Name="textBox4" StyleName="">
+                      <Style TextAlign="Center" VerticalAlign="Middle">
+                        <Font Size="8pt" Bold="True" />
+                        <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+                        <BorderWidth Default="0.7pt" Top="0.5pt" Bottom="0.5pt" Left="0.5pt" Right="0.5pt" />
+                      </Style>
+                    </TextBox>
+                  </ReportItem>
+                  <ChildGroups>
+                    <TableGroup Name="Penjamin5">
+                      <ReportItem>
+                        <TextBox Width="1.323cm" Height="0.444cm" Left="0in" Top="0in" Value="=Fields.Penjamin" Name="textBox17" StyleName="">
+                          <Style TextAlign="Center" VerticalAlign="Middle">
+                            <Font Size="8pt" Bold="True" />
+                            <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+                            <BorderWidth Default="0.7pt" Top="0.5pt" Bottom="0.5pt" Left="0.5pt" Right="0.5pt" />
+                          </Style>
+                        </TextBox>
+                      </ReportItem>
+                      <ChildGroups>
+                        <TableGroup Name="Group3" />
+                      </ChildGroups>
+                      <Groupings>
+                        <Grouping Expression="=Fields.Penjamin" />
+                      </Groupings>
+                      <Sortings>
+                        <Sorting Expression="=Fields.Penjamin" Direction="Asc" />
+                      </Sortings>
+                    </TableGroup>
+                    <TableGroup Name="Group12">
+                      <ReportItem>
+                        <TextBox Width="0.52in" Height="0.444cm" Left="0in" Top="0in" Value="JL" Name="textBox21" StyleName="">
+                          <Style TextAlign="Center" VerticalAlign="Middle">
+                            <Font Size="8pt" Bold="True" />
+                            <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+                            <BorderWidth Default="0.7pt" Top="0.5pt" Bottom="0.5pt" Left="0.5pt" Right="0.5pt" />
+                          </Style>
+                        </TextBox>
+                      </ReportItem>
+                      <ChildGroups>
+                        <TableGroup Name="Group13" />
+                      </ChildGroups>
+                    </TableGroup>
+                  </ChildGroups>
+                  <Groupings>
+                    <Grouping Expression="=Fields.tanggal" />
+                  </Groupings>
+                  <Sortings>
+                    <Sorting Expression="=Fields.tanggal" Direction="Asc" />
+                  </Sortings>
+                </TableGroup>
+              </ChildGroups>
+              <Groupings>
+                <Grouping Expression="=Fields.Periode" />
+              </Groupings>
+              <Sortings>
+                <Sorting Expression="=Fields.Periode" Direction="Asc" />
+              </Sortings>
+            </TableGroup>
+            <TableGroup Name="Group6">
+              <ReportItem>
+                <TextBox Width="0.615in" Height="0.654in" Left="0in" Top="0in" Value="Total" Name="textBox19" StyleName="">
+                  <Style TextAlign="Center" VerticalAlign="Middle">
+                    <Font Size="8pt" Bold="True" />
+                    <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+                    <BorderWidth Default="0.7pt" Top="0.5pt" Bottom="0.5pt" Left="0.5pt" Right="0.5pt" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+              <ChildGroups>
+                <TableGroup Name="Group8" />
+              </ChildGroups>
+            </TableGroup>
+          </ColumnGroups>
+        </Crosstab>
+        <TextBox Width="9.693in" Height="0.2in" Left="0in" Top="0.8in" Value="=Fields.Tittle" Name="textBox1">
+          <Style TextAlign="Center">
+            <Font Name="Tahoma" Size="11pt" Bold="True" />
+          </Style>
+        </TextBox>
+      </Items>
+    </ReportHeaderSection>
+  </Items>
+  <PageSettings PaperKind="A4" Landscape="True" ColumnCount="1" ColumnSpacing="0in">
+    <Margins>
+      <MarginsU Left="1in" Right="1in" Top="1in" Bottom="1in" />
+    </Margins>
+  </PageSettings>
+  <StyleSheet>
+    <StyleRule>
+      <Style>
+        <Padding Left="2pt" Right="2pt" />
+      </Style>
+      <Selectors>
+        <TypeSelector Type="TextItemBase" />
+        <TypeSelector Type="HtmlTextBox" />
+      </Selectors>
+    </StyleRule>
+  </StyleSheet>
+</Report>

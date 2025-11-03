@@ -1,0 +1,49 @@
+﻿<style>
+    .btn-demo {
+        display: inline-block;
+        height: 130px;
+        width: 200px;
+        font-size: 22px;
+    }
+    .announcements-test2 ul {
+        margin: 0;
+        padding: 0;
+        padding-bottom: 20px;
+    }
+</style>
+
+<br>
+<br />
+
+<div class="announcements-test">
+    @{
+        //var date = DateTime.Now.Date;
+        var anc = ((AnnouncementCollection)ViewBag.ancColl);
+        foreach (var anct in anc)
+        {
+        <div class="announcements-test2">
+            <ul>
+                <li class="list-group-item list-group-item-action list-group-item-primary">
+                    <h4 class="font-weight-bold text-left">
+                        @(anct.AnnouncementTitle)
+                    </h4>
+                    <small class="font-weight-bold text-capitalize" style="text-align:right">
+                        @Html.Raw(String.Format("{0:dddd, dd MMMM yyyy}", anct.AnnouncementStartDate))
+                        @* "{0:dd-MM-yyyy HH:mm}" kalau mau tampilin time nya juga *@
+                    </small>
+                    &nbsp;-&nbsp;
+                    <small class="font-weight-bold text-capitalize" style="text-align:right">
+                        @Html.Raw(String.Format("{0:dddd, dd MMMM yyyy}", anct.AnnouncementEndDate))
+                        @* "{0:dd-MM-yyyy HH:mm}" kalau mau tampilin time nya juga *@
+                    </small>
+                </li>
+                <li class="list-group-item ">
+                    <span class="post_intro justify-content-between" style="font-size: 18px">
+                        @Html.Raw(anct.AnnouncementDesc)
+                    </span>
+                </li>
+            </ul>
+        </div>
+        }
+    }
+</div>

@@ -1,0 +1,88 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .main-wrapper {
+        /*height: 100vh;*/
+        height: calc(100vh - calc(3.5rem + 1px) - calc(3.5rem + 1px));
+    }
+
+    .section {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .mainbg {
+        height: 100%;
+        background-color: #fff;
+        background-image: url('@(ViewBag.UrlRoot)/Images/LogoRS_MainMenu.jpg');
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+</style>
+<link href="@(ViewBag.UrlRoot)/Bootstrap/plugins/daterangepicker/daterangepicker.css" rel="stylesheet" />
+@{ 
+    var appLinks = ((AppProgramCollection)ViewBag.AppLink).Where(x => x.ParentProgramID == "16").OrderBy(a => a.RowIndex);
+}
+@section LeftMenu
+{
+    @{  
+        if (appLinks.Any())
+        {
+            var appLinkTop = ((AppProgramCollection)ViewBag.AppLink).Where(x => x.ProgramID == "16").FirstOrDefault();
+            <li class="nav-item has-treeview">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon @(appLinkTop.AssemblyClassName)"></i>
+                    <p>
+                        @(appLinkTop.ProgramName)
+                        <i class="right fas fa-angle-left"></i>
+                    </p>
+                </a>
+                <ul id="ulMenuAppLink" class="nav nav-treeview">
+                    @foreach (var app in appLinks)
+                    {
+                        <li class="nav-item">
+                            <a href="javascript:void(0);" onclick="@Html.Raw(string.Format(app.StoreProcedureName, "mainContent"))" class="nav-link">
+                                <i class="@(app.AssemblyClassName)"></i>
+                                <p>@(app.ProgramName)</p>
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </li>
+        }
+    }
+}
+
+<div class="row">
+    <div class="col-12 px-0 py-0" id="mainContent">
+        <div class="main-wrapper">
+            <div class="mainbg"></div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script src="@(ViewBag.UrlRoot)/Bootstrap/plugins/moment/moment.min.js"></script>
+    <script src="@(ViewBag.UrlRoot)/Bootstrap/plugins/daterangepicker/daterangepicker.js"></script>
+    <script src="@(ViewBag.UrlRoot)/Bootstrap/plugins/chart.js/Chart.min.js"></script>
+    <script src="@(ViewBag.UrlRoot)/Bootstrap/js/home.js"></script>
+
+    <script language="javascript">
+        $(document).ready(function () {
+            
+        @if (appLinks.Any())
+        {
+            var appPrgLink = appLinks.FirstOrDefault();
+            @Html.Raw(string.Format(appPrgLink.StoreProcedureName, "mainContent").Replace("javascript:", ""))
+        }
+    });
+    </script>
+}
+

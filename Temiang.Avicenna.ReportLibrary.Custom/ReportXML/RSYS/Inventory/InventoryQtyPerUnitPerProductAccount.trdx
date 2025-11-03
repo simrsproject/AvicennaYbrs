@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report DataSourceName="sqlDataSource1" Width="7.849in" Name="InventoryQtyPerUnitPerProductAccount" ShowSnapGrid="True" xmlns="http://schemas.telerik.com/reporting/2019/2.0">
+  <DataSources>
+    <SqlDataSource QueryDesignerState="null" ParameterValues="{&quot;@p_Date&quot;:&quot;2020-10-13&quot;,&quot;@p_LocationID&quot;:&quot;L01.01.01&quot;,&quot;@p_ItemType&quot;:&quot;11&quot;,&quot;@p_ProductAccountID&quot;:&quot;11.002&quot;}" ConnectionString="RSBK13" SelectCommand="sprpt_ItemBalancePerUnitPerProductAccountPerTanggal" SelectCommandType="StoredProcedure" Name="sqlDataSource1">
+      <Parameters>
+        <SqlDataSourceParameter DbType="DateTime" Name="@p_Date">
+          <Value>
+            <String>2020-10-13</String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="AnsiString" Name="@p_LocationID">
+          <Value>
+            <String>L01.01.01</String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="AnsiString" Name="@p_ItemType">
+          <Value>
+            <String>11</String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="AnsiString" Name="@p_ProductAccountID">
+          <Value>
+            <String>11.002</String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="AnsiString" Name="@p_StockNonStockID" />
+      </Parameters>
+    </SqlDataSource>
+  </DataSources>
+  <Items>
+    <DetailSection Height="0.052in" Name="detailSection1">
+      <Style Visible="False" />
+    </DetailSection>
+    <PageFooterSection Height="0.263in" Name="pageFooterSection1">
+      <Items>
+        <TextBox Width="5.174in" Height="0.19in" Left="0in" Top="0.022in" Value="=NOW()&#xD;&#xA;" Format="Print : {0}" Name="currentTimeTextBox" StyleName="PageInfo">
+          <Style>
+            <Font Name="Tahoma" Size="8pt" Italic="True" />
+            <BorderStyle Default="None" Top="Solid" Left="None" />
+            <BorderWidth Default="0.5pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="2.675in" Height="0.19in" Left="5.174in" Top="0.022in" Value="=PageNumber" Format="{0:N0}" Name="pageInfoTextBox" StyleName="PageInfo">
+          <Style TextAlign="Right">
+            <Font Name="Tahoma" Size="8pt" Italic="True" />
+            <BorderStyle Default="None" Top="Solid" Left="None" />
+            <BorderWidth Default="0.5pt" />
+          </Style>
+        </TextBox>
+      </Items>
+    </PageFooterSection>
+    <ReportHeaderSection Height="2.9in" Name="reportHeaderSection1">
+      <Items>
+        <TextBox Width="7.849in" Height="0.3in" Left="0in" Top="0.7in" Value="LAPORAN INVENTORY PER LOKASI" Name="textBox1">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="14pt" Bold="True" />
+          </Style>
+        </TextBox>
+        <TextBox Width="7.849in" Height="0.2in" Left="0in" Top="1in" Value="=Period" Format="Periode : {0:dd-MMM-yyyy HH:mm}" Name="textBox3">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="10pt" Bold="True" />
+          </Style>
+        </TextBox>
+        <TextBox Width="7.849in" Height="0.2in" Left="0in" Top="1.3in" Value="='Jenis Persediaan : ' + ItemType" Name="textBox2">
+          <Style TextAlign="Left" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="10pt" Bold="True" />
+          </Style>
+        </TextBox>
+        <TextBox Width="7.849in" Height="0.2in" Left="0in" Top="1.5in" Value="='Lokasi : ' + LocationName" Name="textBox12">
+          <Style TextAlign="Left" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="10pt" Bold="True" />
+          </Style>
+        </TextBox>
+        <Table DataSourceName="sqlDataSource1" Width="7.845in" Height="1.1in" Left="0in" Top="1.8in" ColumnHeadersPrintOnEveryPage="True" Name="table1">
+          <Body>
+            <Cells>
+              <TableCell RowIndex="2" ColumnIndex="0" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.46in" Height="0.2in" Left="0in" Top="0in" Value="=RowNumber()" Format="{0:N0}." Name="textBox7">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" />
+                      <Padding Right="1mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="2" ColumnIndex="1" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.848in" Height="0.2in" Left="0in" Top="0in" Value="=ItemID" Name="textBox8">
+                    <Style VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" />
+                      <Padding Left="1mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="2" ColumnIndex="2" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="2.92in" Height="0.2in" Left="0in" Top="0in" Value="=ItemName" Name="textBox9">
+                    <Style VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" />
+                      <Padding Left="1mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="2" ColumnIndex="4" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.85in" Height="0.2in" Left="0in" Top="0in" Value="=Balance" Format="{0:N2}" Name="textBox29" StyleName="">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" />
+                      <Padding Right="1mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="2" ColumnIndex="5" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.979in" Height="0.2in" Left="0in" Top="0in" Value="=CostPrice" Format="{0:N2}" Name="textBox34" StyleName="">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" />
+                      <Padding Right="1mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="2" ColumnIndex="6" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="1.139in" Height="0.2in" Left="0in" Top="0in" Value="=CostPrice*Balance" Format="{0:N2}" Name="textBox39" StyleName="">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" />
+                      <Padding Right="1mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="3" ColumnIndex="6" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="1.139in" Height="0.25in" Left="0in" Top="0in" Value="=Sum(CostPrice*Balance)" Format="{0:N2}" Name="textBox41" StyleName="">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" Bold="True" />
+                      <BorderStyle Top="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Right="1mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="3" ColumnIndex="0" RowSpan="1" ColumnSpan="6">
+                <ReportItem>
+                  <TextBox Width="6.706in" Height="0.25in" Left="0in" Top="0in" Value="='Total Lokasi ' + LocationName + ' :'" Name="textBox13" StyleName="">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" Bold="True" />
+                      <Padding Right="5mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="2" ColumnIndex="3" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.649in" Height="0.2in" Left="3.9in" Top="0.3in" Value="= Fields.SRItemUnit" Name="textBox10" StyleName="">
+                    <Style VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" />
+                      <Padding Left="1mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="0" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.46in" Height="0.2in" Left="0in" Top="0in" Value="Rak :" Name="textBox17" StyleName="">
+                    <Style TextAlign="Left" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" Bold="True" />
+                      <Padding Right="1mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="1" RowSpan="1" ColumnSpan="6">
+                <ReportItem>
+                  <TextBox Width="7.385in" Height="0.2in" Left="3.9in" Top="0.4in" Value="=Fields.ItemBin" Name="textBox11" StyleName="">
+                    <Style VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" Bold="True" />
+                      <Padding Left="1mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="0" RowSpan="1" ColumnSpan="7">
+                <ReportItem>
+                  <TextBox Width="7.845in" Height="0.2in" Left="0in" Top="0in" Value="='Kelompok : ' + ProductAccountName" Name="textBox19" StyleName="">
+                    <Style VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" Bold="True" />
+                      <Padding Right="1mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+            </Cells>
+            <Columns>
+              <Column Width="0.46in" />
+              <Column Width="0.848in" />
+              <Column Width="2.92in" />
+              <Column Width="0.649in" />
+              <Column Width="0.85in" />
+              <Column Width="0.979in" />
+              <Column Width="1.139in" />
+            </Columns>
+            <Rows>
+              <Row Height="0.2in" />
+              <Row Height="0.2in" />
+              <Row Height="0.2in" />
+              <Row Height="0.25in" />
+            </Rows>
+          </Body>
+          <Corner />
+          <RowGroups>
+            <TableGroup Name="ProductAccountID">
+              <ChildGroups>
+                <TableGroup Name="productAccountID">
+                  <ChildGroups>
+                    <TableGroup Name="group2">
+                      <ChildGroups>
+                        <TableGroup Name="group4" />
+                      </ChildGroups>
+                    </TableGroup>
+                    <TableGroup Name="itemBin">
+                      <ChildGroups>
+                        <TableGroup Name="group" />
+                        <TableGroup Name="DetailGroup">
+                          <Groupings>
+                            <Grouping />
+                          </Groupings>
+                        </TableGroup>
+                      </ChildGroups>
+                      <Groupings>
+                        <Grouping Expression="= Fields.ItemBin" />
+                      </Groupings>
+                      <Sortings>
+                        <Sorting Expression="= Fields.ItemBin" Direction="Asc" />
+                      </Sortings>
+                    </TableGroup>
+                  </ChildGroups>
+                  <Groupings>
+                    <Grouping Expression="= Fields.ProductAccountID" />
+                  </Groupings>
+                  <Sortings>
+                    <Sorting Expression="= Fields.ProductAccountID" Direction="Asc" />
+                  </Sortings>
+                </TableGroup>
+              </ChildGroups>
+            </TableGroup>
+            <TableGroup Name="Group3">
+              <ChildGroups>
+                <TableGroup Name="group3">
+                  <ChildGroups>
+                    <TableGroup Name="group1">
+                      <ChildGroups>
+                        <TableGroup Name="Group1" />
+                      </ChildGroups>
+                    </TableGroup>
+                  </ChildGroups>
+                </TableGroup>
+              </ChildGroups>
+            </TableGroup>
+          </RowGroups>
+          <ColumnGroups>
+            <TableGroup>
+              <ReportItem>
+                <TextBox Width="0.46in" Height="0.25in" Left="0in" Top="0in" Value="No." Name="textBox4">
+                  <Style TextAlign="Right" VerticalAlign="Middle">
+                    <Font Name="Tahoma" Size="8pt" Bold="True" />
+                    <BorderStyle Top="Solid" Bottom="Double" />
+                    <BorderWidth Default="0.5pt" />
+                    <Padding Right="1mm" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup>
+              <ReportItem>
+                <TextBox Width="0.848in" Height="0.25in" Left="0in" Top="0in" Value="Kode" Name="textBox5">
+                  <Style VerticalAlign="Middle">
+                    <Font Name="Tahoma" Size="8pt" Bold="True" />
+                    <BorderStyle Top="Solid" Bottom="Double" />
+                    <BorderWidth Default="0.5pt" />
+                    <Padding Left="1mm" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup>
+              <ReportItem>
+                <TextBox Width="2.92in" Height="0.25in" Left="0in" Top="0in" Value="Nama Item" Name="textBox6">
+                  <Style VerticalAlign="Middle">
+                    <Font Name="Tahoma" Size="8pt" Bold="True" />
+                    <BorderStyle Top="Solid" Bottom="Double" />
+                    <BorderWidth Default="0.5pt" />
+                    <Padding Left="1mm" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup Name="Group5">
+              <ReportItem>
+                <TextBox Width="0.649in" Height="0.25in" Left="0in" Top="0in" Value="Satuan" Name="textBox16" StyleName="">
+                  <Style VerticalAlign="Middle">
+                    <Font Name="Tahoma" Size="8pt" Bold="True" />
+                    <BorderStyle Top="Solid" Bottom="Double" />
+                    <BorderWidth Default="0.5pt" />
+                    <Padding Left="1mm" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup Name="Group6">
+              <ReportItem>
+                <TextBox Width="0.85in" Height="0.25in" Left="0in" Top="0in" Value="Qty On Hand" Name="textBox27" StyleName="">
+                  <Style TextAlign="Right" VerticalAlign="Middle">
+                    <Font Name="Tahoma" Size="8pt" Bold="True" />
+                    <BorderStyle Top="Solid" Bottom="Double" />
+                    <BorderWidth Default="0.5pt" />
+                    <Padding Right="1mm" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup Name="Group7">
+              <ReportItem>
+                <TextBox Width="0.979in" Height="0.25in" Left="0in" Top="0in" Value="Harga Stock" Name="textBox32" StyleName="">
+                  <Style TextAlign="Right" VerticalAlign="Middle">
+                    <Font Name="Tahoma" Size="8pt" Bold="True" />
+                    <BorderStyle Top="Solid" Bottom="Double" />
+                    <BorderWidth Default="0.5pt" />
+                    <Padding Right="1mm" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup Name="Group8">
+              <ReportItem>
+                <TextBox Width="1.139in" Height="0.25in" Left="0in" Top="0in" Value="Nilai" Name="textBox37" StyleName="">
+                  <Style TextAlign="Right" VerticalAlign="Middle">
+                    <Font Name="Tahoma" Size="8pt" Bold="True" />
+                    <BorderStyle Top="Solid" Bottom="Double" />
+                    <BorderWidth Default="0.5pt" />
+                    <Padding Right="1mm" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+          </ColumnGroups>
+        </Table>
+      </Items>
+    </ReportHeaderSection>
+  </Items>
+  <PageSettings PaperKind="A4" Landscape="False" ColumnCount="1" ColumnSpacing="0in" ContinuousPaper="False">
+    <Margins>
+      <MarginsU Left="0.5cm" Right="0.5cm" Top="0.5cm" Bottom="0.5cm" />
+    </Margins>
+  </PageSettings>
+  <StyleSheet>
+    <StyleRule>
+      <Style>
+        <Padding Left="2pt" Right="2pt" />
+      </Style>
+      <Selectors>
+        <TypeSelector Type="TextItemBase" />
+        <TypeSelector Type="HtmlTextBox" />
+      </Selectors>
+    </StyleRule>
+  </StyleSheet>
+</Report>

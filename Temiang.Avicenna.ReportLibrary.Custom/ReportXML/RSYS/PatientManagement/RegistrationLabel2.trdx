@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report DataSourceName="sqlDataSource1" Width="79.9989987691522mm" Name="userReport1" xmlns="http://schemas.telerik.com/reporting/2012/2">
+  <DataSources>
+    <SqlDataSource ConnectionString="Data Source=192.168.56.1;Initial Catalog=GPI_LIVE;Persist Security Info=True;User ID=sa;Password=123" ProviderName="System.Data.SqlClient" SelectCommand="sprpt_RSBHPRegistrationLabel" SelectCommandType="StoredProcedure" Name="sqlDataSource1">
+      <Parameters>
+        <SqlDataSourceParameter DbType="AnsiString" Name="@p_RegistrationNo">
+          <Value>
+            <String>REG/OP/220720-0318</String>
+          </Value>
+        </SqlDataSourceParameter>
+      </Parameters>
+    </SqlDataSource>
+  </DataSources>
+  <Items>
+    <DetailSection Height="2.0277994974669cm" Name="detailSection1">
+      <Style>
+        <Font Name="Tahoma" Size="7pt" />
+      </Style>
+      <Items>
+        <TextBox Value="No. RM" Size="0.47in, 0.17in" Location="0.0787401596705119in, 0.118110219637553in" Name="textBox1">
+          <Style VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" Bold="False" />
+          </Style>
+        </TextBox>
+        <TextBox Value="Nama" Size="0.47in, 0.17in" Location="0.0787403682867686in, 0.288188894589742in" Name="textBox2">
+          <Style VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" Bold="False" />
+          </Style>
+        </TextBox>
+        <TextBox Value="Bayar" Size="0.47in, 0.17in" Location="0.0787405769030253in, 0.62834624449412in" Name="textBox3">
+          <Style VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" Bold="False" />
+          </Style>
+        </TextBox>
+        <TextBox Value="Usia/Tgl" Size="0.47in, 0.17in" Location="0.0787405769030253in, 0.458267569541931in" Name="textBox4">
+          <Style VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" Bold="False" />
+          </Style>
+        </TextBox>
+        <TextBox Value="=Fields.MedicalNo +'[' + Fields.RegistrationNo +']'" Format=": {0}" Size="2.5in, 0.169999957084656in" Location="0.548818786938985in, 0.11811022957166in" Name="textBox6">
+          <Style VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" Bold="False" />
+          </Style>
+        </TextBox>
+        <TextBox Value="=Fields.PatientName" Format=": {0}" Size="2.10000006357829in, 0.169999957084656in" Location="0.548819025357564in, 0.288188894589742in" Name="textBox7">
+          <Style VerticalAlign="Middle">
+            <Font Size="8pt" Bold="False" />
+          </Style>
+        </TextBox>
+        <TextBox Value="=Fields.Sex" Format="( {0} )" Size="0.399999817212423in, 0.169999996821086in" Location="2.64889780680339in, 0.288188914457957in" Name="textBox8">
+          <Style TextAlign="Right" VerticalAlign="Middle">
+            <Font Size="8pt" Bold="False" />
+          </Style>
+        </TextBox>
+        <TextBox Value="=Fields.Age" Format=": {0}" Size="2.50000015894572in, 0.169999957084656in" Location="0.548819104830424in, 0.458267569541931in" Name="textBox9">
+          <Style VerticalAlign="Middle">
+            <Font Size="8pt" Bold="False" />
+          </Style>
+        </TextBox>
+        <TextBox Value="=Fields.GuarantorName" Format=": {0}" Size="2.5in, 0.170000036557515in" Location="0.548819263776143in, 0.62834624449412in" Name="textBox10">
+          <Style VerticalAlign="Middle">
+            <Font Size="8pt" Bold="False" />
+          </Style>
+          <ConditionalFormatting>
+            <FormattingRule>
+              <Style>
+                <Font Size="7pt" />
+              </Style>
+              <Filters>
+                <Filter Expression="=Fields.GuarantorName" Operator="GreaterThan" Value="15" />
+              </Filters>
+            </FormattingRule>
+          </ConditionalFormatting>
+        </TextBox>
+      </Items>
+    </DetailSection>
+  </Items>
+  <StyleSheet>
+    <StyleRule>
+      <Style>
+        <Padding Left="2pt" Right="2pt" />
+      </Style>
+      <Selectors>
+        <TypeSelector Type="TextItemBase" />
+        <TypeSelector Type="HtmlTextBox" />
+      </Selectors>
+    </StyleRule>
+  </StyleSheet>
+  <PageSettings>
+    <PageSettings PaperKind="Custom" PaperSize="8cm, 2.17000007629395cm" Landscape="False">
+      <Margins>
+        <MarginsU Left="0cm" Right="0cm" Top="0cm" Bottom="0cm" />
+      </Margins>
+    </PageSettings>
+  </PageSettings>
+</Report>

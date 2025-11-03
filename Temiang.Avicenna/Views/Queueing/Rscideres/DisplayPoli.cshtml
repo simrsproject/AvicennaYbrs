@@ -1,0 +1,269 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Display Antrian</title>
+
+    <!-- Fonts -->
+
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;600&display=swap" rel="stylesheet">
+    <link href="@(ViewBag.UrlRoot)/Bootstrap/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="@(ViewBag.UrlRoot)/Bootstrap/rscideres/assets/css/app.css" rel="stylesheet">
+
+    <script src="@(ViewBag.UrlRoot)/Bootstrap/plugins/jquery/jquery.min.js"></script>
+    <script src="@(ViewBag.UrlRoot)/Bootstrap/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Styles -->
+
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col top-header-section-card" style="background-image: url(@(ViewBag.UrlRoot)/Bootstrap/rscideres/assets/images/bg-polyclinic.png);"></div>
+        </div>
+        <main class="container-fluid flex-fill">
+            <div class="row">
+                <div class="col-12 top-box-section-card py-3">
+                    <div class="top-box-content-section-card">
+                        <div class="top-box-content-header-section-card" style="background-image: url(@(ViewBag.UrlRoot)/Bootstrap/rscideres/assets/images/card-header-content.png);">
+                            <div class="top-box-content-body-section-card" style="height: 100px;width: 100%;">
+                                <span style="font-size:60px;font-weight: 900;" id="mainPolyclinicName">POLIKLINIK</span>
+                            </div>
+                        </div>
+
+                        <div class="d-flex flex-row footer-content">
+                            <div class="p-2 top-box-content-number-body-section-card" style="width: 100%; height: 340px;"><span id="mainLoket">A-000</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-3 bottom-box-section-card">
+                    <div>
+                        <div class="bottom-box-content-section-card">
+                            <div class="bottom-box-content-header-section-card" style="background-image: url(@(ViewBag.UrlRoot)/Bootstrap/rscideres/assets/images/bg-bottom-content-header.png);">
+                                <span id="poli_1">POLI 1</span>
+                            </div>
+                            <div class="bottom-box-body-header-section-card">
+                                <span id="code_1">A-000</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3 bottom-box-section-card">
+                    <div class="">
+                        <div class="bottom-box-content-section-card">
+                            <div class="bottom-box-content-header-section-card" style="background-image: url(@(ViewBag.UrlRoot)/Bootstrap/rscideres/assets/images/bg-bottom-content-header.png);">
+                                <span id="poli_2">POLI 2</span>
+                            </div>
+                            <div class="bottom-box-body-header-section-card">
+                                <span id="code_2">A-000</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3 bottom-box-section-card">
+                    <div class="">
+                        <div class="bottom-box-content-section-card">
+                            <div class="bottom-box-content-header-section-card" style="background-image: url(@(ViewBag.UrlRoot)/Bootstrap/rscideres/assets/images/bg-bottom-content-header.png);">
+                                <span id="poli_3">POLI 3</span>
+                            </div>
+                            <div class="bottom-box-body-header-section-card">
+                                <span id="code_3">A-000</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3 bottom-box-section-card">
+                    <div class="">
+                        <div class="bottom-box-content-section-card">
+                            <div class="bottom-box-content-header-section-card" style="background-image: url(@(ViewBag.UrlRoot)/Bootstrap/rscideres/assets/images/bg-bottom-content-header.png);">
+                                <span id="poli_4">POLI 4</span>
+                            </div>
+                            <div class="bottom-box-body-header-section-card">
+                                <span id="code_4">A-000</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <footer class="w-100 bg-dark text-light footer-section">
+        <div class="d-flex flex-row footer-content">
+            <div class="p-2 footer-content-left"><span id="hours"></span>:<span id="minutes">:</span>:<span id="seconds"></span>&nbsp;<span id="ampm"></span></div>
+            <div class="p-2 footer-content-right"><marquee direction="left" scrollamount="10">Untuk mendaftar online, silahkan anda datang langsung ke Customer Service, atau dengan mendaftar secara mandiri melalui Website yang sudah kami sediakan di https://reservasi.rsudcideres.id | Kunjungi Website dan sosial media kami di alamat berikut -   Instagram : @("@")rsudcideres | Facebook : RSUD Cideres | YouTube : RSUD Cideres | Website : rsudcideres.id | WhatsApp CS : 0822-3333-3676</marquee></div>
+        </div>
+    </footer>
+
+    <div class="audio">
+        @{
+            foreach (var af in (QueueingSoundCollection)ViewBag.audioColl) { 
+                <audio id="a_@(af.Name.Replace(" " ,"_"))" src="@(ViewBag.audioPathURL)/@(af.FilePath)"></audio>
+            }
+        }
+     </div>
+
+    <script src="@(ViewBag.UrlRoot)/Bootstrap/rscideres/assets/js/clock.js"></script>
+    <script type="text/javascript">
+        var BaseURL = '@ViewBag.UrlRoot';
+        $(document).ready(function () {
+
+            GetQueueing();
+
+            setInterval(function () {
+                GetQueueing();
+            }, 4000);
+
+            setInterval(function () {
+                SayIt();
+            }, 800);
+        });
+
+        var queData = [];
+        var _fnGetDataIsRunning = false;
+        function GetQueueing() {
+            if (_fnGetDataIsRunning == true) return;
+
+            _fnGetDataIsRunning = true;
+
+            $.ajax({
+                type: 'POST',
+                url: "@(ViewBag.UrlRoot)/Queueing/GetQueueing",
+                data: { qLocation: '@(ViewBag.qLocation)' },
+                success: function (data) {
+                    //console.log(data);
+                    if (data.status === 'OK') {
+                        //console.log(data.data);
+                        if (data.data != null) {
+
+                            for (var i = 0; i < data.data.length; i++) {
+                                queData.push(data.data[i]);
+                                //console.log(data.data[i]);
+                            }
+                        }
+                    } else {
+                        //DisplayToast(ret.data, "error");
+                    }
+
+                    _fnGetDataIsRunning = false;
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    _fnGetDataIsRunning = false;
+                    //DisplayToast(xhr.responseText, "error");
+                },
+                dataType: 'json'
+            });
+        }
+
+        var ctr = [
+            { "NamaPoli": "", "NoAntrian": "", "LastDateTime": new Date() },
+            { "NamaPoli": "", "NoAntrian": "", "LastDateTime": new Date() },
+            { "NamaPoli": "", "NoAntrian": "", "LastDateTime": new Date() },
+            { "NamaPoli": "", "NoAntrian": "", "LastDateTime": new Date() }
+        ];
+
+        function SayIt() {
+            if (SetMediaIsRunning) return;
+
+            if (queData.length > 0) {
+                var que = queData.shift();
+                //console.log(que);
+                UpdateDisplay(que);
+                SetMedia(que, 0);
+            }
+        }
+
+        function UpdateDisplayChild(que, i) {
+            ctr[i].NamaPoli = que.ServiceUnitName;
+            ctr[i].NoAntrian = que.FormattedNo;
+            ctr[i].LastDateTime = new Date();
+
+            $('#poli_' + (i+1)).html(que.ServiceUnitName);
+            $('#code_' + (i + 1)).html(que.FormattedNo);
+            BlinkSpan($('#code_' + (i + 1)), 0);
+        }
+
+        function DisplayLoketSelection(que) {
+            var j = 0; var lDate = new Date();
+
+            for (i = 0; i < 4; i++) {
+                if (ctr[i].NamaPoli == que.ServiceUnitName) {
+                    UpdateDisplayChild(que, i);
+                    return 0;
+                }
+
+                if (ctr[i].LastDateTime < lDate) {
+                    lDate = ctr[i].LastDateTime;
+                    j = i;
+                }
+            }
+
+            UpdateDisplayChild(que, j);
+        }
+
+        function UpdateDisplay(que) {
+            // main
+            $('#mainLoket').html(que.FormattedNo);
+            BlinkSpan($('#mainLoket'), 0);
+
+            DisplayLoketSelection(que);
+        }
+
+        function BlinkSpan(objSpan, i) {
+            //console.log(i);
+            if (i < 10) {
+                if ((i % 2) == 0) {
+                    // change css
+                    objSpan.addClass("text-warning");
+                } else {
+                    // remove css
+                    objSpan.removeClass("text-warning");
+                }
+
+                setTimeout(function () {
+                    i++;
+                    BlinkSpan(objSpan, i);
+                }, 1000);
+            }
+        }
+
+        var SetMediaIsRunning = false;
+        function SetMedia(que, iDelay) {
+            //console.log(que.AudioInfo.length);
+
+            SetMediaIsRunning = true;
+            if (que.AudioInfo.length == 0) {
+                SetMediaIsRunning = false;
+                return;
+            }
+
+            setTimeout(function () {
+                var jDelay = 0;
+                var af = que.AudioInfo.shift();
+                var m = document.getElementById('a_' + af.Name.replace(" ","_"));
+                //console.log('a_' + af.Name);
+                //console.log(m);
+                if (m != null) {
+                    m.pause();
+                    m.currentTime = 0;
+                    jDelay = m.duration * 1000;
+                    m.play();
+                }
+                //return;
+                SetMedia(que, jDelay);
+            }, iDelay);
+        }
+
+    </script>
+</body>
+</html >

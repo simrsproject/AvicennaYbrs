@@ -1,0 +1,751 @@
+﻿<link rel="stylesheet" href="@(ViewBag.UrlRoot)/Bootstrap/adminlte/css/adminlte.css" />
+<link href="@(ViewBag.UrlRoot)/Bootstrap/plugins/daterangepicker/daterangepicker.css" rel="stylesheet" />
+<link rel="stylesheet" href="@(ViewBag.UrlRoot)/Bootstrap/plugins/fontawesome-free/css/all.min.css" />
+
+<link href="@(ViewBag.UrlRoot)/Bootstrap/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+
+<link rel="stylesheet" href="@(ViewBag.UrlRoot)/Bootstrap/plugins/select2/css/select2.min.css">
+<link rel="stylesheet" href="@(ViewBag.UrlRoot)/Bootstrap/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+
+<script src="@(ViewBag.UrlRoot)/Bootstrap/plugins/jquery/jquery.min.js"></script>
+<script src="@(ViewBag.UrlRoot)/Bootstrap/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="@(ViewBag.UrlRoot)/Bootstrap/adminlte/js/adminlte.js"></script>
+
+<script src="@(ViewBag.UrlRoot)/Bootstrap/plugins/datatables/jquery.dataTables.js"></script>
+<script src="@(ViewBag.UrlRoot)/Bootstrap/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+
+<script src="@(ViewBag.UrlRoot)/Bootstrap/plugins/moment/moment.min.js"></script>
+<script src="@(ViewBag.UrlRoot)/Bootstrap/plugins/daterangepicker/daterangepicker.js"></script>
+<script src="@(ViewBag.UrlRoot)/Bootstrap/plugins/chart.js/Chart.min.js"></script>
+<!-- Select2 -->
+<script src="@(ViewBag.UrlRoot)/Bootstrap/plugins/select2/js/select2.full.min.js"></script>
+
+<script src="@(ViewBag.UrlRoot)/Bootstrap/js/settings.js"></script>
+<script src="@(ViewBag.UrlRoot)/Bootstrap/js/core.js?a=1"></script>
+<script src="@(ViewBag.UrlRoot)/Bootstrap/js/home.js"></script>
+
+<style>
+    .fa-spin {
+        -webkit-animation: fa-spin 0.75s infinite linear;
+        animation: fa-spin 0.75s infinite linear;
+    }
+
+    body {
+        font-size: small;
+        font-weight: 400;
+    }
+</style>
+@{
+    var oSet = (Temiang.Avicenna.Controllers.UserQueueingSettings)ViewBag.oSet;
+}
+<div class="row">
+    <div class="col-2">
+        <div class="card card-outline card-primary">
+            <div class="card-header">
+                <h3 class="card-title">Queueing Location</h3>
+            </div>
+            <div class="card-body">
+                <div class="form-group">
+                    @foreach (var std in ((AppStandardReferenceItemCollection)ViewBag.StdRef_QLoc).OrderBy(s => s.ItemID))
+                    {
+                        <div class="custom-control custom-checkbox">
+                            <input class="custom-control-input" type="checkbox" id="chkQLoc@(std.ItemID)" data-group="loc" data-name="@(std.ItemID)"
+                                   checked="@(oSet.qLocation.Contains(std.ItemID))">
+                            <label for="chkQLoc@(std.ItemID)" class="custom-control-label">@(std.ItemName)</label>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="card card-outline card-primary">
+            <div class="card-header">
+                <h3 class="card-title">Queueing Group</h3>
+            </div>
+            <div class="card-body">
+                <div class="form-group">
+                    <ul style="padding:0; list-style-type:none;">
+                        @foreach (var std in ((AppStandardReferenceItemCollection)ViewBag.StdRef_QGroup).OrderBy(s => s.ItemID))
+                        {
+                            <li>
+                                <div class="custom-control custom-checkbox">
+                                    <input class="custom-control-input" type="checkbox" id="chkQGroup@(std.ItemID)" data-group="grp" data-name="@(std.ItemID)"
+                                           checked="@(oSet.qGroup.Contains(std.ItemID))"
+                                           onchange="chkQGroup_Poli_change(this, '@(std.ItemID)')">
+                                    <label for="chkQGroup@(std.ItemID)" class="custom-control-label">@(std.ItemName)</label>
+                                </div>
+                                @if (std.ItemID == "02")
+                                {
+                                    <ul style="padding:0 0 0 25px; list-style-type:none;">
+                                        @foreach (var su in ((ServiceUnitCollection)ViewBag.suList).OrderBy(s => s.ServiceUnitID))
+                                        {
+                                            <li>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input class="custom-control-input" type="checkbox" id="chkQGroup@(su.ServiceUnitID)" data-group="su" data-name="@(su.ServiceUnitID)"
+                                                           checked="@(oSet.qSu.Contains(su.ServiceUnitID))">
+                                                    <label for="chkQGroup@(su.ServiceUnitID)" class="custom-control-label">@(su.ServiceUnitName)</label>
+                                                </div>
+                                            </li>
+                                        }
+                                    </ul>
+                                }
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="card card-outline card-primary">
+            <div class="card-header">
+                <h3 class="card-title">Queueing Type</h3>
+            </div>
+            <div class="card-body">
+                <div class="form-group">
+                    @foreach (var std in ((AppStandardReferenceItemCollection)ViewBag.StdRef_QType).OrderBy(s => s.ItemID))
+                    {
+                        <div class="custom-control custom-checkbox">
+                            <input class="custom-control-input" type="checkbox" id="chkQType@(std.ItemID)" data-group="typ" data-name="@(std.ItemID)"
+                                   checked="@(oSet.qType.Contains(std.ItemID))">
+                            <label for="chkQType@(std.ItemID)" class="custom-control-label">@(std.ItemName)</label>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-10">
+        <div class="card card-primary card-outline card-tabs">
+            <div class="card-header p-0 pt-1 border-bottom-0">
+                <ul class="nav nav-tabs" id="custom-tabs-tab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="custom-tabs-queue-tab" data-toggle="pill" href="#custom-tabs-queue" onclick="readjustGridQueue();" role="tab" aria-controls="custom-tabs-queue" aria-selected="true">Queue Caller</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="custom-tabs-rntext-tab" data-toggle="pill" href="#custom-tabs-rntext" onclick="readjustGridRnTx();" role="tab" aria-controls="custom-tabs-rntext" aria-selected="false">Running Text</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="card-body">
+                <div class="tab-content" id="custom-tabs-tabContent">
+                    <div class="tab-pane fade show active" id="custom-tabs-queue" role="tabpanel" aria-labelledby="custom-tabs-queue-tab">
+                        <div class="row">
+                            <div class="col-8">
+                                <table class="table table-bordered" id="dtList" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Loc</th>
+                                            <th>Group</th>
+                                            <th>Type</th>
+                                            <th>Service Unit</th>
+                                            <th>Physician</th>
+                                            <th>Count</th>
+                                            <th>Current<br />No</th>
+                                            <th>Next</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                            <div class="col-4">
+                                <div class="card card-outline card-primary">
+                                    <div class="card-header">
+                                        <h3 class="card-title">Queueing Caller Control</h3>
+                                        <div class="float-right">
+                                            <button type="button" class="btn btn-outline-primary btn-lg" title="Refresh" id="btnRefresh"
+                                                    onclick="javascript:DataReload();">
+                                                <i class='fas fa-sync'></i>
+                                            </button>
+                                            <button type="button" class="btn btn-outline-primary btn-lg" title="Save Settings"
+                                                    onclick="javascript:SaveSettings(this);">
+                                                <i class='fas fa-save'></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-12 m-0">
+                                                    <label>Counter Number / Name</label>
+                                                    <select id="cboCounterCode" class="form-control select2bs4" style="width: 100%;">
+                                                        <option value=""></option>
+                                                        @{
+                                                            foreach (var ctr in (Dictionary<string, string>)ViewBag.ctrList)
+                                                            {
+                                                                <option value="@(ctr.Key)" @((oSet.counterCode == ctr.Key) ? "selected" : "")>@(ctr.Value)</option>
+                                                            }
+                                                            foreach (var su in ((ServiceUnitCollection)ViewBag.suList).OrderBy(s => s.ServiceUnitID))
+                                                            {
+                                                                <option value="@(su.ServiceUnitID)" @((oSet.counterCode == su.ServiceUnitID) ? "selected" : "")>@(su.ServiceUnitName)</option>
+                                                            }
+                                                        }
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="row mt-3">
+                                                <div class="col-12 m-0">
+                                                    <div class="small-box bg-gradient-primary">
+                                                        <div class="inner" style="text-align:center">
+                                                            <h3><span id="spanCurrentNumber">@(((Temiang.Avicenna.Controllers.CustomQueueing)ViewBag.currentQue).FormattedNo)</span></h3>
+                                                        </div>
+                                                        <div class="icon">
+                                                            <i class="ion ion-bag"></i>
+                                                        </div>
+                                                        <div class="small-box-footer"><span class="ml-2 mr-2">Current Number</span></div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="row">
+                                                <button type="button" class="btn btn-app" onclick="Next(this);">
+                                                    <i class="fas fa-step-forward"></i> Next
+                                                </button>
+                                                <button type="button" class="btn btn-app" onclick="Recall(this);">
+                                                    <i class="fas fa-retweet"></i> Recall
+                                                </button>
+                                                <button type="button" class="btn btn-app" onclick="Stop(this);">
+                                                    <i class="far fa-stop-circle"></i> Stop
+                                                </button>
+                                                <button type="button" class="btn btn-app" onclick="Clear(this);">
+                                                    <i class="fas fa-trash"></i> Clear
+                                                </button>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="custom-tabs-rntext" role="tabpanel" aria-labelledby="custom-tabs-rntext-tab">
+                        <div class="row">
+                            <div class="col-12" id="divRnTxAddNew">
+                                <div class="float-right">
+                                    <button type="button" class="btn btn-outline-primary btn-lg" title="Refresh" id="btnRnTxRefresh"
+                                            onclick="javascript:RnTxInitGridRefresh();">
+                                        <i class='fas fa-sync'></i>
+                                    </button>
+                                    <button type="button" class="btn btn-outline-success btn-lg" title="Add New" id="btnRnTxAddNew"
+                                            onclick="javascript:RnTxEdit(0);">
+                                        <i class='fas fa-plus'></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-12" id="divRnTxEditor"></div>
+                            <div class="col-12">
+                                <table class="table table-bordered" id="dtRnTxList" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th>Service Unit</th>
+                                            <th>Running Text</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- /.card -->
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var BaseURL = '@ViewBag.UrlRoot';
+    var userId = '@ViewBag.UserID';
+    var dtTable;
+    var dtTableIsRunning = false;
+
+    var oBtnRefresh = $("#btnRefresh");
+    var isReloadByButton = false;
+
+    $(document).ready(function () {
+        //alert('123');
+
+        dtTable = $('#dtList').DataTable({
+            "processing": true,
+            "oLanguage": {
+                "sProcessing": ReplaceLoadingIcon(_htmlLoading)
+            },
+            "serverSide": true,
+            "scrollX": true,
+            "columnDefs": [{
+                "targets": '_all',
+                "createdCell": function (td, cellData, rowData, row, col) {
+                    $(td).css('padding-top', '0px');
+                    $(td).css('padding-bottom', '0px');
+                }
+            }],
+            "ajax": {
+                "url": "@(ViewBag.UrlRoot)/Queueing/GetData",
+                "type": "POST",
+                "datatype": "json",
+                "data": function (d) {
+                    d.qLoc = GetSelectedQLoc();
+                    d.qGroup = GetSelectedQGroup();
+                    d.qSu = GetSelectedQSu();
+                    d.qType = GetSelectedQType();
+                },
+                "complete": function (data) {
+                    dtTableIsRunning = false;
+                    if (isReloadByButton) {
+                        CoreLoadingOff(oBtnRefresh);
+                        isReloadByButton = false;
+                    }
+                },
+                "error": function (xhr, error, code) {
+                    dtTableIsRunning = false;
+                    if (isReloadByButton) {
+                        CoreLoadingOff(oBtnRefresh);
+                        isReloadByButton = false;
+                    }
+                }
+            },
+            "columns": [
+                { data: 'QueueingLocationName', name: 'QueueingLocationName', "autoWidth": true },
+                { data: 'QueueingGroupName', name: 'QueueingGroupName', "autoWidth": true },
+                { data: 'QueueingTypeName', name: 'QueueingTypeName', "autoWidth": true },
+                { data: 'ServiceUnitName', name: 'ServiceUnitName', "autoWidth": true },
+                { data: 'ParamedicName', name: 'ParamedicName', "autoWidth": true },
+                { data: 'DataCount', name: 'DataCount', "autoWidth": true, "render": function (data, type, row, meta) {
+                        //console.log(row);
+                    return row.DataCount + " / " + row.Total;
+                }
+                },
+                { data: 'CurrentNo', name: 'CurrentNo', "autoWidth": true },
+                {
+                    data: 'DataCount', "width": "40px", "sortable": false, "render": function (data, type, row, meta) {
+                        //console.log(row);
+                        return "<button type=\"button\" class=\"btn btn-outline-primary btn-sm\" onclick=\"javascript:NextByRow(this,'" + row.SRQueueingLocation + "','" + row.SRQueueingGroup + "','" + row.SRQueueingType + "','" + row.ServiceUnitID + "','" + row.ParamedicID + "')\" style=\"width:40px\"><i class='fas fa-step-forward'></i></button>";
+                    }
+                }
+            ],
+            "order": [[0, "desc"]],
+            "fnDrawCallback": function (oSettings) {
+                //console.log(oSettings);
+                readjustGridQueue();
+            }
+        });
+
+        setInterval(function () {
+            DataReload();
+        }, 10000);
+
+        $('.select2bs4').select2({
+            theme: 'bootstrap4'
+        });
+
+        RnTxInitGrid();
+    });
+
+    function readjustGridQueue() {
+        setTimeout(function () {
+            dtTable.columns.adjust();
+        }, 500);
+    }
+
+    function chkQGroup_Poli_change(chk, val) {
+        if (val == '02') {
+            var isCk = $(chk).prop("checked");
+            $("input[data-group='su']").each(function (i, obj) {
+                if (isCk) {
+                    $(obj).prop('checked', true);
+                } else {
+                    $(obj).prop('checked', false);
+                }
+            });
+        }
+    }
+
+    function DataReload() {
+        //console.log(dtTableIsRunning);
+        if (dtTableIsRunning) return;
+        dtTableIsRunning = true;
+
+        isReloadByButton = true;
+        CoreLoadingOn(oBtnRefresh);
+
+        dtTable.ajax.reload(null, false); // user paging is not reset on reload
+    }
+
+    function GetSelectedQLoc() {
+        var aChecked = [];
+        $("input[data-group='loc']:checked").each(function (i, obj) {
+            aChecked.push($(obj).data('name'));
+        });
+        //console.log(aChecked);
+        return aChecked;
+        //return ['01', '02'];
+    }
+    function GetSelectedQGroup() {
+        var aChecked = [];
+        $("input[data-group='grp']:checked").each(function (i, obj) {
+            aChecked.push($(obj).data('name'));
+        });
+        return aChecked;
+        //return ['01', '02'];
+    }
+    function GetSelectedQSu() {
+        var aChecked = [];
+        $("input[data-group='su']:checked").each(function (i, obj) {
+            aChecked.push($(obj).data('name'));
+        });
+        return aChecked;
+        //return ['01', '02'];
+    }
+    function GetSelectedQType() {
+        var aChecked = [];
+        $("input[data-group='typ']:checked").each(function (i, obj) {
+            aChecked.push($(obj).data('name'));
+        });
+        return aChecked;
+        //return ['01', '02'];
+    }
+
+    function SaveSettings(Sender){
+        var oSender = $(Sender);
+        CoreLoadingOn(oSender);
+
+        $.ajax({
+            type: 'POST',
+            url: "@(ViewBag.UrlRoot)/Queueing/SaveSettings",
+            data: {
+                qLocation: GetSelectedQLoc(),
+                qGroup: GetSelectedQGroup(),
+                qSu: GetSelectedQSu(),
+                qType: GetSelectedQType(),
+                counterCode: $('#cboCounterCode').find(":selected").val(),
+                userId: userId
+            },
+            success: function (data) {
+                CoreLoadingOff(oSender);
+                if (data.status == _sJsonRequestOkStatus) {
+                    //console.log(data);
+                } else {
+                    ShowError(data.data);
+                }
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                CoreLoadingOff(oSender);
+                ShowError(xhr.responseText);
+            },
+            dataType: 'json'
+        });
+    }
+    function DisplayCurrentQue(data) {
+        if (data.FormattedNo == "") data.FormattedNo = "000";
+        $("#spanCurrentNumber").html(data.FormattedNo);
+    }
+    function GetCurrentQue() {
+        var val = $("#spanCurrentNumber").html();
+        if (val == "000") val = "";
+        if (val == "STOPPED") val = "";
+        return val;
+    }
+    function NextByRow(Sender, qLoc, qGroup, qType, suId, parId) {
+        var oSender = $(Sender);
+        CoreLoadingOn(oSender);
+        $.ajax({
+            type: 'POST',
+            url: "@(ViewBag.UrlRoot)/Queueing/NextByRow",
+            data: {
+                qLocation: qLoc, qGroup: qGroup, qType: qType, suId: suId, parId: parId,
+                counterCode: $('#cboCounterCode').find(":selected").val(),
+                userId: userId
+            },
+            success: function (data) {
+                CoreLoadingOff(oSender);
+                if (data.status == _sJsonRequestOkStatus) {
+                    //console.log(data);
+                    DisplayCurrentQue(data.data);
+                    if (data.data.Id == 0) {
+                        ShowInfo("There is no pending queueing in current category");
+                    }
+                    DataReload();
+                } else {
+                    ShowError(data.data);
+                }
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                CoreLoadingOff(oSender);
+                ShowError(xhr.responseText);
+            },
+            dataType: 'json'
+        });
+    }
+    function Next(Sender) {
+        var oSender = $(Sender);
+        CoreLoadingOn(oSender);
+        $.ajax({
+            type: 'POST',
+            url: "@(ViewBag.UrlRoot)/Queueing/Next",
+            data: {
+                qLocation: GetSelectedQLoc(),
+                qGroup: GetSelectedQGroup(),
+                qSu: GetSelectedQSu(),
+                qType: GetSelectedQType(),
+                counterCode: $('#cboCounterCode').find(":selected").val(),
+                userId: userId
+            },
+            success: function (data) {
+                CoreLoadingOff(oSender);
+                if (data.status == _sJsonRequestOkStatus) {
+                    //console.log(data);
+                    DisplayCurrentQue(data.data);
+                    if (data.data.Id == 0) {
+                        ShowInfo("There is no pending queueing");
+                    }
+                    DataReload();
+                } else {
+                    ShowError(data.data);
+                }
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                CoreLoadingOff(oSender);
+                ShowError(xhr.responseText);
+            },
+            dataType: 'json'
+        });
+    }
+    function Recall(Sender) {
+        var oSender = $(Sender);
+
+        if (GetCurrentQue() == "") {
+            ShowInfo("Re Call is not available, current queueing number is empty");
+            return;
+        }
+
+        CoreLoadingOn(oSender);
+        $.ajax({
+            type: 'POST',
+            url: "@(ViewBag.UrlRoot)/Queueing/Recall",
+            data: {
+                currentNo: GetCurrentQue(),
+                userId: userId
+            },
+            success: function (data) {
+                CoreLoadingOff(oSender);
+                if (data.status == _sJsonRequestOkStatus) {
+                    //console.log(data);
+                    DisplayCurrentQue(data.data);
+                    //DataReload();
+                } else {
+                    ShowError(data.data);
+                }
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                CoreLoadingOff(oSender);
+                ShowError(xhr.responseText);
+            },
+            dataType: 'json'
+        });
+    }
+    function Stop(Sender) {
+        var oSender = $(Sender);
+        CoreLoadingOn(oSender);
+        $.ajax({
+            type: 'POST',
+            url: "@(ViewBag.UrlRoot)/Queueing/Stop",
+            data: {
+                userId: userId
+            },
+            success: function (data) {
+                CoreLoadingOff(oSender);
+                if (data.status == _sJsonRequestOkStatus) {
+                    //console.log(data);
+                    //DisplayCurrentQue(data.data);
+                    //DataReload();
+                    $("#spanCurrentNumber").html('STOPPED');
+                } else {
+                    ShowError(data.data);
+                }
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                CoreLoadingOff(oSender);
+                ShowError(xhr.responseText);
+            },
+            dataType: 'json'
+        });
+    }
+    function Clear(Sender) {
+        var oSender = $(Sender);
+        CoreLoadingOn(oSender);
+        $.ajax({
+            type: 'POST',
+            url: "@(ViewBag.UrlRoot)/Queueing/Clear",
+            data: {
+                qLocation: GetSelectedQLoc(),
+                qGroup: GetSelectedQGroup(),
+                qSu: GetSelectedQSu(),
+                qType: GetSelectedQType(),
+                counterCode: $('#cboCounterCode').find(":selected").val(),
+                userId: userId
+            },
+            success: function (data) {
+                CoreLoadingOff(oSender);
+                if (data.status == _sJsonRequestOkStatus) {
+                    ShowSuccess(data.data + " record(s) cleanned up");
+                } else {
+                    ShowError(data.data);
+                }
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                CoreLoadingOff(oSender);
+                ShowError(xhr.responseText);
+            },
+            dataType: 'json'
+        });
+    }
+
+    var _dtTblRnTx;
+    var _dtTblRnTxIsRunning = false;
+    var _oBtnRnTxRefresh = $("#btnRnTxRefresh");
+    function RnTxInitGrid() {
+        CoreLoadingOn(_oBtnRnTxRefresh);
+        _dtTblRnTx = $('#dtRnTxList').DataTable({
+            "processing": true,
+            "oLanguage": {
+                "sProcessing": ReplaceLoadingIcon(_htmlLoading)
+            },
+            "serverSide": true,
+            "scrollX": true,
+            "columnDefs": [{
+                "targets": '_all',
+                "createdCell": function (td, cellData, rowData, row, col) {
+                    $(td).css('padding-top', '0px');
+                    $(td).css('padding-bottom', '0px');
+                }
+            }],
+            "ajax": {
+                "url": "@(ViewBag.UrlRoot)/Queueing/RunningTextGetData",
+                "type": "POST",
+                "datatype": "json",
+                "data": function (d) {
+                    d.qLoc = GetSelectedQLoc();
+                    d.qGroup = GetSelectedQGroup();
+                    d.qSu = GetSelectedQSu();
+                    d.qType = GetSelectedQType();
+                },
+                "complete": function (data) {
+                    _dtTblRnTxIsRunning = false;
+                    CoreLoadingOff(_oBtnRnTxRefresh);
+                },
+                "error": function (xhr, error, code) {
+                    _dtTblRnTxIsRunning = false;
+                    CoreLoadingOff(_oBtnRnTxRefresh);
+                }
+            },
+            "columns": [
+                {
+                    data: 'RunningTextID', "width": "40px", "sortable": false, "render": function (data, type, row, meta) {
+                        //console.log(row);
+                        return "<button type=\"button\" class=\"btn btn-outline-success btn-sm\" onclick=\"javascript:RnTxEdit(" + data + ")\" style=\"width:40px\"><i class='fas fa-edit'></i></button>";
+                    }
+                },
+                { data: 'ServiceUnitName', name: 'ServiceUnitName', "autoWidth": true },
+                { data: 'RunningText', name: 'RunningText', "autoWidth": true },
+                {
+                    data: 'RunningTextID', "width": "40px", "sortable": false, "render": function (data, type, row, meta) {
+                        //console.log(row);
+                        return "<button type=\"button\" class=\"btn btn-outline-danger btn-sm\" onclick=\"javascript:RnTxDelete(this," + data + ")\" style=\"width:40px\"><i class='fas fa-trash'></i></button>";
+                    }
+                }
+            ],
+            "order": [[0, "desc"]],
+            "fnDrawCallback": function (oSettings) {
+                //console.log(oSettings);
+                readjustGridRnTx();
+            }
+        });
+    }
+
+    function RnTxInitGridRefresh() {
+        //console.log(dtTableIsRunning);
+        if (_dtTblRnTxIsRunning) return;
+        _dtTblRnTxIsRunning = true;
+
+        CoreLoadingOn(_oBtnRnTxRefresh);
+
+        _dtTblRnTx.ajax.reload(null, false); // user paging is not reset on reload
+    }
+
+    function readjustGridRnTx() {
+        setTimeout(function () {
+            _dtTblRnTx.columns.adjust();
+        }, 500);
+    }
+
+    function RnTxEdit(RunningTextID) {
+        //ShowInfo("Under Development");
+        $("#divRnTxAddNew").hide();
+        CoreLoadContentToContainerDiv("@(ViewBag.UrlRoot)/Queueing/RunningTextEditor?RunningTextID=" + RunningTextID, "divRnTxEditor", "GET", function () {
+            //console.log("ssss");
+            $("#divRnTxEditor").fadeIn("slow");
+        });
+    }
+    function RnTxSave(sender) {
+        oSender = $(sender);
+        CoreLoadingOn(oSender);
+
+        $.ajax({
+            type: 'POST',
+            url: "@(ViewBag.UrlRoot)/Queueing/RunningTextSave",
+            data: {
+                RunningTextID: $("#hdnRnTxID").val(),
+                ServiceUnitID: $("#cboRnTxServiceUnit").val(),
+                RunningText: $("#txtRunningText").val()
+            },
+            success: function (data) {
+                CoreLoadingOff(oSender);
+                if (data.status == _sJsonRequestOkStatus) {
+                    RnTxCancel(sender);
+                    RnTxInitGridRefresh();
+                } else {
+                    ShowError(data.data);
+                }
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                CoreLoadingOff(oSender);
+                ShowError(xhr.responseText);
+            },
+            dataType: 'json'
+        });
+    }
+    function RnTxCancel(sender) {
+        $("#divRnTxEditor").hide();
+        $("#divRnTxAddNew").fadeIn("slow");
+    }
+    function RnTxDelete(sender, RunningTextID) {
+        //ShowInfo("Under Development");
+        CoreFnConfirm("Are you sure want to delete?", function () {
+            oSender = $(sender);
+            CoreLoadingOn(oSender);
+
+            $.ajax({
+                type: 'POST',
+                url: "@(ViewBag.UrlRoot)/Queueing/RunningTextDelete",
+                data: {
+                    RunningTextID: RunningTextID
+                },
+                success: function (data) {
+                    CoreLoadingOff(oSender);
+                    _divModal.modal('hide');
+                    if (data.status == _sJsonRequestOkStatus) {
+                        RnTxInitGridRefresh();
+                    } else {
+                        ShowError(data.data);
+                    }
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    CoreLoadingOff(oSender);
+                    ShowError(xhr.responseText);
+                },
+                dataType: 'json'
+            });
+        });
+
+
+
+    }
+</script>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report DataSourceName="sqlDataSource1" Width="6.5in" Name="userReport1" xmlns="http://schemas.telerik.com/reporting/2012/2">
+  <DataSources>
+    <SqlDataSource ConnectionString="Data Source=192.168.11.69;Initial Catalog=RSMP_LIVE;Persist Security Info=True;User ID=sa;Password=P@ssw0rd" ProviderName="System.Data.SqlClient" SelectCommand="sprpt_RegistrationLabel" SelectCommandType="StoredProcedure" Name="sqlDataSource1">
+      <Parameters>
+        <SqlDataSourceParameter DbType="AnsiString" Name="@p_RegistrationNo">
+          <Value>
+            <String>REG/IP/161202-0037</String>
+          </Value>
+        </SqlDataSourceParameter>
+      </Parameters>
+    </SqlDataSource>
+  </DataSources>
+  <Items>
+    <DetailSection Height="0.0520833333333333in" Name="detailSection1">
+      <Style Visible="False" />
+    </DetailSection>
+    <ReportHeaderSection Height="1in" Name="reportHeaderSection1">
+      <Style Color="0, 0, 0" />
+      <Items>
+        <TextBox Value="=Fields.PatientName" Size="3.60000054041545in, 0.200000047683716in" Location="0.19999997317791in, 0.299999952316284in" Name="textBox1" />
+        <TextBox Value="RS MUHAMMADIYAH PALEMBANG" Size="3.60000054041545in, 0.200000047683716in" Location="0.19999997317791in, 0.0999212265014648in" Name="textBox2" />
+        <TextBox Value="=Fields.DateOfBirth" Format="{0:dd/MM/yyyy}" Size="1.10000006357829in, 0.199999968210856in" Location="0.899999936421712in, 0.500078678131104in" Name="textBox3" />
+        <TextBox Value="=Fields.MedicalNo" Size="1.10000022252401in, 0.199999888737996in" Location="0.899999936421712in, 0.700157324473063in" Name="textBox4" />
+        <TextBox Value="Tgl lahir" Size="0.599999904632568in, 0.19999997317791in" Location="0.199842532475789in, 0.500078757603963in" Name="textBox5" />
+        <TextBox Value="No.RM" Size="0.599999904632568in, 0.19999997317791in" Location="0.199842532475789in, 0.700078884760539in" Name="textBox6" />
+        <TextBox Value=":" Size="0.0999999046325684in, 0.19999997317791in" Location="0.799921194712321in, 0.500078757603963in" Name="textBox7" />
+        <TextBox Value=":" Size="0.0999999046325684in, 0.19999997317791in" Location="0.799921194712321in, 0.700157324473063in" Name="textBox8" />
+        <Barcode Value="=Fields.BarcodeMedicalNo" Module="2pt" Stretch="True" ShowText="False" BarAlign="Left" Size="2.5in, 0.300000041723251in" Location="2in, 0.500078757603963in" Name="barcode1">
+          <Style>
+            <Font Size="13pt" />
+            <Padding Left="3pt" />
+          </Style>
+        </Barcode>
+      </Items>
+    </ReportHeaderSection>
+  </Items>
+  <StyleSheet>
+    <StyleRule>
+      <Style>
+        <Padding Left="2pt" Right="2pt" />
+      </Style>
+      <Selectors>
+        <TypeSelector Type="TextItemBase" />
+        <TypeSelector Type="HtmlTextBox" />
+      </Selectors>
+    </StyleRule>
+  </StyleSheet>
+  <PageSettings>
+    <PageSettings PaperKind="Custom" PaperSize="28cm, 1in" Landscape="False">
+      <Margins>
+        <MarginsU Left="0in" Right="0in" Top="0in" Bottom="0in" />
+      </Margins>
+    </PageSettings>
+  </PageSettings>
+</Report>

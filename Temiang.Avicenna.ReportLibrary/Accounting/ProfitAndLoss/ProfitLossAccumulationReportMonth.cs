@@ -1,0 +1,75 @@
+namespace Temiang.Avicenna.ReportLibrary.Accounting.ProfitLoss
+{
+    using System;
+    using System.ComponentModel;
+    using System.Drawing;
+    using System.Windows.Forms;
+    using Telerik.Reporting;
+    using Telerik.Reporting.Drawing;
+    using Processing = Telerik.Reporting.Processing;
+    using Temiang.Avicenna.BusinessObject.Util;
+    using Temiang.Avicenna.BusinessObject;
+    using Temiang.Avicenna.ReportLibrary;
+
+    /// <summary>
+    /// Journal Report Document.
+    /// </summary>
+    public partial class ProfitLossAccumulationReportMonth : Telerik.Reporting.Report
+    {
+        private ReportDataSource reportDataSource = new ReportDataSource();
+
+        public ProfitLossAccumulationReportMonth(string programID, PrintJobParameterCollection printJobParameters)
+        {
+            /// <summary>
+            /// Required for telerik Reporting designer support
+            /// </summary>
+            InitializeComponent();
+            this.groupFooterPLSection.ItemDataBound += new EventHandler(groupFooterPLSection_ItemDataBound);
+
+            System.Data.DataTable tbl = reportDataSource.GetDataTable(programID, printJobParameters);
+            tbl.Columns.Add("ReportSectionName", typeof(string));
+            tbl.Columns.Add("ReportSectionINT", typeof(int));
+
+            SetupReport(printJobParameters);
+
+            foreach (System.Data.DataRow row in tbl.Rows)
+            {
+                int accountGroup = Convert.ToInt32(row["AccountGroupLVL3"]);
+                
+                row["ReportSectionINT"] = accountGroup;
+                row["ReportSectionName"] = Utility.ProfitLossReportSection(accountGroup);
+
+                row.AcceptChanges();
+            }
+
+            this.DataSource = tbl;
+        }
+
+        void groupFooterPLSection_ItemDataBound(object sender, EventArgs e)
+        {
+            Processing.ReportSection section = sender as Processing.ReportSection;
+            Processing.ProcessingElement el = section.ChildElements.Find("txtProfitLossSection", false)[0];
+            Processing.TextBox txt = el as Processing.TextBox;
+            if (txt != null)
+            {
+                if (string.IsNullOrEmpty(txt.Value.ToString()))
+                    section.Visible = false;
+            }
+        }
+
+        private void SetupReport(PrintJobParameterCollection printJobParameters)
+        {
+            string month = printJobParameters.FindByParameterName("pYMSMEPostingPeriode_MonthStart").ValueString;
+            string month_end = printJobParameters.FindByParameterName("pYMSMEPostingPeriode_MonthEnd").ValueString;
+            string year = printJobParameters.FindByParameterName("pYMSMEPostingPeriode_Year").ValueString;
+
+         /*   this.txtPeriode.Value = string.Format("Periode: {0} - {1}", Utility.MonthName(month), year); */
+            this.txtPeriode.Value = string.Format("Year: {0}", year);
+            //txtBalanceMTD.Value = Utility.MonthName(month_end);
+            //textBox7.Value = Utility.MonthName(month)+ " - " + Utility.MonthName(month_end);
+
+            var healthcare = Healthcare.GetHealthcare();
+            this.txtCompanyName.Value = healthcare.HealthcareName;
+        }
+    }
+}

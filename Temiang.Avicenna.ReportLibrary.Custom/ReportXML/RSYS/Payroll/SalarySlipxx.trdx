@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report DataSourceName="sqlDataSource1" Width="8.50000063578288in" Name="userReport1" xmlns="http://schemas.telerik.com/reporting/2012/2">
+  <DataSources>
+    <SqlDataSource ConnectionString="Data Source=192.168.158.1;Initial Catalog=AVICENNA_HIS;Persist Security Info=True;User ID=sa;Password=123;Connect Timeout=15000" ProviderName="System.Data.SqlClient" SelectCommand="dbo.SpRpt_SalarySlip" SelectCommandType="StoredProcedure" Name="sqlDataSource1">
+      <Parameters>
+        <SqlDataSourceParameter DbType="AnsiString" Name="@p_PayrollPeriodID">
+          <Value>
+            <String>1025</String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="AnsiString" Name="@p_UserID">
+          <Value>
+            <String>sci</String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="AnsiString" Name="@p_OrganizationUnitID">
+          <Value>
+            <String>10</String>
+          </Value>
+        </SqlDataSourceParameter>
+      </Parameters>
+    </SqlDataSource>
+  </DataSources>
+  <Items>
+    <DetailSection Height="0.200039439731174in" Name="detail">
+      <Items>
+        <TextBox Value="=Fields.AddSalaryComponentName" Size="2.39996041191949in, 0.19999991522895in" Location="0.0000394185371988in, 0in" Name="textBox6">
+          <Style VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="10pt" />
+          </Style>
+        </TextBox>
+        <TextBox Value="=Fields.AddCurrencyAmount" Format="{0:N2}" Size="1.39992173512777in, 0.19999991522895in" Location="2.40007866753472in, 0in" Name="textBox7">
+          <Style TextAlign="Right" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="10pt" />
+          </Style>
+          <ConditionalFormatting>
+            <FormattingRule>
+              <Style Color="White" />
+              <Filters>
+                <Filter Expression="=Fields.AddCurrencyAmount" Operator="Equal" Value="0.00" />
+              </Filters>
+            </FormattingRule>
+          </ConditionalFormatting>
+        </TextBox>
+        <TextBox Value="= Fields.DeductionCurrencyAmount" Format="{0:N2}" Size="1.40000057220459in, 0.199999913573265in" Location="6.79999987284342in, 0.00003952450060751in" Name="textBox9">
+          <Style TextAlign="Right" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="10pt" />
+          </Style>
+          <ConditionalFormatting>
+            <FormattingRule>
+              <Style Color="White" />
+              <Filters>
+                <Filter Expression="=Fields.DeductionCurrencyAmount" Operator="Equal" Value="0.00" />
+              </Filters>
+            </FormattingRule>
+          </ConditionalFormatting>
+        </TextBox>
+        <TextBox Value="=Fields.DeductionSalaryComponentName" Size="2.39996041191949in, 0.199999913573265in" Location="4.39996115366618in, 0.0000394185371988in" Name="textBox8">
+          <Style VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="10pt" />
+          </Style>
+        </TextBox>
+      </Items>
+    </DetailSection>
+  </Items>
+  <StyleSheet>
+    <StyleRule>
+      <Style Color="Black">
+        <Font Name="Tahoma" Size="18pt" Bold="True" Italic="False" Underline="False" Strikeout="False" />
+      </Style>
+      <Selectors>
+        <StyleSelector Type="ReportItemBase" StyleName="Title" />
+      </Selectors>
+    </StyleRule>
+    <StyleRule>
+      <Style Color="Black" VerticalAlign="Middle">
+        <Font Name="Tahoma" Size="10pt" />
+      </Style>
+      <Selectors>
+        <StyleSelector Type="ReportItemBase" StyleName="Caption" />
+      </Selectors>
+    </StyleRule>
+    <StyleRule>
+      <Style VerticalAlign="Middle">
+        <Font Name="Tahoma" Size="9pt" />
+      </Style>
+      <Selectors>
+        <StyleSelector Type="ReportItemBase" StyleName="Data" />
+      </Selectors>
+    </StyleRule>
+    <StyleRule>
+      <Style VerticalAlign="Middle">
+        <Font Name="Tahoma" Size="8pt" />
+      </Style>
+      <Selectors>
+        <StyleSelector Type="ReportItemBase" StyleName="PageInfo" />
+      </Selectors>
+    </StyleRule>
+  </StyleSheet>
+  <PageSettings>
+    <PageSettings PaperKind="Custom" PaperSize="9.39999961853027in, 6.5in" Landscape="False">
+      <Margins>
+        <MarginsU Left="2cm" Right="0cm" Top="3cm" Bottom="0in" />
+      </Margins>
+    </PageSettings>
+  </PageSettings>
+  <Groups>
+    <Group Name="personIDGroup">
+      <Groupings>
+        <Grouping Expression="=Fields.PersonID" />
+      </Groupings>
+      <GroupHeader>
+        <GroupHeaderSection Height="0.900000042385525in" Name="personIDGroupHeader">
+          <Style>
+            <BorderStyle Top="None" Bottom="None" />
+            <BorderColor Top="Black" Bottom="Black" />
+            <BorderWidth Top="1pt" Bottom="1pt" />
+          </Style>
+          <Items>
+            <TextBox Value="Nama" Size="0.59988170199924in, 0.200000127156576in" Location="0.0000394185371988in, 0.200078964233398in" Name="textBox1">
+              <Style VerticalAlign="Middle">
+                <Font Size="11pt" />
+              </Style>
+            </TextBox>
+            <TextBox Value="Bulan" Size="0.59988170199924in, 0.200000122189522in" Location="0.0000394185371988in, 0.400157928466797in" Name="textBox2">
+              <Style VerticalAlign="Middle">
+                <Font Size="11pt" />
+              </Style>
+            </TextBox>
+            <TextBox Value="=' : ' + Fields.PayrollPeriodName" Size="3.40000004238553in, 0.200000127156576in" Location="0.599999745686849in, 0.405821800231934in" Name="textBox3">
+              <Style VerticalAlign="Middle">
+                <Font Size="11pt" />
+              </Style>
+            </TextBox>
+            <TextBox Value="=' : ' + Fields.EmployeeName" Size="3.40000004238553in, 0.19999991522895in" Location="0.599999745686849in, 0.205703417460124in" Name="textBox4">
+              <Style VerticalAlign="Middle">
+                <Font Size="11pt" />
+              </Style>
+            </TextBox>
+            <TextBox Value="=Fields.TakeHomePay" Format="{0:N2}" Size="2.59992090861003in, 0.394415219624837in" Location="5.20000076293945in, 0.0112881130642361in" Name="textBox5">
+              <Style TextAlign="Right" VerticalAlign="Middle">
+                <Font Size="18pt" Bold="True" />
+              </Style>
+            </TextBox>
+            <TextBox Value="=' : ' + Fields.OrganizationUnitName" Size="3.40000004238553in, 0.199999913573265in" Location="0.599999957614475in, 0.00566387176513672in" Name="textBox10">
+              <Style VerticalAlign="Middle">
+                <Font Size="11pt" />
+              </Style>
+            </TextBox>
+            <TextBox Value="Bagian" Size="0.59988170199924in, 0.200000122189522in" Location="0.00003941853841146in, 0in" Name="textBox11">
+              <Style VerticalAlign="Middle">
+                <Font Size="11pt" />
+              </Style>
+            </TextBox>
+          </Items>
+        </GroupHeaderSection>
+      </GroupHeader>
+      <GroupFooter>
+        <GroupFooterSection PageBreak="BeforeAndAfter" Height="0.1875in" Name="personIDGroupFooter">
+          <Style Visible="False" />
+        </GroupFooterSection>
+      </GroupFooter>
+    </Group>
+  </Groups>
+</Report>

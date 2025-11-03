@@ -1,0 +1,195 @@
+﻿using System;
+using System.Data;
+using System.Drawing;
+using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
+using System.IO;
+using System.Linq;
+using System.Web.UI;
+using Telerik.Web.UI;
+using Temiang.Avicenna.BusinessObject;
+using Temiang.Avicenna.Common;
+using Temiang.Dal.Core;
+
+namespace Temiang.Avicenna.Module.HR.KEPK
+{
+    public partial class ResearchLetterDocumentWebCam : BasePageDialogEntry
+    {
+        protected long DocumentID
+        {
+            get
+            {
+                if (!IsPostBack)
+                    hdnPdId.Value = Request.QueryString["pdid"];
+                if (string.IsNullOrEmpty(hdnPdId.Value))
+                    hdnPdId.Value = "0";
+                return Convert.ToInt32(hdnPdId.Value);
+            }
+            set { hdnPdId.Value = value.ToString(); }
+        }
+
+        protected void Page_Init(object sender, EventArgs e)
+        {
+            ProgramID = AppConstant.Program.KEPK_ResearchLetter;
+
+            // Menu hardcode
+            IsSingleRecordMode = true;
+
+            ToolBar.ApprovalUnApprovalVisible = false;
+            ToolBar.VoidUnVoidVisible = false;
+            ToolBar.PrintVisible = false;
+
+            if (!IsPostBack)
+            {
+                var letter = new ResearchLetter();
+                letter.Query.Where(letter.Query.LetterID == Request.QueryString["pid"].ToInt());
+                if (letter.Query.Load())
+                {
+                    this.Title = "File Attachment of : " + letter.ResearcherName + " (Letter No: " + letter.LetterNo + ")";
+                    hdnEmployeeNo.Value = letter.LetterNo;
+                }
+            }
+        }
+
+        protected override void OnPopulateEntryControl(ValidateArgs args)
+        {
+            var pd = new ResearchLetterDocument();
+            pd.LoadByPrimaryKey(DocumentID);
+            PopulateEntryControl(pd);
+        }
+        protected void PopulateEntryControl(esEntity entity)
+        {
+            var pd = (ResearchLetterDocument)entity;
+            txtDocumentName.Text = pd.DocumentName;
+            txtDocumentDate.SelectedDate = pd.DocumentDate;
+            txtNotes.Text = pd.Notes;
+            DocumentID = pd.DocumentID ?? 0;
+        }
+        protected override void OnMenuNewClick()
+        {
+            DocumentID = 0;
+
+            var ent = new ResearchLetterDocument();
+            ent.LetterID = Request.QueryString["pid"].ToInt();
+
+            PopulateEntryControl(ent);
+
+            txtDocumentDate.SelectedDate = (new DateTime()).NowAtSqlServer();
+        }
+        protected override void OnMenuSaveNewClick(ValidateArgs args)
+        {
+            var entity = new ResearchLetterDocument();
+            SetEntityValue(entity);
+            var newID = SaveEntity(entity);
+            DocumentID = newID;
+
+            // Save thumbnail & Image File
+            if (!string.IsNullOrWhiteSpace(hdnImgData.Value))
+            {
+                // Contoh data 
+                //  - dari JCrop  -> data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD...
+                //  - dari CropIt -> data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA...
+
+                var dataImage = (new ImageHelper()).ConvertBase64StringToImage(hdnImgData.Value.Split(',')[1]);
+
+                // Save File
+                var fileName = string.Format("{0:000000000000000}_{1}.jpg", entity.DocumentID, hdnEmployeeNo.Value);
+                entity.FileAttachName = fileName;
+
+                var targetFolder = Path.Combine(AppSession.Parameter.ApplicationDocumentFolder, "ResearchLetterDocument", entity.LetterID.ToString().Trim());
+                if (!System.IO.Directory.Exists(targetFolder))
+                    System.IO.Directory.CreateDirectory(targetFolder);
+
+                var pathFile = Path.Combine(targetFolder, fileName);
+                var imgHelper = new ImageHelper();
+                // Resize, Compres and Save File -> 140KB
+                var width = AppParameter.GetParameterValue(AppParameter.ParameterItem.WebCamWidth).ToInt();
+                var heigth = AppParameter.GetParameterValue(AppParameter.ParameterItem.WebCamHeight).ToInt();
+                var img = imgHelper.ResizeImage(dataImage, new Size(width, heigth), true, InterpolationMode.High);
+                imgHelper.Compress(img, pathFile, 200);
+
+                // Save Thumbnail
+                var smallImg = imgHelper.ResizeImage(dataImage, new Size(100, 100), true, InterpolationMode.Low);
+                entity.SmallImage = imgHelper.CompressImageToArray(smallImg, 20); // 1KB from 14KB 
+                entity.Save();
+            }
+            else
+            {
+                // Fail Upload
+                // Delete 
+                entity.MarkAsDeleted();
+                entity.Save();
+            }
+
+        }
+
+        protected override void OnDataModeChanged(AppEnum.DataMode oldVal, AppEnum.DataMode newVal)
+        {
+            rowUploadFile.Visible = newVal == (AppEnum.DataMode.New);
+        }
+        protected override void OnMenuEditClick()
+        {
+        }
+        protected override void OnMenuSaveEditClick(ValidateArgs args)
+        {
+            // Edit hanya untuk update keterangan saja, jika edit filenya harus lewat delete lalu tambah
+            var entity = new ResearchLetterDocument();
+            if (entity.LoadByPrimaryKey(DocumentID))
+            {
+                SetEntityValue(entity);
+                SaveEntity(entity);
+            }
+            else
+            {
+                args.MessageText = AppConstant.Message.RecordNotExist;
+            }
+        }
+
+        private void SetEntityValue(ResearchLetterDocument entity)
+        {
+            entity.LetterID = Request.QueryString["pid"].ToInt();
+            entity.DocumentName = txtDocumentName.Text;
+            entity.DocumentDate = txtDocumentDate.SelectedDate;
+            entity.Notes = txtNotes.Text;
+
+            if (entity.es.IsAdded)
+            {
+                entity.IsUpload = true;
+                entity.FileAttachName = string.Empty;
+            }
+        }
+
+        private long SaveEntity(ResearchLetterDocument entity)
+        {
+            entity.Save();
+            return entity.DocumentID ?? 0;
+        }
+
+        protected override void OnMenuDeleteClick(ValidateArgs args)
+        {
+            var ent = new ResearchLetterDocument();
+            if (ent.LoadByPrimaryKey(DocumentID))
+            {
+                // Rename File
+                var filePath = (ent.IsUpload ?? false) ?
+                System.IO.Path.Combine(AppSession.Parameter.ApplicationDocumentFolder, "ResearchLetterDocument", ent.LetterID.ToString(), ent.FileAttachName)
+                : ent.OriPath;
+
+                if (System.IO.File.Exists(filePath))
+                {
+                    var newFilePath = Path.Combine(System.IO.Path.GetDirectoryName(filePath), "DEL_" + System.IO.Path.GetFileName(filePath));
+
+                    File.Move(filePath, newFilePath);
+                }
+
+                ent.IsDeleted = true;
+                ent.Save();
+                DocumentID = 0;
+            }
+            else
+            {
+                args.MessageText = AppConstant.Message.RecordNotExist;
+            }
+        }
+    }
+}

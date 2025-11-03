@@ -1,0 +1,2 @@
+UPDATE ap SET ap.IsProgramAddAble = 1 FROM AppProgram AS ap WHERE ap.ProgramID = '07.17.11'
+UPDATE augp SET augp.IsUserGroupAddAble = 1 FROM AppUserGroupProgram AS augp WHERE augp.ProgramID = '07.17.11'

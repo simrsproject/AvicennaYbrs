@@ -1,0 +1,197 @@
+/************************************************************
+ * Code formatted by SoftTree SQL Assistant © v11.3.277
+ * Time: 03/02/2025 16:00:31
+ ************************************************************/
+
+INSERT INTO [RlMasterReportItemV2025]
+  (
+    [RlMasterReportID],
+    [RlMasterReportItemNo],
+    [RlMasterReportItemCode],
+    [RlMasterReportItemName],
+    [SRParamedicRL1],
+    [IsActive],
+    [ParameterValue],
+    [LastUpdateDateTime],
+    [LastUpdateByUserID]
+  )
+VALUES
+  (
+    16,
+    N'01',
+    N'1',
+    N'Tubektomi/MOW/Sterilisasi Wanita',
+    '',
+    1,
+    '',
+    GETDATE(),
+    N'sci'
+  );
+INSERT INTO [RlMasterReportItemV2025]
+  (
+    [RlMasterReportID],
+    [RlMasterReportItemNo],
+    [RlMasterReportItemCode],
+    [RlMasterReportItemName],
+    [SRParamedicRL1],
+    [IsActive],
+    [ParameterValue],
+    [LastUpdateDateTime],
+    [LastUpdateByUserID]
+  )
+VALUES
+  (
+    16,
+    N'02',
+    N'2',
+    N'Vasektomi/MOP/Sterilisasi Pria',
+    '',
+    1,
+    '',
+    GETDATE(),
+    N'sci'
+  );
+INSERT INTO [RlMasterReportItemV2025]
+  (
+    [RlMasterReportID],
+    [RlMasterReportItemNo],
+    [RlMasterReportItemCode],
+    [RlMasterReportItemName],
+    [SRParamedicRL1],
+    [IsActive],
+    [ParameterValue],
+    [LastUpdateDateTime],
+    [LastUpdateByUserID]
+  )
+VALUES
+  (
+    16,
+    N'03',
+    N'3',
+    N'Implan',
+    '',
+    1,
+    '',
+    GETDATE(),
+    N'sci'
+  );
+INSERT INTO [RlMasterReportItemV2025]
+  (
+    [RlMasterReportID],
+    [RlMasterReportItemNo],
+    [RlMasterReportItemCode],
+    [RlMasterReportItemName],
+    [SRParamedicRL1],
+    [IsActive],
+    [ParameterValue],
+    [LastUpdateDateTime],
+    [LastUpdateByUserID]
+  )
+VALUES
+  (
+    16,
+    N'04',
+    N'4',
+    N'Alat Kontrasepsi Dalam Rahim (AKDR) / Intra Uterine Device (IUD)',
+    '',
+    1,
+    '',
+    GETDATE(),
+    N'sci'
+  );
+INSERT INTO [RlMasterReportItemV2025]
+  (
+    [RlMasterReportID],
+    [RlMasterReportItemNo],
+    [RlMasterReportItemCode],
+    [RlMasterReportItemName],
+    [SRParamedicRL1],
+    [IsActive],
+    [ParameterValue],
+    [LastUpdateDateTime],
+    [LastUpdateByUserID]
+  )
+VALUES
+  (
+    16,
+    N'05',
+    N'5',
+    N'Suntik',
+    '',
+    1,
+    '',
+    GETDATE(),
+    N'sci'
+  );
+INSERT INTO [RlMasterReportItemV2025]
+  (
+    [RlMasterReportID],
+    [RlMasterReportItemNo],
+    [RlMasterReportItemCode],
+    [RlMasterReportItemName],
+    [SRParamedicRL1],
+    [IsActive],
+    [ParameterValue],
+    [LastUpdateDateTime],
+    [LastUpdateByUserID]
+  )
+VALUES
+  (
+    16,
+    N'06',
+    N'6',
+    N'Pil',
+    '',
+    1,
+    '',
+    GETDATE(),
+    N'sci'
+  );
+INSERT INTO [RlMasterReportItemV2025]
+  (
+    [RlMasterReportID],
+    [RlMasterReportItemNo],
+    [RlMasterReportItemCode],
+    [RlMasterReportItemName],
+    [SRParamedicRL1],
+    [IsActive],
+    [ParameterValue],
+    [LastUpdateDateTime],
+    [LastUpdateByUserID]
+  )
+VALUES
+  (
+    16,
+    N'07',
+    N'7',
+    N'Kondom',
+    '',
+    1,
+    '',
+    GETDATE(),
+    N'sci'
+  );
+INSERT INTO [RlMasterReportItemV2025]
+  (
+    [RlMasterReportID],
+    [RlMasterReportItemNo],
+    [RlMasterReportItemCode],
+    [RlMasterReportItemName],
+    [SRParamedicRL1],
+    [IsActive],
+    [ParameterValue],
+    [LastUpdateDateTime],
+    [LastUpdateByUserID]
+  )
+VALUES
+  (
+    16,
+    N'08',
+    N'8',
+    N'MAL (Metode Amenore Laktasi)',
+    '',
+    1,
+    '',
+    GETDATE(),
+    N'sci'
+  );

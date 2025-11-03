@@ -1,0 +1,1 @@
+UPDATE ap SET ap.IsListLoadRecordIfFiltered = 1 FROM AppProgram AS ap WHERE ap.ProgramID = '01.20.11'

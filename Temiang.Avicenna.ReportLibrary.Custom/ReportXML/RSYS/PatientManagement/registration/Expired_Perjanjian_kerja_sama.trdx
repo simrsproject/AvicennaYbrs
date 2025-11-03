@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report DataSourceName="sqlDataSource1" Width="11.6928758621216in" Name="userReport1" xmlns="http://schemas.telerik.com/reporting/2012/2">
+  <DataSources>
+    <SqlDataSource ConnectionString="Data Source=192.168.1.15;Initial Catalog=RSSMCB_LIVE;User ID=sa;Password=123" ProviderName="System.Data.SqlClient" SelectCommand="sprpt_ExpiredPerjanjian" SelectCommandType="StoredProcedure" Name="sqlDataSource1">
+      <Parameters>
+        <SqlDataSourceParameter DbType="DateTime" Name="@p_FromDate">
+          <Value>
+            <String>2017-05-01</String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="DateTime" Name="@p_ToDate">
+          <Value>
+            <String>2017-12-31</String>
+          </Value>
+        </SqlDataSourceParameter>
+      </Parameters>
+    </SqlDataSource>
+  </DataSources>
+  <Items>
+    <PageHeaderSection Height="0.0520833333333333in" Name="pageHeaderSection1" />
+    <DetailSection Height="0.0520833333333333in" Name="detailSection1">
+      <Style Visible="False" />
+    </DetailSection>
+    <PageFooterSection Height="0.200039386749268in" Name="pageFooterSection1">
+      <Items>
+        <TextBox Value=" ='Page : ' + PageNumber + '/' + PageCount" Size="3.16775679588318in, 0.199999809265137in" Location="8.52507972717285in, 0.00003957748413086in" Name="textBox23">
+          <Style TextAlign="Right" VerticalAlign="Middle" />
+        </TextBox>
+        <TextBox Value="=Now()" Format="Avicenna HIS, Print Date : {0:dd-MM-yyyy HH:mm}" Size="4.19992065429688in, 0.199999809265137in" Location="0in, 0in" Name="textBox22">
+          <Style VerticalAlign="Middle">
+            <Font Name="Arial" Size="8pt" />
+          </Style>
+        </TextBox>
+      </Items>
+    </PageFooterSection>
+    <ReportHeaderSection Height="2.34791700045268in" Name="reportHeaderSection1">
+      <Items>
+        <TextBox Value="=Fields.ReportName" Size="11.6927963892619in, 0.200000047683716in" Location="0.00003941853841146in, 1.39999993642171in" Name="textBox1">
+          <Style TextAlign="Center" VerticalAlign="Middle" />
+        </TextBox>
+        <TextBox Value="=Fields.Period" Size="11.6927963892619in, 0.200000127156576in" Location="0.00003941853841146in, 1.60007890065511in" Name="textBox2">
+          <Style TextAlign="Center" VerticalAlign="Middle" />
+        </TextBox>
+        <Table DataSourceName="sqlDataSource1" Size="11.6979184945424in, 0.322916666666667in" Location="0.00003939867019653in, 2.00000047683716in" Name="table1">
+          <Body>
+            <Cells>
+              <TableCell RowIndex="0" ColumnIndex="0" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="=RowNumber()" Size="0.498263731970862in, 0.161458333333333in" Name="textBox6">
+                    <Style>
+                      <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+                      <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+                      <BorderWidth Top="1pt" Bottom="1pt" Left="1pt" Right="1pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="1" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="=Fields.GuarantorName" Size="3.9201397706919in, 0.161458333333333in" Name="textBox9" StyleName="">
+                    <Style>
+                      <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+                      <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+                      <BorderWidth Top="1pt" Bottom="1pt" Left="1pt" Right="1pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="2" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="=Fields.NoSPK" Size="2.02951385122535in, 0.161458333333333in" Name="textBox7" StyleName="">
+                    <Style>
+                      <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+                      <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+                      <BorderWidth Top="1pt" Bottom="1pt" Left="1pt" Right="1pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="3" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="=Fields.ContractSummary" Size="2.64062329340813in, 0.161458333333333in" Name="textBox11" StyleName="">
+                    <Style>
+                      <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+                      <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+                      <BorderWidth Top="1pt" Bottom="1pt" Left="1pt" Right="1pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="4" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="=Fields.ContractStart" Format="{0:dd/MM/yyyy}" Size="1.42187438242123in, 0.161458333333333in" Name="textBox13" StyleName="">
+                    <Style>
+                      <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+                      <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+                      <BorderWidth Top="1pt" Bottom="1pt" Left="1pt" Right="1pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="5" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="=Fields.ContractEnd" Format="{0:dd/MM/yyyy}" Size="1.18749927516404in, 0.161458333333333in" Name="textBox15" StyleName="">
+                    <Style>
+                      <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+                      <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+                      <BorderWidth Top="1pt" Bottom="1pt" Left="1pt" Right="1pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+            </Cells>
+            <Columns>
+              <Column Width="0.49826419898154in" />
+              <Column Width="3.9201397706919in" />
+              <Column Width="2.02951479269524in" />
+              <Column Width="2.6406258984549in" />
+              <Column Width="1.42187520890589in" />
+              <Column Width="1.18750001931351in" />
+            </Columns>
+            <Rows>
+              <Row Height="0.161458333333333in" />
+            </Rows>
+          </Body>
+          <Corner />
+          <RowGroups>
+            <TableGroup Name="DetailGroup">
+              <Groupings>
+                <Grouping Expression="null" />
+              </Groupings>
+            </TableGroup>
+          </RowGroups>
+          <ColumnGroups>
+            <TableGroup>
+              <ReportItem>
+                <TextBox Value="No." Size="0.498263731970862in, 0.161458333333333in" Name="textBox3">
+                  <Style>
+                    <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+                    <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+                    <BorderWidth Top="1pt" Bottom="1pt" Left="1pt" Right="1pt" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup>
+              <ReportItem>
+                <TextBox Value="Perusahaan / Asuransi" Size="3.9201397706919in, 0.161458333333333in" Name="textBox4">
+                  <Style>
+                    <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+                    <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+                    <BorderWidth Top="1pt" Bottom="1pt" Left="1pt" Right="1pt" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup>
+              <ReportItem>
+                <TextBox Value="No SPK" Size="2.02951385122535in, 0.161458333333333in" Name="textBox5">
+                  <Style>
+                    <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+                    <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+                    <BorderWidth Top="1pt" Bottom="1pt" Left="1pt" Right="1pt" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup Name="Group2">
+              <ReportItem>
+                <TextBox Value="Contract Summary" Size="2.64062329340813in, 0.161458333333333in" Name="textBox12" StyleName="">
+                  <Style>
+                    <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+                    <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+                    <BorderWidth Top="1pt" Bottom="1pt" Left="1pt" Right="1pt" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup Name="Group1">
+              <ReportItem>
+                <TextBox Value="Tgl.Awal" Size="1.42187438242123in, 0.161458333333333in" Name="textBox8" StyleName="">
+                  <Style>
+                    <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+                    <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+                    <BorderWidth Top="1pt" Bottom="1pt" Left="1pt" Right="1pt" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup Name="Group4">
+              <ReportItem>
+                <TextBox Value="Tgl.Akhir" Size="1.18749927516404in, 0.161458333333333in" Name="textBox16" StyleName="">
+                  <Style>
+                    <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+                    <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+                    <BorderWidth Top="1pt" Bottom="1pt" Left="1pt" Right="1pt" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+          </ColumnGroups>
+        </Table>
+      </Items>
+    </ReportHeaderSection>
+  </Items>
+  <StyleSheet>
+    <StyleRule>
+      <Style>
+        <Padding Left="2pt" Right="2pt" />
+      </Style>
+      <Selectors>
+        <TypeSelector Type="TextItemBase" />
+        <TypeSelector Type="HtmlTextBox" />
+      </Selectors>
+    </StyleRule>
+  </StyleSheet>
+  <PageSettings>
+    <PageSettings PaperKind="A4" Landscape="True">
+      <Margins>
+        <MarginsU Left="0in" Right="0in" Top="0in" Bottom="0in" />
+      </Margins>
+    </PageSettings>
+  </PageSettings>
+</Report>

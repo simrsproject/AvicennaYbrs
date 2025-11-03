@@ -1,0 +1,514 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report DataSourceName="sqlDataSource1" Width="8.189in" Name="LaporanPemeriksaanKardiologi" ShowSnapGrid="True" xmlns="http://schemas.telerik.com/reporting/2019/2.0">
+  <Style>
+    <BorderStyle Top="Solid" />
+    <BorderColor Top="Black" />
+    <BorderWidth Top="1pt" />
+  </Style>
+  <DataSources>
+    <SqlDataSource QueryDesignerState="null" ParameterValues="{&quot;@p_FromDate&quot;:&quot;2020-06-01&quot;,&quot;@p_ToDate&quot;:&quot;2020-06-30&quot;}" ConnectionString="RSI" SelectCommand="sprpt_LaporanPemeriksaanKardiologi" SelectCommandType="StoredProcedure" Name="sqlDataSource1">
+      <Parameters>
+        <SqlDataSourceParameter DbType="DateTime" Name="@p_FromDate">
+          <Value>
+            <String>2020-06-01</String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="DateTime" Name="@p_ToDate">
+          <Value>
+            <String>2020-06-30</String>
+          </Value>
+        </SqlDataSourceParameter>
+      </Parameters>
+    </SqlDataSource>
+  </DataSources>
+  <Items>
+    <DetailSection Height="0.052in" Name="detailSection1">
+      <Style Visible="False" />
+    </DetailSection>
+    <PageFooterSection Height="0.2in" Name="pageFooterSection1">
+      <Items>
+        <TextBox Width="4.499in" Height="0.2in" Left="0in" Top="0in" Value="=Now()" Format="Avicenna HIS, Print Date : {0:dd-MM-yyyy HH:mm}" Name="textBox28">
+          <Style VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" Italic="True" />
+            <BorderStyle Top="Solid" />
+            <BorderWidth Default="0.5pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="3.601in" Height="0.2in" Left="4.499in" Top="0in" Value="='Page : ' + PageNumber + '/' + PageCount" Name="textBox30">
+          <Style TextAlign="Right" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" Italic="True" />
+            <BorderStyle Top="Solid" />
+            <BorderWidth Default="0.5pt" />
+            <Padding Right="2mm" />
+          </Style>
+        </TextBox>
+      </Items>
+    </PageFooterSection>
+    <ReportHeaderSection Height="2.88in" Name="reportHeaderSection1">
+      <Items>
+        <Table DataSourceName="sqlDataSource1" Width="8.114in" Height="1.08in" Left="0in" Top="1.8in" Name="table1">
+          <Body>
+            <Cells>
+              <TableCell RowIndex="1" ColumnIndex="0" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.406in" Height="0.24in" Left="0in" Top="0in" Value="=RowNumber()" Name="textBox2">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Top="None" Bottom="Solid" Left="Solid" Right="None" />
+                      <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+                      <BorderWidth Top="1pt" Bottom="0.5pt" Left="0.5pt" Right="1pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="1" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="1.177in" Height="0.24in" Left="5.7in" Top="2.1in" Value="= Fields.MedicalNo" Name="textBox8" StyleName="">
+                    <Style VerticalAlign="Middle">
+                      <BorderStyle Top="None" Bottom="Solid" Left="Solid" Right="None" />
+                      <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+                      <BorderWidth Top="1pt" Bottom="0.5pt" Left="0.5pt" Right="1pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="2" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.406in" Height="0.24in" Left="1.4in" Top="0.379in" Value="= Fields.JK" Name="textBox4" StyleName="">
+                    <Style VerticalAlign="Middle">
+                      <BorderStyle Top="None" Bottom="Solid" Left="Solid" Right="None" />
+                      <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+                      <BorderWidth Top="1pt" Bottom="0.5pt" Left="0.5pt" Right="1pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="3" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.406in" Height="0.24in" Left="4.5in" Top="2.5in" Value="= Fields.Umur" Name="textBox13" StyleName="">
+                    <Style VerticalAlign="Middle">
+                      <BorderStyle Top="None" Bottom="Solid" Left="Solid" Right="None" />
+                      <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+                      <BorderWidth Top="1pt" Bottom="0.5pt" Left="0.5pt" Right="1pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="4" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="1.865in" Height="0.24in" Left="3.4in" Top="0.579in" Value="= Fields.ItemName" Name="textBox14" StyleName="">
+                    <Style VerticalAlign="Middle">
+                      <BorderStyle Top="None" Bottom="Solid" Left="Solid" Right="None" />
+                      <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+                      <BorderWidth Top="1pt" Bottom="0.5pt" Left="0.5pt" Right="1pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="5" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.323in" Height="0.24in" Left="3.4in" Top="0.579in" Value="= Fields.Kv" Format="{0:N0}" Name="textBox15" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Top="None" Bottom="Solid" Left="Solid" Right="None" />
+                      <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+                      <BorderWidth Top="1pt" Bottom="0.5pt" Left="0.5pt" Right="1pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="6" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.323in" Height="0.24in" Left="3.4in" Top="0.579in" Value="= Fields.Kv_c" Format="{0:N0}" Name="textBox16" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Top="None" Bottom="Solid" Left="Solid" Right="None" />
+                      <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+                      <BorderWidth Top="1pt" Bottom="0.5pt" Left="0.5pt" Right="1pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="7" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.323in" Height="0.24in" Left="4.7in" Top="0.579in" Value="= Fields.Ma" Format="{0:N0}" Name="textBox51" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Top="None" Bottom="Solid" Left="Solid" Right="None" />
+                      <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+                      <BorderWidth Top="1pt" Bottom="0.5pt" Left="0.5pt" Right="1pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="8" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.323in" Height="0.24in" Left="4.7in" Top="0.579in" Value="= Fields.Ma_c" Format="{0:N0}" Name="textBox52" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Top="None" Bottom="Solid" Left="Solid" Right="None" />
+                      <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+                      <BorderWidth Top="1pt" Bottom="0.5pt" Left="0.5pt" Right="1pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="9" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.323in" Height="0.24in" Left="4.8in" Top="0.579in" Value="= Fields.S" Format="{0:N0}" Name="textBox36" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Top="None" Bottom="Solid" Left="Solid" Right="None" />
+                      <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+                      <BorderWidth Top="1pt" Bottom="0.5pt" Left="0.5pt" Right="1pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="10" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.323in" Height="0.24in" Left="4.8in" Top="0.579in" Value="= Fields.S_c" Format="{0:N0}" Name="textBox41" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Top="None" Bottom="Solid" Left="Solid" Right="None" />
+                      <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+                      <BorderWidth Top="1pt" Bottom="0.5pt" Left="0.5pt" Right="1pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="11" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.604in" Height="0.24in" Left="4.8in" Top="0.579in" Value="= Fields.Ffd" Format="{0:N0}" Name="textBox42" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Top="None" Bottom="Solid" Left="Solid" Right="None" />
+                      <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+                      <BorderWidth Top="1pt" Bottom="0.5pt" Left="0.5pt" Right="1pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="12" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.656in" Height="0.24in" Left="4.6in" Top="0.579in" Value="= Fields.ScreeningTime" Format="{0:N0}" Name="textBox38" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Top="None" Bottom="Solid" Left="Solid" Right="None" />
+                      <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+                      <BorderWidth Top="1pt" Bottom="0.5pt" Left="0.5pt" Right="1pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="13" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.656in" Height="0.24in" Left="4.6in" Top="0.579in" Value="= Fields.CineTime" Format="{0:N0}" Name="textBox35" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Top="None" Bottom="Solid" Left="Solid" Right="Solid" />
+                      <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+                      <BorderWidth Top="1pt" Bottom="0.5pt" Left="0.5pt" Right="0.5pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="0" RowSpan="1" ColumnSpan="14">
+                <ReportItem>
+                  <TextBox Width="8.114in" Height="0.2in" Left="1.8in" Top="0.379in" Value="=Fields.TransactionDate" Name="textBox7" StyleName="">
+                    <Style TextAlign="Left" VerticalAlign="Middle">
+                      <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+                      <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+                      <BorderWidth Top="0.5pt" Bottom="0.5pt" Left="1pt" Right="0.5pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+            </Cells>
+            <Columns>
+              <Column Width="0.406in" />
+              <Column Width="1.177in" />
+              <Column Width="0.406in" />
+              <Column Width="0.406in" />
+              <Column Width="1.865in" />
+              <Column Width="0.323in" />
+              <Column Width="0.323in" />
+              <Column Width="0.323in" />
+              <Column Width="0.323in" />
+              <Column Width="0.323in" />
+              <Column Width="0.323in" />
+              <Column Width="0.604in" />
+              <Column Width="0.656in" />
+              <Column Width="0.656in" />
+            </Columns>
+            <Rows>
+              <Row Height="0.2in" />
+              <Row Height="0.24in" />
+            </Rows>
+          </Body>
+          <Corner />
+          <RowGroups>
+            <TableGroup Name="transactionDate">
+              <ChildGroups>
+                <TableGroup Name="group" />
+                <TableGroup Name="detailTableGroup">
+                  <Groupings>
+                    <Grouping />
+                  </Groupings>
+                </TableGroup>
+              </ChildGroups>
+              <Groupings>
+                <Grouping Expression="= Fields.TransactionDate" />
+              </Groupings>
+              <Sortings>
+                <Sorting Expression="= Fields.TransactionDate" Direction="Asc" />
+              </Sortings>
+            </TableGroup>
+          </RowGroups>
+          <ColumnGroups>
+            <TableGroup Name="tableGroup">
+              <ReportItem>
+                <TextBox Width="0.406in" Height="0.64in" Left="0in" Top="0in" Value="No." Name="textBox1">
+                  <Style TextAlign="Center" VerticalAlign="Middle">
+                    <Font Size="8pt" />
+                    <BorderStyle Top="Solid" Bottom="None" Left="Solid" Right="None" />
+                    <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+                    <BorderWidth Top="0.5pt" Bottom="1pt" Left="0.5pt" Right="1pt" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup Name="tableGroup1">
+              <ReportItem>
+                <TextBox Width="1.177in" Height="0.64in" Left="0in" Top="0in" Value="Medical No" Name="textBox3">
+                  <Style TextAlign="Center" VerticalAlign="Middle">
+                    <Font Size="8pt" />
+                    <BorderStyle Top="Solid" Bottom="None" Left="Solid" Right="None" />
+                    <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+                    <BorderWidth Top="0.5pt" Bottom="1pt" Left="0.5pt" Right="1pt" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup Name="tableGroup2">
+              <ReportItem>
+                <TextBox Width="0.406in" Height="0.64in" Left="0in" Top="0in" Value="JK" Name="textBox5">
+                  <Style TextAlign="Center" VerticalAlign="Middle">
+                    <Font Size="8pt" />
+                    <BorderStyle Top="Solid" Bottom="None" Left="Solid" Right="None" />
+                    <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+                    <BorderWidth Top="0.5pt" Bottom="1pt" Left="0.5pt" Right="1pt" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup Name="group1">
+              <ReportItem>
+                <TextBox Width="0.406in" Height="0.64in" Left="0in" Top="0in" Value="Umur" Name="textBox6" StyleName="">
+                  <Style TextAlign="Center" VerticalAlign="Middle">
+                    <Font Size="8pt" />
+                    <BorderStyle Top="Solid" Bottom="None" Left="Solid" Right="None" />
+                    <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+                    <BorderWidth Top="0.5pt" Bottom="1pt" Left="0.5pt" Right="1pt" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup Name="group2">
+              <ReportItem>
+                <TextBox Width="1.865in" Height="0.64in" Left="0in" Top="0in" Value="Jenis Pemeriksaan" Name="textBox12" StyleName="">
+                  <Style TextAlign="Center" VerticalAlign="Middle">
+                    <Font Size="8pt" />
+                    <BorderStyle Top="Solid" Bottom="None" Left="Solid" Right="None" />
+                    <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+                    <BorderWidth Top="0.5pt" Bottom="1pt" Left="0.5pt" Right="1pt" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup Name="group6">
+              <ReportItem>
+                <TextBox Width="2.542in" Height="0.24in" Left="0in" Top="0in" Value="Faktor eksposi" Name="textBox19" StyleName="">
+                  <Style TextAlign="Center" VerticalAlign="Middle">
+                    <Font Size="8pt" />
+                    <BorderStyle Top="Solid" Bottom="None" Left="Solid" Right="None" />
+                    <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+                    <BorderWidth Top="0.5pt" Bottom="1pt" Left="0.5pt" Right="1pt" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+              <ChildGroups>
+                <TableGroup Name="group7">
+                  <ReportItem>
+                    <TextBox Width="0.646in" Height="0.2in" Left="0in" Top="0in" Value="Kv" Name="textBox21" StyleName="">
+                      <Style TextAlign="Center" VerticalAlign="Middle">
+                        <Font Size="8pt" />
+                        <BorderStyle Top="Solid" Bottom="None" Left="Solid" Right="None" />
+                        <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+                        <BorderWidth Top="0.5pt" Bottom="1pt" Left="0.5pt" Right="1pt" />
+                      </Style>
+                    </TextBox>
+                  </ReportItem>
+                  <ChildGroups>
+                    <TableGroup Name="group8">
+                      <ReportItem>
+                        <TextBox Width="0.323in" Height="0.2in" Left="0in" Top="0in" Value="f" Name="textBox22" StyleName="">
+                          <Style TextAlign="Center" VerticalAlign="Middle">
+                            <Font Size="8pt" />
+                            <BorderStyle Top="Solid" Left="Solid" />
+                            <BorderColor Top="Black" Left="Black" />
+                            <BorderWidth Top="0.5pt" Left="0.5pt" />
+                          </Style>
+                        </TextBox>
+                      </ReportItem>
+                    </TableGroup>
+                    <TableGroup Name="group12">
+                      <ReportItem>
+                        <TextBox Width="0.323in" Height="0.2in" Left="0in" Top="0in" Value="c" Name="textBox27" StyleName="">
+                          <Style TextAlign="Center" VerticalAlign="Middle">
+                            <Font Size="8pt" />
+                            <BorderStyle Top="Solid" Left="Solid" />
+                            <BorderColor Top="Black" Left="Black" />
+                            <BorderWidth Top="0.5pt" Left="0.5pt" />
+                          </Style>
+                        </TextBox>
+                      </ReportItem>
+                    </TableGroup>
+                  </ChildGroups>
+                </TableGroup>
+                <TableGroup Name="group26">
+                  <ReportItem>
+                    <TextBox Width="0.646in" Height="0.2in" Left="0in" Top="0in" Value="mA/mAs" Name="textBox57" StyleName="">
+                      <Style TextAlign="Center" VerticalAlign="Middle">
+                        <Font Size="8pt" />
+                        <BorderStyle Top="Solid" Bottom="None" Left="Solid" Right="None" />
+                        <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+                        <BorderWidth Top="0.5pt" Bottom="1pt" Left="0.5pt" Right="1pt" />
+                      </Style>
+                    </TextBox>
+                  </ReportItem>
+                  <ChildGroups>
+                    <TableGroup Name="group27">
+                      <ReportItem>
+                        <TextBox Width="0.323in" Height="0.2in" Left="0in" Top="0in" Value="f" Name="textBox58" StyleName="">
+                          <Style TextAlign="Center" VerticalAlign="Middle">
+                            <Font Size="8pt" />
+                            <BorderStyle Top="Solid" Left="Solid" />
+                            <BorderColor Top="Black" Left="Black" />
+                            <BorderWidth Top="0.5pt" Left="0.5pt" />
+                          </Style>
+                        </TextBox>
+                      </ReportItem>
+                    </TableGroup>
+                    <TableGroup Name="group24">
+                      <ReportItem>
+                        <TextBox Width="0.323in" Height="0.2in" Left="0in" Top="0in" Value="c" Name="textBox53" StyleName="">
+                          <Style TextAlign="Center" VerticalAlign="Middle">
+                            <Font Size="8pt" />
+                            <BorderStyle Top="Solid" Left="Solid" />
+                            <BorderColor Top="Black" Left="Black" />
+                            <BorderWidth Top="0.5pt" Left="0.5pt" />
+                          </Style>
+                        </TextBox>
+                      </ReportItem>
+                    </TableGroup>
+                  </ChildGroups>
+                </TableGroup>
+                <TableGroup Name="group20">
+                  <ReportItem>
+                    <TextBox Width="0.646in" Height="0.2in" Left="0in" Top="0in" Value="S" Name="textBox47" StyleName="">
+                      <Style TextAlign="Center" VerticalAlign="Middle">
+                        <Font Size="8pt" />
+                        <BorderStyle Top="Solid" Bottom="None" Left="Solid" Right="None" />
+                        <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+                        <BorderWidth Top="0.5pt" Bottom="1pt" Left="0.5pt" Right="1pt" />
+                      </Style>
+                    </TextBox>
+                  </ReportItem>
+                  <ChildGroups>
+                    <TableGroup Name="group21">
+                      <ReportItem>
+                        <TextBox Width="0.323in" Height="0.2in" Left="0in" Top="0in" Value="f" Name="textBox48" StyleName="">
+                          <Style TextAlign="Center" VerticalAlign="Middle">
+                            <Font Size="8pt" />
+                            <BorderStyle Top="Solid" Left="Solid" />
+                            <BorderColor Top="Black" Left="Black" />
+                            <BorderWidth Top="0.5pt" Left="0.5pt" />
+                          </Style>
+                        </TextBox>
+                      </ReportItem>
+                    </TableGroup>
+                    <TableGroup Name="group18">
+                      <ReportItem>
+                        <TextBox Width="0.323in" Height="0.2in" Left="0in" Top="0in" Value="c" Name="textBox43" StyleName="">
+                          <Style TextAlign="Center" VerticalAlign="Middle">
+                            <Font Size="8pt" />
+                            <BorderStyle Top="Solid" Left="Solid" />
+                            <BorderColor Top="Black" Left="Black" />
+                            <BorderWidth Top="0.5pt" Left="0.5pt" />
+                          </Style>
+                        </TextBox>
+                      </ReportItem>
+                    </TableGroup>
+                  </ChildGroups>
+                </TableGroup>
+                <TableGroup Name="group14">
+                  <ReportItem>
+                    <TextBox Width="0.604in" Height="0.4in" Left="0in" Top="0in" Value="FFD (cm)" Name="textBox37" StyleName="">
+                      <Style TextAlign="Center" VerticalAlign="Middle">
+                        <Font Size="8pt" />
+                        <BorderStyle Top="Solid" Bottom="None" Left="Solid" Right="None" />
+                        <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+                        <BorderWidth Top="0.5pt" Bottom="1pt" Left="0.5pt" Right="1pt" />
+                      </Style>
+                    </TextBox>
+                  </ReportItem>
+                </TableGroup>
+              </ChildGroups>
+            </TableGroup>
+            <TableGroup Name="group9">
+              <ReportItem>
+                <TextBox Width="0.656in" Height="0.64in" Left="0in" Top="0in" Value="Waktu Screening (detik)" Name="textBox31" StyleName="">
+                  <Style TextAlign="Center" VerticalAlign="Middle">
+                    <Font Size="8pt" />
+                    <BorderStyle Top="Solid" Bottom="None" Left="Solid" Right="None" />
+                    <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+                    <BorderWidth Top="0.5pt" Bottom="1pt" Left="0.5pt" Right="1pt" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup Name="group3">
+              <ReportItem>
+                <TextBox Width="0.656in" Height="0.64in" Left="0in" Top="0in" Value="Waktu Cine(detik)" Name="textBox18" StyleName="">
+                  <Style TextAlign="Center" VerticalAlign="Middle">
+                    <Font Size="8pt" />
+                    <BorderStyle Top="Solid" Bottom="None" Left="Solid" Right="Solid" />
+                    <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+                    <BorderWidth Top="0.5pt" Bottom="1pt" Left="0.5pt" Right="0.5pt" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+          </ColumnGroups>
+        </Table>
+        <TextBox Width="8.1in" Height="0.2in" Left="0in" Top="1.2in" Value="= Fields.ReportName" Name="textBox9">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Size="12pt" Bold="True" />
+          </Style>
+        </TextBox>
+        <TextBox Width="8.1in" Height="0.2in" Left="0in" Top="1.4in" Value="= Fields.Period" Name="textBox10">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Size="12pt" Bold="True" />
+          </Style>
+        </TextBox>
+      </Items>
+    </ReportHeaderSection>
+  </Items>
+  <PageSettings PaperKind="A4" Landscape="False" ColumnCount="1" ColumnSpacing="0in" ContinuousPaper="False">
+    <Margins>
+      <MarginsU Left="1mm" Right="1mm" Top="1mm" Bottom="1mm" />
+    </Margins>
+  </PageSettings>
+  <StyleSheet>
+    <StyleRule>
+      <Style>
+        <Padding Left="2pt" Right="2pt" />
+      </Style>
+      <Selectors>
+        <TypeSelector Type="TextItemBase" />
+        <TypeSelector Type="HtmlTextBox" />
+      </Selectors>
+    </StyleRule>
+  </StyleSheet>
+</Report>

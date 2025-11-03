@@ -1,0 +1,118 @@
+INSERT INTO AppStandardReference
+(
+	StandardReferenceID,
+	StandardReferenceName,
+	ItemLength,
+	IsUsedBySystem,
+	IsActive,
+	StandardReferenceGroup,
+	Note,
+	LastUpdateDateTime,
+	LastUpdateByUserID,
+	HasCOA,
+	IsNumericValue
+)
+VALUES
+(
+	'ComplianceWasteDisposal',
+	'Compliance Waste Disposal',
+	'20',
+	1,
+	1,
+	'PMKP',
+	'',
+	GETDATE(),
+	'sci',
+	NULL,
+	NULL
+)
+
+--Insert AppStandardReferenceItem ComplianceWasteDisposal--
+
+INSERT INTO AppStandardReferenceItem
+(
+	StandardReferenceID,
+	ItemID,
+	ItemName,
+	Note,
+	IsUsedBySystem,
+	IsActive,
+	LastUpdateDateTime,
+	LastUpdateByUserID,
+	ReferenceID,
+	coaID,
+	subledgerID,
+	CustomField,
+	LineNumber,
+	NumericValue,
+	CustomField2
+)
+VALUES
+(
+	'ComplianceWasteDisposal',
+	'01',
+	'Limbah non Medis',
+	'',
+	1,
+	1,
+	GETDATE(),
+	'sci',
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL
+),
+(
+	'ComplianceWasteDisposal',
+	'02',
+	'Limbah Medis',
+	'',
+	1,
+	1,
+	GETDATE(),
+	'sci',
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL
+),
+(
+	'ComplianceWasteDisposal',
+	'03',
+	'Limbah Plabote',
+	'',
+	1,
+	1,
+	GETDATE(),
+	'sci',
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL
+),
+(
+	'ComplianceWasteDisposal',
+	'04',
+	'Limbah Tajam',
+	'',
+	1,
+	1,
+	GETDATE(),
+	'sci',
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL
+)

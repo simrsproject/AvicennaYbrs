@@ -1,0 +1,27 @@
+using System;
+using System.Data;
+using Telerik.Reporting;
+using Temiang.Avicenna.BusinessObject;
+using Temiang.Avicenna.BusinessObject.Util;
+
+namespace Temiang.Avicenna.ReportLibrary.RLib_Rpt.BillingCharges
+{
+
+    public partial class SalesByMedicalPhysicianSummaryRpt : Telerik.Reporting.Report
+    {
+        public SalesByMedicalPhysicianSummaryRpt(string programID, PrintJobParameterCollection printJobParameters)
+        {
+            InitializeComponent();
+            Helper.InitializeLogo(pageHeaderSection1);
+            Helper.InitializeDataSource(this, programID, printJobParameters);
+
+            DateTime? fromDate = printJobParameters.FindByParameterName("p_FromDate").ValueDateTime;
+            DateTime? toDate = printJobParameters.FindByParameterName("p_ToDate").ValueDateTime;
+
+            textBox3.Value = string.Format("Periode : {0:dd-MMM-yyyy} s/d {1:dd-MMM-yyyy}", fromDate, toDate);
+        
+            DataSource = new ReportDataSource().GetDataTable(programID, printJobParameters);
+            table1.DataSource = DataSource;
+        }
+    }
+}

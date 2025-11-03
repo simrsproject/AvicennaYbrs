@@ -1,0 +1,355 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterDialog.Master.cs"
+    Inherits="Temiang.Avicenna.MasterPage.MasterDialog" %>
+
+<%@ Register Assembly="System.Web.Extensions, Version=1.0.61025.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+    Namespace="System.Web.UI" TagPrefix="asp" %>
+<%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
+<%@ Import Namespace="Temiang.Avicenna.Common" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title />
+    <telerik:RadCodeBlock runat="server">
+        <style type="text/css">
+            .content {
+                position: relative;
+                padding-bottom: 35px;
+            }
+
+            .footer {
+                position: fixed;
+                bottom: 0;
+                width: 100%;
+                background-color: ButtonFace;
+            }
+
+            .info, .success, .warning, .error, .validation {
+                border: 1px solid;
+                /*margin: 10px 0px;*/
+                padding: 5px 5px 5px 5px;
+                background-repeat: no-repeat;
+                background-position: 10px center;
+            }
+
+            .info {
+                color: #00529B;
+                background-color: #BDE5F8;
+                background-image: url('~/Images/infoblue16');
+            }
+
+            .success {
+                color: #4F8A10;
+                background-color: #DFF2BF;
+                background-image: url('~/Images/infogreen16');
+            }
+
+            .warning {
+                color: #9F6000;
+                background-color: #FEEFB3;
+                background-image: url('warning.png');
+            }
+
+            .error {
+                color: #D8000C;
+                background-color: #FFBABA;
+                background-image: url('~/Images/infored16');
+            }
+
+             .saturate { filter: saturate(10); }
+        .grayscale { filter: grayscale(100%); }
+        .icoSpin {
+          animation-name: spin;
+          animation-duration: 1000ms;
+          animation-iteration-count: infinite;
+          animation-timing-function: linear; 
+        }
+
+@keyframes spin {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
+}
+        </style>
+        <style type="text/css">
+            .onoffswitch {
+                position: relative;
+                width: 51px;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+            }
+
+            .onoffswitch-checkbox {
+                display: none;
+            }
+
+            .onoffswitch-label {
+                display: block;
+                overflow: hidden;
+                cursor: pointer;
+                border: 2px solid #999999;
+                border-radius: 6px;
+            }
+
+            .onoffswitch-inner {
+                display: block;
+                width: 200%;
+                margin-left: -100%;
+                transition: margin 0.3s ease-in 0s;
+            }
+
+            .onoffswitch-inner:before, .onoffswitch-inner:after {
+                display: block;
+                float: left;
+                width: 50%;
+                height: 14px;
+                padding: 0;
+                line-height: 14px;
+                font-size: 12px;
+                color: white;
+                font-family: Trebuchet, Arial, sans-serif;
+                font-weight: bold;
+                box-sizing: border-box;
+            }
+
+            .onoffswitch-inner:before {
+                content: "ON";
+                padding-left: 5px;
+                background-color: #34A7C1;
+                color: #FFFFFF;
+            }
+
+            .onoffswitch-inner:after {
+                content: "OFF";
+                padding-right: 5px;
+                background-color: #EEEEEE;
+                color: #999999;
+                text-align: right;
+            }
+
+            .onoffswitch-switch {
+                display: block;
+                width: 18px;
+                margin: -2px;
+                background: #FFFFFF;
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                right: 33px;
+                border: 2px solid #999999;
+                border-radius: 6px;
+                transition: all 0.3s ease-in 0s;
+            }
+
+            .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+                margin-left: 0;
+            }
+
+            .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+                right: 0px;
+            }
+        </style>
+        <style>
+            .goTop {
+                background-image: url("<%=Helper.UrlRoot() %>/Images/TopBottomChat.png");
+                background-repeat: no-repeat;
+                background-position: -80px -140px;
+                height: 48px;
+                width: 48px;
+                display: block;
+                background-size: 340px 200px;
+                cursor: pointer;
+            }
+        </style>
+    </telerik:RadCodeBlock>
+</head>
+<body onkeydown="cancelBack()">
+    <form id="form1" runat="server">
+        <div id="goTop"></div>
+        <telerik:RadCodeBlock runat="server">
+            <script type="text/javascript" src="<%=Helper.UrlRoot() %>/JavaScript/jquery.js"></script>
+            <script type="text/javascript" src="<%=Helper.UrlRoot() %>/JavaScript/jquery.gotop.js"></script>
+            <script type="text/javascript">
+                // Session stretch sudah dijalankan di master page parentnya (Handono 230214)
+<%--                // Session stretch
+                var _sessionTimeoutStretch =  "<%= System.Configuration.ConfigurationManager.AppSettings["SessionStretch"].ToString()%>";
+                var _sessionStretchTimer = null;
+
+                function SessionStretch() {
+                    clearTimeout(_sessionStretchTimer);
+                    $.ajax({
+                        type: 'POST',
+                        url: "<%= Temiang.Avicenna.Common.Helper.UrlRoot() %>/SesssionStretch.aspx/Access",
+                        contentType: "application/json;charset=utf-8",
+                        datatype: "json",
+                        data: JSON.stringify({ data: escape(new Date()) }),
+                        success: function (response) {
+                            SetSessionStretch();
+                        },
+                        error: function (err) {
+                            SetSessionStretch();
+                        },
+                    });
+                    
+                }
+                function SetSessionStretch() {
+                    if (parseInt(_sessionTimeoutStretch) > 0) {
+                        clearTimeout(_sessionStretchTimer);
+                    }
+                    _sessionStretchTimer = setTimeout('SessionStretch()', parseInt(_sessionTimeoutStretch) * 60 * 1000);
+                }
+
+                <%= Page.IsPostBack? string.Empty:"SetSessionStretch();" %>
+                // End Session stretch--%>
+
+                function onClientPageLoad(oWnd) {
+                    // Kasus browser Chrome, button nya hilang Teguh Supriadi
+                    oWnd.maximize();
+                    oWnd.remove_pageLoad(onClientPageLoad);
+                }
+
+                $('#goTop').goTop({
+                    // how long the animation will run when scrolling to the top of the page.
+                    scrolltime: 400,
+
+                    // The CSS classes used to display the arrow.
+                    src: "goTop",
+
+                    // The width of the arrow.
+                    width: 48,
+
+                    // The location where the arrow will be shown.
+                    // "right" or "left"
+                    place: "right"
+
+                });
+                function GetRadWindow() {
+                    var oWindow = null;
+                    if (window.radWindow) oWindow = window.radWindow;
+                    else if (window.frameElement.radWindow) oWindow = window.frameElement.radWindow;
+                    return oWindow;
+                }
+
+                function Close() {
+                    var oWnd = GetRadWindow();
+                    oWnd.argument = new Object(); // Selalu reset krn value sebelumnya masih ada (hasil CloseAndApply)
+                    oWnd.close();
+                }
+
+                function CloseAndApply() {
+                    //get a reference to the current RadWindow
+                    var oWnd = GetRadWindow();
+
+                    //property argument harus didefinisikan supaya bisa ditambah child propertinya contoh oWnd.argument.rebind = 'rebind';
+                    //kalau tidak maka script tidak akan dijalankan ke baris berikutnya ini tidak tahu knp padahal sebelum2nya tidak perlu
+                    oWnd.argument = new Object();
+
+                    var oArg = new Object();
+                // Pada OnGetAdditionalJavaScriptCloseAndApply anda bisa menggunakan oWnd.argument dan oArg
+                // hanya tinggal sesuaikan pada event clientclose nya
+                <%=BasePageDialogCurrent.OnGetAdditionalJavaScriptCloseAndApply() %>
+
+                oArg.callbackMethod = '<%=Request.QueryString["ccm"]%>';
+                oArg.eventArgument = '<%=Request.QueryString["cea"]%>';
+                oArg.eventTarget = '<%=Request.QueryString["cet"]%>';
+
+                    //Close the RadWindow            
+                    oWnd.close(oArg);
+                }
+
+                var disableButtons = function () {
+                    var inputs = document.getElementsByTagName("INPUT");
+                    for (var i in inputs) {
+                        if (inputs[i].type == "button" || inputs[i].type == "submit") {
+                            inputs[i].disabled = true;
+                        }
+                    }
+                }
+                window.onbeforeunload = disableButtons;
+            </script>
+            <script language="javascript" type="text/javascript">
+
+                function cancelBack() {
+                    //if ((event.keyCode == 8 ||
+                    //   (event.keyCode == 37 && event.altKey) ||
+                    //   (event.keyCode == 39 && event.altKey))
+                    //    &&
+                    //   (event.srcElement.form == null || event.srcElement.isTextEdit == false)
+                    //  ) {
+                    //    event.cancelBubble = true;
+                    //    event.returnValue = false;
+                    //}
+                }
+
+            </script>
+        </telerik:RadCodeBlock>
+        <telerik:RadScriptManager ID="fw_RadScriptManager" runat="server">
+            <Scripts>
+                <%-- Common --%>
+                <asp:ScriptReference Path="~/JavaScript/Common/Core.js" />
+                <asp:ScriptReference Path="~/JavaScript/Common/jQuery.js" />
+                <asp:ScriptReference Path="~/JavaScript/Common/jQueryPlugins.js" />
+                <asp:ScriptReference Path="~/JavaScript/Common/Navigation/NavigationScripts.js" />
+                <asp:ScriptReference Path="~/JavaScript/Common/Navigation/OverlayScript.js" />
+                <asp:ScriptReference Path="~/JavaScript/Common/AnimationFramework/AnimationFramework.js" />
+
+                <%-- RadMenu --%>
+                <asp:ScriptReference Path="~/JavaScript/Menu/RadMenuScripts.js" />
+                <asp:ScriptReference Path="~/JavaScript/Menu/MenuItem/RadMenuItem.js" />
+                <asp:ScriptReference Path="~/JavaScript/Menu/MenuItem/MobileMenuItem.js" />
+                <asp:ScriptReference Path="~/JavaScript/Menu/Views/ClassicView.js" />
+                <asp:ScriptReference Path="~/JavaScript/Menu/Views/LiteView.js" />
+
+                <%-- RadToolBar --%>
+                <asp:ScriptReference Path="~/JavaScript/ToolBar/RadToolBarScripts.js" />
+                <asp:ScriptReference Path="~/JavaScript/ToolBar/Views/ClassicView.js" />
+                <asp:ScriptReference Path="~/JavaScript/ToolBar/Views/LiteView.js" />
+
+                <%-- RadAjaxManager, RadAjaxLoadingPanel, RadAjaxPanel --%>
+                <asp:ScriptReference Path="~/JavaScript/Ajax/Ajax.js" />
+
+                <%-- RadFormDecorator --%>
+                <asp:ScriptReference Path="~/JavaScript/FormDecorator/RadFormDecorator.js" />
+                <asp:ScriptReference Path="~/JavaScript/Common/Popup/PopupScripts.js" />
+            </Scripts>
+        </telerik:RadScriptManager>
+        <asp:HiddenField runat="server" ID="fw_hdnPageID" Value="" />
+        <telerik:RadSkinManager ID="fw_RadSkinManager" runat="server" />
+        <telerik:RadAjaxLoadingPanel ID="fw_ajxLoadingPanel" runat="server" MinDisplayTime="10"
+            InitialDelayTime="200" EnableEmbeddedScripts="false" BackgroundPosition="Center" />
+        <telerik:RadAjaxManager ID="fw_RadAjaxManager" runat="server" EnableEmbeddedScripts="false" />
+        <telerik:RadFormDecorator ID="fw_RadFormDecorator" runat="server" EnableEmbeddedScripts="false" DecoratedControls="Default" />
+        <asp:HiddenField ID="hdfMessage" runat="server" />
+        <asp:Panel ID="fw_PanelInfo" runat="server" Visible="false" BackColor="#FFFFC0" Font-Size="Small"
+            BorderColor="#FFC080" BorderStyle="Solid">
+            <table width="100%">
+                <tr>
+                    <td width="10px" valign="top">
+                        <asp:Image ID="Image1" ImageUrl="~/Images/boundleft.gif" runat="server" />
+                    </td>
+                    <td>
+                        <asp:Label ID="fw_LabelInfo" runat="server" />
+                    </td>
+                </tr>
+            </table>
+        </asp:Panel>
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server" />
+        <asp:Panel runat="server" ID="pnlBottomSep" Height="50px">
+
+        </asp:Panel>
+        <asp:Panel runat="server" ID="panFooter" class="footer">
+            <table width="100%" runat="server" id="tblBtn">
+                <tr>
+                    <td align="center">
+                        <asp:Button ID="btnOk" runat="server" Text="Ok" Width="70" OnClick="btnOk_Click" />&nbsp;
+                    <asp:Button ID="btnCancel" runat="server" Text="Cancel" Width="70" OnClientClick="Close();return false;" />
+                    </td>
+                </tr>
+            </table>
+        </asp:Panel>
+    </form>
+</body>
+</html>

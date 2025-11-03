@@ -1,0 +1,2 @@
+ALTER TABLE PATemplate ADD ClinicalDiagnosisID VARCHAR(20) NULL
+ALTER TABLE PATemplate ADD LocationName VARCHAR(500) NULL

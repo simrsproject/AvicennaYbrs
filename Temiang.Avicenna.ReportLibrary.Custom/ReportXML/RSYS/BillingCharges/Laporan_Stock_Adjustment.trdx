@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report DataSourceName="sqlDataSource1" Width="11.0061937967936in" Name="userReport1" xmlns="http://schemas.telerik.com/reporting/2012/2">
+  <DataSources>
+    <SqlDataSource ConnectionString="Data Source=192.168.11.69;Initial Catalog=RSMP_LIVE;Persist Security Info=True;User ID=sa;Password=P@ssw0rd" ProviderName="System.Data.SqlClient" SelectCommand="dbo.sprpt_LaporanStockAdjustment" SelectCommandType="StoredProcedure" Name="sqlDataSource1">
+      <Parameters>
+        <SqlDataSourceParameter DbType="DateTime" Name="@p_FromDate">
+          <Value>
+            <String>12/01/2016</String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="DateTime" Name="@p_ToDate">
+          <Value>
+            <String>12/31/2016</String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="AnsiString" Name="@p_ServiceUnitID">
+          <Value>
+            <String>D-02</String>
+          </Value>
+        </SqlDataSourceParameter>
+      </Parameters>
+    </SqlDataSource>
+  </DataSources>
+  <Items>
+    <DetailSection Height="0.0520833333333333in" Name="detailSection1">
+      <Style Visible="False" />
+    </DetailSection>
+    <PageFooterSection Height="0.309219360351563in" Name="pageFooterSection1">
+      <Items>
+        <TextBox Value="=Now()" Format="Avicenna HIS, Print Date : {0:dd-MM-yyyy HH:mm}" Size="11.0020459493001in, 0.309179941813151in" Location="0in, 0.0000394185371988in" Name="textBox146">
+          <Style VerticalAlign="Middle">
+            <BorderStyle Top="Solid" />
+            <BorderWidth Default="0.5pt" />
+            <Font Name="Tahoma" Size="8pt" Italic="True" />
+            <Padding Left="5pt" Right="0pt" />
+          </Style>
+        </TextBox>
+      </Items>
+    </PageFooterSection>
+    <ReportFooterSection Height="0.708333333333333in" Name="reportFooterSection1">
+      <Items>
+        <Table DataSourceName="sqlDataSource1" Size="11.0061550140381in, 0.708333273728689in" Location="0.00003933906555176in, 0in" Name="table1">
+          <Body>
+            <Cells>
+              <TableCell RowIndex="0" ColumnIndex="0" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="=RowNumber()" Size="0.395833322455689in, 0.333333338300387in" Name="textBox4">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Name="Calibri" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="2" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="=Fields.ItemID" Size="0.718751851473155in, 0.33333329235514in" Name="textBox5" StyleName="">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Name="Calibri" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="3" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="=Fields.ItemName" Size="3.94792319834883in, 0.333333243195922in" Name="textBox11" StyleName="">
+                    <Style VerticalAlign="Middle">
+                      <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Name="Calibri" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="7" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="=Fields.LastUpdateByUserID" Size="0.937499681830142in, 0.333333338300387in" Name="textBox8" StyleName="">
+                    <Style VerticalAlign="Middle">
+                      <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Name="Calibri" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="4" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="=Fields.Quantity" Format="{0:N2}" Size="0.781250355200095in, 0.333333243195922in" Name="textBox13" StyleName="">
+                    <Style VerticalAlign="Middle">
+                      <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Name="Calibri" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="1" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="=Fields.TransactionDate" Format="{0:dd MMMM yyyy}" Size="1.15198501948659in, 0.333333243195922in" Name="textBox14" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Name="Calibri" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="5" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="=Fields.SRItemUnit" Size="0.958333841789608in, 0.333333243195922in" Name="textBox18" StyleName="">
+                    <Style VerticalAlign="Middle">
+                      <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Name="Calibri" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="6" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="=Fields.ItemName1" Size="2.11458369144424in, 0.333333243195922in" Name="textBox17" StyleName="">
+                    <Style VerticalAlign="Middle">
+                      <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Name="Calibri" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+            </Cells>
+            <Columns>
+              <Column Width="0.395833446823346in" />
+              <Column Width="1.15198352811809in" />
+              <Column Width="0.718751645429165in" />
+              <Column Width="3.94792100314163in" />
+              <Column Width="0.781249902458327in" />
+              <Column Width="0.958333094505619in" />
+              <Column Width="2.11458369144424in" />
+              <Column Width="0.93749944013787in" />
+            </Columns>
+            <Rows>
+              <Row Height="0.333333243195922in" />
+            </Rows>
+          </Body>
+          <Corner />
+          <RowGroups>
+            <TableGroup Name="DetailGroup">
+              <Groupings>
+                <Grouping Expression="null" />
+              </Groupings>
+            </TableGroup>
+          </RowGroups>
+          <ColumnGroups>
+            <TableGroup>
+              <ReportItem>
+                <TextBox Value="No." Size="0.395833554505674in, 0.375000030532766in" Name="textBox1">
+                  <Style TextAlign="Center" VerticalAlign="Middle">
+                    <BorderStyle Top="Solid" Left="Solid" />
+                    <BorderWidth Default="0.5pt" />
+                    <Font Name="Calibri" Bold="True" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup Name="Group6">
+              <ReportItem>
+                <TextBox Value="Tanggal Adjustment" Format="{0:D}" Size="2.92604198479072cm, 0.37499999883128in" Name="textBox20" StyleName="">
+                  <Style TextAlign="Center" VerticalAlign="Middle">
+                    <BorderStyle Top="Solid" Left="Solid" />
+                    <BorderWidth Default="0.5pt" />
+                    <Font Name="Calibri" Bold="True" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup>
+              <ReportItem>
+                <TextBox Value="Item ID" Size="0.718751851473155in, 0.375000019868215in" Name="textBox3">
+                  <Style TextAlign="Center" VerticalAlign="Middle">
+                    <BorderStyle Top="Solid" Left="Solid" />
+                    <BorderWidth Default="0.5pt" />
+                    <Font Name="Calibri" Bold="True" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup Name="Group1">
+              <ReportItem>
+                <TextBox Value="Item Name" Size="3.94792319834883in, 0.375000030532766in" Name="textBox6" StyleName="">
+                  <Style TextAlign="Center" VerticalAlign="Middle">
+                    <BorderStyle Top="Solid" Left="Solid" />
+                    <BorderWidth Default="0.5pt" />
+                    <Font Name="Calibri" Bold="True" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup Name="Group5">
+              <ReportItem>
+                <TextBox Value="Qty" Size="0.781250355200095in, 0.375000030532766in" Name="textBox2" StyleName="">
+                  <Style TextAlign="Center" VerticalAlign="Middle">
+                    <BorderStyle Top="Solid" Left="Solid" />
+                    <BorderWidth Default="0.5pt" />
+                    <Font Name="Calibri" Bold="True" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup Name="Group4">
+              <ReportItem>
+                <TextBox Value="SRItem Unit" Size="0.958333841789608in, 0.375000030532766in" Name="textBox16" StyleName="">
+                  <Style TextAlign="Center" VerticalAlign="Middle">
+                    <BorderStyle Top="Solid" Left="Solid" />
+                    <BorderWidth Default="0.5pt" />
+                    <Font Name="Calibri" Bold="True" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup Name="Group3">
+              <ReportItem>
+                <TextBox Value="Alasan" Size="2.11458369144424in, 0.375000030532766in" Name="textBox7" StyleName="">
+                  <Style TextAlign="Center" VerticalAlign="Middle">
+                    <BorderStyle Top="Solid" Left="Solid" />
+                    <BorderWidth Default="0.5pt" />
+                    <Font Name="Calibri" Bold="True" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup Name="Group2">
+              <ReportItem>
+                <TextBox Value="UserID" Size="0.937499734082603in, 0.375000030532766in" Name="textBox10" StyleName="">
+                  <Style TextAlign="Center" VerticalAlign="Middle">
+                    <BorderStyle Top="Solid" Left="Solid" Right="Solid" />
+                    <BorderWidth Default="0.5pt" />
+                    <Font Name="Calibri" Bold="True" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+          </ColumnGroups>
+        </Table>
+      </Items>
+    </ReportFooterSection>
+    <ReportHeaderSection Height="2in" Name="reportHeaderSection1">
+      <Items>
+        <TextBox Value="=Fields.ReportName" Size="11.0020065307617in, 0.300039450327555in" Location="0.00418726587668061in, 1.39999993642171in" Name="textBox9">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Name="Calibri" Size="14pt" />
+          </Style>
+        </TextBox>
+        <TextBox Value="=Fields.Period" Size="11.0020071665446in, 0.199999968210856in" Location="0.00418726587668061in, 1.69999996821086in" Name="textBox12">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Name="Calibri" />
+          </Style>
+        </TextBox>
+      </Items>
+    </ReportHeaderSection>
+  </Items>
+  <StyleSheet>
+    <StyleRule>
+      <Style>
+        <Padding Left="2pt" Right="2pt" />
+      </Style>
+      <Selectors>
+        <TypeSelector Type="TextItemBase" />
+        <TypeSelector Type="HtmlTextBox" />
+      </Selectors>
+    </StyleRule>
+  </StyleSheet>
+  <PageSettings>
+    <PageSettings PaperKind="Ledger" Landscape="False">
+      <Margins>
+        <MarginsU Left="0in" Right="0in" Top="0in" Bottom="0in" />
+      </Margins>
+    </PageSettings>
+  </PageSettings>
+</Report>

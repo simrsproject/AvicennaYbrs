@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report DataSourceName="sqlDataSource1" Width="10.9999605814616in" Name="userReport1" xmlns="http://schemas.telerik.com/reporting/2012/3.8">
+  <DataSources>
+    <SqlDataSource ConnectionString="RSITRAIN" SelectCommand="dbo.sprpt_LaporanJumlahLembarResepRacikanNonRacikan2" SelectCommandType="StoredProcedure" Name="sqlDataSource1" ParameterValues="{&quot;@p_FromDate&quot;:&quot;2020-07-01&quot;,&quot;@p_ToDate&quot;:&quot;2020-07-31&quot;,&quot;@p_ServiceUnitID&quot;:&quot;D3.0.01.1&quot;}">
+      <Parameters>
+        <SqlDataSourceParameter DbType="DateTime" Name="@p_FromDate">
+          <Value>
+            <String>2020-07-01</String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="DateTime" Name="@p_ToDate">
+          <Value>
+            <String>2020-07-31</String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="AnsiString" Name="@p_ServiceUnitID">
+          <Value>
+            <String>D3.0.01.1</String>
+          </Value>
+        </SqlDataSourceParameter>
+      </Parameters>
+    </SqlDataSource>
+  </DataSources>
+  <Items>
+    <PageHeaderSection Height="0.0520833333333333in" Name="pageHeaderSection1" />
+    <DetailSection Height="0.0520833333333333in" Name="detailSection1">
+      <Style Visible="False" />
+    </DetailSection>
+    <PageFooterSection Height="0.200039545694987in" Name="pageFooterSection1">
+      <Items>
+        <TextBox Width="7.05200481414795in" Height="0.200000122189522in" Left="3.94791666666667in" Top="0.00003941853841146in" Value="='Page : ' + PageNumber + '/' + PageCount" Name="textBox5">
+          <Style TextAlign="Right" VerticalAlign="Middle">
+            <BorderStyle Top="Solid" />
+            <BorderWidth Default="0.5pt" />
+            <Font Name="Tahoma" Size="8pt" Italic="True" />
+          </Style>
+        </TextBox>
+        <TextBox Width="3.94783854484558in" Height="0.200000122189522in" Left="0in" Top="0.00003941853841146in" Value="=Now()" Format="Avicenna HIS, Print Date : {0:dd-MM-yyyy HH:mm}" Name="textBox10">
+          <Style VerticalAlign="Middle">
+            <BorderStyle Top="Solid" />
+            <BorderWidth Default="0.5pt" />
+            <Font Name="Tahoma" Size="8pt" Italic="True" />
+          </Style>
+        </TextBox>
+      </Items>
+    </PageFooterSection>
+    <ReportHeaderSection Height="1.44791666666667in" Name="reportHeaderSection1">
+      <Items>
+        <TextBox Width="10.9999211629232in" Height="0.200000047683716in" Left="0in" Top="1.24791669845581in" Value="=Fields.Period" Name="textBox3">
+          <Style TextAlign="Center" VerticalAlign="Middle" />
+        </TextBox>
+        <TextBox Width="10.9999211629232in" Height="0.199999968210856in" Left="0in" Top="1.04783813158671in" Value="=Fields.RptName" Name="textBox4">
+          <Style TextAlign="Center" VerticalAlign="Middle" />
+        </TextBox>
+      </Items>
+    </ReportHeaderSection>
+    <ReportFooterSection Height="1.29583382606506in" Name="reportFooterSection1">
+      <Items>
+        <Crosstab DataSourceName="sqlDataSource1" Width="1.32916657129924in" Height="1.00000015894572in" Left="0.0999999841054281in" Top="0.09583314259847in" Name="crosstab1">
+          <Body>
+            <Cells>
+              <TableCell RowIndex="1" ColumnIndex="0" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.495833218097687in" Height="0.25in" Left="0in" Top="0in" Value="=SUM(Resep)" Format="{0:N0}" Name="textBox8" StyleName="">
+                    <Style TextAlign="Right">
+                      <BorderStyle Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Name="Tahoma" Size="8pt" Bold="True" />
+                      <Padding Right="1mm" Top="1mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="0" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.495833236041757in" Height="0.25000003973643in" Left="0in" Top="0in" Value="=Sum(Fields.Resep)" Name="textBox2" StyleName="">
+                    <Style TextAlign="Right">
+                      <BorderStyle Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Name="Tahoma" Size="8pt" />
+                      <Padding Right="1mm" Top="1mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+            </Cells>
+            <Columns>
+              <Column Width="0.495833236041759in" />
+            </Columns>
+            <Rows>
+              <Row Height="0.250000069538757in" />
+              <Row Height="0.250000024835266in" />
+            </Rows>
+          </Body>
+          <Corner>
+            <Cells>
+              <TableCell RowIndex="0" ColumnIndex="0" RowSpan="2" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.833333373069763in" Height="0.5in" Left="0in" Top="0in" Value="Tanggal" Name="textBox15" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Name="Tahoma" Size="8pt" Bold="True" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+            </Cells>
+          </Corner>
+          <RowGroups>
+            <TableGroup Name="ApprovalDateAs">
+              <ReportItem>
+                <TextBox Width="0.833333373069763in" Height="0.25in" Left="0in" Top="0in" Value="=ApprovalDateAs" Format="{0:dd-MMM-yyyy}" Name="textBox7" StyleName="">
+                  <Style>
+                    <BorderStyle Bottom="Solid" Left="Solid" Right="Solid" />
+                    <BorderWidth Default="0.5pt" />
+                    <Font Name="Tahoma" Size="8pt" />
+                    <Padding Left="1mm" Top="1mm" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+              <ChildGroups>
+                <TableGroup Name="RowGroup">
+                  <ChildGroups>
+                    <TableGroup Name="Group5" />
+                  </ChildGroups>
+                  <Groupings>
+                    <Grouping Expression="='RowGroup'" />
+                  </Groupings>
+                </TableGroup>
+              </ChildGroups>
+              <Groupings>
+                <Grouping Expression="=ApprovalDateAs" />
+              </Groupings>
+              <Sortings>
+                <Sorting Expression="=ApprovalDateAs" Direction="Asc" />
+              </Sortings>
+            </TableGroup>
+            <TableGroup Name="Group6">
+              <ReportItem>
+                <TextBox Width="0.833333373069763in" Height="0.25in" Left="0in" Top="0in" Value="Total" Name="textBox6" StyleName="">
+                  <Style>
+                    <BorderStyle Bottom="Solid" Left="Solid" Right="Solid" />
+                    <BorderWidth Default="0.5pt" />
+                    <Font Name="Tahoma" Size="8pt" Bold="True" />
+                    <Padding Left="1mm" Top="1mm" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+              <ChildGroups>
+                <TableGroup Name="Group9">
+                  <ChildGroups>
+                    <TableGroup Name="Group10" />
+                  </ChildGroups>
+                </TableGroup>
+              </ChildGroups>
+            </TableGroup>
+          </RowGroups>
+          <ColumnGroups>
+            <TableGroup Name="Rtype">
+              <ReportItem>
+                <TextBox Width="0.495833236041757in" Height="0.25000003973643in" Left="0.900000015894572in" Top="0.100000063578288in" Value="=Fields.Rtype" Name="textBox1" StyleName="">
+                  <Style TextAlign="Center" VerticalAlign="Middle">
+                    <BorderStyle Top="Solid" Bottom="Solid" Right="Solid" />
+                    <BorderWidth Default="0.5pt" />
+                    <Font Name="Tahoma" Size="8pt" Bold="True" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+              <ChildGroups>
+                <TableGroup Name="Shift">
+                  <ReportItem>
+                    <TextBox Width="0.495833218097687in" Height="0.250000029802322in" Left="0in" Top="0in" Value="=ShiftName" Name="textBox9" StyleName="">
+                      <Style TextAlign="Center" VerticalAlign="Middle">
+                        <BorderStyle Bottom="Solid" Left="None" Right="Solid" />
+                        <BorderWidth Default="0.5pt" />
+                        <Font Name="Tahoma" Size="8pt" Bold="True" />
+                        <Padding Left="1mm" Right="1mm" />
+                      </Style>
+                    </TextBox>
+                  </ReportItem>
+                  <ChildGroups>
+                    <TableGroup Name="ColumnGroup">
+                      <ChildGroups>
+                        <TableGroup Name="Group1" />
+                      </ChildGroups>
+                      <Groupings>
+                        <Grouping Expression="='ColumnGroup'" />
+                      </Groupings>
+                    </TableGroup>
+                  </ChildGroups>
+                  <Groupings>
+                    <Grouping Expression="=Shift" />
+                  </Groupings>
+                  <Sortings>
+                    <Sorting Expression="=Shift" Direction="Asc" />
+                  </Sortings>
+                </TableGroup>
+              </ChildGroups>
+              <Groupings>
+                <Grouping Expression="=Fields.Rtype" />
+              </Groupings>
+              <Sortings>
+                <Sorting Expression="=Fields.Rtype" Direction="Asc" />
+              </Sortings>
+            </TableGroup>
+          </ColumnGroups>
+        </Crosstab>
+      </Items>
+    </ReportFooterSection>
+  </Items>
+  <StyleSheet>
+    <StyleRule>
+      <Style>
+        <Padding Left="2pt" Right="2pt" />
+      </Style>
+      <Selectors>
+        <TypeSelector Type="TextItemBase" />
+        <TypeSelector Type="HtmlTextBox" />
+      </Selectors>
+    </StyleRule>
+  </StyleSheet>
+  <PageSettings>
+    <PageSettings PaperKind="Letter" Landscape="True">
+      <Margins>
+        <MarginsU Left="0in" Right="0in" Top="0in" Bottom="0in" />
+      </Margins>
+    </PageSettings>
+  </PageSettings>
+</Report>

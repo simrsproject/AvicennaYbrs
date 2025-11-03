@@ -1,0 +1,56 @@
+﻿@using Temiang.Avicenna.Model;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var modelData = TempData["datacontainer"] as ErrorModel;
+}
+
+    <div class="row">
+        <div class="col-12 px-0 py-0">
+            <div id="divList" class="card card-danger card-outline">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h3 class="card-title"><span class='fas fa-exclamation-triangle text-danger'></span> Error </h3>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="row float-right">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div id="accordion">
+                        <div class="card card-danger">
+                            <div class="card-header">
+                                <h4 class="card-title">
+                                    @modelData.Message
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" class="btn btn-outline-secondary" >
+                                        click for detail
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseTwo" class="panel-collapse collapse">
+                                <div class="card-body">
+                                    <p>
+                                        @modelData.Source
+                                    </p>
+                                    <p>
+                                        @modelData.StackTrace
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+@section Scripts
+{
+
+}
+

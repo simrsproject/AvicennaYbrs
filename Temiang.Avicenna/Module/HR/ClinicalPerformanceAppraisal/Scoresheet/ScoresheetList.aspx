@@ -1,0 +1,38 @@
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage/MasterList.Master" AutoEventWireup="true" CodeBehind="ScoresheetList.aspx.cs" Inherits="Temiang.Avicenna.Module.HR.CPA.ScoresheetList" %>
+<%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <telerik:RadGrid ID="grdList" runat="server" OnNeedDataSource="grdList_NeedDataSource">
+        <MasterTableView DataKeyNames="ScoresheetNo">
+            <Columns>
+                <telerik:GridBoundColumn HeaderStyle-Width="130px" DataField="ScoresheetNo" HeaderText="Scoresheet No"
+                    UniqueName="ScoresheetNo" SortExpression="ScoresheetNo" HeaderStyle-HorizontalAlign="Center"
+                    ItemStyle-HorizontalAlign="Center" />
+                <telerik:GridDateTimeColumn HeaderStyle-Width="80px" DataField="ScoringDate" HeaderText="Date"
+                    UniqueName="ScoringDate" SortExpression="ScoringDate" HeaderStyle-HorizontalAlign="Center"
+                    ItemStyle-HorizontalAlign="Center" />
+                <telerik:GridNumericColumn DataField="EvaluatorName" HeaderText="Evaluator Name" UniqueName="EvaluatorName"
+                    SortExpression="EvaluatorName" HeaderStyle-HorizontalAlign="Left" ItemStyle-HorizontalAlign="Left" />
+                <telerik:GridNumericColumn HeaderStyle-Width="100px" DataField="EmployeeNumber" HeaderText="Employee No"
+                    UniqueName="EmployeeNumber" SortExpression="EmployeeNumber" HeaderStyle-HorizontalAlign="Left"
+                    ItemStyle-HorizontalAlign="Left" />
+                <telerik:GridNumericColumn DataField="EmployeeName" HeaderText="Employee Name" UniqueName="EmployeeName"
+                    SortExpression="EmployeeName" HeaderStyle-HorizontalAlign="Left" ItemStyle-HorizontalAlign="Left" />
+                <telerik:GridBoundColumn HeaderStyle-Width="250px" DataField="ProfessionGroupName" HeaderText="Profession Group"
+                    UniqueName="ProfessionGroupName" SortExpression="ProfessionGroupName" HeaderStyle-HorizontalAlign="Left"
+                    ItemStyle-HorizontalAlign="Left" />
+                <telerik:GridBoundColumn HeaderStyle-Width="250px" DataField="ClinicalWorkAreaName" HeaderText="Work Area"
+                    UniqueName="ClinicalWorkAreaName" SortExpression="ClinicalWorkAreaName" HeaderStyle-HorizontalAlign="Left"
+                    ItemStyle-HorizontalAlign="Left" />
+                <telerik:GridBoundColumn HeaderStyle-Width="150px" DataField="ClinicalAuthorityLevelName" HeaderText="Clinical Authority Level"
+                    UniqueName="ClinicalAuthorityLevelName" SortExpression="ClinicalAuthorityLevelName" HeaderStyle-HorizontalAlign="Left"
+                    ItemStyle-HorizontalAlign="Left" />
+                <telerik:GridCheckBoxColumn HeaderStyle-Width="70px" DataField="IsApproved" HeaderText="Approved"
+                    UniqueName="IsApproved" SortExpression="IsApproved" HeaderStyle-HorizontalAlign="Center"
+                    ItemStyle-HorizontalAlign="Center"/>
+                <telerik:GridCheckBoxColumn HeaderStyle-Width="70px" DataField="IsVoid" HeaderText="Void"
+                    UniqueName="IsVoid" SortExpression="IsVoid" HeaderStyle-HorizontalAlign="Center"
+                    ItemStyle-HorizontalAlign="Center" />    
+            </Columns>
+        </MasterTableView>
+    </telerik:RadGrid>
+</asp:Content>

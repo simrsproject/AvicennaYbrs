@@ -1,0 +1,1104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report DataSourceName="sqlDataSource1" Width="12.4in" Name="LaporanPenjaringanResep" Zoom="0.6666667" ShowSnapGrid="True" xmlns="http://schemas.telerik.com/reporting/2019/2.0">
+  <Style>
+    <Font Name="Tahoma" />
+  </Style>
+  <DataSources>
+    <SqlDataSource QueryDesignerState="null" ParameterValues="{&quot;@p_FromDate&quot;:&quot;09/01/2020&quot;,&quot;@p_ToDate&quot;:&quot;09/30/2020&quot;,&quot;@p_BorType&quot;:&quot;RS&quot;}" ConnectionString="RSI2" SelectCommand="dbo.rxml_BOR" SelectCommandType="StoredProcedure" Name="sqlDataSource1">
+      <Parameters>
+        <SqlDataSourceParameter DbType="DateTime" Name="@p_FromDate">
+          <Value>
+            <String>09/01/2020</String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="DateTime" Name="@p_ToDate">
+          <Value>
+            <String>09/30/2020</String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="AnsiString" Name="@p_BorType">
+          <Value>
+            <String>RS</String>
+          </Value>
+        </SqlDataSourceParameter>
+      </Parameters>
+    </SqlDataSource>
+  </DataSources>
+  <Items>
+    <DetailSection Height="0.052in" Name="detailSection1">
+      <Style Visible="False" />
+    </DetailSection>
+    <PageFooterSection Height="0.2in" Name="pageFooterSection1">
+      <Items>
+        <TextBox Width="7.919in" Height="0.2in" Left="4.481in" Top="0in" Value="='Page : ' + PageNumber + '/' + PageCount" Name="textBox27">
+          <Style TextAlign="Right" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" Italic="True" />
+            <BorderStyle Top="Solid" />
+            <BorderWidth Default="0.5pt" />
+            <Padding Right="2mm" />
+          </Style>
+        </TextBox>
+        <TextBox Width="4.481in" Height="0.2in" Left="0in" Top="0in" Value="='AVICENNA_HIS  ' + Now()" Format="Avicenna HIS, Print Date : {0:dd-MM-yyyy HH:mm}" Name="textBox50">
+          <Style VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" Italic="True" />
+            <BorderStyle Top="Solid" />
+            <BorderWidth Default="0.5pt" />
+          </Style>
+        </TextBox>
+      </Items>
+    </PageFooterSection>
+    <ReportHeaderSection Height="3.047in" Name="reportHeaderSection1">
+      <Items>
+        <TextBox Width="7.642in" Height="0.2in" Left="0in" Top="0.8in" Value="= Fields.Tittle" Name="textBox1">
+          <Style VerticalAlign="Middle">
+            <Font Size="14pt" Bold="True" />
+          </Style>
+        </TextBox>
+        <TextBox Width="7.642in" Height="0.2in" Left="0in" Top="1in" Value="= Fields.Periode" Name="textBox2">
+          <Style VerticalAlign="Middle">
+            <Font Size="11pt" Bold="True" />
+          </Style>
+        </TextBox>
+        <Table DataSourceName="sqlDataSource1" Width="12.376in" Height="1.347in" Left="0in" Top="1.5in" ColumnHeadersPrintOnEveryPage="True" Name="table1">
+          <Body>
+            <Cells>
+              <TableCell RowIndex="1" ColumnIndex="0" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.314in" Height="0.24in" Left="0in" Top="0in" Value="" Name="textBox4">
+                    <Style>
+                      <BorderStyle Bottom="Solid" Left="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="1" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="1.026in" Height="0.24in" Left="1.4in" Top="0.4in" Value="= Fields.ServiceUnitName" Name="textBox10" StyleName="">
+                    <Style TextAlign="Right">
+                      <BorderStyle Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                    <ConditionalFormatting>
+                      <FormattingRule>
+                        <Style>
+                          <Font Name="Tahoma" Size="9pt" Bold="True" />
+                        </Style>
+                        <Filters>
+                          <Filter Expression="= Fields.ClassName" Operator="Equal" />
+                        </Filters>
+                      </FormattingRule>
+                      <FormattingRule>
+                        <Style BackgroundColor="Yellow" />
+                        <Filters>
+                          <Filter Expression="= Fields.NameN" Operator="Equal" />
+                        </Filters>
+                      </FormattingRule>
+                    </ConditionalFormatting>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="2" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.902in" Height="0.24in" Left="1.4in" Top="0.4in" Value="=IIF(Fields.ClassName ='', Fields.NameN,Fields.ClassName)" Name="textBox6" StyleName="">
+                    <Style>
+                      <BorderStyle Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                    <ConditionalFormatting>
+                      <FormattingRule>
+                        <Style>
+                          <Font Name="Tahoma" Size="9pt" Bold="True" />
+                        </Style>
+                        <Filters>
+                          <Filter Expression="= Fields.ClassName" Operator="Equal" />
+                        </Filters>
+                      </FormattingRule>
+                      <FormattingRule>
+                        <Style BackgroundColor="Yellow" />
+                        <Filters>
+                          <Filter Expression="= Fields.NameN" Operator="Equal" />
+                        </Filters>
+                      </FormattingRule>
+                    </ConditionalFormatting>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="3" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.508in" Height="0.24in" Left="3.9in" Top="0.4in" Value="= Fields.TT" Format="{0:N0}" Name="textBox34" StyleName="">
+                    <Style TextAlign="Right">
+                      <BorderStyle Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                    <ConditionalFormatting>
+                      <FormattingRule>
+                        <Style>
+                          <Font Name="Tahoma" Size="9pt" Bold="True" />
+                        </Style>
+                        <Filters>
+                          <Filter Expression="= Fields.ClassName" Operator="Equal" />
+                        </Filters>
+                      </FormattingRule>
+                      <FormattingRule>
+                        <Style BackgroundColor="Yellow" />
+                        <Filters>
+                          <Filter Expression="= Fields.NameN" Operator="Equal" />
+                        </Filters>
+                      </FormattingRule>
+                    </ConditionalFormatting>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="5" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.542in" Height="0.24in" Left="3.9in" Top="0.4in" Value="= Fields.sisapasien" Format="{0:N0}" Name="textBox12" StyleName="">
+                    <Style TextAlign="Right">
+                      <BorderStyle Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                    <ConditionalFormatting>
+                      <FormattingRule>
+                        <Style>
+                          <Font Name="Tahoma" Size="9pt" Bold="True" />
+                        </Style>
+                        <Filters>
+                          <Filter Expression="= Fields.ClassName" Operator="Equal" />
+                        </Filters>
+                      </FormattingRule>
+                      <FormattingRule>
+                        <Style BackgroundColor="Yellow" />
+                        <Filters>
+                          <Filter Expression="= Fields.NameN" Operator="Equal" />
+                        </Filters>
+                      </FormattingRule>
+                    </ConditionalFormatting>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="6" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.633in" Height="0.24in" Left="3.9in" Top="0.4in" Value="= Fields.pasienmasuk" Format="{0:N0}" Name="textBox32" StyleName="">
+                    <Style TextAlign="Right">
+                      <BorderStyle Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                    <ConditionalFormatting>
+                      <FormattingRule>
+                        <Style>
+                          <Font Name="Tahoma" Size="9pt" Bold="True" />
+                        </Style>
+                        <Filters>
+                          <Filter Expression="= Fields.ClassName" Operator="Equal" />
+                        </Filters>
+                      </FormattingRule>
+                      <FormattingRule>
+                        <Style BackgroundColor="Yellow" />
+                        <Filters>
+                          <Filter Expression="= Fields.NameN" Operator="Equal" />
+                        </Filters>
+                      </FormattingRule>
+                    </ConditionalFormatting>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="7" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.588in" Height="0.24in" Left="3.9in" Top="0.4in" Value="= Fields.pasienpindahan" Format="{0:N0}" Name="textBox28" StyleName="">
+                    <Style TextAlign="Right">
+                      <BorderStyle Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                    <ConditionalFormatting>
+                      <FormattingRule>
+                        <Style>
+                          <Font Name="Tahoma" Size="9pt" Bold="True" />
+                        </Style>
+                        <Filters>
+                          <Filter Expression="= Fields.ClassName" Operator="Equal" />
+                        </Filters>
+                      </FormattingRule>
+                      <FormattingRule>
+                        <Style BackgroundColor="Yellow" />
+                        <Filters>
+                          <Filter Expression="= Fields.NameN" Operator="Equal" />
+                        </Filters>
+                      </FormattingRule>
+                    </ConditionalFormatting>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="8" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.7in" Height="0.24in" Left="5.4in" Top="0.5in" Value="= Fields.dipindahkan" Format="{0:N0}" Name="textBox58" StyleName="">
+                    <Style TextAlign="Right">
+                      <BorderStyle Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                    <ConditionalFormatting>
+                      <FormattingRule>
+                        <Style>
+                          <Font Name="Tahoma" Size="9pt" Bold="True" />
+                        </Style>
+                        <Filters>
+                          <Filter Expression="= Fields.ClassName" Operator="Equal" />
+                        </Filters>
+                      </FormattingRule>
+                      <FormattingRule>
+                        <Style BackgroundColor="Yellow" />
+                        <Filters>
+                          <Filter Expression="= Fields.NameN" Operator="Equal" />
+                        </Filters>
+                      </FormattingRule>
+                    </ConditionalFormatting>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="9" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.6in" Height="0.24in" Left="5.4in" Top="0.5in" Value="= Fields.pulang" Format="{0:N0}" Name="textBox19" StyleName="">
+                    <Style TextAlign="Right">
+                      <BorderStyle Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                    <ConditionalFormatting>
+                      <FormattingRule>
+                        <Style>
+                          <Font Name="Tahoma" Size="9pt" Bold="True" />
+                        </Style>
+                        <Filters>
+                          <Filter Expression="= Fields.ClassName" Operator="Equal" />
+                        </Filters>
+                      </FormattingRule>
+                      <FormattingRule>
+                        <Style BackgroundColor="Yellow" />
+                        <Filters>
+                          <Filter Expression="= Fields.NameN" Operator="Equal" />
+                        </Filters>
+                      </FormattingRule>
+                    </ConditionalFormatting>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="10" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.475in" Height="0.24in" Left="5.4in" Top="0.5in" Value="= Fields.aps" Format="{0:N0}" Name="textBox44" StyleName="">
+                    <Style TextAlign="Right">
+                      <BorderStyle Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                    <ConditionalFormatting>
+                      <FormattingRule>
+                        <Style>
+                          <Font Name="Tahoma" Size="9pt" Bold="True" />
+                        </Style>
+                        <Filters>
+                          <Filter Expression="= Fields.ClassName" Operator="Equal" />
+                        </Filters>
+                      </FormattingRule>
+                      <FormattingRule>
+                        <Style BackgroundColor="Yellow" />
+                        <Filters>
+                          <Filter Expression="= Fields.NameN" Operator="Equal" />
+                        </Filters>
+                      </FormattingRule>
+                    </ConditionalFormatting>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="11" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.533in" Height="0.24in" Left="5.4in" Top="0.5in" Value="= Fields.rujuk" Format="{0:N0}" Name="textBox40" StyleName="">
+                    <Style TextAlign="Right">
+                      <BorderStyle Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                    <ConditionalFormatting>
+                      <FormattingRule>
+                        <Style>
+                          <Font Name="Tahoma" Size="9pt" Bold="True" />
+                        </Style>
+                        <Filters>
+                          <Filter Expression="= Fields.ClassName" Operator="Equal" />
+                        </Filters>
+                      </FormattingRule>
+                      <FormattingRule>
+                        <Style BackgroundColor="Yellow" />
+                        <Filters>
+                          <Filter Expression="= Fields.NameN" Operator="Equal" />
+                        </Filters>
+                      </FormattingRule>
+                    </ConditionalFormatting>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="12" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.55in" Height="0.24in" Left="5.6in" Top="0.5in" Value="= Fields.Min48" Format="{0:N0}" Name="textBox78" StyleName="">
+                    <Style TextAlign="Right">
+                      <BorderStyle Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                    <ConditionalFormatting>
+                      <FormattingRule>
+                        <Style>
+                          <Font Name="Tahoma" Size="9pt" Bold="True" />
+                        </Style>
+                        <Filters>
+                          <Filter Expression="= Fields.ClassName" Operator="Equal" />
+                        </Filters>
+                      </FormattingRule>
+                      <FormattingRule>
+                        <Style BackgroundColor="Yellow" />
+                        <Filters>
+                          <Filter Expression="= Fields.NameN" Operator="Equal" />
+                        </Filters>
+                      </FormattingRule>
+                    </ConditionalFormatting>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="13" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.567in" Height="0.24in" Left="5.6in" Top="0.5in" Value="= Fields.Up48" Format="{0:N0}" Name="textBox66" StyleName="">
+                    <Style TextAlign="Right">
+                      <BorderStyle Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                    <ConditionalFormatting>
+                      <FormattingRule>
+                        <Style>
+                          <Font Name="Tahoma" Size="9pt" Bold="True" />
+                        </Style>
+                        <Filters>
+                          <Filter Expression="= Fields.ClassName" Operator="Equal" />
+                        </Filters>
+                      </FormattingRule>
+                      <FormattingRule>
+                        <Style BackgroundColor="Yellow" />
+                        <Filters>
+                          <Filter Expression="= Fields.NameN" Operator="Equal" />
+                        </Filters>
+                      </FormattingRule>
+                    </ConditionalFormatting>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="14" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.65in" Height="0.24in" Left="5.6in" Top="0.5in" Value="= Fields.jmPasienKeluar" Format="{0:N0}" Name="textBox76" StyleName="">
+                    <Style TextAlign="Right">
+                      <BorderStyle Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                    <ConditionalFormatting>
+                      <FormattingRule>
+                        <Style>
+                          <Font Name="Tahoma" Size="9pt" Bold="True" />
+                        </Style>
+                        <Filters>
+                          <Filter Expression="= Fields.ClassName" Operator="Equal" />
+                        </Filters>
+                      </FormattingRule>
+                      <FormattingRule>
+                        <Style BackgroundColor="Yellow" />
+                        <Filters>
+                          <Filter Expression="= Fields.NameN" Operator="Equal" />
+                        </Filters>
+                      </FormattingRule>
+                    </ConditionalFormatting>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="15" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.683in" Height="0.24in" Left="4.9in" Top="0.5in" Value="= Fields.LamaRawat" Format="{0:N0}" Name="textBox71" StyleName="">
+                    <Style TextAlign="Right">
+                      <BorderStyle Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                    <ConditionalFormatting>
+                      <FormattingRule>
+                        <Style>
+                          <Font Name="Tahoma" Size="9pt" Bold="True" />
+                        </Style>
+                        <Filters>
+                          <Filter Expression="= Fields.ClassName" Operator="Equal" />
+                        </Filters>
+                      </FormattingRule>
+                      <FormattingRule>
+                        <Style BackgroundColor="Yellow" />
+                        <Filters>
+                          <Filter Expression="= Fields.NameN" Operator="Equal" />
+                        </Filters>
+                      </FormattingRule>
+                    </ConditionalFormatting>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="16" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.667in" Height="0.24in" Left="5.9in" Top="0.5in" Value="= Fields.BOR" Format="{0:N2}" Name="textBox98" StyleName="">
+                    <Style TextAlign="Right">
+                      <BorderStyle Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                    <ConditionalFormatting>
+                      <FormattingRule>
+                        <Style>
+                          <Font Name="Tahoma" Size="9pt" Bold="True" />
+                        </Style>
+                        <Filters>
+                          <Filter Expression="= Fields.ClassName" Operator="Equal" />
+                        </Filters>
+                      </FormattingRule>
+                      <FormattingRule>
+                        <Style BackgroundColor="Yellow" />
+                        <Filters>
+                          <Filter Expression="= Fields.NameN" Operator="Equal" />
+                        </Filters>
+                      </FormattingRule>
+                    </ConditionalFormatting>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="17" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.617in" Height="0.24in" Left="5.9in" Top="0.5in" Value="= Fields.LOS" Format="{0:N2}" Name="textBox81" StyleName="">
+                    <Style TextAlign="Right">
+                      <BorderStyle Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                    <ConditionalFormatting>
+                      <FormattingRule>
+                        <Style>
+                          <Font Name="Tahoma" Size="9pt" Bold="True" />
+                        </Style>
+                        <Filters>
+                          <Filter Expression="= Fields.ClassName" Operator="Equal" />
+                        </Filters>
+                      </FormattingRule>
+                      <FormattingRule>
+                        <Style BackgroundColor="Yellow" />
+                        <Filters>
+                          <Filter Expression="= Fields.NameN" Operator="Equal" />
+                        </Filters>
+                      </FormattingRule>
+                    </ConditionalFormatting>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="19" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.658in" Height="0.24in" Left="5.9in" Top="0.5in" Value="= Fields.BTO" Format="{0:N2}" Name="textBox91" StyleName="">
+                    <Style TextAlign="Right">
+                      <BorderStyle Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                    <ConditionalFormatting>
+                      <FormattingRule>
+                        <Style>
+                          <Font Name="Tahoma" Size="9pt" Bold="True" />
+                        </Style>
+                        <Filters>
+                          <Filter Expression="= Fields.ClassName" Operator="Equal" />
+                        </Filters>
+                      </FormattingRule>
+                      <FormattingRule>
+                        <Style BackgroundColor="Yellow" />
+                        <Filters>
+                          <Filter Expression="= Fields.NameN" Operator="Equal" />
+                        </Filters>
+                      </FormattingRule>
+                    </ConditionalFormatting>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="18" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.575in" Height="0.24in" Left="5.9in" Top="0.5in" Value="= Fields.TOI" Format="{0:N2}" Name="textBox96" StyleName="">
+                    <Style TextAlign="Right">
+                      <BorderStyle Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                    <ConditionalFormatting>
+                      <FormattingRule>
+                        <Style>
+                          <Font Name="Tahoma" Size="9pt" Bold="True" />
+                        </Style>
+                        <Filters>
+                          <Filter Expression="= Fields.ClassName" Operator="Equal" />
+                        </Filters>
+                      </FormattingRule>
+                      <FormattingRule>
+                        <Style BackgroundColor="Yellow" />
+                        <Filters>
+                          <Filter Expression="= Fields.NameN" Operator="Equal" />
+                        </Filters>
+                      </FormattingRule>
+                    </ConditionalFormatting>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="4" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.588in" Height="0.24in" Left="6.7in" Top="0.8in" Value="= Fields.HP" Format="{0:N0}" Name="textBox63" StyleName="">
+                    <Style TextAlign="Right">
+                      <BorderStyle Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                    <ConditionalFormatting>
+                      <FormattingRule>
+                        <Style>
+                          <Font Name="Tahoma" Size="9pt" Bold="True" />
+                        </Style>
+                        <Filters>
+                          <Filter Expression="= Fields.ClassName" Operator="Equal" />
+                        </Filters>
+                      </FormattingRule>
+                      <FormattingRule>
+                        <Style BackgroundColor="Yellow" />
+                        <Filters>
+                          <Filter Expression="= Fields.NameN" Operator="Equal" />
+                        </Filters>
+                      </FormattingRule>
+                    </ConditionalFormatting>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="0" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.314in" Height="0.2in" Left="0in" Top="0in" Value="=RowNumber(&quot;groupID&quot;)" Name="textBox14" StyleName="">
+                    <Style>
+                      <BorderStyle Bottom="Solid" Left="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                    <ConditionalFormatting>
+                      <FormattingRule>
+                        <Style Visible="True" Color="White" />
+                        <Filters>
+                          <Filter Expression="= Fields.GroupID" Operator="Equal" Value="RS" />
+                        </Filters>
+                      </FormattingRule>
+                      <FormattingRule>
+                        <Style Color="White" />
+                        <Filters>
+                          <Filter Expression="= Fields.NameN" Operator="Equal" />
+                        </Filters>
+                      </FormattingRule>
+                    </ConditionalFormatting>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="1" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="1.026in" Height="0.2in" Left="0in" Top="0in" Value="=NameN" Name="textBox15" StyleName="">
+                    <Style>
+                      <BorderStyle Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="2" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.902in" Height="0.2in" Left="0in" Top="0in" Name="textBox16" StyleName="">
+                    <Style>
+                      <BorderStyle Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="3" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.508in" Height="0.2in" Left="0in" Top="0in" Name="textBox18" StyleName="">
+                    <Style TextAlign="Right">
+                      <BorderStyle Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="4" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.588in" Height="0.2in" Left="0in" Top="0in" Name="textBox20" StyleName="">
+                    <Style TextAlign="Right">
+                      <BorderStyle Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="5" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.542in" Height="0.2in" Left="0in" Top="0in" Name="textBox22" StyleName="">
+                    <Style TextAlign="Right">
+                      <BorderStyle Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="6" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.633in" Height="0.2in" Left="0in" Top="0in" Name="textBox23" StyleName="">
+                    <Style TextAlign="Right">
+                      <BorderStyle Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="7" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.588in" Height="0.2in" Left="0in" Top="0in" Name="textBox24" StyleName="">
+                    <Style TextAlign="Right">
+                      <BorderStyle Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="8" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.7in" Height="0.2in" Left="0in" Top="0in" Name="textBox26" StyleName="">
+                    <Style TextAlign="Right">
+                      <BorderStyle Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="9" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.6in" Height="0.2in" Left="0in" Top="0in" Name="textBox29" StyleName="">
+                    <Style TextAlign="Right">
+                      <BorderStyle Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="10" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.475in" Height="0.2in" Left="0in" Top="0in" Name="textBox31" StyleName="">
+                    <Style TextAlign="Right">
+                      <BorderStyle Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="11" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.533in" Height="0.2in" Left="0in" Top="0in" Name="textBox33" StyleName="">
+                    <Style TextAlign="Right">
+                      <BorderStyle Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="12" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.55in" Height="0.2in" Left="0in" Top="0in" Name="textBox35" StyleName="">
+                    <Style TextAlign="Right">
+                      <BorderStyle Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="13" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.567in" Height="0.2in" Left="0in" Top="0in" Name="textBox37" StyleName="">
+                    <Style TextAlign="Right">
+                      <BorderStyle Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="14" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.65in" Height="0.2in" Left="0in" Top="0in" Name="textBox38" StyleName="">
+                    <Style TextAlign="Right">
+                      <BorderStyle Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="15" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.683in" Height="0.2in" Left="0in" Top="0in" Name="textBox39" StyleName="">
+                    <Style TextAlign="Right">
+                      <BorderStyle Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="16" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.667in" Height="0.2in" Left="0in" Top="0in" Name="textBox41" StyleName="">
+                    <Style TextAlign="Right">
+                      <BorderStyle Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="17" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.617in" Height="0.2in" Left="0in" Top="0in" Name="textBox42" StyleName="">
+                    <Style TextAlign="Right">
+                      <BorderStyle Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="18" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.575in" Height="0.2in" Left="0in" Top="0in" Name="textBox43" StyleName="">
+                    <Style TextAlign="Right">
+                      <BorderStyle Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="19" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.658in" Height="0.2in" Left="0in" Top="0in" Name="textBox45" StyleName="">
+                    <Style TextAlign="Right">
+                      <BorderStyle Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+            </Cells>
+            <Columns>
+              <Column Width="0.314in" />
+              <Column Width="1.026in" />
+              <Column Width="0.902in" />
+              <Column Width="0.508in" />
+              <Column Width="0.588in" />
+              <Column Width="0.542in" />
+              <Column Width="0.633in" />
+              <Column Width="0.588in" />
+              <Column Width="0.7in" />
+              <Column Width="0.6in" />
+              <Column Width="0.475in" />
+              <Column Width="0.533in" />
+              <Column Width="0.55in" />
+              <Column Width="0.567in" />
+              <Column Width="0.65in" />
+              <Column Width="0.683in" />
+              <Column Width="0.667in" />
+              <Column Width="0.617in" />
+              <Column Width="0.575in" />
+              <Column Width="0.658in" />
+            </Columns>
+            <Rows>
+              <Row Height="0.2in" />
+              <Row Height="0.24in" />
+            </Rows>
+          </Body>
+          <Corner />
+          <RowGroups>
+            <TableGroup Name="itemID">
+              <ChildGroups>
+                <TableGroup Name="serviceUnitID">
+                  <ChildGroups>
+                    <TableGroup Name="groupID">
+                      <ChildGroups>
+                        <TableGroup Name="serviceUnitName">
+                          <ChildGroups>
+                            <TableGroup Name="group" />
+                            <TableGroup Name="detailTableGroup">
+                              <Groupings>
+                                <Grouping />
+                              </Groupings>
+                            </TableGroup>
+                          </ChildGroups>
+                          <Groupings>
+                            <Grouping Expression="= Fields.ServiceUnitID" />
+                          </Groupings>
+                          <Sortings>
+                            <Sorting Expression="= Fields.ServiceUnitID" Direction="Asc" />
+                            <Sorting Expression="= Fields.ClassID" Direction="Asc" />
+                          </Sortings>
+                        </TableGroup>
+                      </ChildGroups>
+                      <Groupings>
+                        <Grouping Expression="= Fields.GroupID" />
+                      </Groupings>
+                      <Sortings>
+                        <Sorting Expression="= Fields.GroupID" Direction="Asc" />
+                      </Sortings>
+                    </TableGroup>
+                  </ChildGroups>
+                </TableGroup>
+              </ChildGroups>
+            </TableGroup>
+          </RowGroups>
+          <ColumnGroups>
+            <TableGroup Name="tableGroup">
+              <ReportItem>
+                <TextBox Width="0.314in" Height="0.907in" Left="0in" Top="0in" Value="No." Name="textBox3">
+                  <Style TextAlign="Center" VerticalAlign="Middle">
+                    <Font Bold="True" />
+                    <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+                    <BorderWidth Default="0.5pt" Top="1pt" Bottom="1pt" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup Name="tableGroup1">
+              <ReportItem>
+                <TextBox Width="1.026in" Height="0.907in" Left="0in" Top="0in" Value="Ruangan" Name="textBox5">
+                  <Style TextAlign="Center" VerticalAlign="Middle">
+                    <Font Bold="True" />
+                    <BorderStyle Top="Solid" Bottom="Solid" Right="Solid" />
+                    <BorderWidth Default="0.5pt" Top="1pt" Bottom="1pt" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup Name="tableGroup2">
+              <ReportItem>
+                <TextBox Width="0.902in" Height="0.907in" Left="0in" Top="0in" Value="Kelas" Name="textBox7">
+                  <Style TextAlign="Center" VerticalAlign="Middle">
+                    <Font Bold="True" />
+                    <BorderStyle Top="Solid" Bottom="Solid" Right="Solid" />
+                    <BorderWidth Default="0.5pt" Top="1pt" Bottom="1pt" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup Name="group2">
+              <ReportItem>
+                <TextBox Width="0.508in" Height="0.907in" Left="0in" Top="0in" Value="TT" Name="textBox8" StyleName="">
+                  <Style TextAlign="Center" VerticalAlign="Middle">
+                    <Font Bold="True" />
+                    <BorderStyle Top="Solid" Bottom="Solid" Right="Solid" />
+                    <BorderWidth Default="0.5pt" Top="1pt" Bottom="1pt" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup Name="group7">
+              <ReportItem>
+                <TextBox Width="0.588in" Height="0.907in" Left="0in" Top="0in" Value="HP" Name="textBox52" StyleName="">
+                  <Style TextAlign="Center" VerticalAlign="Middle">
+                    <Font Bold="True" />
+                    <BorderStyle Top="Solid" Bottom="Solid" Right="Solid" />
+                    <BorderWidth Default="0.5pt" Top="1pt" Bottom="1pt" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup Name="group6">
+              <ReportItem>
+                <TextBox Width="0.542in" Height="0.907in" Left="0in" Top="0in" Value="Sisa Pasien" Name="textBox30" StyleName="">
+                  <Style TextAlign="Center" VerticalAlign="Middle">
+                    <Font Bold="True" />
+                    <BorderStyle Top="Solid" Bottom="Solid" Right="Solid" />
+                    <BorderWidth Default="0.5pt" Top="1pt" Bottom="1pt" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup Name="group5">
+              <ReportItem>
+                <TextBox Width="0.633in" Height="0.907in" Left="0in" Top="0in" Value="Pasien Masuk" Name="textBox25" StyleName="">
+                  <Style TextAlign="Center" VerticalAlign="Middle">
+                    <Font Bold="True" />
+                    <BorderStyle Top="Solid" Bottom="Solid" Right="Solid" />
+                    <BorderWidth Default="0.5pt" Top="1pt" Bottom="1pt" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup Name="group4">
+              <ReportItem>
+                <TextBox Width="0.588in" Height="0.907in" Left="0in" Top="0in" Value="Pasien Pindahan" Name="textBox21" StyleName="">
+                  <Style TextAlign="Center" VerticalAlign="Middle">
+                    <Font Bold="True" />
+                    <BorderStyle Top="Solid" Bottom="Solid" Right="Solid" />
+                    <BorderWidth Default="0.5pt" Top="1pt" Bottom="1pt" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup Name="group3">
+              <ReportItem>
+                <TextBox Width="4.075in" Height="0.24in" Left="0in" Top="0in" Value="P a s i e n   K e l u a r" Name="textBox17" StyleName="">
+                  <Style TextAlign="Center" VerticalAlign="Middle">
+                    <Font Bold="True" />
+                    <BorderStyle Top="Solid" Bottom="Solid" Right="Solid" />
+                    <BorderWidth Default="0.5pt" Top="1pt" Bottom="1pt" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+              <ChildGroups>
+                <TableGroup Name="group17">
+                  <ReportItem>
+                    <TextBox Width="0.7in" Height="0.667in" Left="0in" Top="0in" Value="Dipindahkan" Name="textBox54" StyleName="">
+                      <Style TextAlign="Center" VerticalAlign="Middle">
+                        <Font Bold="True" />
+                        <BorderStyle Bottom="Solid" Right="Solid" />
+                        <BorderWidth Default="0.5pt" Bottom="1pt" />
+                      </Style>
+                    </TextBox>
+                  </ReportItem>
+                </TableGroup>
+                <TableGroup Name="group18">
+                  <ReportItem>
+                    <TextBox Width="0.6in" Height="0.667in" Left="0in" Top="0in" Value="Pulang" Name="textBox55" StyleName="">
+                      <Style TextAlign="Center" VerticalAlign="Middle">
+                        <Font Bold="True" />
+                        <BorderStyle Bottom="Solid" Right="Solid" />
+                        <BorderWidth Default="0.5pt" Bottom="1pt" />
+                      </Style>
+                    </TextBox>
+                  </ReportItem>
+                </TableGroup>
+                <TableGroup Name="group19">
+                  <ReportItem>
+                    <TextBox Width="0.475in" Height="0.667in" Left="0in" Top="0in" Value="APS" Name="textBox56" StyleName="">
+                      <Style TextAlign="Center" VerticalAlign="Middle">
+                        <Font Bold="True" />
+                        <BorderStyle Bottom="Solid" Right="Solid" />
+                        <BorderWidth Default="0.5pt" Bottom="1pt" />
+                      </Style>
+                    </TextBox>
+                  </ReportItem>
+                </TableGroup>
+                <TableGroup Name="group20">
+                  <ReportItem>
+                    <TextBox Width="0.533in" Height="0.667in" Left="0in" Top="0in" Value="Rujuk" Name="textBox57" StyleName="">
+                      <Style TextAlign="Center" VerticalAlign="Middle">
+                        <Font Bold="True" />
+                        <BorderStyle Bottom="Solid" Right="Solid" />
+                        <BorderWidth Default="0.5pt" Bottom="1pt" />
+                      </Style>
+                    </TextBox>
+                  </ReportItem>
+                </TableGroup>
+                <TableGroup Name="group24">
+                  <ReportItem>
+                    <TextBox Width="0.55in" Height="0.667in" Left="0in" Top="0in" Value="+ &#xD;&#xA;&lt;48" Name="textBox64" StyleName="">
+                      <Style TextAlign="Center" VerticalAlign="Middle">
+                        <Font Bold="True" />
+                        <BorderStyle Bottom="Solid" Right="Solid" />
+                        <BorderWidth Default="0.5pt" Bottom="1pt" />
+                      </Style>
+                    </TextBox>
+                  </ReportItem>
+                </TableGroup>
+                <TableGroup Name="group28">
+                  <ReportItem>
+                    <TextBox Width="0.567in" Height="0.667in" Left="0in" Top="0in" Value="+&#xD;&#xA;&gt;48" Name="textBox74" StyleName="">
+                      <Style TextAlign="Center" VerticalAlign="Middle">
+                        <Font Bold="True" />
+                        <BorderStyle Bottom="Solid" Right="Solid" />
+                        <BorderWidth Default="0.5pt" Bottom="1pt" />
+                      </Style>
+                    </TextBox>
+                  </ReportItem>
+                </TableGroup>
+                <TableGroup Name="group26">
+                  <ReportItem>
+                    <TextBox Width="0.65in" Height="0.667in" Left="0in" Top="0in" Value="Jml. Pasien Keluar" Name="textBox69" StyleName="">
+                      <Style TextAlign="Center" VerticalAlign="Middle">
+                        <Font Bold="True" />
+                        <BorderStyle Bottom="Solid" Right="Solid" />
+                        <BorderWidth Default="0.5pt" Bottom="1pt" />
+                      </Style>
+                    </TextBox>
+                  </ReportItem>
+                </TableGroup>
+              </ChildGroups>
+            </TableGroup>
+            <TableGroup Name="group21">
+              <ReportItem>
+                <TextBox Width="0.683in" Height="0.907in" Left="0in" Top="0in" Value="Lama Rawat" Name="textBox36" StyleName="">
+                  <Style TextAlign="Center" VerticalAlign="Middle">
+                    <Font Bold="True" />
+                    <BorderStyle Top="Solid" Bottom="Solid" Right="Solid" />
+                    <BorderWidth Default="0.5pt" Top="1pt" Bottom="1pt" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup Name="group29">
+              <ReportItem>
+                <TextBox Width="0.667in" Height="0.907in" Left="0in" Top="0in" Value="BOR" Name="textBox61" StyleName="">
+                  <Style TextAlign="Center" VerticalAlign="Middle">
+                    <Font Bold="True" />
+                    <BorderStyle Top="Solid" Bottom="Solid" Right="Solid" />
+                    <BorderWidth Default="0.5pt" Top="1pt" Bottom="1pt" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup Name="group33">
+              <ReportItem>
+                <TextBox Width="0.617in" Height="0.907in" Left="0in" Top="0in" Value="LOS" Name="textBox88" StyleName="">
+                  <Style TextAlign="Center" VerticalAlign="Middle">
+                    <Font Bold="True" />
+                    <BorderStyle Top="Solid" Bottom="Solid" Right="Solid" />
+                    <BorderWidth Default="0.5pt" Top="1pt" Bottom="1pt" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup Name="group31">
+              <ReportItem>
+                <TextBox Width="0.575in" Height="0.907in" Left="0in" Top="0in" Value="TOI" Name="textBox83" StyleName="">
+                  <Style TextAlign="Center" VerticalAlign="Middle">
+                    <Font Bold="True" />
+                    <BorderStyle Top="Solid" Bottom="Solid" Right="Solid" />
+                    <BorderWidth Default="0.5pt" Top="1pt" Bottom="1pt" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup Name="group35">
+              <ReportItem>
+                <TextBox Width="0.658in" Height="0.907in" Left="0in" Top="0in" Value="BTO" Name="textBox93" StyleName="">
+                  <Style TextAlign="Center" VerticalAlign="Middle">
+                    <Font Bold="True" />
+                    <BorderStyle Top="Solid" Bottom="Solid" Right="Solid" />
+                    <BorderWidth Default="0.5pt" Top="1pt" Bottom="1pt" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+          </ColumnGroups>
+        </Table>
+      </Items>
+    </ReportHeaderSection>
+  </Items>
+  <PageSettings PaperKind="Folio" Landscape="True" ColumnCount="1" ColumnSpacing="0in" ContinuousPaper="False">
+    <Margins>
+      <MarginsU Left="0.3in" Right="0.3in" Top="1cm" Bottom="0.3in" />
+    </Margins>
+  </PageSettings>
+  <StyleSheet>
+    <StyleRule>
+      <Style>
+        <Padding Left="2pt" Right="2pt" />
+      </Style>
+      <Selectors>
+        <TypeSelector Type="TextItemBase" />
+        <TypeSelector Type="HtmlTextBox" />
+      </Selectors>
+    </StyleRule>
+  </StyleSheet>
+</Report>

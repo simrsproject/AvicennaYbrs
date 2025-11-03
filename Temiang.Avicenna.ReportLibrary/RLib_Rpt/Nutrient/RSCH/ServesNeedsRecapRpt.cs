@@ -1,0 +1,18 @@
+namespace Temiang.Avicenna.ReportLibrary.RLib_Rpt.Nutrient.RSCH
+{
+    using Temiang.Avicenna.BusinessObject;
+    using Temiang.Avicenna.BusinessObject.Util;
+
+    public partial class ServesNeedsRecapRpt : Telerik.Reporting.Report
+    {
+        public ServesNeedsRecapRpt(string programID, PrintJobParameterCollection printJobParameters)
+        {
+            InitializeComponent();
+
+            Helper.InitializeLogo(this.pageHeaderSection1);
+
+            DataSource = new ReportDataSource().GetDataTable(programID, printJobParameters);
+            crosstab1.DataSource = DataSource;
+        }
+    }
+}

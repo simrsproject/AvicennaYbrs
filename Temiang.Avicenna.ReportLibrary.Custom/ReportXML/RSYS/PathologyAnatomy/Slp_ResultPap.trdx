@@ -1,0 +1,1046 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report DataSourceName="sqlDataSource1" Width="7.66468175252279in" Name="userReport1" xmlns="http://schemas.telerik.com/reporting/2012/2">
+  <Style>
+    <Font Name="Tahoma" />
+  </Style>
+  <DataSources>
+    <SqlDataSource ConnectionString="Data Source=IMEL-PC;Initial Catalog=AVICENNA_LIVE;Integrated Security=True" ProviderName="System.Data.SqlClient" SelectCommand="dbo.spslp_xml_PathologyAnatomyResult2" SelectCommandType="StoredProcedure" Name="sqlDataSource1">
+      <Parameters>
+        <SqlDataSourceParameter DbType="AnsiString" Name="@p_ResultNo">
+          <Value>
+            <String>PAP/2016/00003</String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="AnsiString" Name="@p_UserID">
+          <Value>
+            <String>sci</String>
+          </Value>
+        </SqlDataSourceParameter>
+      </Parameters>
+    </SqlDataSource>
+  </DataSources>
+  <Items>
+    <PageFooterSection Height="0.28125in" Name="pageFooter">
+      <Items>
+        <TextBox Value="=NOW()" Format="Avicenna HIS, Print Date : {0:dd-MM-yyyy HH:mm}" Size="3.19791666666667in, 0.200000027815501in" Location="0.0208333333333333in, 0.0208333333333333in" Name="currentTimeTextBox" StyleName="PageInfo">
+          <Style>
+            <BorderStyle Top="Solid" />
+            <BorderWidth Default="0.5pt" />
+            <Font Italic="True" />
+          </Style>
+        </TextBox>
+        <TextBox Value="= &quot;Page : &quot; + PageNumber + &quot;/&quot; + PageCount" Size="2.36468124389648in, 0.200000027815501in" Location="5.3000005086263in, 0.0208333333333333in" Name="pageInfoTextBox" StyleName="PageInfo">
+          <Style TextAlign="Right">
+            <BorderStyle Top="Solid" />
+            <BorderWidth Default="0.5pt" />
+            <Font Italic="True" />
+            <Padding Right="1mm" />
+          </Style>
+        </TextBox>
+        <TextBox Value="= Fields.PrintedBy" Size="2.08109283447266in, 0.200000032782555in" Location="3.21882883707682in, 0.0208333333333333in" Name="textBox34" StyleName="PageInfo">
+          <Style TextAlign="Left" VerticalAlign="Middle">
+            <BorderStyle Top="Solid" />
+            <BorderWidth Default="0.5pt" />
+            <Font Italic="True" />
+          </Style>
+        </TextBox>
+      </Items>
+    </PageFooterSection>
+    <ReportHeaderSection Height="1.67855113744736in" Name="reportHeader">
+      <Items>
+        <TextBox Value="=Fields.RptName" CanGrow="False" Size="7.58140246073405in, 0.200000027815501in" Location="0.0309120814005534in, 0in" Name="rptNameDataTextBox" StyleName="Data">
+          <Style TextAlign="Center">
+            <Font Size="11pt" Bold="True" Underline="True" />
+          </Style>
+        </TextBox>
+        <TextBox Value="" Size="0.0520833333333333in, 1.12631018956502in" Location="0.0208333333333333in, 0.299999952316284in" Name="textBox1">
+          <Style>
+            <BorderStyle Left="Solid" />
+          </Style>
+        </TextBox>
+        <TextBox Value="" Size="0.0520833333333333in, 1.13in" Location="7.61255884170532in, 0.300078709920247in" Name="textBox2">
+          <Style>
+            <BorderStyle Left="Solid" />
+          </Style>
+        </TextBox>
+        <TextBox Value="" Size="7.59164683024089in, 0.0520833333333333in" Location="0.0208333333333333in, 0.247916698455811in" Name="textBox3">
+          <Style>
+            <BorderStyle Bottom="Solid" Left="None" />
+          </Style>
+        </TextBox>
+        <TextBox Value="" Size="7.59164667129517in, 0.0520833333333333in" Location="0.0208333333333333in, 1.42638889948527in" Name="textBox4">
+          <Style>
+            <BorderStyle Top="Solid" Bottom="None" Left="None" Right="None" />
+          </Style>
+        </TextBox>
+        <TextBox Value="(BETHESDA SYSTEM 2001)" CanGrow="True" Size="2.50000063578288in, 0.200000032782555in" Location="2.60000014305115in, 1.47855106989543in" Name="textBox10" StyleName="Caption">
+          <Style TextAlign="Center">
+            <Font Size="11pt" Bold="True" />
+          </Style>
+        </TextBox>
+        <TextBox Value="=Fields.DateOfBirth" Format=": {0:dd-MMM-yyyy}" CanGrow="False" Size="0.893788894017537in, 0.2in" Location="5.3062121073405in, 0.801925659179688in" Name="textBox5" />
+        <TextBox Value="No. Slide / No. Periksa" CanGrow="True" Size="1.3039710521698in, 0.195883646607399in" Location="4in, 1.20208342870076in" Name="textBox9" StyleName="Caption">
+          <Style TextAlign="Left">
+            <Font Size="9pt" />
+          </Style>
+        </TextBox>
+        <TextBox Value="Doctor / Dokter" CanGrow="True" Size="1.30613377379874in, 0.200000032782555in" Location="3.99999989382923in, 0.397837917009989in" Name="textBox8" StyleName="Caption">
+          <Style TextAlign="Left">
+            <Font Size="9pt" />
+          </Style>
+        </TextBox>
+        <TextBox Value="Unit / Ruangan" CanGrow="True" Size="1.17908775806427in, 0.200000032782555in" Location="0.218711535135905in, 1in" Name="textBox7" StyleName="Caption">
+          <Style TextAlign="Left">
+            <Font Size="9pt" />
+          </Style>
+        </TextBox>
+        <TextBox Value="=Fields.OrderDate" Format=": {0:dd-MMM-yyyy}" CanGrow="False" Size="1.99992112318675in, 0.200000032782555in" Location="1.39787801106771in, 0.397838115692139in" Name="textBox6" StyleName="Data">
+          <Style>
+            <Font Size="9pt" />
+          </Style>
+        </TextBox>
+        <TextBox Value="Date / Tanggal" CanGrow="True" Size="1.17908775806427in, 0.200000032782555in" Location="0.218711535135905in, 0.397838115692139in" Name="textBox35" StyleName="Caption">
+          <Style TextAlign="Left">
+            <Font Size="9pt" />
+          </Style>
+        </TextBox>
+        <TextBox Value="=Fields.MedicalNo" Format=":  {0}" CanGrow="False" Size="1.99992120265961in, 0.200000032782555in" Location="1.39787785212199in, 0.600000262260437in" Name="transactionNoDataTextBox" StyleName="Data">
+          <Style>
+            <Font Size="9pt" />
+          </Style>
+        </TextBox>
+        <TextBox Value="MRN / No. RM" CanGrow="True" Size="1.17908775806427in, 0.200000032782555in" Location="0.218711316585541in, 0.600000262260437in" Name="transactionNoCaptionTextBox" StyleName="Caption">
+          <Style TextAlign="Left">
+            <Font Size="9pt" />
+          </Style>
+        </TextBox>
+        <TextBox Value="Reg No. / No. Reg" CanGrow="True" Size="1.17908775806427in, 0.200000032782555in" Location="0.218711316585541in, 0.800000031789144in" Name="registrationNoCaptionTextBox" StyleName="Caption">
+          <Style TextAlign="Left">
+            <Font Size="9pt" />
+          </Style>
+        </TextBox>
+        <TextBox Value="DoB / Tgl. Lahir" CanGrow="True" Size="1.30613411776721in, 0.200000032782555in" Location="4in, 0.801925579706828in" Name="dateOfCompletionCaptionTextBox" StyleName="Caption">
+          <Style TextAlign="Left">
+            <Font Size="9pt" />
+          </Style>
+        </TextBox>
+        <TextBox Value="Sex / Jenis Kelamin" CanGrow="True" Size="1.30196650822957in, 0.200000032782555in" Location="4in, 1.00200446446737in" Name="orderDateCaptionTextBox" StyleName="Caption">
+          <Style TextAlign="Left">
+            <Font Size="9pt" />
+          </Style>
+        </TextBox>
+        <TextBox Value="=Fields.ResultNo" Format=": {0}" CanGrow="False" Size="2.13533759117126in, 0.195883750915527in" Location="5.30412864685059in, 1.20208342870076in" Name="resultNoDataTextBox" StyleName="Data">
+          <Style>
+            <Font Size="9pt" />
+          </Style>
+        </TextBox>
+        <TextBox Value="=Fields.Gender" Format=": {0}" CanGrow="False" Size="1.93117105960846in, 0.197995616278301in" Location="5.30621306101481in, 1.00200446446737in" Name="genderDataTextBox" StyleName="Data">
+          <Style>
+            <Font Size="9pt" />
+          </Style>
+        </TextBox>
+        <TextBox Value="=Fields.Age" Format="/ {0}" CanGrow="False" Size="1.30613199869792in, 0.201925655206045in" Location="6.20007960001628in, 0.800000031789144in" Name="ageDataTextBox" StyleName="Data">
+          <Style>
+            <Font Size="9pt" />
+          </Style>
+        </TextBox>
+        <TextBox Value="=Fields.PhysicianSenders" Format=": {0}" CanGrow="False" Size="2.1999990940094in, 0.200000032782555in" Location="5.30621242523193in, 0.397837917009989in" Name="paramedicNameDataTextBox" StyleName="Data">
+          <Style>
+            <Font Size="9pt" />
+          </Style>
+        </TextBox>
+        <TextBox Value="=Fields.GuarantorName" Format=":  {0}" CanGrow="False" CanShrink="True" Size="2.59783816337585in, 0.202004671096802in" Location="1.39787753423055in, 1.20007872581482in" Name="guarantorNameDataTextBox" StyleName="Data">
+          <Style VerticalAlign="Top">
+            <Font Size="9pt" />
+            <Padding Right="1mm" Top="0in" />
+          </Style>
+        </TextBox>
+        <TextBox Value="Company / Instansi" CanGrow="False" CanShrink="True" Size="1.17908787727356in, 0.200000032782555in" Location="0.21871143579483in, 1.20208342870076in" Name="guarantorNameCaptionTextBox" StyleName="Caption">
+          <Style TextAlign="Left">
+            <Font Size="9pt" />
+          </Style>
+        </TextBox>
+        <TextBox Value="=Fields.RoomID" Format=":  {0}" CanGrow="False" Size="2.60204315185547in, 0.200000032782555in" Location="1.39787785212199in, 1.00007891654968in" Name="roomIDDataTextBox" StyleName="Data">
+          <Style>
+            <Font Size="9pt" />
+            <Padding Right="1mm" />
+          </Style>
+        </TextBox>
+        <TextBox Value="=Fields.PatientName" Format=": {0}" CanGrow="False" Size="2.19999957084656in, 0.195754481789966in" Location="5.30621242523193in, 0.600000262260437in" Name="patientNameDataTextBox" StyleName="Data">
+          <Style>
+            <Font Size="9pt" />
+          </Style>
+        </TextBox>
+        <TextBox Value="Patient / Nama Pasien" CanGrow="True" Size="1.30613382657369in, 0.200000032782555in" Location="4.00000010617077in, 0.597916762034098in" Name="patientNameCaptionTextBox" StyleName="Caption">
+          <Style TextAlign="Left">
+            <Font Size="9pt" />
+          </Style>
+        </TextBox>
+        <TextBox Value="=Fields.RegistrationNo" Format=":  {0}" CanGrow="False" Size="2.59783816337585in, 0.200000032782555in" Location="1.39787781238556in, 0.800079107284546in" Name="medicalNoDataTextBox" StyleName="Data">
+          <Style>
+            <Font Size="9pt" />
+            <Padding Right="1mm" />
+          </Style>
+        </TextBox>
+      </Items>
+    </ReportHeaderSection>
+    <ReportFooterSection Height="0.0520833333333333in" Name="reportFooter" />
+    <DetailSection Height="8.55216407775879in" Name="detail">
+      <Items>
+        <CheckBox Text="Memenuhi syarat untuk evaluasi" CheckAlign="TopLeft" CanGrow="False" Size="3.7483336130778in, 0.200000127156576in" Location="0.120912075042725in, 0.200118064880371in" Name="checkBox1">
+          <Style>
+            <Font Size="9pt" />
+            <Padding Left="0in" />
+          </Style>
+          <UncheckedImage>
+            <ImageSource Image="Qk1GBQAAAAAAADYAAAAoAAAAGAAAABIAAAABABgAAAAAAAAAAADEDgAAxA4AAAAAAAAAAAAA////8vLysbGxqKiop6enqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiop6enqKior6+v5OTk////////////////////////2traPDw8R0dHU1NTUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRU1NTR0dHOjo6u7u7////////////////////////19fXQ0NDtbW15ubm5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5ubmurq6RUVFurq6////////////////////////1tbWQ0NDysrK////////////////////////////////////////////////0dHRRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCycnJ////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxMTE////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////////////////////////////////////////////////zc3NRUVFurq6////////////////////////19fXREREyMjI////////////////////////////////////////////////z8/PR0dHurq6////////////////////////1tbWOTk5ZWVlg4ODfn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+goKCZ2dnODg4t7e3////////////////////////7u7ueHh4bGxsampqa2tra2tra2tra2tra2tra2tra2tra2tra2tra2trampqampqdnZ21dXV/////////////////////////v7+9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0+/v7////////////////////" />
+          </UncheckedImage>
+          <CheckedImage>
+            <ImageSource Image="Qk1GBQAAAAAAADYAAAAoAAAAGAAAABIAAAABABgAAAAAAAAAAADEDgAAxA4AAAAAAAAAAAAA////8vLysbGxqKiop6enqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiop6enqKior6+v5OTk////////////////////////2traPDw8R0dHU1NTUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRU1NTR0dHOjo6u7u7////////////////////////19fXQ0NDtbW15ubm5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5ubmurq6RUVFurq6////////////////////////1tbWQ0NDysrK////////////////////////////////////////////////0dHRRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////39/f/v7+////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////sLCwR0dHp6en////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////srKyPz8/Q0NDPDw8qKio////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxcXF////pqamMTExd3d33NzcgICAMDAwpqam////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////hoaGcHBw7+/v////8/PzfHx8MDAwpKSk////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////8/Pz9PT0////////////9fX1fX19MDAwoqKi////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////+Pj4f39/Li4umZmZ/f39zc3NRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////9/f3fX19gICA+fn5zs7ORUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////+Pj49fX1////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////////////////////////////////////////////////zc3NRUVFurq6////////////////////////19fXREREyMjI////////////////////////////////////////////////z8/PR0dHurq6////////////////////////1tbWOTk5ZWVlg4ODfn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+goKCZ2dnODg4t7e3////////////////////////7u7ueHh4bGxsampqa2tra2tra2tra2tra2tra2tra2tra2tra2tra2trampqampqdnZ21dXV/////////////////////////v7+9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0+/v7////////////////////" />
+          </CheckedImage>
+          <Value>
+            <String>= IIF(Fields.IsEligibleAdequacyOfTheSpecimen = 1,'True','False')</String>
+          </Value>
+          <FalseValue>
+            <String>False</String>
+          </FalseValue>
+          <TrueValue>
+            <String>True</String>
+          </TrueValue>
+        </CheckBox>
+        <TextBox Value="ADEKUASI SPESIMEN&#xD;&#xA;" CanGrow="True" Size="1.90000021457672in, 0.200000032782555in" Location="0.120912194252014in, 0.00003933906555176in" Name="textBox11" StyleName="Caption">
+          <Style TextAlign="Left">
+            <Font Size="9pt" Bold="True" />
+          </Style>
+        </TextBox>
+        <TextBox Value="DIAGNOSIS DESKRIPTIF" CanGrow="False" Multiline="False" Size="2.70408837000529in, 0.200000032782555in" Location="0.120911955833435in, 0.500118255615234in" Name="textBox12" StyleName="Caption">
+          <Style TextAlign="Left">
+            <Font Size="9pt" Bold="True" />
+          </Style>
+        </TextBox>
+        <TextBox Value="PERUBAHAN SELULER JINAK" CanGrow="False" Multiline="False" Size="3.83833312988281in, 0.39992101987203in" Location="0.0309122800827026in, 0.700197219848633in" Name="textBox13" StyleName="Caption">
+          <Style TextAlign="Center">
+            <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+            <Font Bold="True" />
+          </Style>
+        </TextBox>
+        <TextBox Value="ABNORMALITAS SEL EPITHEL" CanGrow="False" Multiline="False" Size="3.74315547943115in, 0.39992101987203in" Location="3.86932444572449in, 0.700197219848633in" Name="textBox14" StyleName="Caption">
+          <Style TextAlign="Center">
+            <BorderStyle Top="Solid" Bottom="Solid" Left="None" Right="Solid" />
+            <Font Bold="True" />
+          </Style>
+        </TextBox>
+        <TextBox Value="" Size="0.00999999977648258in, 5.85374069213867in" Location="0.0225695098439852in, 1.10495011011759in" Name="textBox15">
+          <Style>
+            <BorderStyle Left="None" Right="Solid" />
+          </Style>
+        </TextBox>
+        <TextBox Value="" Size="0.0520833333333333in, 5.85374196370443in" Location="7.61259841918945in, 1.10494995117188in" Name="textBox16">
+          <Style>
+            <BorderStyle Left="Solid" />
+          </Style>
+        </TextBox>
+        <TextBox Value="" CanGrow="False" Size="0.0520833333333333in, 4.99992116292318in" Location="3.86932468414307in, 1.10011839866638in" Name="textBox17">
+          <Style>
+            <BorderStyle Left="Solid" />
+          </Style>
+        </TextBox>
+        <TextBox Value="INFEKSI" CanGrow="False" Size="2.70408844947815in, 0.200000032782555in" Location="0.220990970730782in, 1.10011863708496in" Name="textBox18" StyleName="Caption">
+          <Style TextAlign="Left">
+            <Font Bold="True" />
+          </Style>
+        </TextBox>
+        <TextBox Value="SEL SKUAMOSA" CanGrow="False" Size="2.70408852895101in, 0.200000032782555in" Location="3.97976183891296in, 1.10011863708496in" Name="textBox19" StyleName="Caption">
+          <Style TextAlign="Left">
+            <Font Bold="True" />
+          </Style>
+        </TextBox>
+        <CheckBox Text="Candida / Monilia" CheckAlign="TopLeft" CanGrow="False" Size="3.64825463294983in, 0.200000122189522in" Location="0.220990970730782in, 1.50027656555176in" Name="checkBox4">
+          <UncheckedImage>
+            <ImageSource Image="Qk1GBQAAAAAAADYAAAAoAAAAGAAAABIAAAABABgAAAAAAAAAAADEDgAAxA4AAAAAAAAAAAAA////8vLysbGxqKiop6enqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiop6enqKior6+v5OTk////////////////////////2traPDw8R0dHU1NTUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRU1NTR0dHOjo6u7u7////////////////////////19fXQ0NDtbW15ubm5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5ubmurq6RUVFurq6////////////////////////1tbWQ0NDysrK////////////////////////////////////////////////0dHRRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCycnJ////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxMTE////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////////////////////////////////////////////////zc3NRUVFurq6////////////////////////19fXREREyMjI////////////////////////////////////////////////z8/PR0dHurq6////////////////////////1tbWOTk5ZWVlg4ODfn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+goKCZ2dnODg4t7e3////////////////////////7u7ueHh4bGxsampqa2tra2tra2tra2tra2tra2tra2tra2tra2tra2trampqampqdnZ21dXV/////////////////////////v7+9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0+/v7////////////////////" />
+          </UncheckedImage>
+          <CheckedImage>
+            <ImageSource Image="Qk1GBQAAAAAAADYAAAAoAAAAGAAAABIAAAABABgAAAAAAAAAAADEDgAAxA4AAAAAAAAAAAAA////8vLysbGxqKiop6enqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiop6enqKior6+v5OTk////////////////////////2traPDw8R0dHU1NTUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRU1NTR0dHOjo6u7u7////////////////////////19fXQ0NDtbW15ubm5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5ubmurq6RUVFurq6////////////////////////1tbWQ0NDysrK////////////////////////////////////////////////0dHRRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////39/f/v7+////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////sLCwR0dHp6en////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////srKyPz8/Q0NDPDw8qKio////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxcXF////pqamMTExd3d33NzcgICAMDAwpqam////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////hoaGcHBw7+/v////8/PzfHx8MDAwpKSk////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////8/Pz9PT0////////////9fX1fX19MDAwoqKi////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////+Pj4f39/Li4umZmZ/f39zc3NRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////9/f3fX19gICA+fn5zs7ORUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////+Pj49fX1////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////////////////////////////////////////////////zc3NRUVFurq6////////////////////////19fXREREyMjI////////////////////////////////////////////////z8/PR0dHurq6////////////////////////1tbWOTk5ZWVlg4ODfn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+goKCZ2dnODg4t7e3////////////////////////7u7ueHh4bGxsampqa2tra2tra2tra2tra2tra2tra2tra2tra2tra2trampqampqdnZ21dXV/////////////////////////v7+9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0+/v7////////////////////" />
+          </CheckedImage>
+          <Value>
+            <String>=IIF(Fields.IsCandidaMoniliaInfection= 1,True,False)</String>
+          </Value>
+        </CheckBox>
+        <CheckBox Text="Coccobacillus / Gardnerella" CheckAlign="TopLeft" CanGrow="False" Size="3.64825463294983in, 0.200000122189522in" Location="0.22099082171917in, 1.70035552978516in" Name="checkBox5">
+          <UncheckedImage>
+            <ImageSource Image="Qk1GBQAAAAAAADYAAAAoAAAAGAAAABIAAAABABgAAAAAAAAAAADEDgAAxA4AAAAAAAAAAAAA////8vLysbGxqKiop6enqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiop6enqKior6+v5OTk////////////////////////2traPDw8R0dHU1NTUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRU1NTR0dHOjo6u7u7////////////////////////19fXQ0NDtbW15ubm5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5ubmurq6RUVFurq6////////////////////////1tbWQ0NDysrK////////////////////////////////////////////////0dHRRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCycnJ////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxMTE////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////////////////////////////////////////////////zc3NRUVFurq6////////////////////////19fXREREyMjI////////////////////////////////////////////////z8/PR0dHurq6////////////////////////1tbWOTk5ZWVlg4ODfn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+goKCZ2dnODg4t7e3////////////////////////7u7ueHh4bGxsampqa2tra2tra2tra2tra2tra2tra2tra2tra2tra2trampqampqdnZ21dXV/////////////////////////v7+9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0+/v7////////////////////" />
+          </UncheckedImage>
+          <CheckedImage>
+            <ImageSource Image="Qk1GBQAAAAAAADYAAAAoAAAAGAAAABIAAAABABgAAAAAAAAAAADEDgAAxA4AAAAAAAAAAAAA////8vLysbGxqKiop6enqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiop6enqKior6+v5OTk////////////////////////2traPDw8R0dHU1NTUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRU1NTR0dHOjo6u7u7////////////////////////19fXQ0NDtbW15ubm5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5ubmurq6RUVFurq6////////////////////////1tbWQ0NDysrK////////////////////////////////////////////////0dHRRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////39/f/v7+////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////sLCwR0dHp6en////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////srKyPz8/Q0NDPDw8qKio////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxcXF////pqamMTExd3d33NzcgICAMDAwpqam////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////hoaGcHBw7+/v////8/PzfHx8MDAwpKSk////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////8/Pz9PT0////////////9fX1fX19MDAwoqKi////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////+Pj4f39/Li4umZmZ/f39zc3NRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////9/f3fX19gICA+fn5zs7ORUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////+Pj49fX1////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////////////////////////////////////////////////zc3NRUVFurq6////////////////////////19fXREREyMjI////////////////////////////////////////////////z8/PR0dHurq6////////////////////////1tbWOTk5ZWVlg4ODfn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+goKCZ2dnODg4t7e3////////////////////////7u7ueHh4bGxsampqa2tra2tra2tra2tra2tra2tra2tra2tra2tra2trampqampqdnZ21dXV/////////////////////////v7+9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0+/v7////////////////////" />
+          </CheckedImage>
+          <Value>
+            <String>=Fields.IsCoccobacillusGardnerellaInfection</String>
+          </Value>
+        </CheckBox>
+        <CheckBox Text="Actinomyces" CheckAlign="TopLeft" CanGrow="False" Size="3.64825463294983in, 0.200000122189522in" Location="0.22099082171917in, 1.90043449401855in" Name="checkBox6">
+          <UncheckedImage>
+            <ImageSource Image="Qk1GBQAAAAAAADYAAAAoAAAAGAAAABIAAAABABgAAAAAAAAAAADEDgAAxA4AAAAAAAAAAAAA////8vLysbGxqKiop6enqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiop6enqKior6+v5OTk////////////////////////2traPDw8R0dHU1NTUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRU1NTR0dHOjo6u7u7////////////////////////19fXQ0NDtbW15ubm5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5ubmurq6RUVFurq6////////////////////////1tbWQ0NDysrK////////////////////////////////////////////////0dHRRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCycnJ////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxMTE////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////////////////////////////////////////////////zc3NRUVFurq6////////////////////////19fXREREyMjI////////////////////////////////////////////////z8/PR0dHurq6////////////////////////1tbWOTk5ZWVlg4ODfn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+goKCZ2dnODg4t7e3////////////////////////7u7ueHh4bGxsampqa2tra2tra2tra2tra2tra2tra2tra2tra2tra2trampqampqdnZ21dXV/////////////////////////v7+9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0+/v7////////////////////" />
+          </UncheckedImage>
+          <CheckedImage>
+            <ImageSource Image="Qk1GBQAAAAAAADYAAAAoAAAAGAAAABIAAAABABgAAAAAAAAAAADEDgAAxA4AAAAAAAAAAAAA////8vLysbGxqKiop6enqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiop6enqKior6+v5OTk////////////////////////2traPDw8R0dHU1NTUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRU1NTR0dHOjo6u7u7////////////////////////19fXQ0NDtbW15ubm5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5ubmurq6RUVFurq6////////////////////////1tbWQ0NDysrK////////////////////////////////////////////////0dHRRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////39/f/v7+////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////sLCwR0dHp6en////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////srKyPz8/Q0NDPDw8qKio////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxcXF////pqamMTExd3d33NzcgICAMDAwpqam////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////hoaGcHBw7+/v////8/PzfHx8MDAwpKSk////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////8/Pz9PT0////////////9fX1fX19MDAwoqKi////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////+Pj4f39/Li4umZmZ/f39zc3NRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////9/f3fX19gICA+fn5zs7ORUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////+Pj49fX1////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////////////////////////////////////////////////zc3NRUVFurq6////////////////////////19fXREREyMjI////////////////////////////////////////////////z8/PR0dHurq6////////////////////////1tbWOTk5ZWVlg4ODfn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+goKCZ2dnODg4t7e3////////////////////////7u7ueHh4bGxsampqa2tra2tra2tra2tra2tra2tra2tra2tra2tra2trampqampqdnZ21dXV/////////////////////////v7+9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0+/v7////////////////////" />
+          </CheckedImage>
+          <Value>
+            <String>=Fields.IsActinomycesInfection</String>
+          </Value>
+        </CheckBox>
+        <CheckBox Text="HPV" CheckAlign="TopLeft" CanGrow="False" Size="3.64825463294983in, 0.200000122189522in" Location="0.22099082171917in, 2.10051345825195in" Name="checkBox7">
+          <UncheckedImage>
+            <ImageSource Image="Qk1GBQAAAAAAADYAAAAoAAAAGAAAABIAAAABABgAAAAAAAAAAADEDgAAxA4AAAAAAAAAAAAA////8vLysbGxqKiop6enqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiop6enqKior6+v5OTk////////////////////////2traPDw8R0dHU1NTUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRU1NTR0dHOjo6u7u7////////////////////////19fXQ0NDtbW15ubm5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5ubmurq6RUVFurq6////////////////////////1tbWQ0NDysrK////////////////////////////////////////////////0dHRRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCycnJ////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxMTE////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////////////////////////////////////////////////zc3NRUVFurq6////////////////////////19fXREREyMjI////////////////////////////////////////////////z8/PR0dHurq6////////////////////////1tbWOTk5ZWVlg4ODfn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+goKCZ2dnODg4t7e3////////////////////////7u7ueHh4bGxsampqa2tra2tra2tra2tra2tra2tra2tra2tra2tra2trampqampqdnZ21dXV/////////////////////////v7+9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0+/v7////////////////////" />
+          </UncheckedImage>
+          <CheckedImage>
+            <ImageSource Image="Qk1GBQAAAAAAADYAAAAoAAAAGAAAABIAAAABABgAAAAAAAAAAADEDgAAxA4AAAAAAAAAAAAA////8vLysbGxqKiop6enqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiop6enqKior6+v5OTk////////////////////////2traPDw8R0dHU1NTUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRU1NTR0dHOjo6u7u7////////////////////////19fXQ0NDtbW15ubm5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5ubmurq6RUVFurq6////////////////////////1tbWQ0NDysrK////////////////////////////////////////////////0dHRRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////39/f/v7+////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////sLCwR0dHp6en////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////srKyPz8/Q0NDPDw8qKio////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxcXF////pqamMTExd3d33NzcgICAMDAwpqam////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////hoaGcHBw7+/v////8/PzfHx8MDAwpKSk////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////8/Pz9PT0////////////9fX1fX19MDAwoqKi////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////+Pj4f39/Li4umZmZ/f39zc3NRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////9/f3fX19gICA+fn5zs7ORUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////+Pj49fX1////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////////////////////////////////////////////////zc3NRUVFurq6////////////////////////19fXREREyMjI////////////////////////////////////////////////z8/PR0dHurq6////////////////////////1tbWOTk5ZWVlg4ODfn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+goKCZ2dnODg4t7e3////////////////////////7u7ueHh4bGxsampqa2tra2tra2tra2tra2tra2tra2tra2tra2tra2trampqampqdnZ21dXV/////////////////////////v7+9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0+/v7////////////////////" />
+          </CheckedImage>
+          <Value>
+            <String>=Fields.IsHpvInfection</String>
+          </Value>
+        </CheckBox>
+        <CheckBox Text="HSV" CheckAlign="TopLeft" CanGrow="False" Size="3.64825463294983in, 0.200000122189522in" Location="0.22099082171917in, 2.30059242248535in" Name="checkBox8">
+          <UncheckedImage>
+            <ImageSource Image="Qk1GBQAAAAAAADYAAAAoAAAAGAAAABIAAAABABgAAAAAAAAAAADEDgAAxA4AAAAAAAAAAAAA////8vLysbGxqKiop6enqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiop6enqKior6+v5OTk////////////////////////2traPDw8R0dHU1NTUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRU1NTR0dHOjo6u7u7////////////////////////19fXQ0NDtbW15ubm5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5ubmurq6RUVFurq6////////////////////////1tbWQ0NDysrK////////////////////////////////////////////////0dHRRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCycnJ////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxMTE////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////////////////////////////////////////////////zc3NRUVFurq6////////////////////////19fXREREyMjI////////////////////////////////////////////////z8/PR0dHurq6////////////////////////1tbWOTk5ZWVlg4ODfn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+goKCZ2dnODg4t7e3////////////////////////7u7ueHh4bGxsampqa2tra2tra2tra2tra2tra2tra2tra2tra2tra2trampqampqdnZ21dXV/////////////////////////v7+9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0+/v7////////////////////" />
+          </UncheckedImage>
+          <CheckedImage>
+            <ImageSource Image="Qk1GBQAAAAAAADYAAAAoAAAAGAAAABIAAAABABgAAAAAAAAAAADEDgAAxA4AAAAAAAAAAAAA////8vLysbGxqKiop6enqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiop6enqKior6+v5OTk////////////////////////2traPDw8R0dHU1NTUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRU1NTR0dHOjo6u7u7////////////////////////19fXQ0NDtbW15ubm5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5ubmurq6RUVFurq6////////////////////////1tbWQ0NDysrK////////////////////////////////////////////////0dHRRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////39/f/v7+////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////sLCwR0dHp6en////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////srKyPz8/Q0NDPDw8qKio////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxcXF////pqamMTExd3d33NzcgICAMDAwpqam////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////hoaGcHBw7+/v////8/PzfHx8MDAwpKSk////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////8/Pz9PT0////////////9fX1fX19MDAwoqKi////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////+Pj4f39/Li4umZmZ/f39zc3NRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////9/f3fX19gICA+fn5zs7ORUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////+Pj49fX1////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////////////////////////////////////////////////zc3NRUVFurq6////////////////////////19fXREREyMjI////////////////////////////////////////////////z8/PR0dHurq6////////////////////////1tbWOTk5ZWVlg4ODfn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+goKCZ2dnODg4t7e3////////////////////////7u7ueHh4bGxsampqa2tra2tra2tra2tra2tra2tra2tra2tra2tra2trampqampqdnZ21dXV/////////////////////////v7+9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0+/v7////////////////////" />
+          </CheckedImage>
+          <Value>
+            <String>=Fields.IsHsv2Infection</String>
+          </Value>
+        </CheckBox>
+        <CheckBox Text="" CheckAlign="TopLeft" CanGrow="False" Size="0.238929907480876in, 0.200000127156576in" Location="0.22099144756794in, 2.50067138671875in" Name="checkBox9">
+          <UncheckedImage>
+            <ImageSource Image="Qk1GBQAAAAAAADYAAAAoAAAAGAAAABIAAAABABgAAAAAAAAAAADEDgAAxA4AAAAAAAAAAAAA////8vLysbGxqKiop6enqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiop6enqKior6+v5OTk////////////////////////2traPDw8R0dHU1NTUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRU1NTR0dHOjo6u7u7////////////////////////19fXQ0NDtbW15ubm5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5ubmurq6RUVFurq6////////////////////////1tbWQ0NDysrK////////////////////////////////////////////////0dHRRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCycnJ////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxMTE////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////////////////////////////////////////////////zc3NRUVFurq6////////////////////////19fXREREyMjI////////////////////////////////////////////////z8/PR0dHurq6////////////////////////1tbWOTk5ZWVlg4ODfn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+goKCZ2dnODg4t7e3////////////////////////7u7ueHh4bGxsampqa2tra2tra2tra2tra2tra2tra2tra2tra2tra2trampqampqdnZ21dXV/////////////////////////v7+9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0+/v7////////////////////" />
+          </UncheckedImage>
+          <CheckedImage>
+            <ImageSource Image="Qk1GBQAAAAAAADYAAAAoAAAAGAAAABIAAAABABgAAAAAAAAAAADEDgAAxA4AAAAAAAAAAAAA////8vLysbGxqKiop6enqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiop6enqKior6+v5OTk////////////////////////2traPDw8R0dHU1NTUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRU1NTR0dHOjo6u7u7////////////////////////19fXQ0NDtbW15ubm5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5ubmurq6RUVFurq6////////////////////////1tbWQ0NDysrK////////////////////////////////////////////////0dHRRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////39/f/v7+////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////sLCwR0dHp6en////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////srKyPz8/Q0NDPDw8qKio////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxcXF////pqamMTExd3d33NzcgICAMDAwpqam////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////hoaGcHBw7+/v////8/PzfHx8MDAwpKSk////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////8/Pz9PT0////////////9fX1fX19MDAwoqKi////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////+Pj4f39/Li4umZmZ/f39zc3NRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////9/f3fX19gICA+fn5zs7ORUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////+Pj49fX1////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////////////////////////////////////////////////zc3NRUVFurq6////////////////////////19fXREREyMjI////////////////////////////////////////////////z8/PR0dHurq6////////////////////////1tbWOTk5ZWVlg4ODfn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+goKCZ2dnODg4t7e3////////////////////////7u7ueHh4bGxsampqa2tra2tra2tra2tra2tra2tra2tra2tra2tra2trampqampqdnZ21dXV/////////////////////////v7+9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0+/v7////////////////////" />
+          </CheckedImage>
+          <Value>
+            <String>=Fields.IsOtherInfections</String>
+          </Value>
+        </CheckBox>
+        <CheckBox Text="Efek Khemotheraphy" CheckAlign="TopLeft" CanGrow="False" Size="3.64825463294983in, 0.200000122189522in" Location="0.220990717411041in, 5.31655120849609in" Name="checkBox11">
+          <UncheckedImage>
+            <ImageSource Image="Qk1GBQAAAAAAADYAAAAoAAAAGAAAABIAAAABABgAAAAAAAAAAADEDgAAxA4AAAAAAAAAAAAA////8vLysbGxqKiop6enqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiop6enqKior6+v5OTk////////////////////////2traPDw8R0dHU1NTUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRU1NTR0dHOjo6u7u7////////////////////////19fXQ0NDtbW15ubm5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5ubmurq6RUVFurq6////////////////////////1tbWQ0NDysrK////////////////////////////////////////////////0dHRRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCycnJ////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxMTE////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////////////////////////////////////////////////zc3NRUVFurq6////////////////////////19fXREREyMjI////////////////////////////////////////////////z8/PR0dHurq6////////////////////////1tbWOTk5ZWVlg4ODfn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+goKCZ2dnODg4t7e3////////////////////////7u7ueHh4bGxsampqa2tra2tra2tra2tra2tra2tra2tra2tra2tra2trampqampqdnZ21dXV/////////////////////////v7+9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0+/v7////////////////////" />
+          </UncheckedImage>
+          <CheckedImage>
+            <ImageSource Image="Qk1GBQAAAAAAADYAAAAoAAAAGAAAABIAAAABABgAAAAAAAAAAADEDgAAxA4AAAAAAAAAAAAA////8vLysbGxqKiop6enqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiop6enqKior6+v5OTk////////////////////////2traPDw8R0dHU1NTUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRU1NTR0dHOjo6u7u7////////////////////////19fXQ0NDtbW15ubm5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5ubmurq6RUVFurq6////////////////////////1tbWQ0NDysrK////////////////////////////////////////////////0dHRRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////39/f/v7+////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////sLCwR0dHp6en////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////srKyPz8/Q0NDPDw8qKio////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxcXF////pqamMTExd3d33NzcgICAMDAwpqam////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////hoaGcHBw7+/v////8/PzfHx8MDAwpKSk////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////8/Pz9PT0////////////9fX1fX19MDAwoqKi////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////+Pj4f39/Li4umZmZ/f39zc3NRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////9/f3fX19gICA+fn5zs7ORUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////+Pj49fX1////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////////////////////////////////////////////////zc3NRUVFurq6////////////////////////19fXREREyMjI////////////////////////////////////////////////z8/PR0dHurq6////////////////////////1tbWOTk5ZWVlg4ODfn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+goKCZ2dnODg4t7e3////////////////////////7u7ueHh4bGxsampqa2tra2tra2tra2tra2tra2tra2tra2tra2tra2trampqampqdnZ21dXV/////////////////////////v7+9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0+/v7////////////////////" />
+          </CheckedImage>
+          <Value>
+            <String>= Fields.IsChemotherapyEffects</String>
+          </Value>
+        </CheckBox>
+        <CheckBox Text="Follicular Cervicilis" CheckAlign="TopLeft" CanGrow="False" Size="3.64825463294983in, 0.200000122189522in" Location="0.220990717411041in, 5.11647319793701in" Name="checkBox12">
+          <UncheckedImage>
+            <ImageSource Image="Qk1GBQAAAAAAADYAAAAoAAAAGAAAABIAAAABABgAAAAAAAAAAADEDgAAxA4AAAAAAAAAAAAA////8vLysbGxqKiop6enqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiop6enqKior6+v5OTk////////////////////////2traPDw8R0dHU1NTUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRU1NTR0dHOjo6u7u7////////////////////////19fXQ0NDtbW15ubm5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5ubmurq6RUVFurq6////////////////////////1tbWQ0NDysrK////////////////////////////////////////////////0dHRRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCycnJ////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxMTE////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////////////////////////////////////////////////zc3NRUVFurq6////////////////////////19fXREREyMjI////////////////////////////////////////////////z8/PR0dHurq6////////////////////////1tbWOTk5ZWVlg4ODfn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+goKCZ2dnODg4t7e3////////////////////////7u7ueHh4bGxsampqa2tra2tra2tra2tra2tra2tra2tra2tra2tra2trampqampqdnZ21dXV/////////////////////////v7+9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0+/v7////////////////////" />
+          </UncheckedImage>
+          <CheckedImage>
+            <ImageSource Image="Qk1GBQAAAAAAADYAAAAoAAAAGAAAABIAAAABABgAAAAAAAAAAADEDgAAxA4AAAAAAAAAAAAA////8vLysbGxqKiop6enqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiop6enqKior6+v5OTk////////////////////////2traPDw8R0dHU1NTUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRU1NTR0dHOjo6u7u7////////////////////////19fXQ0NDtbW15ubm5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5ubmurq6RUVFurq6////////////////////////1tbWQ0NDysrK////////////////////////////////////////////////0dHRRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////39/f/v7+////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////sLCwR0dHp6en////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////srKyPz8/Q0NDPDw8qKio////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxcXF////pqamMTExd3d33NzcgICAMDAwpqam////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////hoaGcHBw7+/v////8/PzfHx8MDAwpKSk////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////8/Pz9PT0////////////9fX1fX19MDAwoqKi////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////+Pj4f39/Li4umZmZ/f39zc3NRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////9/f3fX19gICA+fn5zs7ORUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////+Pj49fX1////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////////////////////////////////////////////////zc3NRUVFurq6////////////////////////19fXREREyMjI////////////////////////////////////////////////z8/PR0dHurq6////////////////////////1tbWOTk5ZWVlg4ODfn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+goKCZ2dnODg4t7e3////////////////////////7u7ueHh4bGxsampqa2tra2tra2tra2tra2tra2tra2tra2tra2tra2trampqampqdnZ21dXV/////////////////////////v7+9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0+/v7////////////////////" />
+          </CheckedImage>
+          <Value>
+            <String>= Fields.IsFollicularCervicitis</String>
+          </Value>
+        </CheckBox>
+        <CheckBox Text="Atrophy" CheckAlign="TopLeft" CanGrow="False" Size="0.978930473327637in, 0.200000122189522in" Location="0.220990717411041in, 4.914626121521in" Name="checkBox13">
+          <UncheckedImage>
+            <ImageSource Image="Qk1GBQAAAAAAADYAAAAoAAAAGAAAABIAAAABABgAAAAAAAAAAADEDgAAxA4AAAAAAAAAAAAA////8vLysbGxqKiop6enqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiop6enqKior6+v5OTk////////////////////////2traPDw8R0dHU1NTUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRU1NTR0dHOjo6u7u7////////////////////////19fXQ0NDtbW15ubm5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5ubmurq6RUVFurq6////////////////////////1tbWQ0NDysrK////////////////////////////////////////////////0dHRRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCycnJ////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxMTE////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////////////////////////////////////////////////zc3NRUVFurq6////////////////////////19fXREREyMjI////////////////////////////////////////////////z8/PR0dHurq6////////////////////////1tbWOTk5ZWVlg4ODfn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+goKCZ2dnODg4t7e3////////////////////////7u7ueHh4bGxsampqa2tra2tra2tra2tra2tra2tra2tra2tra2tra2trampqampqdnZ21dXV/////////////////////////v7+9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0+/v7////////////////////" />
+          </UncheckedImage>
+          <CheckedImage>
+            <ImageSource Image="Qk1GBQAAAAAAADYAAAAoAAAAGAAAABIAAAABABgAAAAAAAAAAADEDgAAxA4AAAAAAAAAAAAA////8vLysbGxqKiop6enqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiop6enqKior6+v5OTk////////////////////////2traPDw8R0dHU1NTUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRU1NTR0dHOjo6u7u7////////////////////////19fXQ0NDtbW15ubm5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5ubmurq6RUVFurq6////////////////////////1tbWQ0NDysrK////////////////////////////////////////////////0dHRRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////39/f/v7+////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////sLCwR0dHp6en////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////srKyPz8/Q0NDPDw8qKio////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxcXF////pqamMTExd3d33NzcgICAMDAwpqam////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////hoaGcHBw7+/v////8/PzfHx8MDAwpKSk////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////8/Pz9PT0////////////9fX1fX19MDAwoqKi////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////+Pj4f39/Li4umZmZ/f39zc3NRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////9/f3fX19gICA+fn5zs7ORUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////+Pj49fX1////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////////////////////////////////////////////////zc3NRUVFurq6////////////////////////19fXREREyMjI////////////////////////////////////////////////z8/PR0dHurq6////////////////////////1tbWOTk5ZWVlg4ODfn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+goKCZ2dnODg4t7e3////////////////////////7u7ueHh4bGxsampqa2tra2tra2tra2tra2tra2tra2tra2tra2tra2trampqampqdnZ21dXV/////////////////////////v7+9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0+/v7////////////////////" />
+          </CheckedImage>
+          <Value>
+            <String>= Fields.IsAtrophy</String>
+          </Value>
+        </CheckBox>
+        <CheckBox Text="Radiasi" CheckAlign="TopLeft" CanGrow="False" Size="3.64825463294983in, 0.200000122189522in" Location="0.220990717411041in, 4.71454811096191in" Name="checkBox14">
+          <UncheckedImage>
+            <ImageSource Image="Qk1GBQAAAAAAADYAAAAoAAAAGAAAABIAAAABABgAAAAAAAAAAADEDgAAxA4AAAAAAAAAAAAA////8vLysbGxqKiop6enqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiop6enqKior6+v5OTk////////////////////////2traPDw8R0dHU1NTUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRU1NTR0dHOjo6u7u7////////////////////////19fXQ0NDtbW15ubm5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5ubmurq6RUVFurq6////////////////////////1tbWQ0NDysrK////////////////////////////////////////////////0dHRRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCycnJ////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxMTE////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////////////////////////////////////////////////zc3NRUVFurq6////////////////////////19fXREREyMjI////////////////////////////////////////////////z8/PR0dHurq6////////////////////////1tbWOTk5ZWVlg4ODfn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+goKCZ2dnODg4t7e3////////////////////////7u7ueHh4bGxsampqa2tra2tra2tra2tra2tra2tra2tra2tra2tra2trampqampqdnZ21dXV/////////////////////////v7+9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0+/v7////////////////////" />
+          </UncheckedImage>
+          <CheckedImage>
+            <ImageSource Image="Qk1GBQAAAAAAADYAAAAoAAAAGAAAABIAAAABABgAAAAAAAAAAADEDgAAxA4AAAAAAAAAAAAA////8vLysbGxqKiop6enqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiop6enqKior6+v5OTk////////////////////////2traPDw8R0dHU1NTUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRU1NTR0dHOjo6u7u7////////////////////////19fXQ0NDtbW15ubm5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5ubmurq6RUVFurq6////////////////////////1tbWQ0NDysrK////////////////////////////////////////////////0dHRRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////39/f/v7+////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////sLCwR0dHp6en////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////srKyPz8/Q0NDPDw8qKio////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxcXF////pqamMTExd3d33NzcgICAMDAwpqam////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////hoaGcHBw7+/v////8/PzfHx8MDAwpKSk////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////8/Pz9PT0////////////9fX1fX19MDAwoqKi////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////+Pj4f39/Li4umZmZ/f39zc3NRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////9/f3fX19gICA+fn5zs7ORUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////+Pj49fX1////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////////////////////////////////////////////////zc3NRUVFurq6////////////////////////19fXREREyMjI////////////////////////////////////////////////z8/PR0dHurq6////////////////////////1tbWOTk5ZWVlg4ODfn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+goKCZ2dnODg4t7e3////////////////////////7u7ueHh4bGxsampqa2tra2tra2tra2tra2tra2tra2tra2tra2tra2trampqampqdnZ21dXV/////////////////////////v7+9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0+/v7////////////////////" />
+          </CheckedImage>
+          <Value>
+            <String>= Fields.IsRadiation</String>
+          </Value>
+        </CheckBox>
+        <CheckBox Text="Repair / Reparative" CheckAlign="TopLeft" CanGrow="False" Size="3.64825463294983in, 0.200000122189522in" Location="0.220990717411041in, 4.5144681930542in" Name="checkBox15">
+          <UncheckedImage>
+            <ImageSource Image="Qk1GBQAAAAAAADYAAAAoAAAAGAAAABIAAAABABgAAAAAAAAAAADEDgAAxA4AAAAAAAAAAAAA////8vLysbGxqKiop6enqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiop6enqKior6+v5OTk////////////////////////2traPDw8R0dHU1NTUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRU1NTR0dHOjo6u7u7////////////////////////19fXQ0NDtbW15ubm5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5ubmurq6RUVFurq6////////////////////////1tbWQ0NDysrK////////////////////////////////////////////////0dHRRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCycnJ////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxMTE////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////////////////////////////////////////////////zc3NRUVFurq6////////////////////////19fXREREyMjI////////////////////////////////////////////////z8/PR0dHurq6////////////////////////1tbWOTk5ZWVlg4ODfn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+goKCZ2dnODg4t7e3////////////////////////7u7ueHh4bGxsampqa2tra2tra2tra2tra2tra2tra2tra2tra2tra2trampqampqdnZ21dXV/////////////////////////v7+9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0+/v7////////////////////" />
+          </UncheckedImage>
+          <CheckedImage>
+            <ImageSource Image="Qk1GBQAAAAAAADYAAAAoAAAAGAAAABIAAAABABgAAAAAAAAAAADEDgAAxA4AAAAAAAAAAAAA////8vLysbGxqKiop6enqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiop6enqKior6+v5OTk////////////////////////2traPDw8R0dHU1NTUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRU1NTR0dHOjo6u7u7////////////////////////19fXQ0NDtbW15ubm5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5ubmurq6RUVFurq6////////////////////////1tbWQ0NDysrK////////////////////////////////////////////////0dHRRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////39/f/v7+////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////sLCwR0dHp6en////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////srKyPz8/Q0NDPDw8qKio////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxcXF////pqamMTExd3d33NzcgICAMDAwpqam////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////hoaGcHBw7+/v////8/PzfHx8MDAwpKSk////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////8/Pz9PT0////////////9fX1fX19MDAwoqKi////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////+Pj4f39/Li4umZmZ/f39zc3NRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////9/f3fX19gICA+fn5zs7ORUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////+Pj49fX1////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////////////////////////////////////////////////zc3NRUVFurq6////////////////////////19fXREREyMjI////////////////////////////////////////////////z8/PR0dHurq6////////////////////////1tbWOTk5ZWVlg4ODfn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+goKCZ2dnODg4t7e3////////////////////////7u7ueHh4bGxsampqa2tra2tra2tra2tra2tra2tra2tra2tra2tra2trampqampqdnZ21dXV/////////////////////////v7+9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0+/v7////////////////////" />
+          </CheckedImage>
+          <Value>
+            <String>= Fields.IsRepair</String>
+          </Value>
+        </CheckBox>
+        <TextBox Value="PERUBAHAN REAKTIF" CanGrow="False" Size="2.70408844947815in, 0.200000032782555in" Location="0.220990717411041in, 4.10821723937988in" Name="textBox20" StyleName="Caption">
+          <Style TextAlign="Left">
+            <Font Bold="True" />
+          </Style>
+        </TextBox>
+        <CheckBox Text="Efek I U D" CheckAlign="TopLeft" CanGrow="False" Size="3.64825463294983in, 0.193749323487282in" Location="0.22099082171917in, 5.71670913696289in" Name="checkBox17">
+          <UncheckedImage>
+            <ImageSource Image="Qk1GBQAAAAAAADYAAAAoAAAAGAAAABIAAAABABgAAAAAAAAAAADEDgAAxA4AAAAAAAAAAAAA////8vLysbGxqKiop6enqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiop6enqKior6+v5OTk////////////////////////2traPDw8R0dHU1NTUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRU1NTR0dHOjo6u7u7////////////////////////19fXQ0NDtbW15ubm5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5ubmurq6RUVFurq6////////////////////////1tbWQ0NDysrK////////////////////////////////////////////////0dHRRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCycnJ////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxMTE////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////////////////////////////////////////////////zc3NRUVFurq6////////////////////////19fXREREyMjI////////////////////////////////////////////////z8/PR0dHurq6////////////////////////1tbWOTk5ZWVlg4ODfn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+goKCZ2dnODg4t7e3////////////////////////7u7ueHh4bGxsampqa2tra2tra2tra2tra2tra2tra2tra2tra2tra2trampqampqdnZ21dXV/////////////////////////v7+9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0+/v7////////////////////" />
+          </UncheckedImage>
+          <CheckedImage>
+            <ImageSource Image="Qk1GBQAAAAAAADYAAAAoAAAAGAAAABIAAAABABgAAAAAAAAAAADEDgAAxA4AAAAAAAAAAAAA////8vLysbGxqKiop6enqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiop6enqKior6+v5OTk////////////////////////2traPDw8R0dHU1NTUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRU1NTR0dHOjo6u7u7////////////////////////19fXQ0NDtbW15ubm5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5ubmurq6RUVFurq6////////////////////////1tbWQ0NDysrK////////////////////////////////////////////////0dHRRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////39/f/v7+////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////sLCwR0dHp6en////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////srKyPz8/Q0NDPDw8qKio////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxcXF////pqamMTExd3d33NzcgICAMDAwpqam////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////hoaGcHBw7+/v////8/PzfHx8MDAwpKSk////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////8/Pz9PT0////////////9fX1fX19MDAwoqKi////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////+Pj4f39/Li4umZmZ/f39zc3NRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////9/f3fX19gICA+fn5zs7ORUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////+Pj49fX1////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////////////////////////////////////////////////zc3NRUVFurq6////////////////////////19fXREREyMjI////////////////////////////////////////////////z8/PR0dHurq6////////////////////////1tbWOTk5ZWVlg4ODfn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+goKCZ2dnODg4t7e3////////////////////////7u7ueHh4bGxsampqa2tra2tra2tra2tra2tra2tra2tra2tra2tra2trampqampqdnZ21dXV/////////////////////////v7+9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0+/v7////////////////////" />
+          </CheckedImage>
+          <Value>
+            <String>= Fields.IsIudEffects</String>
+          </Value>
+        </CheckBox>
+        <CheckBox Text="ASC-H" CheckAlign="TopLeft" CanGrow="False" Size="3.27617104848226in, 0.200000122189522in" Location="4.23000001907349in, 1.70035568873088in" Name="checkBox19">
+          <UncheckedImage>
+            <ImageSource Image="Qk1GBQAAAAAAADYAAAAoAAAAGAAAABIAAAABABgAAAAAAAAAAADEDgAAxA4AAAAAAAAAAAAA////8vLysbGxqKiop6enqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiop6enqKior6+v5OTk////////////////////////2traPDw8R0dHU1NTUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRU1NTR0dHOjo6u7u7////////////////////////19fXQ0NDtbW15ubm5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5ubmurq6RUVFurq6////////////////////////1tbWQ0NDysrK////////////////////////////////////////////////0dHRRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCycnJ////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxMTE////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////////////////////////////////////////////////zc3NRUVFurq6////////////////////////19fXREREyMjI////////////////////////////////////////////////z8/PR0dHurq6////////////////////////1tbWOTk5ZWVlg4ODfn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+goKCZ2dnODg4t7e3////////////////////////7u7ueHh4bGxsampqa2tra2tra2tra2tra2tra2tra2tra2tra2tra2trampqampqdnZ21dXV/////////////////////////v7+9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0+/v7////////////////////" />
+          </UncheckedImage>
+          <CheckedImage>
+            <ImageSource Image="Qk1GBQAAAAAAADYAAAAoAAAAGAAAABIAAAABABgAAAAAAAAAAADEDgAAxA4AAAAAAAAAAAAA////8vLysbGxqKiop6enqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiop6enqKior6+v5OTk////////////////////////2traPDw8R0dHU1NTUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRU1NTR0dHOjo6u7u7////////////////////////19fXQ0NDtbW15ubm5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5ubmurq6RUVFurq6////////////////////////1tbWQ0NDysrK////////////////////////////////////////////////0dHRRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////39/f/v7+////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////sLCwR0dHp6en////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////srKyPz8/Q0NDPDw8qKio////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxcXF////pqamMTExd3d33NzcgICAMDAwpqam////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////hoaGcHBw7+/v////8/PzfHx8MDAwpKSk////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////8/Pz9PT0////////////9fX1fX19MDAwoqKi////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////+Pj4f39/Li4umZmZ/f39zc3NRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////9/f3fX19gICA+fn5zs7ORUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////+Pj49fX1////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////////////////////////////////////////////////zc3NRUVFurq6////////////////////////19fXREREyMjI////////////////////////////////////////////////z8/PR0dHurq6////////////////////////1tbWOTk5ZWVlg4ODfn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+goKCZ2dnODg4t7e3////////////////////////7u7ueHh4bGxsampqa2tra2tra2tra2tra2tra2tra2tra2tra2tra2trampqampqdnZ21dXV/////////////////////////v7+9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0+/v7////////////////////" />
+          </CheckedImage>
+          <Value>
+            <String>= Fields.IsAscH</String>
+          </Value>
+          <FalseValue>
+            <String>= False</String>
+          </FalseValue>
+          <TrueValue>
+            <String>= True</String>
+          </TrueValue>
+        </CheckBox>
+        <CheckBox Text="ASC-US" CheckAlign="TopLeft" CanGrow="False" Size="3.27621142069499in, 0.200000122189522in" Location="4.23000001907349in, 1.50027704238892in" Name="checkBox20">
+          <UncheckedImage>
+            <ImageSource Image="Qk1GBQAAAAAAADYAAAAoAAAAGAAAABIAAAABABgAAAAAAAAAAADEDgAAxA4AAAAAAAAAAAAA////8vLysbGxqKiop6enqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiop6enqKior6+v5OTk////////////////////////2traPDw8R0dHU1NTUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRU1NTR0dHOjo6u7u7////////////////////////19fXQ0NDtbW15ubm5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5ubmurq6RUVFurq6////////////////////////1tbWQ0NDysrK////////////////////////////////////////////////0dHRRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCycnJ////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxMTE////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////////////////////////////////////////////////zc3NRUVFurq6////////////////////////19fXREREyMjI////////////////////////////////////////////////z8/PR0dHurq6////////////////////////1tbWOTk5ZWVlg4ODfn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+goKCZ2dnODg4t7e3////////////////////////7u7ueHh4bGxsampqa2tra2tra2tra2tra2tra2tra2tra2tra2tra2trampqampqdnZ21dXV/////////////////////////v7+9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0+/v7////////////////////" />
+          </UncheckedImage>
+          <CheckedImage>
+            <ImageSource Image="Qk1GBQAAAAAAADYAAAAoAAAAGAAAABIAAAABABgAAAAAAAAAAADEDgAAxA4AAAAAAAAAAAAA////8vLysbGxqKiop6enqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiop6enqKior6+v5OTk////////////////////////2traPDw8R0dHU1NTUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRU1NTR0dHOjo6u7u7////////////////////////19fXQ0NDtbW15ubm5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5ubmurq6RUVFurq6////////////////////////1tbWQ0NDysrK////////////////////////////////////////////////0dHRRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////39/f/v7+////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////sLCwR0dHp6en////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////srKyPz8/Q0NDPDw8qKio////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxcXF////pqamMTExd3d33NzcgICAMDAwpqam////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////hoaGcHBw7+/v////8/PzfHx8MDAwpKSk////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////8/Pz9PT0////////////9fX1fX19MDAwoqKi////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////+Pj4f39/Li4umZmZ/f39zc3NRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////9/f3fX19gICA+fn5zs7ORUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////+Pj49fX1////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////////////////////////////////////////////////zc3NRUVFurq6////////////////////////19fXREREyMjI////////////////////////////////////////////////z8/PR0dHurq6////////////////////////1tbWOTk5ZWVlg4ODfn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+goKCZ2dnODg4t7e3////////////////////////7u7ueHh4bGxsampqa2tra2tra2tra2tra2tra2tra2tra2tra2tra2trampqampqdnZ21dXV/////////////////////////v7+9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0+/v7////////////////////" />
+          </CheckedImage>
+          <Value>
+            <String>= Fields.IsAscUs</String>
+          </Value>
+          <FalseValue>
+            <String>= False</String>
+          </FalseValue>
+          <TrueValue>
+            <String>= True</String>
+          </TrueValue>
+        </CheckBox>
+        <CheckBox Text="Sel Skuamosa Atipik (ASC)" CheckAlign="TopLeft" CanGrow="False" Multiline="False" Size="3.52644983927409in, 0.200000122189522in" Location="3.97976183891296in, 1.30019783973694in" Anchoring="Left" Name="checkBox21">
+          <Style Visible="True">
+            <Font Bold="True" />
+          </Style>
+          <UncheckedImage>
+            <ImageSource Image="Qk1GBQAAAAAAADYAAAAoAAAAGAAAABIAAAABABgAAAAAAAAAAADEDgAAxA4AAAAAAAAAAAAA////8vLysbGxqKiop6enqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiop6enqKior6+v5OTk////////////////////////2traPDw8R0dHU1NTUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRU1NTR0dHOjo6u7u7////////////////////////19fXQ0NDtbW15ubm5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5ubmurq6RUVFurq6////////////////////////1tbWQ0NDysrK////////////////////////////////////////////////0dHRRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCycnJ////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxMTE////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////////////////////////////////////////////////zc3NRUVFurq6////////////////////////19fXREREyMjI////////////////////////////////////////////////z8/PR0dHurq6////////////////////////1tbWOTk5ZWVlg4ODfn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+goKCZ2dnODg4t7e3////////////////////////7u7ueHh4bGxsampqa2tra2tra2tra2tra2tra2tra2tra2tra2tra2trampqampqdnZ21dXV/////////////////////////v7+9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0+/v7////////////////////" />
+          </UncheckedImage>
+          <CheckedImage>
+            <ImageSource Image="Qk1GBQAAAAAAADYAAAAoAAAAGAAAABIAAAABABgAAAAAAAAAAADEDgAAxA4AAAAAAAAAAAAA////8vLysbGxqKiop6enqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiop6enqKior6+v5OTk////////////////////////2traPDw8R0dHU1NTUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRU1NTR0dHOjo6u7u7////////////////////////19fXQ0NDtbW15ubm5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5ubmurq6RUVFurq6////////////////////////1tbWQ0NDysrK////////////////////////////////////////////////0dHRRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////39/f/v7+////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////sLCwR0dHp6en////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////srKyPz8/Q0NDPDw8qKio////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxcXF////pqamMTExd3d33NzcgICAMDAwpqam////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////hoaGcHBw7+/v////8/PzfHx8MDAwpKSk////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////8/Pz9PT0////////////9fX1fX19MDAwoqKi////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////+Pj4f39/Li4umZmZ/f39zc3NRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////9/f3fX19gICA+fn5zs7ORUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////+Pj49fX1////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////////////////////////////////////////////////zc3NRUVFurq6////////////////////////19fXREREyMjI////////////////////////////////////////////////z8/PR0dHurq6////////////////////////1tbWOTk5ZWVlg4ODfn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+goKCZ2dnODg4t7e3////////////////////////7u7ueHh4bGxsampqa2tra2tra2tra2tra2tra2tra2tra2tra2tra2trampqampqdnZ21dXV/////////////////////////v7+9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0+/v7////////////////////" />
+          </CheckedImage>
+          <Value>
+            <String>= Fields.IsAsc</String>
+          </Value>
+          <FalseValue>
+            <String>= False</String>
+          </FalseValue>
+          <TrueValue>
+            <String>= True</String>
+          </TrueValue>
+          <IndeterminateValue>
+            <String></String>
+          </IndeterminateValue>
+        </CheckBox>
+        <CheckBox Text="Lesi Intra Epithelial Skuamosa" CheckAlign="TopLeft" CanGrow="False" Multiline="False" Size="3.6327178478241in, 0.200000122189522in" Location="3.97980189323425in, 1.90043497085571in" Anchoring="Left" Name="checkBox18">
+          <Style>
+            <Font Bold="True" />
+          </Style>
+          <UncheckedImage>
+            <ImageSource Image="Qk1GBQAAAAAAADYAAAAoAAAAGAAAABIAAAABABgAAAAAAAAAAADEDgAAxA4AAAAAAAAAAAAA////8vLysbGxqKiop6enqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiop6enqKior6+v5OTk////////////////////////2traPDw8R0dHU1NTUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRU1NTR0dHOjo6u7u7////////////////////////19fXQ0NDtbW15ubm5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5ubmurq6RUVFurq6////////////////////////1tbWQ0NDysrK////////////////////////////////////////////////0dHRRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCycnJ////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxMTE////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////////////////////////////////////////////////zc3NRUVFurq6////////////////////////19fXREREyMjI////////////////////////////////////////////////z8/PR0dHurq6////////////////////////1tbWOTk5ZWVlg4ODfn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+goKCZ2dnODg4t7e3////////////////////////7u7ueHh4bGxsampqa2tra2tra2tra2tra2tra2tra2tra2tra2tra2trampqampqdnZ21dXV/////////////////////////v7+9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0+/v7////////////////////" />
+          </UncheckedImage>
+          <CheckedImage>
+            <ImageSource Image="Qk1GBQAAAAAAADYAAAAoAAAAGAAAABIAAAABABgAAAAAAAAAAADEDgAAxA4AAAAAAAAAAAAA////8vLysbGxqKiop6enqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiop6enqKior6+v5OTk////////////////////////2traPDw8R0dHU1NTUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRU1NTR0dHOjo6u7u7////////////////////////19fXQ0NDtbW15ubm5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5ubmurq6RUVFurq6////////////////////////1tbWQ0NDysrK////////////////////////////////////////////////0dHRRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////39/f/v7+////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////sLCwR0dHp6en////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////srKyPz8/Q0NDPDw8qKio////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxcXF////pqamMTExd3d33NzcgICAMDAwpqam////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////hoaGcHBw7+/v////8/PzfHx8MDAwpKSk////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////8/Pz9PT0////////////9fX1fX19MDAwoqKi////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////+Pj4f39/Li4umZmZ/f39zc3NRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////9/f3fX19gICA+fn5zs7ORUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////+Pj49fX1////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////////////////////////////////////////////////zc3NRUVFurq6////////////////////////19fXREREyMjI////////////////////////////////////////////////z8/PR0dHurq6////////////////////////1tbWOTk5ZWVlg4ODfn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+goKCZ2dnODg4t7e3////////////////////////7u7ueHh4bGxsampqa2tra2tra2tra2tra2tra2tra2tra2tra2tra2trampqampqdnZ21dXV/////////////////////////v7+9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0+/v7////////////////////" />
+          </CheckedImage>
+          <Value>
+            <String>= Fields.IsSquamousIntraepithelialLesion</String>
+          </Value>
+          <FalseValue>
+            <String>= False</String>
+          </FalseValue>
+          <TrueValue>
+            <String>= True</String>
+          </TrueValue>
+          <IndeterminateValue>
+            <String></String>
+          </IndeterminateValue>
+        </CheckBox>
+        <CheckBox Text="L-SIL" CheckAlign="TopLeft" CanGrow="False" Size="3.38251996040344in, 0.200000122189522in" Location="4.23000001907349in, 2.10051393508911in" Name="checkBox22">
+          <UncheckedImage>
+            <ImageSource Image="Qk1GBQAAAAAAADYAAAAoAAAAGAAAABIAAAABABgAAAAAAAAAAADEDgAAxA4AAAAAAAAAAAAA////8vLysbGxqKiop6enqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiop6enqKior6+v5OTk////////////////////////2traPDw8R0dHU1NTUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRU1NTR0dHOjo6u7u7////////////////////////19fXQ0NDtbW15ubm5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5ubmurq6RUVFurq6////////////////////////1tbWQ0NDysrK////////////////////////////////////////////////0dHRRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCycnJ////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxMTE////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////////////////////////////////////////////////zc3NRUVFurq6////////////////////////19fXREREyMjI////////////////////////////////////////////////z8/PR0dHurq6////////////////////////1tbWOTk5ZWVlg4ODfn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+goKCZ2dnODg4t7e3////////////////////////7u7ueHh4bGxsampqa2tra2tra2tra2tra2tra2tra2tra2tra2tra2trampqampqdnZ21dXV/////////////////////////v7+9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0+/v7////////////////////" />
+          </UncheckedImage>
+          <CheckedImage>
+            <ImageSource Image="Qk1GBQAAAAAAADYAAAAoAAAAGAAAABIAAAABABgAAAAAAAAAAADEDgAAxA4AAAAAAAAAAAAA////8vLysbGxqKiop6enqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiop6enqKior6+v5OTk////////////////////////2traPDw8R0dHU1NTUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRU1NTR0dHOjo6u7u7////////////////////////19fXQ0NDtbW15ubm5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5ubmurq6RUVFurq6////////////////////////1tbWQ0NDysrK////////////////////////////////////////////////0dHRRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////39/f/v7+////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////sLCwR0dHp6en////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////srKyPz8/Q0NDPDw8qKio////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxcXF////pqamMTExd3d33NzcgICAMDAwpqam////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////hoaGcHBw7+/v////8/PzfHx8MDAwpKSk////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////8/Pz9PT0////////////9fX1fX19MDAwoqKi////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////+Pj4f39/Li4umZmZ/f39zc3NRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////9/f3fX19gICA+fn5zs7ORUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////+Pj49fX1////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////////////////////////////////////////////////zc3NRUVFurq6////////////////////////19fXREREyMjI////////////////////////////////////////////////z8/PR0dHurq6////////////////////////1tbWOTk5ZWVlg4ODfn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+goKCZ2dnODg4t7e3////////////////////////7u7ueHh4bGxsampqa2tra2tra2tra2tra2tra2tra2tra2tra2tra2trampqampqdnZ21dXV/////////////////////////v7+9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0+/v7////////////////////" />
+          </CheckedImage>
+          <Value>
+            <String>= Fields.IsLsil</String>
+          </Value>
+          <FalseValue>
+            <String>= False</String>
+          </FalseValue>
+          <TrueValue>
+            <String>= True</String>
+          </TrueValue>
+        </CheckBox>
+        <CheckBox Text="HPV" CheckAlign="TopLeft" CanGrow="False" Size="3.1324790318807in, 0.200000122189522in" Location="4.48000001907349in, 2.30059289932251in" Name="checkBox23">
+          <UncheckedImage>
+            <ImageSource Image="Qk1GBQAAAAAAADYAAAAoAAAAGAAAABIAAAABABgAAAAAAAAAAADEDgAAxA4AAAAAAAAAAAAA////8vLysbGxqKiop6enqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiop6enqKior6+v5OTk////////////////////////2traPDw8R0dHU1NTUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRU1NTR0dHOjo6u7u7////////////////////////19fXQ0NDtbW15ubm5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5ubmurq6RUVFurq6////////////////////////1tbWQ0NDysrK////////////////////////////////////////////////0dHRRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCycnJ////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxMTE////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////////////////////////////////////////////////zc3NRUVFurq6////////////////////////19fXREREyMjI////////////////////////////////////////////////z8/PR0dHurq6////////////////////////1tbWOTk5ZWVlg4ODfn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+goKCZ2dnODg4t7e3////////////////////////7u7ueHh4bGxsampqa2tra2tra2tra2tra2tra2tra2tra2tra2tra2trampqampqdnZ21dXV/////////////////////////v7+9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0+/v7////////////////////" />
+          </UncheckedImage>
+          <CheckedImage>
+            <ImageSource Image="Qk1GBQAAAAAAADYAAAAoAAAAGAAAABIAAAABABgAAAAAAAAAAADEDgAAxA4AAAAAAAAAAAAA////8vLysbGxqKiop6enqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiop6enqKior6+v5OTk////////////////////////2traPDw8R0dHU1NTUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRU1NTR0dHOjo6u7u7////////////////////////19fXQ0NDtbW15ubm5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5ubmurq6RUVFurq6////////////////////////1tbWQ0NDysrK////////////////////////////////////////////////0dHRRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////39/f/v7+////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////sLCwR0dHp6en////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////srKyPz8/Q0NDPDw8qKio////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxcXF////pqamMTExd3d33NzcgICAMDAwpqam////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////hoaGcHBw7+/v////8/PzfHx8MDAwpKSk////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////8/Pz9PT0////////////9fX1fX19MDAwoqKi////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////+Pj4f39/Li4umZmZ/f39zc3NRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////9/f3fX19gICA+fn5zs7ORUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////+Pj49fX1////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////////////////////////////////////////////////zc3NRUVFurq6////////////////////////19fXREREyMjI////////////////////////////////////////////////z8/PR0dHurq6////////////////////////1tbWOTk5ZWVlg4ODfn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+goKCZ2dnODg4t7e3////////////////////////7u7ueHh4bGxsampqa2tra2tra2tra2tra2tra2tra2tra2tra2tra2trampqampqdnZ21dXV/////////////////////////v7+9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0+/v7////////////////////" />
+          </CheckedImage>
+          <Value>
+            <String>= Fields.IsLsilHpv</String>
+          </Value>
+          <FalseValue>
+            <String>= False</String>
+          </FalseValue>
+          <TrueValue>
+            <String>= True</String>
+          </TrueValue>
+        </CheckBox>
+        <CheckBox Text="H-SIL" CheckAlign="TopLeft" CanGrow="False" Size="3.38247966766357in, 0.200000122189522in" Location="4.22987604141235in, 2.70075035095215in" Name="checkBox24">
+          <UncheckedImage>
+            <ImageSource Image="Qk1GBQAAAAAAADYAAAAoAAAAGAAAABIAAAABABgAAAAAAAAAAADEDgAAxA4AAAAAAAAAAAAA////8vLysbGxqKiop6enqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiop6enqKior6+v5OTk////////////////////////2traPDw8R0dHU1NTUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRU1NTR0dHOjo6u7u7////////////////////////19fXQ0NDtbW15ubm5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5ubmurq6RUVFurq6////////////////////////1tbWQ0NDysrK////////////////////////////////////////////////0dHRRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCycnJ////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxMTE////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////////////////////////////////////////////////zc3NRUVFurq6////////////////////////19fXREREyMjI////////////////////////////////////////////////z8/PR0dHurq6////////////////////////1tbWOTk5ZWVlg4ODfn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+goKCZ2dnODg4t7e3////////////////////////7u7ueHh4bGxsampqa2tra2tra2tra2tra2tra2tra2tra2tra2tra2trampqampqdnZ21dXV/////////////////////////v7+9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0+/v7////////////////////" />
+          </UncheckedImage>
+          <CheckedImage>
+            <ImageSource Image="Qk1GBQAAAAAAADYAAAAoAAAAGAAAABIAAAABABgAAAAAAAAAAADEDgAAxA4AAAAAAAAAAAAA////8vLysbGxqKiop6enqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiop6enqKior6+v5OTk////////////////////////2traPDw8R0dHU1NTUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRU1NTR0dHOjo6u7u7////////////////////////19fXQ0NDtbW15ubm5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5ubmurq6RUVFurq6////////////////////////1tbWQ0NDysrK////////////////////////////////////////////////0dHRRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////39/f/v7+////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////sLCwR0dHp6en////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////srKyPz8/Q0NDPDw8qKio////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxcXF////pqamMTExd3d33NzcgICAMDAwpqam////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////hoaGcHBw7+/v////8/PzfHx8MDAwpKSk////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////8/Pz9PT0////////////9fX1fX19MDAwoqKi////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////+Pj4f39/Li4umZmZ/f39zc3NRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////9/f3fX19gICA+fn5zs7ORUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////+Pj49fX1////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////////////////////////////////////////////////zc3NRUVFurq6////////////////////////19fXREREyMjI////////////////////////////////////////////////z8/PR0dHurq6////////////////////////1tbWOTk5ZWVlg4ODfn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+goKCZ2dnODg4t7e3////////////////////////7u7ueHh4bGxsampqa2tra2tra2tra2tra2tra2tra2tra2tra2tra2trampqampqdnZ21dXV/////////////////////////v7+9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0+/v7////////////////////" />
+          </CheckedImage>
+          <Value>
+            <String>= Fields.IsHsil</String>
+          </Value>
+          <FalseValue>
+            <String>= False</String>
+          </FalseValue>
+          <TrueValue>
+            <String>= True</String>
+          </TrueValue>
+        </CheckBox>
+        <CheckBox Text="CIN 1" CheckAlign="TopLeft" CanGrow="False" Size="3.13251972198486in, 0.200000122189522in" Location="4.48000001907349in, 2.50067138671875in" Name="checkBox25">
+          <UncheckedImage>
+            <ImageSource Image="Qk1GBQAAAAAAADYAAAAoAAAAGAAAABIAAAABABgAAAAAAAAAAADEDgAAxA4AAAAAAAAAAAAA////8vLysbGxqKiop6enqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiop6enqKior6+v5OTk////////////////////////2traPDw8R0dHU1NTUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRU1NTR0dHOjo6u7u7////////////////////////19fXQ0NDtbW15ubm5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5ubmurq6RUVFurq6////////////////////////1tbWQ0NDysrK////////////////////////////////////////////////0dHRRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCycnJ////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxMTE////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////////////////////////////////////////////////zc3NRUVFurq6////////////////////////19fXREREyMjI////////////////////////////////////////////////z8/PR0dHurq6////////////////////////1tbWOTk5ZWVlg4ODfn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+goKCZ2dnODg4t7e3////////////////////////7u7ueHh4bGxsampqa2tra2tra2tra2tra2tra2tra2tra2tra2tra2trampqampqdnZ21dXV/////////////////////////v7+9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0+/v7////////////////////" />
+          </UncheckedImage>
+          <CheckedImage>
+            <ImageSource Image="Qk1GBQAAAAAAADYAAAAoAAAAGAAAABIAAAABABgAAAAAAAAAAADEDgAAxA4AAAAAAAAAAAAA////8vLysbGxqKiop6enqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiop6enqKior6+v5OTk////////////////////////2traPDw8R0dHU1NTUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRU1NTR0dHOjo6u7u7////////////////////////19fXQ0NDtbW15ubm5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5ubmurq6RUVFurq6////////////////////////1tbWQ0NDysrK////////////////////////////////////////////////0dHRRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////39/f/v7+////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////sLCwR0dHp6en////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////srKyPz8/Q0NDPDw8qKio////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxcXF////pqamMTExd3d33NzcgICAMDAwpqam////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////hoaGcHBw7+/v////8/PzfHx8MDAwpKSk////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////8/Pz9PT0////////////9fX1fX19MDAwoqKi////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////+Pj4f39/Li4umZmZ/f39zc3NRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////9/f3fX19gICA+fn5zs7ORUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////+Pj49fX1////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////////////////////////////////////////////////zc3NRUVFurq6////////////////////////19fXREREyMjI////////////////////////////////////////////////z8/PR0dHurq6////////////////////////1tbWOTk5ZWVlg4ODfn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+goKCZ2dnODg4t7e3////////////////////////7u7ueHh4bGxsampqa2tra2tra2tra2tra2tra2tra2tra2tra2tra2trampqampqdnZ21dXV/////////////////////////v7+9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0+/v7////////////////////" />
+          </CheckedImage>
+          <Value>
+            <String>= Fields.IsLsilCin1</String>
+          </Value>
+          <FalseValue>
+            <String>= False</String>
+          </FalseValue>
+          <TrueValue>
+            <String>= True</String>
+          </TrueValue>
+        </CheckBox>
+        <CheckBox Text="CIN 3" CheckAlign="TopLeft" CanGrow="False" Size="3.13251972198486in, 0.200000122189522in" Location="4.47983551025391in, 3.10220241546631in" Name="checkBox26">
+          <UncheckedImage>
+            <ImageSource Image="Qk1GBQAAAAAAADYAAAAoAAAAGAAAABIAAAABABgAAAAAAAAAAADEDgAAxA4AAAAAAAAAAAAA////8vLysbGxqKiop6enqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiop6enqKior6+v5OTk////////////////////////2traPDw8R0dHU1NTUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRU1NTR0dHOjo6u7u7////////////////////////19fXQ0NDtbW15ubm5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5ubmurq6RUVFurq6////////////////////////1tbWQ0NDysrK////////////////////////////////////////////////0dHRRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCycnJ////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxMTE////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////////////////////////////////////////////////zc3NRUVFurq6////////////////////////19fXREREyMjI////////////////////////////////////////////////z8/PR0dHurq6////////////////////////1tbWOTk5ZWVlg4ODfn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+goKCZ2dnODg4t7e3////////////////////////7u7ueHh4bGxsampqa2tra2tra2tra2tra2tra2tra2tra2tra2tra2trampqampqdnZ21dXV/////////////////////////v7+9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0+/v7////////////////////" />
+          </UncheckedImage>
+          <CheckedImage>
+            <ImageSource Image="Qk1GBQAAAAAAADYAAAAoAAAAGAAAABIAAAABABgAAAAAAAAAAADEDgAAxA4AAAAAAAAAAAAA////8vLysbGxqKiop6enqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiop6enqKior6+v5OTk////////////////////////2traPDw8R0dHU1NTUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRU1NTR0dHOjo6u7u7////////////////////////19fXQ0NDtbW15ubm5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5ubmurq6RUVFurq6////////////////////////1tbWQ0NDysrK////////////////////////////////////////////////0dHRRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////39/f/v7+////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////sLCwR0dHp6en////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////srKyPz8/Q0NDPDw8qKio////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxcXF////pqamMTExd3d33NzcgICAMDAwpqam////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////hoaGcHBw7+/v////8/PzfHx8MDAwpKSk////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////8/Pz9PT0////////////9fX1fX19MDAwoqKi////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////+Pj4f39/Li4umZmZ/f39zc3NRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////9/f3fX19gICA+fn5zs7ORUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////+Pj49fX1////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////////////////////////////////////////////////zc3NRUVFurq6////////////////////////19fXREREyMjI////////////////////////////////////////////////z8/PR0dHurq6////////////////////////1tbWOTk5ZWVlg4ODfn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+goKCZ2dnODg4t7e3////////////////////////7u7ueHh4bGxsampqa2tra2tra2tra2tra2tra2tra2tra2tra2tra2trampqampqdnZ21dXV/////////////////////////v7+9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0+/v7////////////////////" />
+          </CheckedImage>
+          <Value>
+            <String>= Fields.IsHsilCin3</String>
+          </Value>
+          <FalseValue>
+            <String>= False</String>
+          </FalseValue>
+          <TrueValue>
+            <String>= True</String>
+          </TrueValue>
+        </CheckBox>
+        <CheckBox Text="CIN 2" CheckAlign="TopLeft" CanGrow="False" Size="3.13247839609782in, 0.200000122189522in" Location="4.47987699508667in, 2.90082931518555in" Name="checkBox27">
+          <UncheckedImage>
+            <ImageSource Image="Qk1GBQAAAAAAADYAAAAoAAAAGAAAABIAAAABABgAAAAAAAAAAADEDgAAxA4AAAAAAAAAAAAA////8vLysbGxqKiop6enqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiop6enqKior6+v5OTk////////////////////////2traPDw8R0dHU1NTUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRU1NTR0dHOjo6u7u7////////////////////////19fXQ0NDtbW15ubm5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5ubmurq6RUVFurq6////////////////////////1tbWQ0NDysrK////////////////////////////////////////////////0dHRRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCycnJ////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxMTE////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////////////////////////////////////////////////zc3NRUVFurq6////////////////////////19fXREREyMjI////////////////////////////////////////////////z8/PR0dHurq6////////////////////////1tbWOTk5ZWVlg4ODfn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+goKCZ2dnODg4t7e3////////////////////////7u7ueHh4bGxsampqa2tra2tra2tra2tra2tra2tra2tra2tra2tra2trampqampqdnZ21dXV/////////////////////////v7+9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0+/v7////////////////////" />
+          </UncheckedImage>
+          <CheckedImage>
+            <ImageSource Image="Qk1GBQAAAAAAADYAAAAoAAAAGAAAABIAAAABABgAAAAAAAAAAADEDgAAxA4AAAAAAAAAAAAA////8vLysbGxqKiop6enqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiop6enqKior6+v5OTk////////////////////////2traPDw8R0dHU1NTUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRU1NTR0dHOjo6u7u7////////////////////////19fXQ0NDtbW15ubm5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5ubmurq6RUVFurq6////////////////////////1tbWQ0NDysrK////////////////////////////////////////////////0dHRRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////39/f/v7+////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////sLCwR0dHp6en////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////srKyPz8/Q0NDPDw8qKio////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxcXF////pqamMTExd3d33NzcgICAMDAwpqam////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////hoaGcHBw7+/v////8/PzfHx8MDAwpKSk////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////8/Pz9PT0////////////9fX1fX19MDAwoqKi////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////+Pj4f39/Li4umZmZ/f39zc3NRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////9/f3fX19gICA+fn5zs7ORUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////+Pj49fX1////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////////////////////////////////////////////////zc3NRUVFurq6////////////////////////19fXREREyMjI////////////////////////////////////////////////z8/PR0dHurq6////////////////////////1tbWOTk5ZWVlg4ODfn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+goKCZ2dnODg4t7e3////////////////////////7u7ueHh4bGxsampqa2tra2tra2tra2tra2tra2tra2tra2tra2tra2trampqampqdnZ21dXV/////////////////////////v7+9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0+/v7////////////////////" />
+          </CheckedImage>
+          <Value>
+            <String>= Fields.IsHsilCin2</String>
+          </Value>
+          <FalseValue>
+            <String>= False</String>
+          </FalseValue>
+          <TrueValue>
+            <String>= True</String>
+          </TrueValue>
+        </CheckBox>
+        <CheckBox Text="CIS" CheckAlign="TopLeft" CanGrow="False" Size="3.13251972198486in, 0.200000122189522in" Location="4.47987699508667in, 3.30228137969971in" Name="checkBox28">
+          <UncheckedImage>
+            <ImageSource Image="Qk1GBQAAAAAAADYAAAAoAAAAGAAAABIAAAABABgAAAAAAAAAAADEDgAAxA4AAAAAAAAAAAAA////8vLysbGxqKiop6enqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiop6enqKior6+v5OTk////////////////////////2traPDw8R0dHU1NTUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRU1NTR0dHOjo6u7u7////////////////////////19fXQ0NDtbW15ubm5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5ubmurq6RUVFurq6////////////////////////1tbWQ0NDysrK////////////////////////////////////////////////0dHRRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCycnJ////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxMTE////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////////////////////////////////////////////////zc3NRUVFurq6////////////////////////19fXREREyMjI////////////////////////////////////////////////z8/PR0dHurq6////////////////////////1tbWOTk5ZWVlg4ODfn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+goKCZ2dnODg4t7e3////////////////////////7u7ueHh4bGxsampqa2tra2tra2tra2tra2tra2tra2tra2tra2tra2trampqampqdnZ21dXV/////////////////////////v7+9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0+/v7////////////////////" />
+          </UncheckedImage>
+          <CheckedImage>
+            <ImageSource Image="Qk1GBQAAAAAAADYAAAAoAAAAGAAAABIAAAABABgAAAAAAAAAAADEDgAAxA4AAAAAAAAAAAAA////8vLysbGxqKiop6enqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiop6enqKior6+v5OTk////////////////////////2traPDw8R0dHU1NTUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRU1NTR0dHOjo6u7u7////////////////////////19fXQ0NDtbW15ubm5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5ubmurq6RUVFurq6////////////////////////1tbWQ0NDysrK////////////////////////////////////////////////0dHRRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////39/f/v7+////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////sLCwR0dHp6en////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////srKyPz8/Q0NDPDw8qKio////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxcXF////pqamMTExd3d33NzcgICAMDAwpqam////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////hoaGcHBw7+/v////8/PzfHx8MDAwpKSk////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////8/Pz9PT0////////////9fX1fX19MDAwoqKi////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////+Pj4f39/Li4umZmZ/f39zc3NRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////9/f3fX19gICA+fn5zs7ORUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////+Pj49fX1////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////////////////////////////////////////////////zc3NRUVFurq6////////////////////////19fXREREyMjI////////////////////////////////////////////////z8/PR0dHurq6////////////////////////1tbWOTk5ZWVlg4ODfn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+goKCZ2dnODg4t7e3////////////////////////7u7ueHh4bGxsampqa2tra2tra2tra2tra2tra2tra2tra2tra2tra2trampqampqdnZ21dXV/////////////////////////v7+9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0+/v7////////////////////" />
+          </CheckedImage>
+          <Value>
+            <String>= Fields.IsHsilCis</String>
+          </Value>
+          <FalseValue>
+            <String>= False</String>
+          </FalseValue>
+          <TrueValue>
+            <String>= True</String>
+          </TrueValue>
+        </CheckBox>
+        <CheckBox Text="Karsinoma Sel Skuamosa" CheckAlign="TopLeft" CanGrow="False" Multiline="False" Size="3.6327178478241in, 0.200000122189522in" Location="3.97967910766602in, 3.50621128082275in" Anchoring="Left" Name="checkBox29">
+          <Style>
+            <Font Bold="True" />
+          </Style>
+          <UncheckedImage>
+            <ImageSource Image="Qk1GBQAAAAAAADYAAAAoAAAAGAAAABIAAAABABgAAAAAAAAAAADEDgAAxA4AAAAAAAAAAAAA////8vLysbGxqKiop6enqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiop6enqKior6+v5OTk////////////////////////2traPDw8R0dHU1NTUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRU1NTR0dHOjo6u7u7////////////////////////19fXQ0NDtbW15ubm5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5ubmurq6RUVFurq6////////////////////////1tbWQ0NDysrK////////////////////////////////////////////////0dHRRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCycnJ////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxMTE////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////////////////////////////////////////////////zc3NRUVFurq6////////////////////////19fXREREyMjI////////////////////////////////////////////////z8/PR0dHurq6////////////////////////1tbWOTk5ZWVlg4ODfn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+goKCZ2dnODg4t7e3////////////////////////7u7ueHh4bGxsampqa2tra2tra2tra2tra2tra2tra2tra2tra2tra2trampqampqdnZ21dXV/////////////////////////v7+9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0+/v7////////////////////" />
+          </UncheckedImage>
+          <CheckedImage>
+            <ImageSource Image="Qk1GBQAAAAAAADYAAAAoAAAAGAAAABIAAAABABgAAAAAAAAAAADEDgAAxA4AAAAAAAAAAAAA////8vLysbGxqKiop6enqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiop6enqKior6+v5OTk////////////////////////2traPDw8R0dHU1NTUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRU1NTR0dHOjo6u7u7////////////////////////19fXQ0NDtbW15ubm5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5ubmurq6RUVFurq6////////////////////////1tbWQ0NDysrK////////////////////////////////////////////////0dHRRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////39/f/v7+////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////sLCwR0dHp6en////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////srKyPz8/Q0NDPDw8qKio////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxcXF////pqamMTExd3d33NzcgICAMDAwpqam////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////hoaGcHBw7+/v////8/PzfHx8MDAwpKSk////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////8/Pz9PT0////////////9fX1fX19MDAwoqKi////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////+Pj4f39/Li4umZmZ/f39zc3NRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////9/f3fX19gICA+fn5zs7ORUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////+Pj49fX1////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////////////////////////////////////////////////zc3NRUVFurq6////////////////////////19fXREREyMjI////////////////////////////////////////////////z8/PR0dHurq6////////////////////////1tbWOTk5ZWVlg4ODfn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+goKCZ2dnODg4t7e3////////////////////////7u7ueHh4bGxsampqa2tra2tra2tra2tra2tra2tra2tra2tra2tra2trampqampqdnZ21dXV/////////////////////////v7+9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0+/v7////////////////////" />
+          </CheckedImage>
+          <Value>
+            <String>= Fields.IsSquamousCellCarcinoma</String>
+          </Value>
+          <FalseValue>
+            <String>= False</String>
+          </FalseValue>
+          <TrueValue>
+            <String>= True</String>
+          </TrueValue>
+          <IndeterminateValue>
+            <String></String>
+          </IndeterminateValue>
+        </CheckBox>
+        <CheckBox Text="Keratinizing" CheckAlign="TopLeft" CanGrow="False" Size="3.38251996040344in, 0.200000122189522in" Location="4.22983503341675in, 3.70629119873047in" Name="checkBox30">
+          <UncheckedImage>
+            <ImageSource Image="Qk1GBQAAAAAAADYAAAAoAAAAGAAAABIAAAABABgAAAAAAAAAAADEDgAAxA4AAAAAAAAAAAAA////8vLysbGxqKiop6enqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiop6enqKior6+v5OTk////////////////////////2traPDw8R0dHU1NTUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRU1NTR0dHOjo6u7u7////////////////////////19fXQ0NDtbW15ubm5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5ubmurq6RUVFurq6////////////////////////1tbWQ0NDysrK////////////////////////////////////////////////0dHRRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCycnJ////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxMTE////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////////////////////////////////////////////////zc3NRUVFurq6////////////////////////19fXREREyMjI////////////////////////////////////////////////z8/PR0dHurq6////////////////////////1tbWOTk5ZWVlg4ODfn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+goKCZ2dnODg4t7e3////////////////////////7u7ueHh4bGxsampqa2tra2tra2tra2tra2tra2tra2tra2tra2tra2trampqampqdnZ21dXV/////////////////////////v7+9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0+/v7////////////////////" />
+          </UncheckedImage>
+          <CheckedImage>
+            <ImageSource Image="Qk1GBQAAAAAAADYAAAAoAAAAGAAAABIAAAABABgAAAAAAAAAAADEDgAAxA4AAAAAAAAAAAAA////8vLysbGxqKiop6enqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiop6enqKior6+v5OTk////////////////////////2traPDw8R0dHU1NTUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRU1NTR0dHOjo6u7u7////////////////////////19fXQ0NDtbW15ubm5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5ubmurq6RUVFurq6////////////////////////1tbWQ0NDysrK////////////////////////////////////////////////0dHRRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////39/f/v7+////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////sLCwR0dHp6en////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////srKyPz8/Q0NDPDw8qKio////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxcXF////pqamMTExd3d33NzcgICAMDAwpqam////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////hoaGcHBw7+/v////8/PzfHx8MDAwpKSk////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////8/Pz9PT0////////////9fX1fX19MDAwoqKi////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////+Pj4f39/Li4umZmZ/f39zc3NRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////9/f3fX19gICA+fn5zs7ORUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////+Pj49fX1////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////////////////////////////////////////////////zc3NRUVFurq6////////////////////////19fXREREyMjI////////////////////////////////////////////////z8/PR0dHurq6////////////////////////1tbWOTk5ZWVlg4ODfn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+goKCZ2dnODg4t7e3////////////////////////7u7ueHh4bGxsampqa2tra2tra2tra2tra2tra2tra2tra2tra2tra2trampqampqdnZ21dXV/////////////////////////v7+9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0+/v7////////////////////" />
+          </CheckedImage>
+          <Value>
+            <String>= Fields.IsKeratinizing</String>
+          </Value>
+          <FalseValue>
+            <String>= False</String>
+          </FalseValue>
+          <TrueValue>
+            <String>= True</String>
+          </TrueValue>
+        </CheckBox>
+        <CheckBox Text="Non Keratinizing" CheckAlign="TopLeft" CanGrow="False" Size="3.38247966766357in, 0.200000122189522in" Location="4.22983503341675in, 3.90636920928955in" Name="checkBox31">
+          <UncheckedImage>
+            <ImageSource Image="Qk1GBQAAAAAAADYAAAAoAAAAGAAAABIAAAABABgAAAAAAAAAAADEDgAAxA4AAAAAAAAAAAAA////8vLysbGxqKiop6enqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiop6enqKior6+v5OTk////////////////////////2traPDw8R0dHU1NTUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRU1NTR0dHOjo6u7u7////////////////////////19fXQ0NDtbW15ubm5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5ubmurq6RUVFurq6////////////////////////1tbWQ0NDysrK////////////////////////////////////////////////0dHRRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCycnJ////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxMTE////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////////////////////////////////////////////////zc3NRUVFurq6////////////////////////19fXREREyMjI////////////////////////////////////////////////z8/PR0dHurq6////////////////////////1tbWOTk5ZWVlg4ODfn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+goKCZ2dnODg4t7e3////////////////////////7u7ueHh4bGxsampqa2tra2tra2tra2tra2tra2tra2tra2tra2tra2trampqampqdnZ21dXV/////////////////////////v7+9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0+/v7////////////////////" />
+          </UncheckedImage>
+          <CheckedImage>
+            <ImageSource Image="Qk1GBQAAAAAAADYAAAAoAAAAGAAAABIAAAABABgAAAAAAAAAAADEDgAAxA4AAAAAAAAAAAAA////8vLysbGxqKiop6enqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiop6enqKior6+v5OTk////////////////////////2traPDw8R0dHU1NTUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRU1NTR0dHOjo6u7u7////////////////////////19fXQ0NDtbW15ubm5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5ubmurq6RUVFurq6////////////////////////1tbWQ0NDysrK////////////////////////////////////////////////0dHRRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////39/f/v7+////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////sLCwR0dHp6en////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////srKyPz8/Q0NDPDw8qKio////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxcXF////pqamMTExd3d33NzcgICAMDAwpqam////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////hoaGcHBw7+/v////8/PzfHx8MDAwpKSk////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////8/Pz9PT0////////////9fX1fX19MDAwoqKi////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////+Pj4f39/Li4umZmZ/f39zc3NRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////9/f3fX19gICA+fn5zs7ORUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////+Pj49fX1////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////////////////////////////////////////////////zc3NRUVFurq6////////////////////////19fXREREyMjI////////////////////////////////////////////////z8/PR0dHurq6////////////////////////1tbWOTk5ZWVlg4ODfn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+goKCZ2dnODg4t7e3////////////////////////7u7ueHh4bGxsampqa2tra2tra2tra2tra2tra2tra2tra2tra2tra2trampqampqdnZ21dXV/////////////////////////v7+9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0+/v7////////////////////" />
+          </CheckedImage>
+          <Value>
+            <String>= Fields.IsNonKeratinizing</String>
+          </Value>
+          <FalseValue>
+            <String>= False</String>
+          </FalseValue>
+          <TrueValue>
+            <String>= True</String>
+          </TrueValue>
+        </CheckBox>
+        <CheckBox Text="Sel Glandular Atipik (AGC)" CheckAlign="TopLeft" CanGrow="False" Multiline="False" Size="3.6327178478241in, 0.200000122189522in" Location="3.97967910766602in, 4.30829620361328in" Anchoring="Left" Name="checkBox32">
+          <Style>
+            <Font Bold="True" />
+          </Style>
+          <UncheckedImage>
+            <ImageSource Image="Qk1GBQAAAAAAADYAAAAoAAAAGAAAABIAAAABABgAAAAAAAAAAADEDgAAxA4AAAAAAAAAAAAA////8vLysbGxqKiop6enqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiop6enqKior6+v5OTk////////////////////////2traPDw8R0dHU1NTUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRU1NTR0dHOjo6u7u7////////////////////////19fXQ0NDtbW15ubm5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5ubmurq6RUVFurq6////////////////////////1tbWQ0NDysrK////////////////////////////////////////////////0dHRRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCycnJ////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxMTE////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////////////////////////////////////////////////zc3NRUVFurq6////////////////////////19fXREREyMjI////////////////////////////////////////////////z8/PR0dHurq6////////////////////////1tbWOTk5ZWVlg4ODfn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+goKCZ2dnODg4t7e3////////////////////////7u7ueHh4bGxsampqa2tra2tra2tra2tra2tra2tra2tra2tra2tra2trampqampqdnZ21dXV/////////////////////////v7+9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0+/v7////////////////////" />
+          </UncheckedImage>
+          <CheckedImage>
+            <ImageSource Image="Qk1GBQAAAAAAADYAAAAoAAAAGAAAABIAAAABABgAAAAAAAAAAADEDgAAxA4AAAAAAAAAAAAA////8vLysbGxqKiop6enqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiop6enqKior6+v5OTk////////////////////////2traPDw8R0dHU1NTUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRU1NTR0dHOjo6u7u7////////////////////////19fXQ0NDtbW15ubm5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5ubmurq6RUVFurq6////////////////////////1tbWQ0NDysrK////////////////////////////////////////////////0dHRRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////39/f/v7+////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////sLCwR0dHp6en////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////srKyPz8/Q0NDPDw8qKio////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxcXF////pqamMTExd3d33NzcgICAMDAwpqam////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////hoaGcHBw7+/v////8/PzfHx8MDAwpKSk////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////8/Pz9PT0////////////9fX1fX19MDAwoqKi////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////+Pj4f39/Li4umZmZ/f39zc3NRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////9/f3fX19gICA+fn5zs7ORUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////+Pj49fX1////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////////////////////////////////////////////////zc3NRUVFurq6////////////////////////19fXREREyMjI////////////////////////////////////////////////z8/PR0dHurq6////////////////////////1tbWOTk5ZWVlg4ODfn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+goKCZ2dnODg4t7e3////////////////////////7u7ueHh4bGxsampqa2tra2tra2tra2tra2tra2tra2tra2tra2tra2trampqampqdnZ21dXV/////////////////////////v7+9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0+/v7////////////////////" />
+          </CheckedImage>
+          <Value>
+            <String>= Fields.IsAgc</String>
+          </Value>
+          <FalseValue>
+            <String>= False</String>
+          </FalseValue>
+          <TrueValue>
+            <String>= True</String>
+          </TrueValue>
+          <IndeterminateValue>
+            <String></String>
+          </IndeterminateValue>
+        </CheckBox>
+        <TextBox Value="  SEL GLANDULAR" CanGrow="False" Size="2.70408844947815in, 0.200000032782555in" Location="3.97975277900696in, 4.10821723937988in" Name="textBox21" StyleName="Caption">
+          <Style TextAlign="Left">
+            <Font Bold="True" />
+          </Style>
+        </TextBox>
+        <CheckBox Text="Atipik (NOS)" CheckAlign="TopLeft" CanGrow="False" Multiline="False" Size="3.38256168365479in, 0.200000122189522in" Location="4.22995853424072in, 4.5144681930542in" Anchoring="Left" Name="checkBox33">
+          <UncheckedImage>
+            <ImageSource Image="Qk1GBQAAAAAAADYAAAAoAAAAGAAAABIAAAABABgAAAAAAAAAAADEDgAAxA4AAAAAAAAAAAAA////8vLysbGxqKiop6enqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiop6enqKior6+v5OTk////////////////////////2traPDw8R0dHU1NTUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRU1NTR0dHOjo6u7u7////////////////////////19fXQ0NDtbW15ubm5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5ubmurq6RUVFurq6////////////////////////1tbWQ0NDysrK////////////////////////////////////////////////0dHRRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCycnJ////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxMTE////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////////////////////////////////////////////////zc3NRUVFurq6////////////////////////19fXREREyMjI////////////////////////////////////////////////z8/PR0dHurq6////////////////////////1tbWOTk5ZWVlg4ODfn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+goKCZ2dnODg4t7e3////////////////////////7u7ueHh4bGxsampqa2tra2tra2tra2tra2tra2tra2tra2tra2tra2trampqampqdnZ21dXV/////////////////////////v7+9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0+/v7////////////////////" />
+          </UncheckedImage>
+          <CheckedImage>
+            <ImageSource Image="Qk1GBQAAAAAAADYAAAAoAAAAGAAAABIAAAABABgAAAAAAAAAAADEDgAAxA4AAAAAAAAAAAAA////8vLysbGxqKiop6enqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiop6enqKior6+v5OTk////////////////////////2traPDw8R0dHU1NTUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRU1NTR0dHOjo6u7u7////////////////////////19fXQ0NDtbW15ubm5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5ubmurq6RUVFurq6////////////////////////1tbWQ0NDysrK////////////////////////////////////////////////0dHRRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////39/f/v7+////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////sLCwR0dHp6en////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////srKyPz8/Q0NDPDw8qKio////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxcXF////pqamMTExd3d33NzcgICAMDAwpqam////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////hoaGcHBw7+/v////8/PzfHx8MDAwpKSk////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////8/Pz9PT0////////////9fX1fX19MDAwoqKi////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////+Pj4f39/Li4umZmZ/f39zc3NRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////9/f3fX19gICA+fn5zs7ORUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////+Pj49fX1////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////////////////////////////////////////////////zc3NRUVFurq6////////////////////////19fXREREyMjI////////////////////////////////////////////////z8/PR0dHurq6////////////////////////1tbWOTk5ZWVlg4ODfn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+goKCZ2dnODg4t7e3////////////////////////7u7ueHh4bGxsampqa2tra2tra2tra2tra2tra2tra2tra2tra2tra2trampqampqdnZ21dXV/////////////////////////v7+9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0+/v7////////////////////" />
+          </CheckedImage>
+          <Value>
+            <String>= Fields.IsAtypicalNos</String>
+          </Value>
+          <FalseValue>
+            <String>= False</String>
+          </FalseValue>
+          <TrueValue>
+            <String>= True</String>
+          </TrueValue>
+          <IndeterminateValue>
+            <String></String>
+          </IndeterminateValue>
+        </CheckBox>
+        <CheckBox Text="Adenocarcinoma Insitu Serviks (AIS)" CheckAlign="TopLeft" CanGrow="False" Multiline="False" Size="3.38256168365479in, 0.200000122189522in" Location="4.22995853424072in, 4.91462516784668in" Anchoring="Left" Name="checkBox34">
+          <UncheckedImage>
+            <ImageSource Image="Qk1GBQAAAAAAADYAAAAoAAAAGAAAABIAAAABABgAAAAAAAAAAADEDgAAxA4AAAAAAAAAAAAA////8vLysbGxqKiop6enqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiop6enqKior6+v5OTk////////////////////////2traPDw8R0dHU1NTUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRU1NTR0dHOjo6u7u7////////////////////////19fXQ0NDtbW15ubm5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5ubmurq6RUVFurq6////////////////////////1tbWQ0NDysrK////////////////////////////////////////////////0dHRRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCycnJ////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxMTE////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////////////////////////////////////////////////zc3NRUVFurq6////////////////////////19fXREREyMjI////////////////////////////////////////////////z8/PR0dHurq6////////////////////////1tbWOTk5ZWVlg4ODfn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+goKCZ2dnODg4t7e3////////////////////////7u7ueHh4bGxsampqa2tra2tra2tra2tra2tra2tra2tra2tra2tra2trampqampqdnZ21dXV/////////////////////////v7+9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0+/v7////////////////////" />
+          </UncheckedImage>
+          <CheckedImage>
+            <ImageSource Image="Qk1GBQAAAAAAADYAAAAoAAAAGAAAABIAAAABABgAAAAAAAAAAADEDgAAxA4AAAAAAAAAAAAA////8vLysbGxqKiop6enqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiop6enqKior6+v5OTk////////////////////////2traPDw8R0dHU1NTUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRU1NTR0dHOjo6u7u7////////////////////////19fXQ0NDtbW15ubm5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5ubmurq6RUVFurq6////////////////////////1tbWQ0NDysrK////////////////////////////////////////////////0dHRRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////39/f/v7+////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////sLCwR0dHp6en////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////srKyPz8/Q0NDPDw8qKio////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxcXF////pqamMTExd3d33NzcgICAMDAwpqam////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////hoaGcHBw7+/v////8/PzfHx8MDAwpKSk////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////8/Pz9PT0////////////9fX1fX19MDAwoqKi////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////+Pj4f39/Li4umZmZ/f39zc3NRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////9/f3fX19gICA+fn5zs7ORUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////+Pj49fX1////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////////////////////////////////////////////////zc3NRUVFurq6////////////////////////19fXREREyMjI////////////////////////////////////////////////z8/PR0dHurq6////////////////////////1tbWOTk5ZWVlg4ODfn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+goKCZ2dnODg4t7e3////////////////////////7u7ueHh4bGxsampqa2tra2tra2tra2tra2tra2tra2tra2tra2tra2trampqampqdnZ21dXV/////////////////////////v7+9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0+/v7////////////////////" />
+          </CheckedImage>
+          <Value>
+            <String>= Fields.IsAis</String>
+          </Value>
+          <FalseValue>
+            <String>= False</String>
+          </FalseValue>
+          <TrueValue>
+            <String>= True</String>
+          </TrueValue>
+          <IndeterminateValue>
+            <String></String>
+          </IndeterminateValue>
+        </CheckBox>
+        <CheckBox Text="Atipik (Favor Neoplastic)" CheckAlign="TopLeft" CanGrow="False" Multiline="False" Size="3.38256168365479in, 0.200000122189522in" Location="4.22995853424072in, 4.71454620361328in" Anchoring="Left" Name="checkBox35">
+          <UncheckedImage>
+            <ImageSource Image="Qk1GBQAAAAAAADYAAAAoAAAAGAAAABIAAAABABgAAAAAAAAAAADEDgAAxA4AAAAAAAAAAAAA////8vLysbGxqKiop6enqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiop6enqKior6+v5OTk////////////////////////2traPDw8R0dHU1NTUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRU1NTR0dHOjo6u7u7////////////////////////19fXQ0NDtbW15ubm5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5ubmurq6RUVFurq6////////////////////////1tbWQ0NDysrK////////////////////////////////////////////////0dHRRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCycnJ////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxMTE////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////////////////////////////////////////////////zc3NRUVFurq6////////////////////////19fXREREyMjI////////////////////////////////////////////////z8/PR0dHurq6////////////////////////1tbWOTk5ZWVlg4ODfn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+goKCZ2dnODg4t7e3////////////////////////7u7ueHh4bGxsampqa2tra2tra2tra2tra2tra2tra2tra2tra2tra2trampqampqdnZ21dXV/////////////////////////v7+9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0+/v7////////////////////" />
+          </UncheckedImage>
+          <CheckedImage>
+            <ImageSource Image="Qk1GBQAAAAAAADYAAAAoAAAAGAAAABIAAAABABgAAAAAAAAAAADEDgAAxA4AAAAAAAAAAAAA////8vLysbGxqKiop6enqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiop6enqKior6+v5OTk////////////////////////2traPDw8R0dHU1NTUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRU1NTR0dHOjo6u7u7////////////////////////19fXQ0NDtbW15ubm5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5ubmurq6RUVFurq6////////////////////////1tbWQ0NDysrK////////////////////////////////////////////////0dHRRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////39/f/v7+////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////sLCwR0dHp6en////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////srKyPz8/Q0NDPDw8qKio////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxcXF////pqamMTExd3d33NzcgICAMDAwpqam////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////hoaGcHBw7+/v////8/PzfHx8MDAwpKSk////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////8/Pz9PT0////////////9fX1fX19MDAwoqKi////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////+Pj4f39/Li4umZmZ/f39zc3NRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////9/f3fX19gICA+fn5zs7ORUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////+Pj49fX1////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////////////////////////////////////////////////zc3NRUVFurq6////////////////////////19fXREREyMjI////////////////////////////////////////////////z8/PR0dHurq6////////////////////////1tbWOTk5ZWVlg4ODfn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+goKCZ2dnODg4t7e3////////////////////////7u7ueHh4bGxsampqa2tra2tra2tra2tra2tra2tra2tra2tra2tra2trampqampqdnZ21dXV/////////////////////////v7+9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0+/v7////////////////////" />
+          </CheckedImage>
+          <Value>
+            <String>= Fields.IsAtypicalFavorNeoplastic</String>
+          </Value>
+          <FalseValue>
+            <String>= False</String>
+          </FalseValue>
+          <TrueValue>
+            <String>= True</String>
+          </TrueValue>
+          <IndeterminateValue>
+            <String></String>
+          </IndeterminateValue>
+        </CheckBox>
+        <CheckBox Text="Endometrium" CheckAlign="TopLeft" CanGrow="False" Multiline="False" Size="3.38256168365479in, 0.200000122189522in" Location="4.22987604141235in, 5.52272478739421in" Anchoring="Left" Name="checkBox36">
+          <UncheckedImage>
+            <ImageSource Image="Qk1GBQAAAAAAADYAAAAoAAAAGAAAABIAAAABABgAAAAAAAAAAADEDgAAxA4AAAAAAAAAAAAA////8vLysbGxqKiop6enqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiop6enqKior6+v5OTk////////////////////////2traPDw8R0dHU1NTUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRU1NTR0dHOjo6u7u7////////////////////////19fXQ0NDtbW15ubm5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5ubmurq6RUVFurq6////////////////////////1tbWQ0NDysrK////////////////////////////////////////////////0dHRRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCycnJ////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxMTE////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////////////////////////////////////////////////zc3NRUVFurq6////////////////////////19fXREREyMjI////////////////////////////////////////////////z8/PR0dHurq6////////////////////////1tbWOTk5ZWVlg4ODfn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+goKCZ2dnODg4t7e3////////////////////////7u7ueHh4bGxsampqa2tra2tra2tra2tra2tra2tra2tra2tra2tra2trampqampqdnZ21dXV/////////////////////////v7+9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0+/v7////////////////////" />
+          </UncheckedImage>
+          <CheckedImage>
+            <ImageSource Image="Qk1GBQAAAAAAADYAAAAoAAAAGAAAABIAAAABABgAAAAAAAAAAADEDgAAxA4AAAAAAAAAAAAA////8vLysbGxqKiop6enqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiop6enqKior6+v5OTk////////////////////////2traPDw8R0dHU1NTUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRU1NTR0dHOjo6u7u7////////////////////////19fXQ0NDtbW15ubm5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5ubmurq6RUVFurq6////////////////////////1tbWQ0NDysrK////////////////////////////////////////////////0dHRRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////39/f/v7+////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////sLCwR0dHp6en////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////srKyPz8/Q0NDPDw8qKio////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxcXF////pqamMTExd3d33NzcgICAMDAwpqam////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////hoaGcHBw7+/v////8/PzfHx8MDAwpKSk////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////8/Pz9PT0////////////9fX1fX19MDAwoqKi////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////+Pj4f39/Li4umZmZ/f39zc3NRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////9/f3fX19gICA+fn5zs7ORUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////+Pj49fX1////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////////////////////////////////////////////////zc3NRUVFurq6////////////////////////19fXREREyMjI////////////////////////////////////////////////z8/PR0dHurq6////////////////////////1tbWOTk5ZWVlg4ODfn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+goKCZ2dnODg4t7e3////////////////////////7u7ueHh4bGxsampqa2tra2tra2tra2tra2tra2tra2tra2tra2tra2trampqampqdnZ21dXV/////////////////////////v7+9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0+/v7////////////////////" />
+          </CheckedImage>
+          <Value>
+            <String>= Fields.IsEndometrial</String>
+          </Value>
+          <FalseValue>
+            <String>= False</String>
+          </FalseValue>
+          <TrueValue>
+            <String>= True</String>
+          </TrueValue>
+          <IndeterminateValue>
+            <String></String>
+          </IndeterminateValue>
+        </CheckBox>
+        <CheckBox Text="Sel Endomotrium (di luar Haid, Menopouse, &#xD;&#xA;  Tidak ada riwayat Haid)" CheckAlign="TopLeft" CanGrow="False" Multiline="True" Size="3.63256168365479in, 0.377236684163411in" Location="3.97987627983093in, 5.72280311584473in" Anchoring="Left" Name="checkBox37">
+          <UncheckedImage>
+            <ImageSource Image="Qk1GBQAAAAAAADYAAAAoAAAAGAAAABIAAAABABgAAAAAAAAAAADEDgAAxA4AAAAAAAAAAAAA////8vLysbGxqKiop6enqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiop6enqKior6+v5OTk////////////////////////2traPDw8R0dHU1NTUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRU1NTR0dHOjo6u7u7////////////////////////19fXQ0NDtbW15ubm5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5ubmurq6RUVFurq6////////////////////////1tbWQ0NDysrK////////////////////////////////////////////////0dHRRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCycnJ////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxMTE////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////////////////////////////////////////////////zc3NRUVFurq6////////////////////////19fXREREyMjI////////////////////////////////////////////////z8/PR0dHurq6////////////////////////1tbWOTk5ZWVlg4ODfn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+goKCZ2dnODg4t7e3////////////////////////7u7ueHh4bGxsampqa2tra2tra2tra2tra2tra2tra2tra2tra2tra2trampqampqdnZ21dXV/////////////////////////v7+9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0+/v7////////////////////" />
+          </UncheckedImage>
+          <CheckedImage>
+            <ImageSource Image="Qk1GBQAAAAAAADYAAAAoAAAAGAAAABIAAAABABgAAAAAAAAAAADEDgAAxA4AAAAAAAAAAAAA////8vLysbGxqKiop6enqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiop6enqKior6+v5OTk////////////////////////2traPDw8R0dHU1NTUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRU1NTR0dHOjo6u7u7////////////////////////19fXQ0NDtbW15ubm5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5ubmurq6RUVFurq6////////////////////////1tbWQ0NDysrK////////////////////////////////////////////////0dHRRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////39/f/v7+////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////sLCwR0dHp6en////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////srKyPz8/Q0NDPDw8qKio////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxcXF////pqamMTExd3d33NzcgICAMDAwpqam////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////hoaGcHBw7+/v////8/PzfHx8MDAwpKSk////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////8/Pz9PT0////////////9fX1fX19MDAwoqKi////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////+Pj4f39/Li4umZmZ/f39zc3NRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////9/f3fX19gICA+fn5zs7ORUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////+Pj49fX1////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////////////////////////////////////////////////zc3NRUVFurq6////////////////////////19fXREREyMjI////////////////////////////////////////////////z8/PR0dHurq6////////////////////////1tbWOTk5ZWVlg4ODfn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+goKCZ2dnODg4t7e3////////////////////////7u7ueHh4bGxsampqa2tra2tra2tra2tra2tra2tra2tra2tra2tra2trampqampqdnZ21dXV/////////////////////////v7+9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0+/v7////////////////////" />
+          </CheckedImage>
+          <Value>
+            <String>= Fields.IsEndometrialCells</String>
+          </Value>
+          <FalseValue>
+            <String>= False</String>
+          </FalseValue>
+          <TrueValue>
+            <String>= True</String>
+          </TrueValue>
+          <IndeterminateValue>
+            <String></String>
+          </IndeterminateValue>
+        </CheckBox>
+        <CheckBox Text="Endoserviks" CheckAlign="TopLeft" CanGrow="False" Multiline="False" Size="3.38256168365479in, 0.200000122189522in" Location="4.23003196716309in, 5.32264614105225in" Anchoring="Left" Name="checkBox38">
+          <UncheckedImage>
+            <ImageSource Image="Qk1GBQAAAAAAADYAAAAoAAAAGAAAABIAAAABABgAAAAAAAAAAADEDgAAxA4AAAAAAAAAAAAA////8vLysbGxqKiop6enqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiop6enqKior6+v5OTk////////////////////////2traPDw8R0dHU1NTUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRU1NTR0dHOjo6u7u7////////////////////////19fXQ0NDtbW15ubm5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5ubmurq6RUVFurq6////////////////////////1tbWQ0NDysrK////////////////////////////////////////////////0dHRRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCycnJ////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxMTE////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////////////////////////////////////////////////zc3NRUVFurq6////////////////////////19fXREREyMjI////////////////////////////////////////////////z8/PR0dHurq6////////////////////////1tbWOTk5ZWVlg4ODfn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+goKCZ2dnODg4t7e3////////////////////////7u7ueHh4bGxsampqa2tra2tra2tra2tra2tra2tra2tra2tra2tra2trampqampqdnZ21dXV/////////////////////////v7+9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0+/v7////////////////////" />
+          </UncheckedImage>
+          <CheckedImage>
+            <ImageSource Image="Qk1GBQAAAAAAADYAAAAoAAAAGAAAABIAAAABABgAAAAAAAAAAADEDgAAxA4AAAAAAAAAAAAA////8vLysbGxqKiop6enqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiop6enqKior6+v5OTk////////////////////////2traPDw8R0dHU1NTUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRU1NTR0dHOjo6u7u7////////////////////////19fXQ0NDtbW15ubm5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5ubmurq6RUVFurq6////////////////////////1tbWQ0NDysrK////////////////////////////////////////////////0dHRRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////39/f/v7+////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////sLCwR0dHp6en////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////srKyPz8/Q0NDPDw8qKio////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxcXF////pqamMTExd3d33NzcgICAMDAwpqam////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////hoaGcHBw7+/v////8/PzfHx8MDAwpKSk////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////8/Pz9PT0////////////9fX1fX19MDAwoqKi////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////+Pj4f39/Li4umZmZ/f39zc3NRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////9/f3fX19gICA+fn5zs7ORUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////+Pj49fX1////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////////////////////////////////////////////////zc3NRUVFurq6////////////////////////19fXREREyMjI////////////////////////////////////////////////z8/PR0dHurq6////////////////////////1tbWOTk5ZWVlg4ODfn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+goKCZ2dnODg4t7e3////////////////////////7u7ueHh4bGxsampqa2tra2tra2tra2tra2tra2tra2tra2tra2tra2trampqampqdnZ21dXV/////////////////////////v7+9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0+/v7////////////////////" />
+          </CheckedImage>
+          <Value>
+            <String>= Fields.IsEndoCervical</String>
+          </Value>
+          <FalseValue>
+            <String>= False</String>
+          </FalseValue>
+          <TrueValue>
+            <String>= True</String>
+          </TrueValue>
+          <IndeterminateValue>
+            <String></String>
+          </IndeterminateValue>
+        </CheckBox>
+        <CheckBox Text="Adenocarcinoma" CheckAlign="TopLeft" CanGrow="False" Multiline="False" Size="3.6327178478241in, 0.200000122189522in" Location="3.97987627983093in, 5.12256717681885in" Anchoring="Left" Name="checkBox39">
+          <Style>
+            <Font Bold="True" />
+          </Style>
+          <UncheckedImage>
+            <ImageSource Image="Qk1GBQAAAAAAADYAAAAoAAAAGAAAABIAAAABABgAAAAAAAAAAADEDgAAxA4AAAAAAAAAAAAA////8vLysbGxqKiop6enqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiop6enqKior6+v5OTk////////////////////////2traPDw8R0dHU1NTUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRU1NTR0dHOjo6u7u7////////////////////////19fXQ0NDtbW15ubm5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5ubmurq6RUVFurq6////////////////////////1tbWQ0NDysrK////////////////////////////////////////////////0dHRRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCycnJ////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxMTE////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////////////////////////////////////////////////zc3NRUVFurq6////////////////////////19fXREREyMjI////////////////////////////////////////////////z8/PR0dHurq6////////////////////////1tbWOTk5ZWVlg4ODfn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+goKCZ2dnODg4t7e3////////////////////////7u7ueHh4bGxsampqa2tra2tra2tra2tra2tra2tra2tra2tra2tra2trampqampqdnZ21dXV/////////////////////////v7+9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0+/v7////////////////////" />
+          </UncheckedImage>
+          <CheckedImage>
+            <ImageSource Image="Qk1GBQAAAAAAADYAAAAoAAAAGAAAABIAAAABABgAAAAAAAAAAADEDgAAxA4AAAAAAAAAAAAA////8vLysbGxqKiop6enqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiop6enqKior6+v5OTk////////////////////////2traPDw8R0dHU1NTUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRU1NTR0dHOjo6u7u7////////////////////////19fXQ0NDtbW15ubm5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5ubmurq6RUVFurq6////////////////////////1tbWQ0NDysrK////////////////////////////////////////////////0dHRRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////39/f/v7+////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////sLCwR0dHp6en////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////srKyPz8/Q0NDPDw8qKio////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxcXF////pqamMTExd3d33NzcgICAMDAwpqam////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////hoaGcHBw7+/v////8/PzfHx8MDAwpKSk////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////8/Pz9PT0////////////9fX1fX19MDAwoqKi////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////+Pj4f39/Li4umZmZ/f39zc3NRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////9/f3fX19gICA+fn5zs7ORUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////+Pj49fX1////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////////////////////////////////////////////////zc3NRUVFurq6////////////////////////19fXREREyMjI////////////////////////////////////////////////z8/PR0dHurq6////////////////////////1tbWOTk5ZWVlg4ODfn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+goKCZ2dnODg4t7e3////////////////////////7u7ueHh4bGxsampqa2tra2tra2tra2tra2tra2tra2tra2tra2tra2trampqampqdnZ21dXV/////////////////////////v7+9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0+/v7////////////////////" />
+          </CheckedImage>
+          <Value>
+            <String>= Fields.IsAdenocarcinoma</String>
+          </Value>
+          <FalseValue>
+            <String>= False</String>
+          </FalseValue>
+          <TrueValue>
+            <String>= True</String>
+          </TrueValue>
+          <IndeterminateValue>
+            <String></String>
+          </IndeterminateValue>
+        </CheckBox>
+        <TextBox Value="" CanGrow="False" Size="3.83640162150065in, 0.0520833320915699in" Location="0.032648245493571in, 6.10011911392212in" Name="textBox22">
+          <Style>
+            <BorderStyle Top="Solid" Bottom="None" Left="None" Right="None" />
+          </Style>
+        </TextBox>
+        <TextBox Value="" Size="7.59176063537598in, 0.0520833320915699in" Location="0.0258979797363281in, 6.95876948038737in" Name="textBox23">
+          <Style>
+            <BorderStyle Top="Solid" Bottom="None" Left="None" Right="None" />
+          </Style>
+        </TextBox>
+        <TextBox Value="EVALUASI HORMONAL (Apusan Vagina)" CanGrow="False" Size="3.58805910746257in, 0.199999392032623in" Location="0.220990732312202in, 6.152281443278in" Name="textBox24" StyleName="Caption">
+          <Style TextAlign="Left">
+            <Font Bold="True" />
+          </Style>
+        </TextBox>
+        <CheckBox Text="Pola Hormonal Sesuai Umur &amp; Riwayat" CheckAlign="TopLeft" CanGrow="False" Multiline="False" Size="3.58805910746257in, 0.200000122189522in" Location="0.220990732312202in, 6.35845184326172in" Anchoring="Left" Name="checkBox40">
+          <UncheckedImage>
+            <ImageSource Image="Qk1GBQAAAAAAADYAAAAoAAAAGAAAABIAAAABABgAAAAAAAAAAADEDgAAxA4AAAAAAAAAAAAA////8vLysbGxqKiop6enqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiop6enqKior6+v5OTk////////////////////////2traPDw8R0dHU1NTUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRU1NTR0dHOjo6u7u7////////////////////////19fXQ0NDtbW15ubm5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5ubmurq6RUVFurq6////////////////////////1tbWQ0NDysrK////////////////////////////////////////////////0dHRRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCycnJ////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxMTE////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////////////////////////////////////////////////zc3NRUVFurq6////////////////////////19fXREREyMjI////////////////////////////////////////////////z8/PR0dHurq6////////////////////////1tbWOTk5ZWVlg4ODfn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+goKCZ2dnODg4t7e3////////////////////////7u7ueHh4bGxsampqa2tra2tra2tra2tra2tra2tra2tra2tra2tra2trampqampqdnZ21dXV/////////////////////////v7+9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0+/v7////////////////////" />
+          </UncheckedImage>
+          <CheckedImage>
+            <ImageSource Image="Qk1GBQAAAAAAADYAAAAoAAAAGAAAABIAAAABABgAAAAAAAAAAADEDgAAxA4AAAAAAAAAAAAA////8vLysbGxqKiop6enqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiop6enqKior6+v5OTk////////////////////////2traPDw8R0dHU1NTUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRU1NTR0dHOjo6u7u7////////////////////////19fXQ0NDtbW15ubm5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5ubmurq6RUVFurq6////////////////////////1tbWQ0NDysrK////////////////////////////////////////////////0dHRRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////39/f/v7+////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////sLCwR0dHp6en////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////srKyPz8/Q0NDPDw8qKio////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxcXF////pqamMTExd3d33NzcgICAMDAwpqam////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////hoaGcHBw7+/v////8/PzfHx8MDAwpKSk////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////8/Pz9PT0////////////9fX1fX19MDAwoqKi////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////+Pj4f39/Li4umZmZ/f39zc3NRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////9/f3fX19gICA+fn5zs7ORUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////+Pj49fX1////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////////////////////////////////////////////////zc3NRUVFurq6////////////////////////19fXREREyMjI////////////////////////////////////////////////z8/PR0dHurq6////////////////////////1tbWOTk5ZWVlg4ODfn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+goKCZ2dnODg4t7e3////////////////////////7u7ueHh4bGxsampqa2tra2tra2tra2tra2tra2tra2tra2tra2tra2trampqampqdnZ21dXV/////////////////////////v7+9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0+/v7////////////////////" />
+          </CheckedImage>
+          <Value>
+            <String>= Fields.IsHormonalPatternsAccordingToAgeAndHistory</String>
+          </Value>
+          <FalseValue>
+            <String>= False</String>
+          </FalseValue>
+          <TrueValue>
+            <String>= True</String>
+          </TrueValue>
+          <IndeterminateValue>
+            <String></String>
+          </IndeterminateValue>
+        </CheckBox>
+        <CheckBox Text="Pola Hormonal Tidak Sesuai Umur &amp; Riwayat" CheckAlign="TopLeft" Size="3.58805910746257in, 0.200000122189522in" Location="0.220990732312202in, 6.55853080749512in" Name="checkBox41">
+          <UncheckedImage>
+            <ImageSource Image="Qk1GBQAAAAAAADYAAAAoAAAAGAAAABIAAAABABgAAAAAAAAAAADEDgAAxA4AAAAAAAAAAAAA////8vLysbGxqKiop6enqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiop6enqKior6+v5OTk////////////////////////2traPDw8R0dHU1NTUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRU1NTR0dHOjo6u7u7////////////////////////19fXQ0NDtbW15ubm5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5ubmurq6RUVFurq6////////////////////////1tbWQ0NDysrK////////////////////////////////////////////////0dHRRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCycnJ////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxMTE////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////////////////////////////////////////////////zc3NRUVFurq6////////////////////////19fXREREyMjI////////////////////////////////////////////////z8/PR0dHurq6////////////////////////1tbWOTk5ZWVlg4ODfn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+goKCZ2dnODg4t7e3////////////////////////7u7ueHh4bGxsampqa2tra2tra2tra2tra2tra2tra2tra2tra2tra2trampqampqdnZ21dXV/////////////////////////v7+9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0+/v7////////////////////" />
+          </UncheckedImage>
+          <CheckedImage>
+            <ImageSource Image="Qk1GBQAAAAAAADYAAAAoAAAAGAAAABIAAAABABgAAAAAAAAAAADEDgAAxA4AAAAAAAAAAAAA////8vLysbGxqKiop6enqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiop6enqKior6+v5OTk////////////////////////2traPDw8R0dHU1NTUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRU1NTR0dHOjo6u7u7////////////////////////19fXQ0NDtbW15ubm5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5ubmurq6RUVFurq6////////////////////////1tbWQ0NDysrK////////////////////////////////////////////////0dHRRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////39/f/v7+////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////sLCwR0dHp6en////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////srKyPz8/Q0NDPDw8qKio////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxcXF////pqamMTExd3d33NzcgICAMDAwpqam////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////hoaGcHBw7+/v////8/PzfHx8MDAwpKSk////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////8/Pz9PT0////////////9fX1fX19MDAwoqKi////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////+Pj4f39/Li4umZmZ/f39zc3NRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////9/f3fX19gICA+fn5zs7ORUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////+Pj49fX1////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////////////////////////////////////////////////zc3NRUVFurq6////////////////////////19fXREREyMjI////////////////////////////////////////////////z8/PR0dHurq6////////////////////////1tbWOTk5ZWVlg4ODfn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+goKCZ2dnODg4t7e3////////////////////////7u7ueHh4bGxsampqa2tra2tra2tra2tra2tra2tra2tra2tra2tra2trampqampqdnZ21dXV/////////////////////////v7+9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0+/v7////////////////////" />
+          </CheckedImage>
+          <Value>
+            <String>= Fields.IsHormonalPatternDoesNotMatchTheAgeAndHistory</String>
+          </Value>
+        </CheckBox>
+        <TextBox Value="KEGANASAN NON EPITHELIAL" CanGrow="False" Size="3.74299049377441in, 0.251846224069595in" Location="3.86932468414307in, 6.10011911392212in" Name="textBox25" StyleName="Caption">
+          <Style TextAlign="Left" VerticalAlign="Top">
+            <BorderStyle Top="Solid" Left="Solid" />
+            <Font Bold="True" />
+            <Padding Left="2mm" Top="2mm" />
+          </Style>
+        </TextBox>
+        <TextBox Value="=Fields.InterpretationOfResults" CanGrow="False" Size="5.07908884684245in, 0.499921083450317in" Location="0.120911918580532in, 7.20011901855469in" Name="textBox26" StyleName="Caption">
+          <Style TextAlign="Left" VerticalAlign="Top">
+            <Font Bold="False" />
+            <Padding Top="1mm" />
+          </Style>
+        </TextBox>
+        <TextBox Value="=Fields.Suggestion" CanGrow="False" Size="5.07908884684245in, 0.600000301996867in" Location="0.120911918580532in, 7.90011978149414in" Name="textBox27" StyleName="Caption">
+          <Style TextAlign="Left" VerticalAlign="Top">
+            <Font Bold="False" />
+            <Padding Top="1mm" />
+          </Style>
+        </TextBox>
+        <CheckBox Text="Tidak Memenuhi syarat untuk evaluasi" CheckAlign="TopLeft" Size="3.74833369255066in, 0.200000122189522in" Location="3.86932492256165in, 0.200118064880371in" Name="checkBox3">
+          <Style>
+            <Font Size="9pt" />
+            <Padding Left="0in" />
+          </Style>
+          <UncheckedImage>
+            <ImageSource Image="Qk1GBQAAAAAAADYAAAAoAAAAGAAAABIAAAABABgAAAAAAAAAAADEDgAAxA4AAAAAAAAAAAAA////8vLysbGxqKiop6enqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiop6enqKior6+v5OTk////////////////////////2traPDw8R0dHU1NTUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRU1NTR0dHOjo6u7u7////////////////////////19fXQ0NDtbW15ubm5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5ubmurq6RUVFurq6////////////////////////1tbWQ0NDysrK////////////////////////////////////////////////0dHRRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCycnJ////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxMTE////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////////////////////////////////////////////////zc3NRUVFurq6////////////////////////19fXREREyMjI////////////////////////////////////////////////z8/PR0dHurq6////////////////////////1tbWOTk5ZWVlg4ODfn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+goKCZ2dnODg4t7e3////////////////////////7u7ueHh4bGxsampqa2tra2tra2tra2tra2tra2tra2tra2tra2tra2trampqampqdnZ21dXV/////////////////////////v7+9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0+/v7////////////////////" />
+          </UncheckedImage>
+          <CheckedImage>
+            <ImageSource Image="Qk1GBQAAAAAAADYAAAAoAAAAGAAAABIAAAABABgAAAAAAAAAAADEDgAAxA4AAAAAAAAAAAAA////8vLysbGxqKiop6enqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiop6enqKior6+v5OTk////////////////////////2traPDw8R0dHU1NTUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRU1NTR0dHOjo6u7u7////////////////////////19fXQ0NDtbW15ubm5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5ubmurq6RUVFurq6////////////////////////1tbWQ0NDysrK////////////////////////////////////////////////0dHRRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////39/f/v7+////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////sLCwR0dHp6en////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////srKyPz8/Q0NDPDw8qKio////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxcXF////pqamMTExd3d33NzcgICAMDAwpqam////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////hoaGcHBw7+/v////8/PzfHx8MDAwpKSk////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////8/Pz9PT0////////////9fX1fX19MDAwoqKi////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////+Pj4f39/Li4umZmZ/f39zc3NRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////9/f3fX19gICA+fn5zs7ORUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////+Pj49fX1////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////////////////////////////////////////////////zc3NRUVFurq6////////////////////////19fXREREyMjI////////////////////////////////////////////////z8/PR0dHurq6////////////////////////1tbWOTk5ZWVlg4ODfn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+goKCZ2dnODg4t7e3////////////////////////7u7ueHh4bGxsampqa2tra2tra2tra2tra2tra2tra2tra2tra2tra2trampqampqdnZ21dXV/////////////////////////v7+9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0+/v7////////////////////" />
+          </CheckedImage>
+          <Value>
+            <String>= IIF(Fields.IsEligibleAdequacyOfTheSpecimen = 0,'True','False')</String>
+          </Value>
+          <FalseValue>
+            <String>False</String>
+          </FalseValue>
+          <TrueValue>
+            <String>True</String>
+          </TrueValue>
+        </CheckBox>
+        <CheckBox Text="Trichomonas Vaginalis" CheckAlign="TopLeft" CanGrow="False" Size="3.64805889129639in, 0.200000122189522in" Location="0.22099082171917in, 1.30019760131836in" Name="checkBox43">
+          <UncheckedImage>
+            <ImageSource Image="Qk1GBQAAAAAAADYAAAAoAAAAGAAAABIAAAABABgAAAAAAAAAAADEDgAAxA4AAAAAAAAAAAAA////8vLysbGxqKiop6enqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiop6enqKior6+v5OTk////////////////////////2traPDw8R0dHU1NTUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRU1NTR0dHOjo6u7u7////////////////////////19fXQ0NDtbW15ubm5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5ubmurq6RUVFurq6////////////////////////1tbWQ0NDysrK////////////////////////////////////////////////0dHRRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCycnJ////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxMTE////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////////////////////////////////////////////////zc3NRUVFurq6////////////////////////19fXREREyMjI////////////////////////////////////////////////z8/PR0dHurq6////////////////////////1tbWOTk5ZWVlg4ODfn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+goKCZ2dnODg4t7e3////////////////////////7u7ueHh4bGxsampqa2tra2tra2tra2tra2tra2tra2tra2tra2tra2trampqampqdnZ21dXV/////////////////////////v7+9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0+/v7////////////////////" />
+          </UncheckedImage>
+          <CheckedImage>
+            <ImageSource Image="Qk1GBQAAAAAAADYAAAAoAAAAGAAAABIAAAABABgAAAAAAAAAAADEDgAAxA4AAAAAAAAAAAAA////8vLysbGxqKiop6enqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiop6enqKior6+v5OTk////////////////////////2traPDw8R0dHU1NTUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRU1NTR0dHOjo6u7u7////////////////////////19fXQ0NDtbW15ubm5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5ubmurq6RUVFurq6////////////////////////1tbWQ0NDysrK////////////////////////////////////////////////0dHRRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////39/f/v7+////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////sLCwR0dHp6en////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////srKyPz8/Q0NDPDw8qKio////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxcXF////pqamMTExd3d33NzcgICAMDAwpqam////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////hoaGcHBw7+/v////8/PzfHx8MDAwpKSk////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////8/Pz9PT0////////////9fX1fX19MDAwoqKi////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////+Pj4f39/Li4umZmZ/f39zc3NRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////9/f3fX19gICA+fn5zs7ORUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////+Pj49fX1////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////////////////////////////////////////////////zc3NRUVFurq6////////////////////////19fXREREyMjI////////////////////////////////////////////////z8/PR0dHurq6////////////////////////1tbWOTk5ZWVlg4ODfn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+goKCZ2dnODg4t7e3////////////////////////7u7ueHh4bGxsampqa2tra2tra2tra2tra2tra2tra2tra2tra2tra2trampqampqdnZ21dXV/////////////////////////v7+9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0+/v7////////////////////" />
+          </CheckedImage>
+          <Value>
+            <String>= IIF(Fields.IsTrichomonasVaginalisInfection= 1,'True','False')</String>
+          </Value>
+          <FalseValue>
+            <String>False</String>
+          </FalseValue>
+          <TrueValue>
+            <String>True</String>
+          </TrueValue>
+        </CheckBox>
+        <CheckBox Text="Evaluasi Hormonal Tidak Mungkin" CheckAlign="TopLeft" Size="3.58805910746257in, 0.166432698567708in" Location="0.220795273780823in, 6.75860786437988in" Name="checkBox2">
+          <UncheckedImage>
+            <ImageSource Image="Qk1GBQAAAAAAADYAAAAoAAAAGAAAABIAAAABABgAAAAAAAAAAADEDgAAxA4AAAAAAAAAAAAA////8vLysbGxqKiop6enqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiop6enqKior6+v5OTk////////////////////////2traPDw8R0dHU1NTUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRU1NTR0dHOjo6u7u7////////////////////////19fXQ0NDtbW15ubm5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5ubmurq6RUVFurq6////////////////////////1tbWQ0NDysrK////////////////////////////////////////////////0dHRRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCycnJ////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxMTE////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////////////////////////////////////////////////zc3NRUVFurq6////////////////////////19fXREREyMjI////////////////////////////////////////////////z8/PR0dHurq6////////////////////////1tbWOTk5ZWVlg4ODfn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+goKCZ2dnODg4t7e3////////////////////////7u7ueHh4bGxsampqa2tra2tra2tra2tra2tra2tra2tra2tra2tra2trampqampqdnZ21dXV/////////////////////////v7+9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0+/v7////////////////////" />
+          </UncheckedImage>
+          <CheckedImage>
+            <ImageSource Image="Qk1GBQAAAAAAADYAAAAoAAAAGAAAABIAAAABABgAAAAAAAAAAADEDgAAxA4AAAAAAAAAAAAA////8vLysbGxqKiop6enqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiop6enqKior6+v5OTk////////////////////////2traPDw8R0dHU1NTUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRU1NTR0dHOjo6u7u7////////////////////////19fXQ0NDtbW15ubm5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5ubmurq6RUVFurq6////////////////////////1tbWQ0NDysrK////////////////////////////////////////////////0dHRRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////39/f/v7+////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////sLCwR0dHp6en////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////srKyPz8/Q0NDPDw8qKio////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxcXF////pqamMTExd3d33NzcgICAMDAwpqam////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////hoaGcHBw7+/v////8/PzfHx8MDAwpKSk////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////8/Pz9PT0////////////9fX1fX19MDAwoqKi////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////+Pj4f39/Li4umZmZ/f39zc3NRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////9/f3fX19gICA+fn5zs7ORUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////+Pj49fX1////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////////////////////////////////////////////////zc3NRUVFurq6////////////////////////19fXREREyMjI////////////////////////////////////////////////z8/PR0dHurq6////////////////////////1tbWOTk5ZWVlg4ODfn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+goKCZ2dnODg4t7e3////////////////////////7u7ueHh4bGxsampqa2tra2tra2tra2tra2tra2tra2tra2tra2tra2trampqampqdnZ21dXV/////////////////////////v7+9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0+/v7////////////////////" />
+          </CheckedImage>
+          <Value>
+            <String>= Fields.IsHormonalEvaluationIsNotPossible</String>
+          </Value>
+        </CheckBox>
+        <CheckBox Text="Efek Hormonal" CheckAlign="TopLeft" CanGrow="False" Size="3.64825471242269in, 0.199999709924062in" Location="0.220794796943665in, 5.51663017272949in" Name="checkBox42">
+          <UncheckedImage>
+            <ImageSource Image="Qk1GBQAAAAAAADYAAAAoAAAAGAAAABIAAAABABgAAAAAAAAAAADEDgAAxA4AAAAAAAAAAAAA////8vLysbGxqKiop6enqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiop6enqKior6+v5OTk////////////////////////2traPDw8R0dHU1NTUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRU1NTR0dHOjo6u7u7////////////////////////19fXQ0NDtbW15ubm5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5ubmurq6RUVFurq6////////////////////////1tbWQ0NDysrK////////////////////////////////////////////////0dHRRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCycnJ////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxMTE////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////////////////////////////////////////////////zc3NRUVFurq6////////////////////////19fXREREyMjI////////////////////////////////////////////////z8/PR0dHurq6////////////////////////1tbWOTk5ZWVlg4ODfn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+goKCZ2dnODg4t7e3////////////////////////7u7ueHh4bGxsampqa2tra2tra2tra2tra2tra2tra2tra2tra2tra2trampqampqdnZ21dXV/////////////////////////v7+9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0+/v7////////////////////" />
+          </UncheckedImage>
+          <CheckedImage>
+            <ImageSource Image="Qk1GBQAAAAAAADYAAAAoAAAAGAAAABIAAAABABgAAAAAAAAAAADEDgAAxA4AAAAAAAAAAAAA////8vLysbGxqKiop6enqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiop6enqKior6+v5OTk////////////////////////2traPDw8R0dHU1NTUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRU1NTR0dHOjo6u7u7////////////////////////19fXQ0NDtbW15ubm5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5ubmurq6RUVFurq6////////////////////////1tbWQ0NDysrK////////////////////////////////////////////////0dHRRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////39/f/v7+////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////sLCwR0dHp6en////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////srKyPz8/Q0NDPDw8qKio////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxcXF////pqamMTExd3d33NzcgICAMDAwpqam////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////hoaGcHBw7+/v////8/PzfHx8MDAwpKSk////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////8/Pz9PT0////////////9fX1fX19MDAwoqKi////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////+Pj4f39/Li4umZmZ/f39zc3NRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////9/f3fX19gICA+fn5zs7ORUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////+Pj49fX1////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////////////////////////////////////////////////zc3NRUVFurq6////////////////////////19fXREREyMjI////////////////////////////////////////////////z8/PR0dHurq6////////////////////////1tbWOTk5ZWVlg4ODfn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+goKCZ2dnODg4t7e3////////////////////////7u7ueHh4bGxsampqa2tra2tra2tra2tra2tra2tra2tra2tra2tra2trampqampqdnZ21dXV/////////////////////////v7+9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0+/v7////////////////////" />
+          </CheckedImage>
+          <Value>
+            <String>= Fields.IsHormonalEffects</String>
+          </Value>
+        </CheckBox>
+        <CheckBox Text="Reaksi Peradangan" CheckAlign="TopLeft" CanGrow="False" Size="3.64825463294983in, 0.200000122189522in" Location="0.220794841647148in, 4.31438827514648in" Name="checkBox10">
+          <UncheckedImage>
+            <ImageSource Image="Qk1GBQAAAAAAADYAAAAoAAAAGAAAABIAAAABABgAAAAAAAAAAADEDgAAxA4AAAAAAAAAAAAA////8vLysbGxqKiop6enqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiop6enqKior6+v5OTk////////////////////////2traPDw8R0dHU1NTUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRU1NTR0dHOjo6u7u7////////////////////////19fXQ0NDtbW15ubm5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5ubmurq6RUVFurq6////////////////////////1tbWQ0NDysrK////////////////////////////////////////////////0dHRRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCycnJ////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQkJCysrK////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxMTE////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////////////////////////////////////////////////zc3NRUVFurq6////////////////////////19fXREREyMjI////////////////////////////////////////////////z8/PR0dHurq6////////////////////////1tbWOTk5ZWVlg4ODfn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+goKCZ2dnODg4t7e3////////////////////////7u7ueHh4bGxsampqa2tra2tra2tra2tra2tra2tra2tra2tra2tra2trampqampqdnZ21dXV/////////////////////////v7+9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0+/v7////////////////////" />
+          </UncheckedImage>
+          <CheckedImage>
+            <ImageSource Image="Qk1GBQAAAAAAADYAAAAoAAAAGAAAABIAAAABABgAAAAAAAAAAADEDgAAxA4AAAAAAAAAAAAA////8vLysbGxqKiop6enqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiop6enqKior6+v5OTk////////////////////////2traPDw8R0dHU1NTUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRU1NTR0dHOjo6u7u7////////////////////////19fXQ0NDtbW15ubm5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5eXl5ubmurq6RUVFurq6////////////////////////1tbWQ0NDysrK////////////////////////////////////////////////0dHRRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////39/f/v7+////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////sLCwR0dHp6en////////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////srKyPz8/Q0NDPDw8qKio////////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxcXF////pqamMTExd3d33NzcgICAMDAwpqam////////////////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////hoaGcHBw7+/v////8/PzfHx8MDAwpKSk////////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////8/Pz9PT0////////////9fX1fX19MDAwoqKi////////ysrKRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////+Pj4f39/Li4umZmZ/f39zc3NRUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////9/f3fX19gICA+fn5zs7ORUVFurq6////////////////////////1tbWQ0NDw8PD////////////////////////////////////+Pj49fX1////ysrKRUVFurq6////////////////////////1tbWQ0NDxsbG////////////////////////////////////////////////zc3NRUVFurq6////////////////////////19fXREREyMjI////////////////////////////////////////////////z8/PR0dHurq6////////////////////////1tbWOTk5ZWVlg4ODfn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+goKCZ2dnODg4t7e3////////////////////////7u7ueHh4bGxsampqa2tra2tra2tra2tra2tra2tra2tra2tra2tra2trampqampqdnZ21dXV/////////////////////////v7+9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0+/v7////////////////////" />
+          </CheckedImage>
+          <Value>
+            <String>= Fields.IsInflammatoryReaction</String>
+          </Value>
+        </CheckBox>
+        <TextBox Value="=Fields.DateOfCompletion" Format="Palembang,  {0:dd-MMM-yyyy}" CanGrow="True" Size="2.13738441467285in, 0.200000032782555in" Location="5.36882734298706in, 7.20011901855469in" Name="textBox28" StyleName="Caption">
+          <Style TextAlign="Left" />
+        </TextBox>
+        <TextBox Value="= Fields.ExaminationBy" Format="" CanGrow="True" Size="2.13738409678141in, 0.200000032782555in" Location="5.36882781982422in, 8.30011940002441in" Name="textBox29" StyleName="Caption">
+          <Style TextAlign="Left" />
+        </TextBox>
+        <TextBox Value="=Fields.TitleResult" CanGrow="False" Size="7.38510386149089in, 0.189188559850057in" Location="0.12110773473978in, 7.01093101501465in" Name="textBox30" StyleName="Caption">
+          <Style TextAlign="Left" VerticalAlign="Top">
+            <Font Bold="True" />
+            <Padding Top="1mm" />
+          </Style>
+        </TextBox>
+        <TextBox Value="Saran" CanGrow="False" Size="1.52083337306976in, 0.189188554883003in" Location="0.12110773473978in, 7.71085166931152in" Name="textBox31" StyleName="Caption">
+          <Style TextAlign="Left" VerticalAlign="Top">
+            <Font Bold="True" />
+            <Padding Top="1mm" />
+          </Style>
+        </TextBox>
+        <TextBox Value="= Fields.OtherInfectionsDescription" CanGrow="False" Size="3.34904988606771in, 1.60569826761882in" Location="0.46000000834465in, 2.50067138671875in" Name="textBox32" StyleName="Caption">
+          <Style TextAlign="Left" VerticalAlign="Top">
+            <Font Bold="False" />
+            <Padding Top="0in" />
+          </Style>
+        </TextBox>
+        <TextBox Value="= Fields.NonEpithelialMalignancies" CanGrow="False" Size="3.74318599700928in, 0.606648261348406in" Location="3.86912894248962in, 6.35204378763835in" Name="textBox33" StyleName="Caption">
+          <Style TextAlign="Left" VerticalAlign="Top">
+            <BorderStyle Top="None" Left="Solid" />
+            <Font Bold="False" />
+            <Padding Left="2mm" Top="0in" />
+          </Style>
+        </TextBox>
+        <TextBox Value="=Fields.AtrophyDescription" Size="2.66904958089193in, 0.200000127156576in" Location="1.19999996821086in, 4.91639391581217in" Name="textBox36" />
+      </Items>
+    </DetailSection>
+  </Items>
+  <StyleSheet>
+    <StyleRule>
+      <Style Color="Black">
+        <Font Name="Tahoma" Size="18pt" Bold="True" Italic="False" Underline="False" Strikeout="False" />
+      </Style>
+      <Selectors>
+        <StyleSelector Type="ReportItemBase" StyleName="Title" />
+      </Selectors>
+    </StyleRule>
+    <StyleRule>
+      <Style Color="Black" VerticalAlign="Middle">
+        <Font Name="Tahoma" Size="10pt" />
+      </Style>
+      <Selectors>
+        <StyleSelector Type="ReportItemBase" StyleName="Caption" />
+      </Selectors>
+    </StyleRule>
+    <StyleRule>
+      <Style VerticalAlign="Middle">
+        <Font Name="Tahoma" Size="9pt" />
+      </Style>
+      <Selectors>
+        <StyleSelector Type="ReportItemBase" StyleName="Data" />
+      </Selectors>
+    </StyleRule>
+    <StyleRule>
+      <Style VerticalAlign="Middle">
+        <Font Name="Tahoma" Size="8pt" />
+      </Style>
+      <Selectors>
+        <StyleSelector Type="ReportItemBase" StyleName="PageInfo" />
+      </Selectors>
+    </StyleRule>
+  </StyleSheet>
+  <PageSettings>
+    <PageSettings PaperKind="Folio" Landscape="False">
+      <Margins>
+        <MarginsU Left="1cm" Right="1cm" Top="5cm" Bottom="0.5cm" />
+      </Margins>
+    </PageSettings>
+  </PageSettings>
+  <Groups>
+    <Group Name="labelsGroup">
+      <GroupHeader>
+        <GroupHeaderSection PrintOnEveryPage="True" Height="0.0520833333333333in" Name="labelsGroupHeader" />
+      </GroupHeader>
+      <GroupFooter>
+        <GroupFooterSection Height="0.0520833333333333in" Name="labelsGroupFooter">
+          <Style Visible="False" />
+        </GroupFooterSection>
+      </GroupFooter>
+    </Group>
+  </Groups>
+</Report>

@@ -1,0 +1,5 @@
+﻿INSERT INTO AppAutoNumber (SRAutoNumber,EffectiveDate,Prefik,SeparatorAfterPrefik,IsUsedDepartment,SeparatorAfterDept,IsUsedYear,YearDigit,SeparatorAfterYear,IsUsedMonth,IsMonthInRomawi,SeparatorAfterMonth,IsUsedDay,SeparatorAfterDay,NumberLength,NumberGroupLength,NumberGroupSeparator,NumberFormat,SeparatorAfterNumber,IsUsedYearToDateOrder,LastUpdateDateTime,LastUpdateByUserID) VALUES
+	 (N'AppointmentNoPostRanap','2011-11-14 00:00:00.0',N'APS',N'-',0,N'',1,2,N'',1,0,N'',1,N'-',4,0,N'',N'',N'',1,'2020-07-23 10:34:03.663',N'deby');
+
+INSERT INTO AppStandardReferenceItem (StandardReferenceID,ItemID,ItemName,Note,IsUsedBySystem,IsActive,LastUpdateDateTime,LastUpdateByUserID,ReferenceID,coaID,subledgerID,CustomField,LineNumber,NumericValue,CustomField2) VALUES
+	 (N'AutoNumber',N'AppointmentNoPostRanap',N'AppointmentNoPostRanap',N'',1,1,'2009-03-17 21:04:25.11',N'sci',NULL,NULL,NULL,NULL,NULL,NULL,NULL);

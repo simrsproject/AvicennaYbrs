@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report DataSourceName="sqlDataSource" Width="13.7479928334554in" Name="userReport1" Zoom="0.6666667" ShowSnapGrid="True" xmlns="http://schemas.telerik.com/reporting/2012/3.8">
+  <DataSources>
+    <SqlDataSource ConnectionString="Data Source=192.168.80.2;Initial Catalog=RSSMCB_TRAIN;User ID=sa;Password=p@ssw0rd" ProviderName="System.Data.SqlClient" SelectCommand="dbo.sprpt_XML_OutStandingSPB" SelectCommandType="StoredProcedure" Name="sqlDataSource">
+      <Parameters>
+        <SqlDataSourceParameter DbType="DateTime" Name="@p_FromDate">
+          <Value>
+            <String>2018-01-01</String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="DateTime" Name="@p_ToDate">
+          <Value>
+            <String>2018-01-30</String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="AnsiString" Name="@p_SupplierID">
+          <Value>
+            <String>01643</String>
+          </Value>
+        </SqlDataSourceParameter>
+      </Parameters>
+    </SqlDataSource>
+  </DataSources>
+  <Items>
+    <PageHeaderSection Height="0.700000047683716in" Name="pageHeader">
+      <Style Visible="False" />
+    </PageHeaderSection>
+    <PageFooterSection Height="0.314583500226339in" Name="pageFooter">
+      <Items>
+        <TextBox Width="5.89995892842611in" Height="0.200000007947286in" Left="6.60000038146973in" Top="0.00003910064697266in" Value="='Page : ' + PageNumber + '/' + PageCount" Name="pageInfoTextBox" StyleName="PageInfo">
+          <Style TextAlign="Right" />
+        </TextBox>
+        <TextBox Width="5.07908821105957in" Height="0.200000007947286in" Left="1.27916653951009in" Top="0.00003910064697266in" Value="=NOW()" Name="currentTimeTextBox" StyleName="PageInfo" />
+      </Items>
+    </PageFooterSection>
+    <ReportHeaderSection Height="1.7342963218689in" Name="reportHeader">
+      <Items>
+        <TextBox Width="7.79996172587077in" Height="0.200000047683716in" Left="0.00003941853841146in" Top="0.899921337763468in" Value="=Fields.Tittle" Name="textBox1">
+          <Style TextAlign="Center" />
+        </TextBox>
+        <TextBox Width="7.79996172587077in" Height="0.199999968210856in" Left="0.00003921985626221in" Top="1.09999998410543in" Value="=Fields.Periode" Name="textBox2">
+          <Style TextAlign="Center" />
+        </TextBox>
+      </Items>
+    </ReportHeaderSection>
+    <ReportFooterSection Height="0.272916158040365in" Name="reportFooter">
+      <Style Visible="False">
+        <BorderStyle Bottom="Solid" />
+        <BorderColor Bottom="Black" />
+        <BorderWidth Bottom="1pt" />
+      </Style>
+    </ReportFooterSection>
+    <DetailSection Height="0.414602955182393in" Name="detail">
+      <Items>
+        <TextBox Width="2.19984261194865in" Height="0.414563536643982in" Left="1.57924540837606in" Top="0in" Value="=Fields.SupplierName" CanGrow="True" Name="supplierNameDataTextBox" StyleName="Data">
+          <Style TextAlign="Center">
+            <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+            <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+            <BorderWidth Top="1pt" Bottom="1pt" Left="1pt" Right="1pt" />
+            <Font Size="8pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1.16030224164327in" Height="0.414563536643982in" Left="3.77916685740153in" Top="0in" Value="=Fields.tglPo" Format="{0:dd/MM/yyyy}" CanGrow="True" Name="tglPoDataTextBox" StyleName="Data">
+          <Style TextAlign="Center">
+            <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+            <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+            <BorderWidth Top="1pt" Bottom="1pt" Left="1pt" Right="1pt" />
+            <Font Size="8pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1.33961868286133in" Height="0.414563536643982in" Left="4.93954753875732in" Top="0in" Value="=Fields.NoPo" CanGrow="True" Name="noPoDataTextBox" StyleName="Data">
+          <Style TextAlign="Center">
+            <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+            <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+            <BorderWidth Top="1pt" Bottom="1pt" Left="1pt" Right="1pt" />
+            <Font Size="8pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1.09984215100606in" Height="0.414563536643982in" Left="6.27924346923828in" Top="0in" Value="=Fields.tglSPB" Format="{0:dd/MM/yyyy}" CanGrow="True" Name="tglSPBDataTextBox" StyleName="Data">
+          <Style TextAlign="Center">
+            <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+            <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+            <BorderWidth Top="1pt" Bottom="1pt" Left="1pt" Right="1pt" />
+            <Font Size="8pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1.09992098808289in" Height="0.414563536643982in" Left="7.37916437784831in" Top="0in" Value="=Fields.NoSPB" CanGrow="True" Name="noSPBDataTextBox" StyleName="Data">
+          <Style TextAlign="Center">
+            <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+            <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+            <BorderWidth Top="1pt" Bottom="1pt" Left="1pt" Right="1pt" />
+            <Font Size="8pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1.09029714266459in" Height="0.414563536643982in" Left="8.47916412353516in" Top="0in" Value="=Fields.InvoiceNo" CanGrow="True" Name="invoiceNoDataTextBox" StyleName="Data">
+          <Style TextAlign="Center">
+            <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+            <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+            <BorderWidth Top="1pt" Bottom="1pt" Left="1pt" Right="1pt" />
+            <Font Size="8pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.503129421136318in" Height="0.414563536643982in" Left="9.56953938802083in" Top="0in" Value="=Fields.Price" CanGrow="True" Name="priceDataTextBox" StyleName="Data">
+          <Style TextAlign="Center">
+            <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+            <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+            <BorderWidth Top="1pt" Bottom="1pt" Left="1pt" Right="1pt" />
+            <Font Size="8pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.899922132492065in" Height="0.414563536643982in" Left="10.579163869222in" Top="0in" Value="=Fields.tot" CanGrow="True" Name="totDataTextBox" StyleName="Data">
+          <Style TextAlign="Center">
+            <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+            <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+            <BorderWidth Top="1pt" Bottom="1pt" Left="1pt" Right="1pt" />
+            <Font Size="8pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.799959182739258in" Height="0.41452411810557in" Left="11.4791641235352in" Top="0.00003941853841146in" Value="=Fields.mindays" CanGrow="True" Name="mindaysDataTextBox" StyleName="Data">
+          <Style TextAlign="Center">
+            <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+            <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+            <BorderWidth Top="1pt" Bottom="1pt" Left="1pt" Right="1pt" />
+            <Font Size="8pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.300000031789144in" Height="0.414602955182393in" Left="1.27916669845581in" Top="0in" Value="=RowNumber()" CanGrow="True" Name="textBox4" StyleName="Caption">
+          <Style TextAlign="Center">
+            <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+            <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+            <BorderWidth Top="1pt" Bottom="1pt" Left="1pt" Right="1pt" />
+            <Font Size="8pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.50633692741394in" Height="0.414602955182393in" Left="10.0727475484212in" Top="0in" Value="=Fields.Quantity" CanGrow="True" Name="quantityDataTextBox" StyleName="Data">
+          <Style TextAlign="Center">
+            <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+            <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+            <BorderWidth Top="1pt" Bottom="1pt" Left="1pt" Right="1pt" />
+            <Font Size="8pt" />
+          </Style>
+        </TextBox>
+      </Items>
+    </DetailSection>
+  </Items>
+  <StyleSheet>
+    <StyleRule>
+      <Style Color="Black">
+        <Font Name="Tahoma" Size="18pt" Bold="True" Italic="False" Underline="False" Strikeout="False" />
+      </Style>
+      <Selectors>
+        <StyleSelector Type="ReportItemBase" StyleName="Title" />
+      </Selectors>
+    </StyleRule>
+    <StyleRule>
+      <Style Color="Black" VerticalAlign="Middle">
+        <Font Name="Tahoma" Size="10pt" />
+      </Style>
+      <Selectors>
+        <StyleSelector Type="ReportItemBase" StyleName="Caption" />
+      </Selectors>
+    </StyleRule>
+    <StyleRule>
+      <Style VerticalAlign="Middle">
+        <Font Name="Tahoma" Size="9pt" />
+      </Style>
+      <Selectors>
+        <StyleSelector Type="ReportItemBase" StyleName="Data" />
+      </Selectors>
+    </StyleRule>
+    <StyleRule>
+      <Style VerticalAlign="Middle">
+        <Font Name="Tahoma" Size="8pt" />
+      </Style>
+      <Selectors>
+        <StyleSelector Type="ReportItemBase" StyleName="PageInfo" />
+      </Selectors>
+    </StyleRule>
+  </StyleSheet>
+  <PageSettings>
+    <PageSettings PaperKind="A4" Landscape="False">
+      <Margins>
+        <MarginsU Left="1cm" Right="1in" Top="1in" Bottom="1in" />
+      </Margins>
+    </PageSettings>
+  </PageSettings>
+  <Groups>
+    <Group Name="labelsGroup">
+      <GroupHeader>
+        <GroupHeaderSection PrintOnEveryPage="True" Height="0.399999976158142in" Name="labelsGroupHeader">
+          <Items>
+            <TextBox Width="1.16030224164327in" Height="0.399881720542908in" Left="3.77916685740153in" Top="0.0000394185371988in" Value="Tgl Po" CanGrow="True" Name="tglPoCaptionTextBox" StyleName="Caption">
+              <Style TextAlign="Center">
+                <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+                <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+                <BorderWidth Top="1pt" Bottom="1pt" Left="1pt" Right="1pt" />
+                <Font Size="8pt" />
+              </Style>
+            </TextBox>
+            <TextBox Width="1.33961868286133in" Height="0.399881720542908in" Left="4.93954753875732in" Top="0.0000394185371988in" Value="No. Po" CanGrow="True" Name="noPoCaptionTextBox" StyleName="Caption">
+              <Style TextAlign="Center">
+                <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+                <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+                <BorderWidth Top="1pt" Bottom="1pt" Left="1pt" Right="1pt" />
+                <Font Size="8pt" />
+              </Style>
+            </TextBox>
+            <TextBox Width="1.09984215100606in" Height="0.399921139081319in" Left="6.27924346923828in" Top="0in" Value="Tgl SPB" CanGrow="True" Name="tglSPBCaptionTextBox" StyleName="Caption">
+              <Style TextAlign="Center">
+                <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+                <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+                <BorderWidth Top="1pt" Bottom="1pt" Left="1pt" Right="1pt" />
+                <Font Size="8pt" />
+              </Style>
+            </TextBox>
+            <TextBox Width="1.09992098808289in" Height="0.399881720542908in" Left="7.37916437784831in" Top="0.0000394185371988in" Value="No. SPB" CanGrow="True" Name="noSPBCaptionTextBox" StyleName="Caption">
+              <Style TextAlign="Center">
+                <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+                <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+                <BorderWidth Top="1pt" Bottom="1pt" Left="1pt" Right="1pt" />
+                <Font Size="8pt" />
+              </Style>
+            </TextBox>
+            <TextBox Width="1.09029777844747in" Height="0.399921139081319in" Left="8.47916412353516in" Top="0in" Value="No. Invoice" CanGrow="True" Name="invoiceNoCaptionTextBox" StyleName="Caption">
+              <Style TextAlign="Center">
+                <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+                <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+                <BorderWidth Top="1pt" Bottom="1pt" Left="1pt" Right="1pt" />
+                <Font Size="8pt" />
+              </Style>
+            </TextBox>
+            <TextBox Width="0.506336291631063in" Height="0.399881720542908in" Left="10.072748819987in" Top="0.0000394185371988in" Value="Price" CanGrow="True" Name="priceCaptionTextBox" StyleName="Caption">
+              <Style TextAlign="Center">
+                <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+                <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+                <BorderWidth Top="1pt" Bottom="1pt" Left="1pt" Right="1pt" />
+                <Font Size="8pt" />
+              </Style>
+            </TextBox>
+            <TextBox Width="0.799959818522135in" Height="0.399999976158142in" Left="11.4791641235352in" Top="0in" Value="Days Outstanding" CanGrow="True" Name="mindaysCaptionTextBox" StyleName="Caption">
+              <Style TextAlign="Center">
+                <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+                <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+                <BorderWidth Top="1pt" Bottom="1pt" Left="1pt" Right="1pt" />
+                <Font Size="8pt" />
+              </Style>
+            </TextBox>
+            <TextBox Width="0.899922132492065in" Height="0.399921139081319in" Left="10.579163869222in" Top="0in" Value="tot" CanGrow="True" Name="totCaptionTextBox" StyleName="Caption">
+              <Style TextAlign="Center">
+                <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+                <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+                <BorderWidth Top="1pt" Bottom="1pt" Left="1pt" Right="1pt" />
+                <Font Size="8pt" />
+              </Style>
+            </TextBox>
+            <TextBox Width="0.503129421136318in" Height="0.399921139081319in" Left="9.56954065958659in" Top="0in" Value="Qty" CanGrow="True" Name="quantityCaptionTextBox" StyleName="Caption">
+              <Style TextAlign="Center">
+                <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+                <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+                <BorderWidth Top="1pt" Bottom="1pt" Left="1pt" Right="1pt" />
+                <Font Size="8pt" />
+              </Style>
+            </TextBox>
+            <TextBox Width="0.300000031789144in" Height="0.399921139081319in" Left="1.27916669845581in" Top="0in" Value="No." CanGrow="True" Name="textBox3" StyleName="Caption">
+              <Style TextAlign="Center">
+                <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+                <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+                <BorderWidth Top="1pt" Bottom="1pt" Left="1pt" Right="1pt" />
+                <Font Size="8pt" />
+              </Style>
+            </TextBox>
+            <TextBox Width="2.19984245300293in" Height="0.399921139081319in" Left="1.57924524943034in" Top="0.00007883707682292in" Value="Nama Supplier / PBF" CanGrow="True" Name="supplierNameCaptionTextBox" StyleName="Caption">
+              <Style TextAlign="Center">
+                <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+                <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+                <BorderWidth Top="1pt" Bottom="1pt" Left="1pt" Right="1pt" />
+                <Font Size="8pt" />
+              </Style>
+            </TextBox>
+          </Items>
+        </GroupHeaderSection>
+      </GroupHeader>
+      <GroupFooter>
+        <GroupFooterSection Height="0.0520833333333333in" Name="labelsGroupFooter">
+          <Style Visible="False" />
+        </GroupFooterSection>
+      </GroupFooter>
+    </Group>
+  </Groups>
+</Report>

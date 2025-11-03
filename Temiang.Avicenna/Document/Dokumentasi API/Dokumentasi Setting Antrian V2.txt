@@ -1,0 +1,68 @@
+step setting antrian V2
+
+1. Cek master stdref
+   - QueueingLocation (Lokasi caller)
+   - QueueingGroup (Jenis antrian, cth pendaftaran atau antrian poli)
+   - QueueingType (Jenis jaminan, cth bpjs dan non bjps)
+2. Cek master suara di menu Patient Management - Master - Queueing sound
+   - Cek kelengkapan master suara
+   - Cek kelengkapan master suara service unit
+     - cek kode antrian untuk service unit
+     - cek tujuan antrian pendaftaran dan tujuan antrian poli
+     - cek file suara untku service unit
+3. Cek app parameter
+   - SoundFolder, path untuk upload file suara (cth: D:\Data\Antrian\audio)
+   - SoundFolderURL, path untuk browse file suara via http (cth: http://localhost/audio), create di iis
+   - IsUsingGuarantorPrefixForQueueCodeKioskV2, Prefix kode format antrian berdasarkan tipe penjamin (setting di stdref QueueingType field CustomField)
+   - IsUsingQueueCodeByPhysicianKioskV2, kode format antrian ditambah format berdasarkan masing-masing dokter (setting di master physician field QueueCodeFormat)
+4. Cek template suara di stdref QueueingGroup field CustomField
+   cth template untuk pendaftaran:
+		{1:"nomor antrian",2:"@queueingno",3:"silahkan",4:"ke loket",5:"@counterno"}
+   cth template untuk antrian poli:
+        {1:"nomor antrian",2:"@queueingno",3:"kepoliklinik",4:"@serviceunit"}
+   parameter yang tersedia: 
+   - @queueingno
+   - @counterno
+   - @serviceunit
+5. URL Pengambilan Antrian
+   - [base url]/Queueing/GetQueue?qLocation={qLocation}
+     - {qLocation} diganti kode lokasi yang ada di stdref QueueingLocation (pemisah untuk pengambilan antrian tiap gedung/lokasi)
+        - Setting terdapat pada menu master Queueing Sound -> Registration Queueing dan pada master service unit ->  Show On KIOSK harus di checklist
+     cth: http://localhost:56210/Queueing/GetQueue?qLocation=01
+6. URL Caller
+   - program id 01.81 disetting ke url ~/Module/Kiosk/QueueingV2/QueueCaller.aspx
+7. URL Display Antrian Registrasi
+   - [base url]/queueing/DisplayReg?qLocation={qLocation}&qCounter={qCounter}
+     - {qLocation} diganti kode lokasi yang ada di stdref QueueingLocation
+     - {qCounter} diperlukan untuk menentukan jumlah counter/loket
+     cth: http://localhost:56210/Queueing/DisplayReg?qLocation=01&qCounter=03
+8. URL Display Antrian Poli RS
+   - Display Poli Standard
+     - [base url]/queueing/DisplayPoli?qLocation={qLocation}&qCounter={qCounter}
+       - {qLocation} diganti kode lokasi yang ada di stdref QueueingLocation
+       - {qCounter} diperlukan untuk menentukan jumlah counter/loket
+         cth: http://localhost:56210/queueing/DisplayPoli?qLocation=02&qCounter=05
+   - Dislay Poli Per Dokter
+     - [base url]/queueing/DisplayPoliByPhysician?qLocation={qLocation}&qPhysician={qPhysician}
+       - {qLocation} diganti kode lokasi yang ada di stdref QueueingLocation
+       - {qPhysician} diisi dengan kode dokter/ParamedicID
+         cth: http://localhost:56210/queueing/DisplayPoliByPhysician?qLocation=02&qPhysician=MD-00001
+9. Settingan Tambahan
+   - Logo RS (GetQueue, DisplayReg, DisplayPoli) diambil dari table Healthcare -> HealthcareLogo
+   - Nama PT ("Powered By {VendorName}") setting di web.config <add key="VendorIdentifier" value="0" />. jika ingin dirubah menjadi KP3 maka ganti value menjadi 1
+   - Nama RS (DisplayReg, DisplayPoli) diambil dari table HealthCare -> HealthcareName
+   - Slogan RS (DisplayReg, DisplayPoli) disetting dari AppParameter -> QueueDisplaySloganHealthcare
+   - Text Scrolling (DisplayReg, DisplayPoli) disetting dari AppParameter -> QueueDisplayScrollingText
+   - Kecepatan Text Scrolling (DisplayReg, DisplayPoli) disetting dari AppParameter -> QueueDisplayScrollingDurationText (dalam satuan m/ms cth:20000ms)
+
+Alur Sistem
+1. Setting jadwal praktek dokter
+2. Pasien mengambil nomor antrian di kiosk (kiosk custom RS), 
+   kiosk RS kirim data via API dan terbentuk Antrian di tabel Appointment dengan flag SRAppoinmentType = 'QRS'
+3. Pemanggilan antrian pendaftaran melalui queueing caller
+4. Proses registrasi
+   - registrasi harus dilakukan melalui tab pending appointment dengan memilih nomor antrian yang bersesuaian dengan nomor yang dipanggil
+     - klik icon pensil untuk mencari pasien (jika pasien lama)
+     - klik icon kertas untuk create pasien baru (jika pasien baru)
+5. Ketika proses registrasi selesai maka otomatis terbuat antrian di poli
+

@@ -1,0 +1,423 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterCustom.master.cs"
+    Inherits="Temiang.Avicenna.MasterPage.MasterCustom" %>
+
+<%@ Register Assembly="System.Web.Extensions, Version=1.0.61025.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+    Namespace="System.Web.UI" TagPrefix="asp" %>
+<%@ Register Src="~/CustomControl/FooterCtl.ascx" TagName="Footer" TagPrefix="uc1" %>
+<%@ Register Src="~/CustomControl/HeaderCtl.ascx" TagName="Header" TagPrefix="uc1" %>
+<%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
+<%@ Import Namespace="Temiang.Avicenna.Common" %>
+<%@ Register Src="~/CustomControl/LoginInfoCtl.ascx" TagName="LoginInfo" TagPrefix="uc1" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <meta http-equiv="cache-control" content="no-cache">
+    <!-- tells browser not to cache -->
+    <meta http-equiv="expires" content="0">
+    <!-- says that the cache expires 'now' -->
+    <meta http-equiv="pragma" content="no-cache">
+    <!-- says not to use cached stuff, if there is any -->
+    <title></title>
+    <meta name="viewport" content="height=device-height,width=device-width">
+    <style type="text/css">
+        .RightAligned {
+            text-align: right;
+        }
+
+        .footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: ButtonFace;
+            text-align: center;
+            border-color: #C0C0C0;
+            border-style: groove none none none;
+            display: none;
+        }
+
+        .info, .success, .warning, .error, .validation {
+            border: 1px solid;
+            /*margin: 10px 0px;*/
+            padding: 5px 5px 5px 5px;
+            background-repeat: no-repeat;
+            background-position: 10px center;
+        }
+
+        .info {
+            color: #00529B;
+            background-color: #BDE5F8;
+            background-image: url('~/Images/infoblue16');
+        }
+
+        .success {
+            color: #4F8A10;
+            background-color: #DFF2BF;
+            background-image: url('~/Images/infogreen16');
+        }
+
+        .warning {
+            color: #9F6000;
+            background-color: #FEEFB3;
+            background-image: url('warning.png');
+        }
+
+        .error {
+            color: #D8000C;
+            background-color: #FFBABA;
+            background-image: url('~/Images/infored16');
+        }
+    </style>
+    <style type="text/css">
+        .onoffswitch {
+            position: relative;
+            width: 51px;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+        }
+
+        .onoffswitch-checkbox {
+            display: none;
+        }
+
+        .onoffswitch-label {
+            display: block;
+            overflow: hidden;
+            cursor: pointer;
+            border: 2px solid #999999;
+            border-radius: 6px;
+        }
+
+        .onoffswitch-inner {
+            display: block;
+            width: 200%;
+            margin-left: -100%;
+            transition: margin 0.3s ease-in 0s;
+        }
+
+            .onoffswitch-inner:before, .onoffswitch-inner:after {
+                display: block;
+                float: left;
+                width: 50%;
+                height: 14px;
+                padding: 0;
+                line-height: 14px;
+                font-size: 12px;
+                color: white;
+                font-family: Trebuchet, Arial, sans-serif;
+                font-weight: bold;
+                box-sizing: border-box;
+            }
+
+            .onoffswitch-inner:before {
+                content: "ON";
+                padding-left: 5px;
+                background-color: #34A7C1;
+                color: #FFFFFF;
+            }
+
+            .onoffswitch-inner:after {
+                content: "OFF";
+                padding-right: 5px;
+                background-color: #EEEEEE;
+                color: #999999;
+                text-align: right;
+            }
+
+        .onoffswitch-switch {
+            display: block;
+            width: 18px;
+            margin: -2px;
+            background: #FFFFFF;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 33px;
+            border: 2px solid #999999;
+            border-radius: 6px;
+            transition: all 0.3s ease-in 0s;
+        }
+
+        .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+            margin-left: 0;
+        }
+
+        .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+            right: 0px;
+        }
+
+        .blink {
+          animation: blink 2s infinite;
+        }
+
+        @keyframes blink {
+          0% {
+            opacity: 1;
+          }
+          100% {
+            opacity: 0.2;
+            color: blue;
+          }
+        }
+
+        .blenk {
+            opacity: 0.4;
+        }
+    </style>
+    <link rel="stylesheet" href="../content/toastr.css" />
+</head>
+<script language="javascript">
+    function onClientPageLoad(oWnd) {
+        // Kasus browser Chrome, button nya hilang Teguh Supriyadi
+        oWnd.maximize();
+        oWnd.remove_pageLoad(onClientPageLoad);
+    }
+    function cancelBack() {
+        //if ((event.keyCode == 8 ||
+        //   (event.keyCode == 37 && event.altKey) ||
+        //   (event.keyCode == 39 && event.altKey))
+        //    &&
+        //   (event.srcElement.form == null || event.srcElement.isTextEdit == false)
+        //  ) {
+        //    event.cancelBubble = true;
+        //    event.returnValue = false;
+        //}
+    }
+
+</script>
+
+<body onkeydown="cancelBack()">
+    <form id="form1" runat="server">
+        <telerik:RadCodeBlock runat="server" ID="rcbMC">
+            <div id="goTop"></div>
+            <style>
+                .goTop {
+                    background-image: url("<%=Helper.UrlRoot() %>/Images/TopBottomChat.png");
+                    background-repeat: no-repeat;
+                    background-position: -80px -140px;
+                    height: 48px;
+                    width: 48px;
+                    display: block;
+                    background-size: 340px 200px;
+                    cursor: pointer;
+                }
+            </style>
+            <%--<script type="text/javascript" src="<%=Helper.UrlRoot() %>/JavaScript/jquery.js"></script>--%>
+            <script type="text/javascript" src="<%=Helper.UrlRoot() %>/Scripts/jquery-1.6.3.min.js"></script>
+            <script type="text/javascript" src="<%=Helper.UrlRoot() %>/Scripts/toastr.min.js"></script>
+
+            <script type="text/javascript" src="<%=Helper.UrlRoot() %>/JavaScript/jquery.gotop.js"></script>
+            <script type="text/javascript">
+                // Session stretch
+                var _sessionTimeoutStretch =  "<%= System.Configuration.ConfigurationManager.AppSettings["SessionStretch"].ToString()%>";
+                var _sessionStretchTimer = null;
+
+                function SessionStretch() {
+                    clearTimeout(_sessionStretchTimer);
+                    $.ajax({
+                        type: 'POST',
+                        url: "<%= Temiang.Avicenna.Common.Helper.UrlRoot() %>/SesssionStretch.aspx/Access",
+                        contentType: "application/json;charset=utf-8",
+                        datatype: "json",
+                        data: JSON.stringify({ data: escape(new Date()) }),
+                        success: function (response) {
+                            SetSessionStretch();
+                        },
+                        error: function (err) {
+                            SetSessionStretch();
+                        },
+                    });
+
+                }
+                function SetSessionStretch() {
+                    if (parseInt(_sessionTimeoutStretch) > 0) {
+                        clearTimeout(_sessionStretchTimer);
+                    }
+                    _sessionStretchTimer = setTimeout('SessionStretch()', parseInt(_sessionTimeoutStretch) * 60 * 1000);
+                }
+
+                <%= Page.IsPostBack? string.Empty:"SetSessionStretch();" %>
+                // End Session stretch
+
+
+                $('#goTop').goTop({
+                    // how long the animation will run when scrolling to the top of the page.
+                    scrolltime: 400,
+
+                    // The CSS classes used to display the arrow.
+                    src: "goTop",
+
+                    // The width of the arrow.
+                    width: 48,
+
+                    // The location where the arrow will be shown.
+                    // "right" or "left"
+                    place: "right"
+
+                });
+
+
+            </script>
+            <%--            <script type="text/javascript">
+                function DeceasedPatientList() {
+                    var oWnd = $find("<%= fw_RadWindowNotification.ClientID %>");
+
+                    oWnd.setUrl('<%=Page.ResolveUrl("~/DeceasedNotificationList.aspx")%>');
+                    oWnd.show();
+                }
+
+                setInterval(function () {
+                    var url = '<%= ResolveUrl("~/WebService/NotificationService.asmx/GetDeceasedPatientCount") %>';
+                    $.ajax({
+                        type: "POST",
+                        url: url,
+                        data: "{'context':''}",
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        success: function (data) {
+                            var response = JSON.parse(data.d);
+                            if (response.Status == "1") {
+                                var notification = $find('<%=fw_RadNotification.ClientID %>');
+                                notification.show();
+                            }
+                        },
+                        error: function (xmlHttpRequest, textStatus, errorThrown) {
+                            alert(xmlHttpRequest.responseText);
+                            alert(textStatus);
+                            alert(errorThrown);
+                        }
+                    });
+                }, 10000);
+            </script>--%>
+        </telerik:RadCodeBlock>
+        <telerik:RadScriptManager ID="fw_RadScriptManager" runat="server">
+            <Scripts>
+                <%-- Common --%>
+                <asp:ScriptReference Path="~/JavaScript/Common/Core.js" />
+                <asp:ScriptReference Path="~/JavaScript/Common/jQuery.js" />
+                <asp:ScriptReference Path="~/JavaScript/Common/jQueryPlugins.js" />
+                <asp:ScriptReference Path="~/JavaScript/Common/Navigation/NavigationScripts.js" />
+                <asp:ScriptReference Path="~/JavaScript/Common/Navigation/OverlayScript.js" />
+                <asp:ScriptReference Path="~/JavaScript/Common/AnimationFramework/AnimationFramework.js" />
+
+                <%-- RadMenu --%>
+                <asp:ScriptReference Path="~/JavaScript/Menu/RadMenuScripts.js" />
+                <asp:ScriptReference Path="~/JavaScript/Menu/MenuItem/RadMenuItem.js" />
+                <asp:ScriptReference Path="~/JavaScript/Menu/MenuItem/MobileMenuItem.js" />
+                <asp:ScriptReference Path="~/JavaScript/Menu/Views/ClassicView.js" />
+                <asp:ScriptReference Path="~/JavaScript/Menu/Views/LiteView.js" />
+
+                <%-- RadAjaxManager, RadAjaxLoadingPanel, RadAjaxPanel --%>
+                <asp:ScriptReference Path="~/JavaScript/Ajax/Ajax.js" />
+
+                <%-- RadFormDecorator --%>
+                <asp:ScriptReference Path="~/JavaScript/FormDecorator/RadFormDecorator.js" />
+                <asp:ScriptReference Path="~/JavaScript/Common/Popup/PopupScripts.js" />
+            </Scripts>
+        </telerik:RadScriptManager>
+        <telerik:RadSkinManager ID="fw_RadSkinManager" runat="server">
+        </telerik:RadSkinManager>
+        <telerik:RadAjaxLoadingPanel ID="fw_ajxLoadingPanel" runat="server" MinDisplayTime="10"
+            InitialDelayTime="200" EnableEmbeddedScripts="false" BackgroundPosition="Center">
+        </telerik:RadAjaxLoadingPanel>
+        <telerik:RadAjaxManager ID="fw_RadAjaxManager" runat="server" EnableEmbeddedScripts="false" EnablePageHeadUpdate="false">
+        </telerik:RadAjaxManager>
+        <telerik:RadFormDecorator ID="fw_RadFormDecorator" runat="server" EnableEmbeddedScripts="false" DecoratedControls="Default" Visible="True" />
+
+        <telerik:RadNotification ID="fw_RadNotification" Animation="Slide" runat="server" OffsetX="-20" AutoCloseDelay="5000"
+            OffsetY="-20" Width="260px" Height="47px" LoadContentOn="EveryShow" OnCallbackUpdate="fw_RadNotification_CallbackUpdate" VisibleTitlebar="false"
+            EnableRoundedCorners="true" EnableShadow="true">
+            <ContentTemplate>
+                <asp:Literal runat="server" ID="litNotification" />
+            </ContentTemplate>
+        </telerik:RadNotification>
+        <asp:HiddenField runat="server" ID="fw_hdnPageID" Value="" />
+        <telerik:RadWindow ID="fw_RadWindowNotification" Animation="None" Width="1024px" Height="480px"
+            runat="server" ShowContentDuringLoad="false" Behavior="Close" VisibleStatusbar="false"
+            Modal="true" />
+
+        <div class="menuarea">
+
+            <table cellpadding="0" cellspacing="0" width="100%" style="background-color: lightgray;">
+                <tr>
+                    <td>
+                        <telerik:RadMenu ID="fw_mnuMain" runat="server" Width="100%" EnableEmbeddedScripts="false">
+                            <CollapseAnimation Duration="200" Type="OutQuint" />
+                        </telerik:RadMenu>
+
+                    </td>
+                    <td align="center" id="searchMenuIcon" style="width: 25px;">
+                        <asp:Image runat="server" ID="imgSearh" ImageUrl="~/Images/Toolbar/search16.png" /></td>
+                    <td style="width: 300px;" id="searchMenu">
+                        <telerik:RadCodeBlock runat="server">
+                            <script type="text/javascript">
+                                function cboMenuSearch_ClientItemsRequesting(sender, eventArgs) {
+                                    var context = eventArgs.get_context();
+                                    context["UserID"] = "<%=AppSession.UserLogin.UserID %>";
+                                    context["UserLogID"] = "<%=AppSession.UserLogin.UserLogID %>";
+                                    context["SRUserType"] = "<%=AppSession.UserLogin.SRUserType %>";
+                                }
+                                function onProgramClick(url) {
+                                    url = url.replace("~","<%=Helper.UrlRoot() %>")
+                                    window.location = url;
+                                }
+                            </script>
+                        </telerik:RadCodeBlock>
+                        <telerik:RadComboBox ID="cboMenuSearch" runat="server" Width="300px" EmptyMessage="Search Menu"
+                            OnClientItemsRequesting="cboMenuSearch_ClientItemsRequesting"
+                            EnableLoadOnDemand="true" ShowMoreResultsBox="true" EnableVirtualScrolling="true">
+                            <WebServiceSettings Method="MyPrograms" Path="~/WebService/ComboBoxDataService.asmx" />
+                            <ClientItemTemplate>
+                    <div onclick="onProgramClick('#= Attributes.NavigateUrl #')">
+                        <ul class="details">
+                            <li ><span>#= Text #</span></li>
+                            <li style="font-weight: bold;font-size: smaller;"><span>#= Attributes.ParentProgramName #</span></li>
+                        </ul>
+                    </div>
+                            </ClientItemTemplate>
+                        </telerik:RadComboBox>
+                    </td>
+                </tr>
+            </table>
+
+            <div style="float: left;">
+                <table cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td rowspan="2" width="1px"></td>
+                        <td rowspan="2">
+                            <asp:Image ID="imgLogo" runat="server" ImageUrl="~/Images/LogoRS.jpg" />
+                        </td>
+                        <td rowspan="2" width="5px"></td>
+                        <td>
+                            <asp:Label ID="fw_lblProgramName" runat="server" Text="" Font-Bold="true" Font-Size="Large"></asp:Label>
+                            <br />
+                            <asp:Label ID="fw_lblProgramPath" runat="server" Text="" Font-Size="XX-Small"></asp:Label>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div style="float: right; margin-top: 15px; margin-right: 1px">
+                <uc1:LoginInfo ID="ctlLoginInfo" runat="server" />
+            </div>
+
+        </div>
+        <div id="contentcustom" class="contentcustom">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+
+        <div class="footer">
+            Avicenna © PT. Solusi Cipta Integrasi : mail@sciptaintegrasi.com
+        </div>
+        <telerik:RadCodeBlock runat="server" ID="cbEnd">
+            <script type="text/javascript">
+                var isShowSearchMenu = <%=AppSession.Parameter.IsShowSearchMenu.ToString().ToLower()%>;
+                if (!isShowSearchMenu) {
+                    document.getElementById("searchMenuIcon").style.display = "none";
+                    document.getElementById("searchMenu").style.display = "none";
+                }
+            </script>
+        </telerik:RadCodeBlock>
+    </form>
+</body>
+</html>

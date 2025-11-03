@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report DataSourceName="sqlDataSource1" Width="10.658in" Name="userReport1" SnapGridSize="0.1cm" xmlns="http://schemas.telerik.com/reporting/2021/1.0">
+  <DataSources>
+    <SqlDataSource QueryDesignerState="null" ParameterValues="{&quot;@p_FromDate&quot;:&quot;01/06/2022&quot;,&quot;@p_ToDate&quot;:&quot;30/06/2022&quot;}" ConnectionString="Loc_RSYS" SelectCommand="sprpt_PasienRawatDaruratkeRawatInap" SelectCommandType="StoredProcedure" Name="sqlDataSource1">
+      <Parameters>
+        <SqlDataSourceParameter DbType="DateTime" Name="@p_FromDate">
+          <Value>
+            <String>01/06/2022</String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="DateTime" Name="@p_ToDate">
+          <Value>
+            <String>30/06/2022</String>
+          </Value>
+        </SqlDataSourceParameter>
+      </Parameters>
+    </SqlDataSource>
+  </DataSources>
+  <Items>
+    <DetailSection Height="0.2in" Name="detailSection1">
+      <Items>
+        <TextBox Width="0.354in" Height="0.2in" Left="0in" Top="0in" Value="=RowNumber()" Multiline="False" Name="textBox16">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" />
+            <BorderStyle Default="Solid" />
+            <BorderWidth Default="0.5pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.8in" Height="0.2in" Left="0.354in" Top="0in" Value="=Fields.RegistrationDate" Format="{0:dd/MM/yyyy}" Multiline="False" Name="textBox17">
+          <Style VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" />
+            <BorderStyle Default="Solid" />
+            <BorderWidth Default="0.5pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1.2in" Height="0.2in" Left="1.154in" Top="0in" Value="=Fields.AsalPasien" Multiline="False" Name="textBox18">
+          <Style VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" />
+            <BorderStyle Default="Solid" />
+            <BorderWidth Default="0.5pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1.5in" Height="0.2in" Left="2.358in" Top="0in" Value="=Fields.ParamedicName" Multiline="False" Name="textBox19">
+          <Style VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" />
+            <BorderStyle Default="Solid" />
+            <BorderWidth Default="0.5pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1.6in" Height="0.2in" Left="3.858in" Top="0in" Value="=Fields.PatientName" Multiline="False" Name="textBox20">
+          <Style VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" />
+            <BorderStyle Default="Solid" />
+            <BorderWidth Default="0.5pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.7in" Height="0.2in" Left="5.458in" Top="0in" Value="=Fields.MedicalNo" Multiline="False" Name="textBox21">
+          <Style VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" />
+            <BorderStyle Default="Solid" />
+            <BorderWidth Default="0.5pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1.1in" Height="0.2in" Left="6.158in" Top="0in" Value="=Fields.ToRegistrationNo" Multiline="False" Name="textBox22">
+          <Style VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" />
+            <BorderStyle Default="Solid" />
+            <BorderWidth Default="0.5pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.8in" Height="0.2in" Left="7.258in" Top="0in" Value="=Fields.DOB" Format="{0:dd-MM-yyyy}" Multiline="False" Name="textBox23">
+          <Style VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" />
+            <BorderStyle Default="Solid" />
+            <BorderWidth Default="0.5pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.9in" Height="0.2in" Left="8.058in" Top="0in" Value="=Fields.Age" Multiline="False" Name="textBox24">
+          <Style VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" />
+            <BorderStyle Default="Solid" />
+            <BorderWidth Default="0.5pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.5in" Height="0.2in" Left="8.958in" Top="0in" Value="=Fields.Sex" Multiline="False" Name="textBox25">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" />
+            <BorderStyle Default="Solid" />
+            <BorderWidth Default="0.5pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1.2in" Height="0.2in" Left="9.458in" Top="0in" Value="=Fields.GuarantorName" Multiline="False" Name="textBox27">
+          <Style VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" />
+            <BorderStyle Default="Solid" />
+            <BorderWidth Default="0.5pt" />
+          </Style>
+        </TextBox>
+      </Items>
+    </DetailSection>
+    <PageFooterSection Height="0.2in" Name="pageFooterSection1">
+      <Items>
+        <TextBox Width="5.258in" Height="0.2in" Left="5.4in" Top="0in" Value="='Page : ' + PageNumber + '/' + PageCount" Name="textBox54">
+          <Style TextAlign="Right" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" Italic="True" />
+            <BorderStyle Top="Solid" />
+            <BorderWidth Default="0.5pt" />
+            <Padding Right="2mm" />
+          </Style>
+        </TextBox>
+        <TextBox Width="5.4in" Height="0.2in" Left="0in" Top="0in" Value="='AVICENNA_HIS  ' + Now()" Format="Avicenna HIS, Print Date : {0:dd-MM-yyyy HH:mm}" Name="textBox32">
+          <Style VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" Italic="True" />
+            <BorderStyle Top="Solid" />
+            <BorderWidth Default="0.5pt" />
+          </Style>
+        </TextBox>
+      </Items>
+    </PageFooterSection>
+    <ReportHeaderSection Height="1.5in" Name="reportHeaderSection1">
+      <Items>
+        <TextBox Width="10.658in" Height="0.2in" Left="0in" Top="0.7in" Value="=Fields.ReportName" Name="textBox1">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="12pt" Bold="True" />
+          </Style>
+        </TextBox>
+        <TextBox Width="10.658in" Height="0.2in" Left="0in" Top="0.9in" Value="=Fields.Periode" Name="textBox2">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Name="Tahoma" Bold="True" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.354in" Height="0.3in" Left="0in" Top="1.2in" Value="No." Name="textBox3">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" />
+            <BorderStyle Default="Solid" />
+            <BorderWidth Default="0.5pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.8in" Height="0.3in" Left="0.358in" Top="1.2in" Value="Tgl Masuk" Name="textBox4">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" />
+            <BorderStyle Default="Solid" />
+            <BorderWidth Default="0.5pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1.2in" Height="0.3in" Left="1.158in" Top="1.2in" Value="Asal Pasien (Poliklinik/IGD)" Name="textBox5">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" />
+            <BorderStyle Default="Solid" />
+            <BorderWidth Default="0.5pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1.5in" Height="0.3in" Left="2.358in" Top="1.2in" Value="Nama Dokter" Name="textBox6">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" />
+            <BorderStyle Default="Solid" />
+            <BorderWidth Default="0.5pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1.6in" Height="0.3in" Left="3.858in" Top="1.2in" Value="Nama Pasien" Name="textBox7">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" />
+            <BorderStyle Default="Solid" />
+            <BorderWidth Default="0.5pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.7in" Height="0.3in" Left="5.458in" Top="1.2in" Value="No. MR" Name="textBox8">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" />
+            <BorderStyle Default="Solid" />
+            <BorderWidth Default="0.5pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1.1in" Height="0.3in" Left="6.158in" Top="1.2in" Value="No. Reg" Name="textBox9">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" />
+            <BorderStyle Default="Solid" />
+            <BorderWidth Default="0.5pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.8in" Height="0.3in" Left="7.258in" Top="1.2in" Value="Tgl Lahir" Name="textBox10">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" />
+            <BorderStyle Default="Solid" />
+            <BorderWidth Default="0.5pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.9in" Height="0.3in" Left="8.058in" Top="1.2in" Value="Umur" Name="textBox11">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" />
+            <BorderStyle Default="Solid" />
+            <BorderWidth Default="0.5pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.5in" Height="0.3in" Left="8.958in" Top="1.2in" Value="Jenis Kelamin" Name="textBox12">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" />
+            <BorderStyle Default="Solid" />
+            <BorderWidth Default="0.5pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1.2in" Height="0.3in" Left="9.458in" Top="1.2in" Value="Penjamin" Name="textBox14">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" />
+            <BorderStyle Default="Solid" />
+            <BorderWidth Default="0.5pt" />
+          </Style>
+        </TextBox>
+      </Items>
+    </ReportHeaderSection>
+    <ReportFooterSection Height="0.508in" Name="reportFooterSection1">
+      <Items>
+        <TextBox Width="7in" Height="0.2in" Left="0.8in" Top="0.308in" Value="=Sum ( Nilai )" Format="{0:N0}" Name="textBox31">
+          <Style VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.8in" Height="0.2in" Left="0in" Top="0.308in" Value="Total pasien :" Name="textBox30">
+          <Style VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="10.658in" Height="0.15in" Left="0in" Top="0.1in" Value="  " Name="textBox29">
+          <Style VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" />
+            <BorderStyle Top="Solid" Bottom="Solid" />
+            <BorderWidth Default="0.5pt" />
+          </Style>
+        </TextBox>
+      </Items>
+    </ReportFooterSection>
+  </Items>
+  <PageSettings PaperKind="A4" Landscape="True" ColumnCount="1" ColumnSpacing="0cm" ContinuousPaper="False">
+    <Margins>
+      <MarginsU Left="1cm" Right="0.2cm" Top="0.2cm" Bottom="0.2cm" />
+    </Margins>
+  </PageSettings>
+  <StyleSheet>
+    <StyleRule>
+      <Style>
+        <Padding Left="2pt" Right="2pt" />
+      </Style>
+      <Selectors>
+        <TypeSelector Type="TextItemBase" />
+        <TypeSelector Type="HtmlTextBox" />
+      </Selectors>
+    </StyleRule>
+  </StyleSheet>
+</Report>

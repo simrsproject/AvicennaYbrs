@@ -1,0 +1,665 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report DataSourceName="sqlDataSource2" Width="8in" Name="userReport1" SnapGridSize="0.1cm" xmlns="http://schemas.telerik.com/reporting/2019/2.0">
+  <DataSources>
+    <SqlDataSource QueryDesignerState="null" ParameterValues="{&quot;@p_FromDate&quot;:&quot;10/1/2019&quot;,&quot;@p_ToDate&quot;:&quot;12/31/2019&quot;,&quot;@p_ServiceUnitID&quot;:&quot;D02.08.01&quot;}" ConnectionString="RSMMLocal" SelectCommand="dbo.spxml_HAISISK" SelectCommandType="StoredProcedure" Name="sqlDataSource2">
+      <Parameters>
+        <SqlDataSourceParameter DbType="DateTime" Name="@p_FromDate">
+          <Value>
+            <String>12/1/2019</String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="DateTime" Name="@p_ToDate">
+          <Value>
+            <String>12/31/2019</String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="AnsiString" Name="@p_ServiceUnitID">
+          <Value>
+            <String>D02.08.01</String>
+          </Value>
+        </SqlDataSourceParameter>
+      </Parameters>
+    </SqlDataSource>
+  </DataSources>
+  <Items>
+    <DetailSection Height="0.052in" Name="detailSection1">
+      <Style Visible="False" />
+    </DetailSection>
+    <PageFooterSection Height="0.2in" Name="pageFooterSection1">
+      <Items>
+        <TextBox Width="4.2in" Height="0.2in" Left="3.8in" Top="0in" Value="='Page : ' + PageNumber + '/' + PageCount" Name="textBox44">
+          <Style TextAlign="Right" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" Italic="True" />
+            <BorderStyle Top="Solid" />
+            <BorderWidth Default="0.5pt" />
+            <Padding Right="2mm" />
+          </Style>
+        </TextBox>
+        <TextBox Width="3.8in" Height="0.2in" Left="0in" Top="0in" Value="=Now()" Format="Avicenna HIS, Print Date : {0:dd-MM-yyyy HH:mm}" Name="textBox53">
+          <Style VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" Italic="True" />
+            <BorderStyle Top="Solid" />
+            <BorderWidth Default="0.5pt" />
+          </Style>
+        </TextBox>
+      </Items>
+    </PageFooterSection>
+    <ReportHeaderSection Height="2.9in" Name="reportHeaderSection1">
+      <Items>
+        <Crosstab DataSourceName="sqlDataSource2" Width="8.001in" Height="2.017in" Left="0in" Top="0.1in" ColumnHeadersPrintOnEveryPage="True" Name="crosstab1" StyleName="Normal.TableNormal">
+          <Body>
+            <Cells>
+              <TableCell RowIndex="0" ColumnIndex="0" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="1.197in" Height="0.2in" Left="0in" Top="0in" KeepTogether="False" Value="=IIF(Sum(Fields.HAIS) IS NULL, 0, Sum(Fields.HAIS))" Name="textBox11" StyleName="Normal.TableBody">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Top="None" Left="None" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                    <ConditionalFormatting>
+                      <FormattingRule>
+                        <Style Color="White" />
+                        <Filters>
+                          <Filter Expression="=IIF(Sum(Fields.HAIS) IS NULL, 0, Sum(Fields.HAIS))" Operator="Equal" Value="0" />
+                        </Filters>
+                      </FormattingRule>
+                    </ConditionalFormatting>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="1" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.96in" Height="0.2in" Left="0in" Top="0in" KeepTogether="False" Value="=IIF(Sum(Fields.LamaRawat) IS NULL, 0, Sum(Fields.LamaRawat))" Name="textBox12" StyleName="Normal.TableBody">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Top="None" Left="None" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                    <ConditionalFormatting>
+                      <FormattingRule>
+                        <Style Color="White" />
+                        <Filters>
+                          <Filter Expression="=IIF(Sum(Fields.LamaRawat) IS NULL, 0, Sum(Fields.LamaRawat))" Operator="Equal" Value="0" />
+                        </Filters>
+                      </FormattingRule>
+                    </ConditionalFormatting>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="2" ColumnIndex="0" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="1.197in" Height="0.2in" Left="0in" Top="0in" KeepTogether="False" Name="textBox19" StyleName="Normal.TableBody">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Default="None" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="2" ColumnIndex="1" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.96in" Height="0.2in" Left="0in" Top="0in" KeepTogether="False" Name="textBox20" StyleName="Normal.TableBody">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Default="None" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="0" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="1.197in" Height="0.2in" Left="0in" Top="0in" KeepTogether="False" Value="= Sum(Fields.HAIS)" Name="textBox14" StyleName="Normal.TableBody">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Font Bold="True" />
+                      <BorderStyle Top="None" Left="None" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="1" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.96in" Height="0.2in" Left="0in" Top="0in" KeepTogether="False" Value="= Sum(Fields.LamaRawat)" Name="textBox15" StyleName="Normal.TableBody">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Font Bold="True" />
+                      <BorderStyle Top="None" Left="None" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="3" ColumnIndex="0" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="1.197in" Height="0.2in" Left="0in" Top="0in" Name="textBox55" StyleName="Normal.TableBody">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Default="None" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="3" ColumnIndex="1" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.96in" Height="0.2in" Left="0in" Top="0in" Name="textBox56" StyleName="Normal.TableBody">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Default="None" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+            </Cells>
+            <Columns>
+              <Column Width="1.197in" />
+              <Column Width="0.96in" />
+            </Columns>
+            <Rows>
+              <Row Height="0.2in" />
+              <Row Height="0.2in" />
+              <Row Height="0.2in" />
+              <Row Height="0.2in" />
+            </Rows>
+          </Body>
+          <Corner>
+            <Cells>
+              <TableCell RowIndex="1" ColumnIndex="0" RowSpan="3" ColumnSpan="2">
+                <ReportItem>
+                  <TextBox Width="2.497in" Height="1.017in" Left="0in" Top="0in" Value="Tgl Lepas" Name="textBox58" StyleName="Normal.TableCorner">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Font Size="8pt" Bold="True" />
+                      <BorderStyle Top="None" Left="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="2" RowSpan="3" ColumnSpan="3">
+                <ReportItem>
+                  <TextBox Width="2.757in" Height="1.017in" Left="0in" Top="0in" Value="Registration No" Name="textBox60" StyleName="Normal.TableCorner">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Font Size="8pt" Bold="True" />
+                      <BorderStyle Top="None" Left="None" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="5" RowSpan="3" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.59in" Height="1.017in" Left="0in" Top="0in" Value="JK" Name="textBox69" StyleName="Normal.TableCorner">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Font Size="8pt" Bold="True" />
+                      <BorderStyle Top="None" Left="None" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="0" RowSpan="1" ColumnSpan="6">
+                <ReportItem>
+                  <TextBox Width="5.844in" Height="0.2in" Left="0in" Top="0in" Value="='LAPORAN  ' + JenisHAIS + ' ' + Judul" Name="textBox28" StyleName="Normal.TableCorner">
+                    <Style TextAlign="Left" VerticalAlign="Middle">
+                      <Font Size="8pt" Bold="True" />
+                      <BorderStyle Top="Solid" Left="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+            </Cells>
+          </Corner>
+          <Style>
+            <BorderStyle Default="None" />
+          </Style>
+          <RowGroups>
+            <TableGroup Name="TglLepas1">
+              <ChildGroups>
+                <TableGroup Name="RegistrationNo1">
+                  <ReportItem>
+                    <TextBox Width="2.497in" Height="0.2in" Left="0in" Top="0in" Value="= Fields.TglLepas" Format="{0:dd.MM.yyyy HH:mm}" Name="textBox24" StyleName="Normal.TableGroup">
+                      <Style VerticalAlign="Middle">
+                        <BorderStyle Top="None" Left="Solid" />
+                        <BorderWidth Default="0.5pt" />
+                      </Style>
+                    </TextBox>
+                  </ReportItem>
+                  <ChildGroups>
+                    <TableGroup Name="group23">
+                      <ReportItem>
+                        <TextBox Width="2.757in" Height="0.2in" Left="0in" Top="0in" KeepTogether="False" Value="= Fields.RegistrationNo" Name="textBox7" StyleName="Normal.TableGroup">
+                          <Style VerticalAlign="Middle">
+                            <Font Size="8pt" />
+                            <BorderStyle Top="None" Left="None" />
+                            <BorderWidth Default="0.5pt" />
+                          </Style>
+                        </TextBox>
+                      </ReportItem>
+                      <ChildGroups>
+                        <TableGroup Name="group49">
+                          <ReportItem>
+                            <TextBox Width="0.59in" Height="0.2in" Left="0in" Top="0in" Value="=JK" Name="textBox59" StyleName="">
+                              <Style TextAlign="Center" VerticalAlign="Middle">
+                                <BorderStyle Bottom="Solid" Left="None" Right="Solid" />
+                                <BorderWidth Default="0.5pt" />
+                              </Style>
+                            </TextBox>
+                          </ReportItem>
+                          <ChildGroups>
+                            <TableGroup Name="group" />
+                          </ChildGroups>
+                        </TableGroup>
+                      </ChildGroups>
+                    </TableGroup>
+                  </ChildGroups>
+                  <Groupings>
+                    <Grouping Expression="= Fields.RegistrationNo" />
+                    <Grouping Expression="= Fields.MonitoringNo" />
+                  </Groupings>
+                  <Sortings>
+                    <Sorting Expression="= Fields.RegistrationNo" Direction="Asc" />
+                  </Sortings>
+                </TableGroup>
+              </ChildGroups>
+              <Groupings>
+                <Grouping Expression="= Fields.TglLepas" />
+              </Groupings>
+              <Sortings>
+                <Sorting Expression="= Fields.TglLepas" Direction="Asc" />
+              </Sortings>
+            </TableGroup>
+            <TableGroup Name="group1">
+              <ChildGroups>
+                <TableGroup Name="group2">
+                  <ReportItem>
+                    <TextBox Width="5.844in" Height="0.2in" Left="0in" Top="0in" Value="Total" Name="textBox25" StyleName="Normal.TableGroup">
+                      <Style VerticalAlign="Middle">
+                        <Font Bold="True" />
+                        <BorderStyle Top="None" Left="Solid" />
+                        <BorderWidth Default="0.5pt" />
+                      </Style>
+                    </TextBox>
+                  </ReportItem>
+                  <ChildGroups>
+                    <TableGroup Name="group3" />
+                  </ChildGroups>
+                </TableGroup>
+              </ChildGroups>
+            </TableGroup>
+            <TableGroup Name="group4">
+              <ChildGroups>
+                <TableGroup Name="group5">
+                  <ReportItem>
+                    <TextBox Width="2.324in" Height="0.2in" Left="0in" Top="0in" Value="Total ISK" Name="textBox26" StyleName="Normal.TableGroup">
+                      <Style VerticalAlign="Middle">
+                        <BorderStyle Default="None" />
+                      </Style>
+                    </TextBox>
+                  </ReportItem>
+                  <ChildGroups>
+                    <TableGroup Name="group20">
+                      <ReportItem>
+                        <TextBox Width="0.173in" Height="0.2in" Left="0in" Top="0in" Value=":" Name="textBox40" StyleName="Normal.TableGroup">
+                          <Style VerticalAlign="Middle">
+                            <BorderStyle Default="None" />
+                          </Style>
+                        </TextBox>
+                      </ReportItem>
+                      <ChildGroups>
+                        <TableGroup Name="group25">
+                          <ReportItem>
+                            <TextBox Width="1.465in" Height="0.2in" Left="0in" Top="0in" KeepTogether="False" Value="= Sum(Fields.HAIS)" Name="textBox18" StyleName="Normal.TableGroup">
+                              <Style VerticalAlign="Middle">
+                                <BorderStyle Default="None" />
+                              </Style>
+                            </TextBox>
+                          </ReportItem>
+                          <ChildGroups>
+                            <TableGroup Name="group12">
+                              <ReportItem>
+                                <TextBox Width="0.191in" Height="0.2in" Left="0in" Top="0in" Name="textBox27" StyleName="">
+                                  <Style>
+                                    <BorderStyle Default="None" />
+                                  </Style>
+                                </TextBox>
+                              </ReportItem>
+                              <ChildGroups>
+                                <TableGroup Name="group31">
+                                  <ReportItem>
+                                    <TextBox Width="1.101in" Height="0.2in" Left="0in" Top="0in" Name="textBox36" StyleName="" />
+                                  </ReportItem>
+                                  <ChildGroups>
+                                    <TableGroup Name="group51">
+                                      <ReportItem>
+                                        <TextBox Width="0.59in" Height="0.2in" Left="0in" Top="0in" Name="textBox62" StyleName="" />
+                                      </ReportItem>
+                                      <ChildGroups>
+                                        <TableGroup Name="group6" />
+                                      </ChildGroups>
+                                    </TableGroup>
+                                  </ChildGroups>
+                                </TableGroup>
+                              </ChildGroups>
+                            </TableGroup>
+                          </ChildGroups>
+                        </TableGroup>
+                      </ChildGroups>
+                    </TableGroup>
+                  </ChildGroups>
+                </TableGroup>
+              </ChildGroups>
+            </TableGroup>
+            <TableGroup Name="group40">
+              <ChildGroups>
+                <TableGroup Name="group41">
+                  <ReportItem>
+                    <TextBox Width="2.324in" Height="0.2in" Left="0in" Top="0in" Value="Total Lama Hari" Name="textBox49" StyleName="Normal.TableGroup">
+                      <Style VerticalAlign="Middle">
+                        <BorderStyle Default="None" />
+                      </Style>
+                    </TextBox>
+                  </ReportItem>
+                  <ChildGroups>
+                    <TableGroup Name="group42">
+                      <ReportItem>
+                        <TextBox Width="0.173in" Height="0.2in" Left="0in" Top="0in" Value=":" Name="textBox50" StyleName="Normal.TableGroup">
+                          <Style VerticalAlign="Middle">
+                            <BorderStyle Default="None" />
+                          </Style>
+                        </TextBox>
+                      </ReportItem>
+                      <ChildGroups>
+                        <TableGroup Name="group43">
+                          <ReportItem>
+                            <TextBox Width="1.465in" Height="0.2in" Left="0in" Top="0in" Value="= Sum(Fields.LamaRawat)" Name="textBox51" StyleName="Normal.TableGroup">
+                              <Style VerticalAlign="Middle">
+                                <BorderStyle Default="None" />
+                              </Style>
+                            </TextBox>
+                          </ReportItem>
+                          <ChildGroups>
+                            <TableGroup Name="group44">
+                              <ReportItem>
+                                <TextBox Width="0.191in" Height="0.2in" Left="0in" Top="0in" Name="textBox52" StyleName="">
+                                  <Style>
+                                    <BorderStyle Default="None" />
+                                  </Style>
+                                </TextBox>
+                              </ReportItem>
+                              <ChildGroups>
+                                <TableGroup Name="group45">
+                                  <ReportItem>
+                                    <TextBox Width="1.101in" Height="0.2in" Left="0in" Top="0in" Name="textBox54" StyleName="">
+                                      <Style>
+                                        <BorderStyle Default="None" />
+                                      </Style>
+                                    </TextBox>
+                                  </ReportItem>
+                                  <ChildGroups>
+                                    <TableGroup Name="group52">
+                                      <ReportItem>
+                                        <TextBox Width="0.59in" Height="0.2in" Left="0in" Top="0in" Name="textBox63" StyleName="" />
+                                      </ReportItem>
+                                      <ChildGroups>
+                                        <TableGroup Name="group46" />
+                                      </ChildGroups>
+                                    </TableGroup>
+                                  </ChildGroups>
+                                </TableGroup>
+                              </ChildGroups>
+                            </TableGroup>
+                          </ChildGroups>
+                        </TableGroup>
+                      </ChildGroups>
+                    </TableGroup>
+                  </ChildGroups>
+                </TableGroup>
+              </ChildGroups>
+            </TableGroup>
+          </RowGroups>
+          <ColumnGroups>
+            <TableGroup Name="group47">
+              <ReportItem>
+                <TextBox Width="2.157in" Height="0.2in" Left="0in" Top="0in" Value="=Periode" Name="textBox2" StyleName="Normal.TableGroup">
+                  <Style TextAlign="Center" VerticalAlign="Middle">
+                    <Font Size="8pt" Bold="True" />
+                    <BorderStyle Top="Solid" />
+                    <BorderWidth Default="0.5pt" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+              <ChildGroups>
+                <TableGroup Name="group48">
+                  <ReportItem>
+                    <TextBox Width="2.157in" Height="0.2in" Left="0in" Top="0in" Value="Pemantauan" Name="textBox57" StyleName="Normal.TableGroup">
+                      <Style TextAlign="Center" VerticalAlign="Middle">
+                        <Font Size="8pt" Bold="True" />
+                        <BorderStyle Top="None" />
+                        <BorderWidth Default="0.5pt" />
+                      </Style>
+                    </TextBox>
+                  </ReportItem>
+                  <ChildGroups>
+                    <TableGroup Name="GolUmur1">
+                      <ReportItem>
+                        <TextBox Width="2.157in" Height="0.417in" Left="0in" Top="0in" KeepTogether="False" Value="= Fields.GolUmur" Name="textBox1" StyleName="Normal.TableGroup">
+                          <Style TextAlign="Center" VerticalAlign="Middle">
+                            <Font Size="8pt" Bold="True" />
+                            <BorderStyle Top="None" Left="None" />
+                            <BorderWidth Default="0.5pt" />
+                          </Style>
+                        </TextBox>
+                      </ReportItem>
+                      <ChildGroups>
+                        <TableGroup>
+                          <ReportItem>
+                            <TextBox Width="1.197in" Height="0.4in" Left="0in" Top="0in" KeepTogether="False" Value="ISK" Name="textBox4" StyleName="Normal.TableHeader">
+                              <Style TextAlign="Center">
+                                <Font Size="8pt" Bold="True" />
+                                <BorderStyle Top="None" Left="None" />
+                                <BorderWidth Default="0.5pt" />
+                              </Style>
+                            </TextBox>
+                          </ReportItem>
+                        </TableGroup>
+                        <TableGroup>
+                          <ReportItem>
+                            <TextBox Width="0.96in" Height="0.4in" Left="0in" Top="0in" KeepTogether="False" Value="Lama Hari" Name="textBox5" StyleName="Normal.TableHeader">
+                              <Style TextAlign="Center">
+                                <Font Size="8pt" Bold="True" />
+                                <BorderStyle Top="None" Left="None" />
+                                <BorderWidth Default="0.5pt" />
+                              </Style>
+                            </TextBox>
+                          </ReportItem>
+                        </TableGroup>
+                      </ChildGroups>
+                      <Groupings>
+                        <Grouping Expression="= Fields.UmurID" />
+                      </Groupings>
+                      <Sortings>
+                        <Sorting Expression="= Fields.UmurID" Direction="Asc" />
+                      </Sortings>
+                    </TableGroup>
+                  </ChildGroups>
+                </TableGroup>
+              </ChildGroups>
+            </TableGroup>
+          </ColumnGroups>
+        </Crosstab>
+        <Table DataSourceName="sqlDataSource2" Width="8in" Height="0.589in" Left="0in" Top="2.2in" Name="table2">
+          <Body>
+            <Cells>
+              <TableCell RowIndex="0" ColumnIndex="0" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="2.774in" Height="0.2in" Left="0in" Top="0in" Value=" ISK X 1000" Name="textBox3" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Bottom">
+                      <BorderStyle Bottom="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="2" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="1.849in" Height="0.2in" Left="0in" Top="0in" Value="= Sum(Fields.HAIS)*1000" Name="textBox6" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Bottom">
+                      <BorderStyle Bottom="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="0" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="2.774in" Height="0.2in" Left="0in" Top="0in" Value="Lama Hari" Name="textBox8" StyleName="">
+                    <Style TextAlign="Center" />
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="2" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="1.849in" Height="0.2in" Left="0in" Top="0in" Value="= Sum(Fields.LamaRawat)" Name="textBox9" StyleName="">
+                    <Style TextAlign="Center" />
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="3" RowSpan="2" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="3.069in" Height="0.4in" Left="0in" Top="0in" Value="= IIF(Sum(Fields.LamaRawat)=0,0,Sum(Fields.HAIS)*1000/ Sum(Fields.LamaRawat))" Format="= {0:N2}" Name="textBox10" StyleName="">
+                    <Style VerticalAlign="Middle" />
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="1" RowSpan="2" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.308in" Height="0.4in" Left="0in" Top="0in" Value="" Format="={0}" Name="textBox13" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle" />
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+            </Cells>
+            <Columns>
+              <Column Width="2.774in" />
+              <Column Width="0.308in" />
+              <Column Width="1.849in" />
+              <Column Width="3.069in" />
+            </Columns>
+            <Rows>
+              <Row Height="0.2in" />
+              <Row Height="0.2in" />
+            </Rows>
+          </Body>
+          <Corner />
+          <RowGroups>
+            <TableGroup Name="group57" />
+            <TableGroup Name="group64" />
+          </RowGroups>
+          <ColumnGroups>
+            <TableGroup Name="tableGroup">
+              <ReportItem>
+                <TextBox Width="4.931in" Height="0.189in" Left="0in" Top="0in" Value="Rumus Akhir :" Name="textBox16" />
+              </ReportItem>
+              <ChildGroups>
+                <TableGroup Name="group54" />
+                <TableGroup Name="group66" />
+                <TableGroup Name="tableGroup1" />
+              </ChildGroups>
+            </TableGroup>
+            <TableGroup Name="tableGroup2">
+              <ReportItem>
+                <TextBox Width="3.069in" Height="0.189in" Left="0in" Top="0in" Format="{0:N2}" Name="textBox17" />
+              </ReportItem>
+            </TableGroup>
+          </ColumnGroups>
+        </Table>
+      </Items>
+    </ReportHeaderSection>
+    <PageHeaderSection Height="1in" Name="pageHeaderSection1" />
+  </Items>
+  <PageSettings PaperKind="A4" Landscape="False">
+    <Margins>
+      <MarginsU Left="0.5cm" Right="0.2cm" Top="0.2cm" Bottom="0.2cm" />
+    </Margins>
+  </PageSettings>
+  <StyleSheet>
+    <StyleRule>
+      <Style>
+        <Padding Left="2pt" Right="2pt" />
+      </Style>
+      <Selectors>
+        <TypeSelector Type="TextItemBase" />
+        <TypeSelector Type="HtmlTextBox" />
+      </Selectors>
+    </StyleRule>
+    <StyleRule>
+      <Style Color="Black">
+        <Font Name="Tahoma" Size="9pt" />
+        <BorderStyle Default="Solid" />
+        <BorderColor Default="Black" />
+        <BorderWidth Default="1px" />
+      </Style>
+      <Selectors>
+        <StyleSelector Type="Table" StyleName="Normal.TableNormal" />
+      </Selectors>
+    </StyleRule>
+    <StyleRule>
+      <Style>
+        <Font Name="Tahoma" Size="9pt" />
+        <BorderStyle Default="Solid" />
+        <BorderColor Default="Black" />
+        <BorderWidth Default="1px" />
+      </Style>
+      <Selectors>
+        <DescendantSelector>
+          <Selectors>
+            <TypeSelector Type="Table" />
+            <StyleSelector Type="ReportItem" StyleName="Normal.TableBody" />
+          </Selectors>
+        </DescendantSelector>
+      </Selectors>
+    </StyleRule>
+    <StyleRule>
+      <Style>
+        <Font Name="Tahoma" Size="10pt" />
+        <BorderStyle Default="Solid" />
+        <BorderColor Default="Black" />
+        <BorderWidth Default="1px" />
+      </Style>
+      <Selectors>
+        <DescendantSelector>
+          <Selectors>
+            <TypeSelector Type="Table" />
+            <StyleSelector Type="ReportItem" StyleName="Normal.TableCorner" />
+          </Selectors>
+        </DescendantSelector>
+      </Selectors>
+    </StyleRule>
+    <StyleRule>
+      <Style VerticalAlign="Middle">
+        <Font Name="Tahoma" Size="10pt" />
+        <BorderStyle Default="Solid" />
+        <BorderColor Default="Black" />
+        <BorderWidth Default="1px" />
+      </Style>
+      <Selectors>
+        <DescendantSelector>
+          <Selectors>
+            <TypeSelector Type="Table" />
+            <StyleSelector Type="ReportItem" StyleName="Normal.TableHeader" />
+          </Selectors>
+        </DescendantSelector>
+      </Selectors>
+    </StyleRule>
+    <StyleRule>
+      <Style>
+        <Font Name="Tahoma" Size="9pt" />
+        <BorderStyle Default="Solid" />
+        <BorderColor Default="Black" />
+        <BorderWidth Default="1px" />
+      </Style>
+      <Selectors>
+        <DescendantSelector>
+          <Selectors>
+            <TypeSelector Type="Table" />
+            <StyleSelector Type="ReportItem" StyleName="Normal.TableGroup" />
+          </Selectors>
+        </DescendantSelector>
+      </Selectors>
+    </StyleRule>
+  </StyleSheet>
+</Report>

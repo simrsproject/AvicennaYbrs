@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report DataSourceName="sqlDataSource1" Width="5.119in" Name="userReport1" xmlns="http://schemas.telerik.com/reporting/2019/2.0">
+  <DataSources>
+    <SqlDataSource QueryDesignerState="null" ParameterValues="null" ConnectionString="Data Source=TEGUH-NB;Initial Catalog=ARSANI_LIVE;Persist Security Info=True;User ID=sa;Password=123" ProviderName="System.Data.SqlClient" SelectCommand="SELECT *&#xD;&#xA;FROM Healthcare AS h&#xD;&#xA;WHERE h.HealthcareID = (SELECT ap.ParameterValue&#xD;&#xA;                        FROM AppParameter AS ap &#xD;&#xA;                        WHERE ap.ParameterID = 'HealthcareID')" Name="sqlDataSource1" />
+  </DataSources>
+  <Items>
+    <ReportHeaderSection Height="0.7in" Name="reportHeader">
+      <Items>
+        <TextBox Width="4.219in" Height="0.15in" Left="0.9in" Top="0.1in" Value="=Fields.HealthcareName" Name="textBox1">
+          <Style Visible="True" VerticalAlign="Middle">
+            <Font Name="Microsoft Sans Serif" Size="9pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="4.219in" Height="0.15in" Left="0.9in" Top="0.25in" Value="=Fields.AddressLine1 +'-' + Fields.City" Name="textBox2">
+          <Style VerticalAlign="Middle">
+            <Font Name="Microsoft Sans Serif" Size="8pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="4.219in" Height="0.15in" Left="0.9in" Top="0.4in" Value="=Fields.PhoneNo" Name="textBox5">
+          <Style VerticalAlign="Middle">
+            <Font Name="Microsoft Sans Serif" Size="8pt" />
+          </Style>
+        </TextBox>
+        <PictureBox Width="75px" Height="67.19px" Left="0.119in" Top="0in" Sizing="Stretch" MimeType="" Name="pictureBox1" />
+      </Items>
+    </ReportHeaderSection>
+    <DetailSection KeepTogether="False" Height="0.052in" Name="detail">
+      <Style Visible="False" />
+    </DetailSection>
+  </Items>
+  <PageSettings PaperKind="Letter" Landscape="False" ColumnCount="1" ColumnSpacing="0in">
+    <Margins>
+      <MarginsU Left="0in" Right="0in" Top="0in" Bottom="0in" />
+    </Margins>
+  </PageSettings>
+  <StyleSheet>
+    <StyleRule>
+      <Style Color="Black">
+        <Font Name="Tahoma" Size="18pt" Bold="True" Italic="False" Underline="False" Strikeout="False" />
+      </Style>
+      <Selectors>
+        <StyleSelector Type="ReportItemBase" StyleName="Title" />
+      </Selectors>
+    </StyleRule>
+    <StyleRule>
+      <Style Color="Black" VerticalAlign="Middle">
+        <Font Name="Tahoma" Size="10pt" />
+      </Style>
+      <Selectors>
+        <StyleSelector Type="ReportItemBase" StyleName="Caption" />
+      </Selectors>
+    </StyleRule>
+    <StyleRule>
+      <Style VerticalAlign="Middle">
+        <Font Name="Tahoma" Size="9pt" />
+      </Style>
+      <Selectors>
+        <StyleSelector Type="ReportItemBase" StyleName="Data" />
+      </Selectors>
+    </StyleRule>
+    <StyleRule>
+      <Style VerticalAlign="Middle">
+        <Font Name="Tahoma" Size="8pt" />
+      </Style>
+      <Selectors>
+        <StyleSelector Type="ReportItemBase" StyleName="PageInfo" />
+      </Selectors>
+    </StyleRule>
+  </StyleSheet>
+</Report>

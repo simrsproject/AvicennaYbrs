@@ -1,0 +1,59 @@
+﻿<div class="row">
+    <div class="col-12">
+        @if (string.IsNullOrEmpty(ViewBag.ErrMsg))
+        {
+            var pat = ViewBag.patient as Patient;
+            <div class="row mb-2">
+                <div class="col-lg-3 col-md-5 col-sm-5"><strong>@(ViewBag.Lang == "en" ? "Medical No" : "Nomor Medrec")</strong></div>
+                <div class="col-lg-9 col-md-7 col-sm-5"><strong>@pat.MedicalNo</strong></div>
+            </div>
+            <div class="row mb-2">
+                <div class="col-lg-3 col-md-5 col-sm-5"><strong>@(ViewBag.Lang == "en" ? "Name" : "Nama")</strong></div>
+                <div class="col-lg-9 col-md-7 col-sm-5"><strong>@pat.PatientName</strong></div>
+            </div>
+            <div class="row mb-2">
+                <div class="col-lg-3 col-md-5 col-sm-5"><strong>@(ViewBag.Lang == "en" ? "Date Of Birth" : "Tanggal Lahir")</strong> (d/m/y)</div>
+                <div class="col-lg-9 col-md-7 col-sm-5"><strong>@((pat.DateOfBirth as DateTime?).Value.ToString("dd/MM/yyyy")) </strong></div>
+            </div>
+            <div class="row mb-2">
+                <div class="col-lg-3 col-md-5 col-sm-5"><strong>@(ViewBag.Lang == "en" ? "Appointment No" : "Nomor Booking")</strong></div>
+                <div class="col-lg-9 col-md-7 col-sm-5"><strong>@ViewBag.appointment.AppointmentNo</strong></div>
+            </div>
+            <div class="row mb-2">
+                <div class="col-lg-3 col-md-5 col-sm-5"><strong>@(ViewBag.Lang == "en" ? "Referral No" : "Nomor Rujukan")</strong></div>
+                <div class="col-lg-9 col-md-7 col-sm-5"><strong>@ViewBag.referenceNo</strong></div>
+            </div>
+            <div class="row mb-2">
+                <div class="col-lg-3 col-md-5 col-sm-5"><strong>@(ViewBag.Lang == "en" ? "Service Unit" : "Unit Layanan")</strong></div>
+                <div class="col-lg-9 col-md-7 col-sm-5"><strong>@ViewBag.serviceUnit.ServiceUnitName</strong></div>
+            </div>
+            <div class="row mb-2">
+                <div class="col-lg-3 col-md-5 col-sm-5"><strong>@(ViewBag.Lang == "en" ? "Physician" : "Dokter")</strong></div>
+                <div class="col-lg-9 col-md-7 col-sm-5"><strong>@ViewBag.paramedic.ParamedicName</strong></div>
+            </div>
+            <script language="javascript">
+                $(document).ready(function () {
+                    ModalHeaderUpdate('@(ViewBag.Lang == "en" ? "Patient Information" : "Informasi Pasien")', '', 'fas fa-info');
+                    ModalFooterAppend('<button type="button" class="btn btn-outline-success" onclick="javascript: BtnRegisterClick();"><i class="fas fa-plus"></i> @(ViewBag.Lang == "en" ? "Register" : "Daftar")</button>');
+
+                    ServiceUnitID = '@(ViewBag.serviceUnit.ServiceUnitID)';
+                    ParamedicID = '@(ViewBag.paramedic.ParamedicID)';
+                    AppointmentNo = '@(ViewBag.appointment.AppointmentNo)';
+                    MedicalNo = '@(ViewBag.patient.MedicalNo)';
+                });
+            </script>
+        }
+        else
+        {
+            // show error
+            <div class="alert alert-danger">
+                <h5><i class="icon fas fa-ban"></i> Error</h5>
+                @ViewBag.ErrMsg
+            </div>
+
+        }
+    </div>
+</div>
+
+    
+

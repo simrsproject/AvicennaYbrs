@@ -1,0 +1,38 @@
+﻿<div class="row">
+    <div class="col-12">
+        @if (string.IsNullOrEmpty(ViewBag.ErrMsg))
+        {
+            foreach (Paramedic par in ViewBag.prmColl) { 
+        <a class="btn btn-app @(par.IsAvailable.Value ? "btn-dokter":"btn-dokter-closed") m-0 p-0" onclick="javascript: BtnParamedicClick('@par.ParamedicID','@ViewBag.serviceUnit.ServiceUnitID','@ViewBag.medicalNo')">
+            <div class="row">
+                <div class="col-12">
+                    <img class="img-dokter" src="@(par.Foto != null ? ("data:image;base64," +  Convert.ToBase64String(par.Foto)):((ViewBag.UrlRoot) + "/Images/dr_m.png"))" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <span>@par.ParamedicName</span>
+                </div>
+            </div>
+            <div class="row mx-0">
+                <span class="sch-dokter">@par.ScheduleText</span>
+            </div>
+            @if (!par.IsAvailable.Value) { 
+                <div class="ribbon-wrapper ribbon"><div class="ribbon bg-secondary">@(ViewBag.Lang == "en" ? "CLOSED" : "TUTUP")</div></div>
+            }
+        </a>
+            }
+        }
+        else
+        {
+            // show error
+            <div class="alert alert-danger">
+                <h5><i class="icon fas fa-ban"></i> Error</h5>
+                @ViewBag.ErrMsg
+            </div>
+        }
+    </div>
+</div>
+
+    
+

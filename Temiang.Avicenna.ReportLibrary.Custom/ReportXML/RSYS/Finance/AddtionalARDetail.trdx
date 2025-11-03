@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report DataSourceName="sqlDataSource1" Width="7.23958460489909in" Name="userReport1" xmlns="http://schemas.telerik.com/reporting/2012/2">
+  <DataSources>
+    <SqlDataSource ConnectionString="Data Source=192.168.80.2;Initial Catalog=RSSMCB_TRAIN;Persist Security Info=True;User ID=sa;Password=p@ssw0rd" ProviderName="System.Data.SqlClient" SelectCommand="spslp_AddtionalARPersonal" SelectCommandType="StoredProcedure" Name="sqlDataSource1">
+      <Parameters>
+        <SqlDataSourceParameter DbType="AnsiString" Name="@InvoiceNo">
+          <Value>
+            <String>AR-2018/02/06/0004</String>
+          </Value>
+        </SqlDataSourceParameter>
+      </Parameters>
+    </SqlDataSource>
+  </DataSources>
+  <Items>
+    <DetailSection Height="0.0520833333333333in" Name="detailSection1">
+      <Style Visible="False" />
+    </DetailSection>
+    <PageFooterSection Height="0.0520833333333333in" Name="pageFooterSection1">
+      <Style Visible="False" />
+    </PageFooterSection>
+    <ReportHeaderSection Height="4.40000025431315in" Name="reportHeaderSection1">
+      <Items>
+        <TextBox Value="=Fields.InvoiceNo" Size="2.70000012715658in, 0.199999968210856in" Location="0in, 1in" Name="textBox1">
+          <Style VerticalAlign="Middle">
+            <Font Size="9pt" />
+          </Style>
+        </TextBox>
+        <TextBox Value="=AddressLine2 +', ' + Format('{0:dd MMMM yyyy}' ,InvoiceDate)" Format="{0:dd MMMM yyyy}" CanGrow="True" Size="3.39795517921448in, 0.200000032782555in" Location="0.00003941853841146in, 1.29999995231628in" Name="textBox6" StyleName="Caption">
+          <Style TextAlign="Left" VerticalAlign="Middle">
+            <Font Size="9pt" />
+          </Style>
+        </TextBox>
+        <TextBox Value="Kepada" CanGrow="False" Multiline="False" Size="1.68889856338501in, 0.200000032782555in" Location="0.0000394185371988in, 1.60000006357829in" Name="medicalNoCaptionTextBox" StyleName="Caption">
+          <Style TextAlign="Left" VerticalAlign="Middle">
+            <Font Size="9pt" Bold="False" />
+          </Style>
+        </TextBox>
+        <TextBox Value="=Fields.InvoiceNotes" Size="5.90000025431315in, 0.200000127156576in" Location="0in, 1.79999987284342in" Name="textBox2">
+          <Style VerticalAlign="Middle">
+            <Font Size="9pt" Bold="True" />
+          </Style>
+        </TextBox>
+        <TextBox Value="Up. Bagian Keuangan" CanGrow="False" Multiline="False" Size="2.79999987284342in, 0.200000032782555in" Location="0in, 2.20000012715658in" Name="textBox3" StyleName="Caption">
+          <Style TextAlign="Left" VerticalAlign="Middle">
+            <Font Size="9pt" Bold="False" />
+          </Style>
+        </TextBox>
+        <TextBox Value="Dengan Hormat," CanGrow="False" Multiline="False" Size="2.79999995231628in, 0.200000032782555in" Location="0in, 2.40007877349854in" Name="textBox4" StyleName="Caption">
+          <Style TextAlign="Left" VerticalAlign="Middle">
+            <Font Size="9pt" Bold="False" />
+          </Style>
+        </TextBox>
+        <TextBox Value="Bersama ini kami lampirkan tagihan :" CanGrow="False" Multiline="False" Size="2.79999995231628in, 0.200000032782555in" Location="0in, 2.60015773773193in" Name="textBox5" StyleName="Caption">
+          <Style TextAlign="Left" VerticalAlign="Middle">
+            <Font Size="9pt" Bold="False" />
+          </Style>
+        </TextBox>
+        <Table DataSourceName="sqlDataSource1" Size="7.21527695655823in, 1.22916650772095in" Location="0in, 2.89999993642171in" Name="table1">
+          <Style>
+            <Font Size="9pt" />
+          </Style>
+          <Body>
+            <Cells>
+              <TableCell RowIndex="0" ColumnIndex="0" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="=RowNumber()" Size="0.461805542322389in, 0.192708291029192in" Name="textBox10">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Default="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="1" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="=Fields.Notes" Size="5.5451396775085in, 0.192708291029192in" Name="textBox13" StyleName="">
+                    <Style VerticalAlign="Middle">
+                      <BorderStyle Default="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="2" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="=sum (Amount )" Format="{0:N0}" Size="1.20833308295178in, 0.177083341916746in" Name="textBox22" StyleName="">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <BorderStyle Default="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="2" ColumnIndex="2" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="=Sum(Fields.PpnAmount)" Format="{0:N0}" Size="1.20833308295178in, 0.239583236693647in" Name="textBox27" StyleName="">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <BorderStyle Default="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="4" ColumnIndex="2" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="=sum (Amount + PpnAmount + PphAmount)" Format="{0:N0}" Size="1.20833308295178in, 0.197916663769215in" Name="textBox31" StyleName="">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <BorderStyle Default="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="3" ColumnIndex="2" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="=Sum(Fields.PphAmount)" Format="{0:N0}" Size="1.20833308295178in, 0.229166664243046in" Name="textBox23" StyleName="">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <BorderStyle Default="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="0" RowSpan="1" ColumnSpan="2">
+                <ReportItem>
+                  <TextBox Value="Total" Size="6.00694533189138in, 0.177083325645974in" Name="textBox14" StyleName="">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <BorderStyle Default="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="2" ColumnIndex="0" RowSpan="1" ColumnSpan="2">
+                <ReportItem>
+                  <TextBox Value="Total Ppn" Size="6.00694533189138in, 0.239583242126869in" Name="textBox21" StyleName="">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <BorderStyle Default="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="3" ColumnIndex="0" RowSpan="1" ColumnSpan="2">
+                <ReportItem>
+                  <TextBox Value="Total PPh" Size="6.00694533189138in, 0.229166671802091in" Name="textBox37" StyleName="">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <BorderStyle Default="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="4" ColumnIndex="0" RowSpan="1" ColumnSpan="2">
+                <ReportItem>
+                  <TextBox Value="Grand Total" Size="6.00694533189138in, 0.197916667771622in" Name="textBox40" StyleName="">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <BorderStyle Default="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="2" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="=Fields.Amount" Format="{0:N0}" Size="1.20833239845701in, 0.192708291029192in" Location="6.1000010172526in, 0.300000190734863in" Name="textBox9" StyleName="">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <BorderStyle Default="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+            </Cells>
+            <Columns>
+              <Column Width="0.461805396918299in" />
+              <Column Width="5.5451388199049in" />
+              <Column Width="1.20833239845701in" />
+            </Columns>
+            <Rows>
+              <Row Height="0.192708291029192in" />
+              <Row Height="0.177083325645974in" />
+              <Row Height="0.239583242126869in" />
+              <Row Height="0.229166671802091in" />
+              <Row Height="0.197916667771622in" />
+            </Rows>
+          </Body>
+          <Corner />
+          <RowGroups>
+            <TableGroup Name="DetailGroup">
+              <Groupings>
+                <Grouping Expression="null" />
+              </Groupings>
+            </TableGroup>
+            <TableGroup Name="Group3" />
+            <TableGroup Name="Group4" />
+            <TableGroup Name="Group6" />
+            <TableGroup Name="Group5" />
+          </RowGroups>
+          <ColumnGroups>
+            <TableGroup>
+              <ReportItem>
+                <TextBox Value="No." Size="0.461805564426385in, 0.192708322238447in" Name="textBox7">
+                  <Style TextAlign="Center" VerticalAlign="Middle">
+                    <BorderStyle Default="Solid" />
+                    <BorderWidth Default="0.5pt" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup>
+              <ReportItem>
+                <TextBox Value="Keterangan" Size="5.5451396775085in, 0.192708291029192in" Name="textBox8">
+                  <Style TextAlign="Center" VerticalAlign="Middle">
+                    <BorderStyle Default="Solid" />
+                    <BorderWidth Default="0.5pt" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup Name="Group2">
+              <ReportItem>
+                <TextBox Value="Tagihan" Size="1.20833308295178in, 0.192708297915845in" Name="textBox15" StyleName="">
+                  <Style TextAlign="Center" VerticalAlign="Middle">
+                    <BorderStyle Default="Solid" />
+                    <BorderWidth Default="0.5pt" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+          </ColumnGroups>
+        </Table>
+        <TextBox Value="Terbilang :" CanGrow="False" Multiline="False" Size="0.700000127156576in, 0.200000032782555in" Location="0in, 4.20000012715658in" Name="textBox18" StyleName="Caption">
+          <Style TextAlign="Left" VerticalAlign="Middle">
+            <Font Size="8pt" Bold="False" Italic="True" />
+          </Style>
+        </TextBox>
+        <TextBox Value="=Fields.terbilang" Size="6.53946622212728in, 0.200000127156576in" Location="0.700078964233398in, 4.20000012715658in" Name="textBox26">
+          <Style VerticalAlign="Middle">
+            <Font Size="8pt" Italic="True" />
+          </Style>
+        </TextBox>
+      </Items>
+    </ReportHeaderSection>
+    <ReportFooterSection Height="3.94783782958984in" Name="reportFooterSection1">
+      <Items>
+        <TextBox Value="Kwitansi Terlampir," CanGrow="False" Multiline="False" Size="2.79999995231628in, 0.200000032782555in" Location="0in, 0.0457760505378246in" Name="textBox20" StyleName="Caption">
+          <Style TextAlign="Left" VerticalAlign="Middle">
+            <Font Size="9pt" Bold="False" />
+          </Style>
+        </TextBox>
+        <TextBox Value="Kami menganggap surat tagihan ini sudah DINYATAKAN BENAR dan DITERIMA, Jika dalam waktu 2 minggu" CanGrow="False" Multiline="False" Size="7.10000085830688in, 0.200000032782555in" Location="0in, 0.345775932073593in" Name="textBox25" StyleName="Caption">
+          <Style TextAlign="Left" VerticalAlign="Top">
+            <Font Size="9pt" Bold="False" Italic="True" />
+          </Style>
+        </TextBox>
+        <TextBox Value="sejak surat tagihan diterima TIDAK ADA TANGGAPAN/KONFIRMASI/REVISI dari pihak bapak/ibu" CanGrow="False" Multiline="False" Size="7.10000085830688in, 0.200000032782555in" Location="0in, 0.545854866504669in" Name="textBox28" StyleName="Caption">
+          <Style TextAlign="Left" VerticalAlign="Top">
+            <Font Size="9pt" Bold="False" Italic="True" />
+          </Style>
+        </TextBox>
+        <TextBox Value="Pembayaran mohon ditransfer melalui rekening:" CanGrow="False" Multiline="False" Size="7.10000085830688in, 0.200000032782555in" Location="0in, 0.845776855945587in" Name="textBox29" StyleName="Caption">
+          <Style TextAlign="Left" VerticalAlign="Top">
+            <Font Size="9pt" Bold="False" Italic="False" />
+          </Style>
+        </TextBox>
+        <TextBox Value="A/C. No. 683-019-8979" CanGrow="False" Multiline="False" Size="7.10000085830688in, 0.200000032782555in" Location="0in, 1.74601364135742in" Name="textBox30" StyleName="Caption">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Size="9pt" Bold="False" Italic="False" />
+          </Style>
+        </TextBox>
+        <TextBox Value="BANK BCA" CanGrow="False" Multiline="False" Size="7.10000085830688in, 0.200000032782555in" Location="0in, 1.34585571289063in" Name="textBox32" StyleName="Caption">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Size="9pt" Bold="False" Italic="False" />
+          </Style>
+        </TextBox>
+        <TextBox Value="CIBINONG" CanGrow="False" Multiline="False" Size="7.10000085830688in, 0.200000032782555in" Location="0in, 1.54593467712402in" Name="textBox33" StyleName="Caption">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Size="9pt" Bold="False" Italic="False" />
+          </Style>
+        </TextBox>
+        <TextBox Value="PT. SENTRA MEDIKA PERSADA" CanGrow="False" Multiline="False" Size="7.10000085830688in, 0.200000032782555in" Location="0in, 1.14577674865723in" Name="textBox34" StyleName="Caption">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Size="9pt" Bold="False" Italic="False" />
+          </Style>
+        </TextBox>
+        <TextBox Value="Demikianlah surat tagihan ini kami buat, Atas perhatian dan kerjasamanya kami ucapkan terima kasih." CanGrow="False" Multiline="False" Size="7.10000085830688in, 0.200000032782555in" Location="0in, 1.98567640781403in" Name="textBox35" StyleName="Caption">
+          <Style TextAlign="Left" VerticalAlign="Middle">
+            <Font Size="9pt" Bold="False" Italic="False" />
+          </Style>
+        </TextBox>
+        <TextBox Value="Hormat kami," CanGrow="False" Multiline="False" Size="7.10000085830688in, 0.200000032782555in" Location="0.0000394185371988in, 2.44791666666667in" Name="textBox36" StyleName="Caption">
+          <Style TextAlign="Left" VerticalAlign="Middle">
+            <Font Size="9pt" Bold="False" Italic="False" />
+          </Style>
+        </TextBox>
+        <TextBox Value="=Fields.PicManagingDirector" Size="7.10000085830688in, 0.200000122189522in" Location="0in, 3.54791704813639in" Name="textBox38">
+          <Style>
+            <Font Italic="True" Underline="True" />
+          </Style>
+        </TextBox>
+        <TextBox Value="Direktur" CanGrow="False" Multiline="False" Size="7.10000085830688in, 0.200000032782555in" Location="0in, 3.74783770243327in" Name="textBox39" StyleName="Caption">
+          <Style TextAlign="Left" VerticalAlign="Middle">
+            <Font Size="9pt" Bold="False" Italic="False" />
+          </Style>
+        </TextBox>
+      </Items>
+    </ReportFooterSection>
+  </Items>
+  <StyleSheet>
+    <StyleRule>
+      <Style>
+        <Padding Left="2pt" Right="2pt" />
+      </Style>
+      <Selectors>
+        <TypeSelector Type="TextItemBase" />
+        <TypeSelector Type="HtmlTextBox" />
+      </Selectors>
+    </StyleRule>
+  </StyleSheet>
+  <PageSettings>
+    <PageSettings PaperKind="A4" Landscape="False">
+      <Margins>
+        <MarginsU Left="0.5in" Right="0.5in" Top="1in" Bottom="1in" />
+      </Margins>
+    </PageSettings>
+  </PageSettings>
+</Report>

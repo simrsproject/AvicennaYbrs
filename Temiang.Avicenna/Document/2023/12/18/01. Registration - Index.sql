@@ -1,0 +1,2 @@
+-- Index ini malah membuat lambat proses pencarian reg berdasarkan PatientID misal pada info prev buy di Precription Order Handling (Handono)
+DROP INDEX Registration._dta_index_Registration_15_1125579048__K5_K122_K59_K1 

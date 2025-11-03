@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report DataSourceName="sqlDataSource1" Width="7.671in" Name="userReport1" xmlns="http://schemas.telerik.com/reporting/2021/1.0">
+  <DataSources>
+    <SqlDataSource QueryDesignerState="null" ParameterValues="null" ConnectionString="Data Source=DESKTOP-DBVIFV6\MSSQLSERVER2019;Initial Catalog=MUHAYA;Persist Security Info=True;User ID=sa;Password=123" ProviderName="System.Data.SqlClient" SelectCommand="dbo.sprpt_xml_payroll_bank_transfer_list" SelectCommandType="StoredProcedure" Name="sqlDataSource1">
+      <Parameters>
+        <SqlDataSourceParameter DbType="AnsiString" Name="@p_BankID">
+          <Value>
+            <String>01002</String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="AnsiString" Name="@p_PayrollPeriodID">
+          <Value>
+            <String>5</String>
+          </Value>
+        </SqlDataSourceParameter>
+      </Parameters>
+    </SqlDataSource>
+  </DataSources>
+  <Items>
+    <PageFooterSection Height="1.719in" Name="pageFooter">
+      <Style>
+        <BorderStyle Top="Solid" />
+      </Style>
+      <Items>
+        <TextBox Width="3.804in" Height="0.2in" Left="0.021in" Top="1.519in" Value="=NOW()" Name="currentTimeTextBox" StyleName="PageInfo" />
+        <TextBox Width="3.804in" Height="0.2in" Left="3.846in" Top="1.519in" Value="=PageNumber" Name="pageInfoTextBox" StyleName="PageInfo">
+          <Style TextAlign="Right" />
+        </TextBox>
+        <TextBox Width="2.429in" Height="0.2in" Left="5.22in" Top="0.119in" Value="= &quot;Bandung, &quot; + Format('{0:dd MMMM yyyy}', Now())" Name="textBox7">
+          <Style TextAlign="Center" VerticalAlign="Middle" />
+        </TextBox>
+        <TextBox Width="2.429in" Height="0.2in" Left="5.22in" Top="1.019in" Value="= Fields.Director" Name="textBox8">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <BorderStyle Bottom="Dashed" />
+            <BorderWidth Default="0.5pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="2.429in" Height="0.2in" Left="5.22in" Top="1.219in" Value="Direktur" Name="textBox9">
+          <Style TextAlign="Center" VerticalAlign="Middle" />
+        </TextBox>
+      </Items>
+    </PageFooterSection>
+    <ReportHeaderSection Height="1.6in" Name="reportHeader">
+      <Items>
+        <TextBox Width="7.629in" Height="0.69in" Left="0.02in" Top="0.88in" Value="='DAFTAR GAJI KARYAWAN&#xD;&#xA;UNIT : RSMM TIMIKA &#xD;&#xA;YANG DITRANSFER DI  ' + BankName  + '&#xD;&#xA;BULAN : ' + Fields.PayrollPeriodName" Name="textBox4">
+          <Style>
+            <Font Name="Tahoma" />
+          </Style>
+        </TextBox>
+      </Items>
+    </ReportHeaderSection>
+    <DetailSection Height="0.308in" Name="detail">
+      <Style>
+        <BorderStyle Bottom="Solid" />
+      </Style>
+      <Items>
+        <TextBox Width="1.7in" Height="0.2in" Left="0.38in" Top="0.021in" Value="=Fields.BankNo" CanGrow="True" Name="bankAccountNoDataTextBox" StyleName="Data">
+          <Style TextAlign="Center" />
+        </TextBox>
+        <TextBox Width="2in" Height="0.2in" Left="2.1in" Top="0.023in" Value="=Fields.EmployeeName" CanGrow="True" Name="employeeNameDataTextBox" StyleName="Data" />
+        <TextBox Width="1.07in" Height="0.2in" Left="4.13in" Top="0.023in" Value="=Fields.NominalAmount" Format="{0:N0}" CanGrow="True" Name="nominalAmountDataTextBox" StyleName="Data">
+          <Style TextAlign="Right">
+            <Padding Right="1mm" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1.142in" Height="0.2in" Left="5.22in" Top="0.023in" Value="=Fields.BankName" CanGrow="True" Name="bankNameDataTextBox" StyleName="Data">
+          <Style TextAlign="Center" />
+        </TextBox>
+        <TextBox Width="0.333in" Height="0.2in" Left="0.021in" Top="0.021in" Value="= RowNumber()" Name="textBox2">
+          <Style TextAlign="Center">
+            <Font Name="Tahoma" />
+          </Style>
+        </TextBox>
+      </Items>
+    </DetailSection>
+  </Items>
+  <PageSettings PaperKind="Letter" Landscape="False" ColumnCount="1" ColumnSpacing="0in">
+    <Margins>
+      <MarginsU Left="1cm" Right="1cm" Top="1in" Bottom="1in" />
+    </Margins>
+  </PageSettings>
+  <StyleSheet>
+    <StyleRule>
+      <Style Color="Black">
+        <Font Name="Tahoma" Size="18pt" Bold="True" Italic="False" Underline="False" Strikeout="False" />
+      </Style>
+      <Selectors>
+        <StyleSelector Type="ReportItemBase" StyleName="Title" />
+      </Selectors>
+    </StyleRule>
+    <StyleRule>
+      <Style Color="Black" VerticalAlign="Middle">
+        <Font Name="Tahoma" Size="10pt" />
+      </Style>
+      <Selectors>
+        <StyleSelector Type="ReportItemBase" StyleName="Caption" />
+      </Selectors>
+    </StyleRule>
+    <StyleRule>
+      <Style VerticalAlign="Middle">
+        <Font Name="Tahoma" Size="9pt" />
+      </Style>
+      <Selectors>
+        <StyleSelector Type="ReportItemBase" StyleName="Data" />
+      </Selectors>
+    </StyleRule>
+    <StyleRule>
+      <Style VerticalAlign="Middle">
+        <Font Name="Tahoma" Size="8pt" />
+      </Style>
+      <Selectors>
+        <StyleSelector Type="ReportItemBase" StyleName="PageInfo" />
+      </Selectors>
+    </StyleRule>
+  </StyleSheet>
+  <Sortings>
+    <Sorting Expression="=Fields.EmployeeName" Direction="Asc" />
+  </Sortings>
+  <Groups>
+    <Group Name="labelsGroup">
+      <GroupHeader>
+        <GroupHeaderSection PrintOnEveryPage="True" Height="0.292in" Name="labelsGroupHeader">
+          <Style>
+            <BorderStyle Top="Solid" Bottom="Solid" />
+          </Style>
+          <Items>
+            <TextBox Width="1.7in" Height="0.2in" Left="0.38in" Top="0.021in" Value="NO REKENING SIMPANAN" CanGrow="True" Name="bankAccountNoCaptionTextBox" StyleName="Caption">
+              <Style TextAlign="Center" />
+            </TextBox>
+            <TextBox Width="2in" Height="0.2in" Left="2.1in" Top="0.021in" Value="NAMA KARYAWAN" CanGrow="True" Name="employeeNameCaptionTextBox" StyleName="Caption">
+              <Style TextAlign="Left" />
+            </TextBox>
+            <TextBox Width="1.07in" Height="0.2in" Left="4.13in" Top="0.021in" Value="TRANSFER BANK" CanGrow="True" Name="nominalAmountCaptionTextBox" StyleName="Caption">
+              <Style TextAlign="Center" />
+            </TextBox>
+            <TextBox Width="1.142in" Height="0.2in" Left="5.22in" Top="0.021in" Value="NAMA BANK" CanGrow="True" Name="bankNameCaptionTextBox" StyleName="Caption">
+              <Style TextAlign="Center" />
+            </TextBox>
+            <TextBox Width="0.333in" Height="0.2in" Left="0.021in" Top="0.021in" Value="NO" Name="textBox1">
+              <Style TextAlign="Center" VerticalAlign="Middle">
+                <Font Name="Tahoma" />
+              </Style>
+            </TextBox>
+            <TextBox Width="1.26in" Height="0.2in" Left="6.39in" Top="0.021in" Value="KET" Name="textBox3">
+              <Style TextAlign="Center" VerticalAlign="Middle">
+                <Font Name="Tahoma" />
+              </Style>
+            </TextBox>
+          </Items>
+        </GroupHeaderSection>
+      </GroupHeader>
+      <GroupFooter>
+        <GroupFooterSection Height="0.281in" Name="labelsGroupFooter">
+          <Style Visible="True" />
+          <Items>
+            <TextBox Width="1.07in" Height="0.2in" Left="4.13in" Top="0.081in" Value="=SUM(Fields.NominalAmount)" Format="{0:N0}" Name="textBox5">
+              <Style TextAlign="Right">
+                <Padding Right="1mm" />
+              </Style>
+            </TextBox>
+            <TextBox Width="1.26in" Height="0.2in" Left="2.7in" Top="0.081in" Value="TOTAL" Name="textBox6">
+              <Style TextAlign="Center" VerticalAlign="Middle">
+                <Font Name="Tahoma" />
+              </Style>
+            </TextBox>
+          </Items>
+        </GroupFooterSection>
+      </GroupFooter>
+    </Group>
+  </Groups>
+</Report>

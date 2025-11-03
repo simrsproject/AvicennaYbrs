@@ -1,0 +1,1273 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report DataSourceName="sqlDataSource1" Width="11.8000005086263in" Name="userReport1" Zoom="0.6666667" xmlns="http://schemas.telerik.com/reporting/2012/3.8">
+  <Style>
+    <BorderStyle Top="None" Bottom="None" Left="None" Right="None" />
+    <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+    <BorderWidth Top="1pt" Bottom="1pt" Left="1pt" Right="1pt" />
+    <Font Size="12pt" />
+  </Style>
+  <DataSources>
+    <SqlDataSource ConnectionString="Data Source=192.168.80.2;Initial Catalog=RSSMCB_LIVE;Persist Security Info=True;User ID=sa;Password=p@ssw0rd" ProviderName="System.Data.SqlClient" SelectCommand="sprpt_xml_RekapPasienBaru" SelectCommandType="StoredProcedure" Name="sqlDataSource1">
+      <Parameters>
+        <SqlDataSourceParameter DbType="DateTime" Name="@p_FromDate">
+          <Value>
+            <String>2017-10-01</String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="DateTime" Name="@p_ToDate">
+          <Value>
+            <String>2017-10-31</String>
+          </Value>
+        </SqlDataSourceParameter>
+      </Parameters>
+    </SqlDataSource>
+  </DataSources>
+  <Items>
+    <DetailSection Height="0.0520833333333333in" Name="detailSection1">
+      <Style Visible="False" />
+    </DetailSection>
+    <PageFooterSection Height="0.247916539510091in" Name="pageFooterSection1">
+      <Items>
+        <TextBox Width="4.19279448191325in" Height="0.200000122189522in" Left="5.50008010864258in" Top="0.00003941853841146in" Value="='Page : ' + PageNumber + '/' + PageCount" Name="textBox32">
+          <Style TextAlign="Right" VerticalAlign="Middle">
+            <BorderStyle Top="Solid" />
+            <BorderWidth Default="0.5pt" />
+            <Font Name="Tahoma" Size="8pt" Bold="False" Italic="True" />
+          </Style>
+        </TextBox>
+        <TextBox Width="5.49996185302734in" Height="0.200000122189522in" Left="0.00003941853841146in" Top="0.00003941853841146in" Value="=Now()" Format="Avicenna HIS, Print Date : {0:dd-MM-yyyy HH:mm}" Name="textBox33">
+          <Style VerticalAlign="Middle">
+            <BorderStyle Top="Solid" />
+            <BorderWidth Default="0.5pt" />
+            <Font Name="Tahoma" Size="8pt" Bold="False" Italic="True" />
+          </Style>
+        </TextBox>
+      </Items>
+    </PageFooterSection>
+    <ReportHeaderSection Height="2.39999993642171in" Name="reportHeaderSection1">
+      <Items>
+        <TextBox Width="11.7964960734049in" Height="0.199999968210856in" Left="0.00003941853841146in" Top="0.600000023841858in" Value="=Fields.Tittle" Name="textBox1">
+          <Style TextAlign="Center" VerticalAlign="Middle" />
+        </TextBox>
+        <TextBox Width="11.7964566548665in" Height="0.199999968210856in" Left="0.00350415706634521in" Top="0.800078630447388in" Value="=Fields.period" Format="{0:dd MMMM yyyy}" Name="textBox2">
+          <Style VerticalAlign="Bottom">
+            <Font Size="10pt" />
+          </Style>
+        </TextBox>
+        <Table DataSourceName="sqlDataSource1" Width="11.7965355316798in" Height="0.958333333333333in" Left="0in" Top="1.39999993642171in" Name="table1">
+          <Body>
+            <Cells>
+              <TableCell RowIndex="0" ColumnIndex="0" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.378471259915872in" Height="0.244791658595204in" Left="0in" Top="0in" Value="=rownumber()" Name="textBox6">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Default="Dotted" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="32" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.299999946884273in" Height="0.244791658595204in" Left="0in" Top="0in" Value="=Fields.tgl31" Name="textBox14" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Default="Dotted" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="15" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.299999925590604in" Height="0.244791658595204in" Left="0in" Top="0in" Value="=Fields.tgl14" Name="textBox31" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Default="Dotted" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="18" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.299999968177942in" Height="0.244791658595204in" Left="0in" Top="0in" Value="=Fields.tgl17" Name="textBox41" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Default="Dotted" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="16" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.299999968177942in" Height="0.244791658595204in" Left="0in" Top="0in" Value="=Fields.tgl15" Name="textBox43" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Default="Dotted" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="17" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.299999968177942in" Height="0.244791658595204in" Left="0in" Top="0in" Value="=Fields.tgl16" Name="textBox45" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Default="Dotted" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="19" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.299999968177942in" Height="0.244791658595204in" Left="0in" Top="0in" Value="=Fields.tgl18" Name="textBox47" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Default="Dotted" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="21" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.299999925590604in" Height="0.244791658595204in" Left="0in" Top="0in" Value="=Fields.tgl20" Name="textBox49" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Default="Dotted" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="20" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.299999925590604in" Height="0.244791658595204in" Left="0in" Top="0in" Value="=Fields.tgl19" Name="textBox51" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Default="Dotted" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="26" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.299999925590604in" Height="0.244791658595204in" Left="0in" Top="0in" Value="=Fields.tgl25" Name="textBox53" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Default="Dotted" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="25" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.299999925590604in" Height="0.244791658595204in" Left="0in" Top="0in" Value="=Fields.tgl24" Name="textBox55" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Default="Dotted" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="24" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.299999925590604in" Height="0.244791658595204in" Left="0in" Top="0in" Value="=Fields.tgl23" Name="textBox57" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Default="Dotted" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="22" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.299999925590604in" Height="0.244791658595204in" Left="0in" Top="0in" Value="=Fields.tgl21" Name="textBox61" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Default="Dotted" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="27" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.299999925590604in" Height="0.244791658595204in" Left="0in" Top="0in" Value="=Fields.tgl26" Name="textBox63" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Default="Dotted" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="31" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.299999925590604in" Height="0.244791658595204in" Left="0in" Top="0in" Value="=Fields.tgl30" Name="textBox65" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Default="Dotted" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="28" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.299999973973654in" Height="0.244791658595204in" Left="0in" Top="0in" Value="=Fields.tgl27" Name="textBox67" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Default="Dotted" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="29" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.299999925590604in" Height="0.244791658595204in" Left="0in" Top="0in" Value="=Fields.tgl28" Name="textBox69" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Default="Dotted" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="30" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.299999925590604in" Height="0.244791658595204in" Left="0in" Top="0in" Value="=Fields.tgl29" Name="textBox71" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Default="Dotted" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="2" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.299999968177942in" Height="0.244791658595204in" Left="0in" Top="0in" Value="=Fields.tgl1" Name="textBox72" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Default="Dotted" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="1" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="1.70139960160709in" Height="0.244791658595204in" Left="0in" Top="0in" Value="=Fields.ParamedicName" Name="textBox8" StyleName="">
+                    <Style TextAlign="Left" VerticalAlign="Middle">
+                      <BorderStyle Default="Dotted" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="3" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.299999968177942in" Height="0.244791658595204in" Left="0in" Top="0in" Value="=Fields.tgl2" Name="textBox7" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Default="Dotted" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="4" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.299999968177942in" Height="0.244791658595204in" Left="0in" Top="0in" Value="=Fields.tgl3" Name="textBox12" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Default="Dotted" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="5" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.299999923756028in" Height="0.244791658595204in" Left="0in" Top="0in" Value="=Fields.tgl4" Name="textBox15" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Default="Dotted" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="6" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.299999898582669in" Height="0.244791658595204in" Left="0in" Top="0in" Value="=Fields.tgl5" Name="textBox17" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Default="Dotted" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="7" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.299999833945169in" Height="0.244791658595204in" Left="0in" Top="0in" Value="=Fields.tgl6" Name="textBox19" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Default="Dotted" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="8" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.299999897535123in" Height="0.244791658595204in" Left="0in" Top="0in" Value="=Fields.tgl7" Name="textBox21" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Default="Dotted" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="9" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.299999897535123in" Height="0.244791658595204in" Left="0in" Top="0in" Value="=Fields.tgl8" Name="textBox23" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Default="Dotted" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="10" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.299999897535123in" Height="0.244791658595204in" Left="0in" Top="0in" Value="=Fields.tgl9" Name="textBox25" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Default="Dotted" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="11" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.299999876338472in" Height="0.244791658595204in" Left="0in" Top="0in" Value="=Fields.tgl10" Name="textBox27" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Default="Dotted" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="12" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.299999897535123in" Height="0.244791658595204in" Left="0in" Top="0in" Value="=Fields.tgl11" Name="textBox29" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Default="Dotted" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="13" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.299999876338472in" Height="0.244791658595204in" Left="0in" Top="0in" Value="=Fields.tgl12" Name="textBox39" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Default="Dotted" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="14" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.299999876338472in" Height="0.244791658595204in" Left="0in" Top="0in" Value="=Fields.tgl13" Name="textBox37" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Default="Dotted" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="23" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.300000003518381in" Height="0.244791658595204in" Left="0in" Top="0in" Value="=Fields.tgl22" Name="textBox58" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Default="Dotted" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="33" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.41666671729989in" Height="0.244791658595204in" Left="0in" Top="0in" Value="=Fields.jumlah" Name="textBox59" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Default="Dotted" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="0" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.378471249410442in" Height="0.270833325882753in" Left="0in" Top="0in" Name="textBox74" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Default="Dotted" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="1" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="1.70139964989012in" Height="0.270833325882753in" Left="0in" Top="0in" Name="textBox75" StyleName="">
+                    <Style VerticalAlign="Middle">
+                      <BorderStyle Default="Dotted" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="2" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.299999866826216in" Height="0.270833325882753in" Left="0in" Top="0in" Value="=Sum(Fields.tgl1)" Name="textBox108" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Default="Dotted" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="3" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.299999866826216in" Height="0.270833325882753in" Left="0in" Top="0in" Value="=Sum(Fields.tgl2)" Name="textBox76" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Default="Dotted" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="4" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.299999866826216in" Height="0.270833325882753in" Left="0in" Top="0in" Value="=Sum(Fields.tgl3)" Name="textBox77" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Default="Dotted" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="5" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.299999866826216in" Height="0.270833325882753in" Left="0in" Top="0in" Value="=Sum(Fields.tgl4)" Name="textBox78" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Default="Dotted" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="6" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.299999866826216in" Height="0.270833325882753in" Left="0in" Top="0in" Value="=Sum(Fields.tgl5)" Name="textBox79" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Default="Dotted" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="7" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.299999866826216in" Height="0.270833325882753in" Left="0in" Top="0in" Value="=Sum(Fields.tgl6)" Name="textBox80" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Default="Dotted" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="8" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.299999866826216in" Height="0.270833325882753in" Left="0in" Top="0in" Value="=Sum(Fields.tgl7)" Name="textBox81" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Default="Dotted" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="9" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.299999866826216in" Height="0.270833325882753in" Left="0in" Top="0in" Value="=Sum(Fields.tgl8)" Name="textBox82" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Default="Dotted" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="10" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.299999866826216in" Height="0.270833325882753in" Left="0in" Top="0in" Value="=Sum(Fields.tgl9)" Name="textBox83" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Default="Dotted" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="11" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.299999866826216in" Height="0.270833325882753in" Left="0in" Top="0in" Value="=Sum(Fields.tgl10)" Name="textBox84" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Default="Dotted" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="12" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.299999866826216in" Height="0.270833325882753in" Left="0in" Top="0in" Value="=Sum(Fields.tgl11)" Name="textBox85" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Default="Dotted" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="13" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.299999866826216in" Height="0.270833325882753in" Left="0in" Top="0in" Value="=Sum(Fields.tgl12)" Name="textBox86" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Default="Dotted" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="14" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.299999866826216in" Height="0.270833325882753in" Left="0in" Top="0in" Value="=Sum(Fields.tgl13)" Name="textBox87" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Default="Dotted" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="15" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.299999866826216in" Height="0.270833325882753in" Left="0in" Top="0in" Value="=Sum(Fields.tgl14)" Name="textBox88" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Default="Dotted" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="16" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.299999866826216in" Height="0.270833325882753in" Left="0in" Top="0in" Value="=Sum(Fields.tgl15)" Name="textBox89" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Default="Dotted" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="17" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.299999866826216in" Height="0.270833325882753in" Left="0in" Top="0in" Value="=Sum(Fields.tgl16)" Name="textBox90" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Default="Dotted" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="18" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.299999866826216in" Height="0.270833325882753in" Left="0in" Top="0in" Value="=Sum(Fields.tgl17)" Name="textBox91" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Default="Dotted" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="19" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.299999866826216in" Height="0.270833325882753in" Left="0in" Top="0in" Value="=Sum(Fields.tgl18)" Name="textBox92" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Default="Dotted" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="20" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.299999866826216in" Height="0.270833325882753in" Left="0in" Top="0in" Value="=Sum(Fields.tgl19)" Name="textBox93" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Default="Dotted" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="21" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.299999866826216in" Height="0.270833325882753in" Left="0in" Top="0in" Value="=Sum(Fields.tgl20)" Name="textBox94" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Default="Dotted" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="22" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.299999866826216in" Height="0.270833325882753in" Left="0in" Top="0in" Value="=Sum(Fields.tgl21)" Name="textBox95" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Default="Dotted" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="23" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.299999866826216in" Height="0.270833325882753in" Left="0in" Top="0in" Value="=Sum(Fields.tgl22)" Name="textBox96" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Default="Dotted" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="24" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.299999866826216in" Height="0.270833325882753in" Left="0in" Top="0in" Value="=Sum(Fields.tgl23)" Name="textBox97" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Default="Dotted" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="25" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.299999866826216in" Height="0.270833325882753in" Left="0in" Top="0in" Value="=Sum(Fields.tgl24)" Name="textBox98" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Default="Dotted" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="26" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.299999888798975in" Height="0.270833325882753in" Left="0in" Top="0in" Value="=Sum(Fields.tgl25)" Name="textBox99" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Default="Dotted" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="27" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.299999888798975in" Height="0.270833325882753in" Left="0in" Top="0in" Value="=Sum(Fields.tgl26)" Name="textBox100" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Default="Dotted" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="28" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.299999998662774in" Height="0.270833325882753in" Left="0in" Top="0in" Value="=Sum(Fields.tgl27)" Name="textBox101" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Default="Dotted" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="29" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.299999998662774in" Height="0.270833325882753in" Left="0in" Top="0in" Value="=Sum(Fields.tgl28)" Name="textBox102" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Default="Dotted" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="30" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.299999998662774in" Height="0.270833325882753in" Left="0in" Top="0in" Value="=Sum(Fields.tgl29)" Name="textBox103" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Default="Dotted" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="31" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.299999998662774in" Height="0.270833325882753in" Left="0in" Top="0in" Value="=Sum(Fields.tgl30)" Name="textBox104" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Default="Dotted" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="32" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.299999998662774in" Height="0.270833325882753in" Left="0in" Top="0in" Value="=Sum(Fields.tgl31)" Name="textBox105" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Default="Dotted" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="33" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.41666671729989in" Height="0.270833325882753in" Left="0in" Top="0in" Value="=Sum(Fields.jumlah)" Name="textBox106" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Default="Dotted" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+            </Cells>
+            <Columns>
+              <Column Width="0.378471293355962in" />
+              <Column Width="1.7013998256722in" />
+              <Column Width="0.299999910771735in" />
+              <Column Width="0.299999910771735in" />
+              <Column Width="0.299999910771735in" />
+              <Column Width="0.299999910771735in" />
+              <Column Width="0.299999910771735in" />
+              <Column Width="0.299999910771735in" />
+              <Column Width="0.299999910771735in" />
+              <Column Width="0.299999910771735in" />
+              <Column Width="0.299999910771735in" />
+              <Column Width="0.299999910771735in" />
+              <Column Width="0.299999910771735in" />
+              <Column Width="0.299999910771735in" />
+              <Column Width="0.299999910771735in" />
+              <Column Width="0.299999910771735in" />
+              <Column Width="0.299999910771735in" />
+              <Column Width="0.299999910771735in" />
+              <Column Width="0.299999910771735in" />
+              <Column Width="0.299999910771735in" />
+              <Column Width="0.299999910771735in" />
+              <Column Width="0.299999910771735in" />
+              <Column Width="0.299999910771735in" />
+              <Column Width="0.299999910771735in" />
+              <Column Width="0.299999910771735in" />
+              <Column Width="0.299999910771735in" />
+              <Column Width="0.299999932744495in" />
+              <Column Width="0.299999932744495in" />
+              <Column Width="0.300000020635534in" />
+              <Column Width="0.300000020635534in" />
+              <Column Width="0.300000020635534in" />
+              <Column Width="0.300000020635534in" />
+              <Column Width="0.300000020635534in" />
+              <Column Width="0.416666761245409in" />
+            </Columns>
+            <Rows>
+              <Row Height="0.244791693985462in" />
+              <Row Height="0.270833325882753in" />
+            </Rows>
+          </Body>
+          <Corner />
+          <RowGroups>
+            <TableGroup Name="DetailGroup">
+              <Groupings>
+                <Grouping />
+              </Groupings>
+            </TableGroup>
+            <TableGroup Name="Group32" />
+          </RowGroups>
+          <ColumnGroups>
+            <TableGroup>
+              <ReportItem>
+                <TextBox Width="0.378471259915872in" Height="0.442708333333333in" Left="0in" Top="0in" Value="No." Name="textBox9" StyleName="">
+                  <Style TextAlign="Center" VerticalAlign="Middle">
+                    <BorderStyle Default="Solid" Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+                    <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+                    <BorderWidth Default="0.5pt" Top="0.5pt" Bottom="0.5pt" Left="0.5pt" Right="0.5pt" />
+                    <Font Size="8pt" Bold="True" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup>
+              <ReportItem>
+                <TextBox Width="1.70140067783309in" Height="0.442708333333333in" Left="0in" Top="0in" Value="Nama Dokter" Name="textBox10" StyleName="">
+                  <Style TextAlign="Center" VerticalAlign="Middle">
+                    <BorderStyle Default="Solid" Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+                    <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+                    <BorderWidth Default="0.5pt" Top="0.5pt" Bottom="0.5pt" Left="0.5pt" Right="0.5pt" />
+                    <Font Size="8pt" Bold="True" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup>
+              <ReportItem>
+                <TextBox Width="9.71666276454926in" Height="0.229166669150194in" Left="0in" Top="0in" Value="Tanggal" Name="textBox11" StyleName="">
+                  <Style TextAlign="Center" VerticalAlign="Middle">
+                    <BorderStyle Default="Solid" Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+                    <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+                    <BorderWidth Default="0.5pt" Top="0.5pt" Bottom="0.5pt" Left="0.5pt" Right="0.5pt" />
+                    <Font Size="8pt" Bold="True" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+              <ChildGroups>
+                <TableGroup Name="Group3">
+                  <ReportItem>
+                    <TextBox Width="0.299999980037111in" Height="0.213541656732559in" Left="0in" Top="0in" Value="1" Name="textBox5">
+                      <Style TextAlign="Center" VerticalAlign="Middle">
+                        <BorderStyle Default="Solid" />
+                        <BorderWidth Default="0.5pt" />
+                        <Font Size="7pt" Bold="True" />
+                      </Style>
+                    </TextBox>
+                  </ReportItem>
+                </TableGroup>
+                <TableGroup Name="Group2">
+                  <ReportItem>
+                    <TextBox Width="0.29999999783252in" Height="0.213541656732559in" Left="0in" Top="0in" Value="2" Name="textBox4" StyleName="">
+                      <Style TextAlign="Center" VerticalAlign="Middle">
+                        <BorderStyle Default="Solid" />
+                        <BorderWidth Default="0.5pt" />
+                        <Font Size="7pt" Bold="True" />
+                      </Style>
+                    </TextBox>
+                  </ReportItem>
+                </TableGroup>
+                <TableGroup Name="Group1">
+                  <ReportItem>
+                    <TextBox Width="0.300000017673454in" Height="0.213541656732559in" Left="0in" Top="0in" Value="3" Name="textBox3" StyleName="">
+                      <Style TextAlign="Center" VerticalAlign="Middle">
+                        <BorderStyle Default="Solid" />
+                        <BorderWidth Default="0.5pt" />
+                        <Font Size="7pt" Bold="True" />
+                      </Style>
+                    </TextBox>
+                  </ReportItem>
+                </TableGroup>
+                <TableGroup Name="Group5">
+                  <ReportItem>
+                    <TextBox Width="0.300000007402341in" Height="0.213541656732559in" Left="0in" Top="0in" Value="4" Name="textBox16" StyleName="">
+                      <Style TextAlign="Center" VerticalAlign="Middle">
+                        <BorderStyle Default="Solid" />
+                        <BorderWidth Default="0.5pt" />
+                        <Font Size="7pt" Bold="True" />
+                      </Style>
+                    </TextBox>
+                  </ReportItem>
+                </TableGroup>
+                <TableGroup Name="Group6">
+                  <ReportItem>
+                    <TextBox Width="0.300000013478893in" Height="0.213541656732559in" Left="0in" Top="0in" Value="5" Name="textBox18" StyleName="">
+                      <Style TextAlign="Center" VerticalAlign="Middle">
+                        <BorderStyle Default="Solid" />
+                        <BorderWidth Default="0.5pt" />
+                        <Font Size="7pt" Bold="True" />
+                      </Style>
+                    </TextBox>
+                  </ReportItem>
+                </TableGroup>
+                <TableGroup Name="Group7">
+                  <ReportItem>
+                    <TextBox Width="0.300000011928319in" Height="0.213541656732559in" Left="0in" Top="0in" Value="6" Name="textBox20" StyleName="">
+                      <Style TextAlign="Center" VerticalAlign="Middle">
+                        <BorderStyle Default="Solid" />
+                        <BorderWidth Default="0.5pt" />
+                        <Font Size="7pt" Bold="True" />
+                      </Style>
+                    </TextBox>
+                  </ReportItem>
+                </TableGroup>
+                <TableGroup Name="Group8">
+                  <ReportItem>
+                    <TextBox Width="0.299999999509309in" Height="0.213541656732559in" Left="0in" Top="0in" Value="7" Name="textBox22" StyleName="">
+                      <Style TextAlign="Center" VerticalAlign="Middle">
+                        <BorderStyle Default="Solid" />
+                        <BorderWidth Default="0.5pt" />
+                        <Font Size="7pt" Bold="True" />
+                      </Style>
+                    </TextBox>
+                  </ReportItem>
+                </TableGroup>
+                <TableGroup Name="Group9">
+                  <ReportItem>
+                    <TextBox Width="0.299999965274869in" Height="0.213541656732559in" Left="0in" Top="0in" Value="8" Name="textBox24" StyleName="">
+                      <Style TextAlign="Center" VerticalAlign="Middle">
+                        <BorderStyle Default="Solid" />
+                        <BorderWidth Default="0.5pt" />
+                        <Font Size="7pt" Bold="True" />
+                      </Style>
+                    </TextBox>
+                  </ReportItem>
+                </TableGroup>
+                <TableGroup Name="Group10">
+                  <ReportItem>
+                    <TextBox Width="0.300000017417353in" Height="0.213541656732559in" Left="0in" Top="0in" Value="9" Name="textBox26" StyleName="">
+                      <Style TextAlign="Center" VerticalAlign="Middle">
+                        <BorderStyle Default="Solid" />
+                        <BorderWidth Default="0.5pt" />
+                        <Font Size="7pt" Bold="True" />
+                      </Style>
+                    </TextBox>
+                  </ReportItem>
+                </TableGroup>
+                <TableGroup Name="Group11">
+                  <ReportItem>
+                    <TextBox Width="0.300000012717536in" Height="0.213541656732559in" Left="0in" Top="0in" Value="10" Name="textBox28" StyleName="">
+                      <Style TextAlign="Center" VerticalAlign="Middle">
+                        <BorderStyle Default="Solid" />
+                        <BorderWidth Default="0.5pt" />
+                        <Font Size="7pt" Bold="True" />
+                      </Style>
+                    </TextBox>
+                  </ReportItem>
+                </TableGroup>
+                <TableGroup Name="Group15">
+                  <ReportItem>
+                    <TextBox Width="0.299999969559277in" Height="0.213541656732559in" Left="0in" Top="0in" Value="11" Name="textBox38" StyleName="">
+                      <Style TextAlign="Center" VerticalAlign="Middle">
+                        <BorderStyle Default="Solid" />
+                        <BorderWidth Default="0.5pt" />
+                        <Font Size="7pt" Bold="True" />
+                      </Style>
+                    </TextBox>
+                  </ReportItem>
+                </TableGroup>
+                <TableGroup Name="Group14">
+                  <ReportItem>
+                    <TextBox Width="0.300000013587407in" Height="0.213541656732559in" Left="0in" Top="0in" Value="12" Name="textBox36" StyleName="">
+                      <Style TextAlign="Center" VerticalAlign="Middle">
+                        <BorderStyle Default="Solid" />
+                        <BorderWidth Default="0.5pt" />
+                        <Font Size="7pt" Bold="True" />
+                      </Style>
+                    </TextBox>
+                  </ReportItem>
+                </TableGroup>
+                <TableGroup Name="Group13">
+                  <ReportItem>
+                    <TextBox Width="0.300000015148115in" Height="0.213541656732559in" Left="0in" Top="0in" Value="13" Name="textBox34" StyleName="">
+                      <Style TextAlign="Center" VerticalAlign="Middle">
+                        <BorderStyle Default="Solid" />
+                        <BorderWidth Default="0.5pt" />
+                        <Font Size="7pt" Bold="True" />
+                      </Style>
+                    </TextBox>
+                  </ReportItem>
+                </TableGroup>
+                <TableGroup Name="Group12">
+                  <ReportItem>
+                    <TextBox Width="0.300000004934418in" Height="0.213541656732559in" Left="0in" Top="0in" Value="14" Name="textBox30" StyleName="">
+                      <Style TextAlign="Center" VerticalAlign="Middle">
+                        <BorderStyle Default="Solid" />
+                        <BorderWidth Default="0.5pt" />
+                        <Font Size="7pt" Bold="True" />
+                      </Style>
+                    </TextBox>
+                  </ReportItem>
+                </TableGroup>
+                <TableGroup Name="Group17">
+                  <ReportItem>
+                    <TextBox Width="0.29999997519619in" Height="0.213541656732559in" Left="0in" Top="0in" Value="15" Name="textBox42" StyleName="">
+                      <Style TextAlign="Center" VerticalAlign="Middle">
+                        <BorderStyle Default="Solid" />
+                        <BorderWidth Default="0.5pt" />
+                        <Font Size="7pt" Bold="True" />
+                      </Style>
+                    </TextBox>
+                  </ReportItem>
+                </TableGroup>
+                <TableGroup Name="Group18">
+                  <ReportItem>
+                    <TextBox Width="0.300000018376267in" Height="0.213541656732559in" Left="0in" Top="0in" Value="16" Name="textBox44" StyleName="">
+                      <Style TextAlign="Center" VerticalAlign="Middle">
+                        <BorderStyle Default="Solid" />
+                        <BorderWidth Default="0.5pt" />
+                        <Font Size="7pt" Bold="True" />
+                      </Style>
+                    </TextBox>
+                  </ReportItem>
+                </TableGroup>
+                <TableGroup Name="Group16">
+                  <ReportItem>
+                    <TextBox Width="0.300000012499577in" Height="0.213541656732559in" Left="0in" Top="0in" Value="17" Name="textBox40" StyleName="">
+                      <Style TextAlign="Center" VerticalAlign="Middle">
+                        <BorderStyle Default="Solid" />
+                        <BorderWidth Default="0.5pt" />
+                        <Font Size="7pt" Bold="True" />
+                      </Style>
+                    </TextBox>
+                  </ReportItem>
+                </TableGroup>
+                <TableGroup Name="Group19">
+                  <ReportItem>
+                    <TextBox Width="0.299999973350305in" Height="0.213541656732559in" Left="0in" Top="0in" Value="18" Name="textBox46" StyleName="">
+                      <Style TextAlign="Center" VerticalAlign="Middle">
+                        <BorderStyle Default="Solid" />
+                        <BorderWidth Default="0.5pt" />
+                        <Font Size="7pt" Bold="True" />
+                      </Style>
+                    </TextBox>
+                  </ReportItem>
+                </TableGroup>
+                <TableGroup Name="Group21">
+                  <ReportItem>
+                    <TextBox Width="0.300000001059328in" Height="0.213541656732559in" Left="0in" Top="0in" Value="19" Name="textBox50" StyleName="">
+                      <Style TextAlign="Center" VerticalAlign="Middle">
+                        <BorderStyle Default="Solid" />
+                        <BorderWidth Default="0.5pt" />
+                        <Font Size="7pt" Bold="True" />
+                      </Style>
+                    </TextBox>
+                  </ReportItem>
+                </TableGroup>
+                <TableGroup Name="Group20">
+                  <ReportItem>
+                    <TextBox Width="0.300000015311595in" Height="0.213541656732559in" Left="0in" Top="0in" Value="20" Name="textBox48" StyleName="">
+                      <Style TextAlign="Center" VerticalAlign="Middle">
+                        <BorderStyle Default="Solid" />
+                        <BorderWidth Default="0.5pt" />
+                        <Font Size="7pt" Bold="True" />
+                      </Style>
+                    </TextBox>
+                  </ReportItem>
+                </TableGroup>
+                <TableGroup Name="Group26">
+                  <ReportItem>
+                    <TextBox Width="0.299999998436929in" Height="0.213541656732559in" Left="0in" Top="0in" Value="21" Name="textBox60" StyleName="">
+                      <Style TextAlign="Center" VerticalAlign="Middle">
+                        <BorderStyle Default="Solid" />
+                        <BorderWidth Default="0.5pt" />
+                        <Font Size="7pt" Bold="True" />
+                      </Style>
+                    </TextBox>
+                  </ReportItem>
+                </TableGroup>
+                <TableGroup Name="Group25">
+                  <ReportItem>
+                    <TextBox Width="0.300000003518381in" Height="0.21354166790843in" Left="0in" Top="0in" Value="22" Name="textBox35" StyleName="">
+                      <Style TextAlign="Center" VerticalAlign="Middle">
+                        <BorderStyle Default="Solid" />
+                        <BorderWidth Default="0.5pt" />
+                        <Font Size="7pt" Bold="True" />
+                      </Style>
+                    </TextBox>
+                  </ReportItem>
+                </TableGroup>
+                <TableGroup Name="Group24">
+                  <ReportItem>
+                    <TextBox Width="0.299999978445896in" Height="0.213541656732559in" Left="0in" Top="0in" Value="23" Name="textBox56" StyleName="">
+                      <Style TextAlign="Center" VerticalAlign="Middle">
+                        <BorderStyle Default="Solid" />
+                        <BorderWidth Default="0.5pt" />
+                        <Font Size="7pt" Bold="True" />
+                      </Style>
+                    </TextBox>
+                  </ReportItem>
+                </TableGroup>
+                <TableGroup Name="Group23">
+                  <ReportItem>
+                    <TextBox Width="0.300000013016061in" Height="0.213541656732559in" Left="0in" Top="0in" Value="24" Name="textBox54" StyleName="">
+                      <Style TextAlign="Center" VerticalAlign="Middle">
+                        <BorderStyle Default="Solid" />
+                        <BorderWidth Default="0.5pt" />
+                        <Font Size="7pt" Bold="True" />
+                      </Style>
+                    </TextBox>
+                  </ReportItem>
+                </TableGroup>
+                <TableGroup Name="Group22">
+                  <ReportItem>
+                    <TextBox Width="0.299999981286473in" Height="0.213541656732559in" Left="0in" Top="0in" Value="25" Name="textBox52" StyleName="">
+                      <Style TextAlign="Center" VerticalAlign="Middle">
+                        <BorderStyle Default="Solid" />
+                        <BorderWidth Default="0.5pt" />
+                        <Font Size="7pt" Bold="True" />
+                      </Style>
+                    </TextBox>
+                  </ReportItem>
+                </TableGroup>
+                <TableGroup Name="Group27">
+                  <ReportItem>
+                    <TextBox Width="0.299999966018362in" Height="0.213541656732559in" Left="0in" Top="0in" Value="26" Name="textBox62" StyleName="">
+                      <Style TextAlign="Center" VerticalAlign="Middle">
+                        <BorderStyle Default="Solid" />
+                        <BorderWidth Default="0.5pt" />
+                        <Font Size="7pt" Bold="True" />
+                      </Style>
+                    </TextBox>
+                  </ReportItem>
+                </TableGroup>
+                <TableGroup Name="Group29">
+                  <ReportItem>
+                    <TextBox Width="0.299999973973654in" Height="0.21354166790843in" Left="0in" Top="0in" Value="27" Name="textBox66" StyleName="">
+                      <Style TextAlign="Center" VerticalAlign="Middle">
+                        <BorderStyle Default="Solid" />
+                        <BorderWidth Default="0.5pt" />
+                        <Font Size="7pt" Bold="True" />
+                      </Style>
+                    </TextBox>
+                  </ReportItem>
+                </TableGroup>
+                <TableGroup Name="Group30">
+                  <ReportItem>
+                    <TextBox Width="0.300000005583742in" Height="0.213541656732559in" Left="0in" Top="0in" Value="28" Name="textBox68" StyleName="">
+                      <Style TextAlign="Center" VerticalAlign="Middle">
+                        <BorderStyle Default="Solid" />
+                        <BorderWidth Default="0.5pt" />
+                        <Font Size="7pt" Bold="True" />
+                      </Style>
+                    </TextBox>
+                  </ReportItem>
+                </TableGroup>
+                <TableGroup Name="Group31">
+                  <ReportItem>
+                    <TextBox Width="0.300000008528372in" Height="0.213541656732559in" Left="0in" Top="0in" Value="29" Name="textBox70" StyleName="">
+                      <Style TextAlign="Center" VerticalAlign="Middle">
+                        <BorderStyle Default="Solid" />
+                        <BorderWidth Default="0.5pt" />
+                        <Font Size="7pt" Bold="True" />
+                      </Style>
+                    </TextBox>
+                  </ReportItem>
+                </TableGroup>
+                <TableGroup Name="Group28">
+                  <ReportItem>
+                    <TextBox Width="0.300000009740806in" Height="0.213541656732559in" Left="0in" Top="0in" Value="30" Name="textBox64" StyleName="">
+                      <Style TextAlign="Center" VerticalAlign="Middle">
+                        <BorderStyle Default="Solid" />
+                        <BorderWidth Default="0.5pt" />
+                        <Font Size="7pt" Bold="True" />
+                      </Style>
+                    </TextBox>
+                  </ReportItem>
+                </TableGroup>
+                <TableGroup Name="Group4">
+                  <ReportItem>
+                    <TextBox Width="0.29999997207715in" Height="0.213541656732559in" Left="0in" Top="0in" Value="31" Name="textBox13" StyleName="">
+                      <Style TextAlign="Center" VerticalAlign="Middle">
+                        <BorderStyle Default="Solid" />
+                        <BorderWidth Default="0.5pt" />
+                        <Font Size="7pt" Bold="True" />
+                      </Style>
+                    </TextBox>
+                  </ReportItem>
+                </TableGroup>
+                <TableGroup Name="Group33">
+                  <ReportItem>
+                    <TextBox Width="0.41666671729989in" Height="0.21354166790843in" Left="0in" Top="0in" Value="Jumlah" Name="textBox73" StyleName="">
+                      <Style TextAlign="Center" VerticalAlign="Middle">
+                        <BorderStyle Default="Solid" />
+                        <BorderWidth Default="0.5pt" />
+                        <Font Size="7pt" Bold="True" />
+                      </Style>
+                    </TextBox>
+                  </ReportItem>
+                </TableGroup>
+              </ChildGroups>
+            </TableGroup>
+          </ColumnGroups>
+        </Table>
+      </Items>
+    </ReportHeaderSection>
+  </Items>
+  <StyleSheet>
+    <StyleRule>
+      <Style>
+        <Padding Left="2pt" Right="2pt" />
+      </Style>
+      <Selectors>
+        <TypeSelector Type="TextItemBase" />
+        <TypeSelector Type="HtmlTextBox" />
+      </Selectors>
+    </StyleRule>
+  </StyleSheet>
+  <PageSettings>
+    <PageSettings PaperKind="Legal" Landscape="True">
+      <Margins>
+        <MarginsU Left="1in" Right="1in" Top="1in" Bottom="1in" />
+      </Margins>
+    </PageSettings>
+  </PageSettings>
+</Report>

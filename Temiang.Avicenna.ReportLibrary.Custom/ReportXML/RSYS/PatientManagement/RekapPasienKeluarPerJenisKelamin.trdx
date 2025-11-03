@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report DataSourceName="sqlDataSource1" Width="7.26771672566732in" Name="userReport1" xmlns="http://schemas.telerik.com/reporting/2012/2">
+  <DataSources>
+    <SqlDataSource ConnectionString="Data Source=192.168.80.2;Initial Catalog=RSSMCB_LIVE;User ID=sa;Password=p@ssw0rd" ProviderName="System.Data.SqlClient" SelectCommand="xml_LaporanPasienCheckOutPerJenisKelamin" SelectCommandType="StoredProcedure" Name="sqlDataSource1">
+      <Parameters>
+        <SqlDataSourceParameter DbType="AnsiString" Name="@p_Month">
+          <Value>
+            <String>03</String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="AnsiString" Name="@p_Year">
+          <Value>
+            <String>2018</String>
+          </Value>
+        </SqlDataSourceParameter>
+      </Parameters>
+    </SqlDataSource>
+  </DataSources>
+  <Items>
+    <DetailSection Height="0.0520833333333333in" Name="detailSection1">
+      <Style Visible="False" />
+    </DetailSection>
+    <ReportHeaderSection Height="2.15625in" Name="reportHeaderSection1">
+      <Items>
+        <TextBox Value="JUMLAH PASIEN KELUAR ( TANPA BAYI SEHAT )" Size="7.26759847005208in, 0.199999968210856in" Location="0.00003941853841146in, 0.799999952316284in" Name="textBox1">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Name="Tahoma" Bold="True" />
+          </Style>
+        </TextBox>
+        <TextBox Value="PER JENIS KELAMIN" Size="7.2675986289978in, 0.19999997317791in" Location="0in, 1.00007875760396in" Name="textBox2">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Name="Tahoma" Bold="True" />
+          </Style>
+        </TextBox>
+        <TextBox Value="=Fields.Periode" Size="7.26755905151367in, 0.199999968210856in" Location="0.00003941853841146in, 1.20015756289164in" Name="textBox3">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Name="Tahoma" Bold="True" />
+          </Style>
+        </TextBox>
+        <Crosstab DataSourceName="sqlDataSource1" Size="2.7291667064031in, 0.65625003973643in" Location="2.10000006357829in, 1.5in" Name="crosstab1">
+          <Body>
+            <Cells>
+              <TableCell RowIndex="0" ColumnIndex="0" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="=Sum(Fields.Jumlah)" Format="{0:N0}" Size="0.552083454372093in, 0.223958372660771in" Name="textBox6" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+                      <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+                      <BorderWidth Top="0.4pt" Bottom="0.4pt" Left="0.4pt" Right="0.4pt" />
+                      <Font Name="Tahoma" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="1" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="=Sum(Fields.Jumlah)" Format="{0:N0}" Size="0.552083484631377in, 0.223958333333333in" Name="textBox12" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+                      <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+                      <BorderWidth Top="0.4pt" Bottom="0.4pt" Left="0.4pt" Right="0.4pt" />
+                      <Font Name="Tahoma" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="0" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="=Sum(Fields.Jumlah)" Format="{0:N0}" Size="0.552083454372093in, 0.208333333530438in" Name="textBox13" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+                      <BorderWidth Top="0.4pt" Bottom="0.4pt" Left="0.4pt" Right="0.4pt" />
+                      <Font Name="Tahoma" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="1" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="=Sum(Fields.Jumlah)" Format="{0:N0}" Size="0.552083379199412in, 0.208333333530438in" Name="textBox14" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+                      <BorderWidth Top="0.4pt" Bottom="0.4pt" Left="0.4pt" Right="0.4pt" />
+                      <Font Name="Tahoma" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+            </Cells>
+            <Columns>
+              <Column Width="0.55208341370434in" />
+              <Column Width="0.552083373036587in" />
+            </Columns>
+            <Rows>
+              <Row Height="0.223958372660771in" />
+              <Row Height="0.208333333530438in" />
+            </Rows>
+          </Body>
+          <Corner>
+            <Cells>
+              <TableCell RowIndex="0" ColumnIndex="1" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="Tanggal" Size="1.10416666666667in, 0.223958333333333in" Name="textBox4">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+                      <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+                      <BorderWidth Top="0.4pt" Bottom="0.4pt" Left="0.4pt" Right="0.4pt" />
+                      <Font Name="Tahoma" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="0" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="No" Size="0.520833199227233in, 0.223958333333333in" Name="textBox9" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+                      <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+                      <BorderWidth Top="0.4pt" Bottom="0.4pt" Left="0.4pt" Right="0.4pt" />
+                      <Font Name="Tahoma" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+            </Cells>
+          </Corner>
+          <RowGroups>
+            <TableGroup Name="DischargeDate">
+              <Groupings>
+                <Grouping Expression="=Fields.DischargeDate" />
+              </Groupings>
+              <Sortings>
+                <Sorting Expression="=Fields.DischargeDate" Direction="Asc" />
+              </Sortings>
+              <ReportItem>
+                <TextBox Value="=RowNumber('Crosstab1')" Size="0.520833199227233in, 0.223958333333333in" Name="textBox8" StyleName="">
+                  <Style TextAlign="Center" VerticalAlign="Middle">
+                    <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+                    <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+                    <BorderWidth Top="0.4pt" Bottom="0.4pt" Left="0.4pt" Right="0.4pt" />
+                    <Font Name="Tahoma" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+              <ChildGroups>
+                <TableGroup Name="Group2">
+                  <ReportItem>
+                    <TextBox Value="=Fields.DischargeDate" Format="{0:dd-MMM-yyyy}" Size="1.10416666666667in, 0.223958333333333in" Name="textBox10" StyleName="">
+                      <Style TextAlign="Center" VerticalAlign="Middle">
+                        <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+                        <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+                        <BorderWidth Top="0.4pt" Bottom="0.4pt" Left="0.4pt" Right="0.4pt" />
+                        <Font Name="Tahoma" />
+                      </Style>
+                    </TextBox>
+                  </ReportItem>
+                </TableGroup>
+              </ChildGroups>
+            </TableGroup>
+            <TableGroup Name="Group3">
+              <ReportItem>
+                <TextBox Value="Total" Size="1.62499988079071in, 0.2083333265874in" Name="textBox11" StyleName="">
+                  <Style TextAlign="Center" VerticalAlign="Middle">
+                    <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+                    <BorderWidth Default="0.4pt" Top="0.4pt" Bottom="0.4pt" Left="0.4pt" Right="0.4pt" />
+                    <Font Name="Tahoma" Bold="True" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+          </RowGroups>
+          <ColumnGroups>
+            <TableGroup Name="Sex">
+              <Groupings>
+                <Grouping Expression="=Fields.Sex" />
+              </Groupings>
+              <Sortings>
+                <Sorting Expression="=Fields.Sex" Direction="Asc" />
+              </Sortings>
+              <ReportItem>
+                <TextBox Value="=Fields.Sex" Size="0.552083454372093in, 0.223958333545221in" Name="textBox7" StyleName="">
+                  <Style TextAlign="Center" VerticalAlign="Middle">
+                    <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+                    <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+                    <BorderWidth Top="0.4pt" Bottom="0.4pt" Left="0.4pt" Right="0.4pt" />
+                    <Font Name="Tahoma" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup Name="Group1">
+              <ReportItem>
+                <TextBox Value="Total" Size="0.552083484631377in, 0.223958333333333in" Name="textBox5" StyleName="">
+                  <Style TextAlign="Center" VerticalAlign="Middle">
+                    <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+                    <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+                    <BorderWidth Top="0.4pt" Bottom="0.4pt" Left="0.4pt" Right="0.4pt" />
+                    <Font Name="Tahoma" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+          </ColumnGroups>
+        </Crosstab>
+      </Items>
+    </ReportHeaderSection>
+    <PageFooterSection Height="0.200039545694987in" Name="pageFooterSection1">
+      <Items>
+        <TextBox Value="='Page : ' + PageNumber + '/' + PageCount" Size="4.36759821573893in, 0.200000122189522in" Location="2.90011819203695in, 0.00003941853841146in" Name="textBox39">
+          <Style TextAlign="Right" VerticalAlign="Middle">
+            <BorderStyle Top="Solid" />
+            <BorderWidth Default="0.5pt" />
+            <Font Name="Tahoma" Size="8pt" Bold="False" Italic="True" />
+          </Style>
+        </TextBox>
+        <TextBox Value="='AVICENNA_HIS ' + Now()" Format="Avicenna HIS, Print Date : {0:dd-MM-yyyy HH:mm}" Size="2.89992109934489in, 0.200000122189522in" Location="0.00011825561523438in, 0.00003941853841146in" Name="textBox37">
+          <Style VerticalAlign="Middle">
+            <BorderStyle Top="Solid" />
+            <BorderWidth Default="0.5pt" />
+            <Font Name="Tahoma" Size="8pt" Bold="False" Italic="True" />
+          </Style>
+        </TextBox>
+      </Items>
+    </PageFooterSection>
+  </Items>
+  <StyleSheet>
+    <StyleRule>
+      <Style>
+        <Padding Left="2pt" Right="2pt" />
+      </Style>
+      <Selectors>
+        <TypeSelector Type="TextItemBase" />
+        <TypeSelector Type="HtmlTextBox" />
+      </Selectors>
+    </StyleRule>
+  </StyleSheet>
+  <PageSettings>
+    <PageSettings PaperKind="A4" Landscape="False">
+      <Margins>
+        <MarginsU Left="0.5in" Right="0.5in" Top="0.5in" Bottom="0.5in" />
+      </Margins>
+    </PageSettings>
+  </PageSettings>
+</Report>

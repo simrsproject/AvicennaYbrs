@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report DataSourceName="sqlDataSource1" Width="8.5in" Name="userReport1" SnapGridSize="0.1cm" xmlns="http://schemas.telerik.com/reporting/2019/2.0">
+  <DataSources>
+    <SqlDataSource QueryDesignerState="null" ParameterValues="null" ConnectionString="Data Source=192.168.11.69;Initial Catalog=RSMP_LIVE;User ID=sa;Password=P@ssw0rd" ProviderName="System.Data.SqlClient" SelectCommand="dbo.sprpt_AnalisaBerkasRM" SelectCommandType="StoredProcedure" Name="sqlDataSource1">
+      <Parameters>
+        <SqlDataSourceParameter DbType="AnsiStringFixedLength" Name="@p_FromMonth">
+          <Value>
+            <String>12</String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="AnsiStringFixedLength" Name="@p_ToMonth">
+          <Value>
+            <String>12</String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="AnsiStringFixedLength" Name="@p_Year">
+          <Value>
+            <String>2016</String>
+          </Value>
+        </SqlDataSourceParameter>
+      </Parameters>
+    </SqlDataSource>
+  </DataSources>
+  <Items>
+    <DetailSection Height="0.843in" Name="detailSection1">
+      <Style Visible="False" />
+    </DetailSection>
+    <ReportHeaderSection Height="2.244in" Name="reportHeaderSection1">
+      <Items>
+        <Table DataSourceName="sqlDataSource1" Width="8.49in" Height="0.5in" Left="0in" Top="1.535in" Name="table1">
+          <Body>
+            <Cells>
+              <TableCell RowIndex="0" ColumnIndex="1" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.625in" Height="0.229in" Left="0cm" Top="0cm" Value="=Fields.Percentage" Format="{0:N0}%" Name="textBox7" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="0" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="5.542in" Height="0.229in" Left="0cm" Top="0cm" Value="=Fields.DocumentName" Name="textBox9" StyleName="">
+                    <Style VerticalAlign="Middle">
+                      <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+            </Cells>
+            <Columns>
+              <Column Width="5.542in" />
+              <Column Width="0.625in" />
+            </Columns>
+            <Rows>
+              <Row Height="0.229in" />
+            </Rows>
+          </Body>
+          <Corner>
+            <Cells>
+              <TableCell RowIndex="0" ColumnIndex="1" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="2in" Height="0.271in" Left="0cm" Top="0cm" Value="File Name" Name="textBox10" StyleName="">
+                    <Style VerticalAlign="Middle">
+                      <BorderStyle Top="Solid" Left="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="0" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.323in" Height="0.271in" Left="0cm" Top="0cm" Value="No." Name="textBox3" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Top="Solid" Left="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+            </Cells>
+          </Corner>
+          <RowGroups>
+            <TableGroup Name="ItemName">
+              <ReportItem>
+                <TextBox Width="0.323in" Height="0.229in" Left="0cm" Top="0cm" Value="=RowNumber()" Name="textBox1" StyleName="">
+                  <Style TextAlign="Left" VerticalAlign="Top">
+                    <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" />
+                    <BorderWidth Default="0.5pt" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+              <ChildGroups>
+                <TableGroup Name="Group3">
+                  <ReportItem>
+                    <TextBox Width="2in" Height="0.229in" Left="0cm" Top="0cm" Value="=Fields.ItemName" Name="textBox8" StyleName="">
+                      <Style TextAlign="Left" VerticalAlign="Top">
+                        <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" />
+                        <BorderWidth Default="0.5pt" />
+                      </Style>
+                    </TextBox>
+                  </ReportItem>
+                  <ChildGroups>
+                    <TableGroup Name="DetailGroup">
+                      <Groupings>
+                        <Grouping />
+                      </Groupings>
+                    </TableGroup>
+                  </ChildGroups>
+                </TableGroup>
+              </ChildGroups>
+              <Groupings>
+                <Grouping Expression="=Fields.ItemName" />
+              </Groupings>
+              <Sortings>
+                <Sorting Expression="=Fields.ItemName" Direction="Asc" />
+              </Sortings>
+            </TableGroup>
+          </RowGroups>
+          <ColumnGroups>
+            <TableGroup Name="Group2">
+              <ReportItem>
+                <TextBox Width="5.542in" Height="0.271in" Left="0cm" Top="0cm" Value="Document Name" Name="textBox5" StyleName="">
+                  <Style VerticalAlign="Middle">
+                    <BorderStyle Top="Solid" Left="Solid" />
+                    <BorderWidth Default="0.5pt" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup Name="Group1">
+              <ReportItem>
+                <TextBox Width="0.625in" Height="0.271in" Left="0cm" Top="0cm" Value="%" Name="textBox2" StyleName="">
+                  <Style TextAlign="Center" VerticalAlign="Middle">
+                    <BorderStyle Top="Solid" Left="Solid" Right="Solid" />
+                    <BorderWidth Default="0.5pt" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+          </ColumnGroups>
+        </Table>
+        <TextBox Width="8.479in" Height="0.2in" Left="0in" Top="1.024in" Value="=Fields.RptName" Name="textBox6">
+          <Style TextAlign="Center" VerticalAlign="Middle" />
+        </TextBox>
+        <TextBox Width="8.479in" Height="0.2in" Left="0in" Top="1.224in" Value="=Fields.Period" Name="textBox4">
+          <Style TextAlign="Center" VerticalAlign="Middle" />
+        </TextBox>
+      </Items>
+    </ReportHeaderSection>
+  </Items>
+  <PageSettings PaperKind="Letter" Landscape="False" ColumnCount="1" ColumnSpacing="0cm">
+    <Margins>
+      <MarginsU Left="0in" Right="0in" Top="0in" Bottom="0in" />
+    </Margins>
+  </PageSettings>
+  <StyleSheet>
+    <StyleRule>
+      <Style>
+        <Padding Left="2pt" Right="2pt" />
+      </Style>
+      <Selectors>
+        <TypeSelector Type="TextItemBase" />
+        <TypeSelector Type="HtmlTextBox" />
+      </Selectors>
+    </StyleRule>
+  </StyleSheet>
+</Report>

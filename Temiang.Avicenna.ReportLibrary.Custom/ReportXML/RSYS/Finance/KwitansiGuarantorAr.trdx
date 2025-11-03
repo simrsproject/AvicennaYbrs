@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report DataSourceName="sqlDataSource1" Width="19cm" Name="KwitansiDetail" ShowSnapGrid="True" SnapGridSize="0.1cm" xmlns="http://schemas.telerik.com/reporting/2021/1.0">
+  <DataSources>
+    <SqlDataSource QueryDesignerState="null" ParameterValues="{&quot;@InvoiceNo&quot;:&quot;AR-2022/06/08/0001&quot;}" ConnectionString="RSYS" SelectCommand="sprpt_ARInvoiceRSYS" SelectCommandType="StoredProcedure" Name="sqlDataSource1">
+      <Parameters>
+        <SqlDataSourceParameter DbType="AnsiString" Name="@InvoiceNo">
+          <Value>
+            <String>AR-2022/06/08/0001</String>
+          </Value>
+        </SqlDataSourceParameter>
+      </Parameters>
+    </SqlDataSource>
+  </DataSources>
+  <Items>
+    <DetailSection Height="0.609cm" Name="detailSection1">
+      <Style Visible="True" />
+      <Items>
+        <TextBox Width="2.309cm" Height="0.609cm" Left="0.007cm" Top="0cm" Value="= Fields.ItemID" Name="textBox12">
+          <Style VerticalAlign="Middle">
+            <Font Name="Tahoma" />
+            <BorderStyle Top="None" />
+          </Style>
+        </TextBox>
+        <TextBox Width="7.507cm" Height="0.609cm" Left="2.316cm" Top="0cm" Value="= Fields.ItemName" Name="textBox13">
+          <Style VerticalAlign="Middle">
+            <Font Name="Tahoma" />
+            <BorderStyle Top="None" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.873cm" Height="0.609cm" Left="9.823cm" Top="0cm" Value="= Fields.qty" Format="{0:N0}" Name="textBox14">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Name="Tahoma" />
+            <BorderStyle Top="None" />
+          </Style>
+        </TextBox>
+        <TextBox Width="2.45cm" Height="0.609cm" Left="10.696cm" Top="0cm" Value="= SUM(Fields.PriceQTY)" Format="{0:N2}" Name="textBox15" StyleName="">
+          <Style TextAlign="Right" VerticalAlign="Middle">
+            <Font Name="Tahoma" />
+            <BorderStyle Top="None" />
+          </Style>
+        </TextBox>
+        <TextBox Width="2.926cm" Height="0.609cm" Left="13.146cm" Top="0cm" Value="= Sum(Fields.DiscountAmount)" Format="{0:N2}" Name="textBox16" StyleName="">
+          <Style TextAlign="Right" VerticalAlign="Middle">
+            <Font Name="Tahoma" />
+            <BorderStyle Top="None" />
+          </Style>
+        </TextBox>
+        <TextBox Width="2.851cm" Height="0.609cm" Left="16.073cm" Top="0cm" Value="=SUM(Fields.PriceQTY - Fields.DiscountAmount)" Format="{0:N2}" Name="textBox17" StyleName="">
+          <Style TextAlign="Right" VerticalAlign="Middle">
+            <Font Name="Tahoma" />
+            <BorderStyle Top="None" />
+          </Style>
+        </TextBox>
+      </Items>
+    </DetailSection>
+  </Items>
+  <PageSettings PaperKind="Custom" PaperSize="21cm, 11cm" Landscape="False" ContinuousPaper="True">
+    <Margins>
+      <MarginsU Left="1cm" Right="1cm" Top="1cm" Bottom="1cm" />
+    </Margins>
+  </PageSettings>
+  <StyleSheet>
+    <StyleRule>
+      <Style>
+        <Padding Left="2pt" Right="2pt" />
+      </Style>
+      <Selectors>
+        <TypeSelector Type="TextItemBase" />
+        <TypeSelector Type="HtmlTextBox" />
+      </Selectors>
+    </StyleRule>
+  </StyleSheet>
+  <Groups>
+    <Group Name="group22">
+      <GroupHeader>
+        <GroupHeaderSection PageBreak="Before" KeepTogether="True" Height="5.036cm" Name="groupHeaderSection">
+          <Items>
+            <TextBox Width="18.831cm" Height="0.6cm" Left="0.086cm" Top="0.1cm" Value="KWITANSI" Name="textBox132">
+              <Style TextAlign="Center" VerticalAlign="Middle">
+                <Font Name="Tahoma" Size="12pt" Bold="True" />
+              </Style>
+            </TextBox>
+            <TextBox Width="18.831cm" Height="0.6cm" Left="0.086cm" Top="0.7cm" Value="=&quot;No : &quot;+ Fields.InvoiceNo" Name="textBox131">
+              <Style TextAlign="Center" VerticalAlign="Middle">
+                <Font Name="Tahoma" Bold="False" />
+              </Style>
+            </TextBox>
+            <TextBox Width="3.1cm" Height="0.6cm" Left="0.086cm" Top="1.6cm" Value="Sudah Terima Dari" Name="textBox130">
+              <Style TextAlign="Left" VerticalAlign="Middle">
+                <Font Name="Tahoma" Bold="False" />
+              </Style>
+            </TextBox>
+            <TextBox Width="0.273cm" Height="0.6cm" Left="3.186cm" Top="1.6cm" Value=":" Name="textBox129">
+              <Style TextAlign="Left" VerticalAlign="Middle">
+                <Font Name="Tahoma" Bold="False" />
+              </Style>
+            </TextBox>
+            <TextBox Width="3.1cm" Height="0.6cm" Left="0.086cm" Top="2.2cm" Value="Tanggal" Name="textBox128">
+              <Style TextAlign="Left" VerticalAlign="Middle">
+                <Font Name="Tahoma" Bold="False" />
+              </Style>
+            </TextBox>
+            <TextBox Width="0.273cm" Height="0.6cm" Left="3.186cm" Top="2.2cm" Value=":" Name="textBox127">
+              <Style TextAlign="Left" VerticalAlign="Middle">
+                <Font Name="Tahoma" Bold="False" />
+              </Style>
+            </TextBox>
+            <TextBox Width="3.1cm" Height="0.6cm" Left="0.086cm" Top="2.8cm" Value="Keterangan" Name="textBox126">
+              <Style TextAlign="Left" VerticalAlign="Middle">
+                <Font Name="Tahoma" Bold="False" />
+              </Style>
+            </TextBox>
+            <TextBox Width="0.273cm" Height="0.6cm" Left="3.187cm" Top="2.8cm" Value=":" Name="textBox125">
+              <Style TextAlign="Left" VerticalAlign="Middle">
+                <Font Name="Tahoma" Bold="False" />
+              </Style>
+            </TextBox>
+            <TextBox Width="15.457cm" Height="0.6cm" Left="3.46cm" Top="2.2cm" Value="= Fields.PaymentDate" Format="{0:dd MMMM yyyy}" Name="textBox124">
+              <Style VerticalAlign="Middle">
+                <Font Name="Tahoma" />
+              </Style>
+            </TextBox>
+            <TextBox Width="15.456cm" Height="0.6cm" Left="3.46cm" Top="2.8cm" Value="=&quot;Untuk Pembayaran Biaya Pengobatan Pasien: &quot; + Fields.PatientName + &quot; (&quot; + Fields.MedicalNo + &quot;) Pada Tanggal &quot; + Format('{0:dd MMMM yyyy}', Fields.RegistrationDate)" Name="textBox123">
+              <Style VerticalAlign="Middle">
+                <Font Name="Tahoma" />
+              </Style>
+            </TextBox>
+            <TextBox Width="6.085in" Height="0.236in" Left="1.362in" Top="0.63in" Value="= Fields.PrintReceiptAsName" Name="textBox18" />
+            <TextBox Width="9.816cm" Height="1cm" Left="0cm" Top="3.536cm" Value="= Fields.PaymentNo" Name="textBox1" StyleName="">
+              <Style VerticalAlign="Middle">
+                <Font Name="Tahoma" Bold="True" />
+                <BorderStyle Top="Dotted" />
+              </Style>
+            </TextBox>
+            <TextBox Width="3.323cm" Height="0.5cm" Left="9.816cm" Top="3.536cm" Value="Jumlah" Name="textBox2" StyleName="">
+              <Style TextAlign="Center" VerticalAlign="Middle">
+                <Font Name="Tahoma" Bold="True" />
+                <BorderStyle Top="Dotted" Bottom="Dotted" />
+              </Style>
+            </TextBox>
+            <TextBox Width="2.926cm" Height="0.5cm" Left="13.139cm" Top="3.536cm" Value="Diskon" Name="textBox3" StyleName="">
+              <Style TextAlign="Center" VerticalAlign="Middle">
+                <Font Name="Tahoma" Bold="True" />
+                <BorderStyle Top="Dotted" Bottom="Dotted" />
+              </Style>
+            </TextBox>
+            <TextBox Width="2.851cm" Height="0.5cm" Left="16.066cm" Top="3.536cm" Value="Sub Total" Name="textBox4" StyleName="">
+              <Style TextAlign="Center" VerticalAlign="Middle">
+                <Font Name="Tahoma" Bold="True" />
+                <BorderStyle Top="Dotted" Bottom="Dotted" />
+              </Style>
+            </TextBox>
+            <TextBox Width="9.816cm" Height="0.5cm" Left="0cm" Top="4.536cm" Value="Ringkasan Tagihan :" Name="textBox5">
+              <Style TextAlign="Left" VerticalAlign="Middle">
+                <Font Name="Tahoma" />
+                <BorderStyle Top="Dotted" Bottom="Dotted" />
+              </Style>
+            </TextBox>
+            <TextBox Width="3.323cm" Height="0.5cm" Left="9.816cm" Top="4.536cm" Value="Jumlah" Angle="0" Name="textBox6" StyleName="">
+              <Style TextAlign="Center" VerticalAlign="Middle">
+                <Font Name="Tahoma" />
+                <BorderStyle Top="Dotted" Bottom="Dotted" />
+              </Style>
+            </TextBox>
+            <TextBox Width="3.323cm" Height="0.5cm" Left="9.816cm" Top="4.036cm" Value="=SUM(Fields.PriceQTY)" Format="{0:N2}" Name="textBox7">
+              <Style TextAlign="Right" VerticalAlign="Middle">
+                <Font Name="Tahoma" Size="9pt" Bold="True" />
+                <BorderStyle Top="Dotted" />
+              </Style>
+            </TextBox>
+            <TextBox Width="2.926cm" Height="0.5cm" Left="13.139cm" Top="4.036cm" Value="=SUM(Fields.DiscountAmount)" Format="{0:N2}" Name="textBox8">
+              <Style TextAlign="Right" VerticalAlign="Middle">
+                <Font Name="Tahoma" Size="9pt" Bold="True" />
+                <BorderStyle Top="Dotted" />
+              </Style>
+            </TextBox>
+            <TextBox Width="2.85cm" Height="0.5cm" Left="16.066cm" Top="4.036cm" Value="=SUM(Fields.PriceQTY - Fields.DiscountAmount)" Format="{0:N2}" Name="textBox9" StyleName="">
+              <Style TextAlign="Right" VerticalAlign="Middle">
+                <Font Name="Tahoma" Size="9pt" Bold="True" />
+                <BorderStyle Top="Dotted" />
+              </Style>
+            </TextBox>
+            <TextBox Width="2.926cm" Height="0.5cm" Left="13.139cm" Top="4.536cm" Value="Diskon" Name="textBox10" StyleName="">
+              <Style TextAlign="Center" VerticalAlign="Middle">
+                <Font Name="Tahoma" />
+                <BorderStyle Top="Dotted" Bottom="Dotted" />
+              </Style>
+            </TextBox>
+            <TextBox Width="2.857cm" Height="0.5cm" Left="16.066cm" Top="4.536cm" Value="Sub Total" Name="textBox11" StyleName="">
+              <Style TextAlign="Center" VerticalAlign="Middle">
+                <Font Name="Tahoma" />
+                <BorderStyle Top="Dotted" Bottom="Dotted" />
+              </Style>
+            </TextBox>
+          </Items>
+        </GroupHeaderSection>
+      </GroupHeader>
+      <GroupFooter>
+        <GroupFooterSection Height="3.691cm" Name="groupFooterSection">
+          <Items>
+            <TextBox Width="2.309cm" Height="0.5cm" Left="0.007cm" Top="0.091cm" Value="Sejumlah" Name="textBox19" StyleName="">
+              <Style VerticalAlign="Middle">
+                <Font Name="Tahoma" />
+              </Style>
+            </TextBox>
+            <TextBox Width="16.607cm" Height="0.5cm" Left="2.316cm" Top="0.091cm" Value="= &quot;: Rp. &quot; + Format('{0:N2}', Fields.Amount)" Name="textBox20" StyleName="">
+              <Style VerticalAlign="Middle">
+                <Font Name="Tahoma" />
+              </Style>
+            </TextBox>
+            <TextBox Width="2.309cm" Height="0.5cm" Left="0.007cm" Top="0.591cm" Value="Terbilang" Name="textBox21" StyleName="">
+              <Style VerticalAlign="Middle">
+                <Font Name="Tahoma" />
+              </Style>
+            </TextBox>
+            <TextBox Width="16.614cm" Height="0.5cm" Left="2.316cm" Top="0.591cm" Value="=&quot;: # &quot; + ToUpper(Fields.terbilang)" Name="textBox22" StyleName="">
+              <Style VerticalAlign="Middle">
+                <Font Name="Tahoma" />
+              </Style>
+            </TextBox>
+            <TextBox Width="7.593cm" Height="0.5cm" Left="1.807cm" Top="1.791cm" Value="Petugas," Name="textBox23" StyleName="">
+              <Style TextAlign="Center" VerticalAlign="Middle">
+                <Font Name="Tahoma" />
+              </Style>
+            </TextBox>
+            <TextBox Width="5.698cm" Height="0.5cm" Left="13.232cm" Top="1.291cm" Value="=&quot;Padang, &quot; + FORMAT('{0:dd MMMM yyyy}', Now())" Name="textBox24" StyleName="">
+              <Style TextAlign="Center" VerticalAlign="Middle">
+                <Font Name="Tahoma" />
+              </Style>
+            </TextBox>
+            <TextBox Width="5.69cm" Height="0.5cm" Left="13.232cm" Top="1.791cm" Value="Ka. Bid. Keuangan" Name="textBox25" StyleName="">
+              <Style TextAlign="Center" VerticalAlign="Middle">
+                <Font Name="Tahoma" />
+              </Style>
+            </TextBox>
+            <TextBox Width="5.691cm" Height="0.5cm" Left="13.232cm" Top="3.191cm" Value="= Fields.FinanceHead" Name="textBox28" StyleName="">
+              <Style TextAlign="Center" VerticalAlign="Middle">
+                <Font Name="Tahoma" />
+              </Style>
+            </TextBox>
+            <TextBox Width="7.593cm" Height="0.5cm" Left="1.807cm" Top="3.191cm" Value="= Fields.UserName" Name="textBox27" StyleName="">
+              <Style TextAlign="Center" VerticalAlign="Middle">
+                <Font Name="Tahoma" />
+              </Style>
+            </TextBox>
+          </Items>
+        </GroupFooterSection>
+      </GroupFooter>
+      <Groupings>
+        <Grouping Expression="= Fields.PaymentNo" />
+      </Groupings>
+    </Group>
+  </Groups>
+</Report>

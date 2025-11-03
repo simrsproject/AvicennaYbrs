@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report DataSourceName="sqlDataSource1" Width="9.4in" Name="userReport1" xmlns="http://schemas.telerik.com/reporting/2019/2.0">
+  <Style VerticalAlign="Middle">
+    <Font Name="Tahoma" />
+  </Style>
+  <DataSources>
+    <SqlDataSource QueryDesignerState="null" ParameterValues="{&quot;@PaymentNo&quot;:&quot;PM200219-00001&quot;}" ConnectionString="RSIDEMO" SelectCommand="sp_xml_PaymentReceive" SelectCommandType="StoredProcedure" Name="sqlDataSource1">
+      <Parameters>
+        <SqlDataSourceParameter DbType="AnsiString" Name="@PaymentNo">
+          <Value>
+            <String>PM200219-00001</String>
+          </Value>
+        </SqlDataSourceParameter>
+      </Parameters>
+    </SqlDataSource>
+  </DataSources>
+  <Items>
+    <DetailSection Height="0.052in" Name="detailSection1">
+      <Style Visible="False" />
+    </DetailSection>
+    <PageFooterSection Height="0.248in" Name="pageFooterSection1">
+      <Style VerticalAlign="Middle" />
+      <Items>
+        <TextBox Width="4.1in" Height="0.2in" Left="0in" Top="0.048in" Value="=Now()" Format="Avicenna HIS, Print Date : {0:dd-MM-yyyy HH:mm}" Name="textBox126">
+          <Style TextAlign="Left" VerticalAlign="Middle">
+            <Font Size="8pt" Bold="False" />
+            <BorderStyle Top="Solid" />
+            <BorderWidth Default="0.5pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="5.186in" Height="0.2in" Left="4.1in" Top="0.048in" Value="= PageNumber +' / '+ PageCount" Name="textBox135">
+          <Style TextAlign="Right">
+            <Font Size="8pt" Italic="True" />
+            <BorderStyle Top="Solid" />
+            <BorderWidth Default="0.5pt" />
+          </Style>
+        </TextBox>
+      </Items>
+    </PageFooterSection>
+    <ReportHeaderSection Height="3.3in" Name="reportHeaderSection1">
+      <Style Color="Black" VerticalAlign="Middle" />
+      <Items>
+        <TextBox Width="2.1in" Height="0.2in" Left="1.108in" Top="3.1in" Value="=CreatedBy" Name="txtUserName">
+          <Style TextAlign="Center">
+            <Font Name="Microsoft Sans Serif" Size="9pt" />
+            <Padding Left="1mm" />
+          </Style>
+        </TextBox>
+        <TextBox Width="2.4in" Height="0.231in" Left="1.1in" Top="1.3in" Value="Untuk pembayaran tagihan biaya pasien  :" Name="textBox2">
+          <Style TextAlign="Left">
+            <Font Name="Tahoma" Size="9pt" Bold="False" />
+          </Style>
+        </TextBox>
+        <TextBox Width="2.8in" Height="0.231in" Left="3.5in" Top="1.3in" Value="=Pmbyaran" Name="textBox1">
+          <Style TextAlign="Left">
+            <Font Name="Tahoma" Size="9pt" Bold="True" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1.1in" Height="0.2in" Left="1.1in" Top="2in" Name="TxtCityRS">
+          <Style TextAlign="Right">
+            <Font Name="Microsoft Sans Serif" Size="9pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="2.5in" Height="0.191in" Left="6.308in" Top="1.3in" Value="=RegistrationNo +' [ ' + MedicalNo +']'" Format="No. Reg : {0}" CanGrow="False" Name="textBox8">
+          <Style TextAlign="Left">
+            <Font Name="Microsoft Sans Serif" Size="9pt" />
+            <Padding Left="0in" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1.4in" Height="0.18in" Left="1.1in" Top="0.492in" Value="Sudah diterima dari " CanGrow="False" Name="textBox23">
+          <Style>
+            <Font Name="Microsoft Sans Serif" Size="11pt" Bold="False" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.1in" Height="0.18in" Left="2.492in" Top="0.492in" Value=":" CanGrow="False" Name="textBox22">
+          <Style>
+            <Font Name="Microsoft Sans Serif" Size="9pt" Bold="True" />
+          </Style>
+        </TextBox>
+        <TextBox Width="4.7in" Height="0.18in" Left="2.6in" Top="1.65in" Value="=SUM(RealAmount)" Format="{0:N0}" CanGrow="False" Name="textBox30">
+          <Style>
+            <Font Name="Microsoft Sans Serif" Size="10pt" Bold="True" />
+            <Padding Left="0in" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1.4in" Height="0.18in" Left="1.1in" Top="0.8in" Value="Terbilang" CanGrow="False" Name="textBox5">
+          <Style>
+            <Font Name="Microsoft Sans Serif" Size="11pt" Bold="False" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.1in" Height="0.18in" Left="2.5in" Top="1.65in" Value=":" Name="textBox13">
+          <Style>
+            <Font Name="Microsoft Sans Serif" Size="9pt" Bold="True" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.1in" Height="0.18in" Left="2.492in" Top="0.8in" Value=":" Name="textBox10">
+          <Style>
+            <Font Name="Microsoft Sans Serif" Size="9pt" Bold="True" />
+          </Style>
+        </TextBox>
+        <TextBox Width="5.98in" Height="0.4in" Left="2.6in" Top="0.8in" Value="&lt;TotalAmountInWords&gt;" Format="# {0} #" CanGrow="False" Name="txtTotalAmountInWords">
+          <Style>
+            <Font Name="Microsoft Sans Serif" Size="11pt" />
+            <Padding Left="0in" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1.4in" Height="0.18in" Left="1.1in" Top="1.65in" Value="Jumlah (Rp)" CanGrow="False" Name="textBox32">
+          <Style>
+            <Font Name="Microsoft Sans Serif" Size="9pt" Bold="False" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1.012in" Height="0.2in" Left="2.2in" Top="2in" Value="=PaymentDate" Format=", {0:dd MMM yyyy}" Name="textBox3">
+          <Style TextAlign="Center">
+            <Font Name="Microsoft Sans Serif" Size="9pt" />
+            <Padding Left="1mm" />
+          </Style>
+        </TextBox>
+        <TextBox Width="5.98in" Height="0.18in" Left="2.6in" Top="0.492in" Value="=PrintReceiptAsName" CanGrow="False" Name="textBox27">
+          <Style>
+            <Font Name="Microsoft Sans Serif" Size="12pt" Bold="True" />
+            <Padding Left="0in" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.9in" Height="0.18in" Left="5.9in" Top="0.2in" Value="No." Name="textBox12">
+          <Style TextAlign="Left">
+            <Font Name="Microsoft Sans Serif" Size="11pt" />
+            <Padding Left="1mm" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1.78in" Height="0.18in" Left="6.8in" Top="0.2in" Value="=PaymentNo" Format=": {0}" Name="textBox14">
+          <Style>
+            <Font Name="Microsoft Sans Serif" Size="11pt" />
+            <Padding Left="0in" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1.08in" Height="0.2in" Left="7.5in" Top="0in" Value="=Status" Name="textBox16">
+          <Style Visible="False" TextAlign="Left">
+            <Font Name="Microsoft Sans Serif" Size="12pt" Bold="True" />
+          </Style>
+        </TextBox>
+        <TextBox Width="4.312in" Height="0.2in" Left="2.8in" Top="0in" Value="KWITANSI" Name="textBox9">
+          <Style TextAlign="Center">
+            <Font Name="Microsoft Sans Serif" Size="12pt" Bold="True" />
+          </Style>
+        </TextBox>
+      </Items>
+    </ReportHeaderSection>
+    <PageHeaderSection Height="1.1in" Name="pageHeaderSection1">
+      <Style Color="Black" />
+    </PageHeaderSection>
+  </Items>
+  <PageSettings PaperKind="Folio" Landscape="True" ColumnCount="1" ColumnSpacing="0in">
+    <Margins>
+      <MarginsU Left="0.1in" Right="0.1in" Top="0.2in" Bottom="0.2in" />
+    </Margins>
+  </PageSettings>
+  <StyleSheet>
+    <StyleRule>
+      <Style>
+        <Padding Left="2pt" Right="2pt" />
+      </Style>
+      <Selectors>
+        <TypeSelector Type="TextItemBase" />
+        <TypeSelector Type="HtmlTextBox" />
+      </Selectors>
+    </StyleRule>
+  </StyleSheet>
+</Report>

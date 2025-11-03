@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>KIOS-K Mesin Antrian</title>
+
+        <!-- Fonts -->
+        <meta name="csrf-token" content="{{ csrf_token() }}" />
+        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;600&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <link href="assets/css/app.css" rel="stylesheet">
+        <style>
+            .inversePair {
+                background: #F8AC27;
+                display: inline-block;
+                position: relative;
+                height: 100px;
+                text-align: left;
+                line-height: 100px;
+                vertical-align: middle;
+                color: white;
+                font-size: 32px;
+                font-weight:900;
+                font-family: sans-serif;
+                background: rgb(74,164,162);
+                background: linear-gradient(270deg, rgba(74,164,162,1) 0%, rgba(125,202,120,1) 70%, rgba(125,202,120,1) 100%);
+                -webkit-background-size: cover;
+                -moz-background-size: cover;
+                -o-background-size: cover;
+                background-size: cover;
+                text-shadow: 0px 1px 2px #757474;
+            }
+            .inversePairA {
+                background: rgb(246,179,48);
+                background: linear-gradient(270deg, rgba(246,179,48,1) 0%, rgba(246,225,44,1) 100%, rgba(246,225,44,1) 100%);
+                display: inline-block;
+                position: relative;
+                height: 100px;
+                text-align: center;
+                line-height: 100px;
+                vertical-align: middle;
+                color:white;
+                font-size: 32px;
+                font-weight:900;
+                font-family: sans-serif;
+                text-shadow: 0px 1px 2px #757474;
+            }
+            .a {
+                width: 100px;
+                border-radius: 50px;
+            }
+            .a:before {
+                content:' ';
+                left: -6px;
+                top: -6px;
+                position: absolute;
+                z-index: -1;
+                width: 112px; /* 5px gap */
+                height: 112px;
+                border-radius: 56px;
+                background-color: #1f2650;
+            }
+            .b {
+                width: 400px;
+                z-index: -2;
+                padding-left: 70px;
+                margin-left: -55px;
+                overflow: hidden;
+                -webkit-border-top-right-radius: 50px;
+                -webkit-border-bottom-right-radius: 50px;
+                -moz-border-radius-topright: 50px;
+                -moz-border-radius-bottomright: 50px;
+                border-top-right-radius: 50px;
+                border-bottom-right-radius: 50px;
+            }
+            .b:before {
+                content:' ';
+                left: -58px;
+                top: -7px;
+                position: absolute;
+                width: 114px; /* 5px gap, 1px border */
+                height: 114px;
+                border-radius: 57px;
+                background-color: black;
+            }
+            .space-column{
+                padding-bottom: 20px;
+            }
+            .column-cont{
+                text-align: center;
+                padding: 5px;
+            }
+            .logo {
+                position: relative;
+                width: 10em;
+                height: 0;
+            }
+            .logo .wrapper {
+                position: absolute;
+                top:0;
+                left:0;
+                width: 100%;
+                height: 0;
+                padding-bottom: 100%;
+                border-radius: 100%;
+                background-color: #1f2650;
+            }
+                .logo img {
+                width: 100%;
+                padding: 0.5em;
+            }
+            .header{
+                background: linear-gradient(90deg, rgba(250,185,37,1) 20%, rgba(251,213,28,1) 50%, rgba(218,146,19,1) 83%);
+            }
+            .modal-shadow {
+                border: 1px solid #F8AC27;
+                -webkit-box-shadow: 0px 0px 11px 3px rgba(248,172,39,0.53);
+                box-shadow: 0px 0px 11px 3px rgba(248,172,39,0.53);
+            }
+            .btn-circle.btn-sm {
+                width: 30px;
+                height: 30px;
+                padding: 6px 0px;
+                border-radius: 15px;
+                font-size: 8px;
+                text-align: center;
+            }
+            .btn-circle.btn-md {
+                width: 50px;
+                height: 50px;
+                padding: 7px 10px;
+                border-radius: 25px;
+                font-size: 10px;
+                text-align: center;
+            }
+            .btn-circle.btn-xl {
+                width: 200px;
+                height: 200px;
+                padding: 10px 16px;
+                border-radius: 50%;
+                font-size: 42px;
+                text-align: center;
+                -webkit-box-shadow: 0px 0px 11px 3px grey;
+                box-shadow: 0px 0px 11px 3px grey;
+                font-family: sans-serif;
+                font-weight:900;
+            }
+        </style>
+       
+    </head>
+    <body>
+        <nav class="navbar header justify-content-center" style="height: 30px">
+            <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link logo" href="#">
+                    <div class="wrapper"><img src="assets/images/logo.png"></div>
+                </a>
+            </li>
+
+            </ul>
+        </nav>
+        <div class="container-fluid" >
+            <div class="row space-column" style="padding-top: 150px">
+                <div class="col-md-4 column-cont">
+                     <div id="aINT" class="inversePairA a"><span id="countINT">000</span></div>
+                     <a id="btnINT" href="javascript:void(0)" data-id="INT" data-toggle="modal" data-target="#modal-penjamin">
+                         <div id="bINT" class="inversePair b">PENYAKIT DALAM</div>
+                     </a>
+                </div>
+ 
+                <div class="col-md-4 column-cont">
+                     <div id="aORT" class="inversePairA a"><span id="countORT">000</span></div>
+                     <a id="btnORT" href="javascript:void(0)" data-id="ORT" data-toggle="modal" data-target="#modal-penjamin">
+                         <div id="bORT" class="inversePair b">ORTHOPEDI</div>
+                     </a>
+                 </div>
+ 
+                 <div class="col-md-4 column-cont">
+                     <div id="aBSY" class="inversePairA a"><span id="countBSY">000</span></div>
+                     <a id="btnBSY" href="javascript:void(0)" data-id="BSY" data-toggle="modal" data-target="#modal-penjamin">
+                         <div id="bBSY" class="inversePair b">BEDAH SARAF</div>
+                     </a>
+                 </div>
+            </div>
+ 
+            <div class="row space-column">
+                 <div class="col-md-4 column-cont">
+                     <div id="aSAR" class="inversePairA a"><span id="countSAR">000</span></div>
+                     <a id="btnSAR" href="javascript:void(0)" data-id="SAR" data-toggle="modal" data-target="#modal-penjamin">
+                         <div id="bSAR" class="inversePair b">SARAF</div>
+                     </a>
+                 </div>
+ 
+                 <div class="col-md-4 column-cont">
+                     <div id="aBED" class="inversePairA a"><span id="countBED">000</span></div>
+                     <a id="btnBED" href="javascript:void(0)" data-id="BED" data-toggle="modal" data-target="#modal-penjamin">
+                         <div id="bBED" class="inversePair b">BEDAH</div>
+                     </a>
+                 </div>
+ 
+                 <div class="col-md-4 column-cont">
+                     <div id="aIRM" class="inversePairA a"><span id="countIRM">000</span></div>
+                     <a id="btnIRM" href="javascript:void(0)" data-id="IRM" data-toggle="modal" data-target="#modal-penjamin">
+                         <div id="bIRM" class="inversePair b">REHAB MEDIK</div>
+                     </a>
+                 </div>
+             </div>
+ 
+             <div class="row space-column">
+                 <div class="col-md-4 column-cont">
+                      <div id="aMAT" class="inversePairA a"><span id="countMAT">000</span></div>
+                      <a id="btnMAT" href="javascript:void(0)" data-id="MAT" data-toggle="modal" data-target="#modal-penjamin">
+                         <div id="bMAT" class="inversePair b">MATA</div>
+                     </a>
+                 </div>
+ 
+                 <div class="col-md-4 column-cont">
+                      <div id="aBDM" class="inversePairA a"><span id="countBDM">000</span></div>
+                      <a id="btnBDM" href="javascript:void(0)" data-id="BDM" data-toggle="modal" data-target="#modal-penjamin">
+                         <div id="bBDM" class="inversePair b">BEDAH MULUT</div>
+                     </a>
+                  </div>
+ 
+                  <div class="col-md-4 column-cont">
+                      <div id="aGIG" class="inversePairA a"><span id="countGIG">000</span></div>
+                      <a id="btnGIG" href="javascript:void(0)" data-id="GIG" data-toggle="modal" data-target="#modal-penjamin">
+                         <div id="bGIG" class="inversePair b">GIGI</div>
+                     </a>
+                  </div>
+             </div>
+ 
+             <div class="row space-column">
+                 <div class="col-md-4 column-cont">
+                      <div id="aTHT" class="inversePairA a"><span id="countTHT">000</span></div>
+                      <a id="btnTHT" href="javascript:void(0)" data-id="THT" data-toggle="modal" data-target="#modal-penjamin">
+                         <div id="bTHT" class="inversePair b">THT</div>
+                     </a>
+                 </div>
+ 
+                 <div class="col-md-4 column-cont">
+                      <div id="aKLT" class="inversePairA a"><span id="countKLT">000</span></div>
+                      <a id="btnKLT" href="javascript:void(0)" data-id="KLT" data-toggle="modal" data-target="#modal-penjamin">
+                         <div id="bKLT" class="inversePair b">KULIT & KELAMIN</div>
+                     </a>
+                  </div>
+ 
+                  <div class="col-md-4 column-cont">
+                      <div id="aOBG" class="inversePairA a"><span id="countOBG">000</span></div>
+                      <a id="btnOBG" href="javascript:void(0)" data-id="OBG" data-toggle="modal" data-target="#modal-penjamin">
+                         <div id="bOBG" class="inversePair b">KANDUNGAN</div>
+                     </a>
+                  </div>
+             </div>
+ 
+             <div class="row space-column">
+                 <div class="col-md-4 column-cont">
+                      <div id="aANA" class="inversePairA a"><span id="countANA">000</span></div>
+                      <a id="btnANA" href="javascript:void(0)" data-id="ANA" data-toggle="modal" data-target="#modal-penjamin">
+                         <div id="bANA" class="inversePair b">ANAK</div>
+                     </a>
+                 </div>
+ 
+                 <div class="col-md-4 column-cont">
+ 
+                     <div id="aJIW" class="inversePairA a"><span id="countJIW">000</span></div>
+                     <a id="btnJIW" href="javascript:void(0)" data-id="JIW" data-toggle="modal" data-target="#modal-penjamin">
+                         <div id="bJIW" class="inversePair b">JIWA</div>
+                     </a>
+                  </div>
+ 
+                  <div class="col-md-4 column-cont">
+                     <div id="aJAN" class="inversePairA a"><span id="countJAN">000</span></div>
+                     <a id="btnJAN" href="javascript:void(0)" data-id="JAN" data-toggle="modal" data-target="#modal-penjamin">
+                         <div id="bJAN" class="inversePair b">JANTUNG</div>
+                      </a>
+                  </div>
+             </div>
+             <div class="row space-column">
+ 
+ 
+                 <div class="col-md-4 column-cont">
+ 
+                     <div id="a176" class="inversePairA a"><span id="count176">000</span></div>
+                     <a id="btn176" href="javascript:void(0)" data-id="176" data-toggle="modal" data-target="#modal-penjamin">
+                         <div id="a176" class="inversePair b">MCU</div>
+                     </a>
+                  </div>
+                  <div class="col-md-4 column-cont">
+ 
+                     <div id="RDO" class="inversePairA a"><span id="countRDO">000</span></div>
+                     <a id="btnRDO" href="javascript:void(0)" data-id="RDO" data-toggle="modal" data-target="#modal-penjamin">
+                         <div id="aRDO" class="inversePair b">PENUNJANG</div>
+                     </a>
+ 
+                  </div>
+                  <div class="col-md-4 column-cont">
+ 
+                     <div id="a" class="inversePairA a off" style="background:grey"><span id="count">000</span></div>
+ 
+                         <div id="b" class="inversePair b off" style="background:grey"></div>
+ 
+                  </div>
+             </div>
+        </div>
+        <div class="modal fade" id="modal-penjamin">
+            <div class="modal-dialog modal-dialog-centered modal-lg ">
+                <div class="modal-content modal-shadow" style="border-radius: 20px">
+                    <div class="modal-body ">
+                        <div class="row">
+                            <div class="col-md-12" style="text-align: center;padding:10px">
+                                <span style="font-family: sans-serif;color:grey;font-weight:900"><H1>Pilih Penjamin Yang Digunakan</H1></span>
+                            </div>
+                            <form class="form-horizontal" id="formQueue" hidden>
+        
+                                <div class="form-group row">
+                                    <label for="inputEmail3" class="col-sm-4 col-form-label">ID Klinik</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" id="room_id" name="room_id"
+                                            placeholder="ID Klinik">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="inputEmail3" class="col-sm-4 col-form-label">ID Penjamin</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" id="health_guarantor_id" name="health_guarantor_id"
+                                            placeholder="ID Penjamin">
+                                    </div>
+                                </div>
+                            </form>
+                            <div class="col-md-6" style="text-align: center;padding:10px">
+                                <button class="btn btn-circle btn-xl btn-success" id="btnBpjs" data-id="{{Config::get('kiosk.healthguarantor.BPJS')}}">BPJS</button>
+                            </div>
+                            <div class="col-md-6" style="text-align: center;padding:10px">
+                                <button class="btn btn-circle btn-xl btn-primary" id="btnUmum" data-id="{{Config::get('kiosk.healthguarantor.UMUM')}}">UMUM</button>
+                            </div>
+                        </div>
+        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="w-100 bg-dark text-light footer-section">
+            <div class="d-flex flex-row footer-content">
+                <div class="p-2 footer-content-left"><span id="hours"></span>:<span id="minutes">:</span>:<span id="seconds"></span>&nbsp;<span id="ampm"></span></div>
+                <div class="p-2 footer-content-right"><marquee direction="left" scrollamount="10">Untuk mendaftar online, silahkan anda datang langsung ke Customer Service, atau dengan mendaftar secara mandiri melalui Website yang sudah kami sediakan di https://reservasi.rsudcideres.id | Kunjungi Website dan sosial media kami di alamat berikut -   Instagram : @rsudcideres | Facebook : RSUD Cideres | YouTube : RSUD Cideres | Website : rsudcideres.id | WhatsApp CS : 0822-3333-3676</marquee></div>
+            </div>
+        </footer>
+        <script src="assets/js/clock.js"></script>
+        <script>
+            $(document).ready(function(){
+                //getAksesToken()
+            });
+        </script>
+        <script>
+            function getListKlinik(token){
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                        'Authorization':'Bearer '+ token
+                    }
+                });
+                $.ajax({
+                    url: "{{Config::get('kiosk.baseurlapi')}}"+"/schedules/get-quota",
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function(data) {
+                        var list = data;
+                        list.forEach((item) => {
+                            $('#count'+item.specialist_code).html(item.sisa_quota)
+                            $('#btn'+item.specialist_code).attr('data-room-id',item.room_id);
+                            if(item.status == 0){
+                                $('#a'+item.specialist_code).attr('style', "background: grey;");
+                                $('#b'+item.specialist_code).attr('style', "background: grey;");
+                                $('#count'+item.specialist_code).html('000');
+                                $("#btn"+item.specialist_code).removeAttr("data-target");
+                            }
+                        });
+                    },
+                    error: function(error) {
+                        alert('Error: Data Quota Gagal Di Akses');
+                    }
+                });
+            }
+            function getAksesToken(){
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                $.ajax({
+                    url: "{{Config::get('kiosk.baseurlapi')}}"+"/login",
+                    type: 'POST',
+                    data: {
+                        email: "{{Config::get('kiosk.logincredential.email')}}",
+                        password:"{{Config::get('kiosk.logincredential.password')}}",
+                    },
+                    dataType: 'json',
+                    success: function(data) {
+                        if (typeof(Storage) !== "undefined") {
+                        // Store
+                        localStorage.setItem("access_token", data.access_token);
+                        getListKlinik(data.access_token)
+                        } else {
+                            alert('Browser yang dipakai tidak mendukung loca storage')
+                        }
+                    },
+                    error: function(error) {
+                        alert('Error: Akses Token Gagal Di set');
+                        console.log(error)
+                    }
+                });
+            }
+            function ambilAntrian(roomID, healthguarantorID){
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                $.ajax({
+                    url: "{{Config::get('kiosk.baseurlapi')}}"+"/queue-registrations/create",
+                    type: 'POST',
+                    data: {
+                        room_id: roomID,
+                        health_guarantor_id:healthguarantorID,
+                    },
+                    dataType: 'json',
+                    success: function(data) {
+                        if(data.message === 'success'){
+                            $('#modal-penjamin').modal('hide');
+                            var lastQuota = parseInt($('#count'+data.data.specialist_code).html()) - 1 ;
+                            $('#count'+data.data.specialist_code).html(lastQuota)
+                            if(lastQuota == 0){
+                                $('#a'+data.data.specialist_code).attr('style', "background: grey;");
+                                $('#b'+data.data.specialist_code).attr('style', "background: grey;");
+                                $("#btn"+data.data.specialist_code).removeAttr("data-target");
+                            }
+                        }else if(data.message === 'error' ){
+                            $('#modal-penjamin').modal('hide');
+                            alert(data.data)
+                        }
+                    },
+                    error: function(error) {
+                        alert('Antrian Gagal Di ambil, Hubungi IT di Ext 150');
+                    }
+                });
+            }
+        </script>
+        <script>
+            $('#btnJAN').click(function(e) {
+               $('#room_id').val($(this).data('room-id'))
+            });
+            $('#btn176').click(function(e) {
+               $('#room_id').val($(this).data('room-id'))
+               $('#btnBpjs').attr('disabled', 'true')
+               $('#btnBpjs').attr('style', 'background:grey')
+            });
+            $('#btnRDO').click(function(e) {
+               $('#room_id').val($(this).data('room-id'))
+               $('#btnBpjs').attr('disabled', 'true')
+               $('#btnBpjs').attr('style', 'background:grey')
+            });
+            $('#btnINT').click(function(e) {
+               $('#room_id').val($(this).data('room-id'))
+            });
+            $('#btnORT').click(function(e) {
+               $('#room_id').val($(this).data('room-id'))
+            });
+            $('#btnBED').click(function(e) {
+               $('#room_id').val($(this).data('room-id'))
+            });
+            $('#btnSAR').click(function(e) {
+               $('#room_id').val($(this).data('room-id'))
+            });
+            $('#btnBSY').click(function(e) {
+               $('#room_id').val($(this).data('room-id'))
+            });
+            $('#btnMAT').click(function(e) {
+               $('#room_id').val($(this).data('room-id'))
+            });
+            $('#btnBDM').click(function(e) {
+               $('#room_id').val($(this).data('room-id'))
+            });
+            $('#btnGIG').click(function(e) {
+               $('#room_id').val($(this).data('room-id'))
+            });
+            $('#btnTHT').click(function(e) {
+               $('#room_id').val($(this).data('room-id'))
+            });
+            $('#btnIRM').click(function(e) {
+               $('#room_id').val($(this).data('room-id'))
+            });
+            $('#btnKLT').click(function(e) {
+               $('#room_id').val($(this).data('room-id'))
+            });
+            $('#btnOBG').click(function(e) {
+               $('#room_id').val($(this).data('room-id'))
+            });
+            $('#btnANA').click(function(e) {
+               $('#room_id').val($(this).data('room-id'))
+            });
+            $('#btnJIW').click(function(e) {
+               $('#room_id').val($(this).data('room-id'))
+            });
+       </script>
+        <script>
+            $('#modal-penjamin').on('hidden.bs.modal', function() {
+                $('#formQueue').trigger("reset")
+                $('#btnUmum').removeAttr('disabled')
+                $('#btnUmum').removeAttr('style')
+                $('#btnBpjs').removeAttr('disabled')
+                $('#btnBpjs').removeAttr('style')
+            });
+        </script>
+        <script>
+            $('body').on('click', '#btnUmum', function() {
+                var room_id = $('#room_id').val();
+                var health_guarantor_id = $(this).attr('data-id')
+                $(this).attr('disabled', 'true')
+                $(this).attr('style', 'background:grey')
+                $('#btnBpjs').attr('disabled', 'true')
+                $('#btnBpjs').attr('style', 'background:grey')
+                
+                //SEND TO API
+                //ambilAntrian(room_id,health_guarantor_id)
+            });
+            $('body').on('click', '#btnBpjs', function() {
+                var room_id = $('#room_id').val();
+                var health_guarantor_id = $(this).attr('data-id')
+                $(this).attr('disabled', 'true')
+                $(this).attr('style', 'background:grey')
+                $('#btnUmum').attr('disabled', 'true')
+                $('#btnUmum').attr('style', 'background:grey')
+
+                //SEND TO API
+                //ambilAntrian(room_id,health_guarantor_id)
+            });
+        </script>
+    </body>
+</html>

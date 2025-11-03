@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report DataSourceName="sqlDataSource1" Width="3.386in" Name="userReport1" Zoom="2" SnapGridSize="0.1cm" xmlns="http://schemas.telerik.com/reporting/2021/1.0">
+  <DataSources>
+    <SqlDataSource QueryDesignerState="null" ParameterValues="{&quot;@p_RegistrationNo&quot;:&quot;REG/IP/220518-0008&quot;}" ConnectionString="RSYS_Live" SelectCommand="sprpt_RSBHPRegistrationLabel" SelectCommandType="StoredProcedure" Name="sqlDataSource1">
+      <Parameters>
+        <SqlDataSourceParameter DbType="AnsiString" Name="@p_RegistrationNo">
+          <Value>
+            <String>REG/IP/220518-0008</String>
+          </Value>
+        </SqlDataSourceParameter>
+      </Parameters>
+    </SqlDataSource>
+  </DataSources>
+  <Items>
+    <DetailSection Height="0.814in" Name="detailSection1">
+      <Style Visible="True" />
+      <Items>
+        <TextBox Width="0.951in" Height="0.13in" Left="0.151in" Top="0.372in" Value="No. RM" Name="textBox1">
+          <Style VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="10pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.951in" Height="0.118in" Left="0.151in" Top="0.254in" Value="TGL LAHIR" Name="textBox3">
+          <Style VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="10pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.957in" Height="0.101in" Left="0.145in" Top="0.148in" Value="NIK" Name="textBox4">
+          <Style VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="10pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="2.205in" Height="0.13in" Left="1.102in" Top="0.373in" Value="=Fields.MedicalNo" Format=": {0}" Name="textBox5">
+          <Style VerticalAlign="Middle">
+            <Font Size="10pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="3.156in" Height="0.13in" Left="0.151in" Top="0.018in" Value="=Fields.PatientName + &quot;( &quot; + Fields.sex + &quot; )&quot;" Format="{0}" CanGrow="False" Name="textBox6">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Size="10pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.945in" Height="0.118in" Left="2.362in" Top="0.253in" Value="=Fields.Age" Format="" Name="textBox7">
+          <Style VerticalAlign="Middle">
+            <Font Size="10pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1.26in" Height="0.118in" Left="1.102in" Top="0.254in" Value="=Fields.DateOfBirth" Format="{0::  dd-MMM-yyyy }" Name="textBox8">
+          <Style VerticalAlign="Middle">
+            <Font Size="10pt" />
+          </Style>
+        </TextBox>
+        <Barcode Width="7.635cm" Height="0.668cm" Left="0.385cm" Top="1.4cm" Value="= Fields.MedicalNo" Module="0.6pt" Name="barcode1">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Size="12pt" />
+          </Style>
+          <Encoder>
+            <Code128Encoder ShowText="False" />
+          </Encoder>
+        </Barcode>
+        <TextBox Width="5.6cm" Height="0.269cm" Left="2.8cm" Top="0.376cm" Value="= Fields.Ssn" Format=": {0}" Name="textBox2">
+          <Style TextAlign="Left" VerticalAlign="Bottom">
+            <Font Size="10pt" />
+          </Style>
+        </TextBox>
+      </Items>
+    </DetailSection>
+  </Items>
+  <PageSettings PaperKind="Custom" PaperSize="9cm, 3cm" Landscape="False" ColumnCount="1" ColumnSpacing="0in" ContinuousPaper="False">
+    <Margins>
+      <MarginsU Left="0.2cm" Right="0.2cm" Top="0cm" Bottom="0cm" />
+    </Margins>
+  </PageSettings>
+  <StyleSheet>
+    <StyleRule>
+      <Style>
+        <Padding Left="2pt" Right="2pt" />
+      </Style>
+      <Selectors>
+        <TypeSelector Type="TextItemBase" />
+        <TypeSelector Type="HtmlTextBox" />
+      </Selectors>
+    </StyleRule>
+  </StyleSheet>
+</Report>

@@ -1,0 +1,248 @@
+﻿
+<div class="row">
+    <div class="col-12 text-right border border-top-0 border-left-0 border-right-0">
+        <div style="float:right;">
+            <button type="button" class="btn btn-outline-info" onclick="PrevChart16_03();"><i class="fas fa-angle-left"></i></button><button type="button" class="btn btn-outline-info" onclick="CreateCharts16_03();"><i class="fas fa-sync"></i></button><button type="button" class="btn btn-outline-info" onclick="NextChart16_03();"><i class="fas fa-angle-right"></i></button>
+        </div>
+        <div style="float:right;margin-left:5px;margin-right:5px;"><h4><span id="spanTitleChart16_03">Title</span></h4></div>
+    </div>
+</div>
+<div class="row">
+    @{
+        var appPrgChart = ((AppProgramCollection)ViewBag.AppLink).Where(a => a.ParentProgramID.Equals("16.03"));
+        foreach (var appChart in appPrgChart)
+        {
+            @*<div class="col-sm-12 col-md-6 col-lg-4 text-center">*@
+            <div class="@(string.IsNullOrEmpty(appChart.AssemblyClassName) ? "col-sm-12 col-md-6 col-lg-4 text-center" : appChart.AssemblyClassName)">
+                @(appChart.ProgramName)
+                <canvas id="chart@(appChart.ProgramID.Replace(".", "_"))"></canvas>
+                <div id="divLoadingChart@(appChart.ProgramID.Replace(".", "_"))" style="display:none;">
+                    <h3><i class='fas fa-radiation fa-lg fa-spin'></i> Loading...</h3>
+                </div>
+            </div>
+        }
+    }
+</div>
+
+<script type="text/javascript">
+    var dateChart16_03;
+
+    $(document).ready(function () {
+        var d = new Date();
+        //console.log(d);
+
+        dateChart16_03 = new Date(d.getFullYear(), d.getMonth(), 1);
+        //console.log(dateChart);
+
+        CreateCharts16_03();
+    });
+
+    function PrevChart16_03() {
+        dateChart16_03.setMonth(dateChart16_03.getMonth() - 1);
+        CreateCharts16_03();
+    }
+    function NextChart16_03() {
+        dateChart16_03.setMonth(dateChart16_03.getMonth() + 1);
+        CreateCharts16_03();
+    }
+
+    function CreateCharts16_03() {
+        $('#spanTitleChart16_03').html('&nbsp;' + months[dateChart16_03.getMonth()] + ' ' + dateChart16_03.getFullYear());
+
+        @{
+            var starter = "@";
+            foreach (var appChart in appPrgChart)
+            {
+                starter = starter.Replace("@",
+                    string.Format("{1}{3}Chart{0}(@);{4}{2}",
+                        appChart.ProgramID.Replace(".", "_"),
+                        starter.Length == 1 ? "" : "function(){",
+                        starter.Length == 1 ? "" : "}",
+                        "try{", "}catch{}"));
+            }
+            starter = starter.Replace("@", "");
+                @:@starter
+        }
+    }
+
+    var clrbg1 = "";
+    var clrbd1 = "";
+    var clrbg2 = "";
+    var clrbd2 = "";
+
+    var cfg16_03_01 = null;
+    var obj16_03_01 = null;
+    var ajax16_03_01 = null;
+    var ajax16_03_01_InProgress = false;
+    function Chart16_03_01(fnCallBack) {
+        $('#chart16_03_01').hide();
+        var divLoading = $('#divLoadingChart16_03_01');
+        CoreAHrefLoadingOn(divLoading);
+        divLoading.show();
+        ajax16_03_01 = $.ajax({
+            type: 'POST',
+            url: BaseURL + "/Home/ChartBudgetYearly",
+            data: {
+                Year: dateChart16_03.getFullYear()
+            },
+            beforeSend: function () {
+                if (ajax16_03_01 !== null) {
+                    if (ajax16_03_01_InProgress) ajax16_03_01.abort();
+                }
+                ajax16_03_01_InProgress = true;
+            },
+            success: function (data) {
+                ajax16_03_01_InProgress = false;
+                $('#chart16_03_01').show();
+                divLoading.hide();
+
+                //console.log(data.data);
+                clrbg1 = data.data.datasets[0].backgroundColor;
+                clrbd1 = data.data.datasets[0].borderColor;
+                clrbg2 = data.data.datasets[1].backgroundColor;
+                clrbd2 = data.data.datasets[1].borderColor;
+
+                if (data.status == _sJsonRequestOkStatus) {
+
+                    if (obj16_03_01 == null) {
+                        var ctx16_03_01 = $('#chart16_03_01');
+                        cfg16_03_01 = {
+                            type: 'line',
+                            data: data.data,
+                            options: {
+                                responsive: true,
+                                scales: {
+                                    xAxes: [{
+                                        stacked: false,
+                                        ticks: {
+                                            beginAtZero: true
+                                        }
+                                    }],
+                                    yAxes: [{
+                                        stacked: false,
+                                        ticks: {
+                                            callback: function (value, index, values) {
+                                                return 'Rp.' + Number((value).toFixed(1)).toLocaleString();
+                                                //return 'Rp.' + value;
+                                            }
+                                        }
+                                    }]
+                                }, tooltips: {
+                                    callbacks: {
+                                        label: (tooltipItems, data) => {
+                                            return 'Rp.' + Number((data.datasets[tooltipItems.datasetIndex].data[tooltipItems.index]).toFixed(1)).toLocaleString();
+                                        }
+                                    },
+                                }
+                            }
+                        };
+                        obj16_03_01 = new Chart(ctx16_03_01, cfg16_03_01);
+                    } else {
+                        cfg16_03_01.data = data.data;
+                        obj16_03_01.update();
+                        //console.log(dcConfig);
+                    }
+                } else {
+                    ShowError(data.data);
+                }
+
+                if (!CoreIsNullOrEmpty(fnCallBack)) {
+                    fnCallBack();
+                }
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                ajax16_03_01_InProgress = false;
+                ShowError(xhr.responseText);
+            },
+            dataType: 'json'
+        });
+    }
+
+    var cfg16_03_02 = null;
+    var obj16_03_02 = null;
+    var ajax16_03_02 = null;
+    var ajax16_03_02_InProgress = false;
+    function Chart16_03_02(fnCallBack) {
+        $('#chart16_03_02').hide();
+        var divLoading = $('#divLoadingChart16_03_02');
+        CoreAHrefLoadingOn(divLoading);
+        divLoading.show();
+        $.ajax({
+            type: 'POST',
+            url: BaseURL + "/Home/ChartBudgetMonthly",
+            data: {
+                Year: dateChart16_03.getFullYear(),
+                Month: (dateChart16_03.getMonth() + 1)
+            },
+            beforeSend: function () {
+                if (ajax16_03_02 !== null) {
+                    if (ajax16_03_02_InProgress) ajax16_03_02.abort();
+                }
+                ajax16_03_02_InProgress = true;
+            },
+            success: function (data) {
+                ajax16_03_02_InProgress = false;
+                $('#chart16_03_02').show();
+                divLoading.hide();
+
+                //data.data.datasets[0].backgroundColor = clrbg1;
+                //data.data.datasets[0].borderColor = clrbd1;
+                //data.data.datasets[1].backgroundColor = clrbg2;
+                //data.data.datasets[1].borderColor = clrbd2;
+
+                if (data.status == _sJsonRequestOkStatus) {
+
+                    if (obj16_03_02 == null) {
+                        var ctx16_03_02 = $('#chart16_03_02');
+                        cfg16_03_02 = {
+                            type: 'horizontalBar',
+                            data: data.data,
+                            options: {
+                                responsive: true,
+                                scales: {
+                                    yAxes: [{
+                                        stacked: false,
+                                        ticks: {
+                                            beginAtZero: true
+                                        }
+                                    }],
+                                    xAxes: [{
+                                        stacked: false,
+                                        ticks: {
+                                            callback: function (value, index, values) {
+                                                return 'Rp.' + Number((value).toFixed(1)).toLocaleString();
+                                                //return 'Rp.' + value;
+                                            }
+                                        }
+                                    }]
+                                }, tooltips: {
+                                    callbacks: {
+                                        label: (tooltipItems, data) => {
+                                            return 'Rp.' + Number((data.datasets[tooltipItems.datasetIndex].data[tooltipItems.index]).toFixed(1)).toLocaleString();
+                                        }
+                                    },
+                                }
+                            }
+                        };
+                        obj16_03_02 = new Chart(ctx16_03_02, cfg16_03_02);
+                    } else {
+                        cfg16_03_02.data = data.data;
+                        obj16_03_02.update();
+                        //console.log(dcConfig);
+                    }
+                } else {
+                    ShowError(data.data);
+                }
+
+                if (!CoreIsNullOrEmpty(fnCallBack)) {
+                    fnCallBack();
+                }
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                ajax16_03_02_InProgress = false;
+                ShowError(xhr.responseText);
+            },
+            dataType: 'json'
+        });
+    }
+</script>

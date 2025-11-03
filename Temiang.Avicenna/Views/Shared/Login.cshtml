@@ -1,0 +1,63 @@
+﻿@model Temiang.Avicenna.Model.UserLoginModel
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+
+<div class="login-box">
+    <div class="login-logo">
+        @(ViewBag.Brand.Name)
+    </div>
+    <!-- /.login-logo -->
+    <div class="card card-primary card-outline">
+        <div class="card-body">
+            <p class="login-box-msg">Sign in to start your session</p>
+            <div>
+                @if (!string.IsNullOrEmpty(@ViewBag.ErrMessage))
+                {
+                    <div class="alert alert-danger">
+                        <h5><i class="icon fas fa-ban"></i> Error</h5>
+                        @ViewBag.ErrMessage
+                    </div>
+                }
+            </div>
+            <form action="@(ViewBag.UrlRoot)/Home/Logon" method="post">
+                <div class="input-group mb-3">
+                    <input type="text" id="UserID" name="UserID" value="@((Model != null) ? Model.UserID : "")" class="form-control" placeholder="User Name">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-user-alt"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="input-group mb-3">
+                    <input type="password" id="Password" name="Password" class="form-control" placeholder="Password">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-lock"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <!-- /.col -->
+                    <div class="col-12">
+                        <button id="btnLogin" type="submit" value="Login" class="btn btn-primary btn-block" onclick="javascript: LoginShowProgress();"><i class="icon fas fa-compass fa-spin" style="display:none;"></i> Sign In</button>
+                    </div>
+                    <!-- /.col -->
+                </div>
+            </form>
+        </div>
+        <!-- /.login-card-body -->
+    </div>
+</div>
+
+@section Scripts
+{
+    <script language="javascript">
+        function LoginShowProgress() {
+            $("#btnLogin").find("i").show();
+        }
+    </script>
+}
+
+

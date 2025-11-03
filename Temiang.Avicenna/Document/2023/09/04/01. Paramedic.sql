@@ -1,0 +1,1 @@
+ALTER TABLE Paramedic ADD ParamedicQueueCode VARCHAR(3) NULL

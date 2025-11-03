@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report DataSourceName="sqlDataSource1" Width="7.874in" Name="purchase order" ShowSnapGrid="True" SnapGridSize="0.1cm" xmlns="http://schemas.telerik.com/reporting/2021/1.0">
+  <DataSources>
+    <SqlDataSource QueryDesignerState="null" ParameterValues="{&quot;@p_TransactionNo&quot;:&quot;PO/PM/2022/05/0083&quot;}" ConnectionString="RSYS" SelectCommand="sprpt_PurchaseOrderSlip" SelectCommandType="StoredProcedure" Name="sqlDataSource1">
+      <Parameters>
+        <SqlDataSourceParameter DbType="AnsiString" Name="@p_TransactionNo">
+          <Value>
+            <String>PO/PM/2022/05/0083</String>
+          </Value>
+        </SqlDataSourceParameter>
+      </Parameters>
+    </SqlDataSource>
+  </DataSources>
+  <Items>
+    <DetailSection Height="0.052in" Name="detailSection1">
+      <Style Visible="False" />
+    </DetailSection>
+    <ReportHeaderSection Height="2.965in" Name="reportHeaderSection1">
+      <Style>
+        <BorderStyle Default="None" Bottom="None" />
+        <BorderWidth Default="0.5pt" />
+      </Style>
+      <Items>
+        <Table DataSourceName="sqlDataSource1" Width="7.86in" Height="0.647in" Left="0in" Top="1.777in" KeepTogether="False" Name="table2">
+          <Body>
+            <Cells>
+              <TableCell RowIndex="0" ColumnIndex="0" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.878in" Height="0.207in" Left="0cm" Top="0cm" Value="= Fields.ItemID" Name="textBox58">
+                    <Style TextAlign="Center" VerticalAlign="Top">
+                      <Font Name="Microsoft Sans Serif" Size="7pt" />
+                      <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="None" />
+                      <BorderColor Top="Black" />
+                      <BorderWidth Default="0.5pt" Top="1pt" Bottom="0.5pt" Right="0.5pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="1" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="2.516in" Height="0.207in" Left="0cm" Top="0cm" Value="= Fields.ItemName + IIF(Fields.Specification &lt;&gt; &quot;&quot;, &quot; /spec: &quot; + Fields.Specification, &quot;&quot;)" Name="textBox59">
+                    <Style TextAlign="Left" VerticalAlign="Middle">
+                      <Font Name="Microsoft Sans Serif" Size="7pt" />
+                      <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="None" />
+                      <BorderColor Top="Black" />
+                      <BorderWidth Default="0.5pt" Top="1pt" Bottom="0.5pt" Right="0.5pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="3" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.452in" Height="0.207in" Left="0cm" Top="0cm" Value="= Fields.SRItemUnit" Name="textBox60" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Font Name="Microsoft Sans Serif" Size="7pt" />
+                      <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="None" />
+                      <BorderColor Top="Black" />
+                      <BorderWidth Default="0.5pt" Top="1pt" Bottom="0.5pt" Right="0.5pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="4" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.739in" Height="0.207in" Left="0cm" Top="0cm" Value="= Fields.Price" Format="{0:N2}" Name="textBox61" StyleName="">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <Font Name="Microsoft Sans Serif" Size="7pt" />
+                      <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="None" />
+                      <BorderColor Top="Black" />
+                      <BorderWidth Default="0.5pt" Top="1pt" Bottom="0.5pt" Right="0.5pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="5" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.74in" Height="0.207in" Left="0cm" Top="0cm" Value="= IIF (Fields.Discount1Percentage&lt;&gt;0, ISNULL(Fields.Discount1Percentage, 0) + ISNULL(Fields.Discount2Percentage, 0) + &quot;%&quot;, Fields.Discount)" Format="{0:N2}" Name="textBox62" StyleName="">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <Font Name="Microsoft Sans Serif" Size="7pt" />
+                      <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="None" />
+                      <BorderColor Top="Black" />
+                      <BorderWidth Default="0.5pt" Top="1pt" Bottom="0.5pt" Right="0.5pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="7" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.932in" Height="0.207in" Left="0cm" Top="0cm" Value="= Fields.SubTotal" Format="{0:N2}" Name="textBox63" StyleName="">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <Font Name="Microsoft Sans Serif" Size="7pt" />
+                      <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+                      <BorderColor Top="Black" />
+                      <BorderWidth Default="0.5pt" Top="1pt" Bottom="0.5pt" Right="0.5pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="7" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.932in" Height="0.2in" Left="0cm" Top="0cm" Value="=Fields.Total" Format="{0:N2}" Name="textBox64" StyleName="">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <Font Size="8pt" Bold="False" />
+                      <BorderStyle Top="None" Bottom="Solid" Left="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" Top="0.5pt" Bottom="0.5pt" Right="0.5pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="6" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.49in" Height="0.207in" Left="0cm" Top="0cm" Value="= Fields.TaxPercentage" Format="{0:N2}" Name="textBox65" StyleName="">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <Font Name="Microsoft Sans Serif" Size="7pt" />
+                      <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="None" />
+                      <BorderColor Top="Black" />
+                      <BorderWidth Default="0.5pt" Top="1pt" Bottom="0.5pt" Right="0.5pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="0" RowSpan="1" ColumnSpan="7">
+                <ReportItem>
+                  <TextBox Width="6.928in" Height="0.2in" Left="0cm" Top="0cm" Value="Total  " Name="textBox66" StyleName="">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <Font Size="8pt" Bold="False" />
+                      <BorderStyle Top="None" Bottom="Solid" Left="Solid" Right="None" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="2" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="1.113in" Height="0.207in" Left="0cm" Top="0cm" Value="= Fields.Quantity" Name="textBox67" StyleName="">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <Font Name="Microsoft Sans Serif" Size="7pt" />
+                      <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="None" />
+                      <BorderColor Top="Black" />
+                      <BorderWidth Default="0.5pt" Top="1pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+            </Cells>
+            <Columns>
+              <Column Width="0.878in" />
+              <Column Width="2.516in" />
+              <Column Width="1.113in" />
+              <Column Width="0.452in" />
+              <Column Width="0.739in" />
+              <Column Width="0.74in" />
+              <Column Width="0.49in" />
+              <Column Width="0.932in" />
+            </Columns>
+            <Rows>
+              <Row Height="0.207in" />
+              <Row Height="0.2in" />
+            </Rows>
+          </Body>
+          <Corner />
+          <Style TextAlign="Left" VerticalAlign="Middle">
+            <Font Size="8pt" />
+            <BorderStyle Top="None" Left="None" Right="None" />
+            <BorderWidth Top="0.5pt" Left="0.5pt" Right="0.5pt" />
+          </Style>
+          <RowGroups>
+            <TableGroup Name="detailTableGroup">
+              <Groupings>
+                <Grouping />
+              </Groupings>
+            </TableGroup>
+            <TableGroup Name="group5" />
+          </RowGroups>
+          <ColumnGroups>
+            <TableGroup Name="tableGroup">
+              <ReportItem>
+                <TextBox Width="0.878in" Height="0.24in" Left="0in" Top="0in" Value="Kode" Name="textBox68">
+                  <Style TextAlign="Center" VerticalAlign="Middle">
+                    <Font Name="Microsoft Sans Serif" Size="8pt" />
+                    <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="None" />
+                    <BorderWidth Default="0.5pt" Top="0.5pt" Left="0.5pt" Right="0.5pt" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup Name="tableGroup1">
+              <ReportItem>
+                <TextBox Width="2.516in" Height="0.24in" Left="0cm" Top="0cm" Value="Nama Barang" Name="textBox69">
+                  <Style TextAlign="Center" VerticalAlign="Middle">
+                    <Font Name="Microsoft Sans Serif" Size="8pt" />
+                    <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="None" />
+                    <BorderWidth Default="0.5pt" Top="0.5pt" Left="0.5pt" Right="0.5pt" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup Name="tableGroup2">
+              <ReportItem>
+                <TextBox Width="1.113in" Height="0.24in" Left="0cm" Top="0cm" Value="Qty" Name="textBox70">
+                  <Style TextAlign="Center" VerticalAlign="Middle">
+                    <Font Name="Microsoft Sans Serif" Size="8pt" />
+                    <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="None" />
+                    <BorderWidth Default="0.5pt" Top="0.5pt" Left="0.5pt" Right="0.5pt" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup Name="group">
+              <ReportItem>
+                <TextBox Width="0.452in" Height="0.24in" Left="0cm" Top="0cm" Value="Unit" Name="textBox71" StyleName="">
+                  <Style TextAlign="Center" VerticalAlign="Middle">
+                    <Font Name="Microsoft Sans Serif" Size="8pt" />
+                    <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="None" />
+                    <BorderWidth Default="0.5pt" Top="0.5pt" Left="0.5pt" Right="0.5pt" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup Name="group1">
+              <ReportItem>
+                <TextBox Width="0.739in" Height="0.24in" Left="0cm" Top="0cm" Value="Harga" Name="textBox72" StyleName="">
+                  <Style TextAlign="Right" VerticalAlign="Middle">
+                    <Font Name="Microsoft Sans Serif" Size="8pt" />
+                    <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="None" />
+                    <BorderWidth Default="0.5pt" Top="0.5pt" Left="0.5pt" Right="0.5pt" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup Name="group2">
+              <ReportItem>
+                <TextBox Width="0.74in" Height="0.24in" Left="0cm" Top="0cm" Value="Disc" Name="textBox73" StyleName="">
+                  <Style TextAlign="Right" VerticalAlign="Middle">
+                    <Font Name="Microsoft Sans Serif" Size="8pt" />
+                    <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="None" />
+                    <BorderWidth Default="0.5pt" Top="0.5pt" Left="0.5pt" Right="0.5pt" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup Name="group3">
+              <ReportItem>
+                <TextBox Width="0.49in" Height="0.24in" Left="0cm" Top="0cm" Value="PPN" Name="textBox74" StyleName="">
+                  <Style TextAlign="Right" VerticalAlign="Middle">
+                    <Font Name="Microsoft Sans Serif" Size="8pt" />
+                    <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="None" />
+                    <BorderWidth Default="0.5pt" Top="0.5pt" Left="0.5pt" Right="0.5pt" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup Name="group4">
+              <ReportItem>
+                <TextBox Width="0.932in" Height="0.24in" Left="0in" Top="0in" Value="Total" Name="textBox75" StyleName="">
+                  <Style TextAlign="Right" VerticalAlign="Middle">
+                    <Font Name="Microsoft Sans Serif" Size="8pt" />
+                    <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+                    <BorderWidth Default="0.5pt" Top="0.5pt" Left="0.5pt" Right="0.5pt" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+          </ColumnGroups>
+        </Table>
+        <TextBox Width="7.86in" Height="0.276in" Left="0in" Top="0.878in" Value="Purchase Order" Name="textBox54">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Name="Microsoft Sans Serif" Size="16pt" Bold="False" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.748in" Height="0.13in" Left="0in" Top="1.175in" Value="No.PO" Name="textBox53">
+          <Style TextAlign="Left" VerticalAlign="Middle">
+            <Font Name="Microsoft Sans Serif" Size="8pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.108in" Height="0.13in" Left="0.748in" Top="1.175in" Value=":" Name="textBox52">
+          <Style TextAlign="Left" VerticalAlign="Middle">
+            <Font Name="Microsoft Sans Serif" Size="8pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.748in" Height="0.13in" Left="0in" Top="1.305in" Value="Supplier" Name="textBox49">
+          <Style TextAlign="Left" VerticalAlign="Top">
+            <Font Name="Microsoft Sans Serif" Size="8pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.108in" Height="0.13in" Left="0.748in" Top="1.305in" Value=":" Name="textBox48">
+          <Style TextAlign="Left" VerticalAlign="Top">
+            <Font Name="Microsoft Sans Serif" Size="8pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.748in" Height="0.13in" Left="0in" Top="1.468in" Value="Keterangan" Name="textBox47">
+          <Style TextAlign="Left" VerticalAlign="Top">
+            <Font Name="Microsoft Sans Serif" Size="8pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.108in" Height="0.13in" Left="0.748in" Top="1.468in" Value=":" Name="textBox46">
+          <Style TextAlign="Left" VerticalAlign="Top">
+            <Font Name="Microsoft Sans Serif" Size="8pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="3.8in" Height="0.13in" Left="0.856in" Top="1.175in" Value="= Fields.TransactionNo" Name="textBox45">
+          <Style TextAlign="Left" VerticalAlign="Middle">
+            <Font Name="Microsoft Sans Serif" Size="8pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="3.8in" Height="0.13in" Left="0.856in" Top="1.305in" Value="= Fields.SupplierName" Name="textBox44">
+          <Style TextAlign="Left" VerticalAlign="Top">
+            <Font Name="Microsoft Sans Serif" Size="8pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="4in" Height="0.308in" Left="0.856in" Top="1.468in" Value="= Fields.Notes" Name="textBox28">
+          <Style TextAlign="Left" VerticalAlign="Top">
+            <Font Name="Microsoft Sans Serif" Size="8pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.564in" Height="0.154in" Left="5.906in" Top="1.154in" Value="Tanggal " Name="textBox6">
+          <Style TextAlign="Left" VerticalAlign="Middle">
+            <Font Name="Microsoft Sans Serif" Size="8pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.108in" Height="0.154in" Left="6.47in" Top="1.154in" Value=":" Name="textBox5">
+          <Style TextAlign="Left" VerticalAlign="Middle">
+            <Font Name="Microsoft Sans Serif" Size="8pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1.283in" Height="0.154in" Left="6.578in" Top="1.154in" Value="= Fields.TransactionDate.Date" Format="{0:dd-MMM-yyyy}" Name="textBox4">
+          <Style TextAlign="Left" VerticalAlign="Middle">
+            <Font Name="Microsoft Sans Serif" Size="8pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.564in" Height="0.154in" Left="5.906in" Top="1.308in" Value="Tgl.Kirim" Name="textBox3">
+          <Style TextAlign="Left" VerticalAlign="Middle">
+            <Font Name="Microsoft Sans Serif" Size="8pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.108in" Height="0.154in" Left="6.47in" Top="1.308in" Value=":" Name="textBox2">
+          <Style TextAlign="Left" VerticalAlign="Middle">
+            <Font Name="Microsoft Sans Serif" Size="8pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1.283in" Height="0.154in" Left="6.578in" Top="1.308in" Value="= Fields.DeliveryOrdersDate" Format="{0:dd-MMM-yyyy}" Name="textBox1">
+          <Style TextAlign="Left" VerticalAlign="Middle">
+            <Font Name="Microsoft Sans Serif" Size="8pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1.955in" Height="0.13in" Left="5.906in" Top="1.496in" Value="= Fields.FromServiceUnitName" Name="textBox9">
+          <Style VerticalAlign="Middle">
+            <Font Name="Microsoft Sans Serif" Size="8pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="7.86in" Height="0.2in" Left="0in" Top="2.765in" Value="=now()" Format="Avicenna_HIS, PrintDate, {0}" Name="textBox42">
+          <Style VerticalAlign="Middle">
+            <Font Size="8pt" />
+            <BorderStyle Top="Solid" />
+            <BorderColor Top="Black" />
+            <BorderWidth Top="0.5pt" />
+          </Style>
+        </TextBox>
+      </Items>
+    </ReportHeaderSection>
+  </Items>
+  <PageSettings PaperKind="A4" Landscape="False" ColumnCount="1" ColumnSpacing="0in" ContinuousPaper="False">
+    <Margins>
+      <MarginsU Left="0.5cm" Right="0.5cm" Top="0.5cm" Bottom="0.5cm" />
+    </Margins>
+  </PageSettings>
+  <StyleSheet>
+    <StyleRule>
+      <Style>
+        <Padding Left="2pt" Right="2pt" />
+      </Style>
+      <Selectors>
+        <TypeSelector Type="TextItemBase" />
+        <TypeSelector Type="HtmlTextBox" />
+      </Selectors>
+    </StyleRule>
+  </StyleSheet>
+</Report>

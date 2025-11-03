@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report DataSourceName="sqlDataSource1" Width="7.17708269755046in" Name="userReport1" xmlns="http://schemas.telerik.com/reporting/2012/2">
+  <Style>
+    <BorderStyle Top="Solid" Bottom="Solid" Right="Solid" />
+    <BorderWidth Bottom="0.5pt" />
+  </Style>
+  <DataSources>
+    <SqlDataSource ConnectionString="Data Source=192.168.11.69;Initial Catalog=RSMP_LIVE;User ID=sa;Password=P@ssw0rd" ProviderName="System.Data.SqlClient" SelectCommand="dbo.sprpt_ResepPerDokter" SelectCommandType="StoredProcedure" Name="sqlDataSource1">
+      <Parameters>
+        <SqlDataSourceParameter DbType="DateTime" Name="@p_FromDate">
+          <Value>
+            <String>01/12/2016</String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="DateTime" Name="@p_ToDate">
+          <Value>
+            <String>31/12/2016</String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="AnsiString" Name="@p_ParamedicID">
+          <Value>
+            <String>D0037</String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="AnsiString" Name="@p_ItemID">
+          <Value>
+            <String>CIT-002</String>
+          </Value>
+        </SqlDataSourceParameter>
+      </Parameters>
+    </SqlDataSource>
+  </DataSources>
+  <Items>
+    <PageHeaderSection Height="1in" Name="pageHeaderSection1" />
+    <DetailSection Height="0.0520833333333333in" Name="detailSection1">
+      <Style Visible="False" />
+    </DetailSection>
+    <PageFooterSection Height="1in" Name="pageFooterSection1" />
+    <ReportFooterSection Height="1.49996058146159in" Name="reportFooterSection1">
+      <Items>
+        <Table DataSourceName="sqlDataSource1" Size="7.16667207082113in, 1.71979151789927cm" Location="0.0104110240936279in, 0in" Name="table1">
+          <Body>
+            <Cells>
+              <TableCell RowIndex="0" ColumnIndex="0" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="=RowNumber()" Size="0.336806237110733in, 0.317708279559579in" Name="textBox4">
+                    <Style>
+                      <BorderStyle Top="None" Bottom="Solid" Left="None" Right="None" />
+                      <BorderWidth Default="0in" Top="0in" Bottom="0.5pt" Left="0.5pt" Right="0.5pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="2" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="=Fields.ParamedicName" Size="2.80555644592789in, 0.317708279559579in" Name="textBox11" StyleName="">
+                    <Style>
+                      <BorderStyle Top="None" Bottom="Solid" Left="None" Right="None" />
+                      <BorderWidth Default="0in" Top="0in" Bottom="0.5pt" Right="0.5pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="3" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="=Fields.ItemName" Size="2.55208668829043in, 0.317708279559579in" Name="textBox6" StyleName="">
+                    <Style>
+                      <BorderStyle Top="None" Bottom="Solid" Left="None" Right="None" />
+                      <BorderWidth Default="0in" Top="0in" Bottom="0.5pt" Right="0.5pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="1" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="=Fields.PrescriptionDate" Format="{0:dd/MM/yyyy}" Size="0.857639410602706in, 0.317708279559579in" Name="textBox8" StyleName="">
+                    <Style>
+                      <BorderStyle Top="None" Bottom="Solid" Left="None" Right="None" />
+                      <BorderWidth Default="0in" Top="0in" Bottom="0.5pt" Right="0.5pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="4" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="=Fields.PrescriptionQty" Format="{0:N0}" Size="1.56104245973635cm, 0.806979052654797cm" Location="0cm, 0cm" Name="textBox5" StyleName="">
+                    <Style TextAlign="Right">
+                      <BorderStyle Bottom="Solid" />
+                      <BorderWidth Default="0in" Bottom="0.5pt" Right="0.5pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+            </Cells>
+            <Columns>
+              <Column Width="0.336806237110733in" />
+              <Column Width="0.857639410602706in" />
+              <Column Width="2.80555644592789in" />
+              <Column Width="2.55208668829043in" />
+              <Column Width="0.614583662660446in" />
+            </Columns>
+            <Rows>
+              <Row Height="0.806979052654797cm" />
+            </Rows>
+          </Body>
+          <Corner />
+          <RowGroups>
+            <TableGroup Name="DetailGroup">
+              <Groupings>
+                <Grouping Expression="null" />
+              </Groupings>
+            </TableGroup>
+          </RowGroups>
+          <ColumnGroups>
+            <TableGroup>
+              <ReportItem>
+                <TextBox Value="No." Size="0.336806237110733in, 0.359374977667362in" Name="textBox1">
+                  <Style TextAlign="Center" VerticalAlign="Middle">
+                    <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+                    <BorderWidth Default="0in" Top="0.5pt" Bottom="0.5pt" Left="0.5pt" Right="0.5pt" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup>
+              <ReportItem>
+                <TextBox Value="Tgl Resep" Size="0.857639410602706in, 0.359374977667362in" Name="textBox2">
+                  <Style TextAlign="Center" VerticalAlign="Middle">
+                    <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="None" />
+                    <BorderWidth Default="0.5pt" Top="0.5pt" Bottom="0.5pt" Left="0.5pt" Right="0.5pt" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup>
+              <ReportItem>
+                <TextBox Value="Nama Dokter" Size="2.80555644592789in, 0.359374977667362in" Name="textBox3">
+                  <Style TextAlign="Center" VerticalAlign="Middle">
+                    <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="None" />
+                    <BorderWidth Default="0.5pt" Top="0.5pt" Bottom="0.5pt" Left="0.5pt" Right="0.5pt" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup Name="Group2">
+              <ReportItem>
+                <TextBox Value="Nama Obat" Size="2.55208668829043in, 0.359374977667362in" Name="textBox9" StyleName="">
+                  <Style TextAlign="Center" VerticalAlign="Middle">
+                    <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+                    <BorderWidth Default="0.5pt" Top="0.5pt" Bottom="0.5pt" Left="0.5pt" Right="0.5pt" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup Name="Group1">
+              <ReportItem>
+                <TextBox Value="qty" Size="0.614583662660446in, 0.359374977667362in" Name="textBox7" StyleName="">
+                  <Style TextAlign="Center" VerticalAlign="Middle">
+                    <BorderStyle Top="Solid" Bottom="Solid" Right="Solid" />
+                    <BorderWidth Default="0.5pt" Top="0.5pt" Bottom="0.5pt" Left="0.5pt" Right="0.5pt" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+          </ColumnGroups>
+        </Table>
+        <TextBox Value="=SUM(Fields.PrescriptionQty)" Size="2.3296897748795cm, 0.499999747673678cm" Location="15.8999996467431cm, 1.71999186499936cm" Name="textBox10">
+          <Style TextAlign="Right">
+            <BorderStyle Bottom="Solid" />
+            <BorderWidth Default="0.5pt" />
+          </Style>
+        </TextBox>
+        <TextBox Value="Jumlah" Size="1.39979985476097cm, 0.499999747673678cm" Location="14.4999995458126cm, 1.71999186499936cm" Name="textBox12">
+          <Style>
+            <BorderStyle Bottom="Solid" />
+            <BorderWidth Default="0.5pt" />
+          </Style>
+        </TextBox>
+      </Items>
+    </ReportFooterSection>
+  </Items>
+  <StyleSheet>
+    <StyleRule>
+      <Style>
+        <Padding Left="2pt" Right="2pt" />
+      </Style>
+      <Selectors>
+        <TypeSelector Type="TextItemBase" />
+        <TypeSelector Type="HtmlTextBox" />
+      </Selectors>
+    </StyleRule>
+  </StyleSheet>
+  <PageSettings>
+    <PageSettings PaperKind="Ledger" Landscape="False">
+      <Margins>
+        <MarginsU Left="1in" Right="1in" Top="1in" Bottom="1in" />
+      </Margins>
+    </PageSettings>
+  </PageSettings>
+</Report>

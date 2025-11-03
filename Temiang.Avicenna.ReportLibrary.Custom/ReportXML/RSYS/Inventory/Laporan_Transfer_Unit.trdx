@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report DataSourceName="sqlDataSource1" Width="8.26767730712891in" Name="userReport1" xmlns="http://schemas.telerik.com/reporting/2012/2">
+  <DataSources>
+    <SqlDataSource ConnectionString="Data Source=192.168.1.15;Initial Catalog=RSSMCB_LIVE;Persist Security Info=True;User ID=sa;Password=123" ProviderName="System.Data.SqlClient" SelectCommand="sprpt_DistributionRpt" SelectCommandType="StoredProcedure" Name="sqlDataSource1">
+      <Parameters>
+        <SqlDataSourceParameter DbType="DateTime" Name="@p_FromDate">
+          <Value>
+            <String>2017-10-01</String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="DateTime" Name="@p_ToDate">
+          <Value>
+            <String>2017-10-31</String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="AnsiString" Name="@p_ServiceUnitID">
+          <Value>
+            <String> </String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="AnsiString" Name="@p_ToServiceUnitID">
+          <Value>
+            <String> </String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="AnsiString" Name="@p_ItemType">
+          <Value>
+            <String>11</String>
+          </Value>
+        </SqlDataSourceParameter>
+      </Parameters>
+    </SqlDataSource>
+  </DataSources>
+  <Items>
+    <PageHeaderSection Height="0.0520833333333333in" Name="pageHeaderSection1" />
+    <DetailSection Height="0.200078964233398in" Name="detailSection1">
+      <Style Visible="True" />
+      <Items>
+        <TextBox Value="=RowNumber()" Size="0.499960581461589in, 0.199999809265137in" Location="0.00003941853841146in, 0.00007883707682292in" Name="textBox3">
+          <Style VerticalAlign="Middle" />
+        </TextBox>
+        <TextBox Value="=Fields.TransactionDate" Format="{0:dd/MM/yyyy}" Size="0.800000190734863in, 0.200000127156576in" Location="0.500078837076823in, 0.00007883707682292in" Name="textBox6">
+          <Style VerticalAlign="Middle" />
+        </TextBox>
+        <TextBox Value="=Fields.TransactionNo" Size="1.5in, 0.200000127156576in" Location="1.29999987284342in, 0.00007883707682292in" Name="textBox7">
+          <Style VerticalAlign="Middle" />
+        </TextBox>
+        <TextBox Value="=Fields.ItemName" Size="3.79984283447266in, 0.200000127156576in" Location="2.80007870992025in, 0.0000788370743976in" Name="textBox8">
+          <Style VerticalAlign="Middle" />
+        </TextBox>
+        <TextBox Value="=Fields.Quantity" Format="{0:N0}" Size="0.799999872843424in, 0.200000127156576in" Location="6.59999974568685in, 0.0000788370743976in" Name="textBox9">
+          <Style TextAlign="Right" VerticalAlign="Middle" />
+        </TextBox>
+        <TextBox Value="=Fields.SRItemUnit" Size="0.799999872843424in, 0.200000127156576in" Location="7.40007909138997in, 0.0000788370743976in" Name="textBox10">
+          <Style VerticalAlign="Middle" />
+        </TextBox>
+      </Items>
+    </DetailSection>
+    <PageFooterSection Height="1in" Name="pageFooterSection1" />
+    <ReportHeaderSection Height="2.52083333333333in" Name="reportHeaderSection1">
+      <Items>
+        <TextBox Value="No." Size="0.499960581461589in, 0.199999809265137in" Location="0.0000394185371988in, 2.32079410552979in" Name="textBox2">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <BorderStyle Top="Solid" Bottom="Solid" />
+          </Style>
+        </TextBox>
+        <TextBox Value="Tanggal" Size="0.800000190734863in, 0.199999809265137in" Location="0.500078856945038in, 2.32079410552979in" Name="textBox4">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <BorderStyle Top="Solid" Bottom="Solid" />
+          </Style>
+        </TextBox>
+        <TextBox Value="No.Trans" Size="1.49999984105428in, 0.199999809265137in" Location="1.29999983310699in, 2.32079410552979in" Name="textBox5">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <BorderStyle Top="Solid" Bottom="Solid" />
+          </Style>
+        </TextBox>
+        <TextBox Value="Nama Barang" Size="3.79984251658122in, 0.199999809265137in" Location="2.80007870992025in, 2.32079410552979in" Name="textBox11">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <BorderStyle Top="Solid" Bottom="Solid" />
+          </Style>
+        </TextBox>
+        <TextBox Value="Qty" Size="0.800000031789144in, 0.199999809265137in" Location="6.59999974568685in, 2.32079410552979in" Name="textBox12">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <BorderStyle Top="Solid" Bottom="Solid" />
+          </Style>
+        </TextBox>
+        <TextBox Value="Satuan" Size="0.800000011920929in, 0.199999809265137in" Location="7.40007909138997in, 2.32079410552979in" Name="textBox13">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <BorderStyle Top="Solid" Bottom="Solid" />
+          </Style>
+        </TextBox>
+        <TextBox Value="=Fields.Tittle" Size="8.26759847005208in, 0.199999968210856in" Location="0.00003941853841146in, 1.34791660308838in" Name="textBox14">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Size="12pt" />
+          </Style>
+        </TextBox>
+        <TextBox Value="From Unit" Size="0.700000047683716in, 0.199999809265137in" Location="0in, 1.92063681284587in" Name="textBox15">
+          <Style TextAlign="Left" VerticalAlign="Middle" />
+        </TextBox>
+        <TextBox Value="To Unit" Size="0.700000047683716in, 0.199999809265137in" Location="0in, 2.12071537971497in" Name="textBox16">
+          <Style TextAlign="Left" VerticalAlign="Middle" />
+        </TextBox>
+        <TextBox Value=":" Size="0.10007905960083in, 0.199999809265137in" Location="0.700078805287679in, 1.92071549097697in" Name="textBox17">
+          <Style TextAlign="Center" VerticalAlign="Middle" />
+        </TextBox>
+        <TextBox Value=":" Size="0.10007905960083in, 0.199999809265137in" Location="0.700078805287679in, 2.12071545918783in" Name="textBox18">
+          <Style TextAlign="Center" VerticalAlign="Middle" />
+        </TextBox>
+        <TextBox Value="=Fields.FromUnitName" Size="2.69976361592611in, 0.200000127156576in" Location="0.800236543019613in, 1.92063649495443in" Name="textBox19" />
+        <TextBox Value="=Fields.ToUnitName" Size="2.69976329803467in, 0.199999809265137in" Location="0.800236701965332in, 2.12071545918783in" Name="textBox20" />
+        <TextBox Value="=Fields.Period" Size="8.26759847005208in, 0.200000127156576in" Location="0.00003941853841146in, 1.54791653156281in" Name="textBox21">
+          <Style TextAlign="Center" VerticalAlign="Middle" />
+        </TextBox>
+      </Items>
+    </ReportHeaderSection>
+  </Items>
+  <StyleSheet>
+    <StyleRule>
+      <Style>
+        <Padding Left="2pt" Right="2pt" />
+      </Style>
+      <Selectors>
+        <TypeSelector Type="TextItemBase" />
+        <TypeSelector Type="HtmlTextBox" />
+      </Selectors>
+    </StyleRule>
+  </StyleSheet>
+  <PageSettings>
+    <PageSettings PaperKind="A4" Landscape="False">
+      <Margins>
+        <MarginsU Left="0in" Right="0in" Top="0in" Bottom="0in" />
+      </Margins>
+    </PageSettings>
+  </PageSettings>
+  <Groups>
+    <Group Name="group1">
+      <Groupings>
+        <Grouping Expression="=Fields.ItemGroupName" />
+      </Groupings>
+      <Sortings>
+        <Sorting Expression="=Fields.ItemGroupName" Direction="Asc" />
+      </Sortings>
+      <GroupHeader>
+        <GroupHeaderSection Height="0.200039227803548in" Name="groupHeaderSection1">
+          <Items>
+            <TextBox Value="=Fields.ItemGroupName" Size="7.99996026357015in, 0.199999809265137in" Location="0.00003941853841146in, 0.00003941853841146in" Name="textBox1">
+              <Style VerticalAlign="Middle">
+                <Font Bold="True" />
+              </Style>
+            </TextBox>
+          </Items>
+        </GroupHeaderSection>
+      </GroupHeader>
+      <GroupFooter>
+        <GroupFooterSection Height="0.0520833333333333in" Name="groupFooterSection1" />
+      </GroupFooter>
+    </Group>
+  </Groups>
+</Report>

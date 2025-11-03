@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report DataSourceName="sqlDataSource1" Width="3.504in" Name="userReport1" ShowSnapGrid="True" xmlns="http://schemas.telerik.com/reporting/2019/2.0">
+  <Style VerticalAlign="Middle">
+    <Font Size="8pt" />
+  </Style>
+  <DataSources>
+    <SqlDataSource QueryDesignerState="null" ParameterValues="{&quot;@p_RegistrationNo&quot;:&quot;REG/OP/200729-0013&quot;}" ConnectionString="RSISIMULATION1" SelectCommand="sprpt_RSBHPRegistrationLabel" SelectCommandType="StoredProcedure" Name="sqlDataSource1">
+      <Parameters>
+        <SqlDataSourceParameter DbType="AnsiString" Name="@p_RegistrationNo">
+          <Value>
+            <String>REG/OP/200729-0013</String>
+          </Value>
+        </SqlDataSourceParameter>
+      </Parameters>
+    </SqlDataSource>
+  </DataSources>
+  <Items>
+    <DetailSection Height="0.848in" Name="detailSection1">
+      <Style Visible="True" />
+      <Items>
+        <Barcode Width="2.4in" Height="0.252in" Left="0.7in" Top="0.596in" Value="= Fields.RegistrationNo" Stretch="True" Name="barcode1">
+          <Style TextAlign="Center" VerticalAlign="Top" />
+          <Encoder>
+            <Code128Encoder ShowText="False" />
+          </Encoder>
+        </Barcode>
+        <TextBox Width="0.464in" Height="0.15in" Left="0.1in" Top="0.146in" Value="Nama" Name="textBox2">
+          <Style VerticalAlign="Bottom">
+            <Font Name="Tahoma" Size="8pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.464in" Height="0.15in" Left="0.1in" Top="0.296in" Value="Usia/tgl" Name="textBox3">
+          <Style VerticalAlign="Bottom">
+            <Font Name="Tahoma" Size="8pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.464in" Height="0.15in" Left="0.1in" Top="0.446in" Value="Bayar" Name="textBox4">
+          <Style VerticalAlign="Bottom">
+            <Font Name="Tahoma" Size="8pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="2.331in" Height="0.15in" Left="0.564in" Top="0in" Value="=Fields.MedicalNo +'[' + Fields.RegistrationNo +']'" Format=": {0}" Name="textBox5">
+          <Style VerticalAlign="Bottom" />
+        </TextBox>
+        <TextBox Width="2.536in" Height="0.15in" Left="0.564in" Top="0.146in" Value="=Fields.PatientName" Format=": {0}" CanGrow="False" Name="textBox6">
+          <Style VerticalAlign="Bottom" />
+        </TextBox>
+        <TextBox Width="0.395in" Height="0.15in" Left="3.1in" Top="0.146in" Value="=Fields.Sex" Format="( {0} )" Name="textBox7">
+          <Style VerticalAlign="Bottom">
+            <Font Name="Tahoma" Size="8pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1.136in" Height="0.15in" Left="0.564in" Top="0.296in" Value="=Fields.Age" Format=": {0}" Name="textBox8">
+          <Style VerticalAlign="Bottom" />
+        </TextBox>
+        <TextBox Width="1.195in" Height="0.15in" Left="1.7in" Top="0.296in" Value="= Fields.DateOfBirth" Format="( {0:dd-MMM-yyyy} )" Name="textBox9">
+          <Style VerticalAlign="Bottom" />
+        </TextBox>
+        <TextBox Width="2.931in" Height="0.15in" Left="0.564in" Top="0.446in" Value="=Fields.GuarantorName" Format=": {0}" CanGrow="False" CanShrink="True" Name="textBox10">
+          <Style VerticalAlign="Bottom" />
+        </TextBox>
+        <TextBox Width="0.464in" Height="0.15in" Left="0.1in" Top="0in" Value="No. RM" Name="textBox1">
+          <Style VerticalAlign="Bottom">
+            <Font Name="Tahoma" Size="8pt" />
+          </Style>
+        </TextBox>
+      </Items>
+    </DetailSection>
+  </Items>
+  <PageSettings PaperKind="Custom" PaperSize="9.3cm, 2.3cm" Landscape="False" ColumnCount="1" ColumnSpacing="0in" ContinuousPaper="False">
+    <Margins>
+      <MarginsU Left="0.2cm" Right="0.2cm" Top="0.1mm" Bottom="0.1cm" />
+    </Margins>
+  </PageSettings>
+  <StyleSheet>
+    <StyleRule>
+      <Style>
+        <Padding Left="2pt" Right="2pt" />
+      </Style>
+      <Selectors>
+        <TypeSelector Type="TextItemBase" />
+        <TypeSelector Type="HtmlTextBox" />
+      </Selectors>
+    </StyleRule>
+  </StyleSheet>
+</Report>

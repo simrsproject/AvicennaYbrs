@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report DataSourceName="sqlDataSource1" Width="8.26767730712891in" Name="userReport1" xmlns="http://schemas.telerik.com/reporting/2012/2">
+  <DataSources>
+    <SqlDataSource ConnectionString="Data Source=192.168.80.2;Initial Catalog=RSSMCB_LIVE;User ID=sa;Password=p@ssw0rd" ProviderName="System.Data.SqlClient" SelectCommand="sprpt_XML_settlementOutstanding" SelectCommandType="StoredProcedure" Name="sqlDataSource1">
+      <Parameters>
+        <SqlDataSourceParameter DbType="DateTime" Name="@p_FromDate">
+          <Value>
+            <String>2018-01-31</String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="DateTime" Name="@p_ToDate">
+          <Value>
+            <String>2018-01-31</String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="AnsiString" Name="@p_RegistrationType">
+          <Value>
+            <String>OPR</String>
+          </Value>
+        </SqlDataSourceParameter>
+      </Parameters>
+    </SqlDataSource>
+  </DataSources>
+  <Items>
+    <PageHeaderSection Height="0.0520833333333333in" Name="pageHeaderSection1" />
+    <DetailSection Height="0.0520833333333333in" Name="detailSection1">
+      <Style Visible="False" />
+    </DetailSection>
+    <PageFooterSection Height="0.200078964233398in" Name="pageFooterSection1">
+      <Items>
+        <TextBox Value="='Page : ' + PageNumber + '/' + PageCount" Size="4.40833346048991in, 0.200000122189522in" Location="3.79166666666667in, 0.0000788370743976in" Name="textBox20">
+          <Style TextAlign="Right">
+            <BorderStyle Top="Solid" />
+            <BorderColor Top="Black" />
+            <BorderWidth Top="1pt" />
+            <Font Name="Tahoma" Size="8pt" Italic="True" />
+          </Style>
+        </TextBox>
+        <TextBox Value="=Now()" Format="Avicenna HIS, Print Date : {0:dd-MM-yyyy HH:mm}" Size="3.79158782958984in, 0.200000122189522in" Location="0in, 0.00007883707682292in" Name="textBox21">
+          <Style>
+            <BorderStyle Top="Solid" />
+            <BorderColor Top="Black" />
+            <BorderWidth Top="1pt" />
+            <Font Name="Tahoma" Size="8pt" Italic="True" />
+          </Style>
+        </TextBox>
+      </Items>
+    </PageFooterSection>
+    <ReportHeaderSection Height="2.64791679382324in" Name="reportHeaderSection1">
+      <Items>
+        <TextBox Value="=Fields.Tittle" Size="8.09999974568685in, 0.199999968210856in" Location="0.100000061094761in, 1.14791655540466in" Name="textBox1">
+          <Style TextAlign="Center" VerticalAlign="Middle" />
+        </TextBox>
+        <TextBox Value="=Fields.Periode" Size="8.09999974568685in, 0.199999968210856in" Location="0.100000061094761in, 1.34799528121948in" Name="textBox2">
+          <Style TextAlign="Center" VerticalAlign="Middle" />
+        </TextBox>
+        <Table DataSourceName="sqlDataSource1" Size="8.09721787770589in, 0.958333293596903in" Location="0.100000063578288in, 1.64791679382324in" Name="table1">
+          <Body>
+            <Cells>
+              <TableCell RowIndex="1" ColumnIndex="0" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="=RowNumber()" Size="0.319444444444444in, 0.333333333333333in" Name="textBox25">
+                    <Style VerticalAlign="Middle">
+                      <BorderStyle Top="None" Bottom="Solid" Left="Solid" Right="None" />
+                      <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+                      <BorderWidth Default="0.7pt" Top="1pt" Bottom="0.7pt" Left="0.7pt" Right="1pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="1" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="=Fields.CardNo" Size="1.54861098819745in, 0.333333290249543in" Name="textBox3" StyleName="">
+                    <Style VerticalAlign="Middle">
+                      <BorderStyle Top="None" Bottom="Solid" Left="Solid" Right="None" />
+                      <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+                      <BorderWidth Default="0.7pt" Top="1pt" Bottom="0.7pt" Left="0.7pt" Right="1pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="2" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="=Fields.RegistrationNo" Size="1.65624834081439in, 0.333333290249543in" Name="textBox16" StyleName="">
+                    <Style VerticalAlign="Middle">
+                      <BorderStyle Top="None" Bottom="Solid" Left="Solid" Right="None" />
+                      <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+                      <BorderWidth Default="0.7pt" Top="1pt" Bottom="0.7pt" Left="0.7pt" Right="1pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="3" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="=Fields.PaymentDate" Format="{0:dd/MM/yyyy}" Size="0.843750045596074in, 0.333333268599668in" Name="textBox6" StyleName="">
+                    <Style VerticalAlign="Middle">
+                      <BorderStyle Top="None" Bottom="Solid" Left="Solid" Right="None" />
+                      <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+                      <BorderWidth Default="0.7pt" Top="1pt" Bottom="0.7pt" Left="0.7pt" Right="1pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="4" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="=Fields.PatientName" Size="2.5624982848629in, 0.333333268599668in" Name="textBox15" StyleName="">
+                    <Style VerticalAlign="Middle">
+                      <BorderStyle Top="None" Bottom="Solid" Left="Solid" Right="None" />
+                      <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+                      <BorderWidth Default="0.7pt" Top="1pt" Bottom="0.7pt" Left="0.7pt" Right="1pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="5" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="=Fields.Amount" Format="{0:N0}" Size="1.16666662690794in, 0.333333290249543in" Name="textBox12" StyleName="">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <BorderStyle Top="None" Bottom="Solid" Left="Solid" Right="Solid" />
+                      <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+                      <BorderWidth Default="0.7pt" Top="1pt" Bottom="0.7pt" Left="0.7pt" Right="0.7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="0" RowSpan="1" ColumnSpan="6">
+                <ReportItem>
+                  <TextBox Value="=Fields.EDCMachineName" Size="8.09721795717875in, 0.291666642155337in" Name="textBox30" StyleName="">
+                    <Style VerticalAlign="Middle">
+                      <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+                      <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+                      <BorderWidth Default="0.7pt" Top="0.7pt" Bottom="0.7pt" Left="0.7pt" Right="0.7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+            </Cells>
+            <Columns>
+              <Column Width="0.3194441849659in" />
+              <Column Width="1.54861076272913in" />
+              <Column Width="1.65624863400404in" />
+              <Column Width="0.843749340540307in" />
+              <Column Width="2.5624980686975in" />
+              <Column Width="1.16666645344559in" />
+            </Columns>
+            <Rows>
+              <Row Height="0.291666664669046in" />
+              <Row Height="0.333333290249543in" />
+            </Rows>
+          </Body>
+          <Corner />
+          <RowGroups>
+            <TableGroup Name="EDCMachineName">
+              <Groupings>
+                <Grouping Expression="=Fields.EDCMachineName" />
+              </Groupings>
+              <Sortings>
+                <Sorting Expression="=Fields.EDCMachineName" Direction="Asc" />
+              </Sortings>
+              <ChildGroups>
+                <TableGroup Name="Group1" />
+                <TableGroup Name="DetailGroup">
+                  <Groupings>
+                    <Grouping Expression="null" />
+                  </Groupings>
+                </TableGroup>
+              </ChildGroups>
+            </TableGroup>
+          </RowGroups>
+          <ColumnGroups>
+            <TableGroup>
+              <ReportItem>
+                <TextBox Value="No." Size="0.319444444444444in, 0.333333333333333in" Name="textBox22">
+                  <Style TextAlign="Center" VerticalAlign="Middle">
+                    <BorderStyle Top="Solid" Bottom="None" Left="Solid" Right="None" />
+                    <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+                    <BorderWidth Default="0.7pt" Top="0.7pt" Bottom="1pt" Left="0.7pt" Right="1pt" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup>
+              <ReportItem>
+                <TextBox Value="Card No" Size="1.54861098819745in, 0.333333347370657in" Name="textBox23">
+                  <Style TextAlign="Center" VerticalAlign="Middle">
+                    <BorderStyle Top="Solid" Bottom="None" Left="Solid" Right="None" />
+                    <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+                    <BorderWidth Default="0.7pt" Top="0.7pt" Bottom="1pt" Left="0.7pt" Right="1pt" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup Name="Group2">
+              <ReportItem>
+                <TextBox Value="Registration No" Size="1.65624834081439in, 0.333333347370657in" Name="textBox4" StyleName="">
+                  <Style TextAlign="Center" VerticalAlign="Middle">
+                    <BorderStyle Top="Solid" Bottom="None" Left="Solid" Right="None" />
+                    <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+                    <BorderWidth Default="0.7pt" Top="0.7pt" Bottom="1pt" Left="0.7pt" Right="1pt" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup Name="Group5">
+              <ReportItem>
+                <TextBox Value="Payment Date" Size="0.843750045596074in, 0.333333325720783in" Name="textBox13" StyleName="">
+                  <Style TextAlign="Center" VerticalAlign="Middle">
+                    <BorderStyle Top="Solid" Bottom="None" Left="Solid" Right="None" />
+                    <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+                    <BorderWidth Default="0.7pt" Top="0.7pt" Bottom="1pt" Left="0.7pt" Right="1pt" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup Name="Group4">
+              <ReportItem>
+                <TextBox Value="Patient Name" Size="2.5624982848629in, 0.333333325720783in" Name="textBox10" StyleName="">
+                  <Style TextAlign="Center" VerticalAlign="Middle">
+                    <BorderStyle Top="Solid" Bottom="None" Left="Solid" Right="None" />
+                    <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+                    <BorderWidth Default="0.7pt" Top="0.7pt" Bottom="1pt" Left="0.7pt" Right="1pt" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup Name="Group3">
+              <ReportItem>
+                <TextBox Value="Amount" Size="1.16666662690794in, 0.333333347370657in" Name="textBox7" StyleName="">
+                  <Style TextAlign="Center" VerticalAlign="Middle">
+                    <BorderStyle Top="Solid" Bottom="None" Left="Solid" Right="Solid" />
+                    <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+                    <BorderWidth Default="0.7pt" Top="0.7pt" Bottom="1pt" Left="0.7pt" Right="0.7pt" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+          </ColumnGroups>
+        </Table>
+      </Items>
+    </ReportHeaderSection>
+  </Items>
+  <StyleSheet>
+    <StyleRule>
+      <Style>
+        <Padding Left="2pt" Right="2pt" />
+      </Style>
+      <Selectors>
+        <TypeSelector Type="TextItemBase" />
+        <TypeSelector Type="HtmlTextBox" />
+      </Selectors>
+    </StyleRule>
+  </StyleSheet>
+  <PageSettings>
+    <PageSettings PaperKind="A4" Landscape="False">
+      <Margins>
+        <MarginsU Left="0in" Right="0in" Top="0in" Bottom="0in" />
+      </Margins>
+    </PageSettings>
+  </PageSettings>
+</Report>

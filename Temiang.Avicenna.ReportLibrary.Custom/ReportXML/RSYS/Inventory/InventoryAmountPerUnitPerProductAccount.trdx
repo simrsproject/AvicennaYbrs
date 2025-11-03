@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report DataSourceName="sqlDataSource1" Width="7.874in" Name="InventoryQtyPerUnitPerProductAccount" ShowSnapGrid="True" xmlns="http://schemas.telerik.com/reporting/2019/2.0">
+  <DataSources>
+    <SqlDataSource QueryDesignerState="null" ParameterValues="{&quot;@p_LocationID&quot;:&quot;L01.01.01&quot;,&quot;@p_ItemType&quot;:&quot;11&quot;,&quot;@p_ProductAccountID&quot;:&quot;11.002&quot;}" ConnectionString="RSBK13" SelectCommand="sprpt_ItemBalancePerUnitPerProductAccount" SelectCommandType="StoredProcedure" Name="sqlDataSource1">
+      <Parameters>
+        <SqlDataSourceParameter DbType="AnsiString" Name="@p_LocationID">
+          <Value>
+            <String>L01.01.01</String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="AnsiString" Name="@p_ItemType">
+          <Value>
+            <String>11</String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="AnsiString" Name="@p_ProductAccountID">
+          <Value>
+            <String>11.002</String>
+          </Value>
+        </SqlDataSourceParameter>
+      </Parameters>
+    </SqlDataSource>
+  </DataSources>
+  <Items>
+    <DetailSection Height="0.25in" Name="detailSection1">
+      <Items>
+        <TextBox Width="2.92in" Height="0.2in" Left="1.354in" Top="0.033in" Value="=ItemName" Name="textBox37">
+          <Style TextAlign="Left" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" Bold="False" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.458in" Height="0.2in" Left="0in" Top="0.033in" Value="=RowNumber()" Name="textBox38">
+          <Style TextAlign="Left" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" Bold="False" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.896in" Height="0.2in" Left="0.458in" Top="0.033in" Value="=ItemID" Name="textBox39">
+          <Style TextAlign="Left" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" Bold="False" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.9in" Height="0.2in" Left="4.274in" Top="0.033in" Value="=SRItemUnit" Name="textBox40">
+          <Style TextAlign="Left" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" Bold="False" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.9in" Height="0.2in" Left="5.174in" Top="0.033in" Value="=Balance" Format="{0:N2}" Name="textBox41">
+          <Style TextAlign="Right" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" Bold="False" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.9in" Height="0.2in" Left="6.074in" Top="0.033in" Value="=Minimum" Format="{0:N2}" Name="textBox42">
+          <Style TextAlign="Right" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" Bold="False" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.875in" Height="0.2in" Left="6.974in" Top="0.033in" Value="=Maximum" Format="{0:N2}" Name="textBox43">
+          <Style TextAlign="Right" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" Bold="False" />
+          </Style>
+        </TextBox>
+      </Items>
+    </DetailSection>
+    <PageFooterSection Height="0.263in" Name="pageFooterSection1">
+      <Items>
+        <TextBox Width="5.174in" Height="0.19in" Left="0in" Top="0.022in" Value="=NOW()&#xD;&#xA;" Format="Print : {0}" Name="currentTimeTextBox" StyleName="PageInfo">
+          <Style>
+            <Font Name="Tahoma" Size="8pt" Italic="True" />
+            <BorderStyle Default="None" Top="Solid" Left="None" />
+            <BorderWidth Default="0.5pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="2.675in" Height="0.19in" Left="5.174in" Top="0.022in" Value="=PageNumber" Format="{0:N0}" Name="pageInfoTextBox" StyleName="PageInfo">
+          <Style TextAlign="Right">
+            <Font Name="Tahoma" Size="8pt" Italic="True" />
+            <BorderStyle Default="None" Top="Solid" Left="None" />
+            <BorderWidth Default="0.5pt" />
+          </Style>
+        </TextBox>
+      </Items>
+    </PageFooterSection>
+    <ReportHeaderSection Height="2.1in" Name="reportHeaderSection1">
+      <Items>
+        <TextBox Width="7.849in" Height="0.3in" Left="0in" Top="0.7in" Value="LAPORAN INVENTORY PER LOKASI" Name="textBox1">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="14pt" Bold="True" />
+          </Style>
+        </TextBox>
+        <TextBox Width="7.849in" Height="0.2in" Left="0in" Top="1in" Value="=Period" Format="Periode : {0:dd-MMM-yyyy HH:mm}" Name="textBox3">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="10pt" Bold="True" />
+          </Style>
+        </TextBox>
+        <TextBox Width="7.849in" Height="0.2in" Left="0in" Top="1.3in" Value="='Jenis Persediaan : ' + ItemType" Name="textBox2">
+          <Style TextAlign="Left" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="10pt" Bold="True" />
+          </Style>
+        </TextBox>
+        <TextBox Width="7.849in" Height="0.2in" Left="0in" Top="1.5in" Value="='Lokasi : ' + LocationName" Name="textBox12">
+          <Style TextAlign="Left" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="10pt" Bold="True" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.458in" Height="0.27in" Left="0in" Top="1.73in" Value="No." Name="textBox29">
+          <Style TextAlign="Left" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" Bold="True" />
+            <BorderStyle Top="Solid" Bottom="Solid" Right="None" />
+            <BorderWidth Default="0.7pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.896in" Height="0.27in" Left="0.458in" Top="1.73in" Value="Kode" Name="textBox30">
+          <Style TextAlign="Left" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" Bold="True" />
+            <BorderStyle Top="Solid" Bottom="Solid" Right="None" />
+            <BorderWidth Default="0.7pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="2.92in" Height="0.27in" Left="1.354in" Top="1.73in" Value="Nama Item" Name="textBox31">
+          <Style TextAlign="Left" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" Bold="True" />
+            <BorderStyle Top="Solid" Bottom="Solid" Right="None" />
+            <BorderWidth Default="0.7pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.9in" Height="0.27in" Left="4.274in" Top="1.73in" Value="Satuan" Name="textBox32">
+          <Style TextAlign="Left" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" Bold="True" />
+            <BorderStyle Top="Solid" Bottom="Solid" Right="None" />
+            <BorderWidth Default="0.7pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.9in" Height="0.27in" Left="5.174in" Top="1.73in" Value="Saldo" Name="textBox33">
+          <Style TextAlign="Right" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" Bold="True" />
+            <BorderStyle Top="Solid" Bottom="Solid" Right="None" />
+            <BorderWidth Default="0.7pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.9in" Height="0.27in" Left="6.074in" Top="1.73in" Value="Stok Min" Name="textBox34">
+          <Style TextAlign="Right" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" Bold="True" />
+            <BorderStyle Top="Solid" Bottom="Solid" Right="None" />
+            <BorderWidth Default="0.7pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.875in" Height="0.27in" Left="6.974in" Top="1.73in" Value="Stok Max" Name="textBox35">
+          <Style TextAlign="Right" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" Bold="True" />
+            <BorderStyle Top="Solid" Bottom="Solid" Right="None" />
+            <BorderWidth Default="0.7pt" />
+          </Style>
+        </TextBox>
+      </Items>
+    </ReportHeaderSection>
+  </Items>
+  <PageSettings PaperKind="A4" Landscape="False" ColumnCount="1" ColumnSpacing="0in" ContinuousPaper="False">
+    <Margins>
+      <MarginsU Left="0.5cm" Right="0.5cm" Top="0.5cm" Bottom="0.5cm" />
+    </Margins>
+  </PageSettings>
+  <StyleSheet>
+    <StyleRule>
+      <Style>
+        <Padding Left="2pt" Right="2pt" />
+      </Style>
+      <Selectors>
+        <TypeSelector Type="TextItemBase" />
+        <TypeSelector Type="HtmlTextBox" />
+      </Selectors>
+    </StyleRule>
+  </StyleSheet>
+  <Groups>
+    <Group Name="group">
+      <GroupHeader>
+        <GroupHeaderSection PrintOnEveryPage="True" Height="0.25in" Name="groupHeaderSection">
+          <Items>
+            <TextBox Width="7.849in" Height="0.2in" Left="0in" Top="0.025in" Value="='Kelompok : ' + ProductAccountName" Name="textBox36">
+              <Style TextAlign="Left" VerticalAlign="Middle">
+                <Font Name="Tahoma" Size="8pt" Bold="True" />
+                <BorderStyle Bottom="Dotted" />
+                <BorderWidth Default="0.7pt" />
+              </Style>
+            </TextBox>
+          </Items>
+        </GroupHeaderSection>
+      </GroupHeader>
+      <GroupFooter>
+        <GroupFooterSection Height="0.052in" Name="groupFooterSection">
+          <Style Visible="False" />
+        </GroupFooterSection>
+      </GroupFooter>
+      <Groupings>
+        <Grouping Expression="= Fields.ProductAccountID" />
+      </Groupings>
+    </Group>
+    <Group Name="group1">
+      <GroupHeader>
+        <GroupHeaderSection PrintOnEveryPage="True" Height="0.233in" Name="groupHeaderSection1">
+          <Items>
+            <TextBox Width="7.391in" Height="0.2in" Left="0.458in" Top="0.008in" Value="=Fields.ItemBin" Name="textBox6">
+              <Style TextAlign="Left" VerticalAlign="Middle">
+                <Font Name="Tahoma" Size="8pt" Bold="True" />
+                <BorderStyle Bottom="Dotted" />
+                <BorderWidth Default="0.7pt" />
+              </Style>
+            </TextBox>
+            <TextBox Width="0.458in" Height="0.2in" Left="0in" Top="0.008in" Value="Rak :" Name="textBox4">
+              <Style TextAlign="Left" VerticalAlign="Middle">
+                <Font Name="Tahoma" Size="8pt" Bold="True" />
+                <BorderStyle Bottom="Dotted" />
+                <BorderWidth Default="0.7pt" />
+              </Style>
+            </TextBox>
+          </Items>
+        </GroupHeaderSection>
+      </GroupHeader>
+      <GroupFooter>
+        <GroupFooterSection Height="0.052in" Name="groupFooterSection1">
+          <Style Visible="False" />
+        </GroupFooterSection>
+      </GroupFooter>
+      <Groupings>
+        <Grouping Expression="= Fields.ItemBin" />
+      </Groupings>
+    </Group>
+  </Groups>
+</Report>

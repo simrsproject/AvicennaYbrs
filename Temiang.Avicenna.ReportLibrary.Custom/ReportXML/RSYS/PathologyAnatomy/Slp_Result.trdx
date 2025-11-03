@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report DataSourceName="sqlDataSource1" Width="7.66464233398438in" Name="userReport1" xmlns="http://schemas.telerik.com/reporting/2012/2">
+  <Style>
+    <Font Name="Tahoma" />
+  </Style>
+  <DataSources>
+    <SqlDataSource ConnectionString="Data Source=10.1.1.1;Initial Catalog=AVICENNA_HIS;User ID=sa;Password=password1." ProviderName="System.Data.SqlClient" SelectCommand="dbo.spslp_xml_PathologyAnatomyResult" SelectCommandType="StoredProcedure" Name="sqlDataSource1">
+      <Parameters>
+        <SqlDataSourceParameter DbType="AnsiString" Name="@p_ResultNo">
+          <Value>
+            <String>SITO/2016/00001</String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="AnsiString" Name="@p_UserID">
+          <Value>
+            <String>sci</String>
+          </Value>
+        </SqlDataSourceParameter>
+      </Parameters>
+    </SqlDataSource>
+  </DataSources>
+  <Items>
+    <PageFooterSection Height="0.28125in" Name="pageFooter">
+      <Items>
+        <TextBox Value="=NOW()" Format="Avicenna HIS, Print Date : {0:dd-MM-yyyy HH:mm}" Size="3.27916653951009in, 0.200000027815501in" Location="0.0208333333333333in, 0.0208333333333333in" Name="currentTimeTextBox" StyleName="PageInfo">
+          <Style>
+            <BorderStyle Top="Solid" />
+            <BorderWidth Default="0.5pt" />
+            <Font Italic="True" />
+          </Style>
+        </TextBox>
+        <TextBox Value="= &quot;Page : &quot; + PageNumber + &quot;/&quot; + PageCount" Size="1.76464207967122in, 0.200000027815501in" Location="5.90000025431315in, 0.0208333333333333in" Name="pageInfoTextBox" StyleName="PageInfo">
+          <Style TextAlign="Right">
+            <BorderStyle Top="Solid" />
+            <BorderWidth Default="0.5pt" />
+            <Font Italic="True" />
+            <Padding Right="1mm" />
+          </Style>
+        </TextBox>
+        <TextBox Value="= Fields.PrintedBy" Size="2.59992122650146in, 0.200000032782555in" Location="3.30000019073486in, 0.0208333333333333in" Name="textBox13" StyleName="PageInfo">
+          <Style TextAlign="Left" VerticalAlign="Middle">
+            <BorderStyle Top="Solid" />
+            <BorderWidth Default="0.5pt" />
+            <Font Italic="True" />
+          </Style>
+        </TextBox>
+      </Items>
+    </PageFooterSection>
+    <ReportHeaderSection Height="1.89999993642171in" Name="reportHeader">
+      <Items>
+        <TextBox Value="=Fields.RptName" CanGrow="False" Size="7.59164683024089in, 0.200000027815501in" Location="0.0208333333333333in, 0.100000016391277in" Name="rptNameDataTextBox" StyleName="Data">
+          <Style TextAlign="Center">
+            <Font Size="11pt" Bold="True" Underline="True" />
+          </Style>
+        </TextBox>
+        <TextBox Value="=Fields.RegistrationNo" Format=":  {0}" CanGrow="False" Size="2.59783808390299in, 0.200000027815501in" Location="1.30007886886597in, 0.895804484685262in" Name="medicalNoDataTextBox" StyleName="Data">
+          <Style>
+            <Font Size="9pt" />
+            <Padding Right="1mm" />
+          </Style>
+        </TextBox>
+        <TextBox Value="Patient / Nama Pasien" CanGrow="True" Size="1.29992135365804in, 0.200000032782555in" Location="3.89999985694885in, 0.695725838343302in" Name="patientNameCaptionTextBox" StyleName="Caption">
+          <Style TextAlign="Left">
+            <Font Size="9pt" />
+          </Style>
+        </TextBox>
+        <TextBox Value="=Fields.PatientName" Format=": {0}" CanGrow="False" Size="2.19999965031942in, 0.200000027815501in" Location="5.20000044504801in, 0.695725917816162in" Name="patientNameDataTextBox" StyleName="Data">
+          <Style>
+            <Font Size="9pt" />
+          </Style>
+        </TextBox>
+        <TextBox Value="=Fields.RoomID" Format=":  {0}" CanGrow="False" Size="2.59783776601156in, 0.200000027815501in" Location="1.30007898807526in, 1.09588352839152in" Name="roomIDDataTextBox" StyleName="Data">
+          <Style>
+            <Font Size="9pt" />
+            <Padding Right="1mm" />
+          </Style>
+        </TextBox>
+        <TextBox Value="Company / Instansi" CanGrow="False" CanShrink="True" Size="1.17908787727356in, 0.200000027815501in" Location="0.120912075042725in, 1.2959623336792in" Name="guarantorNameCaptionTextBox" StyleName="Caption">
+          <Style TextAlign="Left">
+            <Font Size="9pt" />
+          </Style>
+        </TextBox>
+        <TextBox Value="=Fields.GuarantorName" Format=":  {0}" CanGrow="False" CanShrink="True" Size="2.59783808390299in, 0.399921337763468in" Location="1.30007874965668in, 1.29596241315206in" Name="guarantorNameDataTextBox" StyleName="Data">
+          <Style VerticalAlign="Top">
+            <Font Size="9pt" />
+            <Padding Right="1mm" Top="0in" />
+          </Style>
+        </TextBox>
+        <TextBox Value="=Fields.PhysicianSenders" Format=": {0}" CanGrow="False" Size="2.19999917348226in, 0.200000032782555in" Location="5.20000076293945in, 0.495647102594376in" Name="paramedicNameDataTextBox" StyleName="Data">
+          <Style>
+            <Font Size="9pt" />
+          </Style>
+        </TextBox>
+        <TextBox Value="=Fields.Age" Format="/ {0}" CanGrow="False" Size="1.29999955495199in, 0.200000032782555in" Location="6.10000038146973in, 0.895804703235626in" Name="ageDataTextBox" StyleName="Data">
+          <Style>
+            <Font Size="9pt" />
+          </Style>
+        </TextBox>
+        <TextBox Value="=Fields.Gender" Format=": {0}" CanGrow="False" Size="1.93117101987203in, 0.200000027815501in" Location="5.20000076293945in, 1.09588352839152in" Name="genderDataTextBox" StyleName="Data">
+          <Style>
+            <Font Size="9pt" />
+          </Style>
+        </TextBox>
+        <TextBox Value="=Fields.ResultNo" Format=": {0}" CanGrow="False" Size="2.1353375116984in, 0.195883757434785in" Location="5.20000076293945in, 1.2959623336792in" Name="resultNoDataTextBox" StyleName="Data">
+          <Style>
+            <Font Size="9pt" />
+          </Style>
+        </TextBox>
+        <TextBox Value="Sex / Jenis Kelamin" CanGrow="True" Size="1.29992190996806in, 0.200000027815501in" Location="3.89999985694885in, 1.09588344891866in" Name="orderDateCaptionTextBox" StyleName="Caption">
+          <Style TextAlign="Left">
+            <Font Size="9pt" />
+          </Style>
+        </TextBox>
+        <TextBox Value="DoB / Tgl. Lahir" CanGrow="True" Size="1.29992159207662in, 0.200000027815501in" Location="3.89999985694885in, 0.895804643630981in" Name="dateOfCompletionCaptionTextBox" StyleName="Caption">
+          <Style TextAlign="Left">
+            <Font Size="9pt" />
+          </Style>
+        </TextBox>
+        <TextBox Value="Reg No. / No. Reg" CanGrow="True" Size="1.17908771832784in, 0.200000027815501in" Location="0.120912075042725in, 0.895804484685262in" Name="registrationNoCaptionTextBox" StyleName="Caption">
+          <Style TextAlign="Left">
+            <Font Size="9pt" />
+          </Style>
+        </TextBox>
+        <TextBox Value="MRN / No. RM" CanGrow="True" Size="1.17908771832784in, 0.200000027815501in" Location="0.120912075042725in, 0.695725997289022in" Name="transactionNoCaptionTextBox" StyleName="Caption">
+          <Style TextAlign="Left">
+            <Font Size="9pt" />
+          </Style>
+        </TextBox>
+        <TextBox Value="=Fields.MedicalNo" Format=":  {0}" CanGrow="False" Size="1.99992116292318in, 0.200000027815501in" Location="1.30007874965668in, 0.695725997289022in" Name="transactionNoDataTextBox" StyleName="Data">
+          <Style>
+            <Font Size="9pt" />
+          </Style>
+        </TextBox>
+        <TextBox Value="" Size="0.0999999841054281in, 1.30000003178914in" Location="0.0208333333333333in, 0.399999936421712in" Name="textBox1">
+          <Style>
+            <BorderStyle Left="Solid" />
+          </Style>
+        </TextBox>
+        <TextBox Value="" Size="0.0520833333333333in, 1.30000007152557in" Location="7.61255900065104in, 0.399999936421712in" Name="textBox2">
+          <Style>
+            <BorderStyle Left="Solid" />
+          </Style>
+        </TextBox>
+        <TextBox Value="" Size="7.59164683024089in, 0.0520833333333333in" Location="0.0208333333333333in, 0.347916603088379in" Name="textBox3">
+          <Style>
+            <BorderStyle Bottom="Solid" Left="None" />
+          </Style>
+        </TextBox>
+        <TextBox Value="" Size="7.59164667129517in, 0.0520833333333333in" Location="0.0208333333333333in, 1.70007880528768in" Name="textBox4">
+          <Style>
+            <BorderStyle Top="Solid" Bottom="None" Left="None" Right="None" />
+          </Style>
+        </TextBox>
+        <TextBox Value="Date / Tanggal" CanGrow="True" Size="1.1790877978007in, 0.200000032782555in" Location="0.120912075042725in, 0.495647112528483in" Name="textBox5" StyleName="Caption">
+          <Style TextAlign="Left">
+            <Font Size="9pt" />
+          </Style>
+        </TextBox>
+        <TextBox Value="=Fields.OrderDate" Format=": {0:dd-MMM-yyyy}" CanGrow="False" Size="1.99992116292318in, 0.200000032782555in" Location="1.30007886886597in, 0.495647112528483in" Name="textBox6" StyleName="Data">
+          <Style>
+            <Font Size="9pt" />
+          </Style>
+        </TextBox>
+        <TextBox Value="Unit / Ruangan" CanGrow="True" Size="1.1790877978007in, 0.200000032782555in" Location="0.120911918580532in, 1.09588352839152in" Name="textBox7" StyleName="Caption">
+          <Style TextAlign="Left">
+            <Font Size="9pt" />
+          </Style>
+        </TextBox>
+        <TextBox Value="Doctor / Dokter" CanGrow="True" Size="1.29992135365804in, 0.200000032782555in" Location="3.89999985694885in, 0.495647112528483in" Name="textBox8" StyleName="Caption">
+          <Style TextAlign="Left">
+            <Font Size="9pt" />
+          </Style>
+        </TextBox>
+        <TextBox Value="No. Slide / No. Periksa" CanGrow="True" Size="1.30192632150526in, 0.195883651574453in" Location="3.8979959487915in, 1.29596241315206in" Name="textBox9" StyleName="Caption">
+          <Style TextAlign="Left">
+            <Font Size="9pt" />
+          </Style>
+        </TextBox>
+        <TextBox Value="=Fields.DateOfBirth" Format=": {0:dd-MMM-yyyy}" CanGrow="False" Size="0.899921099344889in, 0.2in" Location="5.20000012715658in, 0.895804723103841in" Name="textBox10">
+          <Style VerticalAlign="Middle">
+            <Font Size="9pt" />
+          </Style>
+        </TextBox>
+      </Items>
+    </ReportHeaderSection>
+    <DetailSection KeepTogether="False" Height="0.247877438863119in" Name="detail">
+      <Items>
+        <TextBox KeepTogether="False" Value="= Fields.Result" CanGrow="True" Size="7.41248003641764in, 0.199999968210856in" Location="0.19999997317791in, 0in" Name="textBox26" StyleName="Caption">
+          <Style TextAlign="Left" VerticalAlign="Top">
+            <Font Bold="False" />
+            <Padding Top="1mm" />
+          </Style>
+        </TextBox>
+      </Items>
+    </DetailSection>
+    <ReportFooterSection PageBreak="None" KeepTogether="False" Height="1.44791698455811in" Name="reportFooterSection1">
+      <Items>
+        <TextBox Value="=Fields.ExaminationBy" Format="" CanGrow="True" Size="2.70000028610229in, 0.200000032782555in" Location="0in, 1.19999980926514in" Name="textBox29" StyleName="Caption">
+          <Style TextAlign="Left">
+            <Padding Left="1mm" />
+          </Style>
+        </TextBox>
+        <TextBox Value="=Fields.DateOfCompletion" Format="Palembang,  {0:dd-MMM-yyyy}" CanGrow="True" Size="2.70000012715658in, 0.200000032782555in" Location="0in, 0.199999809265137in" Name="textBox28" StyleName="Caption">
+          <Style TextAlign="Left">
+            <Padding Left="1mm" />
+          </Style>
+        </TextBox>
+      </Items>
+    </ReportFooterSection>
+  </Items>
+  <StyleSheet>
+    <StyleRule>
+      <Style Color="Black">
+        <Font Name="Tahoma" Size="18pt" Bold="True" Italic="False" Underline="False" Strikeout="False" />
+      </Style>
+      <Selectors>
+        <StyleSelector Type="ReportItemBase" StyleName="Title" />
+      </Selectors>
+    </StyleRule>
+    <StyleRule>
+      <Style Color="Black" VerticalAlign="Middle">
+        <Font Name="Tahoma" Size="10pt" />
+      </Style>
+      <Selectors>
+        <StyleSelector Type="ReportItemBase" StyleName="Caption" />
+      </Selectors>
+    </StyleRule>
+    <StyleRule>
+      <Style VerticalAlign="Middle">
+        <Font Name="Tahoma" Size="9pt" />
+      </Style>
+      <Selectors>
+        <StyleSelector Type="ReportItemBase" StyleName="Data" />
+      </Selectors>
+    </StyleRule>
+    <StyleRule>
+      <Style VerticalAlign="Middle">
+        <Font Name="Tahoma" Size="8pt" />
+      </Style>
+      <Selectors>
+        <StyleSelector Type="ReportItemBase" StyleName="PageInfo" />
+      </Selectors>
+    </StyleRule>
+  </StyleSheet>
+  <PageSettings>
+    <PageSettings PaperKind="Custom" PaperSize="21.5cm, 33cm" Landscape="False">
+      <Margins>
+        <MarginsU Left="1cm" Right="1cm" Top="5cm" Bottom="1cm" />
+      </Margins>
+    </PageSettings>
+  </PageSettings>
+  <Groups>
+    <Group Name="labelsGroup">
+      <GroupHeader>
+        <GroupHeaderSection PrintOnEveryPage="True" Height="0.0520833333333333in" Name="labelsGroupHeader" />
+      </GroupHeader>
+      <GroupFooter>
+        <GroupFooterSection KeepTogether="False" Height="0.0520833333333333in" Name="labelsGroupFooter">
+          <Style Visible="False" />
+        </GroupFooterSection>
+      </GroupFooter>
+    </Group>
+    <Group Name="group1">
+      <Groupings>
+        <Grouping Expression="=Fields.GroupNo" />
+      </Groupings>
+      <GroupHeader>
+        <GroupHeaderSection KeepTogether="False" Height="0.200039366881053in" Name="groupHeaderSection1">
+          <Items>
+            <TextBox Value="=Fields.GroupName" CanGrow="True" Size="7.61248016357422in, 0.200000032782555in" Location="0in, 0.00003933906555176in" Name="textBox11" StyleName="Caption">
+              <Style TextAlign="Left">
+                <Font Size="9pt" Bold="True" />
+                <Padding Left="1mm" />
+              </Style>
+            </TextBox>
+          </Items>
+        </GroupHeaderSection>
+      </GroupHeader>
+      <GroupFooter>
+        <GroupFooterSection KeepTogether="False" Height="0.199999650319417in" Name="groupFooterSection1" />
+      </GroupFooter>
+    </Group>
+  </Groups>
+</Report>

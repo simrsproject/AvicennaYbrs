@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report DataSourceName="sqlDataSource1" Width="7.713in" Name="userReport1" xmlns="http://schemas.telerik.com/reporting/2021/1.0">
+  <DataSources>
+    <SqlDataSource QueryDesignerState="null" ParameterValues="{&quot;@p_invoiceNo&quot;:&quot;PAP-2022/05/24/0001&quot;}" ConnectionString="RSYS12" SelectCommand="sp_XML_APpaymentProsses" SelectCommandType="StoredProcedure" Name="sqlDataSource1">
+      <Parameters>
+        <SqlDataSourceParameter DbType="AnsiString" Name="@p_invoiceNo">
+          <Value>
+            <String>PAP-2022/05/24/0001</String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="AnsiString" Name="@UserName" />
+      </Parameters>
+    </SqlDataSource>
+  </DataSources>
+  <Items>
+    <PageHeaderSection Height="0.052in" Name="pageHeaderSection1" />
+    <DetailSection Height="0.052in" Name="detailSection1">
+      <Style Visible="False" />
+    </DetailSection>
+    <PageFooterSection Height="0.2in" Name="pageFooterSection1">
+      <Items>
+        <TextBox Width="3.525in" Height="0.2in" Left="4.188in" Top="0in" Value="=PageNumber + &quot;/&quot; + PageCount" Format="Hal : {0}" Name="pageInfoTextBox" StyleName="PageInfo">
+          <Style TextAlign="Right">
+            <Font Name="Arial" Size="8pt" Italic="True" />
+            <BorderStyle Top="Solid" />
+            <BorderColor Top="Black" />
+            <BorderWidth Top="1pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="4.187in" Height="0.2in" Left="0in" Top="0in" Value="=Now()" Name="textBox7">
+          <Style VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" Italic="True" />
+            <BorderStyle Top="Solid" />
+            <BorderColor Top="Black" />
+            <BorderWidth Default="0.5pt" Top="1pt" />
+          </Style>
+        </TextBox>
+      </Items>
+    </PageFooterSection>
+    <ReportHeaderSection Height="2.948in" Name="reportHeaderSection1">
+      <Style>
+        <BorderStyle Bottom="Solid" />
+        <BorderWidth Bottom="0.7pt" />
+      </Style>
+      <Items>
+        <TextBox Width="1.5in" Height="0.18in" Left="6.1in" Top="1.621in" Value="=PaymentApprovedDateTime" Format="{0:dd-MMM-yy}" CanGrow="False" Name="textBox48">
+          <Style>
+            <Font Name="Microsoft Sans Serif" Bold="True" Italic="True" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1.187in" Height="0.18in" Left="4.913in" Top="1.621in" Value="Tgl. Pembayaran:" CanGrow="False" Name="textBox47">
+          <Style>
+            <Font Name="Microsoft Sans Serif" />
+            <Padding Left="0in" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.1in" Height="0.18in" Left="2.3in" Top="1.621in" Value="-" CanGrow="False" Name="textBox45">
+          <Style>
+            <Font Name="Microsoft Sans Serif" />
+            <Padding Left="0in" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.8in" Height="0.18in" Left="0in" Top="1.621in" Value="No Invoice:" CanGrow="False" Name="textBox44">
+          <Style>
+            <Font Name="Microsoft Sans Serif" />
+            <Padding Left="0in" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1.5in" Height="0.18in" Left="0.8in" Top="1.621in" Value="=InvoiceReferenceNo" CanGrow="False" Name="textBox43">
+          <Style>
+            <Font Name="Microsoft Sans Serif" Bold="True" Italic="True" />
+          </Style>
+        </TextBox>
+        <TextBox Width="7.468in" Height="0.2in" Left="0in" Top="1.048in" Value="Kwitansi Pembayaran" Name="textBox9">
+          <Style TextAlign="Center">
+            <Font Name="Microsoft Sans Serif" Size="12pt" Bold="True" Underline="True" />
+            <BorderStyle Bottom="None" />
+          </Style>
+        </TextBox>
+        <TextBox Width="2.512in" Height="0.178in" Left="2.4in" Top="1.623in" Value="=Fields.SupplierName" Name="textBox8">
+          <Style VerticalAlign="Middle">
+            <Font Name="Microsoft Sans Serif" Bold="True" />
+          </Style>
+        </TextBox>
+        <TextBox Width="7.468in" Height="0.2in" Left="0in" Top="1.248in" Value="=Fields.InvoiceNo" Name="textBox10">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Bold="True" />
+          </Style>
+        </TextBox>
+        <Table DataSourceName="sqlDataSource1" Width="7.7in" Height="0.659in" Left="0in" Top="2.248in" Name="table1">
+          <Body>
+            <Cells>
+              <TableCell RowIndex="0" ColumnIndex="0" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="3.356in" Height="0.233in" Left="1.583in" Top="0in" Value="=TransactionNo" CanGrow="False" Name="textBox4" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Font Name="Microsoft Sans Serif" />
+                      <BorderStyle Top="None" />
+                      <BorderColor Top="Black" />
+                      <BorderWidth Top="1pt" />
+                      <Padding Left="0in" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="1" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="1.951in" Height="0.233in" Left="3.177in" Top="0in" Value="=TransactionDate" Format="{0:dd-MMM-yy}" CanGrow="False" Name="textBox5" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Font Name="Microsoft Sans Serif" />
+                      <BorderStyle Top="None" />
+                      <BorderColor Top="Black" />
+                      <BorderWidth Top="1pt" />
+                      <Padding Left="0in" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="2" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="2.393in" Height="0.233in" Left="4.281in" Top="0in" Value="=PaymentAmount" Format="{0:N0}" CanGrow="False" Name="textBox6" StyleName="">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <Font Name="Microsoft Sans Serif" />
+                      <BorderStyle Top="None" />
+                      <BorderColor Top="Black" />
+                      <BorderWidth Top="1pt" />
+                      <Padding Left="0in" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="0" RowSpan="1" ColumnSpan="2">
+                <ReportItem>
+                  <TextBox Width="5.307in" Height="0.194in" Left="0in" Top="0in" Value="Total" Name="textBox1" StyleName="">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <Font Name="Microsoft Sans Serif" Bold="True" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="2" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="2.393in" Height="0.194in" Left="3.4in" Top="2.748in" Value="=Sum(Fields.PaymentAmount)" Format="{0:N0}" Name="textBox3" StyleName="">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <Font Name="Microsoft Sans Serif" />
+                      <BorderStyle Top="Solid" />
+                      <BorderColor Top="Black" />
+                      <BorderWidth Top="1pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+            </Cells>
+            <Columns>
+              <Column Width="3.356in" />
+              <Column Width="1.951in" />
+              <Column Width="2.393in" />
+            </Columns>
+            <Rows>
+              <Row Height="0.233in" />
+              <Row Height="0.194in" />
+            </Rows>
+          </Body>
+          <Corner />
+          <RowGroups>
+            <TableGroup Name="detailTableGroup">
+              <Groupings>
+                <Grouping />
+              </Groupings>
+            </TableGroup>
+            <TableGroup Name="group" />
+          </RowGroups>
+          <ColumnGroups>
+            <TableGroup Name="tableGroup">
+              <ReportItem>
+                <TextBox Width="3.356in" Height="0.233in" Left="0in" Top="0in" Value="Transaction No" Name="textBox11">
+                  <Style TextAlign="Center" VerticalAlign="Middle">
+                    <Font Bold="True" />
+                    <BorderStyle Top="Solid" Bottom="Solid" />
+                    <BorderColor Top="Black" Bottom="Black" />
+                    <BorderWidth Top="1pt" Bottom="1pt" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup Name="tableGroup1">
+              <ReportItem>
+                <TextBox Width="1.951in" Height="0.233in" Left="0in" Top="0in" Value="Date" Name="textBox14">
+                  <Style TextAlign="Center" VerticalAlign="Middle">
+                    <Font Bold="True" />
+                    <BorderStyle Top="Solid" Bottom="Solid" />
+                    <BorderColor Top="Black" Bottom="Black" />
+                    <BorderWidth Top="1pt" Bottom="1pt" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup Name="tableGroup2">
+              <ReportItem>
+                <TextBox Width="2.393in" Height="0.233in" Left="0in" Top="0in" Value="Payment Amount" Name="textBox16">
+                  <Style TextAlign="Center" VerticalAlign="Middle">
+                    <Font Bold="True" />
+                    <BorderStyle Top="Solid" Bottom="Solid" />
+                    <BorderColor Top="Black" Bottom="Black" />
+                    <BorderWidth Top="1pt" Bottom="1pt" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+          </ColumnGroups>
+        </Table>
+      </Items>
+    </ReportHeaderSection>
+    <ReportFooterSection Height="1.448in" Name="reportFooterSection1">
+      <Items>
+        <TextBox Width="0.794in" Height="0.2in" Left="0.406in" Top="0.148in" Value="Terbilang : " Name="textBox2">
+          <Style TextAlign="Left">
+            <Font Name="Microsoft Sans Serif" Bold="True" />
+            <BorderStyle Bottom="None" />
+            <Padding Left="1mm" />
+          </Style>
+        </TextBox>
+        <TextBox Width="6.1in" Height="0.2in" Left="1.2in" Top="0.15in" Value="= Fields.terbilang" Name="textBox13">
+          <Style>
+            <Font Bold="True" Italic="True" />
+          </Style>
+        </TextBox>
+        <TextBox Width="2.1in" Height="0.2in" Left="0in" Top="0.628in" Value="Petugas" Name="textBox12">
+          <Style TextAlign="Center">
+            <Font Name="Microsoft Sans Serif" />
+            <BorderStyle Bottom="None" />
+            <Padding Left="1mm" />
+          </Style>
+        </TextBox>
+        <TextBox Width="2.1in" Height="0.2in" Left="0in" Top="1.248in" Value="=UserName" Name="txtUserName">
+          <Style TextAlign="Center">
+            <Font Name="Microsoft Sans Serif" />
+            <Padding Left="1mm" />
+          </Style>
+        </TextBox>
+        <TextBox Width="2.1in" Height="0.2in" Left="5.5in" Top="0.628in" Value="Ka.Bid Keuangan" Name="textBox17">
+          <Style TextAlign="Center">
+            <Font Name="Microsoft Sans Serif" />
+            <BorderStyle Bottom="None" />
+            <Padding Left="1mm" />
+          </Style>
+        </TextBox>
+        <TextBox Width="2.1in" Height="0.2in" Left="5.5in" Top="1.248in" Value="Fransiska Reni Warastuti" Name="textBox15">
+          <Style TextAlign="Center">
+            <Font Name="Microsoft Sans Serif" />
+            <Padding Left="1mm" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.9in" Height="0.2in" Left="5.5in" Top="0.428in" Value="= Fields.city" Name="textBox18">
+          <Style TextAlign="Right" VerticalAlign="Middle">
+            <Font Name="Microsoft Sans Serif" />
+            <BorderStyle Bottom="None" />
+            <Padding Left="1mm" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1.3in" Height="0.2in" Left="6.4in" Top="0.428in" KeepTogether="True" Value="=Now()" Format="{0:dd-MMM -yyyy HH:mm}" Name="textBox19">
+          <Style TextAlign="Left" VerticalAlign="Middle">
+            <Font Name="Microsoft Sans Serif" />
+            <BorderStyle Bottom="None" />
+            <Padding Left="1mm" />
+          </Style>
+        </TextBox>
+      </Items>
+    </ReportFooterSection>
+  </Items>
+  <PageSettings PaperKind="Letter" Landscape="False" ColumnCount="1" ColumnSpacing="0in" ContinuousPaper="False">
+    <Margins>
+      <MarginsU Left="1cm" Right="1cm" Top="0in" Bottom="0in" />
+    </Margins>
+  </PageSettings>
+  <StyleSheet>
+    <StyleRule>
+      <Style>
+        <Padding Left="2pt" Right="2pt" />
+      </Style>
+      <Selectors>
+        <TypeSelector Type="TextItemBase" />
+        <TypeSelector Type="HtmlTextBox" />
+      </Selectors>
+    </StyleRule>
+  </StyleSheet>
+</Report>

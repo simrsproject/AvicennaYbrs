@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report DataSourceName="sqlDataSource1" Width="6.5in" Name="userReport1" xmlns="http://schemas.telerik.com/reporting/2012/2">
+  <DataSources>
+    <SqlDataSource ConnectionString="Data Source=192.168.80.2;Initial Catalog=RSSMCB_LIVE;Persist Security Info=True;User ID=sa;Password=p@ssw0rd" ProviderName="System.Data.SqlClient" SelectCommand="spslp_ApInvoice" SelectCommandType="StoredProcedure" Name="sqlDataSource1">
+      <Parameters>
+        <SqlDataSourceParameter DbType="AnsiString" Name="@InvoiceNo">
+          <Value>
+            <String>AP-2018/01/25/0008</String>
+          </Value>
+        </SqlDataSourceParameter>
+      </Parameters>
+    </SqlDataSource>
+  </DataSources>
+  <Items>
+    <PageHeaderSection Height="0.0520833333333333in" Name="pageHeaderSection1" />
+    <DetailSection Height="2in" Name="detailSection1">
+      <Items>
+        <TextBox Value="=RowNumber()" Size="0.299960613250732in, 0.19999997317791in" Location="0.00003933906555176in, 0.00003941853841146in" Name="textBox6" />
+        <TextBox Value="=Fields.TransactionNo" Size="1.80000003178914in, 0.200000127156576in" Location="0.299999952316284in, 0in" Name="textBox9" />
+      </Items>
+    </DetailSection>
+    <PageFooterSection Height="1in" Name="pageFooterSection1" />
+    <ReportHeaderSection Height="1.64791663487752in" Name="reportHeaderSection1">
+      <Items>
+        <TextBox Value="=Fields.SupplierName" Size="2.59992122650146in, 0.199999968210856in" Location="1.40007877349854in, 1.14791663487752in" Name="textBox1" />
+        <TextBox Value="No.Invoice" Size="0.800000508626302in, 0.199999968210856in" Location="4.5in, 1.14791663487752in" Name="textBox2" />
+        <TextBox Value="Nama Supplier" Size="1in, 0.19999997317791in" Location="0.299999952316284in, 1.14791663487752in" Name="textBox3" />
+        <TextBox Value=":" Size="0.0999212265014648in, 0.19999997317791in" Location="1.30007870992025in, 1.14791663487752in" Name="textBox4" />
+        <TextBox Value="=Fields.InvoiceNo" Size="1.09992090861003in, 0.19999997317791in" Location="5.30007934570313in, 1.14791663487752in" Name="textBox5" />
+        <TextBox Value="No." Size="0.299960533777873in, 0.19999997317791in" Location="0.00003941853841146in, 1.44787724812826in" Name="textBox7" />
+        <TextBox Value="No.PO" Size="1.79992135365804in, 0.19999997317791in" Location="0.300078630447388in, 1.44787724812826in" Name="textBox8" />
+      </Items>
+    </ReportHeaderSection>
+  </Items>
+  <StyleSheet>
+    <StyleRule>
+      <Style>
+        <Padding Left="2pt" Right="2pt" />
+      </Style>
+      <Selectors>
+        <TypeSelector Type="TextItemBase" />
+        <TypeSelector Type="HtmlTextBox" />
+      </Selectors>
+    </StyleRule>
+  </StyleSheet>
+  <PageSettings>
+    <PageSettings PaperKind="Letter" Landscape="False">
+      <Margins>
+        <MarginsU Left="1in" Right="1in" Top="1in" Bottom="1in" />
+      </Margins>
+    </PageSettings>
+  </PageSettings>
+</Report>

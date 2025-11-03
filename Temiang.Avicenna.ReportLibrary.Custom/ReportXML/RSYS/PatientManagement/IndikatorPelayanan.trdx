@@ -1,0 +1,1007 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report DataSourceName="sqlDataSource1" Width="10.606in" Name="userReport1" ShowSnapGrid="True" xmlns="http://schemas.telerik.com/reporting/2019/2.0">
+  <DataSources>
+    <SqlDataSource QueryDesignerState="null" ParameterValues="null" ConnectionString="Data Source=192.168.56.1;Initial Catalog=RSMM_LIVE;Persist Security Info=True;User ID=sa;Password=123" ProviderName="System.Data.SqlClient" SelectCommand="spxml_IndikatorPelayanan" SelectCommandType="StoredProcedure" Name="sqlDataSource1">
+      <Parameters>
+        <SqlDataSourceParameter DbType="DateTime" Name="@p_FromDate">
+          <Value>
+            <String>8/1/2018</String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="DateTime" Name="@p_ToDate">
+          <Value>
+            <String>8/28/2018</String>
+          </Value>
+        </SqlDataSourceParameter>
+      </Parameters>
+    </SqlDataSource>
+  </DataSources>
+  <Items>
+    <DetailSection Height="0.052in" Name="detail">
+      <Style Visible="False" />
+    </DetailSection>
+    <ReportHeaderSection Height="1.3in" Name="reportHeaderSection1">
+      <Items>
+        <TextBox Width="7.806in" Height="0.2in" Left="2.8in" Top="1.058in" Value="=Fields.periode" Name="textBox28">
+          <Style TextAlign="Center">
+            <Font Name="Tahoma" Size="10pt" Bold="True" />
+          </Style>
+        </TextBox>
+        <TextBox Width="7.806in" Height="0.2in" Left="2.8in" Top="0.858in" Value="=ReportName" Name="textBox34">
+          <Style TextAlign="Center">
+            <Font Name="Tahoma" Size="12pt" Bold="True" />
+          </Style>
+        </TextBox>
+      </Items>
+    </ReportHeaderSection>
+    <PageFooterSection Height="0.2in" Name="pageFooterSection1">
+      <Style Visible="True" />
+      <Items>
+        <TextBox Width="5.453in" Height="0.2in" Left="0in" Top="0in" Value="='AVICENNA_HIS ' + Now()" Format="Avicenna HIS, Print Date : {0:dd-MM-yyyy HH:mm}" Name="textBox1">
+          <Style VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" Italic="True" />
+            <BorderStyle Top="Solid" />
+            <BorderWidth Default="0.5pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="5.153in" Height="0.2in" Left="5.453in" Top="0in" Value="= 'Hal : ' + PageNumber +' / ' + PageCount" Format="" Name="textBox62">
+          <Style TextAlign="Right" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" Italic="True" />
+            <BorderStyle Top="Solid" />
+            <BorderWidth Default="0.5pt" />
+          </Style>
+        </TextBox>
+      </Items>
+    </PageFooterSection>
+    <PageHeaderSection Height="0.106cm" Name="pageHeaderSection1" />
+    <ReportFooterSection Height="3.815in" Name="reportFooterSection1">
+      <Items>
+        <Crosstab DataSourceName="sqlDataSource1" Width="9.357in" Height="2.708in" Left="0.1in" Top="0.106in" Name="crosstab1" StyleName="Normal.TableNormal">
+          <Body>
+            <Cells>
+              <TableCell RowIndex="0" ColumnIndex="0" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.514in" Height="0.25in" Left="0in" Top="0in" Value="=Sum(Fields.Qty)" Name="textBox17" StyleName="Normal.TableBody">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <Font Size="8pt" />
+                      <BorderStyle Top="None" Left="None" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="1mm" Right="1mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="3" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.889in" Height="0.25in" Left="0in" Top="0in" Value="=Sum(IIF(Fields.ServiceUnitID IN ('D02.09.01','D02.09.02','D02.09.03'),0,Fields.Qty))" Name="textBox19" StyleName="Normal.SubTotal">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <Font Size="8pt" Bold="True" />
+                      <BorderStyle Top="None" Left="None" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="1mm" Right="1mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="1" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="4.194in" Height="0.25in" Left="0in" Top="0in" Value="=Sum(Fields.Qty)" Name="textBox11" StyleName="Normal.TableBody">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <Font Size="8pt" />
+                      <BorderStyle Top="None" Left="None" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="1mm" Right="1mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="0" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.514in" Height="0.25in" Left="0in" Top="0in" Value="=Sum(IIF(Fields.IndicationNo ='05',Fields.Qty,0))/(Sum(IIF(Fields.IndicationNo ='01',Fields.Qty,0))* Fields.BOR)" Format="{0:P2}" Name="textBox22" StyleName="Normal.GrandTotal">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <Font Size="8pt" Bold="False" />
+                      <BorderStyle Top="None" Left="None" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="1mm" Right="1mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="1" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="4.194in" Height="0.25in" Left="0in" Top="0in" Value="=Sum(IIF(Fields.IndicationNo ='05',Fields.Qty,0))/(Sum(IIF(Fields.IndicationNo ='01',Fields.Qty,0))* Fields.BOR)" Format="{0:P2}" Name="textBox23" StyleName="Normal.GrandTotal">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <Font Size="8pt" Bold="False" />
+                      <BorderStyle Top="None" Left="None" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="1mm" Right="1mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="3" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.889in" Height="0.25in" Left="0in" Top="0in" Value="=Sum(IIF(Fields.IndicationNo ='05',IIF(Fields.ServiceUnitID IN ('D02.09.01','D02.09.02','D02.09.03'),0,Fields.Qty),0))/(Sum(IIF(Fields.IndicationNo ='01',IIF(Fields.ServiceUnitID IN ('D02.09.01','D02.09.02','D02.09.03'),0,Fields.Qty),0))* Fields.BOR)" Format="{0:P2}" Name="textBox24" StyleName="Normal.GrandTotal">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <Font Size="8pt" Bold="True" />
+                      <BorderStyle Top="None" Left="None" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="1mm" Right="1mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="3" ColumnIndex="0" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.514in" Height="0.25in" Left="0in" Top="0in" Value="=(Sum(CDbl(Format(&quot;{0:N2}&quot;, IIF(Fields.IndicationNo ='03',Fields.Qty,0))))+Sum(CDbl(Format(&quot;{0:N2}&quot;, IIF(Fields.IndicationNo ='04',Fields.Qty,0)))))/Sum(CDbl(Format(&quot;{0:N2}&quot;, IIF(Fields.IndicationNo ='01',Fields.Qty,0))))" Format="{0:N2}" Name="textBox36" StyleName="Normal.GrandTotal">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <Font Size="8pt" Bold="False" />
+                      <BorderStyle Top="None" Left="None" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="1mm" Right="1mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="3" ColumnIndex="1" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="4.194in" Height="0.25in" Left="0in" Top="0in" Value="=(Sum(CDbl(Format(&quot;{0:N2}&quot;, IIF(Fields.IndicationNo ='03',Fields.Qty,0))))+Sum(CDbl(Format(&quot;{0:N2}&quot;, IIF(Fields.IndicationNo ='04',Fields.Qty,0)))))/Sum(CDbl(Format(&quot;{0:N2}&quot;, IIF(Fields.IndicationNo ='01',Fields.Qty,0))))" Format="{0:N2}" Name="textBox37" StyleName="Normal.GrandTotal">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <Font Size="8pt" Bold="False" />
+                      <BorderStyle Top="None" Left="None" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="1mm" Right="1mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="3" ColumnIndex="3" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.889in" Height="0.25in" Left="0in" Top="0in" Value="=(Sum(CDbl(Format(&quot;{0:N2}&quot;, IIF(Fields.IndicationNo ='03',IIF(Fields.ServiceUnitID IN ('D02.09.01','D02.09.02','D02.09.03'),0,Fields.Qty),0))))+Sum(CDbl(Format(&quot;{0:N2}&quot;, IIF(Fields.IndicationNo ='04',IIF(Fields.ServiceUnitID IN ('D02.09.01','D02.09.02','D02.09.03'),0,Fields.Qty),0)))))/Sum(CDbl(Format(&quot;{0:N2}&quot;, IIF(Fields.IndicationNo ='01',IIF(Fields.ServiceUnitID IN ('D02.09.01','D02.09.02','D02.09.03'),0,Fields.Qty),0))))" Format="{0:N2}" Name="textBox38" StyleName="Normal.GrandTotal">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <Font Size="8pt" />
+                      <BorderStyle Top="None" Left="None" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="1mm" Right="1mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="2" ColumnIndex="0" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.514in" Height="0.25in" Left="0in" Top="0in" Value="=IIF((Sum(CDbl(Format(&quot;{0:N2}&quot;, IIF(Fields.IndicationNo ='03',Fields.Qty,0))))+Sum(CDbl(Format(&quot;{0:N2}&quot;, IIF(Fields.IndicationNo ='04',Fields.Qty,0))))) =0, 0,Sum(CDbl(Format(&quot;{0:N2}&quot;, IIF(Fields.IndicationNo ='06',Fields.Qty,0))))/(Sum(CDbl(Format(&quot;{0:N2}&quot;, IIF(Fields.IndicationNo ='03',Fields.Qty,0))))+Sum(CDbl(Format(&quot;{0:N2}&quot;, IIF(Fields.IndicationNo ='04',Fields.Qty,0))))))" Format="{0:N2}" Name="textBox43" StyleName="Normal.GrandTotal">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <Font Size="8pt" Bold="False" />
+                      <BorderStyle Top="None" Left="None" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="1mm" Right="1mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="2" ColumnIndex="1" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="4.194in" Height="0.25in" Left="0in" Top="0in" Value="=IIF((Sum(CDbl(Format(&quot;{0:N2}&quot;, IIF(Fields.IndicationNo ='03',Fields.Qty,0))))+Sum(CDbl(Format(&quot;{0:N2}&quot;, IIF(Fields.IndicationNo ='04',Fields.Qty,0))))) = 0, 0,Sum(CDbl(Format(&quot;{0:N2}&quot;, IIF(Fields.IndicationNo ='06',Fields.Qty,0))))/(Sum(CDbl(Format(&quot;{0:N2}&quot;, IIF(Fields.IndicationNo ='03',Fields.Qty,0))))+Sum(CDbl(Format(&quot;{0:N2}&quot;, IIF(Fields.IndicationNo ='04',Fields.Qty,0))))))" Format="{0:N2}" Name="textBox44" StyleName="Normal.GrandTotal">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <Font Size="8pt" Bold="False" />
+                      <BorderStyle Top="None" Left="None" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="1mm" Right="1mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="2" ColumnIndex="3" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.889in" Height="0.25in" Left="0in" Top="0in" Value="=Sum(CDbl(Format(&quot;{0:N2}&quot;, IIF(Fields.IndicationNo ='06',IIF(Fields.ServiceUnitID IN ('D02.09.01','D02.09.02','D02.09.03'),0,Fields.Qty),0))))/(Sum(CDbl(Format(&quot;{0:N2}&quot;, IIF(Fields.IndicationNo ='03',IIF(Fields.ServiceUnitID IN ('D02.09.01','D02.09.02','D02.09.03'),0,Fields.Qty),0))))+Sum(CDbl(Format(&quot;{0:N2}&quot;, IIF(Fields.IndicationNo ='04',IIF(Fields.ServiceUnitID IN ('D02.09.01','D02.09.02','D02.09.03'),0,Fields.Qty),0)))))" Format="{0:N2}" Name="textBox45" StyleName="Normal.GrandTotal">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <Font Size="8pt" Bold="True" />
+                      <BorderStyle Top="None" Left="None" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="1mm" Right="1mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="4" ColumnIndex="0" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.514in" Height="0.25in" Left="0in" Top="0in" Value="=IIF((SUM(CDbl(FORMAT(&quot;{0:N2}&quot;, IIF(Fields.IndicationNo = '03', Fields.Qty, 0)))) + SUM(CDbl(FORMAT(&quot;{0:N2}&quot;, IIF(Fields.IndicationNo = '04', Fields.Qty, 0))))) =0, 0,((SUM(CDbl(FORMAT(&quot;{0:N2}&quot;, IIF(Fields.IndicationNo = '01', Fields.Qty, 0))))*Fields.BOR)-SUM(CDbl(FORMAT(&quot;{0:N2}&quot;, IIF(Fields.IndicationNo = '05', Fields.Qty, 0)))))/(SUM(CDbl(FORMAT(&quot;{0:N2}&quot;, IIF(Fields.IndicationNo = '03', Fields.Qty, 0)))) + SUM(CDbl(FORMAT(&quot;{0:N2}&quot;, IIF(Fields.IndicationNo = '04', Fields.Qty, 0))))))" Format="{0:N2}" Name="textBox20" StyleName="Normal.GrandTotal">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <Font Size="8pt" Bold="False" />
+                      <BorderStyle Top="None" Left="None" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="1mm" Right="1mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="4" ColumnIndex="1" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="4.194in" Height="0.25in" Left="0in" Top="0in" Value="=IIF((SUM(CDbl(FORMAT(&quot;{0:N2}&quot;, IIF(Fields.IndicationNo = '03', Fields.Qty, 0)))) + SUM(CDbl(FORMAT(&quot;{0:N2}&quot;, IIF(Fields.IndicationNo = '04', Fields.Qty, 0))))) =0, 0,((SUM(CDbl(FORMAT(&quot;{0:N2}&quot;, IIF(Fields.IndicationNo = '01', Fields.Qty, 0))))*Fields.BOR)-SUM(CDbl(FORMAT(&quot;{0:N2}&quot;, IIF(Fields.IndicationNo = '05', Fields.Qty, 0)))))/(SUM(CDbl(FORMAT(&quot;{0:N2}&quot;, IIF(Fields.IndicationNo = '03', Fields.Qty, 0)))) + SUM(CDbl(FORMAT(&quot;{0:N2}&quot;, IIF(Fields.IndicationNo = '04', Fields.Qty, 0))))))" Format="{0:N2}" Name="textBox25" StyleName="Normal.GrandTotal">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <Font Size="8pt" Bold="False" />
+                      <BorderStyle Top="None" Left="None" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="1mm" Right="1mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="4" ColumnIndex="3" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.889in" Height="0.25in" Left="0in" Top="0in" Value="=((SUM(CDbl(FORMAT(&quot;{0:N2}&quot;, IIF(Fields.IndicationNo = '01', IIF(Fields.ServiceUnitID IN ('D02.09.01','D02.09.02','D02.09.03'),0,Fields.Qty), 0))))*Fields.BOR)-SUM(CDbl(FORMAT(&quot;{0:N2}&quot;, IIF(Fields.IndicationNo = '05', IIF(Fields.ServiceUnitID IN ('D02.09.01','D02.09.02','D02.09.03'),0,Fields.Qty), 0)))))/(SUM(CDbl(FORMAT(&quot;{0:N2}&quot;, IIF(Fields.IndicationNo = '03', IIF(Fields.ServiceUnitID IN ('D02.09.01','D02.09.02','D02.09.03'),0,Fields.Qty), 0)))) + SUM(CDbl(FORMAT(&quot;{0:N2}&quot;, IIF(Fields.IndicationNo = '04', IIF(Fields.ServiceUnitID IN ('D02.09.01','D02.09.02','D02.09.03'),0,Fields.Qty), 0)))))" Format="{0:N2}" Name="textBox30" StyleName="Normal.GrandTotal">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <Font Size="8pt" Bold="True" />
+                      <BorderStyle Top="None" Left="None" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="1mm" Right="1mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="5" ColumnIndex="0" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.514in" Height="0.25in" Left="0in" Top="0in" Value="=SUM(CDbl(FORMAT(&quot;{0:N2}&quot;,(IIF(Fields.IndicationNo ='04b',Fields.Qty,0)))))&#xD;&#xA;/ IIF(Fields.ServiceUnitID IN ('D02.09.01','D02.09.02','D02.09.03'),CDbl(FORMAT(&quot;{0:N2}&quot;,Fields.JPasienPeri)),CDbl(FORMAT(&quot;{0:N2}&quot;,Fields.JPasien)))" Format="{0:P2}" Name="textBox46" StyleName="Normal.GrandTotal">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <Font Size="8pt" Bold="False" />
+                      <BorderStyle Top="None" Left="None" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="1mm" Right="1mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="5" ColumnIndex="1" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="4.194in" Height="0.25in" Left="0in" Top="0in" Value="=SUM(CDbl(FORMAT(&quot;{0:N2}&quot;,(IIF(Fields.IndicationNo ='04b',Fields.Qty,0)))))&#xD;&#xA;/IIF(Fields.ServiceUnitID IN ('D02.09.01','D02.09.02','D02.09.03'),CDbl(FORMAT(&quot;{0:N2}&quot;,Fields.JPasienPeri)),CDbl(FORMAT(&quot;{0:N2}&quot;,Fields.JPasien)))" Format="{0:P2}" Name="textBox47" StyleName="Normal.GrandTotal">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <Font Size="8pt" Bold="False" />
+                      <BorderStyle Top="None" Left="None" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="1mm" Right="1mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="5" ColumnIndex="3" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.889in" Height="0.25in" Left="0in" Top="0in" Value="=SUM(CDbl(FORMAT(&quot;{0:N2}&quot;,(IIF(Fields.IndicationNo ='04b',IIF(Fields.ServiceUnitID IN ('D02.09.01','D02.09.02','D02.09.03'),0,Fields.Qty),0)))))&#xD;&#xA;/ CDbl(FORMAT(&quot;{0:N2}&quot;,Fields.JPasien))" Format="{0:P2}" Name="textBox48" StyleName="Normal.GrandTotal">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <Font Size="8pt" Bold="True" />
+                      <BorderStyle Top="None" Left="None" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="1mm" Right="1mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="6" ColumnIndex="0" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.514in" Height="0.25in" Left="0in" Top="0in" Value="=SUM(CDbl(FORMAT(&quot;{0:N2}&quot;,(IIF(Fields.IndicationNo ='04',Fields.Qty,0)))))&#xD;&#xA;/ IIF(Fields.ServiceUnitID IN ('D02.09.01','D02.09.02','D02.09.03'),CDbl(FORMAT(&quot;{0:N2}&quot;,Fields.JPasienPeri)),CDbl(FORMAT(&quot;{0:N2}&quot;,Fields.JPasien)))" Format="{0:P2}" Name="textBox52" StyleName="Normal.GrandTotal">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <Font Size="8pt" Bold="False" />
+                      <BorderStyle Top="None" Left="None" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="1mm" Right="1mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="6" ColumnIndex="1" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="4.194in" Height="0.25in" Left="0in" Top="0in" Value="=SUM(CDbl(FORMAT(&quot;{0:N2}&quot;,(IIF(Fields.IndicationNo ='04',Fields.Qty,0)))))&#xD;&#xA;/ IIF(Fields.ServiceUnitID IN ('D02.09.01','D02.09.02','D02.09.03'),CDbl(FORMAT(&quot;{0:N2}&quot;,Fields.JPasienPeri)),CDbl(FORMAT(&quot;{0:N2}&quot;,Fields.JPasien)))" Format="{0:P2}" Name="textBox53" StyleName="Normal.GrandTotal">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <Font Size="8pt" Bold="False" />
+                      <BorderStyle Top="None" Left="None" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="1mm" Right="1mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="6" ColumnIndex="3" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.889in" Height="0.25in" Left="0in" Top="0in" Value="=SUM(CDbl(FORMAT(&quot;{0:N2}&quot;,(IIF(Fields.IndicationNo ='04',IIF(Fields.ServiceUnitID IN ('D02.09.01','D02.09.02','D02.09.03'),0,Fields.Qty),0)))))&#xD;&#xA;/ CDbl(FORMAT(&quot;{0:N2}&quot;,Fields.JPasien))" Format="{0:P2}" Name="textBox54" StyleName="Normal.GrandTotal">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <Font Size="8pt" Bold="True" />
+                      <BorderStyle Top="None" Left="None" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="1mm" Right="1mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="2" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.925in" Height="0.25in" Left="0in" Top="0in" Value="=Sum(IIF(Fields.ServiceUnitID IN ('D02.09.01','D02.09.02','D02.09.03'),Fields.Qty,0))" Name="textBox56" StyleName="Normal.SubTotal">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <Font Size="8pt" Bold="True" />
+                      <BorderStyle Top="None" Left="None" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="1mm" Right="1mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="2" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.925in" Height="0.25in" Left="0in" Top="0in" Value="=Sum(IIF(Fields.IndicationNo ='05',IIF(Fields.ServiceUnitID IN ('D02.09.01','D02.09.02','D02.09.03'),Fields.Qty,0),0))/(Sum(IIF(Fields.IndicationNo ='01',IIF(Fields.ServiceUnitID IN ('D02.09.01','D02.09.02','D02.09.03'),Fields.Qty,0),0))* Fields.BOR)" Format="{0:P2}" Name="textBox57" StyleName="Normal.GrandTotal">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <Font Size="8pt" Bold="True" />
+                      <BorderStyle Top="None" Left="None" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="1mm" Right="1mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="2" ColumnIndex="2" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.925in" Height="0.25in" Left="0in" Top="0in" Value="=Sum(CDbl(Format(&quot;{0:N2}&quot;, IIF(Fields.IndicationNo ='06',IIF(Fields.ServiceUnitID IN ('D02.09.01','D02.09.02','D02.09.03'),Fields.Qty,0),0))))/(Sum(CDbl(Format(&quot;{0:N2}&quot;, IIF(Fields.IndicationNo ='03',IIF(Fields.ServiceUnitID IN ('D02.09.01','D02.09.02','D02.09.03'),Fields.Qty,0),0))))+Sum(CDbl(Format(&quot;{0:N2}&quot;, IIF(Fields.IndicationNo ='04',IIF(Fields.ServiceUnitID IN ('D02.09.01','D02.09.02','D02.09.03'),Fields.Qty,0),0)))))" Format="{0:N2}" Name="textBox58" StyleName="Normal.GrandTotal">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <Font Size="8pt" Bold="True" />
+                      <BorderStyle Top="None" Left="None" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="1mm" Right="1mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="3" ColumnIndex="2" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.925in" Height="0.25in" Left="0in" Top="0in" Value="=(Sum(CDbl(Format(&quot;{0:N2}&quot;, IIF(Fields.IndicationNo ='03',IIF(Fields.ServiceUnitID IN ('D02.09.01','D02.09.02','D02.09.03'),Fields.Qty,0),0))))+Sum(CDbl(Format(&quot;{0:N2}&quot;, IIF(Fields.IndicationNo ='04',IIF(Fields.ServiceUnitID IN ('D02.09.01','D02.09.02','D02.09.03'),Fields.Qty,0),0)))))/Sum(CDbl(Format(&quot;{0:N2}&quot;, IIF(Fields.IndicationNo ='01',IIF(Fields.ServiceUnitID IN ('D02.09.01','D02.09.02','D02.09.03'),Fields.Qty,0),0))))" Format="{0:N2}" Name="textBox59" StyleName="Normal.GrandTotal">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <Font Size="8pt" />
+                      <BorderStyle Top="None" Left="None" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="1mm" Right="1mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="4" ColumnIndex="2" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.925in" Height="0.25in" Left="0in" Top="0in" Value="=((SUM(CDbl(FORMAT(&quot;{0:N2}&quot;, IIF(Fields.IndicationNo = '01', IIF(Fields.ServiceUnitID IN ('D02.09.01','D02.09.02','D02.09.03'),Fields.Qty,0), 0))))*Fields.BOR)-SUM(CDbl(FORMAT(&quot;{0:N2}&quot;, IIF(Fields.IndicationNo = '05', IIF(Fields.ServiceUnitID IN ('D02.09.01','D02.09.02','D02.09.03'),Fields.Qty,0), 0)))))/(SUM(CDbl(FORMAT(&quot;{0:N2}&quot;, IIF(Fields.IndicationNo = '03', IIF(Fields.ServiceUnitID IN ('D02.09.01','D02.09.02','D02.09.03'),Fields.Qty,0), 0)))) + SUM(CDbl(FORMAT(&quot;{0:N2}&quot;, IIF(Fields.IndicationNo = '04', IIF(Fields.ServiceUnitID IN ('D02.09.01','D02.09.02','D02.09.03'),Fields.Qty,0), 0)))))" Format="{0:N2}" Name="textBox60" StyleName="Normal.GrandTotal">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <Font Size="8pt" />
+                      <BorderStyle Top="None" Left="None" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="1mm" Right="1mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="5" ColumnIndex="2" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.925in" Height="0.25in" Left="0in" Top="0in" Value="=SUM(CDbl(FORMAT(&quot;{0:N2}&quot;,(IIF(Fields.IndicationNo ='04b',IIF(Fields.ServiceUnitID IN ('D02.09.01','D02.09.02','D02.09.03'),Fields.Qty,0),0)))))&#xD;&#xA;/ CDbl(FORMAT(&quot;{0:N2}&quot;,Fields.JPasienPeri))" Format="{0:P2}" Name="textBox61" StyleName="Normal.GrandTotal">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <Font Size="8pt" />
+                      <BorderStyle Top="None" Left="None" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="1mm" Right="1mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="6" ColumnIndex="2" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.925in" Height="0.25in" Left="0in" Top="0in" Value="=SUM(CDbl(FORMAT(&quot;{0:N2}&quot;,(IIF(Fields.IndicationNo ='04',IIF(Fields.ServiceUnitID IN ('D02.09.01','D02.09.02','D02.09.03'),Fields.Qty,0),0)))))&#xD;&#xA;/ CDbl(FORMAT(&quot;{0:N2}&quot;,Fields.JPasienPeri))" Format="{0:P2}" Name="textBox63" StyleName="Normal.GrandTotal">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <Font Size="8pt" />
+                      <BorderStyle Top="None" Left="None" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="1mm" Right="1mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+            </Cells>
+            <Columns>
+              <Column Width="0.514in" />
+              <Column Width="4.194in" />
+              <Column Width="0.925in" />
+              <Column Width="0.889in" />
+            </Columns>
+            <Rows>
+              <Row Height="0.25in" />
+              <Row Height="0.25in" />
+              <Row Height="0.25in" />
+              <Row Height="0.25in" />
+              <Row Height="0.25in" />
+              <Row Height="0.25in" />
+              <Row Height="0.25in" />
+            </Rows>
+          </Body>
+          <Corner>
+            <Cells>
+              <TableCell RowIndex="0" ColumnIndex="1" RowSpan="4" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="1.314in" Height="0.958in" Left="0in" Top="0in" Value="Indication" Name="textBox15" StyleName="Normal.TableHeader">
+                    <Style TextAlign="Center">
+                      <Font Size="8pt" Bold="True" />
+                      <BorderStyle Top="Solid" Left="None" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="2" RowSpan="4" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="1.181in" Height="0.958in" Left="0in" Top="0in" Value="Ideal Value" Name="textBox16" StyleName="Normal.TableHeader">
+                    <Style TextAlign="Center">
+                      <Font Size="8pt" Bold="True" />
+                      <BorderStyle Top="Solid" Left="None" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="0" RowSpan="4" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.339in" Height="0.958in" Left="0in" Top="0in" Value="No." Name="textBox14" StyleName="Normal.TableHeader">
+                    <Style TextAlign="Center">
+                      <Font Size="8pt" Bold="True" />
+                      <BorderStyle Top="Solid" Left="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+            </Cells>
+          </Corner>
+          <Style>
+            <BorderStyle Default="None" />
+          </Style>
+          <RowGroups>
+            <TableGroup Name="IndicationNo1">
+              <ReportItem>
+                <TextBox Width="0.339in" Height="0.25in" Left="0in" Top="0in" Value="=Fields.IndicationNo" Name="textBox8" StyleName="Normal.TableGroup">
+                  <Style VerticalAlign="Middle">
+                    <Font Size="8pt" />
+                    <BorderStyle Top="None" Left="Solid" Right="Solid" />
+                    <BorderWidth Default="0.5pt" />
+                    <Padding Left="1mm" Right="1mm" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+              <ChildGroups>
+                <TableGroup Name="Indication1">
+                  <ReportItem>
+                    <TextBox Width="1.314in" Height="0.25in" Left="0in" Top="0in" Value="=Fields.Indication" Name="textBox9" StyleName="Normal.TableGroup">
+                      <Style VerticalAlign="Middle">
+                        <Font Size="8pt" />
+                        <BorderStyle Top="None" Left="None" Right="Solid" />
+                        <BorderWidth Default="0.5pt" />
+                        <Padding Left="1mm" Right="1mm" />
+                      </Style>
+                    </TextBox>
+                  </ReportItem>
+                  <ChildGroups>
+                    <TableGroup Name="IdealValue1">
+                      <ReportItem>
+                        <TextBox Width="1.181in" Height="0.25in" Left="0in" Top="0in" Value="=Fields.IdealValue" Name="textBox10" StyleName="Normal.TableGroup">
+                          <Style VerticalAlign="Middle">
+                            <Font Size="8pt" />
+                            <BorderStyle Top="None" Left="None" Right="Solid" />
+                            <BorderWidth Default="0.5pt" />
+                            <Padding Left="1mm" Right="1mm" />
+                          </Style>
+                        </TextBox>
+                      </ReportItem>
+                      <ChildGroups>
+                        <TableGroup Name="Group1" />
+                      </ChildGroups>
+                      <Groupings>
+                        <Grouping Expression="=Fields.IdealValue" />
+                      </Groupings>
+                      <Sortings>
+                        <Sorting Expression="=Fields.IdealValue" Direction="Asc" />
+                      </Sortings>
+                    </TableGroup>
+                  </ChildGroups>
+                  <Groupings>
+                    <Grouping Expression="=Fields.Indication" />
+                  </Groupings>
+                  <Sortings>
+                    <Sorting Expression="=Fields.Indication" Direction="Asc" />
+                  </Sortings>
+                </TableGroup>
+              </ChildGroups>
+              <Groupings>
+                <Grouping Expression="=Fields.IndicationNo" />
+              </Groupings>
+              <Sortings>
+                <Sorting Expression="=Fields.IndicationNo" Direction="Asc" />
+              </Sortings>
+            </TableGroup>
+            <TableGroup Name="Group8">
+              <ReportItem>
+                <TextBox Width="0.339in" Height="0.25in" Left="0in" Top="0in" Value="07" Name="textBox6" StyleName="Normal.GrandTotal">
+                  <Style VerticalAlign="Middle">
+                    <Font Size="8pt" Bold="False" />
+                    <BorderStyle Top="None" Left="Solid" Right="Solid" />
+                    <BorderWidth Default="0.5pt" />
+                    <Padding Left="1mm" Right="1mm" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+              <ChildGroups>
+                <TableGroup Name="Group10">
+                  <ReportItem>
+                    <TextBox Width="1.314in" Height="0.25in" Left="0in" Top="0in" Value="BOR" Name="textBox27" StyleName="Normal.GrandTotal">
+                      <Style VerticalAlign="Middle">
+                        <Font Size="8pt" Bold="False" />
+                        <BorderStyle Top="None" Left="None" Right="Solid" />
+                        <BorderWidth Default="0.5pt" />
+                        <Padding Left="1mm" Right="1mm" />
+                      </Style>
+                    </TextBox>
+                  </ReportItem>
+                  <ChildGroups>
+                    <TableGroup Name="Group9">
+                      <ReportItem>
+                        <TextBox Width="1.181in" Height="0.25in" Left="0in" Top="0in" Value="60-85%" Name="textBox26" StyleName="Normal.GrandTotal">
+                          <Style TextAlign="Center" VerticalAlign="Middle">
+                            <Font Size="8pt" Bold="False" />
+                            <BorderStyle Top="None" Left="None" Right="Solid" />
+                            <BorderWidth Default="0.5pt" />
+                            <Padding Left="1mm" Right="1mm" />
+                          </Style>
+                        </TextBox>
+                      </ReportItem>
+                    </TableGroup>
+                  </ChildGroups>
+                </TableGroup>
+              </ChildGroups>
+            </TableGroup>
+            <TableGroup Name="Group14">
+              <ReportItem>
+                <TextBox Width="0.339in" Height="0.25in" Left="0in" Top="0in" Value="08" Name="textBox40" StyleName="Normal.GrandTotal">
+                  <Style VerticalAlign="Middle">
+                    <Font Size="8pt" Bold="False" />
+                    <BorderStyle Top="None" Left="Solid" Right="Solid" />
+                    <BorderWidth Default="0.5pt" />
+                    <Padding Left="1mm" Right="1mm" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+              <ChildGroups>
+                <TableGroup Name="Group15">
+                  <ReportItem>
+                    <TextBox Width="1.314in" Height="0.25in" Left="0in" Top="0in" Value="Av.Los" Name="textBox41" StyleName="Normal.GrandTotal">
+                      <Style VerticalAlign="Middle">
+                        <Font Size="8pt" Bold="False" />
+                        <BorderStyle Top="None" Left="None" Right="Solid" />
+                        <BorderWidth Default="0.5pt" />
+                        <Padding Left="1mm" Right="1mm" />
+                      </Style>
+                    </TextBox>
+                  </ReportItem>
+                  <ChildGroups>
+                    <TableGroup Name="Group16">
+                      <ReportItem>
+                        <TextBox Width="1.181in" Height="0.25in" Left="0in" Top="0in" Value="6-9 hari" Name="textBox42" StyleName="Normal.GrandTotal">
+                          <Style TextAlign="Center" VerticalAlign="Middle">
+                            <Font Size="8pt" Bold="False" />
+                            <BorderStyle Top="None" Left="None" Right="Solid" />
+                            <BorderWidth Default="0.5pt" />
+                            <Padding Left="1mm" Right="1mm" />
+                          </Style>
+                        </TextBox>
+                      </ReportItem>
+                    </TableGroup>
+                  </ChildGroups>
+                </TableGroup>
+              </ChildGroups>
+            </TableGroup>
+            <TableGroup Name="Group11">
+              <ReportItem>
+                <TextBox Width="0.339in" Height="0.25in" Left="0in" Top="0in" Value="09" Name="textBox29" StyleName="Normal.GrandTotal">
+                  <Style VerticalAlign="Middle">
+                    <Font Size="8pt" Bold="False" />
+                    <BorderStyle Top="None" Left="Solid" Right="Solid" />
+                    <BorderWidth Default="0.5pt" />
+                    <Padding Left="1mm" Right="1mm" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+              <ChildGroups>
+                <TableGroup Name="Group12">
+                  <ReportItem>
+                    <TextBox Width="1.314in" Height="0.25in" Left="0in" Top="0in" Value="BTO" Name="textBox31" StyleName="Normal.GrandTotal">
+                      <Style VerticalAlign="Middle">
+                        <Font Size="8pt" Bold="False" />
+                        <BorderStyle Top="None" Left="None" Right="Solid" />
+                        <BorderWidth Default="0.5pt" />
+                        <Padding Left="1mm" Right="1mm" />
+                      </Style>
+                    </TextBox>
+                  </ReportItem>
+                  <ChildGroups>
+                    <TableGroup Name="Group13">
+                      <ReportItem>
+                        <TextBox Width="1.181in" Height="0.25in" Left="0in" Top="0in" Value="3 - 4 hari dlm 1 bln" Name="textBox35" StyleName="Normal.GrandTotal">
+                          <Style TextAlign="Center" VerticalAlign="Middle">
+                            <Font Size="8pt" Bold="False" />
+                            <BorderStyle Top="None" Left="None" Right="Solid" />
+                            <BorderWidth Default="0.5pt" />
+                            <Padding Left="1mm" Right="1mm" />
+                          </Style>
+                        </TextBox>
+                      </ReportItem>
+                    </TableGroup>
+                  </ChildGroups>
+                </TableGroup>
+              </ChildGroups>
+            </TableGroup>
+            <TableGroup Name="Group5">
+              <ReportItem>
+                <TextBox Width="0.339in" Height="0.25in" Left="0in" Top="0in" Value="10" Name="textBox7" StyleName="Normal.GrandTotal">
+                  <Style VerticalAlign="Middle">
+                    <Font Size="8pt" Bold="False" />
+                    <BorderStyle Top="None" Left="Solid" Right="Solid" />
+                    <BorderWidth Default="0.5pt" />
+                    <Padding Left="1mm" Right="1mm" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+              <ChildGroups>
+                <TableGroup Name="Group17">
+                  <ReportItem>
+                    <TextBox Width="1.314in" Height="0.25in" Left="0in" Top="0in" Value="TOI" Name="textBox12" StyleName="Normal.GrandTotal">
+                      <Style VerticalAlign="Middle">
+                        <Font Size="8pt" Bold="False" />
+                        <BorderStyle Top="None" Left="None" Right="Solid" />
+                        <BorderWidth Default="0.5pt" />
+                        <Padding Left="1mm" Right="1mm" />
+                      </Style>
+                    </TextBox>
+                  </ReportItem>
+                  <ChildGroups>
+                    <TableGroup Name="Group18">
+                      <ReportItem>
+                        <TextBox Width="1.181in" Height="0.25in" Left="0in" Top="0in" Value="1-3 hari" Name="textBox13" StyleName="Normal.GrandTotal">
+                          <Style TextAlign="Center" VerticalAlign="Middle">
+                            <Font Size="8pt" Bold="False" />
+                            <BorderStyle Top="None" Left="None" Right="Solid" />
+                            <BorderWidth Default="0.5pt" />
+                            <Padding Left="1mm" Right="1mm" />
+                          </Style>
+                        </TextBox>
+                      </ReportItem>
+                    </TableGroup>
+                  </ChildGroups>
+                </TableGroup>
+              </ChildGroups>
+            </TableGroup>
+            <TableGroup Name="Group19">
+              <ReportItem>
+                <TextBox Width="0.339in" Height="0.25in" Left="0in" Top="0in" Value="11" Name="textBox32" StyleName="Normal.GrandTotal">
+                  <Style VerticalAlign="Middle">
+                    <Font Size="8pt" Bold="False" />
+                    <BorderStyle Top="None" Left="Solid" Right="Solid" />
+                    <BorderWidth Default="0.5pt" />
+                    <Padding Left="1mm" Right="1mm" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+              <ChildGroups>
+                <TableGroup Name="Group20">
+                  <ReportItem>
+                    <TextBox Width="1.314in" Height="0.25in" Left="0in" Top="0in" Value="NDR" Name="textBox33" StyleName="Normal.GrandTotal">
+                      <Style VerticalAlign="Middle">
+                        <Font Size="8pt" Bold="False" />
+                        <BorderStyle Top="None" Left="None" Right="Solid" />
+                        <BorderWidth Default="0.5pt" />
+                        <Padding Left="1mm" Right="1mm" />
+                      </Style>
+                    </TextBox>
+                  </ReportItem>
+                  <ChildGroups>
+                    <TableGroup Name="Group21">
+                      <ReportItem>
+                        <TextBox Width="1.181in" Height="0.25in" Left="0in" Top="0in" Value="2.5%" Name="textBox39" StyleName="Normal.GrandTotal">
+                          <Style TextAlign="Center" VerticalAlign="Middle">
+                            <Font Size="8pt" Bold="False" />
+                            <BorderStyle Top="None" Left="None" Right="Solid" />
+                            <BorderWidth Default="0.5pt" />
+                            <Padding Left="1mm" Right="1mm" />
+                          </Style>
+                        </TextBox>
+                      </ReportItem>
+                    </TableGroup>
+                  </ChildGroups>
+                </TableGroup>
+              </ChildGroups>
+            </TableGroup>
+            <TableGroup Name="Group22">
+              <ReportItem>
+                <TextBox Width="0.339in" Height="0.25in" Left="0in" Top="0in" Value="12" Name="textBox49" StyleName="Normal.GrandTotal">
+                  <Style VerticalAlign="Middle">
+                    <Font Size="8pt" Bold="False" />
+                    <BorderStyle Top="None" Left="Solid" Right="Solid" />
+                    <BorderWidth Default="0.5pt" />
+                    <Padding Left="1mm" Right="1mm" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+              <ChildGroups>
+                <TableGroup Name="Group23">
+                  <ReportItem>
+                    <TextBox Width="1.314in" Height="0.25in" Left="0in" Top="0in" Value="GDR" Name="textBox50" StyleName="Normal.GrandTotal">
+                      <Style VerticalAlign="Middle">
+                        <Font Size="8pt" Bold="False" />
+                        <BorderStyle Top="None" Left="None" Right="Solid" />
+                        <BorderWidth Default="0.5pt" />
+                        <Padding Left="1mm" Right="1mm" />
+                      </Style>
+                    </TextBox>
+                  </ReportItem>
+                  <ChildGroups>
+                    <TableGroup Name="Group24">
+                      <ReportItem>
+                        <TextBox Width="1.181in" Height="0.25in" Left="0in" Top="0in" Value="4,5%" Name="textBox51" StyleName="Normal.GrandTotal">
+                          <Style TextAlign="Center" VerticalAlign="Middle">
+                            <Font Size="8pt" Bold="False" />
+                            <BorderStyle Top="None" Left="None" Right="Solid" />
+                            <BorderWidth Default="0.5pt" />
+                            <Padding Left="1mm" Right="1mm" />
+                          </Style>
+                        </TextBox>
+                      </ReportItem>
+                    </TableGroup>
+                  </ChildGroups>
+                </TableGroup>
+              </ChildGroups>
+            </TableGroup>
+          </RowGroups>
+          <ColumnGroups>
+            <TableGroup Name="Periode1">
+              <ReportItem>
+                <TextBox Width="6.522in" Height="0.2in" Left="0in" Top="0in" Value="=Fields.Periode" Name="textBox2" StyleName="Normal.TableGroup">
+                  <Style TextAlign="Center" VerticalAlign="Middle">
+                    <Font Size="8pt" Bold="True" />
+                    <BorderStyle Top="Solid" Left="None" Right="Solid" />
+                    <BorderWidth Default="0.5pt" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+              <ChildGroups>
+                <TableGroup Name="ServiceUnitID1">
+                  <ReportItem>
+                    <TextBox Width="4.708in" Height="0.25in" Left="0in" Top="0in" Value="=Fields.ServiceUnitName" Name="textBox3" StyleName="Normal.TableGroup">
+                      <Style TextAlign="Center" VerticalAlign="Middle">
+                        <Font Size="8pt" Bold="True" />
+                        <BorderStyle Top="None" Left="None" Right="Solid" />
+                        <BorderWidth Default="0.5pt" />
+                      </Style>
+                    </TextBox>
+                  </ReportItem>
+                  <ChildGroups>
+                    <TableGroup Name="Group6">
+                      <ReportItem>
+                        <TextBox Width="0.514in" Height="0.258in" Left="0in" Top="0in" Value="Rincian Kelas" Name="textBox18" StyleName="Normal.TableGroup">
+                          <Style TextAlign="Center" VerticalAlign="Middle">
+                            <Font Size="8pt" Bold="True" />
+                            <BorderStyle Top="None" Left="None" Right="Solid" />
+                            <BorderWidth Default="0.5pt" />
+                          </Style>
+                        </TextBox>
+                      </ReportItem>
+                      <ChildGroups>
+                        <TableGroup Name="ClassID1">
+                          <ReportItem>
+                            <TextBox Width="0.514in" Height="0.25in" Left="0in" Top="0in" Value="=Fields.ClassName" Name="textBox4" StyleName="Normal.TableGroup">
+                              <Style TextAlign="Center" VerticalAlign="Middle">
+                                <Font Size="8pt" Bold="True" />
+                                <BorderStyle Top="None" Left="None" Right="Solid" />
+                                <BorderWidth Default="0.5pt" />
+                              </Style>
+                            </TextBox>
+                          </ReportItem>
+                          <ChildGroups>
+                            <TableGroup Name="Group2" />
+                          </ChildGroups>
+                          <Groupings>
+                            <Grouping Expression="=Fields.ClassID" />
+                          </Groupings>
+                          <Sortings>
+                            <Sorting Expression="=Fields.ClassID" Direction="Asc" />
+                          </Sortings>
+                        </TableGroup>
+                      </ChildGroups>
+                    </TableGroup>
+                    <TableGroup Name="Group7">
+                      <ReportItem>
+                        <TextBox Width="4.194in" Height="0.508in" Left="0in" Top="0in" Value="Gabungan" Name="textBox21" StyleName="Normal.TableGroup">
+                          <Style TextAlign="Center" VerticalAlign="Middle">
+                            <Font Size="8pt" Bold="True" />
+                            <BorderStyle Top="None" Left="None" Right="Solid" />
+                            <BorderWidth Default="0.5pt" />
+                          </Style>
+                        </TextBox>
+                      </ReportItem>
+                      <ChildGroups>
+                        <TableGroup Name="Group3" />
+                      </ChildGroups>
+                    </TableGroup>
+                  </ChildGroups>
+                  <Groupings>
+                    <Grouping Expression="=Fields.ServiceUnitID" />
+                  </Groupings>
+                  <Sortings>
+                    <Sorting Expression="=Fields.ServiceUnitName" Direction="Asc" />
+                  </Sortings>
+                </TableGroup>
+                <TableGroup Name="Group25">
+                  <ReportItem>
+                    <TextBox Width="0.925in" Height="0.758in" Left="0in" Top="0in" Value="Total Perina" Name="textBox55" StyleName="Normal.SubTotal">
+                      <Style TextAlign="Center" VerticalAlign="Middle">
+                        <Font Size="8pt" Bold="True" />
+                        <BorderStyle Top="None" Left="None" Right="Solid" />
+                        <BorderWidth Default="0.5pt" />
+                      </Style>
+                    </TextBox>
+                  </ReportItem>
+                  <ChildGroups>
+                    <TableGroup Name="Group26" />
+                  </ChildGroups>
+                </TableGroup>
+                <TableGroup>
+                  <ReportItem>
+                    <TextBox Width="0.889in" Height="0.758in" Left="0in" Top="0in" Value="Total" Name="textBox5" StyleName="Normal.SubTotal">
+                      <Style TextAlign="Center" VerticalAlign="Middle">
+                        <Font Size="8pt" Bold="True" />
+                        <BorderStyle Top="None" Left="None" Right="Solid" />
+                        <BorderWidth Default="0.5pt" />
+                      </Style>
+                    </TextBox>
+                  </ReportItem>
+                  <ChildGroups>
+                    <TableGroup Name="Group4" />
+                  </ChildGroups>
+                </TableGroup>
+              </ChildGroups>
+              <Groupings>
+                <Grouping Expression="=Fields.Periode" />
+              </Groupings>
+              <Sortings>
+                <Sorting Expression="=Fields.Periode" Direction="Asc" />
+              </Sortings>
+            </TableGroup>
+          </ColumnGroups>
+        </Crosstab>
+      </Items>
+    </ReportFooterSection>
+  </Items>
+  <PageSettings PaperKind="Letter" Landscape="True" ColumnCount="1" ColumnSpacing="0in">
+    <Margins>
+      <MarginsU Left="0.5cm" Right="0.5cm" Top="1cm" Bottom="1cm" />
+    </Margins>
+  </PageSettings>
+  <StyleSheet>
+    <StyleRule>
+      <Style Color="Black">
+        <Font Name="Tahoma" Size="18pt" Bold="True" Italic="False" Underline="False" Strikeout="False" />
+      </Style>
+      <Selectors>
+        <StyleSelector Type="ReportItemBase" StyleName="Title" />
+      </Selectors>
+    </StyleRule>
+    <StyleRule>
+      <Style Color="Black" VerticalAlign="Middle">
+        <Font Name="Tahoma" Size="10pt" />
+      </Style>
+      <Selectors>
+        <StyleSelector Type="ReportItemBase" StyleName="Caption" />
+      </Selectors>
+    </StyleRule>
+    <StyleRule>
+      <Style VerticalAlign="Middle">
+        <Font Name="Tahoma" Size="9pt" />
+      </Style>
+      <Selectors>
+        <StyleSelector Type="ReportItemBase" StyleName="Data" />
+      </Selectors>
+    </StyleRule>
+    <StyleRule>
+      <Style VerticalAlign="Middle">
+        <Font Name="Tahoma" Size="8pt" />
+      </Style>
+      <Selectors>
+        <StyleSelector Type="ReportItemBase" StyleName="PageInfo" />
+      </Selectors>
+    </StyleRule>
+    <StyleRule>
+      <Style Color="Black">
+        <Font Name="Tahoma" Size="9pt" />
+        <BorderStyle Default="Solid" />
+        <BorderColor Default="Black" />
+        <BorderWidth Default="1px" />
+      </Style>
+      <Selectors>
+        <StyleSelector Type="Table" StyleName="Normal.TableNormal" />
+      </Selectors>
+    </StyleRule>
+    <StyleRule>
+      <Style>
+        <Font Name="Tahoma" Size="9pt" />
+        <BorderStyle Default="Solid" />
+        <BorderColor Default="Black" />
+        <BorderWidth Default="1px" />
+      </Style>
+      <Selectors>
+        <DescendantSelector>
+          <Selectors>
+            <TypeSelector Type="Table" />
+            <StyleSelector Type="ReportItem" StyleName="Normal.TableGroup" />
+          </Selectors>
+        </DescendantSelector>
+      </Selectors>
+    </StyleRule>
+    <StyleRule>
+      <Style VerticalAlign="Middle">
+        <Font Name="Tahoma" Size="10pt" />
+        <BorderStyle Default="Solid" />
+        <BorderColor Default="Black" />
+        <BorderWidth Default="1px" />
+      </Style>
+      <Selectors>
+        <DescendantSelector>
+          <Selectors>
+            <TypeSelector Type="Table" />
+            <StyleSelector Type="ReportItem" StyleName="Normal.TableHeader" />
+          </Selectors>
+        </DescendantSelector>
+      </Selectors>
+    </StyleRule>
+    <StyleRule>
+      <Style>
+        <Font Name="Tahoma" Size="9pt" />
+        <BorderStyle Default="Solid" />
+        <BorderColor Default="Black" />
+        <BorderWidth Default="1px" />
+      </Style>
+      <Selectors>
+        <DescendantSelector>
+          <Selectors>
+            <TypeSelector Type="Table" />
+            <StyleSelector Type="ReportItem" StyleName="Normal.TableBody" />
+          </Selectors>
+        </DescendantSelector>
+      </Selectors>
+    </StyleRule>
+    <StyleRule>
+      <Style>
+        <Font Name="Tahoma" Size="10pt" />
+        <BorderStyle Default="Solid" />
+        <BorderColor Default="Black" />
+        <BorderWidth Default="1px" />
+      </Style>
+      <Selectors>
+        <DescendantSelector>
+          <Selectors>
+            <TypeSelector Type="Table" />
+            <StyleSelector Type="ReportItem" StyleName="Normal.SubTotal" />
+          </Selectors>
+        </DescendantSelector>
+      </Selectors>
+    </StyleRule>
+    <StyleRule>
+      <Style>
+        <Font Name="Tahoma" Size="10pt" Bold="True" Italic="False" Underline="False" Strikeout="False" />
+        <BorderStyle Default="Solid" />
+        <BorderColor Default="Black" />
+        <BorderWidth Default="1px" />
+      </Style>
+      <Selectors>
+        <DescendantSelector>
+          <Selectors>
+            <TypeSelector Type="Table" />
+            <StyleSelector Type="ReportItem" StyleName="Normal.GrandTotal" />
+          </Selectors>
+        </DescendantSelector>
+      </Selectors>
+    </StyleRule>
+  </StyleSheet>
+</Report>

@@ -1,0 +1,257 @@
+Dokumentasi API Antrian
+
+A. Struktur API
+   - {baseurl}/api/{accesskey}/{controller}/{action method}/{parameter1}/{parameter2}
+     - {baseurl}
+     - {accesskey}
+     - cth: 
+      - http://localhost:56210/api/test123/Queuing/GetQuota/2022-05-03
+	  - {baseurl}: http://localhost:56211
+	  - {accesskey}: test123, key perlu dibuatkan terlebih dahulu, test123 hanya contoh
+	  - {controller}: Queuing
+	  - {action method}: GetQuota
+	  - {parameter1}: 2022-05-03
+   - Return: json
+		{	"status":"{OK/ERR}",
+			"errorCode":"{ERR CODE}",
+			"data":"{Additional Data}"}
+		cth:
+			Return OK:
+			{
+				"status":"OK",					--> status: OK
+				"errorCode":"",					--> errorCode: empty, no error
+				"data":123						--> data: additional data (123)
+			}
+			
+			Return ERR:
+			{
+				"status":"ERR",					--> status: ERROR
+				"errorCode":"100",				--> errorCode: 100
+				"data":"Unspecified error"		--> data: Error message
+			}
+		- ERR Dictionary
+			- 100:Unspecified error
+			- 200:Data not found
+			- 210:Multiple data found, expect one
+			- 220:Data has been approved
+			- 221:Data has been voided
+			- 300:Field or parameter value required
+			- 301:Invalid value
+			- 400:Appointment / queuing time slot has been taken
+			- 900:Key access invalid
+			- 901:Key access expired
+
+B. Daftar End Point
+1. GetQuota
+2. SetQueue dengan nomor antrian
+3. SetQueue tanpa nomor antrian
+4. SetQueue dengan jenis jaminan dan nomor antrian
+5. SetQueue dengan jenis jaminan dan tanpa nomor antrian
+6. GetQueueBeenCalled
+			
+1. End Point GetQuota
+   - Url: {baseurl}/api/{accesskey}/Queuing/GetQuota/{tgl yyyy-MM-dd}
+   - Cth: http://localhost:56210/api/test123/Queuing/GetQuota/2022-05-03
+	 Return OK:
+		{
+		  "status": "OK",	--> status: OK
+		  "errorCode": "",	--> errorCode: empty, no error
+		  "data": [			--> data: List quota total dan quota available per service unit dan dokter pada tanggal yang bersesuaian
+			{
+			  "Paramedic": {
+				"ParamedicID": "MD-00130",
+				"ParamedicName": "Dr. Teguh"
+			  },
+			  "ServiceUnit": {
+				"ServiceUnitID": "D2.2.11.1",
+				"ServiceUnitName": "Poli UMUM"
+			  },
+			  "QuotaTotal": 60,
+			  "QuotaAvailable": 60
+			},
+			{
+			  "Paramedic": {
+				"ParamedicID": "MD-00089",
+				"ParamedicName": "dr. Hermawan, MSc,SpKO,SpGK (K)"
+			  },
+			  "ServiceUnit": {
+				"ServiceUnitID": "D2.2.14.1",
+				"ServiceUnitName": "Poli NUTRISI"
+			  },
+			  "QuotaTotal": 30,
+			  "QuotaAvailable": 30
+			}]
+		}
+		
+2. End Point SetQueue dengan nomor antrian
+   - URL: {baseurl}/api/{accesskey}/Queuing/SetQueue/{tgl yyyy-MM-dd}/{serviceUnitID}/{paramedicID}/{queNumber}
+         - tgl: tanggal antrian
+		 - serviceUnitID: Id Poliklinik
+		 - paramedicID: Id dokter
+		 - queNumber: Nomor Antrian
+   - Cth: http://localhost:56210/api/test123/Queuing/SetQueue/2022-05-02/D2.2.11.1/MD-00130/1
+	 Return OK:
+		{
+		  "status": "OK",		--> status: OK
+		  "errorCode": "",		--> errorCode: empty, no error
+		  "data": 
+			{
+				"QueueingNo":1,			--> data: nomor antrian yang dicreate oleh sistem
+				"QueueingCode":"A-1"	--> data: nomor antrian yang dicreate oleh sistem beserta kode poli
+				"AppoitmentNo":"APT-220918-0001" --> data: no kode booking yang dicreate oleh sistem
+			}				
+		}
+	 Contoh Return Error:
+		{
+		  "status": "ERR",							--> status: ERR
+		  "errorCode": "400",						--> errorCode: 400
+		  "data": "Queue number 1 has been taken"	--> data: pesan error
+		}
+
+3. End Point SetQueue tanpa nomor antrian
+   - URL: {baseurl}/api/{accesskey}/Queuing/SetQueue/{tgl yyyy-MM-dd}/{serviceUnitID}/{paramedicID}
+         - tgl: tanggal antrian
+		 - serviceUnitID: Id Poliklinik
+		 - paramedicID: Id dokter
+   - Cth: http://localhost:56210/api/test123/Queuing/SetQueue/2022-05-02/D2.2.11.1/MD-00130
+	 Return OK:
+		{
+		  "status": "OK",		--> status: OK
+		  "errorCode": "",		--> errorCode: empty, no error
+		  "data":
+			{
+				"QueueingNo":2,			--> data: nomor antrian yang dicreate oleh sistem
+				"QueueingCode":"A-2"	--> data: nomor antrian yang dicreate oleh sistem beserta kode poli
+				"AppoitmentNo":"APT-220918-0001" --> data: no kode booking yang dicreate oleh sistem
+			}
+		}
+	 Contoh Return Error:
+		{
+		  "status": "ERR",							--> status: ERR
+		  "errorCode": "400",						--> errorCode: 400
+		  "data": "Queue number 2 has been taken"	--> data: pesan error
+		}
+4. End Point SetQueue dengan jenis jaminan dan nomor antrian
+   - URL: {baseurl}/api/{accesskey}/Queuing/SetQueueByType/{tgl yyyy-MM-dd}/{serviceUnitID}/{paramedicID}/{type}/{queNumber}
+         - tgl: tanggal antrian
+		 - serviceUnitID: Id Poliklinik
+		 - paramedicID: Id dokter
+		 - type: jenis jaminan (01 untuk umum, 02 untuk bpjs)
+		 - queNumber: Nomor Antrian
+   - Cth: http://localhost:56210/api/test123/Queuing/SetQueueByType/2022-05-02/D2.2.11.1/MD-00130/01/1
+	 Return OK:
+		{
+		  "status": "OK",		--> status: OK
+		  "errorCode": "",		--> errorCode: empty, no error
+		  "data": 
+			{
+				"QueueingNo":1,			--> data: nomor antrian yang dicreate oleh sistem
+				"QueueingCode":"A-1"	--> data: nomor antrian yang dicreate oleh sistem beserta kode poli
+				"AppoitmentNo":"APT-220918-0001" --> data: no kode booking yang dicreate oleh sistem
+			}				
+		}
+	 Contoh Return Error:
+		{
+		  "status": "ERR",							--> status: ERR
+		  "errorCode": "400",						--> errorCode: 400
+		  "data": "Queue number 1 has been taken"	--> data: pesan error
+		}
+
+5. End Point SetQueue dengan jenis jaminan dan tanpa nomor antrian
+   - URL: {baseurl}/api/{accesskey}/Queuing/SetQueueByType/{tgl yyyy-MM-dd}/{serviceUnitID}/{paramedicID}/{type}
+         - tgl: tanggal antrian
+		 - serviceUnitID: Id Poliklinik
+		 - paramedicID: Id dokter
+		 - type: jenis jaminan (01 untuk umum, 02 untuk bpjs)
+   - Cth: http://localhost:56210/api/test123/Queuing/SetQueueByType/2022-05-02/D2.2.11.1/MD-00130/01
+	 Return OK:
+		{
+		  "status": "OK",		--> status: OK
+		  "errorCode": "",		--> errorCode: empty, no error
+		  "data": 
+			{
+				"QueueingNo":1,			--> data: nomor antrian yang dicreate oleh sistem
+				"QueueingCode":"A-1"	--> data: nomor antrian yang dicreate oleh sistem beserta kode poli
+				"AppoitmentNo":"APT-220918-0001" --> data: no kode booking yang dicreate oleh sistem
+			}				
+		}
+	 Contoh Return Error:
+		{
+		  "status": "ERR",							--> status: ERR
+		  "errorCode": "400",						--> errorCode: 400
+		  "data": "Queue number 1 has been taken"	--> data: pesan error
+		}
+
+6. End Point GetQueueBeenCalled
+   - Url: {baseurl}/api/{accesskey}/Queuing/GetQueueBeenCalled/{tgl yyyy-MM-dd}
+   - Cth: http://localhost:56210/api/test123/Queuing/GetQueueBeenCalled/2022-05-03
+	 Return OK:
+		{
+		  "status": "OK",	--> status: OK
+		  "errorCode": "",	--> errorCode: empty, no error
+		  "data": [
+			{"SRQueueingLocation":"01","LocationName":"Lobby Pendaftaran","SRQueueingGroup":"01","GroupName":"Pendaftaran Rawat Jalan","SRQueueingType":"01","TypeName":"Umum","ServiceUnitID":"D4.2.A08","ServiceUnitName":"Poliklinik Gigi","LatestCalledNo":"G-001"},
+			{"SRQueueingLocation":"01","LocationName":"Lobby Pendaftaran","SRQueueingGroup":"02","GroupName":"Pemeriksaan Poliklinik","SRQueueingType":"02","TypeName":"BPJS","ServiceUnitID":"D4.2.A08","ServiceUnitName":"Poliklinik Gigi","LatestCalledNo":"G-002"}
+		  ]
+		}
+
+7. End Point GetListQueueRegistrationBeenCalled
+   - Ket: Untuk mendapatkan list antrian registrasi di setiap lokasi dan loket/konter yang telah di panggil
+   - Url: {baseurl}/api/{accesskey}/Queuing/GetListQueueRegistrationBeenCalled/{tgl yyyy-MM-dd}
+         - tgl: tanggal antrian
+   - Cth: http://localhost:56210/api/test123/Queuing/GetListQueueRegistrationBeenCalled/2023-09-14
+	 Return OK:
+		{
+		  "status": "OK",	--> status: OK
+		  "errorCode": "",	--> errorCode: empty, no error
+		  "data": [
+			{"SRQueueingGroup":"01","QueueingGroup":"Pendaftaran Rawat Jalan","SRQueueingLocation":"01","QueueingLocation":"Lobby Pendaftaran Gedung Utama","SRQueueingType":"01","QueueingType":"Umum","QueueCode":"BD-007","Counter":"1","ServiceUnitID":"U03.02.02","ServiceUnitName":"POLI BEDAH","ProcessDateTime":"2023-09-14 10:59:14"},
+			{"SRQueueingGroup":"01","QueueingGroup":"Pendaftaran Rawat Jalan","SRQueueingLocation":"01","QueueingLocation":"Lobby Pendaftaran Gedung Utama","SRQueueingType":"01","QueueingType":"Umum","QueueCode":"BD-004","Counter":"2","ServiceUnitID":"U03.02.02","ServiceUnitName":"POLI BEDAH","ProcessDateTime":"2023-09-14 10:45:19"}
+		  ]
+		}
+
+8. End Point GetListQueuePolyclinicBeenCalled
+   - Ket: Untuk mendapatkan list antrian poliklinik di setiap lokasi yang telah di panggil
+   - Url: {baseurl}/api/{accesskey}/Queuing/GetListQueuePolyclinicBeenCalled/{tgl yyyy-MM-dd}
+         - tgl: tanggal antrian
+   - Cth: http://localhost:56210/api/test123/Queuing/GetListQueuePolyclinicBeenCalled/2023-09-14
+	 Return OK:
+		{
+		  "status": "OK",	--> status: OK
+		  "errorCode": "",	--> errorCode: empty, no error
+		  "data": [
+			{"SRQueueingGroup":"02","QueueingGroup":"Pemeriksaan Poliklinik","SRQueueingLocation":"11","QueueingLocation":"Poli Klinik Lt.1","SRQueueingType":"01","QueueingType":"Umum","QueueCode":"BS-004","Counter":"1","ServiceUnitID":"U03.02.02","ServiceUnitName":"POLI BEDAH SARAF","ProcessDateTime":"2023-09-14 10:38:47"},
+			{"SRQueueingGroup":"02","QueueingGroup":"Pemeriksaan Poliklinik","SRQueueingLocation":"12","QueueingLocation":"Poli Klinik Lt.2","SRQueueingType":"01","QueueingType":"Umum","QueueCode":"BD-005","Counter":"1","ServiceUnitID":"U03.02.03","ServiceUnitName":"POLI BEDAH","ProcessDateTime":"2023-09-14 10:38:46"}
+		  ]
+		}
+
+9. End Point GetListQueuePrefix
+   - Ket: Untuk mendapatkan list prefix antrian berdasarkan poli dan dokter
+   - Url: {baseurl}/api/{accesskey}/Queuing/GetListQueuePrefix/{tgl yyyy-MM-dd}/{prefix}
+         - tgl: tanggal antrian
+         - prefix: kode prefix antrian
+   - Cth: http://localhost:56210/api/test123/Queuing/GetListQueuePrefix/2023-09-14/AN
+	 Return OK:
+		{
+		  "status": "OK",	--> status: OK
+		  "errorCode": "",	--> errorCode: empty, no error
+		  "data": [
+			{"ServiceUnitID":"U03.02.01","ServiceUnitName":"POLI ANAK","ParamedicID":"MD-00001","ParamedicName":"dr. Test, SpA(K)","Prefix":"AN"}
+		  ]
+		}
+
+10. End Point GetListQueueBeingServedByPrefix
+   - Ket: Untuk mendapatkan list antrian yang sedang dilayani berdasarkan kode prefix
+   - Url: {baseurl}/api/{accesskey}/Queuing/GetListQueueBeingServedByPrefix/{tgl yyyy-MM-dd}/{prefix}
+         - tgl: tanggal antrian
+         - prefix: kode prefix antrian
+   - Cth: http://localhost:56210/api/test123/Queuing/GetListQueueBeingServedByPrefix/2023-09-14/AN
+	 Return OK:
+		{
+		  "status": "OK",	--> status: OK
+		  "errorCode": "",	--> errorCode: empty, no error
+		  "data": [
+			{"SRQueueingGroup":"01","QueueingGroup":"Pendaftaran Rawat Jalan","SRQueueingLocation":"02","QueueingLocation":"Lobby Pendaftaran Edelweiss","SRQueueingType":"01","QueueingType":"Umum","QueueCode":"AN-002","Counter":"1","ServiceUnitID":"U03.02.01","ServiceUnitName":"POLI ANAK","ProcessDateTime":"2023-09-14 10:45:15"},
+			{"SRQueueingGroup":"02","QueueingGroup":"Pemeriksaan Poliklinik","SRQueueingLocation":"13","QueueingLocation":"Poli Klinik Edelweiss","SRQueueingType":"01","QueueingType":"Umum","QueueCode":"AN-001","Counter":"1","ServiceUnitID":"U03.02.01","ServiceUnitName":"POLI ANAK","ProcessDateTime":"2023-09-14 10:23:50"}
+		  ]
+		}

@@ -1,0 +1,655 @@
+﻿<div>
+    <div class="row">
+        <div class="col-12">
+            <div id="divList" class="card" style="width:100%; border:none;">
+                <div class="card-header">
+                    <h3 class="card-title"><span class='fa fa-lg fa-book'></span> <span lang='id'>Kunjungan Langsung</span><span lang='en'>Appointment</span> </h3>
+                </div>
+                <form class="form-horizontal">
+                    <div class="card-body">
+                        <div class="form-group row">
+                            <label for="txtNoKartu" class="col-sm-3 col-form-label"><span lang='id'>Nomor Kartu/NIK/Rujukan/Kontrol</span><span lang='en'>BPJS Card Number</span></label>
+                            <div class="input-group col-sm-9">
+                                <input type="hidden" id="hdnNoKartu" />
+                                <input type="text" class="form-control" id="txtNoKartu" placeholder="Nomor Kartu BPJS">
+                                <span class="input-group-append">
+                                    <button type="button" id="btnReset" class="btn btn-info btn-flat" onclick="ResetInput();"><i class="fas fa-sync"></i> Reset</button>
+                                </span>
+                                <span class="input-group-append">
+                                    &nbsp;
+                                </span>
+                                <span class="input-group-append">
+                                    <button type="button" id="btnGoNoKartu" class="btn btn-info btn-flat" onclick="NoKartuGo(this);"><i class="fas fa-search"></i> Go!</button>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="txtNoKartu" class="col-sm-3 col-form-label"><span lang='id'>Nomor HP</span><span lang='en'>Mobile Phone Number</span></label>
+                            <div class="input-group col-sm-9">
+                                <input type="text" class="form-control" id="txtNoHP" placeholder="Nomor HP">
+                                <span class="input-group-append">
+                                </span>
+                                <span class="input-group-append">
+                                    &nbsp;
+                                </span>
+                                <span class="input-group-append">
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="cboNoRujukan" class="col-sm-3 col-form-label"><span lang='id'>Nomor Rujukan/Kontrol</span><span lang='en'>Reference Number</span></label>
+                            <div class="input-group col-sm-9">
+                                <select class="form-control" id="cboNoRujukan" onchange="cboNoRujukan_Chage(this.value)"></select>
+                                <span class="input-group-append">
+                                    <button type="button" id="btnGoNoRujukan" class="btn btn-info btn-flat" onclick="NoRujukanGo(this);"><i class="fas fa-search"></i> Go!</button>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="txtTanggal" class="col-sm-3 col-form-label"><span lang='id'>Tanggal Kunjungan</span><span lang='en'>Appointment Date</span></label>
+                            <div class="input-group col-sm-9">
+                                <input type="text" class="form-control" id="txtTanggal">
+                                <span class="input-group-append">
+                                    <button type="button" id="btnGoTanggal" class="btn btn-info btn-flat" onclick="TanggalGo(this);"><i class="fas fa-search"></i> Go!</button>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="cboDokter" class="col-sm-3 col-form-label"><span lang='id'>Dokter</span><span lang='en'>Physician</span></label>
+                            <div class="input-group col-sm-9">
+                                <select class="form-control" id="cboDokter">
+                                </select>
+                                <span class="input-group-append">
+                                    <button type="button" id="btnGoDokter" class="btn btn-info btn-flat" onclick="DokterGO(this);"><i class="fas fa-search"></i> Go!</button>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="cboJamSlot" class="col-sm-3 col-form-label"><span lang='id'>Jam Slot</span><span lang='en'>Time Slot</span></label>
+                            <div class="input-group col-sm-9">
+                                <select class="form-control" id="cboJamSlot">
+                                </select>
+                                <span class="input-group-append">
+                                    <button type="button" id="btnGoJamSlot" class="btn btn-info btn-flat" onclick="JamSlotGO(this);"><i class="fas fa-search"></i> Go! Rencana Kunjungan</button>
+                                    <a class="btn btn-outline-info btn-flat" href="fsbpjs://test/"><i class="fas fa-fingerprint"></i> Finger Scan</a>
+                                    <button type="button" id="btnGoJamSlotCheckIn" class="btn btn-info btn-flat" onclick="JamSlotCheckInGO(this);"><i class="fas fa-search"></i> Go! Rencana Kunjungan & Check In</button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">
+                        <i class="fas fa-hospital-user"></i>
+                        <span lang='id'>Rencana Kunjungan Anda</span><span lang='en'>Your Appointment</span>
+                    </h3>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-9">
+                            <dl class="row">
+                                <dt class="col-sm-3 text-right"><span lang='id'>Nomor Antrean Registrasi</span><span lang='en'>Queueing Number</span></dt>
+                                <dd class="col-sm-9" id="ddNoAntrianReg">........</dd>
+                                <dt class="col-sm-3 text-right"><span lang='id'>Nomor Antrean Poli</span><span lang='en'>Queueing Number</span></dt>
+                                <dd class="col-sm-9" id="ddNoAntrian">........</dd>
+                                <dt class="col-sm-3 text-right"><span lang='id'>Kode Booking</span><span lang='en'>Booking Number</span></dt>
+                                <dd class="col-sm-9" id="ddNoBooking">........</dd>
+                                <dt class="col-sm-3 text-right"><span lang='id'>Poliklinik</span><span lang='en'>Polyclinic</span></dt>
+                                <dd class="col-sm-9" id="ddPoli">........</dd>
+                                <dt class="col-sm-3 text-right"><span lang='id'>Dokter</span><span lang='en'>Physician</span></dt>
+                                <dd class="col-sm-9" id="ddDokter">........</dd>
+                                <dt class="col-sm-3 text-right"><span lang='id'>Estimasi Jam Dilayani</span><span lang='en'>Estimasi Jam Dilayani</span></dt>
+                                <dd class="col-sm-9" id="ddEstimasi">........</dd>
+                            </dl>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="row">
+                                <div id="qrcode"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.card-body -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<script language="javascript">
+    function cboNoRujukan_Chage(value) {
+        if (value.split('#')[3] == '0') {
+            $("#txtTanggal").datepicker({ dateFormat: "yy-mm-dd" }).datepicker("setDate", new Date(value.split('#')[4]));
+        }
+        else {
+            console.log('test');
+            $("#txtTanggal").datepicker({ dateFormat: "yy-mm-dd" }).datepicker("setDate", new Date());
+        }
+    }
+
+    var qrcode = new QRCode(document.getElementById("qrcode"));
+
+    var dummy = "";//"Dummy";
+
+    // variables
+    var currStep = 0;
+    var kodePoli = "";
+    var tanggalYMD = "";
+    var rujukan = null;
+    var byRujukan = '';
+
+    // startup script
+    $(document).ready(function () {
+        $('#txtTanggal').datepicker({
+            dateFormat: "dd/mm/yy"
+        });
+
+        ResetValue();
+        EnableInterface();
+    });
+
+    // functions
+    function ResetInput() {
+        SetPage(2); // dari pada susah2 reset value
+
+        //ResetValue();
+        //EnableInterface();
+        //ResetDisplayRencanaKunjungan();
+    }
+
+    function ResetValue() {
+        currStep = 0;
+        kodePoli = "";
+        tanggalYMD = "";
+        rujukan = null;
+
+        $("#txtNoKartu").val("");
+        $("#txtNoHP").val("");
+        $("#cboNoRujukan").empty();
+        $('#cboDokter').empty();
+        $('#cboJamSlot').empty();
+        $("#txtTanggal").datepicker({ dateFormat: "yy-mm-dd" }).datepicker("setDate", new Date());
+
+        //ResetInput();
+    }
+
+    function SetStep(val) {
+        currStep = val;
+        EnableInterface();
+    }
+
+    function EnableInterface() {
+        //$("input").prop('disabled', true);
+        //$("input").prop('disabled', false);
+
+        $("#cboNoRujukan").prop('disabled', currStep < 1);
+        $("#btnGoNoRujukan").prop('disabled', currStep < 1);
+        $("#txtTanggal").prop('disabled', currStep < 2);
+        $("#btnGoTanggal").prop('disabled', currStep < 2);
+        $("#cboDokter").prop('disabled', currStep < 3);
+        $("#btnGoDokter").prop('disabled', currStep < 3);
+        $("#cboJamSlot").prop('disabled', currStep < 4);
+        $("#btnGoJamSlot").prop('disabled', currStep < 4);
+        $("#btnGoJamSlotCheckIn").prop('disabled', currStep < 4);
+    }
+
+    function NoKartuGo(btn) {
+        var noKartu = $("#txtNoKartu").val();
+        if (CoreIsNullOrEmpty(noKartu)) {
+            // do what?
+            ShowError("Invalid Card Number");
+            return;
+        }
+
+        CoreButtonLoadingOn($(btn));
+
+        $.ajax({
+            type: 'GET',
+            url: BaseURL + "/antrol/selfcheckin/GetRujukanByNoPeserta" + dummy + "/" + noKartu,
+            success: function (data) {
+                // do something
+                console.log(data);
+                if (data.metadata.Code == "200") {
+                    console.log(data);
+
+                    $("#hdnNoKartu").val(data.metadata.NoKartu);
+                    $("#txtNoHP").val(data.metadata.MobilePhoneNo);
+
+                    if (data.metadata.Message.length == 0) {
+                        ShowError('Data rujukan tidak ditemukan');
+                    }
+                    else {
+                        var cbo = $('#cboNoRujukan');
+                        cbo.empty();//.children().remove();
+                        for (var i = 0; i < data.metadata.Message.length; i++) {
+                            if (i == 0) {
+                                if (data.metadata.Message[i].Value.split('#')[3] == '0') {
+                                    $("#txtTanggal").datepicker({ dateFormat: "yy-mm-dd" }).datepicker("setDate", new Date(data.metadata.Message[i].Value.split('#')[4]));
+                                }
+                            }
+                            cbo.append(new Option(data.metadata.Message[i].Text, data.metadata.Message[i].Value));
+                        }
+                        if (data.metadata.Message.length > 0) SetStep(1);
+                    }
+                } else {
+                    ShowError(data.metadata.Message);
+                }
+
+                CoreButtonLoadingOff($(btn));
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                CoreButtonLoadingOff($(btn));
+                try {
+                    ShowError(xhr.responseJSON.metadata.Message);
+                } catch {
+                    ShowError(xhr.responseText);
+                }
+            },
+            dataType: 'json'
+        });
+    }
+
+    function NoRujukanGo(btn) {
+        var nohp = $("#txtNoHP").val();
+        if (CoreIsNullOrEmpty(nohp)) {
+            ShowError("Empty Mobile Phone Number");
+            return;
+        }
+
+        var noRujukan = $("#cboNoRujukan").val().split('#')[0];
+        byRujukan = $("#cboNoRujukan").val().split('#')[3];
+
+
+        if (CoreIsNullOrEmpty(noRujukan)) {
+            ShowError("Invalid Reference Number");
+            return;
+        }
+        var noKartu = $("#hdnNoKartu").val();
+
+        CoreButtonLoadingOn($(btn));
+
+        $.ajax({
+            type: 'GET',
+            url: BaseURL + "/antrol/selfcheckin/GetPesertaDanRujukanByNoPeserta" + dummy + "/" + noKartu + "/" + noRujukan + "/" + byRujukan,
+            success: function (data) {
+                // do something
+                //console.log(data);
+                if (data.metadata.Code == "200") {
+                    try {
+                        rujukan = data.metadata.Message.response.rujukan;
+                        kodePoli = rujukan.poliRujukan.kode;
+                        SetStep(2);
+                    } catch {
+                        ShowError("Return object too complicated"); //
+                    }
+
+                } else {
+                    ShowError(data.metadata.Message);
+                }
+                CoreButtonLoadingOff($(btn));
+
+                $("#btnGoTanggal").click();
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                CoreButtonLoadingOff($(btn));
+                try {
+                    ShowError(xhr.responseJSON.metadata.Message);
+                } catch {
+                    ShowError(xhr.responseText);
+                }
+            },
+            dataType: 'json'
+        });
+
+    }
+
+    function TanggalGo(btn) {
+        var nohp = $("#txtNoHP").val();
+        if (CoreIsNullOrEmpty(nohp)) {
+            ShowError("Empty Mobile Phone Number");
+            return;
+        }
+
+        var dateYMD = moment($('#txtTanggal').datepicker("getDate")).format('YYYY-MM-DD');
+        if (dateYMD == "Invalid date") {
+            ShowError(dateYMD);
+            return;
+        }
+
+        tanggalYMD = dateYMD
+        byRujukan = $("#cboNoRujukan").val().split('#')[3];
+
+        if (byRujukan == "0") {
+            var tanggal = $("#cboNoRujukan").val().split('#')[4];
+            if (tanggalYMD != tanggal) {
+                ShowError('Tanggal Kunjungan tidak sesuai dengan Surat Kontrol');
+                return;
+            }
+        }
+
+        CoreButtonLoadingOn($(btn));
+
+        var kdPoli = $("#cboNoRujukan").val().split('#')[1];
+        var noKunjungan = $("#cboNoRujukan").val().split('#')[0];
+
+        $.ajax({
+            type: 'GET',
+            url: BaseURL + "/antrol/selfcheckin/GetDokterByTanggalDanKodePoliSelfCheckIn/" + tanggalYMD + "/" + kdPoli + "/" + byRujukan + "/" + noKunjungan,
+            success: function (data) {
+                // do something
+                // console.log(data);
+                if (data.metadata.Code == "200") {
+                    var cbo = $('#cboDokter');
+                    cbo.empty();//.children().remove();
+
+                    //if (data.metadata.Message.length == 0) {
+                    //    cbo.append(new Option("--pilih--", ""));
+                    //}
+
+                    for (var i = 0; i < data.metadata.Message.length; i++) {
+                        cbo.append(new Option(data.metadata.Message[i].ParamedicName, data.metadata.Message[i].ParamedicID));
+                    }
+                    if (data.metadata.Message.length > 0) SetStep(3);
+                } else {
+                    ShowError(data.metadata.Message);
+                }
+                CoreButtonLoadingOff($(btn));
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                CoreButtonLoadingOff($(btn));
+                try {
+                    ShowError(xhr.responseJSON.metadata.Message);
+                } catch {
+                    ShowError(xhr.responseText);
+                }
+            },
+            dataType: 'json'
+        });
+    }
+
+    function DokterGO(btn) {
+        var nohp = $("#txtNoHP").val();
+        if (CoreIsNullOrEmpty(nohp)) {
+            ShowError("Empty Mobile Phone Number");
+            return;
+        }
+
+        var kodeDokter = $('#cboDokter').val();
+        if (CoreIsNullOrEmpty(kodeDokter)) {
+            ShowError("Invalid Physician");
+            return;
+        }
+
+        CoreButtonLoadingOn($(btn));
+
+        var dateYMD = moment($('#txtTanggal').datepicker("getDate")).format('YYYY-MM-DD');
+        if (dateYMD == "Invalid date") {
+            ShowError(dateYMD);
+            return;
+        }
+
+        tanggalYMD = dateYMD;
+
+        $.ajax({
+            type: 'GET',
+            url: BaseURL + "/antrol/selfcheckin/GetJadwalDokterByTanggalKodePoliDanKodeDokter/" + tanggalYMD + "/" + kodePoli + "/" + kodeDokter,
+            success: function (data) {
+                // do something
+                // console.log(data);
+                if (data.metadata.Code == "200") {
+                    var cbo = $('#cboJamSlot');
+                    cbo.empty();//.children().remove();
+                    for (var i = 0; i < data.metadata.Message.length; i++) {
+                        cbo.append(new Option(data.metadata.Message[i].Text, data.metadata.Message[i].Value));
+                    }
+                    if (data.metadata.Message.length > 0) SetStep(4);
+                } else {
+                    ShowError(data.metadata.Message);
+                }
+                CoreButtonLoadingOff($(btn));
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                CoreButtonLoadingOff($(btn));
+                try {
+                    ShowError(xhr.responseJSON.metadata.Message);
+                } catch {
+                    ShowError(xhr.responseText);
+                }
+            },
+            dataType: 'json'
+        });
+    }
+
+    function JamSlotGO(btn) {
+        var nohp = $("#txtNoHP").val();
+        if (CoreIsNullOrEmpty(nohp)) {
+            ShowError("Empty Mobile Phone Number");
+            return;
+        }
+
+        console.log($('#cboDokter').val());
+        console.log($('#cboJamSlot').val());
+
+        var dateYMD = moment($('#txtTanggal').datepicker("getDate")).format('YYYY-MM-DD');
+        if (dateYMD == "Invalid date") {
+            ShowError(dateYMD);
+            return;
+        }
+
+        var kunjungan = $("#cboNoRujukan").val().split('#')[2];
+        byRujukan = $("#cboNoRujukan").val().split('#')[3];
+
+        tanggalYMD = dateYMD;
+
+        var RootParam = {
+            Nomorkartu: rujukan.peserta.noKartu,//rujukan.peserta.noKartu,
+            Nik: rujukan.peserta.nik,
+            Nohp: nohp,
+            Kodepoli: rujukan.poliRujukan.kode,
+            Norm: rujukan.peserta.mr.noMR,
+            Tanggalperiksa: tanggalYMD,
+            Kodedokter: $('#cboDokter').val(),
+            Jampraktek: $('#cboJamSlot').val().split('#')[1],
+            Jeniskunjungan: kunjungan,
+            Nomorreferensi: rujukan.noKunjungan,
+            Byrujukan: byRujukan,
+            NoRujukan: rujukan.noKunjungan,
+            ServiceUnitID: $('#cboJamSlot').val().split('#')[0]
+        };
+        //console.log(RootParam)
+        var rpSTR = JSON.stringify(RootParam);
+
+        CoreButtonLoadingOn($(btn));
+
+        $.ajax({
+            type: 'POST',
+            cache: false,
+            contentType: 'application/json; charset=utf-8',
+            url: BaseURL + "/antrol/selfcheckin/PostRencanaKunjungan",
+            data: rpSTR,
+            success: function (data) {
+                // do something
+                console.log(data);
+
+                if (data.metadata.code == "200") {
+                    var dlgInfo = ShowSuccess("Terima kasih, pembuatan rencana kontrol selesai");
+                    setTimeout(function () {
+                        var isShown = dlgInfo.hasClass('show');
+                        if (isShown) {
+                            dlgInfo.modal('hide');
+                        }
+                    }, 5000);
+
+                    //console.log(data.Response);
+                    ShowCreatedRencanaKunjungan(data.response);
+
+                    SetStep(5);
+                } else {
+                    ShowError(data.metadata.message);
+                }
+                CoreButtonLoadingOff($(btn));
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                CoreButtonLoadingOff($(btn));
+                try {
+                    ShowError(xhr.responseJSON.metadata.Message);
+                } catch {
+                    ShowError(xhr.responseText);
+                }
+            },
+            dataType: 'json'
+        });
+    }
+
+    function JamSlotCheckInGO(btn) {
+        var nohp = $("#txtNoHP").val();
+        if (CoreIsNullOrEmpty(nohp)) {
+            ShowError("Empty Mobile Phone Number");
+            return;
+        }
+
+        console.log($('#cboDokter').val());
+        console.log($('#cboJamSlot').val());
+
+        var dateYMD = moment($('#txtTanggal').datepicker("getDate")).format('YYYY-MM-DD');
+        if (dateYMD == "Invalid date") {
+            ShowError(dateYMD);
+            return;
+        }
+
+        var kunjungan = $("#cboNoRujukan").val().split('#')[2];
+        byRujukan = $("#cboNoRujukan").val().split('#')[3];
+
+        tanggalYMD = dateYMD;
+
+        var RootParam = {
+            Nomorkartu: rujukan.peserta.noKartu,//rujukan.peserta.noKartu,
+            Nik: rujukan.peserta.nik,
+            Nohp: nohp,
+            Kodepoli: rujukan.poliRujukan.kode,
+            Norm: rujukan.peserta.mr.noMR,
+            Tanggalperiksa: tanggalYMD,
+            Kodedokter: $('#cboDokter').val(),
+            Jampraktek: $('#cboJamSlot').val().split('#')[1],
+            Jeniskunjungan: kunjungan,
+            Nomorreferensi: rujukan.noKunjungan,
+            Byrujukan: byRujukan
+        };
+        //console.log(RootParam)
+        var rpSTR = JSON.stringify(RootParam);
+
+        CoreButtonLoadingOn($(btn));
+
+        $.ajax({
+            type: 'POST',
+            cache: false,
+            contentType: 'application/json; charset=utf-8',
+            url: BaseURL + "/antrol/selfcheckin/PostRencanaKunjungan",
+            data: rpSTR,
+            success: function (data) {
+                // do something
+                console.log(data);
+
+                if (data.metadata.code == "200") {
+                    //ShowSuccess("Terima kasih, pembuatan rencana kontrol selesai");
+                    //setTimeout(function () {
+                    //    var isShown = dlgInfo.hasClass('show');
+                    //    if (isShown) {
+                    //        dlgInfo.modal('hide');
+                    //    }
+                    //}, 1000);
+
+                    //console.log(data.Response);
+                    ShowCreatedRencanaKunjungan(data.response);
+
+                    const urlParams = new URLSearchParams(window.location.search);
+                    const param = urlParams.get('param') == null ? '' : urlParams.get('param');
+
+                    // check in
+                    RootParam = {
+                        NoRujukan: data.response.kodebooking,
+                        Tipe: '1',
+                        Param: param
+                    };
+                    //console.log(RootParam)
+                    rpSTR = JSON.stringify(RootParam);
+
+                    $.ajax({
+                        type: 'POST',
+                        cache: false,
+                        contentType: 'application/json; charset=utf-8',
+                        url: BaseURL + "/antrol/selfcheckin/postselfcheckIn",
+                        data: rpSTR,
+                        success: function (data) {
+                            console.log(data);
+                            if (data.metadata.Code == "200") {
+                                //console.log(data.Response);
+                                //dlgInfo = ShowSuccess("Terima kasih untuk mengantri, nomor antrean Anda adalah:<hr /><H1>" + data.metadata.code + "</H1>");
+                                var dlgInfo = ShowSuccess("Terima kasih, pembuatan rencana kontrol dan proses check in selesai");
+                                setTimeout(function () {
+                                    var isShown = dlgInfo.hasClass('show');
+                                    if (isShown) {
+                                        dlgInfo.modal('hide');
+                                    }
+                                }, 5000);
+                                ResetValue();
+                            } else {
+                                ShowError(data.metadata.message);
+                            }
+                            //CoreButtonLoadingOff($(btn));
+                        },
+                        error: function (xhr, ajaxOptions, thrownError) {
+                            //CoreButtonLoadingOff($(btn));
+                            try {
+                                ShowError(xhr.responseJSON.metadata.Message);
+                            } catch {
+                                ShowError(xhr.responseText);
+                            }
+                        },
+                        dataType: 'json'
+                    });
+
+                    SetStep(5);
+                } else {
+                    ShowError(data.metadata.message);
+                }
+                CoreButtonLoadingOff($(btn));
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                CoreButtonLoadingOff($(btn));
+                try {
+                    ShowError(xhr.responseJSON.metadata.Message);
+                } catch {
+                    ShowError(xhr.responseText);
+                }
+            },
+            dataType: 'json'
+        });
+    }
+
+    function ShowCreatedRencanaKunjungan(Resp) {
+        $("#ddNoAntrianReg").html(Resp.nomorantreanregistrasi);
+        $("#ddNoAntrian").html(Resp.nomorantrean);
+        $("#ddNoBooking").html(Resp.kodebooking);
+        $("#ddPoli").html(Resp.namapoli);
+        $("#ddDokter").html(Resp.namadokter);
+        $("#ddEstimasi").html(Resp.estimasijam);
+
+        console.log(Resp);
+
+        if (Resp.showqrcode == '1') {
+            qrcode.makeCode(Resp.kodebooking);
+        }
+    }
+
+    function ResetDisplayRencanaKunjungan() {
+        $("#ddNoAntrianReg").html('');
+        $("#ddNoAntrian").html('');
+        $("#ddNoBooking").html('');
+        $("#ddPoli").html('');
+        $("#ddDokter").html('');
+        $("#ddEstimasi").html('');
+    }
+</script>

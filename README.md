@@ -2,7 +2,6 @@
 
 **Avicenna** adalah aplikasi **Sistem Informasi Manajemen Rumah Sakit (SIMRS)** berbasis **.NET Framework 4.5**.  
 Aplikasi ini dirancang untuk membantu manajemen rumah sakit dalam mengelola berbagai proses operasional secara terintegrasi, mulai dari pendaftaran pasien hingga laporan keuangan.
-Saat ini aplikasi dikelola oleh Yayasan Badan Rumah Sakit GKP.
 
 ---
 
