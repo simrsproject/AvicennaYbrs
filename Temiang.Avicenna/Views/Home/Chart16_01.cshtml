@@ -1,0 +1,447 @@
+﻿
+<div class="row justify-content-end">
+    <div class="col-xl-3 col-lg-4 col-md-6 border border-top-0 border-left-0 border-right-0">
+        <div class="input-group">
+            <a href="#" class="btn btn-outline-info" onclick="CreateCharts16_01();"><i class="fas fa-sync"></i></a>
+            <div class="input-group-prepend">
+                <span class="input-group-text">
+                    <i class="fa fa-calendar"></i>
+                </span>
+            </div>
+            <input type="text" class="form-control float-right" id="dateRange">
+        </div>
+    </div>
+</div>
+<div class="row">
+    @{
+        var appPrgChart = ((AppProgramCollection)ViewBag.AppLink).Where(a => a.ParentProgramID.Equals("16.01"));
+        foreach (var appChart in appPrgChart)
+        {
+            @*<div class="col-sm-12 col-md-6 col-lg-4 text-center">*@
+            <div class="@(string.IsNullOrEmpty(appChart.AssemblyClassName) ? "col-sm-12 col-md-6 col-lg-4 text-center" : appChart.AssemblyClassName)">
+                @(appChart.ProgramName)
+                <canvas id="chart@(appChart.ProgramID.Replace(".", "_"))"></canvas>
+                <div id="divLoadingChart@(appChart.ProgramID.Replace(".", "_"))" style="display:none;">
+                    <h3><i class='fas fa-radiation fa-lg fa-spin'></i> Loading...</h3>
+                </div>
+            </div>
+        }
+    }
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#dateRange').daterangepicker({
+            "startDate": moment(),
+            "endDate": moment(),
+            "autoApply": true,
+            "buttonClasses": "btn-info",
+            ranges: {
+                'Today': [moment(), moment()],
+                'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+                'This Month': [moment().startOf('month'), moment().endOf('month')]
+            }
+        }, function (start, end) {
+            CreateCharts16_01();
+        });
+        CreateCharts16_01();
+    });
+
+    function PrevChart16_01() {
+        dateChart16_01.setMonth(dateChart16_01.getMonth() - 1);
+        CreateCharts16_01();
+    }
+    function NextChart16_01() {
+        dateChart16_01.setMonth(dateChart16_01.getMonth() + 1);
+        CreateCharts16_01();
+    }
+
+    function CreateCharts16_01() {    
+        @{
+            var starter = "@";
+            foreach (var appChart in appPrgChart)
+            {
+                starter = starter.Replace("@",
+                    string.Format("{1}{3}Chart{0}(@);{4}{2}",
+                        appChart.ProgramID.Replace(".", "_"),
+                        starter.Length == 1 ? "" : "function(){",
+                        starter.Length == 1 ? "" : "}",
+                        "try{", "}catch{}"));
+            }
+            starter = starter.Replace("@", "");
+                @:@starter
+        }
+    }
+
+    var cfg16_01_01 = null;
+    var obj16_01_01 = null;
+    function Chart16_01_01(fnCallBack) {
+        //alert(fnCallBack);
+        //console.log(BaseURL + "/Home/ChartRegIpVisitByGuarantor");
+        $('#chart16_01_01').hide();
+        var divLoading = $('#divLoadingChart16_01_01');
+        CoreAHrefLoadingOn(divLoading);
+        divLoading.show();
+        $.ajax({
+            type: 'POST',
+            url: BaseURL + "/Home/ChartRegIpVisitByGuarantor",
+            data: {
+                DateStart: moment($('#dateRange').data('daterangepicker').startDate).format('YYYY-MM-DD'),
+                DateEnd: moment($('#dateRange').data('daterangepicker').endDate).format('YYYY-MM-DD')
+            },
+            success: function (data) {
+                //console.log(data);
+                if (data.status == _sJsonRequestOkStatus) {
+
+                    $('#chart16_01_01').show();
+                    divLoading.hide();
+
+                    // for pie, remove borderColor
+                    //console.log(data.data);
+                    delete data.data.datasets[0].borderColor;
+                    delete data.data.datasets[0].fill;
+                    //console.log(data.data);
+
+                    if (obj16_01_01 == null) {
+                        var ctx16_01_01 = $('#chart16_01_01');
+                        cfg16_01_01 = {
+                            type: 'pie',
+                            data: data.data,
+                            options: {
+                                responsive: true,
+                                tooltips: {
+                                    callbacks: {
+                                        label: (tooltipItems, data) => {
+                                            // hitung persentase
+                                            var sumx = data.datasets[tooltipItems.datasetIndex].data.reduce(function (a, b) {
+                                                return a + b;
+                                            }, 0);
+                                            return data.datasets[tooltipItems.datasetIndex].data[tooltipItems.index] +
+                                                ' / ' + sumx + ' (' + (data.datasets[tooltipItems.datasetIndex].data[tooltipItems.index] / sumx * 100).toFixed(2) + '%)';
+                                        }
+                                    },
+                                }
+                            }
+                        };
+                        obj16_01_01 = new Chart(ctx16_01_01, cfg16_01_01);
+                    } else {
+                        cfg16_01_01.data = data.data;
+                        obj16_01_01.update();
+                        //console.log(dcConfig);
+                    }
+                } else {
+                    ShowError(data.data);
+                }
+
+                if (!CoreIsNullOrEmpty(fnCallBack)) {
+                    fnCallBack();
+                }
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                ShowError(xhr.responseText);
+            },
+            dataType: 'json'
+        });
+    }
+
+    var cfg16_01_02 = null;
+    var obj16_01_02 = null;
+    function Chart16_01_02(fnCallBack) {
+        //alert(fnCallBack);
+        $('#chart16_01_02').hide();
+        var divLoading = $('#divLoadingChart16_01_02');
+        CoreAHrefLoadingOn(divLoading);
+        divLoading.show();
+        $.ajax({
+            type: 'POST',
+            url: BaseURL + "/Home/ChartRegOpVisitByGuarantor",
+            data: {
+                DateStart: moment($('#dateRange').data('daterangepicker').startDate).format('YYYY-MM-DD'),
+                DateEnd: moment($('#dateRange').data('daterangepicker').endDate).format('YYYY-MM-DD')
+            },
+            success: function (data) {
+                if (data.status == _sJsonRequestOkStatus) {
+                    $('#chart16_01_02').show();
+                    divLoading.hide();
+
+                    // for pie, remove borderColor
+                    //console.log(data.data);
+                    delete data.data.datasets[0].borderColor;
+                    delete data.data.datasets[0].fill;
+                    //console.log(data.data);
+
+                    if (obj16_01_02 == null) {
+                        var ctx16_01_02 = $('#chart16_01_02');
+                        cfg16_01_02 = {
+                            type: 'pie',
+                            data: data.data,
+                            options: {
+                                responsive: true,
+                                tooltips: {
+                                    callbacks: {
+                                        label: (tooltipItems, data) => {
+                                            // hitung persentase
+                                            var sumx = data.datasets[tooltipItems.datasetIndex].data.reduce(function (a, b) {
+                                                return a + b;
+                                            }, 0);
+                                            return data.datasets[tooltipItems.datasetIndex].data[tooltipItems.index] +
+                                                ' / ' + sumx + ' (' + (data.datasets[tooltipItems.datasetIndex].data[tooltipItems.index] / sumx * 100).toFixed(2) + '%)';
+                                        }
+                                    },
+                                }
+                            }
+                        };
+                        obj16_01_02 = new Chart(ctx16_01_02, cfg16_01_02);
+                    } else {
+                        cfg16_01_02.data = data.data;
+                        obj16_01_02.update();
+                        //console.log(dcConfig);
+                    }
+                } else {
+                    ShowError(data.data);
+                }
+
+                if (!CoreIsNullOrEmpty(fnCallBack)) {
+                    fnCallBack();
+                }
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                ShowError(xhr.responseText);
+            },
+            dataType: 'json'
+        });
+    }
+
+    var cfg16_01_03 = null;
+    var obj16_01_03 = null;
+    function Chart16_01_03(fnCallBack) {
+        //alert(fnCallBack);
+        $('#chart16_01_03').hide();
+        var divLoading = $('#divLoadingChart16_01_03');
+        CoreAHrefLoadingOn(divLoading);
+        divLoading.show();
+        $.ajax({
+            type: 'POST',
+            url: BaseURL + "/Home/ChartRegEmByTriage",
+            data: {
+                DateStart: moment($('#dateRange').data('daterangepicker').startDate).format('YYYY-MM-DD'),
+                DateEnd: moment($('#dateRange').data('daterangepicker').endDate).format('YYYY-MM-DD')
+            },
+            success: function (data) {
+                if (data.status == _sJsonRequestOkStatus) {
+                    $('#chart16_01_03').show();
+                    divLoading.hide();
+                    // for pie, remove borderColor
+                    //console.log(data.data);
+                    delete data.data.datasets[0].borderColor;
+                    delete data.data.datasets[0].fill;
+                    //console.log(data.data);
+
+                    if (obj16_01_03 == null) {
+                        var ctx16_01_03 = $('#chart16_01_03');
+                        cfg16_01_03 = {
+                            type: 'pie',
+                            data: data.data,
+                            options: {
+                                responsive: true,
+                                tooltips: {
+                                    callbacks: {
+                                        label: (tooltipItems, data) => {
+                                            // hitung persentase
+                                            var sumx = data.datasets[tooltipItems.datasetIndex].data.reduce(function (a, b) {
+                                                return a + b;
+                                            }, 0);
+                                            return data.datasets[tooltipItems.datasetIndex].data[tooltipItems.index] +
+                                                ' / ' + sumx + ' (' + (data.datasets[tooltipItems.datasetIndex].data[tooltipItems.index] / sumx * 100).toFixed(2) + '%)';
+                                        }
+                                    },
+                                }
+                            }
+                        };
+                        obj16_01_03 = new Chart(ctx16_01_03, cfg16_01_03);
+                    } else {
+                        cfg16_01_03.data = data.data;
+                        obj16_01_03.update();
+                        //console.log(dcConfig);
+                    }
+                } else {
+                    ShowError(data.data);
+                }
+
+                if (!CoreIsNullOrEmpty(fnCallBack)) {
+                    fnCallBack();
+                }
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                ShowError(xhr.responseText);
+            },
+            dataType: 'json'
+        });
+    }
+
+    var cfg16_01_04 = null;
+    var obj16_01_04 = null;
+    function Chart16_01_04(fnCallBack) {
+        $('#chart16_01_04').hide();
+        var divLoading = $('#divLoadingChart16_01_04');
+        CoreAHrefLoadingOn(divLoading);
+        divLoading.show();
+        $.ajax({
+            type: 'POST',
+            url: BaseURL + "/Home/ChartRegIpCountByClass",
+            data: {
+                DateStart: moment($('#dateRange').data('daterangepicker').startDate).format('YYYY-MM-DD'),
+                DateEnd: moment($('#dateRange').data('daterangepicker').endDate).format('YYYY-MM-DD')
+            },
+            success: function (data) {
+                $('#chart16_01_04').show();
+                divLoading.hide();
+                if (data.status == _sJsonRequestOkStatus) {
+
+                    if (obj16_01_04 == null) {
+                        var ctx16_01_04 = $('#chart16_01_04');
+                        cfg16_01_04 = {
+                            type: 'line',
+                            data: data.data,
+                            options: {
+                                scales: {
+                                    yAxes: [{
+                                        ticks: {
+                                            beginAtZero: true
+                                        }
+                                    }]
+                                }
+                            }
+                        };
+                        obj16_01_04 = new Chart(ctx16_01_04, cfg16_01_04);
+                    } else {
+                        cfg16_01_04.data = data.data;
+                        obj16_01_04.update();
+                        //console.log(dcConfig);
+                    }
+                } else {
+                    ShowError(data.data);
+                }
+
+                if (!CoreIsNullOrEmpty(fnCallBack)) {
+                    fnCallBack();
+                }
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                ShowError(xhr.responseText);
+            },
+            dataType: 'json'
+        });
+    }
+
+    var cfg16_01_05 = null;
+    var obj16_01_05 = null;
+    function Chart16_01_05(fnCallBack) {
+        $('#chart16_01_05').hide();
+        var divLoading = $('#divLoadingChart16_01_05');
+        CoreAHrefLoadingOn(divLoading);
+        divLoading.show();
+        $.ajax({
+            type: 'POST',
+            url: BaseURL + "/Home/ChartRegOpCountBySU",
+            data: {
+                DateStart: moment($('#dateRange').data('daterangepicker').startDate).format('YYYY-MM-DD'),
+                DateEnd: moment($('#dateRange').data('daterangepicker').endDate).format('YYYY-MM-DD')
+            },
+            success: function (data) {
+                $('#chart16_01_05').show();
+                divLoading.hide();
+                if (data.status == _sJsonRequestOkStatus) {
+
+                    if (obj16_01_05 == null) {
+                        var ctx16_01_05 = $('#chart16_01_05');
+                        cfg16_01_05 = {
+                            type: 'line',
+                            data: data.data,
+                            options: {
+                                scales: {
+                                    yAxes: [{
+                                        ticks: {
+                                            beginAtZero: true
+                                        }
+                                    }]
+                                }
+                            }
+                        };
+                        obj16_01_05 = new Chart(ctx16_01_05, cfg16_01_05);
+                    } else {
+                        cfg16_01_05.data = data.data;
+                        obj16_01_05.update();
+                        //console.log(dcConfig);
+                    }
+                } else {
+                    ShowError(data.data);
+                }
+
+                if (!CoreIsNullOrEmpty(fnCallBack)) {
+                    fnCallBack();
+                }
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                ShowError(xhr.responseText);
+            },
+            dataType: 'json'
+        });
+    }
+
+    var cfg16_01_06 = null;
+    var obj16_01_06 = null;
+    function Chart16_01_06(fnCallBack) {
+        $('#chart16_01_06').hide();
+        var divLoading = $('#divLoadingChart16_01_06');
+        CoreAHrefLoadingOn(divLoading);
+        divLoading.show();
+        $.ajax({
+            type: 'POST',
+            url: BaseURL + "/Home/ChartRegEmCountByCaseType",
+            data: {
+                DateStart: moment($('#dateRange').data('daterangepicker').startDate).format('YYYY-MM-DD'),
+                DateEnd: moment($('#dateRange').data('daterangepicker').endDate).format('YYYY-MM-DD')
+            },
+            success: function (data) {
+                $('#chart16_01_06').show();
+                divLoading.hide();
+                if (data.status == _sJsonRequestOkStatus) {
+
+                    if (obj16_01_06 == null) {
+                        var ctx16_01_06 = $('#chart16_01_06');
+                        cfg16_01_06 = {
+                            type: 'line',
+                            data: data.data,
+                            options: {
+                                scales: {
+                                    yAxes: [{
+                                        ticks: {
+                                            beginAtZero: true
+                                        }
+                                    }]
+                                }
+                            }
+                        };
+                        obj16_01_06 = new Chart(ctx16_01_06, cfg16_01_06);
+                    } else {
+                        cfg16_01_06.data = data.data;
+                        obj16_01_06.update();
+                        //console.log(dcConfig);
+                    }
+                } else {
+                    ShowError(data.data);
+                }
+
+                if (!CoreIsNullOrEmpty(fnCallBack)) {
+                    fnCallBack();
+                }
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                ShowError(xhr.responseText);
+            },
+            dataType: 'json'
+        });
+    }
+</script>

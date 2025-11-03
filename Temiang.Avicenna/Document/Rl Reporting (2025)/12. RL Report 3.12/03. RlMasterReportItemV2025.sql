@@ -1,0 +1,389 @@
+/************************************************************
+ * Code formatted by SoftTree SQL Assistant © v11.3.277
+ * Time: 03/02/2025 16:00:46
+ ************************************************************/
+
+INSERT INTO [RlMasterReportItemV2025]
+  (
+    [RlMasterReportID],
+    [RlMasterReportItemNo],
+    [RlMasterReportItemCode],
+    [RlMasterReportItemName],
+    [SRParamedicRL1],
+    [IsActive],
+    [ParameterValue],
+    [LastUpdateDateTime],
+    [LastUpdateByUserID]
+  )
+VALUES
+  (
+    12,
+    N'1',
+    N'1',
+    N'Bedah',
+    '',
+    1,
+    '',
+    GETDATE(),
+    N'Cale'
+  );
+INSERT INTO [RlMasterReportItemV2025]
+  (
+    [RlMasterReportID],
+    [RlMasterReportItemNo],
+    [RlMasterReportItemCode],
+    [RlMasterReportItemName],
+    [SRParamedicRL1],
+    [IsActive],
+    [ParameterValue],
+    [LastUpdateDateTime],
+    [LastUpdateByUserID]
+  )
+VALUES
+  (
+    12,
+    N'2',
+    N'2',
+    N'Obstetri dan Ginekologi',
+    '',
+    1,
+    '',
+    GETDATE(),
+    N'Cale'
+  );
+INSERT INTO [RlMasterReportItemV2025]
+  (
+    [RlMasterReportID],
+    [RlMasterReportItemNo],
+    [RlMasterReportItemCode],
+    [RlMasterReportItemName],
+    [SRParamedicRL1],
+    [IsActive],
+    [ParameterValue],
+    [LastUpdateDateTime],
+    [LastUpdateByUserID]
+  )
+VALUES
+  (
+    12,
+    N'3',
+    N'3',
+    N'Bedah Saraf (Non Stroke)',
+    '',
+    1,
+    '',
+    GETDATE(),
+    N'Cale'
+  );
+INSERT INTO [RlMasterReportItemV2025]
+  (
+    [RlMasterReportID],
+    [RlMasterReportItemNo],
+    [RlMasterReportItemCode],
+    [RlMasterReportItemName],
+    [SRParamedicRL1],
+    [IsActive],
+    [ParameterValue],
+    [LastUpdateDateTime],
+    [LastUpdateByUserID]
+  )
+VALUES
+  (
+    12,
+    N'4',
+    N'4',
+    N'THT',
+    '',
+    1,
+    '',
+    GETDATE(),
+    N'Cale'
+  );
+INSERT INTO [RlMasterReportItemV2025]
+  (
+    [RlMasterReportID],
+    [RlMasterReportItemNo],
+    [RlMasterReportItemCode],
+    [RlMasterReportItemName],
+    [SRParamedicRL1],
+    [IsActive],
+    [ParameterValue],
+    [LastUpdateDateTime],
+    [LastUpdateByUserID]
+  )
+VALUES
+  (
+    12,
+    N'5',
+    N'5',
+    N'Mata',
+    '',
+    1,
+    '',
+    GETDATE(),
+    N'Cale'
+  );
+INSERT INTO [RlMasterReportItemV2025]
+  (
+    [RlMasterReportID],
+    [RlMasterReportItemNo],
+    [RlMasterReportItemCode],
+    [RlMasterReportItemName],
+    [SRParamedicRL1],
+    [IsActive],
+    [ParameterValue],
+    [LastUpdateDateTime],
+    [LastUpdateByUserID]
+  )
+VALUES
+  (
+    12,
+    N'6',
+    N'6',
+    N'Kulit dan Kelamin',
+    '',
+    1,
+    '',
+    GETDATE(),
+    N'Cale'
+  );
+INSERT INTO [RlMasterReportItemV2025]
+  (
+    [RlMasterReportID],
+    [RlMasterReportItemNo],
+    [RlMasterReportItemCode],
+    [RlMasterReportItemName],
+    [SRParamedicRL1],
+    [IsActive],
+    [ParameterValue],
+    [LastUpdateDateTime],
+    [LastUpdateByUserID]
+  )
+VALUES
+  (
+    12,
+    N'7',
+    N'7',
+    N'Gigi dan Mulut',
+    '',
+    1,
+    '',
+    GETDATE(),
+    N'Cale'
+  );
+INSERT INTO [RlMasterReportItemV2025]
+  (
+    [RlMasterReportID],
+    [RlMasterReportItemNo],
+    [RlMasterReportItemCode],
+    [RlMasterReportItemName],
+    [SRParamedicRL1],
+    [IsActive],
+    [ParameterValue],
+    [LastUpdateDateTime],
+    [LastUpdateByUserID]
+  )
+VALUES
+  (
+    12,
+    N'8',
+    N'8',
+    N'Bedah Anak',
+    '',
+    1,
+    '',
+    GETDATE(),
+    N'Cale'
+  );
+INSERT INTO [RlMasterReportItemV2025]
+  (
+    [RlMasterReportID],
+    [RlMasterReportItemNo],
+    [RlMasterReportItemCode],
+    [RlMasterReportItemName],
+    [SRParamedicRL1],
+    [IsActive],
+    [ParameterValue],
+    [LastUpdateDateTime],
+    [LastUpdateByUserID]
+  )
+VALUES
+  (
+    12,
+    N'9',
+    N'9',
+    N'Kardiovaskular',
+    '',
+    1,
+    '',
+    GETDATE(),
+    N'Cale'
+  );
+INSERT INTO [RlMasterReportItemV2025]
+  (
+    [RlMasterReportID],
+    [RlMasterReportItemNo],
+    [RlMasterReportItemCode],
+    [RlMasterReportItemName],
+    [SRParamedicRL1],
+    [IsActive],
+    [ParameterValue],
+    [LastUpdateDateTime],
+    [LastUpdateByUserID]
+  )
+VALUES
+  (
+    12,
+    N'10',
+    N'10',
+    N'Bedah Orthopedi',
+    '',
+    1,
+    '',
+    GETDATE(),
+    N'Cale'
+  );
+INSERT INTO [RlMasterReportItemV2025]
+  (
+    [RlMasterReportID],
+    [RlMasterReportItemNo],
+    [RlMasterReportItemCode],
+    [RlMasterReportItemName],
+    [SRParamedicRL1],
+    [IsActive],
+    [ParameterValue],
+    [LastUpdateDateTime],
+    [LastUpdateByUserID]
+  )
+VALUES
+  (
+    12,
+    N'11',
+    N'11',
+    N'Thoraks',
+    '',
+    1,
+    '',
+    GETDATE(),
+    N'Cale'
+  );
+INSERT INTO [RlMasterReportItemV2025]
+  (
+    [RlMasterReportID],
+    [RlMasterReportItemNo],
+    [RlMasterReportItemCode],
+    [RlMasterReportItemName],
+    [SRParamedicRL1],
+    [IsActive],
+    [ParameterValue],
+    [LastUpdateDateTime],
+    [LastUpdateByUserID]
+  )
+VALUES
+  (
+    12,
+    N'12',
+    N'12',
+    N'Digestif',
+    '',
+    1,
+    '',
+    GETDATE(),
+    N'Cale'
+  );
+INSERT INTO [RlMasterReportItemV2025]
+  (
+    [RlMasterReportID],
+    [RlMasterReportItemNo],
+    [RlMasterReportItemCode],
+    [RlMasterReportItemName],
+    [SRParamedicRL1],
+    [IsActive],
+    [ParameterValue],
+    [LastUpdateDateTime],
+    [LastUpdateByUserID]
+  )
+VALUES
+  (
+    12,
+    N'13',
+    N'13',
+    N'Urologi',
+    '',
+    1,
+    '',
+    GETDATE(),
+    N'Cale'
+  );
+INSERT INTO [RlMasterReportItemV2025]
+  (
+    [RlMasterReportID],
+    [RlMasterReportItemNo],
+    [RlMasterReportItemCode],
+    [RlMasterReportItemName],
+    [SRParamedicRL1],
+    [IsActive],
+    [ParameterValue],
+    [LastUpdateDateTime],
+    [LastUpdateByUserID]
+  )
+VALUES
+  (
+    12,
+    N'14',
+    N'14',
+    N'Bedah Saraf (Stroke)',
+    '',
+    1,
+    '',
+    GETDATE(),
+    N'Cale'
+  );
+INSERT INTO [RlMasterReportItemV2025]
+  (
+    [RlMasterReportID],
+    [RlMasterReportItemNo],
+    [RlMasterReportItemCode],
+    [RlMasterReportItemName],
+    [SRParamedicRL1],
+    [IsActive],
+    [ParameterValue],
+    [LastUpdateDateTime],
+    [LastUpdateByUserID]
+  )
+VALUES
+  (
+    12,
+    N'15',
+    N'15',
+    N'Kanker',
+    '',
+    1,
+    '',
+    GETDATE(),
+    N'Cale'
+  );
+INSERT INTO [RlMasterReportItemV2025]
+  (
+    [RlMasterReportID],
+    [RlMasterReportItemNo],
+    [RlMasterReportItemCode],
+    [RlMasterReportItemName],
+    [SRParamedicRL1],
+    [IsActive],
+    [ParameterValue],
+    [LastUpdateDateTime],
+    [LastUpdateByUserID]
+  )
+VALUES
+  (
+    12,
+    N'15',
+    N'15',
+    N'Lain-lain',
+    '',
+    1,
+    '',
+    GETDATE(),
+    N'Cale'
+  );

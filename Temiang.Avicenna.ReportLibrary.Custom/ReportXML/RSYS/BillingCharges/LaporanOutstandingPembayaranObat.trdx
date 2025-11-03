@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report DataSourceName="sqlDataSource1" Width="10.4466870625814in" Name="userReport1" xmlns="http://schemas.telerik.com/reporting/2012/2">
+  <DataSources>
+    <SqlDataSource ConnectionString="Data Source=192.168.11.69;Initial Catalog=RSMP_LIVE;User ID=sa;Password=P@ssw0rd" ProviderName="System.Data.SqlClient" SelectCommand="dbo.sprpt_xml_laporanoutstandingpembayaran" SelectCommandType="StoredProcedure" Name="sqlDataSource1">
+      <Parameters>
+        <SqlDataSourceParameter DbType="DateTime" Name="@p_FromDate">
+          <Value>
+            <String>2016-12-01</String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="DateTime" Name="@p_ToDate">
+          <Value>
+            <String>2016-12-31</String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="AnsiString" Name="@p_GuarantorID">
+          <Value>
+            <String>self</String>
+          </Value>
+        </SqlDataSourceParameter>
+      </Parameters>
+    </SqlDataSource>
+  </DataSources>
+  <Items>
+    <DetailSection Height="0.0520833333333333in" Name="detailSection1">
+      <Style Visible="False" />
+    </DetailSection>
+    <PageFooterSection Height="1in" Name="pageFooterSection1">
+      <Items>
+        <TextBox Value="=Now()" Format="Avicenna HIS, Print Date : {0:dd-MM-yyyy HH:mm}" Size="10.4466088612874in, 0.200000122189522in" Location="0.00003941853841146in, 0.00003941853841146in" Name="textBox146">
+          <Style VerticalAlign="Middle">
+            <BorderStyle Top="Solid" />
+            <BorderWidth Default="0.5pt" />
+            <Font Name="Tahoma" Size="8pt" Italic="True" />
+          </Style>
+        </TextBox>
+      </Items>
+    </PageFooterSection>
+    <ReportHeaderSection Height="6.41104947059414cm" Name="reportHeaderSection1">
+      <Items>
+        <TextBox Value="=Fields.tittle" Size="26.5343841547144cm, 0.699999646743148cm" Location="0.00010002215425112cm, 2.79999979813894cm" Name="textBox1">
+          <Style TextAlign="Center" VerticalAlign="Top">
+            <BorderStyle Bottom="None" />
+            <Font Size="12pt" Bold="True" Underline="False" />
+          </Style>
+        </TextBox>
+        <Table DataSourceName="sqlDataSource1" Size="26.5080253396186cm, 1.51104962198994cm" Location="0.00010002215425112cm, 4.89999994953474cm" Name="table1">
+          <Body>
+            <Cells>
+              <TableCell RowIndex="0" ColumnIndex="0" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="=RowNumber()" Size="1.21121726801147cm, 0.583545553001186cm" Name="textBox5">
+                    <Style VerticalAlign="Middle">
+                      <BorderStyle Default="Dotted" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="8pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="1" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="=Fields.MedicalNo" Size="2.11079940577832cm, 0.583545569062149cm" Name="textBox18" StyleName="">
+                    <Style VerticalAlign="Middle">
+                      <BorderStyle Default="Dotted" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="8pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="2" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="=Fields.RegistrationNo" Size="3.67183711639085cm, 0.583545569062149cm" Name="textBox6" StyleName="">
+                    <Style VerticalAlign="Middle">
+                      <BorderStyle Default="Dotted" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="8pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="8" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="=Fields.CreatedByUserID" Size="2.63499981336417cm, 0.583545569062149cm" Name="textBox15" StyleName="">
+                    <Style VerticalAlign="Middle">
+                      <BorderStyle Default="Dotted" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="8pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="4" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="=Fields.GuarantorName" Size="4.16958373317014cm, 0.583545553001186cm" Name="textBox20" StyleName="">
+                    <Style VerticalAlign="Middle">
+                      <BorderStyle Default="Dotted" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="8pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="7" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="=Fields.PatientAmount" Format="{0:N0}" Size="2.42333639522905cm, 0.583545553001186cm" Name="textBox11" StyleName="">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <BorderStyle Default="Dotted" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="8pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="3" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="=Fields.PrescriptionNo" Size="3.48166639557135cm, 0.583545553001186cm" Name="textBox23" StyleName="">
+                    <Style VerticalAlign="Middle">
+                      <BorderStyle Default="Dotted" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="8pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="5" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="=Fields.NamaPasien" Size="4.80458022315282cm, 0.583545553001186cm" Name="textBox9" StyleName="">
+                    <Style VerticalAlign="Middle">
+                      <BorderStyle Default="Dotted" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="8pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="6" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="=Fields.GuarantorAmount" Format="{0:N0}" Size="2.00000100666561cm, 0.583545553001186cm" Name="textBox7" StyleName="">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <BorderStyle Default="Dotted" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="8pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+            </Cells>
+            <Columns>
+              <Column Width="1.21121843434457cm" />
+              <Column Width="2.11080034833683cm" />
+              <Column Width="3.67183722268895cm" />
+              <Column Width="3.48166627508309cm" />
+              <Column Width="4.1695846794621cm" />
+              <Column Width="4.80458014580638cm" />
+              <Column Width="2.00000077277123cm" />
+              <Column Width="2.42333608700529cm" />
+              <Column Width="2.63500157162035cm" />
+            </Columns>
+            <Rows>
+              <Row Height="0.583545494361412cm" />
+            </Rows>
+          </Body>
+          <Corner />
+          <RowGroups>
+            <TableGroup Name="DetailGroup">
+              <Groupings>
+                <Grouping Expression="null" />
+              </Groupings>
+            </TableGroup>
+          </RowGroups>
+          <ColumnGroups>
+            <TableGroup>
+              <ReportItem>
+                <TextBox Value="NO." Size="1.21121843434457cm, 0.927504127628524cm" Name="textBox2">
+                  <Style VerticalAlign="Middle">
+                    <BorderStyle Default="Solid" />
+                    <BorderWidth Default="0.5pt" />
+                    <Font Size="8pt" Bold="True" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup>
+              <ReportItem>
+                <TextBox Value="Medical No." Size="2.11080034833683cm, 0.927504127628524cm" Name="textBox3">
+                  <Style VerticalAlign="Middle">
+                    <BorderStyle Default="Solid" />
+                    <BorderWidth Default="0.5pt" />
+                    <Font Size="8pt" Bold="True" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup>
+              <ReportItem>
+                <TextBox Value="Registration No." Size="3.67183722268895cm, 0.927504127628524cm" Name="textBox4">
+                  <Style VerticalAlign="Middle">
+                    <BorderStyle Default="Solid" />
+                    <BorderWidth Default="0.5pt" />
+                    <Font Size="8pt" Bold="True" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup Name="Group8">
+              <ReportItem>
+                <TextBox Value="Prescription No" Size="3.48166627508309cm, 0.927504127628524cm" Name="textBox24" StyleName="">
+                  <Style VerticalAlign="Middle">
+                    <BorderStyle Default="Solid" />
+                    <BorderWidth Default="0.5pt" />
+                    <Font Size="8pt" Bold="True" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup Name="Group6">
+              <ReportItem>
+                <TextBox Value="Guarantor Name" Size="4.1695846794621cm, 0.927504127628524cm" Name="textBox17" StyleName="">
+                  <Style VerticalAlign="Middle">
+                    <BorderStyle Default="Solid" />
+                    <BorderWidth Default="0.5pt" />
+                    <Font Size="8pt" Bold="True" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup Name="Group1">
+              <ReportItem>
+                <TextBox Value="Patient Name" Size="4.80458014580638cm, 0.927504127628524cm" Name="textBox8" StyleName="">
+                  <Style VerticalAlign="Middle">
+                    <BorderStyle Default="Solid" />
+                    <BorderWidth Default="0.5pt" />
+                    <Font Size="8pt" Bold="True" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup Name="Group3">
+              <ReportItem>
+                <TextBox Value="Guarantor Amount" Size="2.00000077277123cm, 0.927504127628524cm" Name="textBox12" StyleName="">
+                  <Style TextAlign="Center" VerticalAlign="Middle">
+                    <BorderStyle Default="Solid" />
+                    <BorderWidth Default="0.5pt" />
+                    <Font Size="8pt" Bold="True" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup Name="Group4">
+              <ReportItem>
+                <TextBox Value="Patient Amount" Size="2.42333608700529cm, 0.927504127628524cm" Name="textBox14" StyleName="">
+                  <Style TextAlign="Center" VerticalAlign="Middle">
+                    <BorderStyle Default="Solid" />
+                    <BorderWidth Default="0.5pt" />
+                    <Font Size="8pt" Bold="True" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup Name="Group5">
+              <ReportItem>
+                <TextBox Value="Created By." Size="2.63500157162035cm, 0.927504127628524cm" Name="textBox16" StyleName="">
+                  <Style VerticalAlign="Middle">
+                    <BorderStyle Default="Solid" />
+                    <BorderWidth Default="0.5pt" />
+                    <Font Size="8pt" Bold="True" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+          </ColumnGroups>
+        </Table>
+        <TextBox Value="=Fields.Period" Size="26.5343841547144cm, 0.600000100930529cm" Location="0.00010012308478013cm, 3.59999979813894cm" Name="textBox19">
+          <Style TextAlign="Center" VerticalAlign="Top">
+            <BorderStyle Bottom="Solid" />
+            <Font Size="9pt" Bold="False" />
+          </Style>
+        </TextBox>
+      </Items>
+    </ReportHeaderSection>
+  </Items>
+  <StyleSheet>
+    <StyleRule>
+      <Style>
+        <Padding Left="2pt" Right="2pt" />
+      </Style>
+      <Selectors>
+        <TypeSelector Type="TextItemBase" />
+        <TypeSelector Type="HtmlTextBox" />
+      </Selectors>
+    </StyleRule>
+  </StyleSheet>
+  <PageSettings>
+    <PageSettings PaperKind="A4" Landscape="True">
+      <Margins>
+        <MarginsU Left="1in" Right="1in" Top="1in" Bottom="1in" />
+      </Margins>
+    </PageSettings>
+  </PageSettings>
+</Report>

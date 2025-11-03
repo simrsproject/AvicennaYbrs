@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report DataSourceName="sqlDataSource1" Width="4.5in" Name="Report1" ShowSnapGrid="True" xmlns="http://schemas.telerik.com/reporting/2019/2.0">
+  <DataSources>
+    <SqlDataSource QueryDesignerState="null" ParameterValues="{&quot;@p_FromDate&quot;:&quot;08/01/2020&quot;,&quot;@p_ToDate&quot;:&quot;08/31/2020&quot;}" ConnectionString="RSI" SelectCommand="dbo.sp_xml_domisiliPasienbyClass" SelectCommandType="StoredProcedure" Name="sqlDataSource1">
+      <Parameters>
+        <SqlDataSourceParameter DbType="DateTime" Name="@p_FromDate">
+          <Value>
+            <String>08/01/2020</String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="DateTime" Name="@p_ToDate">
+          <Value>
+            <String>08/31/2020</String>
+          </Value>
+        </SqlDataSourceParameter>
+      </Parameters>
+    </SqlDataSource>
+  </DataSources>
+  <Items>
+    <DetailSection Height="0.052in" Name="detailSection1">
+      <Style Visible="False" />
+    </DetailSection>
+    <PageFooterSection Height="0.052in" Name="pageFooterSection1" />
+    <ReportHeaderSection Height="0.9in" Name="reportHeaderSection1">
+      <Items>
+        <Table DataSourceName="sqlDataSource1" Width="3.588in" Height="0.8in" Left="0.5in" Top="0in" Name="table1" StyleName="Normal.TableNormal">
+          <Body>
+            <Cells>
+              <TableCell RowIndex="0" ColumnIndex="0" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="1.987in" Height="0.2in" Left="0in" Top="0in" Value="= Fields.County" Name="textBox14" StyleName="Normal.TableBody">
+                    <Style TextAlign="Left" VerticalAlign="Middle" />
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="2" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.8in" Height="0.2in" Left="0in" Top="0in" Value="= Fields.JmlPasien" Name="textBox16" StyleName="Normal.TableBody">
+                    <Style TextAlign="Center" VerticalAlign="Middle" />
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="1" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.8in" Height="0.2in" Left="1.2in" Top="0.3in" Value="= Fields.JmlPasien" Name="textBox1" StyleName="Normal.TableBody">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Padding Left="1mm" Right="1mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="0" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="1.987in" Height="0.2in" Left="0in" Top="0in" Value="Total Wilayah Kota Bandung" Name="textBox2" StyleName="Normal.TableBody">
+                    <Style TextAlign="Left" VerticalAlign="Middle" />
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="1" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.8in" Height="0.2in" Left="1.2in" Top="0.4in" Value="=Sum(Fields.JmlPasien)" Name="textBox5" StyleName="Normal.TableBody">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Padding Left="1mm" Right="1mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="2" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.8in" Height="0.2in" Left="1.2in" Top="0.4in" Value="=Sum(Fields.JmlPasien)" Name="textBox3" StyleName="Normal.TableBody">
+                    <Style TextAlign="Center" VerticalAlign="Middle" />
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+            </Cells>
+            <Columns>
+              <Column Width="1.988in" />
+              <Column Width="0.8in" />
+              <Column Width="0.8in" />
+            </Columns>
+            <Rows>
+              <Row Height="0.2in" />
+              <Row Height="0.2in" />
+            </Rows>
+          </Body>
+          <Corner />
+          <RowGroups>
+            <TableGroup Name="detail">
+              <Groupings>
+                <Grouping />
+              </Groupings>
+            </TableGroup>
+            <TableGroup Name="group" />
+          </RowGroups>
+          <ColumnGroups>
+            <TableGroup Name="county1">
+              <ReportItem>
+                <TextBox Width="1.987in" Height="0.4in" Left="0in" Top="0in" Value="Wilayah" Name="textBox9" StyleName="Normal.TableHeader">
+                  <Style TextAlign="Center" />
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup Name="className1">
+              <ReportItem>
+                <TextBox Width="0.8in" Height="0.2in" Left="0in" Top="0in" Value="Kelas Perawatan" Name="textBox12" StyleName="Normal.TableHeader">
+                  <Style TextAlign="Center" />
+                </TextBox>
+              </ReportItem>
+              <ChildGroups>
+                <TableGroup Name="className2">
+                  <ReportItem>
+                    <TextBox Width="0.8in" Height="0.2in" Left="1.177in" Top="0.3in" Value="= Fields.ClassName" Name="textBox17" StyleName="Normal.TableHeader">
+                      <Style TextAlign="Center" />
+                    </TextBox>
+                  </ReportItem>
+                  <Groupings>
+                    <Grouping Expression="= Fields.ClassName" />
+                  </Groupings>
+                  <Sortings>
+                    <Sorting Expression="= Fields.ClassName" Direction="Asc" />
+                  </Sortings>
+                </TableGroup>
+              </ChildGroups>
+            </TableGroup>
+            <TableGroup Name="jmlPasien">
+              <ReportItem>
+                <TextBox Width="0.8in" Height="0.4in" Left="0in" Top="0in" Value="Jumlah" Name="textBox13" StyleName="Normal.TableHeader">
+                  <Style TextAlign="Center" />
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+          </ColumnGroups>
+        </Table>
+      </Items>
+    </ReportHeaderSection>
+    <PageHeaderSection Height="0.8in" Name="pageHeaderSection1">
+      <Items>
+        <TextBox Width="3.588in" Height="0.5in" Left="0.5in" Top="0.3in" Value="Kunjungan Pasien Rawat Inap per Wilayah&#xD;&#xA;Wilayah Kota Bandung&#xD;&#xA;BULAN JULI TAHUN 2020" Angle="0" Name="textBox4">
+          <Style TextAlign="Left" VerticalAlign="Middle" />
+        </TextBox>
+      </Items>
+    </PageHeaderSection>
+  </Items>
+  <PageSettings PaperKind="A4" Landscape="False" ColumnCount="1" ColumnSpacing="0in" ContinuousPaper="False">
+    <Margins>
+      <MarginsU Left="1cm" Right="1cm" Top="1cm" Bottom="1cm" />
+    </Margins>
+  </PageSettings>
+  <StyleSheet>
+    <StyleRule>
+      <Style>
+        <Padding Left="2pt" Right="2pt" />
+      </Style>
+      <Selectors>
+        <TypeSelector Type="TextItemBase" />
+        <TypeSelector Type="HtmlTextBox" />
+      </Selectors>
+    </StyleRule>
+    <StyleRule>
+      <Style Color="Black">
+        <Font Name="Tahoma" Size="9pt" />
+        <BorderStyle Default="Solid" />
+        <BorderColor Default="Black" />
+        <BorderWidth Default="1px" />
+      </Style>
+      <Selectors>
+        <StyleSelector Type="Table" StyleName="Normal.TableNormal" />
+      </Selectors>
+    </StyleRule>
+    <StyleRule>
+      <Style>
+        <Font Name="Tahoma" Size="9pt" />
+        <BorderStyle Default="Solid" />
+        <BorderColor Default="Black" />
+        <BorderWidth Default="1px" />
+      </Style>
+      <Selectors>
+        <DescendantSelector>
+          <Selectors>
+            <TypeSelector Type="Table" />
+            <StyleSelector Type="ReportItem" StyleName="Normal.TableBody" />
+          </Selectors>
+        </DescendantSelector>
+      </Selectors>
+    </StyleRule>
+    <StyleRule>
+      <Style VerticalAlign="Middle">
+        <Font Name="Tahoma" Size="10pt" />
+        <BorderStyle Default="Solid" />
+        <BorderColor Default="Black" />
+        <BorderWidth Default="1px" />
+      </Style>
+      <Selectors>
+        <DescendantSelector>
+          <Selectors>
+            <TypeSelector Type="Table" />
+            <StyleSelector Type="ReportItem" StyleName="Normal.TableHeader" />
+          </Selectors>
+        </DescendantSelector>
+      </Selectors>
+    </StyleRule>
+  </StyleSheet>
+</Report>

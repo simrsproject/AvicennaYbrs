@@ -1,0 +1,1 @@
+UPDATE q SET q.SRAnswerType = 'IMN' FROM Question AS q WHERE q.QuestionID = 'AAPATRI45'

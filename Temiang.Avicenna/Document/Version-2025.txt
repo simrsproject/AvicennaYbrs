@@ -1,0 +1,369 @@
+﻿---[06-01-2025 - Fajri]---
+1. Assessment auto save MDS
+	- Mandatory TTD Dokter di assessment
+	- Add control FollowUpPlanOprCtl
+	- Add NextControlPlan untuk cetakan assessment
+
+---[06-01-2025 - Luthfi]---
+- Tambah Info4 RegistrationInfoMedic di MDS Rajal
+
+---[08-01-2025 - Fajri]---
+1. Bugfix search filter by regno menu Prescription Order Handling (Outpatient) 
+
+---[08-01-2025 - Luthfi]---
+- Modif menu Send Outpatient Data To SATUSEHAT tidak dimunculkan pasien yang REG/PM
+
+---[16-01-2025 - Dewi]---
+1. Modifikasi SpecimenCollectItem, membuat validasi ketika Specimen Type belum di isi di master laboratory
+
+---[16-01-2025 - Deby]---
+1. bugfix API PatientUpdatePhoto (insert data if new photo)
+2. bugfix API RegistrationGetAutoBillingList
+
+---[17-01-2025 - Fahri]---
+1. modif print detail billing, tambah kondisi untuk barcode rawat jalan dan rawat inap
+
+---[24-01-2025 - Nuno]---
+1. 0002868: tambah qrcode untuk beberapa cetakan
+
+---[30-01-2025 - Dewi]---
+1. Modifikasi Guarantor Item Rule, Item guarantor rule bisa di hapus per-group type. (dibuat jadi bisa memilih item yang akan di hapus)
+
+---[30-01-2025 - Fajri]---
+1. Revisi Assessment auto save MDS
+	- Mandatory TTD dokter di assessment aktif jika mengaktifkan parameter IsSignMandatoryOnAssessmentEntry
+	- MDS auto save to casemix (Data & Guarantor File Document Print Out MDS - SLP.01.0089b)
+
+---[03-02-2025 - Fajri]---
+1. Temuan tim QA - Revisi Assessment auto save MDS, Discharge Reason MDS tidak terisi untuk tipe registrasi emergency
+2. Bugfix Assessment auto save MDS, Physical Examination dan Procedure tidak mengalir datanya
+
+---[03-02-2025 - Naufal]---
+1. CR aliran data assesment Indikator Masuk Pasien Pneumonia Dewasa (RSI) ditampilkan dalam grid di Progress Note,Continued assesment,MDS
+
+---[10-02-2025 - Nuno]---
+1. fix cetakan billing
+
+---[03-02-2025 - BT]---
+- tambah log approve payment return untuk trace kasus jasmed tidak hilang centang paid
+
+---[14-02-2025 - BT]---
+- bugfix jasmed, penambahan validasi jasa medis untuk payment yang sudah return tidak bisa diset lagi ke jasmed
+
+---[17-02-2025 - Luthfi]---
+- Tambah validasi pasien aktif untuk API
+
+---[17-02-2025 - BT]---
+- bugfix jasmed devide by zero
+
+---[17-02-2025 - Fajri]---
+- Add Numbering Setting untuk Endpoint AppointmentCreate WebService Avicenna -> AppAutoNumber -> AppointmentNoWebService
+	--> insert document 20250217 -> 01
+- Bugfix Endpoint AppointmentUpdate error code 201 -> Appointment slot not found
+
+---[18-02-2025 - Naufal]---
+- Perbaikan Assesment beberapa file Ctl dan perapihan edt MDS
+
+---[19-02-2025 - Dewi]---
+- modifikasi Guarantor Item Rule (menghapus page lain juga tidak hanya 1 page)
+
+---[19-02-2025 - Deby]---
+1. bugfix err msg u/ kondisi multiple appointment di API AppointmentWS.asmx/AppointmentCreate
+
+---[27-02-2025 - Handono]---
+1. Bugfix UDD Item untuk Item Antibiotoc terupdate info LastUpdate nya padahal user tidak lakukan edit di item AB tsb
+
+---[27-02-2025 - Naufal]---
+1. Tambahan perbaikan Mds dan integrated notes //RSI mantis id=2911
+2. Menghilangkan data APS (AppointmentNoPostRanap dari control plan) di api API /AppointmentGetListByMedicalNo //RSI Mantis id=2949
+
+---[27-02-2025 - Deby]---
+1. bugfix list other exam order di emr, hanya dari Job Order atau IsHasTestResults saja yg muncul
+
+---[02-03-2025 - Luthfi]---
+Titipan Faishal :
+1. RL 3.7 2025
+2. Penambahan CBO Born Death dan CHK BBLR Given Kangaroo Method Care, Newborn Baby Undergo IMD, Newborns Screened for Congenital Hyperthyroidism pada menu Patient Birth Record
+
+---[06-03-2025 - Fajri]---
+1. Modifikasi Entry Diagnose dan Procedure
+	- Assessment -> EpisodeDiagnoseCtl & EpisodeProcedureCtl (Path Cpoe)
+	- Progress Notes -> RegInMedDiagnoseCtl & EpisodeProcedureCtl (Path EmrIp)
+	- Medical Discharge Summary -> MdsDiagnoseCtl & ResumeMedisProcedureCtl
+	- Surgical History (Hanya Procedure) -> EpisodeProcedureEntry & EpisodeProcedureEntryDetail
+	--> insert document 20250306 -> 01
+
+---[06-03-2025 - Apip]---
+1. Titipan Puji modif Report Penerimaan Semua Kasir untuk KSA
+
+---[07-03-2025 - Danang]---
+1. Development: Add Fitur SatuSehat KYC Verification Profile
+	- add settingan pada web.config jika menggunakan env production satusehat
+		- <add key="SatuSehatKYCProd" value="true" />
+	- Add Script Alter Table Patient Add Column IsKYC
+
+---[10-03-2025 - BT]---
+- bugfix validasi closing period journal automatic maintenance
+
+---[10-03-2025 - Handono]---
+- Prescription UDD: Optimize query list tambah JOIN dengan table Bed karena status Discharge ternyata tidak bisa diandalkan, 
+banyak registrasi yg belum di dischareh sehingga query nya menjadi berat
+
+---[18-03-2025 - Fahri]---
+1. titipan rizki
+2. titipan faisal
+
+---[18-03-2025 - Deby]---
+1. bugfix proses rekalkulasi (perhitungan selisih) pasien rawat inap u/ transaksi yg terjadi di registrasi sebelumnya (op/em) apabila coverage class rawat inap lebih rendah dari kelas tarif op/em
+   --> transaksi op/em tidak ada selisih karena kelas tarif dan kelas yg dicover sama
+banyak registrasi yg belum di dischareh sehingga query nya menjadi berat
+
+---[19-03-2025 - Nuno]---
+- CR 0002881: Penilaian Appraisal Supervisor lebih dari 1 blm bisa muncul atau terakumulasi
+
+---[19-03-2025 - Fahri]---
+1. bugfix angka subtotal belakang koma melebihi angka detail transaction pada modul POS
+
+---[24-03-2025 - BT]---
+- bugfix jasmed, tidak bisa edit diskon ketika sudah ada payment return
+
+---[25-03-2025 - Deby]---
+1. bugfix list Receiving Invoice (A/P), update PayableStatus = Paid jika sudah dibayar
+
+---[26-03-2025 - FAhri]---
+1. bugfix filter search by Invoice No dimenu Payment Process
+
+---[08-04-2025 - Dewi]---
+1. modifikasi Guarantor Item Rule (saat klik selectAll maka page berikut2nya juga ikut terceklis)
+
+---[09-04-2025 - Dewi]---
+1. modifikasi Guarantor Item Rule (mengembalikan page size ke ukuran aslinya, sebelumnya di edit jadi lebih sedikit dan lupa di kembalikan)
+
+---[10-04-2025 - BT]---
+- bugfix jasmed error: PaymentNo PMxxx has been returned with PaymentNo PMyyy saat calculate jasmed
+
+---[10-04-2025 - Deby]---
+1. modif credential, ++ upload document clinical assignment letter --> bisa diakses di menu logbook & employee working info
+   --> insert document 20250410 - 01 & 02
+ 
+ ---[16-04-2025 - Handono]---
+ 1. Penyesuaian format Order Number pada data order LIS WYNAKOM untuk Satusehat
+
+ ---[16-04-2025 - Fahri]---
+ 1. modif cetakan billing RSI
+
+ ---[21-04-2025 - Fajri]---
+ - Add parameter IsAssessmentAutoSaveMds dan IsAssessmentAutoSaveMdsCasemixWithGuarantorDoc
+
+ ---[23-04-2025 - Luthfi]---
+ - Bugfix JobOrderRealisasi PaymentNo PMxxx has been returned with PaymentNo PMyyy
+
+ ---[30-04-2025 - Deby]---
+ 1. issue mantis 0003137: kasus Nilai Tidak Update (0)
+	--> modif proses rekalkulasi di menu verification finalize billing: 
+        update TransChargesItem.IsBillProceed = 1 (++ insert tcic & cc if don't exist) if TransCharges.IsBillProceed = 1 and TransCharges.IsOrder = 0
+        
+---[07-05-2025 - Apip]---
+1. Titipan bayu & puji modif script RL
+
+---[07-05-2025 - Deby]---
+1. issue mantis 0003169: API RegistrationCreateFromMobileApp
+   --> add validasi jika pembayaran tidak sama dg total transaksi
+		
+---[15-05-2025 - Luthfi]---
+1. Revisi RL 3.5 2025
+2. Revisi RL 3.14 2025
+3. Revisi RL 5.1 2025
+
+---[16-05-2025 - Deby]---
+1. issue mantis 0003220: semua pasien dengan penjamin BPJS KETENAGAKERJAAN. Tagihan item obat masih dibebankan ke pasien
+   --> bugfix perhitungan coverage obat pasien jaminan
+
+---[21-05-2025 - Fahri]---
+1. titipan danil
+Titipan Rizki :
+1. Mantis : 3229, menambahkan function OnMenuPrintClick ambil dari RSSTJ
+
+---[27-05-2025 - Nuno]---
+1. Perbaikan RL 3.7 v2025 (Faishal)
+2. Perbaikan SP RL 4.1 2025 (Rama)
+3. (Puji)
+ - perbaikan Item dan nama item RL3.13V2025
+ - penyesuaian 10 Besar pada RL5.3V2025
+ - penyesuaian AppConstant RL3.13V2025 untuk YBRS
+
+---[10-06-2025 - Deby]---
+1. bugfix function recalculate di menu verifikasi billing --> update cc.DiscountAmount2 = 0 pada saat rekalkulasi (err. cc.DiscountAmount2 minus)
+
+---[19-06-2025 - Fahri]---
+1. titipan rizki -> CR Mantis : 3330
+
+---[03-07-2025 - Danang]---
+1. Mantis 3352 (Validasi login RSI jika dokter sudah absen di IMMA DOKTER)
+	- INSERT INTO AppParameter VALUES(N'IsParamedicAbsentByIMMADokter',N'IsParamedicAbsentByIMMADokter)',N'Yes',N' ','2024-09-02T20:57:27.870',N'sci',0,NULL);
+
+---[07-07-2025 - BT]---
+- bugfix auto cash entry payment AR, case RSBK diskon tidak sesuai pencatatannya di cash entry
+
+---[14-07-2025 - Deby]---
+1. bugfix form e-klaim (operation notes di surgical history hilang):
+   - skip edit episode procedure
+   - delete episode procedure hanya u/ data yg tidak link ke surgical history
+
+---[15-07-2025 - BT]---
+- integrasi barber jhonsons graph ke dashboard + app program
+
+---[18-07-2025 - Luthfi]---
+1. Titipan Rama
+	- Perubahan Final diagnose MDS Ranap RSI
+2. Titipan Rizki
+	- BugFix RSI button KYC, penandaan pasien telah diverifikasi KYC pada menu registrasi
+
+---[23-07-2025 - Fahri]---
+titipan rizki :
+1. Menambahkan kondisi di menu Send Outpatient Data To SATUSEHAT menghilangkan service unit dari kafetaria
+
+---[31-07-2025 - Nuno]---
+titipan bayu:
+penambahan validasi ketika billing di lock tidak bisa input tindakan, add resep, dan add order di menu EMR
+
+---[01-08-2025 - Dewi]---
+1. Penambahan Validasi saat refer to other unit, ketika memilih que yang sudah ada appointmentnya
+
+---[05-08-2025 - Nuno]---
+1. bugfix auto save MDS dari Assessment: diagnosa tidak mengalir ke MDSDiagnoseCmx
+
+---[06-08-2025 - Apip]---
+1. Bug Fix WebService API RegistrationSummaryByParamedicID, menambahkan kondisi tanggal pada registrasi Ranap - Titipan Rizky
+
+---[07-08-2025 - Danang]---
+1. Bug Fix Handling Response IMMA DOKTER
+2. Modif Entry an Allergy -> HIt api kfa for allergen medication -> kode zat aktif
+3. Rewrite Impresi Klinis ResourceType Satusehat
+
+---[12-08-2025 - Naufal]---
+1. Penambahan tampilan tanggal akhir rujukan pasien BPJS rawat jalan pada display identitas pasien di EMR
+
+---[15-08-2025 - Nuno]---
+1. 0001226: Perubahan Kolom Filter Search Physician Fee By Service Setting
+
+---[25-08-2025 - Dewi]---
+1. Write off di menu Physician Service Fee Verification dibuat supaya bisa pilih beberapa dan masukkan reason untuk semua data yang di write off secara bersamaan
+
+---[25-08-2025 - Fajri]---
+1. 0003616: Bugfix dan modifikasi API Avicenna
+
+---[26-08-2025 - BT]---
+- modif lokasi penyimpanan file PatientDocument, bisa disimpan per tahun
+  Detail aturan penyimpanan:
+  - jika len patientid < 5 dianggap tidak ada identifikasi tahun, tidak boleh dipindah --> pakai folder default (PatientDocument)
+  - jika karater awal patientid != "P" maka dianggap id bukan generate by avicenna tapi hasil konversi, tidak boleh dipindah --> pakai folder default (PatientDocument)
+  - patientid misalkan P2025xxxx-xxxx atau P2025-xxxxx, diambil 2025 sebagai identifikasi tahun, jadi dokument akan masuk ke folder PatientDocumentYearly/2025/patientid
+  - jika didapatkan tahun dari PatientId < 2010 dianggap bukan generate by avicenna, tidak boleh dipindah --> pakai folder default (PatientDocument)
+  
+  Untuk memindahkan secara manual data yang sudah ada, harap perhatikan identifier tahunnya
+  - jika patientid P2025xxxx-xxxx bisa dipindah ke folder PatientDocumentYearly/2025/P2025xxxx-xxxx
+  - jika patientid P2024xxxx-xxxx bisa dipindah ke folder PatientDocumentYearly/2024/P2024xxxx-xxxx
+  - jika patientid P2025-xxxxxxxx bisa dipindah ke folder PatientDocumentYearly/2025/P2025-xxxxxxxx
+  - jika patientid P2024-xxxxxxxx bisa dipindah ke folder PatientDocumentYearly/2024/P2024-xxxxxxxx
+
+  
+  struktur foldernya harusnya jadi seperti ini:
+  App_Document
+  --PatientDocument
+  ----xxxxxxxxxxx
+  ----xxxxxxxxxxx
+  --PatientDocumentYearly
+  ----2025
+  ------P2025xxxx-xxxx
+  ------P2024xxxx-xxxx
+
+---[27-08-2025 - BT]---
+- modif batch file upload, penambahan validasi untuk file 0kb tidak bisa masuk sistem
+
+---[03-09-2025 - Apip]---
+1. Enable Edit Pre dan Post Diagnosis di Add Direct Surgical titipan bayu
+
+---[08-09-2025 - Dewi]
+1. Modifikasi untuk Casemix Center RSI
+	- Penambahan Tombol Akses Dokumen
+	- Penambahan Tombol Print MDS
+	- Penambahan Tampilan no SEP
+	- Penghapusan Tampilan Room dan Bed No
+	- Setting tampilan layar setelah klik List
+2. Penambahan parameter IsNewDisplayCasemixCenter untuk menggunakan modifikasi yang baru
+
+---[12-09-2025 - Nuno]---
+1. modif detail obat racikan tidak mengambil note dari obat headernya - titipan bayu
+
+---[22-09-2025 - Apip]---
+1. tambah JournalInventoryIssue untuk WorkOrderAsset
+
+---[30-09-2025 -Apip]---
+1. Bug fix visible tombol delete sesuai dengan settingan AppProgram dan AppUserGroupProgram - titipan rizki
+
+---[01-10-2025 - APip]---
+1. Perubahan format cetakan billing RSI menggunakan 24 jam bagian footer - titipan rizki
+
+---[08-10-2025 - Apip]---
+1.	- Modif icd9 add direct procedure untuk 2x procedureid yang sama
+	- Modif JournalTransaction POR Return dAmt pengambilan tax percentage
+	- Modif CR IMMA Dokter - titipan danang
+
+---[13-10-2025 - Apip]---
+1.	- Modif add validasi question ismandatory untuk CHK
+	- Modif exam order wynakom_lis 
+
+---[14-10-2025 - Danang]---
+1. Fitur iDRG
+	-> backup index.php kemudian copy index.php yang terbaru folder document iDRG
+	-> setting web.config makesure
+	-> scripT 01. Insert AppParameter & Alter EpisodeProcedure Add QtyICD
+	-> scropt 02. Create NccIDRG
+	-> script master data ICD 10 dan ICD 9 IDRG folder document 03 & 04 iDRG
+
+---[16-10-2025 - Apip]---
+1. - Tambah parameter IsCallFromCaseMix 
+	- Modif order result lab 
+	- Modif RL 4.3 titipan Rizki
+
+---[17-10-2025 - Apip]---
+1. bug fix penambahan kondisi jika ada resep yang sudah dibayarkan lalu direturn dan dibayarkan lagi masih menggantung di Transaction List pada Payment Receive
+	- Titipan rizki
+
+---[21-10-2025 - Danang]---
+1. bug fix idrg
+	- validasi button grouping inacbg
+	- seacrh tanpa titik
+	- bisa enter tanpa insert
+
+---[22-10-2025 - APip]---
+1. - menambahkan localist status ke cetakan Assesment - titipan daniel
+	- Mantis https://www.sciptaintegrasi.com/mantis/view.php?id=4013
+
+---[23-10-2025 - Apip]---
+1.	- Modif scroll bar di bawah , tab medication
+	- Modif ExamOrderHistCtl pengambilan data pakai mergebill , jika parameter ini "No" IsUseCurrentDateRegistration
+
+---[27-10-2025 - Naufal]---
+1.	bugfix Guarantor Non Patient Customer Charges guarantor tidak sesuai dengan yang dipilih
+
+---[27-10-2025 - Deby]---
+1. mantis 0003877: Perkiraan total nota sementara saat menginput resep/pemeriksaan penunjang/rencana tindakan bagi pasien BPJS
+   affected menu:
+   - service unit transaction entry
+   - job order entry
+   - ancillary service transactio entry
+   - emr:
+        - order prescription 
+		- exam order (lab, rad, pa, other)
+		- billing
+
+---[28-10-2025 - Apip]
+1.	Bugfix ketika klik tombol cancel di menu WorkingScheduleInterventionDetail - titipan rijki
+
+---[29-10-2025 - APip]--
+1.	- Titipan daniel untuk mantis ini https://www.sciptaintegrasi.com/mantis/view.php?id=3994
+
+---[31-10-2025 - Danang]---
+1. Apotek Online Bridging

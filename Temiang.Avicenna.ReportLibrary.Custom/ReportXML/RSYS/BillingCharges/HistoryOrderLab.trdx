@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report DataSourceName="sqlDataSource1" Width="7.2in" Name="HistoryOrderLab" Zoom="1.5" xmlns="http://schemas.telerik.com/reporting/2019/2.0">
+  <DataSources>
+    <SqlDataSource QueryDesignerState="null" ParameterValues="{&quot;@p_FromDate&quot;:&quot;8/1/2020&quot;,&quot;@p_ToDate&quot;:&quot;8/31/2020&quot;}" ConnectionString="RSI" SelectCommand="spxml_BloodTakenBy" SelectCommandType="StoredProcedure" Name="sqlDataSource1">
+      <Parameters>
+        <SqlDataSourceParameter DbType="DateTime" Name="@p_FromDate">
+          <Value>
+            <String>8/1/2020</String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="DateTime" Name="@p_ToDate">
+          <Value>
+            <String>8/31/2020</String>
+          </Value>
+        </SqlDataSourceParameter>
+      </Parameters>
+    </SqlDataSource>
+  </DataSources>
+  <Items>
+    <PageHeaderSection Height="1.226in" Name="pageHeaderSection1">
+      <Items>
+        <TextBox Width="3.6in" Height="0.2in" Left="2.4in" Top="0.4in" Value="= Fields.Periode" Name="textBox1">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="10pt" Bold="True" />
+          </Style>
+        </TextBox>
+        <TextBox Width="3.6in" Height="0.2in" Left="2.4in" Top="0.2in" Value="= Fields.ReportName" Name="textBox2">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="10pt" Bold="True" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1.2in" Height="0.3in" Left="0in" Top="0.9in" Value="Tgl./Jam Order" Name="textBox16">
+          <Style Visible="True" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" Bold="True" />
+            <BorderStyle Top="Solid" Bottom="Double" />
+            <BorderColor Top="Black" Bottom="Black" />
+            <BorderWidth Top="1pt" Bottom="1pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.9in" Height="0.3in" Left="1.2in" Top="0.9in" Value="No. Order" Angle="0" Name="textBox15">
+          <Style Visible="True" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" Bold="True" />
+            <BorderStyle Top="Solid" Bottom="Double" />
+            <BorderColor Top="Black" Bottom="Black" />
+            <BorderWidth Top="1pt" Bottom="1pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1.3in" Height="0.3in" Left="2.1in" Top="0.9in" Value="No. Registrasi" Name="textBox14">
+          <Style Visible="True" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" Bold="True" />
+            <BorderStyle Top="Solid" Bottom="Double" />
+            <BorderColor Top="Black" Bottom="Black" />
+            <BorderWidth Top="1pt" Bottom="1pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.7in" Height="0.3in" Left="3.4in" Top="0.9in" Value="No. RM" Name="textBox13">
+          <Style Visible="True" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" Bold="True" />
+            <BorderStyle Top="Solid" Bottom="Double" />
+            <BorderColor Top="Black" Bottom="Black" />
+            <BorderWidth Top="1pt" Bottom="1pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1.7in" Height="0.3in" Left="4.1in" Top="0.9in" Value="Nama Pasien" Name="textBox12">
+          <Style Visible="True" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" Bold="True" />
+            <BorderStyle Top="Solid" Bottom="Double" />
+            <BorderColor Top="Black" Bottom="Black" />
+            <BorderWidth Top="1pt" Bottom="1pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.8in" Height="0.3in" Left="5.8in" Top="0.9in" Value="Kamar" Name="textBox11">
+          <Style Visible="True" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" Bold="True" />
+            <BorderStyle Top="Solid" Bottom="Double" />
+            <BorderColor Top="Black" Bottom="Black" />
+            <BorderWidth Top="1pt" Bottom="1pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.6in" Height="0.3in" Left="6.6in" Top="0.9in" Value="No. TT" Name="textBox10">
+          <Style Visible="True" TextAlign="Left" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" Bold="True" />
+            <BorderStyle Top="Solid" Bottom="Double" />
+            <BorderColor Top="Black" Bottom="Black" />
+            <BorderWidth Top="1pt" Bottom="1pt" />
+          </Style>
+        </TextBox>
+      </Items>
+    </PageHeaderSection>
+    <DetailSection Height="0.2in" Name="detailSection1">
+      <Items>
+        <TextBox Width="0.893in" Height="0.2in" Left="0.6in" Top="0in" Value="= Fields.ItemID" CanGrow="False" Name="textBox20">
+          <Style>
+            <Font Name="Tahoma" Size="9pt" />
+            <Padding Top="1pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="4.407in" Height="0.2in" Left="1.493in" Top="0in" Value="= Fields.ItemName" CanGrow="False" Name="textBox19">
+          <Style>
+            <Font Name="Tahoma" Size="9pt" />
+            <Padding Top="1pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.5in" Height="0.2in" Left="0.1in" Top="0in" Value="=rowNumber()" Format="{0}." Name="textBox21">
+          <Style TextAlign="Right">
+            <Font Name="Tahoma" Size="9pt" />
+            <Padding Right="5pt" Top="1pt" />
+          </Style>
+        </TextBox>
+      </Items>
+    </DetailSection>
+    <PageFooterSection Height="0.2in" Name="pageFooterSection1">
+      <Items>
+        <TextBox Width="3.8in" Height="0.2in" Left="0in" Top="0in" Value="=Now()" Format="Avicenna HIS, Print Date : {0:dd-MM-yyyy HH:mm}" Name="textBox40">
+          <Style VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" Bold="False" Italic="True" />
+            <BorderStyle Top="Solid" />
+            <BorderWidth Default="0.5pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="3.3in" Height="0.2in" Left="3.8in" Top="0in" Value="='Page : ' + PageNumber + '/' + PageCount" Name="textBox37">
+          <Style TextAlign="Right" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" Bold="False" Italic="True" />
+            <BorderStyle Top="Solid" />
+            <BorderWidth Default="0.5pt" />
+          </Style>
+        </TextBox>
+      </Items>
+    </PageFooterSection>
+    <ReportFooterSection Height="0.052in" Name="reportFooterSection1" />
+  </Items>
+  <PageSettings PaperKind="A4" Landscape="False" ColumnCount="1" ColumnSpacing="0in" ContinuousPaper="False">
+    <Margins>
+      <MarginsU Left="0.5cm" Right="0.5cm" Top="1cm" Bottom="1cm" />
+    </Margins>
+  </PageSettings>
+  <StyleSheet>
+    <StyleRule>
+      <Style>
+        <Padding Left="2pt" Right="2pt" />
+      </Style>
+      <Selectors>
+        <TypeSelector Type="TextItemBase" />
+        <TypeSelector Type="HtmlTextBox" />
+      </Selectors>
+    </StyleRule>
+  </StyleSheet>
+  <Groups>
+    <Group Name="group">
+      <GroupHeader>
+        <GroupHeaderSection Height="0.2in" Name="groupHeaderSection">
+          <Items>
+            <TextBox Width="7.2in" Height="0.2in" Left="0in" Top="0in" Value="='Diambil oleh : ' + Fields.diambil" Name="textBox3">
+              <Style Color="192, 0, 0" VerticalAlign="Middle">
+                <Font Name="Tahoma" Size="9pt" Bold="True" />
+                <BorderStyle Bottom="Solid" />
+              </Style>
+            </TextBox>
+          </Items>
+        </GroupHeaderSection>
+      </GroupHeader>
+      <GroupFooter>
+        <GroupFooterSection Height="0.052in" Name="groupFooterSection" />
+      </GroupFooter>
+      <Groupings>
+        <Grouping Expression="= Fields.diambil" />
+      </Groupings>
+    </Group>
+    <Group Name="group1">
+      <GroupHeader>
+        <GroupHeaderSection Height="0.2in" Name="groupHeaderSection1">
+          <Items>
+            <TextBox Width="7.2in" Height="0.2in" Left="0in" Top="0in" Value="= 'Service Unit : ' + Fields.ServiceUnitName" Name="textBox4">
+              <Style Color="0, 32, 96" VerticalAlign="Middle">
+                <Font Name="Tahoma" Size="9pt" Bold="True" />
+                <BorderStyle Bottom="Solid" />
+              </Style>
+            </TextBox>
+          </Items>
+        </GroupHeaderSection>
+      </GroupHeader>
+      <GroupFooter>
+        <GroupFooterSection Height="0.052in" Name="groupFooterSection1" />
+      </GroupFooter>
+      <Groupings>
+        <Grouping Expression="= Fields.ServiceUnitID" />
+      </Groupings>
+      <Sortings>
+        <Sorting Expression="= Fields.ServiceUnitID" Direction="Asc" />
+        <Sorting Expression="= Fields.NoOrder" Direction="Asc" />
+      </Sortings>
+    </Group>
+    <Group Name="group2">
+      <GroupHeader>
+        <GroupHeaderSection Height="0.2in" Name="groupHeaderSection2">
+          <Items>
+            <TextBox Width="1.7in" Height="0.2in" Left="4.1in" Top="0in" Value="= Fields.NamaPasien" Angle="0" CanGrow="False" Name="textBox8">
+              <Style>
+                <Font Name="Tahoma" Size="8pt" />
+                <BorderStyle Top="Dotted" Bottom="Dotted" />
+                <Padding Top="1pt" />
+              </Style>
+            </TextBox>
+            <TextBox Width="0.9in" Height="0.2in" Left="1.2in" Top="0in" Value="= Fields.NoOrder" CanGrow="False" Name="textBox6">
+              <Style TextAlign="Left">
+                <Font Name="Tahoma" Size="8pt" />
+                <BorderStyle Top="Dotted" Bottom="Dotted" />
+                <Padding Top="1pt" />
+              </Style>
+            </TextBox>
+            <TextBox Width="1.3in" Height="0.2in" Left="2.1in" Top="0in" Value="= Fields.RegistrationNo" CanGrow="False" Name="textBox7">
+              <Style>
+                <Font Name="Tahoma" Size="8pt" />
+                <BorderStyle Top="Dotted" Bottom="Dotted" />
+                <Padding Top="1pt" />
+              </Style>
+            </TextBox>
+            <TextBox Width="0.7in" Height="0.2in" Left="3.4in" Top="0in" Value="= Fields.MedicalNo" CanGrow="False" Name="textBox9">
+              <Style>
+                <Font Name="Tahoma" Size="8pt" />
+                <BorderStyle Top="Dotted" Bottom="Dotted" />
+                <Padding Top="1pt" />
+              </Style>
+            </TextBox>
+            <TextBox Width="1.2in" Height="0.2in" Left="0in" Top="0in" Value="= Fields.Tanggal" Format="{0:dd-MMM-yyyy HH:mm}" CanGrow="False" Name="textBox5">
+              <Style>
+                <Font Name="Tahoma" Size="8pt" />
+                <BorderStyle Top="Dotted" Bottom="Dotted" />
+                <Padding Top="1pt" />
+              </Style>
+            </TextBox>
+            <TextBox Width="0.6in" Height="0.2in" Left="6.6in" Top="0in" Value="= Fields.BedID" CanGrow="False" Name="textBox18">
+              <Style TextAlign="Left">
+                <Font Name="Tahoma" Size="8pt" />
+                <BorderStyle Top="Dotted" Bottom="Dotted" />
+                <Padding Top="1pt" />
+              </Style>
+            </TextBox>
+            <TextBox Width="0.8in" Height="0.2in" Left="5.8in" Top="0in" Value="= Fields.RoomName" CanGrow="False" Name="textBox17">
+              <Style>
+                <Font Name="Tahoma" Size="8pt" />
+                <BorderStyle Top="Dotted" Bottom="Dotted" />
+                <Padding Top="1pt" />
+              </Style>
+            </TextBox>
+          </Items>
+        </GroupHeaderSection>
+      </GroupHeader>
+      <GroupFooter>
+        <GroupFooterSection Height="0.052in" Name="groupFooterSection2" />
+      </GroupFooter>
+      <Groupings>
+        <Grouping Expression="=NoOrder" />
+      </Groupings>
+    </Group>
+  </Groups>
+</Report>

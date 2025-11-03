@@ -1,0 +1,396 @@
+﻿---[01-11-2023 - Nurul]---
+1. Tambah Master Announcement --> InsertDocument 20231101\01. Create_Table_Announcement
+2. Tambah Tampilan Announcement di Dashboard
+
+---[02-11-2023 - Deby]----
+1. bugfix so (fefo)
+
+---[02-11-2023 - Nurul]---
+1. Bugfix pada file AppointmentNRegistrationDataService.cs 
+   --> Supaya masuk di Table AppointmentQueueing --> AppointmentNo terisi dengan RegistrationNo
+
+---[03-11-2023 - Deby]----
+1. alter table RegistrationPathway, ++ column CreatedDateTime & CreatedByUserID (u/ kebutuhan laporan) --> insert document 20231103 - 01
+
+---[03-11-2023 - Handono]----
+1. Cardex Monitoring (dev progress)
+2. Bug Fix Home Prescription Void belum update MedicationReceive shg masih muncul di Resume Medis
+3. Resume Medis -> physical examination history vital sign :
+ - Untuk pasien meninggal diambil yg terakhir dan selainnya tetap VitalSign pertama
+ - Vital sign diurutkan berdasarkan RowIndex pada table VitalSign -> Document\2023\11\03\01. VitalSign - Alter.sql
+4. Satusehat :
+ - Perubahan format tanggal untuk observation menyesuaikan perubahan pada API satusehat
+
+ ---[04-11-2023 - Dewi]---
+1. Bugfix AbRestriction (Restriction Type sebelumnya tidak muncul, ketika search juga tidak bisa)
+2. Bugfix Referral (Tidak bisa Edit ketika Zipcode di pilih)-(Kak Deby)
+3. Bugfix Reason For Treatment (Ketika klik new atau edit tidak bisa menambahkan atau mengganti Reason Name),    
+4. Bugfix Master Diagnosis (ketika view dan ingin kembali ke list terjadi eror)
+5. Bugfix Medical Record Documents (tidak bisa di delete tadinya, ketika search hasilnya tidak muncul)
+6. RSSTJ - Bugfix Medical Record Document Definition (Tidak bisa menambahkan data baru)
+7. Bugfix Medical Record Document Definition (Tidak bisa search dan langsung eror)
+8. Bugfix Test Result Template (Tidak bisa di delete tadinya)
+9. Bugfix Reservation (Saat search seusai tanggal tadinya tidak muncul, search patient name juga terjadi eror, 
+   tampilan pada reservation list juga ada kesalahan tampilan karena Salutationnya jadi double)
+10. Bugfix Payment Receipt (saat search nama terjadi eror)
+11. Menambahkan Search Clinical Pathway (sebelumnya saat klik search kosong)
+
+ ---[04-11-2023 - Handono]---
+- Prescription Order & Sales Handling: Tambah informasi history SOAP order by Date desc
+- Job Order Realization: Perbaikan informasi history SOAP yg masih muncul bukan hanya SOAP saja
+
+---[04-11-2023 - Apip]---
+1. Penambahan AppControl BirthFoodGrowthHistCtlV2 Baru untuk CR RSJakarta 
+2. Script Alter Table PatientBirthRecord
+3. Modif Control KidPeCtl yang option optReflexPatologis jadi No Untuk HealthcareInitialAppsVersion RSJKT
+
+---[06-11-2023 - Deby]----
+1. bugfix update status active balance ed pada saat so (fefo)
+2. bugfix payment receive, double update refno dp jika di-edit di page yg sama
+
+---[06-11-2023 - Fajri]---
+1. Medical Record File Analysis (EMR) - setiap dokumen ada akses untuk melihat sudah sesuai atau belum
+   --> insert document 20231106 - 01
+2. Bugfix IgdEsiOptPeCtl, saat pilih Esi collapse yg ada terbuka semua
+
+---[07-11-2023 - BT]---
+- Display antrian resep 6 kolom (rsimt)
+  - contoh url: http://localhost:56210/Module/Kiosk/PrescQueueDisplay6col.aspx?suid=D01.04.03
+- Contoh hasil radiologi dengan tabel
+
+---[07-11-2023 - Deby]---
+1. modif display image di personal document (bisa rotate)
+2. add parameter IsValidateNoteOnAllJobOrder u/ mandatory noted di jo & ds (default No, Yes to rsys)
+3. bugfix itembalance.cs (stock adjustment fefo), initial stock salah hitung
+
+---[07-11-2023 - dk]----
+1. modif Booking To tidak bisa lebih dari settingan parameter OperatingRoomBookingLimit,,,defult 0
+
+---[07-11-2023 - Handono]----
+1. EWS Graph: 
+   - Sistolik & Diastolik dipisah -> Document\2023\11\08\01. EWS Update.sql
+   - Layout info score dibuat lebih rapih
+2. BasePageDetail tambah kondisi tidak menampilkan full down menu untuk dipanggil pada window (querystring -> isrm=1)
+3. Satusehat: rubah cara pembacaan parameter supaya tidak perlu restart app jika berubah
+4. PCare: Tambah menu rubah password
+6. Medication Recon Admisi: bug fix menu Education yg tidak running
+7. Prescription Review access disiesuaikan dengan form induknya
+
+---[08-11-2023 - Dewi]---
+1. Mengaktifkan filter Physician di menu Incomplete Medical Record File List
+2. Menonaktifkan filter untuk Registration Type di Service Unit Booking For Operating Theater
+3. Menonaktifkan filter untuk Registration Type di Service Unit Booking Realization For Operating Theater
+4. Bugfix Patient Diagnosis And Procedure Entry (Ketika filter Procedure - Empty terdapat eror) (Kak Deby)
+5. Bugfix Medical Record File Receive (Ketika filter Registration Type dipilih tidak terfilter)
+
+---[08-11-2023 - Fajri]---
+1. Penyesuaian ukuran popup untuk button Batch No. & ED - Stock Information
+2. Bugfix assessment dokter tidak bisa save saat flacc tidak diisi
+3. Bugfix Purchase Request Approval -> Filter Request Unit dan Purchasing Unit tidak berfungsi
+4. Medical Record File Analysis (EMR) -> Penyesuaian icon/gambar di setiap baris dokumen
+
+---[08-11-2023- Dewi] ---
+1. Bugfix Patient Document (Hampir semua filter tidak bisa digunakan jika sebelumnya memilih page lain untuk di lihat)
+2. Bugfix Patient Information (Hampir semua filter tidak bisa digunakan jika sebelumnya memilih page lain untuk di lihat)
+3. Bugfix Medical Record File Status (Hampir semua filter tidak bisa digunakan jika sebelumnya memilih page lain untuk di lihat)
+4. Bugfix Medical Record File Receive (Hampir semua filter tidak bisa digunakan jika sebelumnya memilih page lain untuk di lihat)
+5. Bugfix Medical Record File Analysis (Hampir semua filter tidak bisa digunakan jika sebelumnya memilih page lain untuk di lihat)
+6. Bugfix Patient Health Record (Waktu pindah ke page lain, tampilannya kosong)
+7. Modif Incomplete Medical Record File List (Filter sesuai Document Number)
+8. Modif Patient Diagnosis And Procedure Entry (Menambahkan kondisi di DataTable EpisodeSOAPEs )
+
+---[08-11-2023 - Nurul]---
+1. Penyesuaian Tampilan Annoucement di Dashboard (filter sesuai tanggal yang masih berlaku dan IsActive == true)
+2. AppProgram di Control Panel --> Announcement
+3. Tambah penomoran otomatis --> Insert Document 20231108 -> 02. Insert_AppAutoNumber_AnnouncementNo
+
+--[08-11-2023 - Handono]---
+1. Pilihan diagnosa pada row pertama dirubah menjadi tidak hanya untuk main diagnose untuk entrian
+   - Progress Notes
+   - Assessmen tipe Rawat Jalan (semua) dan tipe Rawat Inap (semua)
+   - Resume Medis Rawat Jalan dan Rawat Inap
+2. Resume Medis Rawat Jalan (Default): Penambahan isian tipe spesialis untuk rujuk keluar (untuk keperluan bridging PCARE)
+3. Send Data to PCare: perubahan format data Rujuk Keluar
+4. Jika belum ada main diagnose maka untuk DPJP default yg muncul adalah main diagnose dan dokter lainnya adalah secondary diagnose
+5. Main diagnose hanya bisa diisi 1
+
+---[09-11-2023 - Dewi]---
+1. Bugfix Service unit booking for operating & Surgery (ketika search pertama memang terfilter. tapi begitu klik search kedua kali maka yang tampil adalah semua data(refresh) - ServiceUnitBookingList.aspx.cs)
+2. Bugfix Service unit booking Realization for operating & Surgery (ketika search pertama memang terfilter. tapi begitu klik search kedua kali maka yang tampil adalah semua data(refresh) - ServiceUnitBookingRealizationList.aspx.cs)
+
+---[09-11-2023 - Deby]----
+1. add field FornasRestrictionNotes di ItemProductMedic u/ ditampilkan pada saat order resep (di-display jg di menu farmasi) --> insert document 20231109 - 01a & 01b
+   affected menu:
+   - master item product medic
+   - prescription order (emr)
+   - prescription sales / handling
+2. add field CasemixNotes di TransChargesItem & TransPrescriptionItem u/ pemisahan catt yg dibuat oleh casemix --> insert document 20231109 - 02
+   affected menu:
+   - casemix center
+   - form transaction entry
+   - form realization order
+   - form prescription
+3. modif form prescription sales & order handlinf, aktifin fungsi barcode u/ pencarian pasien
+
+---[09-11-2023 - Fajri]---
+1. Bugs Item Package jika harga item package tarif komponent di set 0
+   Note: Jika harga pada ItemPackageTariffComponent dirubah atau berbeda dengan harga pada ItemTariffComponent maka harga didapat dari perubahan sesuai ItemPackageTariffComponent yang sudah ditentukan
+2. Add Deceased di EmrDetail
+
+---[09-11-2023 - BT]---
+- Prescription Sales dan Order Handling, bisa search di kolom barcode pakai norm
+
+---[10-11-2023- Dewi]---
+1. Bugfix Patient Incident Verification (Saat memfilter nama pasien terjadi error, saat filter tanggal yang dipilih tidak keluar)
+2. Bugfix Patient Incident Investigation (saat filter tanggal yang dipilih tidak keluar, jika korban merupakan non pasien maka namanya tidak keluar)
+3. Bugfix Patient Incident Investigation Realization (saat filter tanggal yang dipilih tidak keluar, jika korban merupakan non pasien maka namanya tidak keluar)
+4. Bugfix Risk Management (Ketika search service unit, saat data muncul nama service unit tidak ada)
+5. Bugfix Contributory Factors Classification Framework (tidak bisa menghapus Component id dan Component name)
+
+---[10-11-2023 - Deby]----
+1. bugifx list medical record file receive & medical record file analysis
+2. menampilkan kembali kolom Specialty di master paramedic (tetap dipisahkan dari SMF, isi specialty bisa lebih detil dari SMF)
+3. add flag status item restriction di master guarantor --> insert document 20231110 - 01
+   affected menu:
+   - master guarantor
+   - add new record (select item) & picklist (item lab/rad/product) di form service unit transaction entry
+   - copy prescription template (prescription item / prescription entry)
+
+---[10-11-2023 - Handono]----
+1. Save RegistrationNo asal pada proses create appointment dari reg selaian Ranap (control plan, DetailOpRegistrationAndDischarge/DetailOpRegistrationAndDischargeDetail.aspx.cs)
+2. Patient Document: bug fix save to guarantor ext file 
+3. PCare Reference entry ditampilkan hanya jika menerapkan bridging PCare
+   - Item Master/ItemProductMedical/ItemProductMedicalDetail.aspx.cs
+   - Item Master/ItemService/ItemServiceDetail.aspx.cs
+   - Paramedic/ParamedicDetail.aspx
+   - ServiceUnit/ServiceUnitDetail.aspx.cs
+
+---[11-11-2023 - Fajri]---
+1. Production Of Goods, pilihan formula belum di filter berdasarkan IsActive di master Production Formula
+2. Consignment Received, search Dialog, filter Service Unit diganti berdasarkan nama unit
+3. Consignment Return, search Dialog, filter Service Unit diganti berdasarkan nama unit
+4. Stock Information, sesuaikan ukuran window waktu klik batch number
+5. Master Location, bisa search item di mode view
+
+---[12-11-2023 - Dewi]---
+1. Bugfix di bagian ItemTransactionList.aspx.cs untuk menu Service Unit Transaction Entry, Service Unit Transaction Entry (Verification), 
+   Job Order Entry, Job Order Entry (*), Ancillary Service Transaction Entry, Ancillary Service Transaction Entry (Verification), 
+   Service Unit Correction Entry, Service Unit Correction Entry (Verification) (Saat klik list detail transaction dan ingin memfilter 
+   item tidak bisa muncul pilihan filter item)
+2. Bugfix Test Result (Filter Film No tidak terfilter, klik move record error)
+3. modif User Group & Authorization (User group ID dibuat tidak bisa di edit)
+
+---[12-11-2023 - Deby]----
+1. me-nonaktif-kan parameter IsInventoryIssueUsingRequest
+
+---[14-11-2023 - Deby]----
+1. alter table GuarantorAutoBillItem (SRRegistrationType --> ServiceUnitID) --> insert document 20231114 - 01
+2. optimize query u/ display payment list di encounter history
+3. bugfix error save purchase return u/ yg belum menggunakan fefo
+
+---[15-11-2023 - Handono]----
+- Satusehat Bridging: Penyesuaian perubahan API Satusehat untuk ObservationPost
+- PCare Bridging: modif cara pengambilan history TTV yg awalnya dihardcode menggunakan QuestionID menjadi dinamis menggunakan setingan VitalSigID
+- PCare Brdiging: Tambah fitur pencarian member BPJS menggunakan no ktp yg datanya bisa diimport untuk master pasien
+
+---[15-11-2023 - Handono]----
+    Penambahan parameter IsMedicalNoContainStrip untuk optimisasi pada pencarian MedicalNo seperti contoh dibawah (baru sebagian list dan lainnya supaya diterapkan oleh yg punya programnya)
+
+    if (AppSession.Parameter.IsMedicalNoContainStrip)
+        qr.Where(
+            qr.Or(
+                qr.RegistrationNo == searchReg,
+                qp.MedicalNo == searchReg,
+                qp.OldMedicalNo == searchReg,
+                string.Format("< OR REPLACE(p.MedicalNo, '-', '') LIKE '%{0}%'>", searchReg),
+                string.Format("< OR REPLACE(p.OldMedicalNo, '-', '') LIKE '%{0}%'>", searchReg)
+                )
+            );
+    else
+        qr.Where(
+        qr.Or(
+            qr.RegistrationNo == searchReg,
+            qp.MedicalNo == searchReg,
+            qp.OldMedicalNo == searchReg
+            )
+        );
+
+---[15-11-2023 - Deby]----
+1. modif form PO, ++ validasi pada saat approval, jika status po adalah Inventory tp bukan Asset, harga barang tidak boleh melebihi batas pengakuan barang inventaris
+
+---[16-11-2023 - Deby]----
+1. modif plafond information, ++ filter over plafond range
+2. ++ parameter IsVisibleGuarantorAutoBillItem (dafault: No) u/ menonaktifkan settingan auto bill di master guarantor, 
+   termasuk function yg akses ke registration (AppointmentNRegistrationDataService.cs, RegistrationDetail.aspx.cs, RegistrationList.aspx.cs)
+3. bugfix error pada saat klik tombol high alert di form prescription
+4. alter table Item add column EconomicLifeInYear (u/ setting umur ekonomi item2 yg akan diperhitungkan sbg asset) --> insert document 20231116 - 01
+   affected menu:
+   - master item product
+   - po (validasi approral)
+
+---[18-11-2023 - Deby]----
+1. modif non patient customer charge, getitem mengikuti aturan restrictionguarantor (flag status item restriction di master guarantor)
+2. optimize pencarian TeamMemberName di credential team
+3. modif list casemix center, u/ history ditambah bpjs cob
+4. mengaktifkan function IsListLoadRecordIfFiltered di menu plafond information --> insert document 20231118 - 01
+
+---[20-11-2023 - Fajri]---
+1. Optimize Query
+   - Ganti Distinct dengan GroupBy
+   - Hilangkan REPLACE di filter MedicalNo yang pakai strip -> parameter IsMedicalNoContainStrip
+     affected menu:
+     - Patient Management
+     - Quality Indicator
+     - Inventory
+     - Finance
+     - Sanitation
+     - Dietary & Nutrition
+
+---[21-11-2023 - Fajri]---
+1. Optimize Query
+   - Ganti Distinct dengan GroupBy
+   - Hilangkan REPLACE di filter MedicalNo yang pakai strip -> parameter IsMedicalNoContainStrip
+     affected menu:
+     - Human Resources
+     - Payroll Management
+     - Blood Bank
+     - CSSD
+     - Laundry
+     - Billing Charges
+     - EMR
+
+---[21-11-2023 - Handono]---
+- Jurnal Payment Pasien BPJS Kapitasi: Hanya coa inventory (Klinik)
+- Optimize pengecekan ItemLaboratory Confidentials
+
+---[24-11-2023 - BT]---
+- Rollback modifikasi checklist oldcase saat entry diagnosa
+- bugfix Transfusion Monitoring, TransfusionEndDateTime tidak terupdate sesuai tanggal jam yang dipilih
+
+---[25-11-2023 - Handono]---
+- Itegrated Notes Rajal Hist: Bug fix data dari registrasi sebelumnya di tgl yg sama tidak terambil
+- Raspro jika dipilih non ppab tambah info icon required field- bugfix que slot bentrok saat registrasi
+
+---[25-11-2023 - Deby]----
+1. bugfix refer to (##pengambilan tarif)
+
+---[25-11-2023 - Fajri]---
+1. Bugfix Master Journal Module Group, error saat delete
+2. Bugfix Master Supplier, saat input item non medic dan kitchen tidak tersimpan
+
+---[26-11-2023 - Handono]---
+- Framework: Standard Audit Log View per field (TableName, FieldName, PrimaryKeyData)
+- EMR Integrated Notes: Link menu audit log -> Document\2023\11\27\01. AuditLogSetting - Integrated Notes.sql
+
+---[24-11-2023 - BT]---
+- bugfix recalculate billing, tarif variable tidak bisa direcalculate karena akan menyebabkan jurnal tidak balance
+
+---[28-11-2023 - Deby]----
+1. modif penomoran di prescription order, dimodif mengikuti penomoran di prescription sales (berdasarkan jenis pasien ipr/opr)
+
+---[29-11-2023 - BT]---
+- optimasi kiosk caller, auto refresh diset dari 2 detik ke 5 detik untuk mengurangi beban sql
+- optimasi kiosk self registration service, fungsi yang tidak terpakai pada kondisi tertentu tidak perlu dijalankan
+
+---[30-11-2023 - Handono]---
+- EWS: Update grafik dashboard dan tambah layar entry khusus EWS yg bisa diklik dari dashboardnya (*jalankan Script tgl 31 Nov 2023)
+- PEWS: Update grafik dashboard dan tambah layar entry khusus PEWS yg bisa diklik dari dashboardnya (*jalankan Script tgl 31 Nov 2023)
+- MEOWS: Update grafik dashboard dan tambah layar entry khusus MEOWS yg bisa diklik dari dashboardnya (*jalankan Script tgl 31 Nov 2023)
+- Prescription Copy: perbaikan urutan item disamkan dgn sumbernya
+- PrescriptionOrderHandlingList: Perbaikan autorefresh dan dibuat bisa di on off kan
+- PrescriptionSalesDetail: Tuneup info prev buy ke mode webservice dan ditampilkan via UI ToolTip
+- Resume Medis: Physical Examination bagian vital sign diambil dari TTV pertama baik pasien keluar meninggal maupun hidup
+- ErrorPage: Tambah info built time 
+- BaseControl/BasePageDialogEntry: Bug fix error message yg mengakibatkan layar tidak bisa diklik lagi
+- ProcessDataToSatuSehat: Tambah info status vital sign, dan education diet
+
+---[30-11-2023 - Fajri]---
+1. Add menu Patient Management -> Quality Indicator -> Compliance With Efforts to Prevent The Risk of Patient Falls
+   --> insert document 20231130 - 01, 02
+
+---[01-12-2023 - BT]---
+- Assessment physical exam, autochecklist checkbox yang ada isian textnya
+- bugfix error antrol "Terdapat duplikasi Kode Booking"
+
+---[01-12-2023 - Handono]---
+- EMR: Integrated Notes audit log link menu update via web service after page show and just show for field has edited
+- Monitoring Chart (EWS,PEWS,MEOWS): Bug fix for not range score exist
+
+---[02-12-2023 - Handono]---
+- Partograph dashboard with fitur add & edit
+
+---[04-12-2023 - Deby]----
+1. modif operation notes (emr), ++ pre & post diagnosis --> insert document 20231204 - 01
+2. modif casemix item rule, penambahan settingan per registration type --> insert document 20231204 - 02 & 03
+3. modif casemix center, reject obat tidak auto void transaksi, supaya tetap muncul di list (main di qty taken di-nol-kan)
+
+---[04-12-2023 - Fajri]---
+1. Bugfix PatientDetail kurang validasi gender
+
+---[06-12-2023 - Handono]---
+01. PHR:     
+- Add fitur Load template from NursingDiagnosaTemplateDetail
+- AnswerType RBT -> penerapan selectionID.Contains("[RANGE_")
+- Fix AnswerType RBT tidak menyimpan selected text
+- TuneUp load Question dengan cara menghilangkan looping query child question 
+
+02. Partograph:
+- Jumlah kolom dibuat sama untuk semua grafik
+- Tambah fitur edit dan add data menggunakan PhrCtl yg dimodif bisa untuk NursingDiagnosaTemplate
+- Tombol navigasi tambah prev, next date
+- Rubah tombol Last VS - > Last Monitoring
+
+03. PPA Notes (PpaNoteEntry.aspx.cs): 
+- Summary respond template disimpan ke O
+- Display summary respond dari O jika sudah ada dan jika belum tetap digenerate ulang
+
+04. EMR IP dan EMR non IP: 
+- Menambah kembali / mengembalikan fitur EWS sebelumnya dengan setingan SREwsType-> OEWS (req by RSMM)
+- Integrated notes dari PPA Notes: ambil summary respond dari O jika sudah ada dan jika belum tetap digenerate ulang
+
+05. Medication Recon Discharge:
+- TTD DPJP dihilangkan untuk Discharge Recon 
+- Hanya menampilkan terapi dari transaksi resep 24 jam kebelakang
+
+06. Medication Recon Transfer:
+- History transfer hanya dimunculkan yg pindah ruangan saja (ServiceUnit berganti)
+- Daftar terapi yg dimunculkan hanya terapi sebelumnya saja (Tidak bisa semua untuk semua reg krn table history baru ditambahkan)
+
+07. Others:
+- MethodExts: add function ReplaceHTMLTags untuk mengganti htlml tags ke format text 
+- VitalSign.cs: Optimize query vitalsign 
+- VitalSignInfoCtl.ascx: Add properties IsShowHeader
+- PrescriptionSalesDetail.aspx: Tambah info VitalSign
+- CardexMonitoringDashboard.aspx: Rubah entry menggunakan setingan dari NursingDiagnoseTempate agar masuk ke CPPT (awalnya pakai QuestionForm)
+- MainContent\MedicalHistCtl.ascx: Tuneup refresh grid menggunkan javascript yg lebih cepat dibanding callback dari gridnya
+- Entrian Partograph, EWS, PEWS. MEOWS (QuestionRespondEntry.aspx) dirubah mengggunakan PhrCtl shg fiturnya sama dengan entrian Patient Health Record
+- Consult / Refer (ParamedicConsultEntry.aspx): handle error "A potentially dangerous Request.Form" menggunakan javascript function yg mereplac karakter yg dianggap potentially dangerous (>< yg digabung dgn hurup lain didepannya)
+- Script Ews Pews Meows Setting
+- Script Partograph Setting
+- Resume Medis untuk menu Casemix tidak dibatasi deadline edit dan status Close MR
+
+---[07-12-2023 - BT]---
+- bugfix jurnal void payment tidak tercreate
+- Assessment physical exam untuk control  GeneralPeCtl,  HeartPeCtl,  InternalPeCtl, KidPeCtl, LungPeCtl,  NursingPeCtl,  ObesyPeCtl,  SkinPeCtl,  SurgicalPeCtl 
+  autochecklist checkbox yang ada isian textnya
+
+---[07-12-2023 - Deby]----
+1. bugfix holiday schedule (#tidak bisa di-edit)
+2. bugfix reference jurnal POR (#kolom diskon hanya ambil yg persentase)
+
+---[14-12-2023 - Apip]---
+1. modif pada Admission Drub Recon kurang tutup <
+
+---[14-12-2023 - BT]---
+- EMR, penambahan Plan / Action / Therapy dan Follow Up Plan ke MDS rawat jalan
+
+---[22-12-2023 - Deby]----
+1. modif form verifikasi billing, ++ validasi void registrasi pada saat IB
+
+---[26-12-2023 - Deby]----
+1. bugfix rekalkulasi di verifikasi billing, add cc kalo udah terlanjur pernah hilang u/ item dg tarif variabel
+2. modif urutan where di query CekPrevBuy (PrescriptionSalesItemDetail.ascx.cs) + set with nolock --> selisih waktu 5 detik lbh cepat dari query sebelumnya
+
+--[29-12-2023 - Deby]----
+1. modif form BpjsVerificationResultImport (a/r invoice), get temp folder u/ import (baca dari appparameter, kalo kosong baru ke webconfig)
+   (#access to the path ... is denied)

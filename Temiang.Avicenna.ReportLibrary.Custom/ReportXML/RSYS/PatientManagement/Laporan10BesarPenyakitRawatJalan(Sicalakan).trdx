@@ -1,0 +1,486 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report DataSourceName="sqlDataSource1" Width="36.1cm" Name="Laporan10BesarPenyakitRawatJalan(Sicalakan)" Zoom="1.5" SnapGridSize="0.1cm" xmlns="http://schemas.telerik.com/reporting/2019/2.0">
+  <DataSources>
+    <SqlDataSource QueryDesignerState="null" ParameterValues="{&quot;@p_FromDate&quot;:&quot;2019-01-01&quot;,&quot;@p_ToDate&quot;:&quot;2019-10-30&quot;,&quot;@p_Top10&quot;:&quot;10&quot;,&quot;@p_ServiceUnitID&quot;:&quot;D01.03.10&quot;,&quot;@p_RegistrationType&quot;:&quot;OPR&quot;}" ConnectionString="RSI19" SelectCommand="dbo.sprpt_PenyakitTerbanyak_OP" SelectCommandType="StoredProcedure" Name="sqlDataSource1">
+      <Parameters>
+        <SqlDataSourceParameter DbType="DateTime" Name="@p_FromDate">
+          <Value>
+            <String>2019-01-01</String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="DateTime" Name="@p_ToDate">
+          <Value>
+            <String>2019-10-30</String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="AnsiString" Name="@p_Top10">
+          <Value>
+            <String>10</String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="AnsiString" Name="@p_ServiceUnitID">
+          <Value>
+            <String>D01.03.10</String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="AnsiString" Name="@p_RegistrationType">
+          <Value>
+            <String>OPR</String>
+          </Value>
+        </SqlDataSourceParameter>
+      </Parameters>
+    </SqlDataSource>
+  </DataSources>
+  <Items>
+    <DetailSection Height="0.132cm" Name="detailSection1">
+      <Style Visible="False" />
+    </DetailSection>
+    <ReportHeaderSection Height="0.132cm" Name="reportHeaderSection1" />
+    <PageFooterSection Height="0.6cm" Name="pageFooterSection1">
+      <Items>
+        <TextBox Width="11.7cm" Height="0.6cm" Left="24.4cm" Top="0cm" Value="= 'Page : ' + PageNumber + '/' + PageCount" Format="" Name="textBox30">
+          <Style TextAlign="Right" VerticalAlign="Middle">
+            <Font Size="8pt" Italic="True" />
+          </Style>
+        </TextBox>
+        <TextBox Width="11.7cm" Height="0.6cm" Left="0cm" Top="0cm" Value="= Now()" Format="Avicenna HIS, Print Date : {0:dd-MM-yyy hh:mm}" Name="textBox29">
+          <Style VerticalAlign="Middle">
+            <Font Size="8pt" Italic="True" />
+          </Style>
+        </TextBox>
+      </Items>
+    </PageFooterSection>
+    <ReportFooterSection Height="6.036cm" Name="reportFooterSection1">
+      <Items>
+        <Table DataSourceName="sqlDataSource1" Width="36.102cm" Height="2.2cm" Left="0cm" Top="3.836cm" Name="table2" StyleName="Normal.TableNormal">
+          <Body>
+            <Cells>
+              <TableCell RowIndex="0" ColumnIndex="1" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="2.001cm" Height="0.6cm" Left="0cm" Top="0cm" Value="= Fields.ProvincesCode" Name="textBox34" StyleName="Normal.TableBody">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Font Size="9pt" />
+                      <BorderStyle Default="None" Bottom="Solid" Left="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="2" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="1.687cm" Height="0.6cm" Left="0cm" Top="0cm" Value="= Fields.Kota" Name="textBox35" StyleName="Normal.TableBody">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Font Size="9pt" />
+                      <BorderStyle Default="None" Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="3" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="1.687cm" Height="0.6cm" Left="0cm" Top="0cm" Value="= Fields.KodeRS" Name="textBox36" StyleName="Normal.TableBody">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Font Size="9pt" />
+                      <BorderStyle Default="None" Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="4" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="5.273cm" Height="0.6cm" Left="0cm" Top="0cm" Value="= Fields.NamaRS" Name="textBox37" StyleName="Normal.TableBody">
+                    <Style TextAlign="Left" VerticalAlign="Middle">
+                      <Font Size="9pt" />
+                      <BorderStyle Default="None" Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="5" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="1.477cm" Height="0.6cm" Left="0cm" Top="0cm" Value="= Fields.Bulan" Name="textBox38" StyleName="Normal.TableBody">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Font Size="9pt" />
+                      <BorderStyle Default="None" Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="6" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="1.477cm" Height="0.6cm" Left="0cm" Top="0cm" Value="= Fields.Tahun" Name="textBox39" StyleName="Normal.TableBody">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Font Size="9pt" />
+                      <BorderStyle Default="None" Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="8" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="1.975cm" Height="0.6cm" Left="0cm" Top="0cm" Value="= Fields.DiagnoseID" Name="textBox40" StyleName="Normal.TableBody">
+                    <Style TextAlign="Left" VerticalAlign="Middle">
+                      <Font Size="9pt" />
+                      <BorderStyle Default="None" Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="9" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="6.543cm" Height="0.6cm" Left="0cm" Top="0cm" Value="= Fields.DiagnoseName" Name="textBox41" StyleName="Normal.TableBody">
+                    <Style TextAlign="Left" VerticalAlign="Middle">
+                      <Font Size="9pt" />
+                      <BorderStyle Default="None" Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="10" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="3.067cm" Height="0.6cm" Left="0cm" Top="0cm" Value="= Fields.M" Name="textBox42" StyleName="Normal.TableBody">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Font Size="9pt" />
+                      <BorderStyle Default="None" Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="11" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="3.067cm" Height="0.6cm" Left="0cm" Top="0cm" Value="= Fields.F" Name="textBox43" StyleName="Normal.TableBody">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Font Size="9pt" />
+                      <BorderStyle Default="None" Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="12" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="2.658cm" Height="0.6cm" Left="0cm" Top="0cm" Value="= Fields.NewCase" Name="textBox44" StyleName="Normal.TableBody">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Font Size="9pt" />
+                      <BorderStyle Default="None" Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="13" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="2.454cm" Height="0.6cm" Left="0cm" Top="0cm" Value="= Fields.Summary" Name="textBox45" StyleName="Normal.TableBody">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Font Size="9pt" />
+                      <BorderStyle Default="None" Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="7" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="1.687cm" Height="0.6cm" Left="0cm" Top="0cm" Value="= RowNumber()" Name="textBox46" StyleName="Normal.TableBody">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Font Size="9pt" />
+                      <BorderStyle Default="None" Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="0" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="1.049cm" Height="0.6cm" Left="0cm" Top="0cm" Value="= RowNumber()" Name="textBox2" StyleName="Normal.TableBody">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Font Size="9pt" />
+                      <BorderStyle Default="None" Top="None" Bottom="Solid" Left="Solid" Right="None" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+            </Cells>
+            <Columns>
+              <Column Width="1.049cm" />
+              <Column Width="2.001cm" />
+              <Column Width="1.687cm" />
+              <Column Width="1.687cm" />
+              <Column Width="5.273cm" />
+              <Column Width="1.477cm" />
+              <Column Width="1.477cm" />
+              <Column Width="1.687cm" />
+              <Column Width="1.975cm" />
+              <Column Width="6.543cm" />
+              <Column Width="3.067cm" />
+              <Column Width="3.067cm" />
+              <Column Width="2.658cm" />
+              <Column Width="2.454cm" />
+            </Columns>
+            <Rows>
+              <Row Height="0.6cm" />
+            </Rows>
+          </Body>
+          <Corner />
+          <Style>
+            <BorderStyle Default="None" />
+          </Style>
+          <RowGroups>
+            <TableGroup Name="detail">
+              <Groupings>
+                <Grouping />
+              </Groupings>
+            </TableGroup>
+          </RowGroups>
+          <ColumnGroups>
+            <TableGroup Name="group1">
+              <ReportItem>
+                <TextBox Width="1.049cm" Height="1.6cm" Left="0cm" Top="0cm" Value="NO" Name="textBox1" StyleName="Normal.TableHeader">
+                  <Style BackgroundColor="Lime" TextAlign="Center">
+                    <Font Size="9pt" Bold="True" />
+                    <BorderStyle Default="None" Top="Solid" Bottom="Solid" Left="Solid" Right="None" />
+                    <BorderWidth Default="0.5pt" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup Name="provincesCode">
+              <ReportItem>
+                <TextBox Width="2.001cm" Height="1.6cm" Left="0cm" Top="0cm" Value="KODE PROPINSI" Name="textBox31" StyleName="Normal.TableHeader">
+                  <Style BackgroundColor="Lime" TextAlign="Center">
+                    <Font Size="9pt" Bold="True" />
+                    <BorderStyle Default="None" Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+                    <BorderColor Default="Black" />
+                    <BorderWidth Default="0.5pt" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup Name="kota">
+              <ReportItem>
+                <TextBox Width="1.687cm" Height="1.6cm" Left="0cm" Top="0cm" Value="KAB/ KOTA" Name="textBox47" StyleName="Normal.TableHeader">
+                  <Style BackgroundColor="Lime" TextAlign="Center">
+                    <Font Size="9pt" Bold="True" />
+                    <BorderStyle Default="None" Top="Solid" Bottom="Solid" Right="Solid" />
+                    <BorderColor Default="Black" />
+                    <BorderWidth Default="0.5pt" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup Name="kodeRS">
+              <ReportItem>
+                <TextBox Width="1.687cm" Height="1.6cm" Left="0cm" Top="0cm" Value="KODE RS" Name="textBox48" StyleName="Normal.TableHeader">
+                  <Style BackgroundColor="Lime" TextAlign="Center">
+                    <Font Size="9pt" Bold="True" />
+                    <BorderStyle Default="None" Top="Solid" Bottom="Solid" Right="Solid" />
+                    <BorderColor Default="Black" />
+                    <BorderWidth Default="0.5pt" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup Name="namaRS">
+              <ReportItem>
+                <TextBox Width="5.273cm" Height="1.6cm" Left="0cm" Top="0cm" Value="NAMA RS" Name="textBox49" StyleName="Normal.TableHeader">
+                  <Style BackgroundColor="Lime" TextAlign="Center">
+                    <Font Size="9pt" Bold="True" />
+                    <BorderStyle Default="None" Top="Solid" Bottom="Solid" Right="Solid" />
+                    <BorderColor Default="Black" />
+                    <BorderWidth Default="0.5pt" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup Name="bulan">
+              <ReportItem>
+                <TextBox Width="1.477cm" Height="1.6cm" Left="0cm" Top="0cm" Value="Bulan" Name="textBox50" StyleName="Normal.TableHeader">
+                  <Style BackgroundColor="Lime" TextAlign="Center">
+                    <Font Size="9pt" Bold="True" />
+                    <BorderStyle Default="None" Top="Solid" Bottom="Solid" Right="Solid" />
+                    <BorderColor Default="Black" />
+                    <BorderWidth Default="0.5pt" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup Name="tahun">
+              <ReportItem>
+                <TextBox Width="1.477cm" Height="1.6cm" Left="0cm" Top="0cm" Value="Tahun" Name="textBox51" StyleName="Normal.TableHeader">
+                  <Style BackgroundColor="Lime" TextAlign="Center">
+                    <Font Size="9pt" Bold="True" />
+                    <BorderStyle Default="None" Top="Solid" Bottom="Solid" Right="Solid" />
+                    <BorderColor Default="Black" />
+                    <BorderWidth Default="0.5pt" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup Name="group">
+              <ReportItem>
+                <TextBox Width="1.687cm" Height="1.6cm" Left="0cm" Top="0cm" Value="No. Urut" Name="textBox52" StyleName="Normal.TableHeader">
+                  <Style BackgroundColor="Lime" TextAlign="Center">
+                    <Font Size="9pt" Bold="True" />
+                    <BorderStyle Default="None" Top="Solid" Bottom="Solid" Right="Solid" />
+                    <BorderColor Default="Black" />
+                    <BorderWidth Default="0.5pt" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup Name="diagnoseID">
+              <ReportItem>
+                <TextBox Width="1.975cm" Height="1.6cm" Left="0cm" Top="0cm" Value="KODE ICD 10" Name="textBox53" StyleName="Normal.TableHeader">
+                  <Style BackgroundColor="Lime" TextAlign="Center">
+                    <Font Size="9pt" Bold="True" />
+                    <BorderStyle Default="None" Top="Solid" Bottom="Solid" Right="Solid" />
+                    <BorderColor Default="Black" />
+                    <BorderWidth Default="0.5pt" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup Name="diagnoseName">
+              <ReportItem>
+                <TextBox Width="6.543cm" Height="1.6cm" Left="0cm" Top="0cm" Value="DESKRIPSI" Name="textBox54" StyleName="Normal.TableHeader">
+                  <Style BackgroundColor="Lime" TextAlign="Center">
+                    <Font Size="9pt" Bold="True" />
+                    <BorderStyle Default="None" Top="Solid" Bottom="Solid" Right="Solid" />
+                    <BorderColor Default="Black" />
+                    <BorderWidth Default="0.5pt" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup Name="m">
+              <ReportItem>
+                <TextBox Width="3.067cm" Height="1.6cm" Left="0cm" Top="0cm" Value="KASUS BARU MENURUT JENIS KELAMIN LK" Name="textBox55" StyleName="Normal.TableHeader">
+                  <Style BackgroundColor="Lime" TextAlign="Center">
+                    <Font Size="9pt" Bold="True" />
+                    <BorderStyle Default="None" Top="Solid" Bottom="Solid" Right="Solid" />
+                    <BorderColor Default="Black" />
+                    <BorderWidth Default="0.5pt" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup Name="f">
+              <ReportItem>
+                <TextBox Width="3.067cm" Height="1.6cm" Left="0cm" Top="0cm" Value="KASUS BARU MENURUT JENIS KELAMIN PR" Name="textBox56" StyleName="Normal.TableHeader">
+                  <Style BackgroundColor="Lime" TextAlign="Center">
+                    <Font Size="9pt" Bold="True" />
+                    <BorderStyle Default="None" Top="Solid" Bottom="Solid" Right="Solid" />
+                    <BorderColor Default="Black" />
+                    <BorderWidth Default="0.5pt" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup Name="newCase">
+              <ReportItem>
+                <TextBox Width="2.658cm" Height="1.6cm" Left="0cm" Top="0cm" Value="JUMLAH KASUS BARU(4+5)" Name="textBox57" StyleName="Normal.TableHeader">
+                  <Style BackgroundColor="Lime" TextAlign="Center">
+                    <Font Size="9pt" Bold="True" />
+                    <BorderStyle Default="None" Top="Solid" Bottom="Solid" Right="Solid" />
+                    <BorderColor Default="Black" />
+                    <BorderWidth Default="0.5pt" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup Name="summary">
+              <ReportItem>
+                <TextBox Width="2.454cm" Height="1.6cm" Left="0cm" Top="0cm" Value="JUMLAH KUNJUNGAN" Name="textBox58" StyleName="Normal.TableHeader">
+                  <Style BackgroundColor="Lime" TextAlign="Center">
+                    <Font Size="9pt" Bold="True" />
+                    <BorderStyle Default="None" Top="Solid" Bottom="Solid" Right="Solid" />
+                    <BorderColor Default="Black" />
+                    <BorderWidth Default="0.5pt" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+          </ColumnGroups>
+        </Table>
+        <TextBox Width="16.1cm" Height="1cm" Left="10cm" Top="1.068cm" Value="= Fields.Title" Name="textBox33">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Size="14pt" Bold="True" />
+          </Style>
+        </TextBox>
+        <TextBox Width="16.1cm" Height="1cm" Left="10cm" Top="2.068cm" Value="= Fields.Periode" Name="textBox32">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Size="14pt" Bold="True" />
+          </Style>
+        </TextBox>
+      </Items>
+    </ReportFooterSection>
+  </Items>
+  <PageSettings PaperKind="LegalExtra" Landscape="True" ContinuousPaper="False">
+    <Margins>
+      <MarginsU Left="1cm" Right="1cm" Top="1cm" Bottom="1cm" />
+    </Margins>
+  </PageSettings>
+  <StyleSheet>
+    <StyleRule>
+      <Style>
+        <Padding Left="2pt" Right="2pt" />
+      </Style>
+      <Selectors>
+        <TypeSelector Type="TextItemBase" />
+        <TypeSelector Type="HtmlTextBox" />
+      </Selectors>
+    </StyleRule>
+    <StyleRule>
+      <Style Color="Black">
+        <Font Name="Tahoma" Size="9pt" />
+        <BorderStyle Default="Solid" />
+        <BorderColor Default="Black" />
+        <BorderWidth Default="1px" />
+      </Style>
+      <Selectors>
+        <StyleSelector Type="Table" StyleName="Normal.TableNormal" />
+      </Selectors>
+    </StyleRule>
+    <StyleRule>
+      <Style>
+        <Font Name="Tahoma" Size="9pt" />
+        <BorderStyle Default="Solid" />
+        <BorderColor Default="Black" />
+        <BorderWidth Default="1px" />
+      </Style>
+      <Selectors>
+        <DescendantSelector>
+          <Selectors>
+            <TypeSelector Type="Table" />
+            <StyleSelector Type="ReportItem" StyleName="Normal.TableBody" />
+          </Selectors>
+        </DescendantSelector>
+      </Selectors>
+    </StyleRule>
+    <StyleRule>
+      <Style VerticalAlign="Middle">
+        <Font Name="Tahoma" Size="10pt" />
+        <BorderStyle Default="Solid" />
+        <BorderColor Default="Black" />
+        <BorderWidth Default="1px" />
+      </Style>
+      <Selectors>
+        <DescendantSelector>
+          <Selectors>
+            <TypeSelector Type="Table" />
+            <StyleSelector Type="ReportItem" StyleName="Normal.TableHeader" />
+          </Selectors>
+        </DescendantSelector>
+      </Selectors>
+    </StyleRule>
+  </StyleSheet>
+</Report>

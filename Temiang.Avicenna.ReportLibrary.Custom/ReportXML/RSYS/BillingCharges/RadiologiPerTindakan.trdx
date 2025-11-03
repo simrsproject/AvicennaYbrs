@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report DataSourceName="sqlDataSource1" Width="9.69287490844727in" Name="userReport1" xmlns="http://schemas.telerik.com/reporting/2012/2">
+  <DataSources>
+    <SqlDataSource ConnectionString="Data Source=SCI-PC\BILLY;Initial Catalog=RSUTAMA;User ID=sa;Password=123" ProviderName="System.Data.SqlClient" SelectCommand="dbo.sprpt_XML_RadiologiPerTindakan" SelectCommandType="StoredProcedure" Name="sqlDataSource1">
+      <Parameters>
+        <SqlDataSourceParameter DbType="DateTime" Name="@p_FromDate">
+          <Value>
+            <String>2016-03-01</String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="DateTime" Name="@p_ToDate">
+          <Value>
+            <String>2016-03-31</String>
+          </Value>
+        </SqlDataSourceParameter>
+      </Parameters>
+    </SqlDataSource>
+  </DataSources>
+  <Items>
+    <DetailSection Height="0.0520833333333333in" Name="detailSection1">
+      <Style Visible="False" />
+    </DetailSection>
+    <PageFooterSection Height="1.12901878356934in" Name="pageFooterSection1">
+      <Items>
+        <TextBox Value="Palembang," Size="1.79999989906947cm, 0.500000151395794cm" Location="20.6000001009305cm, 0.00010012308478013cm" Name="textBox13">
+          <Style TextAlign="Left" VerticalAlign="Middle">
+            <Font Size="8pt" />
+          </Style>
+        </TextBox>
+        <TextBox Value="=Now()" Format="{0:MM.dd.yyy}" Size="2.21960121338682cm, 0.500000178813934cm" Location="22.4002002461696cm, 0.00010012308478013cm" Name="textBox15">
+          <Style TextAlign="Left" VerticalAlign="Middle">
+            <Font Size="8pt" />
+          </Style>
+        </TextBox>
+        <TextBox Value="=Fields.KasieRad" Size="4.01980135862585cm, 0.499900028311013cm" Location="20.6000001009305cm, 2.26770793329098cm" Name="textBox16">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Size="8pt" />
+          </Style>
+        </TextBox>
+        <TextBox Value="Kepala Ruang" Size="4.01980135862585cm, 0.500000178813934cm" Location="20.6000001009305cm, 0.500300520650134cm" Name="textBox17">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Size="8pt" />
+          </Style>
+        </TextBox>
+      </Items>
+    </PageFooterSection>
+    <ReportHeaderSection Height="6.69729168064975cm" Name="reportHeaderSection1">
+      <Items>
+        <TextBox Value="=Fields.ReportName" Size="24.6197013364716cm, 0.600000100930529cm" Location="0.00010012308478013cm, 1.90000005046526cm" Name="textBox1">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Bold="True" />
+          </Style>
+        </TextBox>
+        <TextBox Value="=Fields.Periode" Size="24.6197013364716cm, 0.600000100930529cm" Location="0.00010012308478013cm, 2.50000015139579cm" Name="textBox2">
+          <Style TextAlign="Center" VerticalAlign="Middle" />
+        </TextBox>
+        <Crosstab DataSourceName="sqlDataSource1" Size="8.90562400047235cm, 3.49729168064975cm" Location="0.100000050465265cm, 3.2cm" Name="crosstab1">
+          <Style Color="0, 0, 0" />
+          <Body>
+            <Cells>
+              <TableCell RowIndex="0" ColumnIndex="0" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Size="1.09802061653904cm, 0.542396127962098cm" Name="textBox4">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Default="Dotted" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="8pt" Bold="True" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="0" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="=Sum(Fields.Jumlah)" Size="1.09802061653904cm, 0.576666727099277cm" Name="textBox6" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Default="Dotted" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="8pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="2" ColumnIndex="0" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="=Sum(Fields.Jumlah)" Size="1.09802061653904cm, 0.550208285334923cm" Name="textBox12" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Default="Dotted" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="8pt" Bold="True" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="3" ColumnIndex="0" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="=Sum(Fields.Jumlah)" Size="1.09802061653904cm, 0.629583037377207cm" Name="textBox14" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Default="Dotted" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="8pt" Bold="True" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="1" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Size="2cm, 0.542396127962098cm" Name="textBox20" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Default="Dotted" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="8pt" Bold="True" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="1" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="=Sum(Fields.Jumlah)" Size="1.99999999979137cm, 0.576666727099277cm" Location="0cm, 0cm" Name="textBox19" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Default="Dotted" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="8pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="2" ColumnIndex="1" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="=Sum(Fields.Jumlah)" Size="1.99999999979137cm, 0.550208285334923cm" Location="0cm, 0cm" Name="textBox21" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Default="Dotted" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="8pt" Bold="True" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="3" ColumnIndex="1" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="=Sum(Fields.Jumlah)" Size="1.99999999979137cm, 0.629583037377207cm" Location="0cm, 0cm" Name="textBox22" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Default="Dotted" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="8pt" Bold="True" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+            </Cells>
+            <Columns>
+              <Column Width="1.0980207176556cm" />
+              <Column Width="1.99999999979137cm" />
+            </Columns>
+            <Rows>
+              <Row Height="0.542396127962098cm" />
+              <Row Height="0.576666727099277cm" />
+              <Row Height="0.550208285334923cm" />
+              <Row Height="0.629583037377207cm" />
+            </Rows>
+          </Body>
+          <Corner>
+            <Cells>
+              <TableCell RowIndex="0" ColumnIndex="0" RowSpan="2" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="Tindakan" Size="5.80760388069734cm, 1.1984374440151cm" Name="textBox8" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <BorderStyle Default="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="8pt" Bold="True" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+            </Cells>
+          </Corner>
+          <RowGroups>
+            <TableGroup Name="RowGroup">
+              <ChildGroups>
+                <TableGroup Name="ItemGroupName">
+                  <Groupings>
+                    <Grouping Expression="=Fields.ItemGroupName" />
+                  </Groupings>
+                  <Sortings>
+                    <Sorting Expression="=Fields.ItemGroupName" Direction="Asc" />
+                  </Sortings>
+                  <ChildGroups>
+                    <TableGroup Name="Group3">
+                      <ReportItem>
+                        <TextBox Value="=Fields.ItemGroupName" Size="5.80760360402371cm, 0.54239613942879cm" Name="textBox10" StyleName="">
+                          <Style VerticalAlign="Middle">
+                            <BorderStyle Default="Dotted" />
+                            <BorderWidth Default="0.5pt" />
+                            <Font Size="8pt" Bold="True" />
+                          </Style>
+                        </TextBox>
+                      </ReportItem>
+                      <ChildGroups>
+                        <TableGroup Name="Group1" />
+                      </ChildGroups>
+                    </TableGroup>
+                    <TableGroup Name="ItemName">
+                      <Groupings>
+                        <Grouping Expression="=Fields.ItemName" />
+                      </Groupings>
+                      <Sortings>
+                        <Sorting Expression="=Fields.ItemName" Direction="Asc" />
+                      </Sortings>
+                      <ReportItem>
+                        <TextBox Value="=Fields.ItemName" Size="5.80760360402371cm, 0.576666665592976cm" Name="textBox9" StyleName="">
+                          <Style VerticalAlign="Middle">
+                            <BorderStyle Default="Dotted" />
+                            <BorderWidth Default="0.5pt" />
+                            <Font Size="8pt" />
+                          </Style>
+                        </TextBox>
+                      </ReportItem>
+                      <ChildGroups>
+                        <TableGroup Name="Group2" />
+                      </ChildGroups>
+                    </TableGroup>
+                    <TableGroup Name="Group4">
+                      <ReportItem>
+                        <TextBox Value="Total" Size="5.80760360402371cm, 0.550208465851268cm" Name="textBox5" StyleName="">
+                          <Style TextAlign="Center" VerticalAlign="Middle">
+                            <BorderStyle Default="Dotted" />
+                            <BorderWidth Default="0.5pt" />
+                            <Font Size="8pt" Bold="True" />
+                          </Style>
+                        </TextBox>
+                      </ReportItem>
+                      <ChildGroups>
+                        <TableGroup Name="Group5" />
+                      </ChildGroups>
+                    </TableGroup>
+                  </ChildGroups>
+                </TableGroup>
+              </ChildGroups>
+            </TableGroup>
+            <TableGroup Name="Group6">
+              <ChildGroups>
+                <TableGroup Name="Group7">
+                  <ChildGroups>
+                    <TableGroup Name="Group8">
+                      <ReportItem>
+                        <TextBox Value="Grand Total" Size="5.80760360402371cm, 0.629583037377207cm" Name="textBox11" StyleName="">
+                          <Style VerticalAlign="Middle">
+                            <BorderStyle Default="Dotted" />
+                            <BorderWidth Default="0.5pt" />
+                            <Font Size="8pt" Bold="True" />
+                          </Style>
+                        </TextBox>
+                      </ReportItem>
+                      <ChildGroups>
+                        <TableGroup Name="Group9" />
+                      </ChildGroups>
+                    </TableGroup>
+                  </ChildGroups>
+                </TableGroup>
+              </ChildGroups>
+            </TableGroup>
+          </RowGroups>
+          <ColumnGroups>
+            <TableGroup Name="MonthName">
+              <Groupings>
+                <Grouping Expression="=Fields.MonthName" />
+              </Groupings>
+              <Sortings>
+                <Sorting Expression="=Fields.MonthName" Direction="Asc" />
+              </Sortings>
+              <ReportItem>
+                <TextBox Value="=Fields.MonthName" Size="1.09802065524751cm, 0.629583402173157cm" Name="textBox3" StyleName="">
+                  <Style TextAlign="Center" VerticalAlign="Middle">
+                    <BorderStyle Default="Solid" />
+                    <BorderWidth Default="0.5pt" />
+                    <Font Size="8pt" Bold="True" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+              <ChildGroups>
+                <TableGroup Name="TglRealisasi">
+                  <Groupings>
+                    <Grouping Expression="=Fields.TglRealisasi" />
+                  </Groupings>
+                  <Sortings>
+                    <Sorting Expression="=Fields.TglRealisasi" Direction="Asc" />
+                  </Sortings>
+                  <ReportItem>
+                    <TextBox Value="=Fields.TglRealisasi" Format="{0:dd}" Size="1.09802065524751cm, 0.568853996475674cm" Name="textBox7" StyleName="">
+                      <Style TextAlign="Center" VerticalAlign="Middle">
+                        <BorderStyle Default="Solid" />
+                        <BorderWidth Default="0.5pt" />
+                        <Font Size="8pt" Bold="True" />
+                      </Style>
+                    </TextBox>
+                  </ReportItem>
+                  <ChildGroups>
+                    <TableGroup Name="Group10" />
+                  </ChildGroups>
+                </TableGroup>
+              </ChildGroups>
+            </TableGroup>
+            <TableGroup Name="Group11">
+              <ReportItem>
+                <TextBox Value="Jumlah" Size="2cm, 1.19843739354983cm" Name="textBox18" StyleName="">
+                  <Style TextAlign="Center" VerticalAlign="Middle">
+                    <BorderStyle Default="Solid" />
+                    <BorderWidth Default="0.5pt" />
+                    <Font Size="8pt" Bold="True" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+              <ChildGroups>
+                <TableGroup Name="Group13" />
+              </ChildGroups>
+            </TableGroup>
+          </ColumnGroups>
+        </Crosstab>
+      </Items>
+    </ReportHeaderSection>
+  </Items>
+  <StyleSheet>
+    <StyleRule>
+      <Style>
+        <Padding Left="2pt" Right="2pt" />
+      </Style>
+      <Selectors>
+        <TypeSelector Type="TextItemBase" />
+        <TypeSelector Type="HtmlTextBox" />
+      </Selectors>
+    </StyleRule>
+  </StyleSheet>
+  <PageSettings>
+    <PageSettings PaperKind="A4" Landscape="True">
+      <Margins>
+        <MarginsU Left="0.5in" Right="0.5in" Top="0.5in" Bottom="0.5in" />
+      </Margins>
+    </PageSettings>
+  </PageSettings>
+</Report>

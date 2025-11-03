@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report DataSourceName="sqlDataSource1" Width="19cm" Name="RekapPenerimaanHarianSemuaKasir" ShowSnapGrid="True" SnapGridSize="0.1cm" xmlns="http://schemas.telerik.com/reporting/2021/1.0">
+  <DataSources>
+    <SqlDataSource QueryDesignerState="null" ParameterValues="{&quot;@p_FromDateTime&quot;:&quot;22/05/2022 00:00:00&quot;,&quot;@p_ToDateTime&quot;:&quot;22/05/2022 23:55:00&quot;,&quot;@p_UserID&quot;:&quot;Mariani&quot;}" ConnectionString="RSYS" SelectCommand="sprpt_PaymentReceiveByCashierRekap" SelectCommandType="StoredProcedure" Name="sqlDataSource1">
+      <Parameters>
+        <SqlDataSourceParameter DbType="DateTime" Name="@p_FromDateTime">
+          <Value>
+            <String>22/05/2022 00:00:00</String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="DateTime" Name="@p_ToDateTime">
+          <Value>
+            <String>22/05/2022 23:55:00</String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="AnsiString" Name="@p_UserID">
+          <Value>
+            <String>Mariani</String>
+          </Value>
+        </SqlDataSourceParameter>
+      </Parameters>
+    </SqlDataSource>
+  </DataSources>
+  <Items>
+    <DetailSection Height="0.132cm" Name="detailSection1">
+      <Style Visible="False" />
+    </DetailSection>
+    <ReportHeaderSection Height="5.3cm" Name="reportHeaderSection1">
+      <Items>
+        <Table DataSourceName="sqlDataSource1" Width="18.955cm" Height="2.218cm" Left="0cm" Top="2.8cm" Name="table1">
+          <Body>
+            <Cells>
+              <TableCell RowIndex="0" ColumnIndex="1" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="4.525cm" Height="0.609cm" Left="4.5cm" Top="0.6cm" Value="= &quot; : &quot; + Fields.CashierName" Name="textBox7" StyleName="">
+                    <Style VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="0" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.863cm" Height="0.609cm" Left="0cm" Top="0cm" Value="Kasir" Name="textBox8" StyleName="">
+                    <Style VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="2" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="2.752cm" Height="0.609cm" Left="5.3cm" Top="0.6cm" Value="= SUM(Fields.Cash)" Format="{0:N0}" Name="textBox9" StyleName="">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="3" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="2.831cm" Height="0.609cm" Left="5.3cm" Top="0.6cm" Value="= Fields.CreditCard" Format="{0:N0}" Name="textBox4" StyleName="">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="4" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="2.635cm" Height="0.609cm" Left="6.3cm" Top="0.6cm" Value="= Fields.DebitCard" Format="{0:N0}" Name="textBox11" StyleName="">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="5" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="2.529cm" Height="0.609cm" Left="7.3cm" Top="0.6cm" Value="= Fields.Transfer" Format="{0:N0}" Name="textBox13" StyleName="">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="6" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="2.82cm" Height="0.609cm" Left="0cm" Top="0cm" Value="=SUM(Fields.Cash+ Fields.CreditCard+ Fields.Transfer + Fields.DebitCard)" Format="{0:N0}" Name="textBox16" StyleName="">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="2" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="2.752cm" Height="0.5cm" Left="0cm" Top="0cm" Value="= SUM(Fields.Cash)" Format="{0:N0}" Name="textBox15" StyleName="">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" Bold="True" />
+                      <BorderStyle Top="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="3" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="2.831cm" Height="0.5cm" Left="0cm" Top="0cm" Value="=SUM(Fields.CreditCard)" Format="{0:N0}" Name="textBox18" StyleName="">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" Bold="True" />
+                      <BorderStyle Top="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="4" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="2.635cm" Height="0.5cm" Left="0cm" Top="0cm" Value="=SUM(Fields.DebitCard)" Format="{0:N0}" Name="textBox20" StyleName="">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" Bold="True" />
+                      <BorderStyle Top="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="5" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="2.529cm" Height="0.5cm" Left="0cm" Top="0cm" Value="=SUM(Fields.Transfer)" Format="{0:N0}" Name="textBox21" StyleName="">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" Bold="True" />
+                      <BorderStyle Top="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="0" RowSpan="1" ColumnSpan="2">
+                <ReportItem>
+                  <TextBox Width="5.388cm" Height="0.5cm" Left="0cm" Top="0cm" Value="GRAND TOTAL" Name="textBox2" StyleName="">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" Bold="True" />
+                      <BorderStyle Top="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="6" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="2.82cm" Height="0.5cm" Left="0cm" Top="0cm" Value="=SUM(Fields.Cash+ Fields.CreditCard+ Fields.Transfer + Fields.DebitCard)" Format="{0:N0}" Name="textBox14" StyleName="">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" Bold="True" />
+                      <BorderStyle Top="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+            </Cells>
+            <Columns>
+              <Column Width="0.863cm" />
+              <Column Width="4.525cm" />
+              <Column Width="2.752cm" />
+              <Column Width="2.831cm" />
+              <Column Width="2.635cm" />
+              <Column Width="2.529cm" />
+              <Column Width="2.82cm" />
+            </Columns>
+            <Rows>
+              <Row Height="0.609cm" />
+              <Row Height="0.5cm" />
+            </Rows>
+          </Body>
+          <Corner />
+          <RowGroups>
+            <TableGroup Name="detailTableGroup">
+              <Groupings>
+                <Grouping />
+              </Groupings>
+            </TableGroup>
+            <TableGroup Name="group2" />
+          </RowGroups>
+          <ColumnGroups>
+            <TableGroup Name="group">
+              <ReportItem>
+                <TextBox Width="5.388cm" Height="1.109cm" Left="0cm" Top="0cm" Value="Nama Kasir" Name="textBox1" StyleName="">
+                  <Style TextAlign="Center" VerticalAlign="Middle">
+                    <Font Name="Tahoma" Size="8pt" Bold="True" />
+                    <BorderStyle Top="Solid" Bottom="Solid" />
+                    <BorderWidth Default="0.5pt" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+              <ChildGroups>
+                <TableGroup Name="group1" />
+                <TableGroup Name="tableGroup" />
+              </ChildGroups>
+            </TableGroup>
+            <TableGroup Name="tableGroup1">
+              <ReportItem>
+                <TextBox Width="10.747cm" Height="0.5cm" Left="0cm" Top="0cm" Value="Penerimaan" Name="textBox19" StyleName="">
+                  <Style TextAlign="Center" VerticalAlign="Middle">
+                    <Font Name="Tahoma" Size="8pt" Bold="True" />
+                    <BorderStyle Top="Solid" Bottom="None" />
+                    <BorderWidth Default="0.5pt" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+              <ChildGroups>
+                <TableGroup Name="group7">
+                  <ReportItem>
+                    <TextBox Width="2.752cm" Height="0.609cm" Left="0cm" Top="0cm" Value="Tunai" Name="textBox3">
+                      <Style TextAlign="Center" VerticalAlign="Middle">
+                        <Font Name="Tahoma" Size="8pt" Bold="True" />
+                        <BorderStyle Top="Solid" Bottom="Solid" />
+                        <BorderWidth Default="0.5pt" />
+                      </Style>
+                    </TextBox>
+                  </ReportItem>
+                </TableGroup>
+                <TableGroup Name="group8">
+                  <ReportItem>
+                    <TextBox Width="2.831cm" Height="0.609cm" Left="0cm" Top="0cm" Value="Credit Card" Name="textBox5">
+                      <Style TextAlign="Center" VerticalAlign="Middle">
+                        <Font Name="Tahoma" Size="8pt" Bold="True" />
+                        <BorderStyle Top="Solid" Bottom="Solid" />
+                        <BorderWidth Default="0.5pt" />
+                      </Style>
+                    </TextBox>
+                  </ReportItem>
+                </TableGroup>
+                <TableGroup Name="group9">
+                  <ReportItem>
+                    <TextBox Width="2.635cm" Height="0.609cm" Left="0cm" Top="0cm" Value="Debit Card" Name="textBox6" StyleName="">
+                      <Style TextAlign="Center" VerticalAlign="Middle">
+                        <Font Name="Tahoma" Size="8pt" Bold="True" />
+                        <BorderStyle Top="Solid" Bottom="Solid" />
+                        <BorderWidth Default="0.5pt" />
+                      </Style>
+                    </TextBox>
+                  </ReportItem>
+                </TableGroup>
+                <TableGroup Name="group10">
+                  <ReportItem>
+                    <TextBox Width="2.529cm" Height="0.609cm" Left="0cm" Top="0cm" Value="Transfer" Name="textBox10" StyleName="">
+                      <Style TextAlign="Center" VerticalAlign="Middle">
+                        <Font Name="Tahoma" Size="8pt" Bold="True" />
+                        <BorderStyle Top="Solid" Bottom="Solid" />
+                        <BorderWidth Default="0.5pt" />
+                      </Style>
+                    </TextBox>
+                  </ReportItem>
+                </TableGroup>
+              </ChildGroups>
+            </TableGroup>
+            <TableGroup Name="group4">
+              <ReportItem>
+                <TextBox Width="2.82cm" Height="1.109cm" Left="0cm" Top="0cm" Value="Total Penerimaan" Name="textBox24" StyleName="">
+                  <Style TextAlign="Center" VerticalAlign="Middle">
+                    <Font Name="Tahoma" Size="8pt" Bold="True" />
+                    <BorderStyle Top="Solid" Bottom="Solid" />
+                    <BorderWidth Default="0.5pt" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+          </ColumnGroups>
+        </Table>
+        <TextBox Width="18.944cm" Height="0.6cm" Left="0cm" Top="2cm" Value="= Fields.Periode" Name="textBox23">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="11pt" Bold="True" />
+          </Style>
+        </TextBox>
+        <TextBox Width="18.944cm" Height="0.6cm" Left="0cm" Top="1.4cm" Value="Laporan Penerimaan Harian Gabungan Semua Kasir" Name="textBox25">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="11pt" Bold="True" />
+          </Style>
+        </TextBox>
+      </Items>
+    </ReportHeaderSection>
+    <PageFooterSection Height="0.6cm" Name="pageFooterSection1">
+      <Items>
+        <TextBox Width="7.458in" Height="0.236in" Left="0in" Top="0in" Value="=Now()" Format="Avicenna_HIS, PrintDate : {0:dd-MM-yyyy}" Name="textBox26">
+          <Style VerticalAlign="Middle">
+            <Font Size="8pt" Italic="True" />
+          </Style>
+        </TextBox>
+      </Items>
+    </PageFooterSection>
+  </Items>
+  <PageSettings PaperKind="A4" Landscape="False" ContinuousPaper="False">
+    <Margins>
+      <MarginsU Left="1cm" Right="1cm" Top="1cm" Bottom="1cm" />
+    </Margins>
+  </PageSettings>
+  <StyleSheet>
+    <StyleRule>
+      <Style>
+        <Padding Left="2pt" Right="2pt" />
+      </Style>
+      <Selectors>
+        <TypeSelector Type="TextItemBase" />
+        <TypeSelector Type="HtmlTextBox" />
+      </Selectors>
+    </StyleRule>
+  </StyleSheet>
+</Report>

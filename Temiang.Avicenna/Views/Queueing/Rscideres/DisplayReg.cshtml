@@ -1,0 +1,255 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Display Antrian</title>
+
+    <!-- Fonts -->
+
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;600&display=swap" rel="stylesheet">
+    <link href="@(ViewBag.UrlRoot)/Bootstrap/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="@(ViewBag.UrlRoot)/Bootstrap/rscideres/assets/css/app.css" rel="stylesheet">
+
+    <script src="@(ViewBag.UrlRoot)/Bootstrap/plugins/jquery/jquery.min.js"></script>
+    <script src="@(ViewBag.UrlRoot)/Bootstrap/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Styles -->
+
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col top-header-section-card" style="background-image: url(@(ViewBag.UrlRoot)/Bootstrap/rscideres/assets/images/bg-registration.png);">
+
+            </div>
+        </div>
+        <main class="container-fluid flex-fill">
+            <div class="row">
+                <div class="col-12 top-box-section-card py-3">
+                    <div>
+                        <div class="top-box-content-section-card">
+                            <div class="top-box-content-header-section-card" style="background-image: url(@(ViewBag.UrlRoot)/Bootstrap/rscideres/assets/images/card-header-content.png);">
+                                <div class="top-box-content-body-section-card" style="height: 100px;width: 900px;">
+                                    NOMOR ANTRIAN
+                                </div>
+                                <div class="top-box-content-body-section-card" style="height: 100px;width: 250px;">
+
+                                </div>
+                                <div class="top-box-content-body-section-card" style="height: 100px;width: 800px;">
+                                    LOKET
+                                </div>
+                            </div>
+
+                            <div class="d-flex flex-row footer-content">
+                                <div class="p-2 top-box-content-number-body-section-card" style="width: 900px; height: 340px;"><span id="mainLoket">A-000</span></div>
+                                <div class="p-2 top-box-content-number-body-section-card" style="width: 250px; height: 340px;"><img src="@(ViewBag.UrlRoot)/Bootstrap/rscideres/assets/images/arrows.png" height="120px" width="120px" alt=""></div>
+                                <div class="p-2 top-box-content-number-body-section-card" style="width: 650px; height: 340px;"><span id="mainLoketNumber">00</span></div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-3 bottom-box-section-card">
+                    <div>
+                        <div class="bottom-box-content-section-card">
+                            <div class="bottom-box-content-header-section-card" style="background-image: url(@(ViewBag.UrlRoot)/Bootstrap/rscideres/assets/images/bg-bottom-content-header.png);">
+                                LOKET 1
+                            </div>
+                            <div class="bottom-box-body-header-section-card">
+                                <span id="C1">A-000</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3 bottom-box-section-card">
+                    <div class="">
+                        <div class="bottom-box-content-section-card">
+                            <div class="bottom-box-content-header-section-card" style="background-image: url(@(ViewBag.UrlRoot)/Bootstrap/rscideres/assets/images/bg-bottom-content-header.png);">
+                                LOKET 2
+                            </div>
+                            <div class="bottom-box-body-header-section-card">
+                                <span id="C2">A-000</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3 bottom-box-section-card">
+                    <div class="">
+                        <div class="bottom-box-content-section-card">
+                            <div class="bottom-box-content-header-section-card" style="background-image: url(@(ViewBag.UrlRoot)/Bootstrap/rscideres/assets/images/bg-bottom-content-header.png);">
+                                LOKET 3
+                            </div>
+                            <div class="bottom-box-body-header-section-card">
+                                <span id="C3">A-000</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3 bottom-box-section-card">
+                    <div class="">
+                        <div class="bottom-box-content-section-card">
+                            <div class="bottom-box-content-header-section-card" style="background-image: url(@(ViewBag.UrlRoot)/Bootstrap/rscideres/assets/images/bg-bottom-content-header.png);">
+                                LOKET 4
+                            </div>
+                            <div class="bottom-box-body-header-section-card">
+                                <span id="C4">A-000</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <footer class="w-100 bg-dark text-light footer-section">
+        <div class="d-flex flex-row footer-content">
+            <div class="p-2 footer-content-left"><span id="hours"></span>:<span id="minutes">:</span>:<span id="seconds"></span>&nbsp;<span id="ampm"></span></div>
+            <div class="p-2 footer-content-right"><marquee direction="left" scrollamount="10">Untuk mendaftar online, silahkan anda datang langsung ke Customer Service, atau dengan mendaftar secara mandiri melalui Website yang sudah kami sediakan di https://reservasi.rsudcideres.id | Kunjungi Website dan sosial media kami di alamat berikut -   Instagram : @("@")rsudcideres | Facebook : RSUD Cideres | YouTube : RSUD Cideres | Website : rsudcideres.id | WhatsApp CS : 0822-3333-3676</marquee></div>
+        </div>
+    </footer>
+
+    <div class="audio">
+        @{
+            foreach (var af in (QueueingSoundCollection)ViewBag.audioColl) { 
+                <audio id="a_@(af.Name.Replace(" " ,"_"))" src="@(ViewBag.audioPathURL)/@(af.FilePath)"></audio>
+            }
+        }
+     </div>
+
+    <script src="@(ViewBag.UrlRoot)/Bootstrap/rscideres/assets/js/clock.js"></script>
+    <script type="text/javascript">
+        var BaseURL = '@ViewBag.UrlRoot';
+        $(document).ready(function () {
+
+            GetQueueing();
+
+            setInterval(function () {
+                GetQueueing();
+            }, 4000);
+
+            setInterval(function () {
+                SayIt();
+            }, 800);
+        });
+
+        var queData = [];
+        var _fnGetDataIsRunning = false;
+        function GetQueueing() {
+            if (_fnGetDataIsRunning == true) return;
+
+            _fnGetDataIsRunning = true;
+
+            $.ajax({
+                type: 'POST',
+                url: "@(ViewBag.UrlRoot)/Queueing/GetQueueing",
+                data: { qLocation: '01' },
+                success: function (data) {
+                    //console.log(data);
+                    if (data.status === 'OK') {
+                        //console.log(data.data);
+                        if (data.data != null) {
+
+                            for (var i = 0; i < data.data.length; i++) {
+                                queData.push(data.data[i]);
+                                //console.log(data.data[i]);
+                            }
+                        }
+                    } else {
+                        //DisplayToast(ret.data, "error");
+                    }
+
+                    _fnGetDataIsRunning = false;
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    _fnGetDataIsRunning = false;
+                    //DisplayToast(xhr.responseText, "error");
+                },
+                dataType: 'json'
+            });
+        }
+
+        function SayIt() {
+            if (SetMediaIsRunning) return;
+
+            if (queData.length > 0) {
+                var que = queData.shift();
+                //console.log(que);
+                UpdateDisplay(que);
+                SetMedia(que, 0);
+            }
+        }
+
+        function UpdateDisplay(que) {
+            // main
+            $('#mainLoket').html(que.FormattedNo);
+            //$('#mainLoket').hide().text(que.FormattedNo).fadeIn('slow');
+            BlinkSpan($('#mainLoket'), 0);
+            $('#mainLoketNumber').html(que.CounterCode);
+            BlinkSpan($('#mainLoketNumber'), 0);
+            //$('#mainLoketNumber').hide().text(que.CounterCode).fadeIn('slow');
+            //console.log('#C' + que.CounterCode);
+            if ($('#C' + que.CounterCode).length) {
+                $('#C' + que.CounterCode).html(que.FormattedNo);
+                BlinkSpan($('#C' + que.CounterCode), 0);
+                //$('#C' + que.CounterCode).hide().text(que.FormattedNo).fadeIn('slow');
+            }
+        }
+
+        function BlinkSpan(objSpan, i) {
+            //console.log(i);
+            if (i < 10) {
+                if ((i % 2) == 0) {
+                    // change css
+                    objSpan.addClass("text-warning");
+                } else {
+                    // remove css
+                    objSpan.removeClass("text-warning");
+                }
+
+                setTimeout(function () {
+                    i++;
+                    BlinkSpan(objSpan, i);
+                }, 1000);
+            }
+        }
+
+        var SetMediaIsRunning = false;
+        function SetMedia(que, iDelay) {
+            //console.log(que.AudioInfo.length);
+
+            SetMediaIsRunning = true;
+            if (que.AudioInfo.length == 0) {
+                SetMediaIsRunning = false;
+                return;
+            }
+
+            setTimeout(function () {
+                var jDelay = 0;
+                var af = que.AudioInfo.shift();
+                var m = document.getElementById('a_' + af.Name.replace(" ","_"));
+                //console.log('a_' + af.Name);
+                //console.log(m);
+                if (m != null) {
+                    m.pause();
+                    m.currentTime = 0;
+                    jDelay = m.duration * 1000;
+                    m.play();
+                }
+                //return;
+                SetMedia(que, jDelay);
+            }, iDelay);
+        }
+
+    </script>
+</body>
+</html >

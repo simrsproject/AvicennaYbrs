@@ -1,0 +1,1688 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="@(ViewBag.UrlRoot)/Bootstrap/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+<link href="@(ViewBag.UrlRoot)/Bootstrap/plugins/daterangepicker/daterangepicker.css" rel="stylesheet" />
+<!-- Page level plugin JavaScript-->
+<style>
+    .dataTables_scrollHeadInner {
+        width: 100% !important;
+        padding: 0 !important;
+    }
+
+        .dataTables_scrollHeadInner table {
+            width: 100% !important;
+            padding: 0 !important;
+        }
+
+    .btnKeyIn {
+        width: 80px;
+        height: 50px;
+    }
+</style>
+<div class="row">
+    <div class="col-12 px-0 py-0">
+        <div id="divList" class="card card-primary card-outline">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="fa fa-calendar"></i>
+                                </span>
+                            </div>
+                            <input type="text" class="form-control float-right" id="dateRange">
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="row float-right">
+                            <button type="button" class="btn btn-outline-success btn-lg" title="New Transaction"
+                                    onclick="javascript:ShowDetail('');">
+                                <i class='fa fa-plus'></i>
+                            </button> &nbsp;
+                            <button type="button" class="btn btn-outline-primary btn-lg" title="Refresh"
+                                    onclick="javascript:ShowList();">
+                                <i class='fa fa-sync'></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-7 px-0 py-0">
+                        <table class="table table-bordered" id="dtList" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>Registration No</th>
+                                    <th>Registration Date</th>
+                                    <th>T.No</th>
+                                    <th>Customer Name</th>
+                                    <th>Service Unit</th>
+                                    <th>&nbsp;</th>
+                                    <th>&nbsp;</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="row">
+                            <div class="col-12 text-center">
+                                Daily Visitor Chart
+                                <canvas id="dailyChart"></canvas>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 text-center">
+                                Monthly Visitor Chart
+                                <canvas id="monthlyChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="divDetail"></div>
+    </div>
+</div>
+@section LeftMenu{
+    <li class="nav-item">
+        <a href="javascript:void(0);" onclick="javascript:ShowListPending();" class="nav-link">
+            <i class="fa fa-tags nav-icon text-success"></i><span id="spanNotif" class="badge badge-danger navbar-badge-left"></span>
+            <p>Pending Delivery</p>
+        </a>
+    </li>
+}
+@section Scripts
+{
+    <script src="@(ViewBag.UrlRoot)/Bootstrap/plugins/datatables/jquery.dataTables.js"></script>
+    <script src="@(ViewBag.UrlRoot)/Bootstrap/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="@(ViewBag.UrlRoot)/Bootstrap/plugins/datatables-sum/datatable.Sum.js"></script>
+    <script src="@(ViewBag.UrlRoot)/Bootstrap/plugins/jquery-formatnumber/formatNumber.v0.1.1.js"></script>
+    <script src="@(ViewBag.UrlRoot)/Bootstrap/plugins/moment/moment.min.js"></script>
+    <script src="@(ViewBag.UrlRoot)/Bootstrap/plugins/daterangepicker/daterangepicker.js"></script>
+    <script src="@(ViewBag.UrlRoot)/Bootstrap/plugins/chart.js/Chart.min.js"></script>
+
+    <script language="javascript">
+        var revVersion = "2.xyz2";
+        var dtTable;
+        var dtDetail = null;
+        var dtItemList = null;
+        var _regNo;
+        var _itemGroupID = "";
+        var bPendingOnly = false;
+        var RegNos = [];
+
+        var payCardProvider = "";
+        var payCardType = "";
+        var payEdc = "";
+        var payDiscReason = "";
+        var payBank = "";
+
+        $(document).ready(function () {
+            //alert(BaseURL + "/WebService/jQueryWS.asmx/NPCGetList");
+
+            $('#dateRange').daterangepicker({
+                "startDate": moment(),
+                "endDate": moment(),
+                "autoApply": true,
+                "buttonClasses": "btn-info",
+                ranges: {
+                    'Today': [moment(), moment()],
+                    'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                    'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+                    'This Month': [moment().startOf('month'), moment().endOf('month')]
+                }
+            }, function (start, end) {
+                ////console.log("Callback has been called!");
+                ////$('#dateRange span').html(start.format('D MMMM YYYY') + ' - ' + end.format('D MMMM YYYY'));
+                //startDate = start;
+                //endDate = end;
+
+                //console.log(startDate);
+                    dtTable.ajax.reload();
+            });
+
+            dtTable = $('#dtList').DataTable({
+                "processing": true,
+                "oLanguage": {
+                    "sProcessing": ReplaceLoadingIcon(_htmlLoading)
+                },
+                "serverSide": true,
+                "scrollX": true,
+                "columnDefs": [{
+                    "targets": '_all',
+                    "createdCell": function (td, cellData, rowData, row, col) {
+                        $(td).css('padding-top', '0px');
+                        $(td).css('padding-bottom', '0px');
+                    }
+                }],
+                "ajax": {
+                    "url": "@(ViewBag.UrlRoot)/WebService/jQueryWS.asmx/NPCGetRegList",
+                    "type": "POST",
+                    "datatype": "json",
+                    "data": function (d) {
+                        d.ServiceUnitID = '@(ViewBag.AppParam_ServiceUnitIDForCafe)';
+                        d.DateFrom = moment($('#dateRange').data('daterangepicker').startDate).format('YYYY-MM-DD');
+                        d.DateTo = moment($('#dateRange').data('daterangepicker').endDate).format('YYYY-MM-DD');
+                        d.PendingOnly = (bPendingOnly == false ? "0" : "1");
+                    }
+                },
+                "columns": [
+                    {
+                        title: "Registration", data: 'RegistrationNo', name: 'RegistrationNo', "autoWidth": true, "render": function (data, type, row, meta) {
+                            //var rPart =
+                            return row.RegistrationNo.split("/")[2] +
+                                (row.TableNo.length > 0 ? (" Table: " + row.TableNo) : "") +
+                                (row.CustomerName.length > 0 ? (" Name: " + row.CustomerName) : "") +
+                                " <span id=\"" + RegNoReplace(row.RegistrationNo) + "\" customtag=\"reg\"></span>";
+                        }
+                    },
+                    { data: 'RegistrationDate', name: 'RegistrationDate', "visible": false },
+                    { data: 'TableNo', name: 'TableNo', "visible": false },
+                    {
+                        data: 'CustomerName', name: 'CustomerName', "visible": false, "render": function (data, type, row, meta) {
+                            return row.CustomerName + "<span id=\"" + RegNoReplace(row.RegistrationNo) + "\" customtag=\"reg\"></span>";
+                        }
+                    },
+                    { data: 'ServiceUnitName', name: 'ServiceUnitName', "visible": false },
+                    {
+                        title: "", data: 'PaymentNo', name: 'PaymentNo', "width": "40px", "sortable": false, "autoWidth": true, "render": function (data, type, row, meta) {
+                            //var rPart =
+                            return CoreIsNullOrEmpty(row.PaymentNo) ? "&nbsp;" : "<span><i class='fas fa-check text-success'></i></span>";
+                        }
+                    },
+                    {
+                        data: 'RegistrationNo', "width": "40px", "sortable": false, "render": function (data, type, row, meta) {
+                            return "<button type=\"button\" class=\"btn btn-outline-primary btn-sm\" onclick=\"javascript:ShowDetail('" + data + "')\" style=\"width:40px\"><span class='fa fa-lg fa-pen'></span></button>";
+                        }
+                    }
+                ],
+                "order": [[0, "desc"]],
+                "fnDrawCallback": function (oSettings) {
+                    RegNos = [];
+                    GetMainNotif();
+                    CreateChart();
+                }
+            });
+
+            $("#dtList").on("click", 'tr', function (event) {
+                if (IsDoubleClick()) {
+                    var RegNo = dtTable.row(this).data()["RegistrationNo"];
+                    ShowDetail(RegNo);
+                }
+            });
+
+            ShowListWithReload(false);
+
+            var args = [];
+            var jSonFnTic = { fn: GetMainNotif, args: args, tic: 8000 };
+            _FNTOEXEC.push(jSonFnTic);
+        });
+
+        var _aElements = ["divList", "divDetail"];
+
+        var dcConfig = null;
+        var dcObject = null;
+        var mcConfig = null;
+        var mcObject = null;
+        function CreateChart() {
+            $.ajax({
+                type: 'POST',
+                url: BaseURL + "/Pos/RegCountForChart",
+                data: {
+                    dStart: moment($('#dateRange').data('daterangepicker').startDate).format('YYYY-MM-DD'),
+                    dEnd: moment($('#dateRange').data('daterangepicker').endDate).format('YYYY-MM-DD')
+                },
+                success: function (data) {
+                    if (data.status == _sJsonRequestOkStatus) {
+
+                        if (dcObject == null) {
+                            var ctxDaily = $('#dailyChart');
+                            dcConfig = {
+                                type: 'line',
+                                data: data.data.Daily,
+                                options: {
+                                    scales: {
+                                        yAxes: [{
+                                            ticks: {
+                                                beginAtZero: true
+                                            }
+                                        }]
+                                    }
+                                }
+                            };
+                            dcObject = new Chart(ctxDaily, dcConfig);
+                        } else {
+                            dcConfig.data = data.data.Daily;
+                            dcObject.update();
+                            //console.log(dcConfig);
+                        }
+
+                        if (mcObject == null) {
+                            var ctxMonthly = $('#monthlyChart');
+                            mcConfig = {
+                                type: 'bar',
+                                data: data.data.Monthly,
+                                options: {
+                                    scales: {
+                                        yAxes: [{
+                                            ticks: {
+                                                beginAtZero: true
+                                            }
+                                        }]
+                                    }
+                                }
+                            };
+                            mcObject = new Chart(ctxMonthly, mcConfig);
+                        } else {
+                            mcConfig.data = data.data.Monthly;
+                            mcObject.update();
+                            //console.log(mcConfig);
+                        }
+
+                    } else {
+                        ShowError(data.data);
+                    }
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    CoreLoadingOff(oSender);
+                    ShowError(xhr.responseText);
+                },
+                dataType: 'json'
+            });
+        }
+
+        function ShowListPending() {
+            NavLeftClear();
+            CoreToggleShowHide(_aElements, 0);
+            bPendingOnly = true;
+            dtTable.ajax.reload();
+        }
+        function ShowList() {
+            bPendingOnly = false;
+            ShowListWithReload(true);
+        }
+        function ShowListWithReload(IsReload) {
+            NavLeftClear();
+            CoreToggleShowHide(_aElements, 0);
+            if (IsReload) {
+                //curDate = new Date();
+                dtTable.ajax.reload();
+            }
+        }
+
+        function ShowDetail(RegistrationNo) {
+            _regNo = RegistrationNo;
+            _itemGroupID = "";
+
+            var SUID = '@(ViewBag.AppParam_ServiceUnitIDForCafe)';
+            if (CoreIsNullOrEmpty(SUID)) {
+                ShowError("Please select service unit");
+                return 0;
+            }
+
+            CoreToggleShowHideWithFn(_aElements, 1, function (fn) {
+                //var url = BaseURL + '/Module/Charges/ServiceUnit/NonPatientCustomerCharges/Mobile/Editor.html';
+                var url = '@(ViewBag.UrlRoot)/Pos/Editor';
+                // mark datatable to be reinitialize due to editor page is reloaded
+                dtDetail = null;
+                dtItemList = null;
+
+                CoreLoadContentToContainerDiv(url, _aElements[1], 'GET', function () {
+                    // load data
+                    LoadReg();
+                    ShowDetailList();
+                    ShowItemList();
+                    PaymentRenderAddCharges();
+                    LoadCustomMenu();
+
+                    $('#divPaymentMethod input').iCheck({
+                        checkboxClass: 'icheckbox_square-green',
+                        radioClass: 'iradio_square-green',
+                        increaseArea: '20%'
+                    });
+
+                    payCardProvider = "";
+                    payCardType = "";
+                    payEdc = "";
+                    payDiscReason = "";
+                    payBank = "";
+
+                    $('#divPaymentMethod input').on('ifChanged', function (event) {
+                        //alert(event.type + ' callback');
+                        var paymentMethod = $('input[name="rbPayMethod"]:checked').val();
+                        if (!CoreIsNullOrEmpty(paymentMethod)) {
+                            //alert(event.type + ' ' + paymentMethod);
+
+                            // reset selected card payment options
+                            payCardProvider = "";
+                            payCardType = "";
+                            payEdc = "";
+                            payDiscReason = "";
+                            payBank = "";
+
+                            $('#txtCardProvider').val('');
+                            $('#txtCardType').val('');
+                            $('#txtEdc').val('');
+                            $('#txtCardNo').val('');
+                            $('#divDiscReason').val('');
+                            $('#txtBankTransfer').val('');
+
+                            var pCard = ["PaymentMethod-002", "PaymentMethod-003"];
+                            if (pCard.includes(paymentMethod)) {
+                                PaymentCardDialog();
+                            } else if (paymentMethod == "Discount") {
+                                PaymentDiscDialog();
+                            } else if (paymentMethod == "PaymentMethod-004") {
+                                PaymentTransferDialog();
+                            }
+
+                            if (paymentMethod == "PaymentMethod-001") {
+                                $('#divCardOptions').hide('slow');
+                                $('#divCardNo').hide('slow');
+                                $('#divDiscReason').hide('slow');
+                                $('#divBank').hide('slow');
+                            } else if (paymentMethod == "Discount") {
+                                $('#divCardOptions').hide('slow');
+                                $('#divCardNo').hide('slow');
+                                $('#divDiscReason').show('slow');
+                                $('#divBank').hide('slow');
+                            } else if (paymentMethod == "PaymentMethod-004") {
+                                $('#divCardOptions').hide('slow');
+                                $('#divCardNo').hide('slow');
+                                $('#divDiscReason').hide('slow');
+                                $('#divBank').show('slow');
+                            } else {
+                                $('#divCardOptions').hide('slow');
+                                $('#divCardNo').show('slow');
+                                $('#divDiscReason').hide('slow');
+                                $('#divBank').hide('slow');
+                            }
+                        }
+                    });
+                    //$('input[name="rbPayMethod"]').iCheck('check', function () {
+                    //    //alert('Well done, Sir');
+                    //});
+
+
+                    if (CoreIsNullOrEmpty($('#txtTableNo').val()))
+                        $('#txtBarcode').focus();
+
+                    $("#txtAmountReceived").keyup(function () {
+                        PaymentCalculateChange();
+                    });
+
+                    $("#txtBarcode").keyup(function (ev) {
+                        var keycode = (ev.keyCode ? ev.keyCode : ev.which);
+                        if (keycode == '13') {
+                            AddItem('#divDtDetail btn-tool', $("#txtBarcode").val(), 1);
+                            $(this).val('');
+                        }
+                    });
+
+                    fn();
+                });
+            });
+
+            return 0;
+        }
+        function LoadReg() {
+            $.ajax({
+                type: 'POST',
+                url: "@(ViewBag.UrlRoot)/WebService/jQueryWS.asmx/NPCGetReg?regNo=" + _regNo,
+                success: function (data) {
+                    // by default editor is read only
+                    // to avoid showing keyboard on touch device
+                    $(':text').prop('readonly', false);
+                    $(':text').blur();
+
+                    if (CoreIsNullOrEmpty(_regNo)) {
+                        $('#txtBarcode').focus();
+                    }
+
+                    // do something
+                    if (data.status == _sJsonRequestOkStatus) {
+                        $('#txtTableNo').val(data.data.DischargeMedicalNotes);
+                        $('#txtCustomerName').val(data.data.DischargeNotes);
+                    } else {
+                        ShowError(data.data);
+                    }
+
+                    // disable button add new and approve
+                    $("#btnShowMenu").prop('disabled', CoreIsNullOrEmpty(_regNo));
+                    $("#btnApprove").prop('disabled', CoreIsNullOrEmpty(_regNo));
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    ShowError(xhr.responseText);
+                },
+                dataType: 'json'
+            });
+        }
+        function LoadCustomMenu() {
+            NavLeftClear();
+
+            var SUID = '@(ViewBag.AppParam_ServiceUnitIDForCafe)';
+
+            $.ajax({
+                type: 'POST',
+                url: "@(ViewBag.UrlRoot)/WebService/jQueryWS.asmx/NPCGetItemGroupList",
+                data: { ServiceUnitID: SUID },
+                success: function (data) {
+                    // do something
+                    if (data.status == _sJsonRequestOkStatus) {
+                        NavLeftAddGroup("g1", "Food Category", "fas fa-clipboard-list");
+                        NavLeftAddItem("All Item", "fas fa-clipboard-list text-primary", "NavLeftClicked(this, '');", "g1");
+                        for (var i = 0, len = data.data.length; i < len; i++) {
+                            //console.log(data.data[i].ItemGroupName);
+                            NavLeftAddItem(data.data[i].ItemGroupName, data.data[i].CssClass, "NavLeftClicked(this, '" + data.data[i].ItemGroupID + "');", "g1");
+                        }
+                    } else {
+                        ShowError(data.data);
+                    }
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    ShowError(xhr.responseText);
+                },
+                dataType: 'json'
+            });
+        }
+        function SaveReg(Sender) {
+            var oSender = $(Sender);
+            CoreLoadingOn(oSender);
+
+            var sSerialized = coreReplaceSerialize($('#formEd').serialize());
+
+            $.ajax({
+                type: 'POST',
+                url: "@(ViewBag.UrlRoot)/WebService/jQueryWS.asmx/NPCSaveReg?serviceUnitID=" +
+                    "@(ViewBag.AppParam_ServiceUnitIDForCafe)" +
+                    "&regNo=" + _regNo + "&" + sSerialized,
+                success: function (data) {
+                    CoreLoadingOff(oSender);
+                    if (data.status == _sJsonRequestOkStatus) {
+                        _regNo = data.data;
+
+                        ShowDetailList();
+                        ShowItemList();
+
+                        $("#btnShowMenu").prop('disabled', false);
+                        $("#btnApprove").prop('disabled', false);
+                    } else {
+                        ShowError(data.data);
+                    }
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    CoreLoadingOff(oSender);
+                    ShowError(xhr.responseText);
+                },
+                dataType: 'json'
+            });
+        }
+        function ShowDetailList() {
+            //alert(dtDetail);
+            if (dtDetail == null) {
+                dtDetail = $('#dtDetail').DataTable({
+                    "processing": true,
+                    "oLanguage": {
+                        "sProcessing": ReplaceLoadingIcon(_htmlLoading)
+                    },
+                    "serverSide": true,
+                    "scrollX": true,
+                    "searching": false,
+                    "paging": false,
+                    "info": false,
+                    "columnDefs": [{
+                        "targets": '_all',
+                        "createdCell": function (td, cellData, rowData, row, col) {
+                            $(td).css('padding-top', '0px');
+                            $(td).css('padding-bottom', '0px');
+                        }
+                    }],
+                    "ajax": {
+                        "url": BaseURL + "/WebService/jQueryWS.asmx/NPCGetTransList",
+                        "type": "POST",
+                        "datatype": "json",
+                        "data": function (d) {
+                            d.RegistrationNo = _regNo;
+                        }
+                    },
+                    "columns": [
+                        { title: 'Item ID', data: 'ItemID', name: 'ItemID', "width": "80px", "visible": false },
+                        {
+                            title: 'Item Name', data: 'ItemName', name: 'ItemName', "autoWidth": true,
+                            "render": function (data, type, row, meta) {
+                                var itemName = (row.IsOrderRealization) ? " <a href=\"\" onclick=\"javascript:ConfirmUndoDelivered('" + row.TransactionNo + "', '" + row.SequenceNo + "');return false;\"><i class=\"fas fa-check-double\"></i></a>" :
+                                    " <a href=\"\" onclick=\"javascript:RemoveItem(this, '" + row.ItemID + "', " + -row.Qty + ");return false;\"><i class='fa fa-lg fa-times text-danger'></i></a>";
+                                itemName = (!row.IsOrderRealization && row.IsApprove) ? " <a href=\"\" onclick=\"javascript:SetDelivered('" + row.TransactionNo + "', '" + row.SequenceNo + "', '1', $(this));return false;\"><i class=\"fas fa-check\"></i></a>" : itemName;
+                                itemName = " " + row.Notes + itemName;
+                                return "<a href=\"\" onclick=\"javascript:ShowFormCustomMenu('" + row.TransactionNo + "', '" + row.SequenceNo + "');return false;\">" +
+                                    row.ItemName + "</a>" + itemName;
+                            }
+                        },
+                        { title: 'Qty', data: 'Qty', name: 'Qty', "width": "30px", "sortable": false, className: "text-right" },
+                        //{
+                        //    title: 'Amount', data: 'Price', "width": "80px", "sortable": false, className: "text-right",
+                        //    "render": function (data, type, row, meta) {
+                        //        return $.fn.dataTable.render.number(',', '.', 2, '').display(row.Qty * row.Price);
+                        //    }
+                        //},
+                        {
+                            title: 'Amount', data: 'Total', "width": "80px", "sortable": false, className: "text-right",
+                            "render": function (data, type, row, meta) {
+                                return $.fn.dataTable.render.number(',', '.', 2, '').display(data);
+                            }
+                        },
+                        {
+                            title: '', data: 'ItemID', "width": "45px", "sortable": false, className: "text-center", "render": function (data, type, row, meta) {
+                                var btnDown = "<button type=\"button\" class=\"btn btn-outline-danger btn-sm\" onclick=\"javascript:AddItem(this, '" + data + "', -1)\" style=\"width:40px\"><i class='fa fa-lg fa-minus'></i></button>";
+                                return "<div class='row'>" + btnDown + "</div>";
+                            }
+                        },
+                        { data: 'TransactionNo', name: 'TransactionNo', "visible": false },
+                        { data: 'SequenceNo', name: 'SequenceNo', "visible": false }
+                    ],
+                    drawCallback: function () {
+                        var api = this.api();
+                        var sum = api.column(3).data().sum();
+                        //console.log(sum);
+                        SetTotal(sum);
+                    }
+                });
+
+                $("#dtDetail").on("click", 'tr', function (event) {
+                    if (IsDoubleClick()) {
+                        var tn = dtDetail.row(this).data()["TransactionNo"];
+                        var sn = dtDetail.row(this).data()["SequenceNo"];
+                        ShowFormCustomMenu(tn, sn);
+                    }
+                });
+
+            } else {
+                dtDetail.ajax.reload();
+            }
+
+            UpdateMenuPrint();
+        }
+        function SetTotal(sum) {
+            //$('#spanSubTotal').html(sum);
+            $('#spanSubTotal').html(sum.toFixed(4));
+
+            var calcFN = function (ID, Name, Val, Cust, TotalTrans, AccTotalTrans) {
+                if (Val == 0) return 0;
+                if (Cust.includes('%')) {
+                    //$('#spanAddCharges' + ID).html(Val / 100 * TotalTrans);
+                    $('#spanAddCharges' + ID).html((Val / 100 * TotalTrans).toFixed(4));
+                } else if (Cust.includes('round')) {
+                    var total = AccTotalTrans;
+                    var roundingBase = Val * 1;
+                    var rounding = 0;
+                    if (roundingBase > 0) {
+                        rounding = (total % roundingBase);
+                        if (rounding != 0) {
+                            rounding = roundingBase - rounding;
+                            rounding = rounding.toFixed(2);
+                        }
+                        $('#spanAddCharges' + ID).html(rounding);
+                    }
+                } else {
+                    $('#spanAddCharges' + ID).html(Val * 1);
+                }
+                return $('#spanAddCharges' + ID).getNumber();
+            }
+
+            var addVal = 0;
+            @foreach (var addCharges in ((AppStandardReferenceItemCollection)ViewBag.StdRef_AddCharges).OrderBy(x => x.ItemID))
+            {
+                @:addVal += calcFN('@addCharges.ItemID', '@addCharges.ItemName', '@addCharges.NumericValue', '@addCharges.CustomField', sum, sum + addVal);
+            }
+
+            $('#spanTotal').html(sum + addVal);
+            $('.number').formatNumber({
+                cents: '.',
+                decimal: ','
+            });
+
+            if (sum > 0) {
+                PaymentGet();
+            }
+        }
+
+        function ShowFormCustomMenu(tn, sn) {
+            // show editor form
+            var header = "<h3><span class='fa fa-lg fa-edit'></span> Custom Order</h3>";
+            var body = "<div class='row'>" +
+                "<div class='col-sm-12'>" +
+                "<div class='form-group'>" +
+                "<textarea class='form-control' rows='3' id='txtCustomOrder' name='txtCustomOrder' placeholder='Enter custom order'></textarea>" +
+                "</div>" +
+                "</div></div>";
+            var footer = '<button id="btnSubmit" type="button" class="btn btn-outline-success"><i class="fas fa-check"></i> Submit</button>';
+
+            // load custom menu
+            $.ajax({
+                type: 'POST',
+                url: "@(ViewBag.UrlRoot)/WebService/jQueryWS.asmx/NPCGetCustomMenu",
+                data: {
+                    TransactionNo: tn, SequenceNo: sn
+                },
+                success: function (data) {
+                    // do something
+                    if (data.status == _sJsonRequestOkStatus) {
+                        $("#txtCustomOrder").val(data.data);
+                    } else {
+                        ShowError(data.data);
+                    }
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    ShowError(xhr.responseText);
+                },
+                dataType: 'json'
+            });
+
+            CoreFnCustomDialog(header, body, footer, function () {
+                CustomMenu(tn, sn);
+            });
+        }
+        function CustomMenu(TransactionNo, SequenceNo) {
+            $("#btnSubmit").click(function () {
+                oSender = $(this);
+                CoreLoadingOn(oSender);
+
+                var custMsg = $("#txtCustomOrder").val();
+                $.ajax({
+                    type: 'POST',
+                    url: "@(ViewBag.UrlRoot)/WebService/jQueryWS.asmx/NPCSetCustomMenu",
+                    data: {
+                        TransactionNo: TransactionNo, SequenceNo: SequenceNo, AdditionalMessage: custMsg
+                    },
+                    success: function (data) {
+                        CoreLoadingOff(oSender);
+                        if (data.status == _sJsonRequestOkStatus) {
+                            _divModal.modal('hide');
+                            ShowDetailList();
+                        } else {
+                            ShowError(data.data);
+                        }
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        CoreLoadingOff(oSender);
+                        ShowError(xhr.responseText);
+                    },
+                    dataType: 'json'
+                });
+
+                return false;
+            });
+        }
+
+        function ConfirmUndoDelivered(TransactionNo, SequenceNo) {
+            CoreFnConfirm("Are you sure want to undo delivery?", function () {
+                DoConfirmUndoDelivered(TransactionNo, SequenceNo, "0");
+            });
+        }
+
+        function DoConfirmUndoDelivered(TransactionNo, SequenceNo, Status) {
+            var Sender = _divModal.find("#btnConfirm");
+            SetDelivered(TransactionNo, SequenceNo, Status, Sender);
+        }
+        function SetDelivered(TransactionNo, SequenceNo, Status /*string 0 or 1*/, Sender) {
+            CoreLoadingOn(Sender);
+            $.ajax({
+                type: 'POST',
+                url: "@(ViewBag.UrlRoot)/WebService/jQueryWS.asmx/NPCSetDelivered",
+                data: {
+                    TransactionNo: TransactionNo, SequenceNo: SequenceNo, Status: Status
+                },
+                success: function (data) {
+                    CoreLoadingOff(Sender);
+                    if (data.status == _sJsonRequestOkStatus) {
+                        if (Status == "0") { // SetDelivered di-hit dari modal dialog confirm
+                            _divModal.modal('hide');
+                        }
+                        ShowDetailList();
+                    } else {
+                        ShowError(data.data);
+                    }
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    CoreLoadingOff(Sender);
+                    ShowError(xhr.responseText);
+                },
+                dataType: 'json'
+            });
+        }
+
+        function NavLeftClicked(Sender, ItemGroupID) {
+            _itemGroupID = ItemGroupID;
+            ShowItemList();
+            NavLeftSetSelected(Sender);
+        }
+        function ShowItemList() {
+            if (dtItemList == null) {
+                dtItemList = $('#dtItemList').DataTable({
+                    "processing": true,
+                    "oLanguage": {
+                        "sProcessing": ReplaceLoadingIcon(_htmlLoading)
+                    },
+                    "serverSide": true,
+                    "scrollX": true,
+                    //"searching": true,
+                    //"paging": true,
+                    //"info": true,
+                    "columnDefs": [{
+                        "targets": '_all',
+                        "createdCell": function (td, cellData, rowData, row, col) {
+                            $(td).css('padding-top', '0px');
+                            $(td).css('padding-bottom', '0px');
+                        }
+                    }],
+                    "ajax": {
+                        "url": BaseURL + "/WebService/jQueryWS.asmx/NPCGetItemList",
+                        "type": "POST",
+                        "datatype": "json",
+                        "data": function (d) {
+                            d.ItemGroupID = _itemGroupID;
+                            d.serviceUnitID = "@(ViewBag.AppParam_ServiceUnitIDForCafe)";
+                        }
+                    },
+                    "columns": [
+                        { title: 'Item ID', data: 'ItemID', name: 'ItemID', "visible": false},
+                        { title: 'Item Name', data: 'ItemName', name: 'ItemName', "autoWidth": true },
+                        { title: 'Balance', data: 'Balance', name: 'Balance', "visible": false, "sortable": false },
+                        { title: 'Unit', data: 'ItemUnit', name: 'ItemUnit', "visible": false, "sortable": false },
+                        {
+                            data: 'ItemID', "width": "45px", "sortable": false, className: "text-center", "render": function (data, type, row, meta) {
+                                var btnUp = "<button type=\"button\" class=\"btn btn-outline-success btn-sm\" onclick=\"javascript:AddItem(this, '" + data + "', 1)\" style=\"width:40px\"><i class='fa fa-lg fa-plus'></i></button>";
+                                return "<div class='row'>" + btnUp + "</div>";
+                            }
+                        }
+                    ]
+                });
+            } else {
+                dtItemList.ajax.reload();
+            }
+        }
+
+        var _AddItemIsRunning = false;
+        function AddItem(Sender, ItemID, add) {
+            // jika belum ada noreg tidak boleh ada add kedua sebelum noreg terambil untuk mencegah tercreate noreg 2 kali
+            if (CoreIsNullOrEmpty(_regNo) && _AddItemIsRunning) {
+                ShowError("Please wait the previous request to complete!");
+                return;
+            }
+            _AddItemIsRunning = true;
+
+            var oSender = $(Sender);
+            CoreLoadingOn(oSender);
+
+            $.ajax({
+                type: 'POST',
+                url: BaseURL + "/WebService/jQueryWS.asmx/NPCAddItem",
+                data: {
+                    RegistrationNo: _regNo,
+                    ServiceUnitID: "@(ViewBag.AppParam_ServiceUnitIDForCafe)",
+                    ItemID: ItemID,
+                    Add: add
+                },
+                success: function (data) {
+                    CoreLoadingOff(oSender);
+                    if (data.status == _sJsonRequestOkStatus) {
+                        if (CoreIsNullOrEmpty(_regNo)) {
+                            _regNo = data.data.RegistrationNo;
+                            LoadReg();
+                        }
+                        ShowDetailList();
+                    } else {
+                        ShowError(data.data);
+                    }
+                    _AddItemIsRunning = false;
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    CoreLoadingOff(oSender);
+                    ShowError(xhr.responseText);
+                    _AddItemIsRunning = false;
+                },
+                dataType: 'json'
+            });
+
+            return false;
+        }
+        function RemoveItem(Sender, ItemID, add) {
+            CoreFnConfirm("Are you sure want to remove?", function () {
+                DoRemoveItem(ItemID, add);
+            });
+            return false;
+        }
+        function DoRemoveItem(ItemID, add) {
+            _divModal.modal('hide');
+            AddItem('#btnConfirm', ItemID, add);
+        }
+        function Approve(Sender) {
+            CoreFnConfirm("Are you sure want to approve pending transactions?", function () {
+                DoApprove();
+            });
+        }
+        function DoApprove(callbackFN) {
+            var oSender = _divModal.find('#btnConfirm');
+            CoreLoadingOn(oSender);
+
+            $.ajax({
+                type: 'POST',
+                url: BaseURL + "/WebService/jQueryWS.asmx/NPCApprove",
+                data: {
+                    RegistrationNo: _regNo
+                },
+                success: function (data) {
+                    CoreLoadingOff(oSender);
+                    //console.log(data);
+                    if (data.status == _sJsonRequestOkStatus) {
+                        _divModal.modal('hide');
+
+                        ShowDetailList();
+
+                        if (!CoreIsNullOrEmpty(callbackFN)) {
+                            callbackFN();
+                        }
+                    } else {
+                        ShowError(data.data);
+                    }
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    CoreLoadingOff(oSender);
+                    ShowError(xhr.responseText);
+                },
+                dataType: 'json'
+            });
+        }
+
+        function UpdateMenuPrint() {
+            $.ajax({
+                type: 'POST',
+                url: "@(ViewBag.UrlRoot)/WebService/jQueryWS.asmx/NPCGetPrintList?RegistrationNo=" + _regNo,
+                success: function (data) {
+                    // do something
+                    if (data.status == _sJsonRequestOkStatus) {
+                        // update print menu here
+                        var ddContainer = $("#divBtnPrint").find(".dropdown-menu");
+                        ddContainer.html("");
+                        if (data.data.length > 0) {
+                            $("#btnPrintDD").prop('disabled', false);
+                            for (var i = 0, len = data.data.length; i < len; i++) {
+                                var dprint = data.data[i];
+                                ddContainer.append("<a class=\"dropdown-item\" href=\"#\" onclick=\"javascript:PrintSend('" + dprint.Type + "','" + dprint.Value +"')\"><span class='fa fa-print'></span> " + dprint.Value + "</a>");
+                            }
+                        } else {
+                            $("#btnPrintDD").prop('disabled', true);
+                        }
+                        //console.log(data.data);
+                    } else {
+                        ShowError(data.data);
+                    }
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    ShowError(xhr.responseText);
+                },
+                dataType: 'json'
+            });
+        }
+        function PrintSend(Type, Value) {
+
+            $.ajax({
+                type: 'POST',
+                url: "@(ViewBag.UrlRoot)/WebService/jQueryWS.asmx/NPCPrint",
+                data: {
+                    Type: Type, Value: Value
+                },
+                success: function (data) {
+                    // do something
+                    if (data.status == _sJsonRequestOkStatus) {
+                        ShowInfo(data.data);
+                        //ShowInfo("Print command has been sent");
+                    } else {
+                        ShowError(data.data);
+                    }
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    ShowError(xhr.responseText);
+                },
+                dataType: 'json'
+            });
+        }
+
+        // function untuk update notifikasi
+        var _bFnGetNotifIsRunning = false;
+        var counter = 0;
+        function GetMainNotif() {
+            // we have to suspend another request before prev request is completed vrohh..!!
+            if (_bFnGetNotifIsRunning)
+                return;
+            _bFnGetNotifIsRunning = true;
+
+            //console.log("1");
+
+            $.ajax({
+                type: 'POST',
+                url: BaseURL + "/WebService/jQueryWS.asmx/NPCGetMainNotif",
+                data: {
+                    ServiceUnitID: "@(ViewBag.AppParam_ServiceUnitIDForCafe)",
+                    DateFrom: moment($('#dateRange').data('daterangepicker').startDate).format('YYYY-MM-DD'),
+                    DateTo: moment($('#dateRange').data('daterangepicker').endDate).format('YYYY-MM-DD')
+                },
+                success: function (data) {
+                    counter++;
+                    // do something
+                    if (data.status == _sJsonRequestOkStatus) {
+                        var isDanger = false;
+                        // set all exist false
+                        for (var i = 0; i < RegNos.length; i++) {
+                            RegNos[i].IsExist = false;
+                            RegNos[i].IsNewState = false;
+                        }
+
+                        //console.log(data.data.length);
+                        for (var i = 0; i < data.data.length; i++) {
+                            var idx = -1;
+                            //console.log(i);
+                            for (var j = 0; j < RegNos.length; j++) {
+                                if (RegNos[j].RegistrationNo == data.data[i].RegistrationNo) {
+                                    idx = j;
+                                    break;
+                                }
+                            }
+                            //console.log(data.data[i].RegistrationNo);
+                            if (idx >= 0) {
+                                RegNos[idx].IsNewState = RegNos[idx].IsDanger != (data.data[i].sTimeLimit == "bigger than");
+                                RegNos[idx].IsDanger = (data.data[i].sTimeLimit == "bigger than");
+                                RegNos[idx].IsExist = true;
+                                //console.log("IsExist " + RegNos[idx].RegistrationNo);
+                            } else {
+                                RegNos.push({
+                                    RegistrationNo: data.data[i].RegistrationNo,
+                                    IsDanger: (data.data[i].sTimeLimit == "bigger than"),
+                                    IsExist: true,
+                                    IsNewState: true
+                                });
+                                idx = RegNos.length - 1;
+                                //console.log("New " + RegNos[idx].RegistrationNo);
+                            }
+
+                            if (data.data[i].sTimeLimit == "bigger than") isDanger = true;
+
+                            if (idx >= 0) {
+                                var img = "";
+                                var x = $("#" + RegNoReplace(RegNos[idx].RegistrationNo));
+
+                                //console.log((RegNos[idx].IsNewState ? "NewState":"State") + " " + RegNos[idx].RegistrationNo);
+
+                                if (RegNos[idx].IsNewState) {
+                                    var existing = x.find('img');
+                                    if (existing.length) {
+                                        //existing.slideUp();
+                                        existing.remove();
+                                    }
+                                    if (RegNos[idx].IsDanger) {
+                                        img = "<img src='" + BaseURL + "/Bootstrap/adminlte/img/icons/angry32.png' />";
+                                    } else {
+                                        img = "<img src='" + BaseURL + "/Bootstrap/adminlte/img/icons/smile32.png' />";
+                                    }
+
+                                    var objImg = $(img);
+                                    if (x.length) {
+                                        //setTimeout(function (y) {
+                                        //    console.log(y);
+                                        //    $("#" + y).append(objImg).find('img').hide().slideDown();
+                                        //}, (200 * i),RegNoReplace(RegNos[idx].RegistrationNo));
+                                        x.append(objImg).find('img').hide().slideDown();
+                                    }
+                                }
+                            }
+                        }
+
+                        var allRegInGrid = $("[customtag='reg']");
+
+                        // remove not exist
+                        for (var i = RegNos.length - 1; i >= 0; i--) {
+                            if (!RegNos[i].IsExist) {
+                                allRegInGrid.each(function () {
+                                    //console.log($(this).attr('id'));
+                                    var isExist = false;
+                                    for (var j = 0; j < RegNos.length; j++) {
+                                        if (RegNos[j].IsExist) continue;
+
+                                        if (RegNoReplace(RegNos[i].RegistrationNo) == $(this).attr('id')) {
+                                            var x = $(this).find("img");
+                                            x.slideUp();
+                                            break;
+                                        }
+                                    }
+                                });
+
+                                RegNos.splice(i, 1);
+                            }
+                        }
+
+
+                        var spanNotif = $("#spanNotif");
+                        spanNotif.removeClass("badge-warning");
+                        spanNotif.removeClass("badge-danger");
+                        if (RegNos.length > 0) {
+                            if (isDanger) {
+                                spanNotif.addClass("badge-danger");
+                            } else {
+                                spanNotif.addClass("badge-warning");
+                            }
+                            spanNotif.html(data.data.length);
+                        } else {
+                            spanNotif.html('');
+                        }
+                        _bFnGetNotifIsRunning = false;
+                    } else {
+                        ShowError(data.data);
+                    }
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    ShowError(xhr.responseText);
+                },
+                dataType: 'json'
+            });
+        }
+
+        function PaymentRenderAddCharges() {
+            $('#divAddCharges').html('');
+
+            var addChargesFN = function (ID, Name, Val) {
+                //console.log(Val);
+                if (Val == 0) return '';
+                return '' +
+                    '<div class="row">' +
+                    ' <div class="col-6 text-right">' + Name +
+                    ' </div>' +
+                    ' <div class="col-6 text-right">' +
+                    '  <span id="spanAddCharges' + ID + '" class="number">0</span>' +
+                    ' </div>' +
+                    '</div>';
+            }
+
+            @foreach (var addCharges in ((AppStandardReferenceItemCollection)ViewBag.StdRef_AddCharges).OrderBy(x => x.ItemID))
+            {
+                @:$('#divAddCharges').append(addChargesFN('@addCharges.ItemID', '@addCharges.ItemName','@addCharges.NumericValue'));
+            }
+        }
+        function PaymentCancel() {
+            $("#divPayment").hide();
+            $("#divDtDetail").show("slow");
+        }
+        function PaymentFormReset() {
+            // reset input
+            $('#txtAmountReceived').val('');
+            $('#txtChange').val('');
+            $("#divQuickCash").html('');
+
+            var Cashes = [];
+            @foreach (var cash in (AppStandardReferenceItemCollection)ViewBag.StdRef_CashColl)
+            {
+                @:Cashes.push(parseInt(@cash.NumericValue));
+            }
+            //console.log(Cashes);
+            ArraySortNumeric(Cashes);//Cashes.sort(function (a, b) { return a - b });
+            //console.log(Cashes);
+
+            var QCDefaultVal = $("#spanTotal").getNumber() - ($('#spanAmountReceived').getNumber() - $('#spanChange').getNumber());
+            //console.log(QCDefaultVal);
+
+            if (QCDefaultVal != 0) {
+                var QuickCash = [];
+                QuickCash.push(QCDefaultVal);
+                //console.log(QuickCash);
+                // add quick suggest
+                for (var i = Cashes.length - 1; i >= 0; i--) {
+                    var iX = parseInt(QuickCash[0] / Cashes[i]) + 1;
+                    //console.log(Cashes[i] + ' ' + iX + ' ' + Cashes[i] * iX);
+                    var qc = Cashes[i] * iX;
+                    if (qc - Cashes[i] == QuickCash[0]) break;
+                    QuickCash.push(qc);
+                }
+
+
+
+                QuickCash = ArraySortNumericDistinct(QuickCash);
+                for (var i = 0; i < QuickCash.length; i++) {
+                    var QCButton = '<button type="button" class="btn btn-outline-success" onclick="javascript: PaymentSet(' + QuickCash[i] + ');">' +
+                        'Rp. <span class="number">' + QuickCash[i] + '</span>' +
+                        '</button>';
+                    $("#divQuickCash").append(QCButton);
+                }
+
+                $("#divQuickCash .number").formatNumber({
+                    cents: '.',
+                    decimal: ','
+                });
+            }
+        }
+        function PaymentDoOpenWithApprovalTransaction() {
+            //var oSender = _divModal.find("#btnConfirm");
+            //CoreLoadingOn(oSender);
+
+            DoApprove(function () {
+                $("#divDtDetail").hide();
+                $("#divPayment").show("slow");
+                PaymentFormReset();
+            });
+        }
+        function PaymentOpen(sender) {
+            if (CoreIsNullOrEmpty(_regNo)) {
+                ShowError("No transaction to be paid");
+                return;
+            }
+            var subTotal = $('#spanSubTotal').getNumber();
+            if (subTotal <= 0) {
+                ShowError("Invalid transaction amount!");
+                return;
+            }
+            // cek transaksi sudah approve semua belum
+            var oSender = $(sender);
+            CoreLoadingOn(oSender);
+
+            $.ajax({
+                type: 'POST',
+                url: BaseURL + "/WebService/jQueryWS.asmx/NPCGetPendingApprove",
+                data: {
+                    regNo: _regNo
+                },
+                success: function (data) {
+                    CoreLoadingOff(oSender);
+                    if (data.status == _sJsonRequestOkStatus) {
+                        if (data.data == true) {
+                            CoreFnConfirm("There are transactions need to be approved, are you sure want to approve?", function () {
+                                PaymentDoOpenWithApprovalTransaction();
+                            });
+                            //ShowError("There is unapproval data, please do approval first!");
+                        } else {
+                            $("#divDtDetail").hide();
+                            $("#divPayment").show("slow");
+
+                            PaymentFormReset();
+                        }
+                    } else {
+                        ShowError(data.data);
+                    }
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    CoreLoadingOff(oSender);
+                    ShowError(xhr.responseText);
+                },
+                dataType: 'json'
+            });
+        }
+        function PaymentCalculateChange() {
+            var received = $('#txtAmountReceived').val();
+            var total = $('#spanTotal').getNumber() - ($('#spanAmountReceived').getNumber() - $('#spanChange').getNumber());
+            var change = received - total;
+            //$('#spanChange').html((change > 0) ? change : 0);
+            $('#txtChange').val((change > 0) ? change : 0);
+
+            //$('.number').formatNumber({
+            //    cents: '.',
+            //    decimal: ','
+            //});
+        }
+        function PaymentSet(num) {
+            //alert(num);
+            //$('#spanAmountReceived').html(num);
+
+            if (num == '%') {
+                PaymentDiscPercentage();
+                return;
+            }
+
+            $('#txtAmountReceived').val(num);
+            PaymentCalculateChange();
+        }
+        function PaymentDiscPercentage() {
+            var dpctg = $('#txtAmountReceived').val();
+            var total = $('#spanTotal').getNumber();
+            var pay = dpctg / 100 * total;
+            PaymentSet(pay);
+        }
+        function PaymentSetKeyIn(val) {
+            var obj = $('#txtAmountReceived');
+            PaymentSet(obj.val() + val);
+        }
+        function PaymentRemoveLast() {
+            $('#txtAmountReceived').val(
+                function (index, value) {
+                    return value.substr(0, value.length - 1);
+                });
+        }
+        function PaymentSave(sender) {
+            var subTotal = $('#spanSubTotal').getNumber();
+            if (subTotal <= 0) {
+                ShowError("Invalid transaction amount!");
+                return;
+            }
+
+            var amountReceived = $('#txtAmountReceived').val(); //$('#spanAmountReceived').getNumber();
+            if (amountReceived == "") amountReceived = "0";
+            var change = $('#txtChange').val(); //$('#spanChange').getNumber();
+            if (change == "") change = "0";
+            var paymentMethod = $('input[name="rbPayMethod"]:checked').val();
+            //console.log(amountReceived); alert(amountReceived); return;
+
+            var params = {
+                @{
+                    int i = 0;
+                }
+                @foreach (var addCharges in ((AppStandardReferenceItemCollection)ViewBag.StdRef_AddCharges).Where(x => (x.NumericValue ?? 0) != 0).OrderBy(x => x.ItemID)) {
+                    @:'[@i].Key': '@(addCharges.ItemID)',
+                    @:'[@i].Value': $('#spanAddCharges@(addCharges.ItemID)').getNumber(),
+                    i++;
+                }
+                subTotal: subTotal,
+                amountReceived: amountReceived,
+                change: change,
+                paymentMethod: paymentMethod,
+                cardProvider: payCardProvider,
+                cardType: payCardType,
+                edc: payEdc,
+                cardNo: $('#txtCardNo').val(),
+                discReason: payDiscReason,
+                regNo: _regNo,
+                bankId: payBank
+            };
+
+            //console.log(params); return;
+
+            var oSender = $(sender);
+            CoreLoadingOn(oSender);
+
+            $.ajax({
+                type: 'POST',
+                url: BaseURL + "/Pos/PaymentSave",
+                data: params,
+                success: function (data) {
+                    CoreLoadingOff(oSender);
+                    if (data.status == _sJsonRequestOkStatus) {
+                        // add code here
+                        PaymentDisplay(data.data);
+                        // close payment form when done
+                        PaymentFormReset();
+                    } else {
+                        ShowError(data.data);
+                    }
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    CoreLoadingOff(oSender);
+                    ShowError(xhr.responseText);
+                },
+                dataType: 'json'
+            });
+        }
+        function PaymentDisplay(data) {
+            //console.log(data);
+            $('#divPaymentList').html('');
+            var amount = 0; var amountReceived = 0; var change = 0;
+            var totalPayment = 0;
+
+            //$('#divPaymentList').append('<div class="row"><div class="col-12"><small>Paid With</small></div></div>');
+            for (var i = 0; i < data.PaymentItem.length; i++) {
+                totalPayment += data.PaymentItem[i].Amount;
+                $('#divPaymentList').append('<div class="row"><div class="col-6"><small>' + data.PaymentItem[i].PaymentMethodName +
+                    '</small></div><div class="col-6 text-right"><small><span class="number">' + data.PaymentItem[i].Amount +
+                    '</span</small></div></div>');
+                amount += data.PaymentItem[i].Amount;
+                amountReceived += data.PaymentItem[i].AmountReceived;
+                change += data.PaymentItem[i].Change;
+                //console.log(change);
+            }
+            $('#spanAmountReceived').html(amountReceived);
+            $('#spanChange').html(change);
+
+            // jika payment sudah approve, set 0 semua komponen tambahan
+            @foreach (var addCharges in ((AppStandardReferenceItemCollection)ViewBag.StdRef_AddCharges).OrderBy(x => x.ItemID))
+            {
+                @:$('#spanAddCharges@(addCharges.ItemID)').html('0');
+            }
+            // set ulang komponen tambahan
+            var addCharge = 0;
+            for (var i = 0; i < data.PaymentAdditional.length; i++) {
+                addCharge += data.PaymentAdditional[i].ChargeAmount * 1;
+                $('#spanAddCharges' + data.PaymentAdditional[i].SRCafeAdditionalCharges).html(data.PaymentAdditional[i].ChargeAmount);
+            }
+
+            // recal total
+            $('#spanTotal').html($('#spanSubTotal').getNumber() + addCharge);
+
+            var totalTrans = $('#spanTotal').getNumber();
+
+            $('#spanRemainning').html(totalTrans - totalPayment);
+
+            $('.number').formatNumber({
+                cents: '.',
+                decimal: ','
+            });
+
+            // disable button payment
+            //console.log(totalPayment + ' ' + totalTrans);
+            if (totalPayment >= totalTrans) {
+                //$('#btnPaymentOpen').prop('disabled', true);
+                $('#btnPaymentOpen').hide('slow');
+                $('#divRibbonPayment').html('');
+
+                // close payment form if opened
+                if (CoreIsVisible($('#divPayment'))) {
+                    //console.log('cancel payment form');
+                    PaymentCancel();
+                } else {
+                    //console.log('cancel payment form failed');
+                }
+
+                if (data.IsApproved) {
+                    //$('#btnPaymentApproval').prop('disabled', true);
+                    $('#btnPaymentApproval').hide('slow');
+                    //$('#btnPaymentVoid').prop('disabled', true);
+                    $('#btnPaymentVoid').hide('slow');
+                    // add ribbon
+                    $('#divRibbonPayment').prepend('<div class="ribbon-wrapper ribbon-lg"><div class="ribbon bg-success">Paid <i class="fas fa-check-circle"></i></div></div>');
+                } else {
+                    //$('#btnPaymentApproval').prop('disabled', false);
+                    $('#btnPaymentApproval').show("slow");
+                    //$('#btnPaymentVoid').prop('disabled', false);
+                    $('#btnPaymentVoid').show("slow");
+                    $('#divRibbonPayment').prepend('<div class="ribbon-wrapper ribbon-xl"><div class="ribbon bg-warning">Pending Approval <i class="fas fa-exclamation-triangle"></i></div></div>');
+                }
+            }
+
+            // refresh print menu
+            UpdateMenuPrint();
+        }
+
+        function PaymentGet() {
+            $('#divPaymentList').html(ReplaceLoadingIcon(_htmlLoadingSmall));
+
+            $.ajax({
+                type: 'POST',
+                url: "@(ViewBag.UrlRoot)/Pos/PaymentGet",
+                data: {
+                    regNo: _regNo
+                },
+                success: function (data) {
+                    // do something
+                    if (data.status == _sJsonRequestOkStatus) {
+                        if (data.data == 'Not paid yet') {
+                            $('#divPaymentList').html('');
+                            //$('#btnPaymentOpen').prop('disabled', false);
+                            //$('#btnPaymentApproval').prop('disabled', true);
+                            //$('#btnPaymentVoid').prop('disabled', true);
+                            $('#btnPaymentOpen').show('slow');
+                            $('#btnPaymentApproval').hide('slow');
+                            $('#btnPaymentVoid').hide('slow');
+                            $('#divRibbonPayment').html('');
+                            $('#spanAmountReceived').html(0);
+                            $('#spanChange').html(0);
+                            $('#spanRemainning').html(0);
+
+                        } else {
+                            PaymentDisplay(data.data);
+                        }
+                    } else {
+                        $('#divPaymentList').html('');
+                        ShowError(data.data);
+                    }
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    $('#divPaymentList').html('');
+                    ShowError(xhr.responseText);
+                },
+                dataType: 'json'
+            });
+        }
+        function PaymentApprove(sender) {
+            CoreFnConfirm("Are you sure want to approve this payment?", function () {
+                PaymentDoApprove();
+            });
+        }
+        function PaymentDoApprove() {
+            oSender = _divModal.find('#btnConfirm');
+            CoreLoadingOn(oSender);
+
+            $.ajax({
+                type: 'POST',
+                url: BaseURL + "/Pos/PaymentApprove",
+                data: { regNo: _regNo },
+                success: function (data) {
+                    CoreLoadingOff(oSender);
+                    if (data.status == _sJsonRequestOkStatus) {
+                        _divModal.modal('hide');
+                        // add code here
+                        PaymentDisplay(data.data);
+                    } else {
+                        ShowError(data.data);
+                    }
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    CoreLoadingOn(oSender);
+                    ShowError(xhr.responseText);
+                },
+                dataType: 'json'
+            });
+        }
+        function PaymentVoid(sender) {
+            CoreFnConfirm("Are you sure want to void this payment?", function () {
+                PaymentDoVoid();
+            });
+        }
+        function PaymentDoVoid() {
+            var oSender = _divModal.find("#btnConfirm");
+            CoreLoadingOn(oSender);
+
+            $.ajax({
+                type: 'POST',
+                url: BaseURL + "/Pos/PaymentVoid",
+                data: { regNo: _regNo },
+                success: function (data) {
+                    CoreLoadingOff(oSender);
+                    if (data.status == _sJsonRequestOkStatus) {
+                        _divModal.modal('hide');
+
+                        ShowDetailList();
+                    } else {
+                        ShowError(data.data);
+                    }
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    CoreLoadingOn(oSender);
+                    ShowError(xhr.responseText);
+                },
+                dataType: 'json'
+            });
+        }
+        function PaymentCardDialog() {
+            // show editor form
+            var header = '<h3><i class="fab fa-cc-mastercard"></i> Card Payment Options</h3>';
+            var body = "";
+            var footer = '<button id="btnSubmit" type="button" class="btn btn-outline-success"><i class="fas fa-check"></i> Submit</button>';
+
+            // load custom menu
+            $.ajax({
+                type: 'POST',
+                url: "@(ViewBag.UrlRoot)/Pos/PaymentCardDialog",
+                success: function (data) {
+                    // do something
+                    body = data;
+                    CoreFnCustomDialog(header, body, footer, function () {
+                        PaymentCardDialogHandler();
+                    }, "modal-lg");
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    ShowError(xhr.responseText);
+                },
+                dataType: 'html'
+            });
+        }
+
+        function PaymentCardDialogHandler() {
+            $("#btnSubmit").click(function () {
+
+                var cp = $('input[name="rbCardProvider"]:checked').val();
+                var ct = $('input[name="rbCardType"]:checked').val();
+                var edm = $('input[name="rbEdm"]:checked').val();
+                //alert(cp + ' ' + ct + ' ' + edm);
+                payCardProvider = cp;
+                payCardType = ct;
+                payEdc = edm;
+
+                //console.log($('input[name="rbCardProvider"]'));
+                //console.log($('input[name="rbCardProvider"]').parent().parent());
+
+                $('#txtCardProvider').val($('#lblcp_' + cp).text());
+                $('#txtCardType').val($('#lblct_' + ct).text());
+                $('#txtEdc').val($('#lbledm_' + edm).text());
+                $('#txtCardNo').val($('#txtCardNoEntry').val());
+
+                _divModal.modal('hide');
+                $('#divCardOptions').show('slow');
+                $('#divCardNo').show('slow');
+
+                return false;
+            });
+            //$("#lnCancel").click(function () {
+            //    //console.log($('input[name="rbPayMethod"]')[0]);
+            //    ($('input[name="rbPayMethod"]')[0]).iCheck('check');
+            //    alert("cancel fired");
+
+            //});
+
+            $('#divCardProvider input').iCheck({
+                checkboxClass: 'icheckbox_square-green',
+                radioClass: 'iradio_square-green',
+                increaseArea: '20%'
+            });
+
+            $('#divCardProvider input').on('ifChanged', function (event) {
+                //alert(event.type + ' callback');
+                var cp = $('input[name="rbCardProvider"]:checked').val();
+                if (!CoreIsNullOrEmpty(cp)) {
+                    //alert(event.type + ' ' + cp);
+                    CoreLoadContentToContainerDiv("@(ViewBag.UrlRoot)/Pos/PaymentCardEDM?CardProvider=" + cp, "divEDM", "GET", function () {
+                        $('#divEDM input').iCheck({
+                            checkboxClass: 'icheckbox_square-green',
+                            radioClass: 'iradio_square-green',
+                            increaseArea: '20%'
+                        });
+                    });
+                }
+            });
+
+            $('#divCardType input').iCheck({
+                checkboxClass: 'icheckbox_square-green',
+                radioClass: 'iradio_square-green',
+                increaseArea: '20%'
+            });
+        }
+
+        function PaymentDiscDialog() {
+            // show editor form
+            var header = '<h3><i class="fab fa-cc-mastercard"></i> Discount Reasons</h3>';
+            var body = "";
+            var footer = '<button id="btnSubmit" type="button" class="btn btn-outline-success"><i class="fas fa-check"></i> Submit</button>';
+
+            // load custom menu
+            $.ajax({
+                type: 'POST',
+                url: "@(ViewBag.UrlRoot)/Pos/PaymentDiscDialog",
+                success: function (data) {
+                    // do something
+                    body = data;
+                    CoreFnCustomDialog(header, body, footer, function () {
+                        PaymentDiscDialogHandler();
+                    }, "modal-lg");
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    ShowError(xhr.responseText);
+                },
+                dataType: 'html'
+            });
+        }
+        function PaymentDiscDialogHandler() {
+            $("#btnSubmit").click(function () {
+
+                var dr = $('input[name="rbDiscReason"]:checked').val();
+                payDiscReason = dr
+
+                //console.log($('input[name="rbCardProvider"]'));
+                //console.log($('input[name="rbCardProvider"]').parent().parent());
+
+                $('#txtDiscReason').val($('#lbldr_' + dr).text());
+
+                _divModal.modal('hide');
+                $('#divDiscReason').show('slow');
+
+                return false;
+            });
+
+            $('#divDiscReasons input').iCheck({
+                checkboxClass: 'icheckbox_square-green',
+                radioClass: 'iradio_square-green',
+                increaseArea: '20%'
+            });
+        }
+
+        function PaymentTransferDialog() {
+            // show editor form
+            var header = '<h3><i class="fab fa-cc-mastercard"></i> Bank</h3>';
+            var body = "";
+            var footer = '<button id="btnSubmit" type="button" class="btn btn-outline-success"><i class="fas fa-check"></i> Submit</button>';
+
+            // load custom menu
+            $.ajax({
+                type: 'POST',
+                url: "@(ViewBag.UrlRoot)/Pos/PaymentTransferDialog",
+                success: function (data) {
+                    // do something
+                    body = data;
+                    CoreFnCustomDialog(header, body, footer, function () {
+                        PaymentTransferDialogHandler();
+                    }, "modal-lg");
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    ShowError(xhr.responseText);
+                },
+                dataType: 'html'
+            });
+        }
+
+        function PaymentTransferDialogHandler() {
+            $("#btnSubmit").click(function () {
+
+                var bankId = $('input[name="rbBank"]:checked').val();
+                payBank = bankId.replace("_", ".");
+
+                console.log(bankId);
+                console.log(payBank);
+
+                $('#txtBankTransfer').val($('#lblbk_' + bankId).text());
+
+                _divModal.modal('hide');
+                $('#divBank').show('slow');
+
+                return false;
+            });
+
+            $('#divBanks input').iCheck({
+                checkboxClass: 'icheckbox_square-green',
+                radioClass: 'iradio_square-green',
+                increaseArea: '20%'
+            });
+
+            $("#divBanks").css({
+                "display": "flex",
+                "flex-direction": "column"
+            });
+        }
+    </script>
+}
+

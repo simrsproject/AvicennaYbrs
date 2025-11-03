@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report DataSourceName="sqlDataSource1" Width="10.906in" Name="userReport1" Zoom="0.6666667" ShowSnapGrid="True" xmlns="http://schemas.telerik.com/reporting/2021/1.0">
+  <DataSources>
+    <SqlDataSource QueryDesignerState="null" ParameterValues="{&quot;@p_FromDate&quot;:&quot;2021-09-01&quot;,&quot;@p_ToDate&quot;:&quot;2021-09-27&quot;,&quot;@p_ParamedicID&quot;:&quot;MD-00169&quot;}" ConnectionString="RSI_LIVE" SelectCommand="dbo.sprpt_APJasmed" SelectCommandType="StoredProcedure" Name="sqlDataSource1">
+      <Parameters>
+        <SqlDataSourceParameter DbType="DateTime" Name="@p_FromDate">
+          <Value>
+            <String>2021-09-01</String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="DateTime" Name="@p_ToDate">
+          <Value>
+            <String>2021-09-27</String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="AnsiString" Name="@p_ParamedicID">
+          <Value>
+            <String>MD-00169</String>
+          </Value>
+        </SqlDataSourceParameter>
+      </Parameters>
+    </SqlDataSource>
+  </DataSources>
+  <Items>
+    <DetailSection Height="0.225in" Name="detailSection1">
+      <Style Visible="True">
+        <BorderStyle Bottom="Dotted" />
+      </Style>
+      <Items>
+        <TextBox Width="1.6in" Height="0.2in" Left="0.3in" Top="0in" Value="= Fields.VerificationNo" Name="textBox7">
+          <Style VerticalAlign="Middle">
+            <Font Size="8pt" />
+            <Padding Top="0.5mm" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1.1in" Height="0.225in" Left="7.3in" Top="0in" Value="=Fields.Debit" Format="{0:N2}" Name="textBox9">
+          <Style TextAlign="Right" VerticalAlign="Middle">
+            <Font Size="8pt" />
+            <Padding Top="0.5mm" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1.4in" Height="0.225in" Left="9.506in" Top="0in" Value="=Fields.EndingBalance" Format="{0:N2}" Name="textBox20">
+          <Style TextAlign="Right" VerticalAlign="Middle">
+            <Font Size="8pt" />
+            <Padding Top="0.5mm" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1.3in" Height="0.225in" Left="2.8in" Top="0in" Value="= Fields.RegistrationNo" Name="textBox23">
+          <Style TextAlign="Left" VerticalAlign="Middle">
+            <Font Size="8pt" />
+            <Padding Top="0.5mm" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.9in" Height="0.225in" Left="1.9in" Top="0in" Value="= Fields.VerificationDate" Format="{0:dd-MM-yyyy}" Name="textBox25">
+          <Style VerticalAlign="Middle">
+            <Font Size="8pt" />
+            <Padding Top="0.5mm" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1.9in" Height="0.225in" Left="5.4in" Top="0in" Value="= Fields.PatientName" Name="textBox26">
+          <Style TextAlign="Left" VerticalAlign="Middle">
+            <Font Size="8pt" />
+            <Padding Top="0.5mm" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1.106in" Height="0.225in" Left="8.4in" Top="0in" Value="=Fields.Credit" Format="{0:N2}" Name="textBox10">
+          <Style TextAlign="Right" VerticalAlign="Middle">
+            <Font Size="8pt" />
+            <Padding Top="0.5mm" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.3in" Height="0.225in" Left="0in" Top="0in" Value="=RowNumber()" Format="{0}." Name="textBox27">
+          <Style TextAlign="Right" VerticalAlign="Middle">
+            <Font Size="8pt" />
+            <Padding Top="0.5mm" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1.3in" Height="0.225in" Left="4.1in" Top="0in" Value="= Fields.GuarantorName" Name="textBox19">
+          <Style TextAlign="Left" VerticalAlign="Middle">
+            <Font Size="8pt" />
+            <Padding Top="0.5mm" />
+          </Style>
+        </TextBox>
+      </Items>
+    </DetailSection>
+    <PageFooterSection Height="0.2in" Name="pageFooterSection1">
+      <Items>
+        <TextBox Width="5.9in" Height="0.2in" Left="0in" Top="0in" Value="='AVICENNA_HIS  ' + Now()" Format="{0:dd-MM-yyyy HH:mm}" Name="textBox72">
+          <Style VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" Italic="True" />
+            <BorderStyle Top="Solid" />
+            <BorderWidth Default="0.5pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="5.006in" Height="0.2in" Left="5.9in" Top="0in" Value="='Page : ' + PageNumber + '/' + PageCount" Name="textBox73">
+          <Style TextAlign="Right" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" Italic="True" />
+            <BorderStyle Top="Solid" />
+            <BorderWidth Default="0.5pt" />
+            <Padding Right="2mm" />
+          </Style>
+        </TextBox>
+      </Items>
+    </PageFooterSection>
+    <ReportHeaderSection Height="0.052in" Name="reportHeaderSection1" />
+    <PageHeaderSection Height="1.26in" Name="pageHeaderSection1">
+      <Items>
+        <TextBox Width="10.827in" Height="0.204in" Left="0.079in" Top="0.4in" Value="A/P Card Hutang Jasa Medis" CanGrow="False" Name="textBox6">
+          <Style Visible="True" TextAlign="Center" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="14pt" Bold="True" />
+          </Style>
+        </TextBox>
+        <TextBox Width="10.827in" Height="0.198in" Left="0.079in" Top="0.604in" Value="=Periode" CanGrow="False" Name="textBox8">
+          <Style TextAlign="Center" VerticalAlign="Middle" />
+        </TextBox>
+        <TextBox Width="0.3in" Height="0.4in" Left="0in" Top="0.802in" Value="No." CanGrow="False" Name="textBox11">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Size="9pt" />
+            <BorderStyle Top="Solid" Bottom="Solid" />
+            <BorderColor Top="Black" Bottom="Black" />
+            <BorderWidth Top="1pt" Bottom="1pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.9in" Height="0.4in" Left="1.9in" Top="0.802in" Value="Tanggal Verif" CanGrow="False" Name="textBox12">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Size="9pt" />
+            <BorderStyle Top="Solid" Bottom="Solid" />
+            <BorderColor Top="Black" Bottom="Black" />
+            <BorderWidth Top="1pt" Bottom="1pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1.3in" Height="0.4in" Left="2.8in" Top="0.802in" Value="No. Registrasi" CanGrow="False" Name="textBox13">
+          <Style TextAlign="Left" VerticalAlign="Middle">
+            <Font Size="9pt" />
+            <BorderStyle Top="Solid" Bottom="Solid" />
+            <BorderColor Top="Black" Bottom="Black" />
+            <BorderWidth Top="1pt" Bottom="1pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1.9in" Height="0.4in" Left="5.4in" Top="0.802in" Value="Deskripsi" CanGrow="False" Name="textBox14">
+          <Style TextAlign="Left" VerticalAlign="Middle">
+            <Font Size="9pt" />
+            <BorderStyle Top="Solid" Bottom="Solid" />
+            <BorderColor Top="Black" Bottom="Black" />
+            <BorderWidth Top="1pt" Bottom="1pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1.1in" Height="0.4in" Left="7.3in" Top="0.802in" Value="Debit" CanGrow="False" Name="textBox15">
+          <Style TextAlign="Right" VerticalAlign="Middle">
+            <Font Size="9pt" />
+            <BorderStyle Top="Solid" Bottom="Solid" />
+            <BorderColor Top="Black" Bottom="Black" />
+            <BorderWidth Top="1pt" Bottom="1pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1.106in" Height="0.4in" Left="8.4in" Top="0.802in" Value="Kredit" CanGrow="False" Name="textBox16">
+          <Style TextAlign="Right" VerticalAlign="Middle">
+            <Font Size="9pt" />
+            <BorderStyle Top="Solid" Bottom="Solid" />
+            <BorderColor Top="Black" Bottom="Black" />
+            <BorderWidth Top="1pt" Bottom="1pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1.4in" Height="0.4in" Left="9.506in" Top="0.802in" Value="Saldo Akhir" CanGrow="False" Name="textBox17">
+          <Style TextAlign="Right" VerticalAlign="Middle">
+            <Font Size="9pt" />
+            <BorderStyle Top="Solid" Bottom="Solid" />
+            <BorderColor Top="Black" Bottom="Black" />
+            <BorderWidth Top="1pt" Bottom="1pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1.6in" Height="0.4in" Left="0.3in" Top="0.802in" Value="No. Transaksi/ No Verif" CanGrow="False" Name="textBox3">
+          <Style TextAlign="Left" VerticalAlign="Middle">
+            <Font Size="9pt" />
+            <BorderStyle Top="Solid" Bottom="Solid" />
+            <BorderColor Top="Black" Bottom="Black" />
+            <BorderWidth Top="1pt" Bottom="1pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1.3in" Height="0.4in" Left="4.1in" Top="0.802in" Value="Jenis Pembayaran" CanGrow="False" Name="textBox18">
+          <Style TextAlign="Left" VerticalAlign="Middle">
+            <Font Size="9pt" />
+            <BorderStyle Top="Solid" Bottom="Solid" />
+            <BorderColor Top="Black" Bottom="Black" />
+            <BorderWidth Top="1pt" Bottom="1pt" />
+          </Style>
+        </TextBox>
+      </Items>
+    </PageHeaderSection>
+  </Items>
+  <PageSettings PaperKind="A4" Landscape="True" ColumnCount="1" ColumnSpacing="0in">
+    <Margins>
+      <MarginsU Left="1cm" Right="1cm" Top="1cm" Bottom="1cm" />
+    </Margins>
+  </PageSettings>
+  <StyleSheet>
+    <StyleRule>
+      <Style>
+        <Padding Left="2pt" Right="2pt" />
+      </Style>
+      <Selectors>
+        <TypeSelector Type="TextItemBase" />
+        <TypeSelector Type="HtmlTextBox" />
+      </Selectors>
+    </StyleRule>
+  </StyleSheet>
+  <Groups>
+    <Group Name="group1">
+      <GroupHeader>
+        <GroupHeaderSection Height="0.4in" Name="groupHeaderSection1">
+          <Style>
+            <BorderStyle Bottom="Dotted" />
+          </Style>
+          <Items>
+            <TextBox Width="0.8in" Height="0.2in" Left="0in" Top="0in" Value="Physician" Name="textBox1">
+              <Style>
+                <Font Size="8pt" Bold="True" />
+              </Style>
+            </TextBox>
+            <TextBox Width="7.7in" Height="0.2in" Left="0.8in" Top="0in" Value="= Fields.ParamedicName" Format=": {0}" Name="textBox2">
+              <Style>
+                <Font Size="8pt" Bold="True" />
+              </Style>
+            </TextBox>
+            <TextBox Width="1.4in" Height="0.2in" Left="9.506in" Top="0.2in" Value="=Fields.BeginingBalance" Format="{0:N2}" Name="textBox5">
+              <Style TextAlign="Right" VerticalAlign="Middle">
+                <Font Size="8pt" />
+              </Style>
+            </TextBox>
+            <TextBox Width="6.3in" Height="0.2in" Left="0in" Top="0.2in" Value="Saldo Awal" Name="textBox4">
+              <Style>
+                <Font Size="8pt" />
+              </Style>
+            </TextBox>
+          </Items>
+        </GroupHeaderSection>
+      </GroupHeader>
+      <GroupFooter>
+        <GroupFooterSection Height="0.2in" Name="groupFooterSection1">
+          <Items>
+            <TextBox Width="1.1in" Height="0.2in" Left="7.3in" Top="0in" Value="=SUM(Fields.Debit)" Format="{0:N2}" Name="textBox21">
+              <Style TextAlign="Right" VerticalAlign="Middle">
+                <Font Size="8pt" />
+              </Style>
+            </TextBox>
+            <TextBox Width="1.106in" Height="0.2in" Left="8.4in" Top="0in" Value="=SUM(Fields.Debit)" Format="{0:N2}" Name="textBox22">
+              <Style TextAlign="Right" VerticalAlign="Middle">
+                <Font Size="8pt" />
+              </Style>
+            </TextBox>
+          </Items>
+        </GroupFooterSection>
+      </GroupFooter>
+      <Groupings>
+        <Grouping Expression="= Fields.ParamedicID" />
+      </Groupings>
+    </Group>
+  </Groups>
+</Report>

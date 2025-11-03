@@ -1,0 +1,825 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterDetail.Master.cs"
+    Inherits="Temiang.Avicenna.MasterPage.MasterDetail" %>
+
+<%@ Import Namespace="Temiang.Avicenna.Common" %>
+<%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
+<%@ Register Src="~/CustomControl/HeaderCtl.ascx" TagName="Header" TagPrefix="uc1" %>
+<%@ Register Src="~/CustomControl/LoginInfoCtl.ascx" TagName="LoginInfo" TagPrefix="uc1" %>
+<%@ Register Src="~/CustomControl/FooterCtl.ascx" TagName="Footer" TagPrefix="uc1" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <style type="text/css">
+        .footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: ButtonFace;
+            text-align: center;
+            border-color: #C0C0C0;
+            border-style: groove none none none;
+            display: none;
+        }
+
+        .absoluteCenter {
+            /* Must manually set width/height */
+            width: 400px;
+            height: 300px; /* The magic centering code */
+            margin: auto;
+            position: absolute;
+            top: 0;
+            bottom: 0; /* Aligns Vertically - Remove for Horizontal Only */
+            left: 0;
+            right: 0; /* Aligns Horizontally - Remove for Vertical Only  */ /* Prevent div from overflowing main window */
+            max-width: 100%;
+            max-height: 100%;
+            overflow: auto;
+        }
+
+        .transp {
+            opacity: 0.3;
+        }
+    </style>
+
+    <style type="text/css">
+        .content {
+            position: relative;
+            padding-bottom: 35px;
+        }
+
+        .footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: ButtonFace;
+        }
+
+        .info, .success, .warning, .error, .validation {
+            border: 1px solid;
+            margin: 10px 0px;
+            padding: 15px 10px 15px 50px;
+            background-repeat: no-repeat;
+            background-position: 10px center;
+        }
+
+        .info {
+            color: #00529B;
+            background-color: #BDE5F8;
+            background-image: url('~/Images/infoblue16');
+        }
+
+        .success {
+            color: #4F8A10;
+            background-color: #DFF2BF;
+            background-image: url('~/Images/infogreen16');
+        }
+
+        .warning {
+            color: #9F6000;
+            background-color: #FEEFB3;
+            background-image: url('warning.png');
+        }
+
+        .error {
+            color: #D8000C;
+            background-color: #FFBABA;
+            background-image: url('~/Images/infored16');
+        }
+    </style>
+</head>
+
+<script language="javascript" type="text/javascript">
+    function onClientPageLoad(oWnd) {
+        // Kasus browser Chrome, button nya hilang Teguh Supriyadi
+        oWnd.maximize();
+        oWnd.remove_pageLoad(onClientPageLoad);
+    }
+
+    (function (global) {
+
+        if (typeof (global) === "undefined") {
+            throw new Error("window is undefined");
+        }
+
+        var _hash = "!";
+        var noBackPlease = function () {
+            global.location.href += "#";
+
+            // making sure we have the fruit available for juice....
+            // 50 milliseconds for just once do not cost much (^__^)
+            global.setTimeout(function () {
+                global.location.href += "!";
+            }, 50);
+        };
+
+        // Earlier we had setInerval here....
+        global.onhashchange = function () {
+            if (global.location.hash !== _hash) {
+                global.location.hash = _hash;
+            }
+        };
+
+        global.onload = function () {
+
+            noBackPlease();
+
+            // disables backspace on page except on input fields and textarea..
+            document.body.onkeydown = function (e) {
+                var elm = e.target.nodeName.toLowerCase();
+                if (e.which === 8 && (elm !== 'input' && elm !== 'textarea')) {
+                    e.preventDefault();
+                }
+                // stopping event bubbling up the DOM tree..
+                e.stopPropagation();
+            };
+
+        };
+
+    })(window);
+
+    function cancelBack(event) {
+        try {
+            if (typeof event == 'undefined') return;
+
+            event = event || window.event;  //For IE, not yet tested
+            if ((event.keyCode == 8 ||
+                    (event.keyCode == 37 && event.altKey) ||
+                    (event.keyCode == 39 && event.altKey))
+                &&
+                (event.srcElement.form == null || event.srcElement.isTextEdit == false)
+            ) {
+                event.cancelBubble = true;
+                event.returnValue = false;
+            }
+        } catch (e) {
+            //
+        }
+    }
+
+    function getRandomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+    var sMsgArr = [
+        "What are you doing ..!!??",
+        "Please wait...",
+        "Please wait...",
+        "Please wait...",
+        "Please wait...",
+        "Please wait...",
+        "Please wait...",
+        "Please wait...",
+        "Please wait...",
+        "Please wait..."
+    ];
+
+    var cCount = 0;
+    var c1 = new Date(); // Current date now.
+    var lastVal = '';
+    var iSecs = 1000; //miliseconds.
+    function IsShortClick(val) {
+        /*
+        OnClientClick="if(IsShortClick('unique')) return;"
+        */
+
+        if (lastVal != val) {
+            lastVal = val;
+            cCount = 1;
+            c1 = new Date();
+            return false;
+        }
+
+        c2 = new Date();
+        var secs = parseInt((c2 - c1)); //miliseconds.
+        cCount = (secs < iSecs) ? (cCount + 1) : 0;
+        //alert(cCount);
+        if (cCount > 4) {
+            alert(sMsgArr[getRandomInt(0, sMsgArr.length - 1)]);
+        }
+        c1 = c2;
+        return (secs < iSecs);
+    }
+
+</script>
+
+<body>
+    <form id="form1" runat="server">
+        <asp:HiddenField runat="server" ID="fw_hdnPageID" Value="" />
+        <input id="hdnLastProcess" name="hdnLastProcess" type="hidden" value="" />
+        <asp:HiddenField runat="server" ID="hdnLastReason" Value="" />
+        <telerik:RadCodeBlock ID="fw_radCodeBlock" runat="server">
+            <script type="text/javascript" src="<%=Helper.UrlRoot() %>/JavaScript/jquery.js"></script>
+            <script language="javascript" type="text/javascript">
+                // Session stretch
+                var _sessionTimeoutStretch =  "<%= System.Configuration.ConfigurationManager.AppSettings["SessionStretch"].ToString()%>";
+                var _sessionStretchTimer = null;
+
+                function SessionStretch() {
+                    clearTimeout(_sessionStretchTimer);
+                    $.ajax({
+                        type: 'POST',
+                        url: "<%= Temiang.Avicenna.Common.Helper.UrlRoot() %>/SesssionStretch.aspx/Access",
+                        contentType: "application/json;charset=utf-8",
+                        datatype: "json",
+                        data: JSON.stringify({ data: escape(new Date()) }),
+                        success: function (response) {
+                            SetSessionStretch();
+                        },
+                        error: function (err) {
+                            SetSessionStretch();
+                        },
+                    });
+
+                }
+                function SetSessionStretch() {
+                    if (parseInt(_sessionTimeoutStretch) > 0) {
+                        clearTimeout(_sessionStretchTimer);
+                    }
+                    _sessionStretchTimer = setTimeout('SessionStretch()', parseInt(_sessionTimeoutStretch) * 60 * 1000);
+                }
+
+                <%= Page.IsPostBack? string.Empty:"SetSessionStretch();" %>
+                // End Session stretch
+
+                function fw_mnuMain_OnClientItemClicking(sender, args) {
+                    var toolBar = window.$find("<%= fw_tbarData.ClientID %>");
+                    var firstValue = toolBar.get_items().getItem(0).get_value();
+                    if (firstValue == 'save') {
+                        if (!confirm("Entry data not finish!\n\nClick Cancel to continue entry data.")) {
+                            args.set_cancel(true);
+                        }
+                    }
+                }
+
+                function ajxPanel_OnResponseEnd(sender, args) {
+                    hideHeader();
+                    var lastProc = document.getElementById("hdnLastProcess").value;
+                    if (lastProc.substring(0, 4) == 'rpt_') {
+                        document.getElementById("hdnLastProcess").value = '';
+                        var oWnd = radopen("<%=Temiang.Avicenna.Common.Helper.UrlRoot()%>/Module/Reports/ReportViewer.aspx", "fw_WinPrint");
+                    }
+                    else {
+                        if (fw_MessageFinishProcess !== "") {
+                            var notification = $find("<%= fw_radNotif.ClientID %>");
+                            notification.set_title("Confirmation");
+                            notification.set_text(fw_MessageFinishProcess);
+                            notification.show();
+
+                            fw_MessageFinishProcess = "";
+                        }
+
+                        if (fw_lastTbiDisabled) {
+                            fw_lastTbiDisabled.enable();
+                            fw_lastTbiDisabled = null;
+                        }
+
+                        ContinueAutoSave();
+                    }
+                }
+
+                function GetRadWindow() {
+                    var oWindow = null;
+                    if (window.radWindow) oWindow = window.radWindow;
+                    else if (window.frameElement.radWindow) oWindow = window.frameElement.radWindow;
+                    return oWindow;
+                }
+
+
+                var Close = function () {
+                    if (document.getElementById('<%=fw_hdnRecordHasChanged.ClientID%>').value == "1")
+                        CloseAndApply();
+                    else
+                        GetRadWindow().close();
+                }
+
+                function CloseAndApply() {
+                    //get a reference to the current RadWindow
+                    var oWnd = GetRadWindow();
+
+                    //property argument harus didefinisikan supaya bisa ditambah child propertinya contoh oWnd.argument.rebind = 'rebind';
+                    //kalua tidak maka script tidak akan dijalankan ke baris berikutnya ini tidak tahu knp padahal sebelum2nya tidak perlu
+                    oWnd.argument = new Object();
+
+                    var oArg = new Object();
+                    <%=BasePageDetailCurrent.OnGetAdditionalJavaScriptCloseAndApply() %>
+
+                    oArg.callbackMethod = '<%=Request.QueryString["ccm"]%>';
+                    oArg.eventArgument = '<%=Request.QueryString["cea"]%>';
+                    oArg.eventTarget = '<%=Request.QueryString["cet"]%>';
+
+                    //Close the RadWindow            
+                    oWnd.close(oArg);
+                }
+
+                var fw_MessageFinishProcess = "";
+                var fw_lastTbiDisabled = null;
+                function fw_tbarData_OnClientButtonClicking(sender, args) {
+                    var val = args.get_item().get_value();
+
+                    if (val != "prev" && val != "next") {
+                        if (IsShortClick(val)) {
+                            args.set_cancel(true);
+                            return;
+                        }
+                    }
+
+                    switch (val) {
+                    case "search":
+                        openWindowSearch();
+                        args.set_cancel(true); // Cegah postback
+                        break;
+                    case "list":
+                        fw_lastTbiDisabled = args.get_item();
+                        fw_lastTbiDisabled.disable();
+                        window.location.href = '<%= BasePageDetailCurrent.UrlPageList %>';
+                        args.set_cancel(true);
+                        break;
+                    case "edit":
+                        fw_lastTbiDisabled = args.get_item();
+                        fw_lastTbiDisabled.disable();
+                        break;
+                    case "delete":
+                        if (!window.confirm('Are you sure to delete this data ?')) {
+                            args.set_cancel(true);
+                            return;
+                        }
+                        fw_lastTbiDisabled = args.get_item();
+                        fw_lastTbiDisabled.disable();
+                        break;
+                    case "cancel":
+                        PauseAutoSave();
+                        if (!window.confirm('Are you sure to cancel modified data ?')) {
+                            args.set_cancel(true);
+                            ContinueAutoSave();
+                        }
+                        break;
+                    case "approval":
+                        Approval(sender, args);
+                        break;
+                    case "unapproval":
+                        if ('<%=BasePageDetailCurrent.IsUsingBeforeUnapprovalValidation %>' == 'True') {
+                            var notes = prompt('Are you sure to void this transaction?\nPlease write your reason (mandatory)');
+                            if (notes == null || notes == '') {
+                                args.set_cancel(true);
+                                return;
+                            }
+                            else {
+                                document.getElementById("ctl00_hdnLastReason").value = notes;
+                            }
+                        }
+                        else {
+                            if (!window.confirm('Are you sure to void this transaction?')) {
+                                args.set_cancel(true);
+                                return;
+                            }
+                        }
+
+                        fw_lastTbiDisabled = args.get_item();
+                        fw_lastTbiDisabled.disable();
+                        break;
+                    case "void":
+                        if ('<%=BasePageDetailCurrent.IsUsingBeforeVoidValidation %>' == 'True') {
+                            var notes = prompt('Are you sure to void this transaction?\nPlease write your reason (mandatory)');
+                            if (notes == null || notes == '') {
+                                args.set_cancel(true);
+                                return;
+                            }
+                            else {
+                                document.getElementById("ctl00_hdnLastReason").value = notes;
+                            }
+                        }
+                        else {
+                            if (!window.confirm('Are you sure to void this transaction?')) {
+                                args.set_cancel(true);
+                                return;
+                            }
+                        }
+                        fw_lastTbiDisabled = args.get_item();
+                        fw_lastTbiDisabled.disable();
+                        break;
+                    case "unvoid":
+                        if (!window.confirm('Are you sure to unvoid this transaction?')) {
+                            args.set_cancel(true);
+                        }
+                        fw_lastTbiDisabled = args.get_item();
+                        fw_lastTbiDisabled.disable();
+                        break;
+                    case "save":
+                        Save(sender, args);
+                        break;
+                    case "print":
+                        break;
+                    case "new":
+                        <%=BasePageDetailCurrent.OnGetScriptToolBarNewClicking() %>
+                        break;
+                    case "sep":
+                        openWindowSepToReg();
+                        args.set_cancel(true);
+                        break;
+                    case "reload":
+                        if (!window.confirm('Are you sure to reload this transaction?')) {
+                            args.set_cancel(true);
+                        }
+                        break;
+                    case "close":
+                        <%=BasePageDetailCurrent.OnGetCloseScript() %>
+                        break;
+                    case "saveandedit":
+                        if (IsEntryValid()) {
+                            fw_lastTbiDisabled = args.get_item();
+                            fw_lastTbiDisabled.disable();
+                            PauseAutoSave();
+                            document.getElementById('<%= fw_btnAutoSave.ClientID %>').click();
+                            return;
+                        }
+
+                        args.set_cancel(true);
+                        break;
+                    case "autosave":
+                        var checkState = args.get_item().get_checked();
+                        if (checkState == true) //disini state valuenya belum berubah shg dipakai val sebelumnya
+                        {
+                            document.getElementById("<%=fw_hdnIsAutoSaveToggleOn.ClientID%>").value = "0";
+                            PauseAutoSave();
+                        } else {
+                            // Activekan autosave
+                            document.getElementById("<%=fw_hdnIsAutoSaveToggleOn.ClientID%>").value = "1";
+                            ContinueAutoSave();
+                        }
+                        break;
+                        <%=BasePageDetailCurrent.OnGetAdditionalMenuScript() %>
+                    }
+                    document.getElementById("hdnLastProcess").value = val;
+
+                }
+
+                var Save = function (sender, args) {
+                    fw_lastTbiDisabled = args.get_item();
+                    fw_lastTbiDisabled.disable();
+
+                    PauseAutoSave();
+                    if (!IsEntryValid()) {
+                        args.set_cancel(true);
+                        fw_lastTbiDisabled.enable();
+                        fw_lastTbiDisabled = null;
+                        ContinueAutoSave();
+                        return;
+                    }
+
+                    var dataMode = document.getElementById("hdnLastProcess").value;
+                    if (dataMode == "edit" && '<%=AppSession.Parameter.IsUserTypeDoctorNoSaveConfirm.ToString().ToLower() %>' != 'false' && '<%=AppSession.UserLogin.SRUserType %>' != 'DTR' && !window.confirm('Are you sure to save modified data ?')) {
+                        args.set_cancel(true);
+                        fw_lastTbiDisabled.enable();
+                        fw_lastTbiDisabled = null;
+                        ContinueAutoSave();
+                        return;
+                    }
+
+                    <%=BasePageDetailCurrent.OnGetScriptToolBarSaveClicking() %>
+                }
+
+                var Approval = function (sender, args) {
+                    if (!window.confirm('Are you sure to approval this transaction?')) {
+                        args.set_cancel(true);
+                        return;
+                    }
+
+                    fw_lastTbiDisabled = args.get_item();
+                    fw_lastTbiDisabled.disable();
+                }
+
+                function IsEntryValid() {
+                    if (typeof (Page_ClientValidate) == 'function') {
+                        Page_ClientValidate("<%=fw_ValidationSummary.ValidationGroup%>");
+                        return Page_IsValid;
+                    }
+                    return true;
+                }
+
+                function openWindowSearch() {
+                    var oWnd = window.$find("<%= fw_WinSearch.ClientID %>");
+                    oWnd.setUrl("<%=BasePageDetailCurrent.UrlPageSearch%>");
+                    oWnd.show();
+                }
+
+                function onWindowSearchClientClose(oWnd) {
+                    //Jika apply di click
+                    var arg = oWnd.argument;
+                    if (arg) {
+                        window.location.href = '<%= BasePageDetailCurrent.UrlPageList %>';
+                    }
+                }
+
+                function openDialog(url, modal, width, height) {
+                    if (radopen) { //if not, there is no RadWindowManager on the page, add an else{} block to use window.open() or other logic
+                        var wnd = radopen(url, null);
+                        wnd.set_destroyOnClose(true);
+                        //add checks here in case parameters have not been passed
+                        wnd.setSize(width, height);
+                        wnd.center();
+                        wnd.set_modal(modal);
+                    }
+                }
+
+                // Autosave function
+                var _autoSaveTimer = null;
+                function AutoSave(val) {
+                    clearTimeout(_autoSaveTimer);
+
+                    if (val == 1) {
+                        if (IsEntryValid()) {
+                            document.getElementById('<%= fw_btnAutoSave.ClientID %>').click();
+                        }
+                        else
+                            ContinueAutoSave();
+                    }
+                }
+
+                function PauseAutoSave() {
+                    <%= BasePageDetailCurrent.AutoSaveInterval>0 ? "clearTimeout(_autoSaveTimer);":""%>
+                }
+                function ContinueAutoSave() {
+                    clearTimeout(_autoSaveTimer); // Non Activekan autosave
+                    if (document.getElementById("<%=fw_hdnIsAutoSaveToggleOn.ClientID %>").value == "1") {
+                        <%= BasePageDetailCurrent.AutoSaveInterval>0 ? String.Format("_autoSaveTimer = setTimeout('AutoSave(1)', {0} * 1000); ", BasePageDetailCurrent.AutoSaveInterval):""%>
+                    }
+                }
+
+                function StartUpAutoSave() {
+                    ContinueAutoSave();
+                    Sys.Application.remove_load(StartUpAutoSave);
+                }
+
+                <%=BasePageDetailCurrent.ToolBarMenuAutoSaveVisible && BasePageDetailCurrent.DataModeCurrent != AppEnum.DataMode.Read && BasePageDetailCurrent.AutoSaveInterval>0?"Sys.Application.add_load(StartUpAutoSave);":String.Empty %>
+                // End Autosave function
+
+                var fw_RadAjaxManager_OnResponseEnd = function (sender, eventArgs) {
+                    if (fw_MessageFinishProcess !== "") {
+                        var notification = $find("<%= fw_radNotif.ClientID %>");
+                        notification.set_title("Confirmation");
+                        notification.set_text(fw_MessageFinishProcess);
+                        notification.show();
+
+                        fw_MessageFinishProcess = "";
+                    }
+
+                    if (fw_lastTbiDisabled) {
+                        fw_lastTbiDisabled.enable();
+                        fw_lastTbiDisabled = null;
+                    }
+
+                    ContinueAutoSave();
+                }
+            </script>
+
+        </telerik:RadCodeBlock>
+        <telerik:RadScriptManager ID="fw_RadScriptManager" runat="server" OnAsyncPostBackError="fw_RadScriptManager_AsyncPostBackError">
+            <Scripts>
+                <%-- Common --%>
+                <asp:ScriptReference Path="~/JavaScript/Common/Core.js" />
+                <asp:ScriptReference Path="~/JavaScript/Common/jQuery.js" />
+                <asp:ScriptReference Path="~/JavaScript/Common/jQueryPlugins.js" />
+                <asp:ScriptReference Path="~/JavaScript/Common/Navigation/NavigationScripts.js" />
+                <asp:ScriptReference Path="~/JavaScript/Common/Navigation/OverlayScript.js" />
+                <asp:ScriptReference Path="~/JavaScript/Common/AnimationFramework/AnimationFramework.js" />
+
+                <%-- RadMenu --%>
+                <asp:ScriptReference Path="~/JavaScript/Menu/RadMenuScripts.js" />
+                <asp:ScriptReference Path="~/JavaScript/Menu/MenuItem/RadMenuItem.js" />
+                <asp:ScriptReference Path="~/JavaScript/Menu/MenuItem/MobileMenuItem.js" />
+                <asp:ScriptReference Path="~/JavaScript/Menu/Views/ClassicView.js" />
+                <asp:ScriptReference Path="~/JavaScript/Menu/Views/LiteView.js" />
+
+                <%-- RadAjaxManager, RadAjaxLoadingPanel, RadAjaxPanel --%>
+                <asp:ScriptReference Path="~/JavaScript/Ajax/Ajax.js" />
+
+
+                <%-- RadToolBar --%>
+                <asp:ScriptReference Path="~/JavaScript/ToolBar/RadToolBarScripts.js" />
+                <asp:ScriptReference Path="~/JavaScript/ToolBar/Views/ClassicView.js" />
+                <asp:ScriptReference Path="~/JavaScript/ToolBar/Views/LiteView.js" />
+
+                <%-- RadFormDecorator --%>
+                <asp:ScriptReference Path="~/JavaScript/FormDecorator/RadFormDecorator.js" />
+                <asp:ScriptReference Path="~/JavaScript/Common/Popup/PopupScripts.js" />
+
+                <%-- RadNotification --%>
+                <asp:ScriptReference Path="~/JavaScript/Notification/RadNotification.js" />
+            </Scripts>
+        </telerik:RadScriptManager>
+
+        <telerik:RadAjaxManager ID="fw_RadAjaxManager" runat="server" ClientEvents-OnResponseEnd="fw_RadAjaxManager_OnResponseEnd" AsyncPostBackTimeout="600" EnableEmbeddedScripts="false" />
+        <%--<telerik:RadAjaxLoadingPanel ID="fw_ajxLoadingPanel" runat="server" MinDisplayTime="10"
+            InitialDelayTime="200" EnableEmbeddedScripts="false" BackgroundPosition="Center" />--%>
+        <telerik:RadSkinManager ID="fw_RadSkinManager" runat="server" />
+        <telerik:RadFormDecorator ID="fw_RadFormDecorator" runat="server" EnableEmbeddedScripts="false" DecoratedControls="Default" />
+
+        <div class="menuarea" id="divMenu">
+            <table cellpadding="0" cellspacing="0" width="100%" style="background-color: lightgray;">
+                <tr>
+                    <td>
+                        <telerik:RadMenu ID="fw_mnuMain" runat="server" Width="100%" Height="25px" EnableEmbeddedScripts="false">
+                            <CollapseAnimation Duration="200" Type="OutQuint" />
+                        </telerik:RadMenu>
+                    </td>
+                    <td align="center" id="searchMenuIcon" style="width: 25px;">
+                        <asp:Image runat="server" ID="imgSearh" ImageUrl="~/Images/Toolbar/search16.png" /></td>
+                    <td style="width: 300px;" id="searchMenu">
+                        <telerik:RadCodeBlock runat="server">
+                            <script type="text/javascript">
+                                function cboMenuSearch_ClientItemsRequesting(sender, eventArgs) {
+                                    var context = eventArgs.get_context();
+                                    context["UserID"] = "<%=AppSession.UserLogin.UserID %>";
+                                    context["UserLogID"] = "<%=AppSession.UserLogin.UserLogID %>";
+                                    context["SRUserType"] = "<%=AppSession.UserLogin.SRUserType %>";
+
+                                }
+                                function onProgramClick(url) {
+                                    url = url.replace("~","<%=Helper.UrlRoot() %>")
+                                    window.location = url;
+                                }
+                            </script>
+                        </telerik:RadCodeBlock>
+                        <telerik:RadComboBox ID="cboMenuSearch" runat="server" Width="300px" EmptyMessage="Search Menu"
+                            OnClientItemsRequesting="cboMenuSearch_ClientItemsRequesting"
+                            EnableLoadOnDemand="true" ShowMoreResultsBox="true" EnableVirtualScrolling="true">
+                            <WebServiceSettings Method="MyPrograms" Path="~/WebService/ComboBoxDataService.asmx" />
+                            <ClientItemTemplate>
+                    <div onclick="onProgramClick('#= Attributes.NavigateUrl #')">
+                        <ul class="details">
+                            <li ><span>#= Text #</span></li>
+                            <li style="font-weight: bold;font-size: smaller;"><span>#= Attributes.ParentProgramName #</span></li>
+                        </ul>
+                    </div>
+                            </ClientItemTemplate>
+                        </telerik:RadComboBox>
+                    </td>
+                </tr>
+            </table>
+            <div style="float: left">
+                <table cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td rowspan="2" width="1px"></td>
+                        <td rowspan="2">
+                            <asp:Image ID="imgLogo" runat="server" ImageUrl="~/Images/LogoRS.jpg" />
+                        </td>
+                        <td rowspan="2" width="5px"></td>
+                        <td>
+                            <asp:Label ID="fw_lblProgramName" runat="server" Text="" Font-Bold="true" Font-Size="Large"></asp:Label>
+                            <br />
+                            <asp:Label ID="fw_lblProgramPath" runat="server" Text="" Font-Size="XX-Small" ForeColor="WhiteSmoke"></asp:Label>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div style="float: right; margin-top: 10px;">
+                <%--<div style="float: right; margin-top: 15px; margin-right: 1px">--%>
+                <uc1:LoginInfo ID="ctlLoginInfo" runat="server" />
+            </div>
+        </div>
+        <telerik:RadWindowManager ID="RadWindowManager1" runat="server" Style="z-index: 7001"
+            Modal="true" VisibleStatusbar="false" DestroyOnClose="true" ReloadOnShow="True"
+            InitialBehaviors="Maximize" ShowContentDuringLoad="false" Width="600px" Height="400px"
+            Behavior="Maximize,Move,Close">
+            <Windows>
+                <telerik:RadWindow ID="fw_WinPrint" Width="1000px" Height="600px" runat="server"
+                    InitialBehaviors="Maximize" Behavior="Maximize,Move,Close">
+                </telerik:RadWindow>
+            </Windows>
+        </telerik:RadWindowManager>
+        <telerik:RadWindow runat="server" Animation="None" Width="600px" Height="140px" Behavior="Close, Move"
+            ShowContentDuringLoad="False" VisibleStatusbar="False" Modal="true" Title="Search"
+            OnClientClose="onWindowSearchClientClose" ID="fw_WinSearch">
+        </telerik:RadWindow>
+        <div style="display: none;">
+            <asp:Button runat="server" ID="fw_btnAutoSave" OnClick="fw_btnAutoSave_Click" />
+        </div>
+        <div id="contentdetail" class="contentdetail">
+            <telerik:RadAjaxPanel ID="fw_ajxPanel" runat="server" Width="100%" LoadingPanelID="fw_ajxLoadingPanel"
+                EnableEmbeddedScripts="false" HorizontalAlign="NotSet" ClientEvents-OnResponseEnd="ajxPanel_OnResponseEnd">
+                <telerik:RadNotification ID="fw_radNotif" runat="server" VisibleOnPageLoad="false" Position="BottomRight"
+                    Width="330" Height="160" Animation="Fade" EnableRoundedCorners="true" EnableShadow="true"
+                    Title="Confirmation" Text="" ShowCloseButton="true" EnableEmbeddedScripts="false"
+                    Style="z-index: 100000">
+                </telerik:RadNotification>
+                <asp:HiddenField ID="fw_hdnIsAutoSaveToggleOn" runat="server" />
+                <asp:HiddenField runat="server" ID="fw_hdnRecordHasChanged" Value="" />
+                <asp:HiddenField ID="fw_hdnDataMode" runat="server" />
+                <div id="toolbar" class="toolbar">
+                    <telerik:RadToolBar ID="fw_tbarData" runat="server" Width="100%" EnableEmbeddedScripts="false"
+                        OnClientButtonClicking="fw_tbarData_OnClientButtonClicking">
+                        <CollapseAnimation Duration="200" Type="OutQuint" />
+                        <Items>
+                            <telerik:RadToolBarButton runat="server" Text="<u>N</u>ew" AccessKey="N" Value="new" ImageUrl="~/Images/Toolbar/new16.png"
+                                HoveredImageUrl="~/Images/Toolbar/new16_h.png" DisabledImageUrl="~/Images/Toolbar/new16_d.png" />
+                            <telerik:RadToolBarButton runat="server" Text="<u>E</u>dit" Value="edit" ImageUrl="~/Images/Toolbar/edit16.png"
+                                HoveredImageUrl="~/Images/Toolbar/edit16_h.png" DisabledImageUrl="~/Images/Toolbar/edit16_d.png" />
+                            <telerik:RadToolBarButton IsSeparator="True" runat="server" />
+                            <telerik:RadToolBarButton runat="server" Text="Delete" Value="delete" ImageUrl="~/Images/Toolbar/delete16.png"
+                                HoveredImageUrl="~/Images/Toolbar/delete16_h.png" DisabledImageUrl="~/Images/Toolbar/delete16_d.png" />
+                            <telerik:RadToolBarButton runat="server" Text="<u>S</U>ave" AccessKey="S" Value="save" ValidationGroup="entry"
+                                ImageUrl="~/Images/Toolbar/save16.png" HoveredImageUrl="~/Images/Toolbar/save16_h.png"
+                                DisabledImageUrl="~/Images/Toolbar/save16_d.png" />
+                            <telerik:RadToolBarButton runat="server" Text="<u>C</u>ancel" AccessKey="C" Value="cancel" ImageUrl="~/Images/Toolbar/undo16.png"
+                                DisabledImageUrl="~/Images/Toolbar/undo16_d.png" />
+                            <telerik:RadToolBarButton IsSeparator="True" runat="server" />
+                            <telerik:RadToolBarButton runat="server" Text="" Value="prev" ImageUrl="~/Images/Toolbar/arrowleft_blue16.png" />
+                            <telerik:RadToolBarButton runat="server" Text="" Value="next" ImageUrl="~/Images/Toolbar/arrowright_blue16.png" />
+                            <telerik:RadToolBarButton IsSeparator="True" runat="server" />
+                            <telerik:RadToolBarButton runat="server" Text="Search" Value="search" ImageUrl="~/Images/Toolbar/search16.png"
+                                HoveredImageUrl="~/Images/Toolbar/search16_h.png" DisabledImageUrl="~/Images/Toolbar/search16_d.png" />
+                            <telerik:RadToolBarButton runat="server" Text="List" Value="list" ImageUrl="~/Images/Toolbar/details16.png"
+                                HoveredImageUrl="~/Images/Toolbar/details16_h.png" DisabledImageUrl="~/Images/Toolbar/details16_d.png" />
+                            <telerik:RadToolBarButton runat="server" Text="Audit Log" Value="auditlog" ImageUrl="~/Images/Toolbar/transactions16.png"
+                                HoveredImageUrl="~/Images/Toolbar/transactions16_h.png" DisabledImageUrl="~/Images/Toolbar/transactions16_d.png" />
+                            <telerik:RadToolBarButton IsSeparator="True" runat="server" />
+                            <telerik:RadToolBarButton runat="server" Text="Approval" Value="approval" Enabled="false"
+                                ImageUrl="~/Images/Toolbar/post16.png" HoveredImageUrl="~/Images/Toolbar/post16_h.png"
+                                DisabledImageUrl="~/Images/Toolbar/post16_d.png" />
+                            <telerik:RadToolBarButton runat="server" Text="UnApproval" Value="unapproval" Visible="false"
+                                ImageUrl="~/Images/Toolbar/cancel16.png" HoveredImageUrl="~/Images/Toolbar/cancel16_h.png"
+                                DisabledImageUrl="~/Images/Toolbar/cancel16_d.png" />
+                            <telerik:RadToolBarButton IsSeparator="True" runat="server" />
+                            <telerik:RadToolBarButton runat="server" Text="Void" Value="void" Enabled="false"
+                                ImageUrl="~/Images/Toolbar/cancel16.png" HoveredImageUrl="~/Images/Toolbar/cancel16_h.png"
+                                DisabledImageUrl="~/Images/Toolbar/cancel16_d.png" />
+                            <telerik:RadToolBarButton runat="server" Text="UnVoid" Value="unvoid" Visible="false" />
+                            <telerik:RadToolBarButton IsSeparator="True" runat="server" />
+                            <telerik:RadToolBarDropDown runat="server" Text="Print" ImageUrl="../Images/Toolbar/print16.png"
+                                HoveredImageUrl="~/Images/Toolbar/print16_h.png" DisabledImageUrl="~/Images/Toolbar/print16_d.png" />
+                            <telerik:RadToolBarButton IsSeparator="True" runat="server" />
+                            <telerik:RadToolBarButton runat="server" Text="Home" Value="home" Visible="false"
+                                ImageUrl="../Images/Toolbar/home_purple16_h.png" />
+                            <telerik:RadToolBarButton IsSeparator="True" runat="server" />
+                            <telerik:RadToolBarButton runat="server" Text="SEP to Registration" Value="sep" ImageUrl="~/Images/Toolbar/refresh16.png"
+                                HoveredImageUrl="~/Images/Toolbar/refresh16_h.png" DisabledImageUrl="~/Images/Toolbar/refresh16_d.png"
+                                Visible="false" />
+                            <telerik:RadToolBarButton runat="server" Text="Reload" Value="reload" ImageUrl="~/Images/Toolbar/refresh16.png"
+                                HoveredImageUrl="~/Images/Toolbar/refresh16_h.png" DisabledImageUrl="~/Images/Toolbar/refresh16_d.png"
+                                Visible="false" />
+                            <telerik:RadToolBarButton IsSeparator="True" runat="server" Text="26" />
+                            <telerik:RadToolBarButton runat="server" Text="Close" Value="close" ImageUrl="~/Images/Toolbar/close16.png" />
+                            <telerik:RadToolBarButton runat="server" Text="Save and Edit" Value="saveandedit" ImageUrl="~/Images/Toolbar/edit16.png" PostBack="false" />
+                            <telerik:RadToolBarButton runat="server" Text="Autosave" Value="autosave" ImageUrl="~/Images/Toolbar/Scheduler16.png"
+                                CheckOnClick="true" AllowSelfUnCheck="true" PostBack="false" />
+
+                        </Items>
+                    </telerik:RadToolBar>
+                </div>
+                <div id="contentsubdetail" class="contentsubdetail">
+                    <asp:Panel ID="fw_PanelInfo" runat="server" Visible="false" BackColor="#FFFFC0" Font-Size="Small"
+                        BorderColor="#FFC080" BorderStyle="Solid">
+                        <table width="100%">
+                            <tr>
+                                <td width="10px" valign="top">
+                                    <asp:Image ID="Image1" ImageUrl="~/Images/boundleft.gif" runat="server" />
+                                </td>
+                                <td>
+                                    <asp:Label ID="fw_LabelInfo" runat="server" />
+                                </td>
+                            </tr>
+                        </table>
+                    </asp:Panel>
+                    <asp:Label ID="fw_LabelWaterMark" runat="server" Style="filter: alpha(opacity=20); background-color: Transparent; width: 100%; height: 100px; position: absolute; color: white;"
+                        Visible="false" />
+                    <asp:Panel ID="fw_PanelStatus" runat="server" Visible="false" Width="99%">
+                        <div style="filter: alpha(opacity=20); background-color: Transparent; width: 99%; z-index: 97; top: 100px; height: 100px; position: absolute; color: white; pointer-events: none;">
+                            <center>
+                                <telerik:RadBinaryImage CssClass="transp" runat="server" ID="fw_StampStatus" ImageUrl="~/Images/ApprovedStampRed.png" />
+                            </center>
+                        </div>
+                    </asp:Panel>
+                    <asp:ValidationSummary ID="fw_ValidationSummary" runat="server" ValidationGroup="entry" />
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server" />
+                </div>
+            </telerik:RadAjaxPanel>
+        </div>
+
+
+        <div class="footer">
+            Avicenna © PT. Solusi Cipta Integrasi : mail@sciptaintegrasi.com
+        </div>
+        <telerik:RadCodeBlock runat="server" ID="cbEnd">
+            <script type="text/javascript">
+                function hideHeader() {
+                    <%= fw_mnuMain.Visible == false? "var divMenu = document.getElementById(\"divMenu\");"+
+                "divMenu.classList.remove(\"menuarea\");"+
+                "divMenu.style.display = \"none\" ;"+
+
+                "document.getElementById(\"contentdetail\").classList.remove(\"contentdetail\");"+
+                "document.getElementById(\"toolbar\").classList.remove(\"toolbar\");"+
+                "document.getElementById(\"contentsubdetail\").classList.remove(\"contentsubdetail\");":""
+                %>
+                }
+
+                hideHeader();
+
+                var isShowSearchMenu = <%=AppSession.Parameter.IsShowSearchMenu.ToString().ToLower()%>;
+                if (!isShowSearchMenu) {
+                    document.getElementById("searchMenuIcon").style.display = "none";
+                    document.getElementById("searchMenu").style.display = "none";
+                }
+            </script>
+        </telerik:RadCodeBlock>
+    </form>
+</body>
+</html>

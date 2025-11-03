@@ -1,0 +1,84 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterBasePage.Master.cs"
+    Inherits="Temiang.Avicenna.MasterPage.MasterBasePage" %>
+
+<%@ Register Assembly="System.Web.Extensions, Version=1.0.61025.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+    Namespace="System.Web.UI" TagPrefix="asp" %>
+<%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <style type="text/css">
+        .footer
+        {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: ButtonFace;
+            text-align: center;
+            border-color: #C0C0C0;
+            border-style: groove none none none;
+            display: none;
+        }
+    </style>
+</head>
+
+<script language="javascript">
+
+    function cancelBack() {
+        //if ((event.keyCode == 8 ||
+        //   (event.keyCode == 37 && event.altKey) ||
+        //   (event.keyCode == 39 && event.altKey))
+        //    &&
+        //   (event.srcElement.form == null || event.srcElement.isTextEdit == false)
+        //  ) {
+        //    event.cancelBubble = true;
+        //    event.returnValue = false;
+        //}
+    }
+
+</script>
+
+<body onkeydown="cancelBack()">
+    <form id="form1" runat="server">
+        <telerik:RadScriptManager ID="fw_RadScriptManager" runat="server">
+            <Scripts>
+                <%-- Common --%>
+                <asp:ScriptReference Path="~/JavaScript/Common/Core.js" />
+                <asp:ScriptReference Path="~/JavaScript/Common/jQuery.js" />
+                <asp:ScriptReference Path="~/JavaScript/Common/jQueryPlugins.js" />
+                <asp:ScriptReference Path="~/JavaScript/Common/Navigation/NavigationScripts.js" />
+                <asp:ScriptReference Path="~/JavaScript/Common/Navigation/OverlayScript.js" />
+                <asp:ScriptReference Path="~/JavaScript/Common/AnimationFramework/AnimationFramework.js" />
+
+                <%-- RadMenu --%>
+                <asp:ScriptReference Path="~/JavaScript/Menu/RadMenuScripts.js" />
+                <asp:ScriptReference Path="~/JavaScript/Menu/MenuItem/RadMenuItem.js" />
+                <asp:ScriptReference Path="~/JavaScript/Menu/MenuItem/MobileMenuItem.js" />
+                <asp:ScriptReference Path="~/JavaScript/Menu/Views/ClassicView.js" />
+                <asp:ScriptReference Path="~/JavaScript/Menu/Views/LiteView.js" />
+
+                <%-- RadAjaxManager, RadAjaxLoadingPanel, RadAjaxPanel --%>
+                <asp:ScriptReference Path="~/JavaScript/Ajax/Ajax.js" />
+
+                <%-- RadFormDecorator --%>
+                <asp:ScriptReference Path="~/JavaScript/FormDecorator/RadFormDecorator.js" />
+                <asp:ScriptReference Path="~/JavaScript/Common/Popup/PopupScripts.js" />
+            </Scripts>
+        </telerik:RadScriptManager>
+        <telerik:RadSkinManager ID="fw_RadSkinManager" runat="server">
+        </telerik:RadSkinManager>
+        <telerik:RadFormDecorator ID="fw_RadFormDecorator" runat="server" EnableEmbeddedScripts="false" DecoratedControls="Default" />
+        <telerik:RadAjaxLoadingPanel ID="fw_ajxLoadingPanel" runat="server" MinDisplayTime="10"
+            InitialDelayTime="200" EnableEmbeddedScripts="false" BackgroundPosition="Center">
+        </telerik:RadAjaxLoadingPanel>
+        <telerik:RadAjaxManager ID="fw_RadAjaxManager" runat="server" DefaultLoadingPanelID="fw_ajxLoadingPanel" EnableEmbeddedScripts="false">
+        </telerik:RadAjaxManager>
+        <asp:HiddenField runat="server" ID="fw_hdnPageID" Value="" />
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        </asp:ContentPlaceHolder>
+        <div class="footer">
+            Avicenna © PT. Solusi Cipta Integrasi : mail@sciptaintegrasi.com
+        </div>
+    </form>
+</body>
+</html>

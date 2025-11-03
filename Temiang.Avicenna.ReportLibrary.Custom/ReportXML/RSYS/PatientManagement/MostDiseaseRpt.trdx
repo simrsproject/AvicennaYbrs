@@ -1,0 +1,1363 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report DataSourceName="sqlDataSource1" Width="11.4929148109879in" Name="userReport1" xmlns="http://schemas.telerik.com/reporting/2012/2">
+  <Style>
+    <Font Name="Tahoma" />
+  </Style>
+  <DataSources>
+    <SqlDataSource ConnectionString="Data Source=192.168.231.1;Initial Catalog=RSMM_LIVE;Persist Security Info=True;User ID=sa;Password=123" ProviderName="System.Data.SqlClient" SelectCommand="sprpt_MostDisease_v2" SelectCommandType="StoredProcedure" Name="sqlDataSource1">
+      <Parameters>
+        <SqlDataSourceParameter DbType="DateTime" Name="@p_FromDate">
+          <Value>
+            <String>2018-08-01</String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="DateTime" Name="@p_ToDate">
+          <Value>
+            <String>2018-08-31</String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="AnsiString" Name="@p_RegistrationType">
+          <Value>
+            <String></String>
+          </Value>
+        </SqlDataSourceParameter>
+      </Parameters>
+    </SqlDataSource>
+  </DataSources>
+  <Items>
+    <DetailSection Height="0.0520833333333333in" Name="detailSection1">
+      <Style Visible="False" />
+    </DetailSection>
+    <PageFooterSection Height="0.200039545694987in" Name="pageFooterSection1">
+      <Items>
+        <TextBox Value="='Page : ' + PageNumber + '/' + PageCount" Size="5.8927952448527in, 0.200000122189522in" Location="5.60007937749227in, 0.00003933906555176in" Name="textBox104">
+          <Style TextAlign="Right" VerticalAlign="Middle">
+            <BorderStyle Top="Solid" />
+            <BorderWidth Default="0.5pt" />
+            <Font Name="Tahoma" Size="8pt" Italic="True" />
+            <Padding Right="2mm" />
+          </Style>
+        </TextBox>
+        <TextBox Value="='AVICENNA_HIS  ' + Now()" Format="{0:dd-MM-yyyy HH:mm}" Size="5.60000022252401in, 0.200000122189522in" Location="0in, 0.00003933906555176in" Name="textBox27">
+          <Style VerticalAlign="Middle">
+            <BorderStyle Top="Solid" />
+            <BorderWidth Default="0.5pt" />
+            <Font Name="Tahoma" Size="8pt" Italic="True" />
+          </Style>
+        </TextBox>
+      </Items>
+    </PageFooterSection>
+    <ReportHeaderSection Height="2.60000006357829in" Name="reportHeaderSection1">
+      <Items>
+        <TextBox Value="=Fields.ReportName" Size="11.4928754170736in, 0.199999968210856in" Location="0in, 0.699999968210856in" Name="textBox1">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Size="12pt" Bold="True" />
+          </Style>
+        </TextBox>
+        <TextBox Value="=Fields.Periode" Size="11.4928754170736in, 0.200000127156576in" Location="0in, 0.900078852971395in" Name="textBox2">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Bold="True" />
+          </Style>
+        </TextBox>
+        <TextBox Value="=Fields.RegistrationType" Format="Tipe Registrasi : {0}" Size="11.4928754170736in, 0.200000127156576in" Location="0in, 1.10015781720479in" Name="textBox3">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Size="9pt" Bold="True" />
+          </Style>
+        </TextBox>
+        <Table DataSourceName="sqlDataSource1" ColumnHeadersPrintOnEveryPage="True" Size="11.4929149150848in, 1.20000004768372in" Location="0in, 1.39999993642171in" Name="table1">
+          <Style Color="Black" VerticalAlign="Middle">
+            <Font Size="8pt" />
+          </Style>
+          <Body>
+            <Cells>
+              <TableCell RowIndex="1" ColumnIndex="2" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="=Sum(Fields.age06m)" Format="{0:N0}" Size="0.401615573138287in, 0.20000001338113in" Name="textBox105" StyleName="">
+                    <Style Color="Black" TextAlign="Right" VerticalAlign="Middle">
+                      <BorderStyle Bottom="Solid" Left="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" Bold="True" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="3" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="=Sum(Fields.age06f)" Format="{0:N0}" Size="0.401615573138287in, 0.20000001338113in" Name="textBox106" StyleName="">
+                    <Style Color="Black" TextAlign="Right" VerticalAlign="Middle">
+                      <BorderStyle Bottom="Solid" Left="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" Bold="True" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="4" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="=Sum(Fields.age628m)" Format="{0:N0}" Size="0.401615573138287in, 0.20000001338113in" Name="textBox107" StyleName="">
+                    <Style Color="Black" TextAlign="Right" VerticalAlign="Middle">
+                      <BorderStyle Bottom="Solid" Left="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" Bold="True" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="5" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="=Sum(Fields.age628f)" Format="{0:N0}" Size="0.401615573138287in, 0.20000001338113in" Name="textBox108" StyleName="">
+                    <Style Color="Black" TextAlign="Right" VerticalAlign="Middle">
+                      <BorderStyle Bottom="Solid" Left="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" Bold="True" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="6" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="=Sum(Fields.age281m)" Format="{0:N0}" Size="0.401615573138287in, 0.20000001338113in" Name="textBox109" StyleName="">
+                    <Style Color="Black" TextAlign="Right" VerticalAlign="Middle">
+                      <BorderStyle Bottom="Solid" Left="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" Bold="True" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="7" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="=Sum(Fields.age281f)" Format="{0:N0}" Size="0.401615573138287in, 0.20000001338113in" Name="textBox110" StyleName="">
+                    <Style Color="Black" TextAlign="Right" VerticalAlign="Middle">
+                      <BorderStyle Bottom="Solid" Left="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" Bold="True" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="8" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="=Sum(Fields.age14m)" Format="{0:N0}" Size="0.401615573138287in, 0.20000001338113in" Name="textBox111" StyleName="">
+                    <Style Color="Black" TextAlign="Right" VerticalAlign="Middle">
+                      <BorderStyle Bottom="Solid" Left="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" Bold="True" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="9" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="=Sum(Fields.age14f)" Format="{0:N0}" Size="0.401615573138287in, 0.20000001338113in" Name="textBox112" StyleName="">
+                    <Style Color="Black" TextAlign="Right" VerticalAlign="Middle">
+                      <BorderStyle Bottom="Solid" Left="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" Bold="True" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="10" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="=Sum(Fields.age514m)" Format="{0:N0}" Size="0.401615573138287in, 0.20000001338113in" Name="textBox113" StyleName="">
+                    <Style Color="Black" TextAlign="Right" VerticalAlign="Middle">
+                      <BorderStyle Bottom="Solid" Left="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" Bold="True" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="11" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="=Sum(Fields.age514f)" Format="{0:N0}" Size="0.401615573138287in, 0.20000001338113in" Name="textBox114" StyleName="">
+                    <Style Color="Black" TextAlign="Right" VerticalAlign="Middle">
+                      <BorderStyle Bottom="Solid" Left="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" Bold="True" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="12" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="=Sum(Fields.age1524m)" Format="{0:N0}" Size="0.401615573138287in, 0.20000001338113in" Name="textBox115" StyleName="">
+                    <Style Color="Black" TextAlign="Right" VerticalAlign="Middle">
+                      <BorderStyle Bottom="Solid" Left="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" Bold="True" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="13" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="=Sum(Fields.age1524f)" Format="{0:N0}" Size="0.401615573138287in, 0.20000001338113in" Name="textBox116" StyleName="">
+                    <Style Color="Black" TextAlign="Right" VerticalAlign="Middle">
+                      <BorderStyle Bottom="Solid" Left="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" Bold="True" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="14" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="=Sum(Fields.age2544m)" Format="{0:N0}" Size="0.401615573138287in, 0.20000001338113in" Name="textBox117" StyleName="">
+                    <Style Color="Black" TextAlign="Right" VerticalAlign="Middle">
+                      <BorderStyle Bottom="Solid" Left="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" Bold="True" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="15" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="=Sum(Fields.age2544f)" Format="{0:N0}" Size="0.401615573138287in, 0.20000001338113in" Name="textBox118" StyleName="">
+                    <Style Color="Black" TextAlign="Right" VerticalAlign="Middle">
+                      <BorderStyle Bottom="Solid" Left="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" Bold="True" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="16" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="=Sum(Fields.age4564m)" Format="{0:N0}" Size="0.401615573138287in, 0.20000001338113in" Name="textBox119" StyleName="">
+                    <Style Color="Black" TextAlign="Right" VerticalAlign="Middle">
+                      <BorderStyle Bottom="Solid" Left="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" Bold="True" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="17" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="=Sum(Fields.age4564f)" Format="{0:N0}" Size="0.401615573138287in, 0.20000001338113in" Name="textBox120" StyleName="">
+                    <Style Color="Black" TextAlign="Right" VerticalAlign="Middle">
+                      <BorderStyle Bottom="Solid" Left="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" Bold="True" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="18" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="=Sum(Fields.age65m)" Format="{0:N0}" Size="0.401615530323844in, 0.20000001338113in" Name="textBox121" StyleName="">
+                    <Style Color="Black" TextAlign="Right" VerticalAlign="Middle">
+                      <BorderStyle Bottom="Solid" Left="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" Bold="True" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="19" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="=Sum(Fields.age65f)" Format="{0:N0}" Size="0.401615530323844in, 0.20000001338113in" Name="textBox122" StyleName="">
+                    <Style Color="Black" TextAlign="Right" VerticalAlign="Middle">
+                      <BorderStyle Bottom="Solid" Left="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" Bold="True" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="0" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="=RowNumber(&quot;Periode&quot;)" Size="0.405105692090976in, 0.200000013907751in" Name="textBox129" StyleName="">
+                    <Style VerticalAlign="Middle">
+                      <BorderStyle Bottom="Solid" Left="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" />
+                      <Padding Left="5pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="1" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="=col01" Size="3.01211604639136in, 0.200000013907751in" Name="textBox127" StyleName="">
+                    <Style VerticalAlign="Middle">
+                      <BorderStyle Bottom="Solid" Left="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" />
+                      <Padding Left="5pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="2" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="=Fields.age06m" Format="{0:N0}" Size="0.401615801096255in, 0.200000013907751in" Name="textBox13" StyleName="">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <BorderStyle Bottom="Solid" Left="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="3" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="=Fields.age06f" Format="{0:N0}" Size="0.401615801096255in, 0.200000013907751in" Name="textBox51" StyleName="">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <BorderStyle Bottom="Solid" Left="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="4" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="=Fields.age628m" Format="{0:N0}" Size="0.401615801096255in, 0.200000013907751in" Name="textBox8" StyleName="">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <BorderStyle Bottom="Solid" Left="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="5" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="=Fields.age628f" Format="{0:N0}" Size="0.401615801096255in, 0.200000013907751in" Name="textBox9" StyleName="">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <BorderStyle Bottom="Solid" Left="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="6" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="=Fields.age281m" Format="{0:N0}" Size="0.401615801096255in, 0.200000013907751in" Name="textBox10" StyleName="">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <BorderStyle Bottom="Solid" Left="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="8" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="=Fields.age14m" Format="{0:N0}" Size="0.401615801096255in, 0.200000013907751in" Name="textBox11" StyleName="">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <BorderStyle Bottom="Solid" Left="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="9" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="=Fields.age14f" Format="{0:N0}" Size="0.401615801096255in, 0.200000013907751in" Name="textBox12" StyleName="">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <BorderStyle Bottom="Solid" Left="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="10" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="=Fields.age514m" Format="{0:N0}" Size="0.401615801096255in, 0.200000013907751in" Name="textBox14" StyleName="">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <BorderStyle Bottom="Solid" Left="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="11" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="=Fields.age514f" Format="{0:N0}" Size="0.401615801096255in, 0.200000013907751in" Name="textBox15" StyleName="">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <BorderStyle Bottom="Solid" Left="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="12" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="=Fields.age1524m" Format="{0:N0}" Size="0.401615801096255in, 0.200000013907751in" Name="textBox16" StyleName="">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <BorderStyle Bottom="Solid" Left="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="13" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="=Fields.age1524f" Format="{0:N0}" Size="0.401615801096255in, 0.200000013907751in" Name="textBox17" StyleName="">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <BorderStyle Bottom="Solid" Left="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="14" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="=Fields.age2544m" Format="{0:N0}" Size="0.401615801096255in, 0.200000013907751in" Name="textBox19" StyleName="">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <BorderStyle Bottom="Solid" Left="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="15" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="=Fields.age2544f" Format="{0:N0}" Size="0.401615801096255in, 0.200000013907751in" Name="textBox18" StyleName="">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <BorderStyle Bottom="Solid" Left="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="16" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="=Fields.age4564m" Format="{0:N0}" Size="0.401615801096255in, 0.200000013907751in" Name="textBox20" StyleName="">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <BorderStyle Bottom="Solid" Left="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="17" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="=Fields.age4564f" Format="{0:N0}" Size="0.401615801096255in, 0.200000013907751in" Name="textBox21" StyleName="">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <BorderStyle Bottom="Solid" Left="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="18" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="=Fields.age65m" Format="{0:N0}" Size="0.401615801096255in, 0.200000013907751in" Name="textBox22" StyleName="">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <BorderStyle Bottom="Solid" Left="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="19" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="=Fields.age65f" Format="{0:N0}" Size="0.401615801096255in, 0.200000013907751in" Name="textBox23" StyleName="">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <BorderStyle Bottom="Solid" Left="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="7" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="=Fields.age281f" Format="{0:N0}" Size="0.401615801096255in, 0.200000013907751in" Name="textBox35" StyleName="">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <BorderStyle Bottom="Solid" Left="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="0" RowSpan="1" ColumnSpan="2">
+                <ReportItem>
+                  <TextBox Value="Grand Total" Size="3.41722246011098in, 0.20000001338113in" Name="textBox132" StyleName="">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <BorderStyle Bottom="Solid" Left="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" Bold="True" />
+                      <Padding Left="2pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="20" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="=Fields.Kunjungan" Format="{0:N0}" Size="0.846609227828811in, 0.200000013907751in" Name="textBox4" StyleName="">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <BorderStyle Bottom="Solid" Left="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="20" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="=Sum(Fields.Kunjungan)" Format="{0:N0}" Size="0.846609363961051in, 0.20000001338113in" Name="textBox5" StyleName="">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <BorderStyle Bottom="Solid" Left="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Font Size="7pt" Bold="True" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+            </Cells>
+            <Columns>
+              <Column Width="0.405105692090976in" />
+              <Column Width="3.01211604639136in" />
+              <Column Width="0.401615801096255in" />
+              <Column Width="0.401615801096255in" />
+              <Column Width="0.401615801096255in" />
+              <Column Width="0.401615801096255in" />
+              <Column Width="0.401615801096255in" />
+              <Column Width="0.401615801096255in" />
+              <Column Width="0.401615801096255in" />
+              <Column Width="0.401615801096255in" />
+              <Column Width="0.401615801096255in" />
+              <Column Width="0.401615801096255in" />
+              <Column Width="0.401615801096255in" />
+              <Column Width="0.401615801096255in" />
+              <Column Width="0.401615801096255in" />
+              <Column Width="0.401615801096255in" />
+              <Column Width="0.401615801096255in" />
+              <Column Width="0.401615801096255in" />
+              <Column Width="0.401615801096255in" />
+              <Column Width="0.401615801096255in" />
+              <Column Width="0.846609227828811in" />
+            </Columns>
+            <Rows>
+              <Row Height="0.20000001589457in" />
+              <Row Height="0.20000001589457in" />
+            </Rows>
+          </Body>
+          <Corner />
+          <RowGroups>
+            <TableGroup Name="Periode">
+              <Groupings>
+                <Grouping Expression="=Fields.Periode" />
+              </Groupings>
+              <Sortings>
+                <Sorting Expression="=Fields.Periode" Direction="Asc" />
+              </Sortings>
+              <ChildGroups>
+                <TableGroup Name="DiagnoseName">
+                  <ChildGroups>
+                    <TableGroup Name="ItemName">
+                      <ChildGroups>
+                        <TableGroup Name="Group55">
+                          <ChildGroups>
+                            <TableGroup Name="Group51">
+                              <ChildGroups>
+                                <TableGroup Name="ServiceUnitName1">
+                                  <ChildGroups>
+                                    <TableGroup Name="Group49">
+                                      <ChildGroups>
+                                        <TableGroup Name="Group47">
+                                          <ChildGroups>
+                                            <TableGroup Name="DetailGroup">
+                                              <Groupings>
+                                                <Grouping Expression="null" />
+                                              </Groupings>
+                                              <ChildGroups>
+                                                <TableGroup Name="Group21" />
+                                              </ChildGroups>
+                                            </TableGroup>
+                                          </ChildGroups>
+                                        </TableGroup>
+                                      </ChildGroups>
+                                    </TableGroup>
+                                  </ChildGroups>
+                                </TableGroup>
+                              </ChildGroups>
+                            </TableGroup>
+                          </ChildGroups>
+                        </TableGroup>
+                      </ChildGroups>
+                    </TableGroup>
+                  </ChildGroups>
+                </TableGroup>
+              </ChildGroups>
+            </TableGroup>
+            <TableGroup Name="Group2">
+              <ChildGroups>
+                <TableGroup Name="Group17">
+                  <ChildGroups>
+                    <TableGroup Name="Group18">
+                      <ChildGroups>
+                        <TableGroup Name="Group19">
+                          <ChildGroups>
+                            <TableGroup Name="Group20">
+                              <ChildGroups>
+                                <TableGroup Name="Group62">
+                                  <ChildGroups>
+                                    <TableGroup Name="Group64">
+                                      <ChildGroups>
+                                        <TableGroup Name="Group66">
+                                          <ChildGroups>
+                                            <TableGroup Name="Group68">
+                                              <ChildGroups>
+                                                <TableGroup Name="Group70" />
+                                              </ChildGroups>
+                                            </TableGroup>
+                                          </ChildGroups>
+                                        </TableGroup>
+                                      </ChildGroups>
+                                    </TableGroup>
+                                  </ChildGroups>
+                                </TableGroup>
+                              </ChildGroups>
+                            </TableGroup>
+                          </ChildGroups>
+                        </TableGroup>
+                      </ChildGroups>
+                    </TableGroup>
+                  </ChildGroups>
+                </TableGroup>
+              </ChildGroups>
+            </TableGroup>
+          </RowGroups>
+          <ColumnGroups>
+            <TableGroup Name="Group72">
+              <ReportItem>
+                <TextBox Value="No." Size="0.405105692090976in, 0.600000023841858in" Name="textBox126" StyleName="">
+                  <Style TextAlign="Center" VerticalAlign="Middle">
+                    <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" />
+                    <BorderWidth Default="0.5pt" />
+                    <Font Size="8pt" Bold="True" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+              <ChildGroups>
+                <TableGroup Name="Group8">
+                  <ReportItem>
+                    <TextBox Value="1" Size="0.405105592455675in, 0.20000001338113in" Name="textBox49" StyleName="">
+                      <Style TextAlign="Center" VerticalAlign="Middle">
+                        <BorderStyle Bottom="Solid" Left="Solid" />
+                        <BorderWidth Default="0.5pt" />
+                        <Font Size="8pt" Bold="True" />
+                      </Style>
+                    </TextBox>
+                  </ReportItem>
+                  <ChildGroups>
+                    <TableGroup Name="Group74" />
+                  </ChildGroups>
+                </TableGroup>
+              </ChildGroups>
+            </TableGroup>
+            <TableGroup>
+              <ReportItem>
+                <TextBox Value="Dianosis - ICD" Size="3.01211604639136in, 0.600000023841858in" Name="textBox50">
+                  <Style Color="Black" TextAlign="Center" VerticalAlign="Middle">
+                    <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" />
+                    <BorderWidth Default="0.5pt" />
+                    <Font Size="8pt" Bold="True" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+              <ChildGroups>
+                <TableGroup Name="Group9">
+                  <ReportItem>
+                    <TextBox Value="3" Size="3.01211696979492in, 0.20000001338113in" Name="textBox61" StyleName="">
+                      <Style TextAlign="Center" VerticalAlign="Middle">
+                        <BorderStyle Bottom="Solid" Left="Solid" />
+                        <BorderWidth Default="0.5pt" />
+                        <Font Size="8pt" Bold="True" />
+                      </Style>
+                    </TextBox>
+                  </ReportItem>
+                  <ChildGroups>
+                    <TableGroup Name="Group23" />
+                  </ChildGroups>
+                </TableGroup>
+              </ChildGroups>
+            </TableGroup>
+            <TableGroup>
+              <ReportItem>
+                <TextBox Value="Umur ( Tahun )" Size="7.22908469041189in, 0.200000020850885in" Name="textBox57">
+                  <Style TextAlign="Center" VerticalAlign="Middle">
+                    <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" />
+                    <BorderWidth Default="0.5pt" />
+                    <Font Size="8pt" Bold="True" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+              <ChildGroups>
+                <TableGroup Name="Group63">
+                  <ReportItem>
+                    <TextBox Value="0-6 Hr" Size="0.803231636683146in, 0.200000009116496in" Name="textBox52" StyleName="">
+                      <Style Color="Black" TextAlign="Center" VerticalAlign="Middle">
+                        <BorderStyle Bottom="Solid" Left="Solid" />
+                        <BorderWidth Default="0.5pt" />
+                        <Font Size="8pt" Bold="True" />
+                      </Style>
+                    </TextBox>
+                  </ReportItem>
+                  <ChildGroups>
+                    <TableGroup Name="Group84">
+                      <ReportItem>
+                        <TextBox Value="L" Size="0.401615801096255in, 0.200000011848965in" Name="textBox71" StyleName="">
+                          <Style TextAlign="Center" VerticalAlign="Middle">
+                            <BorderStyle Bottom="Solid" Left="Solid" />
+                            <BorderWidth Default="0.5pt" />
+                            <Font Size="8pt" Bold="True" />
+                          </Style>
+                        </TextBox>
+                      </ReportItem>
+                      <ChildGroups>
+                        <TableGroup Name="Group11">
+                          <ReportItem>
+                            <TextBox Value="4" Size="0.401615573138287in, 0.20000001338113in" Name="textBox63" StyleName="">
+                              <Style TextAlign="Center" VerticalAlign="Middle">
+                                <BorderStyle Bottom="Solid" Left="Solid" />
+                                <BorderWidth Default="0.5pt" />
+                                <Font Size="8pt" Bold="True" />
+                              </Style>
+                            </TextBox>
+                          </ReportItem>
+                          <ChildGroups>
+                            <TableGroup Name="Group24" />
+                          </ChildGroups>
+                        </TableGroup>
+                      </ChildGroups>
+                    </TableGroup>
+                    <TableGroup Name="Group85">
+                      <ReportItem>
+                        <TextBox Value="P" Size="0.401615801096255in, 0.200000011848965in" Name="textBox72" StyleName="">
+                          <Style TextAlign="Center" VerticalAlign="Middle">
+                            <BorderStyle Bottom="Solid" Left="Solid" />
+                            <BorderWidth Default="0.5pt" />
+                            <Font Size="8pt" Bold="True" />
+                          </Style>
+                        </TextBox>
+                      </ReportItem>
+                      <ChildGroups>
+                        <TableGroup Name="Group12">
+                          <ReportItem>
+                            <TextBox Value="5" Size="0.401615573138287in, 0.20000001338113in" Name="textBox65" StyleName="">
+                              <Style TextAlign="Center" VerticalAlign="Middle">
+                                <BorderStyle Bottom="Solid" Left="Solid" />
+                                <BorderWidth Default="0.5pt" />
+                                <Font Size="8pt" Bold="True" />
+                              </Style>
+                            </TextBox>
+                          </ReportItem>
+                          <ChildGroups>
+                            <TableGroup Name="Group25" />
+                          </ChildGroups>
+                        </TableGroup>
+                      </ChildGroups>
+                    </TableGroup>
+                  </ChildGroups>
+                </TableGroup>
+                <TableGroup Name="Group65">
+                  <ReportItem>
+                    <TextBox Value="7-28 Hr" Size="0.803231636683146in, 0.200000009116496in" Name="textBox54" StyleName="">
+                      <Style Color="Black" TextAlign="Center" VerticalAlign="Middle">
+                        <BorderStyle Bottom="Solid" Left="Solid" />
+                        <BorderWidth Default="0.5pt" />
+                        <Font Size="8pt" Bold="True" />
+                      </Style>
+                    </TextBox>
+                  </ReportItem>
+                  <ChildGroups>
+                    <TableGroup Name="Group86">
+                      <ReportItem>
+                        <TextBox Value="L" Size="0.401615801096255in, 0.200000011848965in" Name="textBox73" StyleName="">
+                          <Style TextAlign="Center" VerticalAlign="Middle">
+                            <BorderStyle Bottom="Solid" Left="Solid" />
+                            <BorderWidth Default="0.5pt" />
+                            <Font Size="8pt" Bold="True" />
+                          </Style>
+                        </TextBox>
+                      </ReportItem>
+                      <ChildGroups>
+                        <TableGroup Name="Group13">
+                          <ReportItem>
+                            <TextBox Value="6" Size="0.401615573138287in, 0.20000001338113in" Name="textBox67" StyleName="">
+                              <Style TextAlign="Center" VerticalAlign="Middle">
+                                <BorderStyle Bottom="Solid" Left="Solid" />
+                                <BorderWidth Default="0.5pt" />
+                                <Font Size="8pt" Bold="True" />
+                              </Style>
+                            </TextBox>
+                          </ReportItem>
+                          <ChildGroups>
+                            <TableGroup Name="Group26" />
+                          </ChildGroups>
+                        </TableGroup>
+                      </ChildGroups>
+                    </TableGroup>
+                    <TableGroup Name="Group87">
+                      <ReportItem>
+                        <TextBox Value="P" Size="0.401615801096255in, 0.200000011848965in" Name="textBox74" StyleName="">
+                          <Style TextAlign="Center" VerticalAlign="Middle">
+                            <BorderStyle Bottom="Solid" Left="Solid" />
+                            <BorderWidth Default="0.5pt" />
+                            <Font Size="8pt" Bold="True" />
+                          </Style>
+                        </TextBox>
+                      </ReportItem>
+                      <ChildGroups>
+                        <TableGroup Name="Group14">
+                          <ReportItem>
+                            <TextBox Value="7" Size="0.401615573138287in, 0.20000001338113in" Name="textBox69" StyleName="">
+                              <Style TextAlign="Center" VerticalAlign="Middle">
+                                <BorderStyle Bottom="Solid" Left="Solid" />
+                                <BorderWidth Default="0.5pt" />
+                                <Font Size="8pt" Bold="True" />
+                              </Style>
+                            </TextBox>
+                          </ReportItem>
+                          <ChildGroups>
+                            <TableGroup Name="Group27" />
+                          </ChildGroups>
+                        </TableGroup>
+                      </ChildGroups>
+                    </TableGroup>
+                  </ChildGroups>
+                </TableGroup>
+                <TableGroup Name="Group67">
+                  <ReportItem>
+                    <TextBox Value="28h-1 Th" Size="0.803231636683146in, 0.200000009116496in" Name="textBox55" StyleName="">
+                      <Style Color="Black" TextAlign="Center" VerticalAlign="Middle">
+                        <BorderStyle Bottom="Solid" Left="Solid" />
+                        <BorderWidth Default="0.5pt" />
+                        <Font Size="8pt" Bold="True" />
+                      </Style>
+                    </TextBox>
+                  </ReportItem>
+                  <ChildGroups>
+                    <TableGroup Name="Group88">
+                      <ReportItem>
+                        <TextBox Value="L" Size="0.401615801096255in, 0.200000011848965in" Name="textBox75" StyleName="">
+                          <Style TextAlign="Center" VerticalAlign="Middle">
+                            <BorderStyle Bottom="Solid" Left="Solid" />
+                            <BorderWidth Default="0.5pt" />
+                            <Font Size="8pt" Bold="True" />
+                          </Style>
+                        </TextBox>
+                      </ReportItem>
+                      <ChildGroups>
+                        <TableGroup Name="Group15">
+                          <ReportItem>
+                            <TextBox Value="8" Size="0.401615573138287in, 0.20000001338113in" Name="textBox70" StyleName="">
+                              <Style TextAlign="Center" VerticalAlign="Middle">
+                                <BorderStyle Bottom="Solid" Left="Solid" />
+                                <BorderWidth Default="0.5pt" />
+                                <Font Size="8pt" Bold="True" />
+                              </Style>
+                            </TextBox>
+                          </ReportItem>
+                          <ChildGroups>
+                            <TableGroup Name="Group28" />
+                          </ChildGroups>
+                        </TableGroup>
+                      </ChildGroups>
+                    </TableGroup>
+                    <TableGroup Name="Group89">
+                      <ReportItem>
+                        <TextBox Value="P" Size="0.401615801096255in, 0.200000011848965in" Name="textBox76" StyleName="">
+                          <Style TextAlign="Center" VerticalAlign="Middle">
+                            <BorderStyle Bottom="Solid" Left="Solid" />
+                            <BorderWidth Default="0.5pt" />
+                            <Font Size="8pt" Bold="True" />
+                          </Style>
+                        </TextBox>
+                      </ReportItem>
+                      <ChildGroups>
+                        <TableGroup Name="Group16">
+                          <ReportItem>
+                            <TextBox Value="9" Size="0.401615573138287in, 0.20000001338113in" Name="textBox91" StyleName="">
+                              <Style TextAlign="Center" VerticalAlign="Middle">
+                                <BorderStyle Bottom="Solid" Left="Solid" />
+                                <BorderWidth Default="0.5pt" />
+                                <Font Size="8pt" Bold="True" />
+                              </Style>
+                            </TextBox>
+                          </ReportItem>
+                          <ChildGroups>
+                            <TableGroup Name="Group29" />
+                          </ChildGroups>
+                        </TableGroup>
+                      </ChildGroups>
+                    </TableGroup>
+                  </ChildGroups>
+                </TableGroup>
+                <TableGroup Name="Group69">
+                  <ReportItem>
+                    <TextBox Value="1-4 Th" Size="0.803231636683146in, 0.200000009116496in" Name="textBox56" StyleName="">
+                      <Style Color="Black" TextAlign="Center" VerticalAlign="Middle">
+                        <BorderStyle Bottom="Solid" Left="Solid" />
+                        <BorderWidth Default="0.5pt" />
+                        <Font Size="8pt" Bold="True" />
+                      </Style>
+                    </TextBox>
+                  </ReportItem>
+                  <ChildGroups>
+                    <TableGroup Name="Group90">
+                      <ReportItem>
+                        <TextBox Value="L" Size="0.401615801096255in, 0.200000011848965in" Name="textBox77" StyleName="">
+                          <Style TextAlign="Center" VerticalAlign="Middle">
+                            <BorderStyle Bottom="Solid" Left="Solid" />
+                            <BorderWidth Default="0.5pt" />
+                            <Font Size="8pt" Bold="True" />
+                          </Style>
+                        </TextBox>
+                      </ReportItem>
+                      <ChildGroups>
+                        <TableGroup Name="Group54">
+                          <ReportItem>
+                            <TextBox Value="10" Size="0.401615573138287in, 0.20000001338113in" Name="textBox92" StyleName="">
+                              <Style TextAlign="Center" VerticalAlign="Middle">
+                                <BorderStyle Bottom="Solid" Left="Solid" />
+                                <BorderWidth Default="0.5pt" />
+                                <Font Size="8pt" Bold="True" />
+                              </Style>
+                            </TextBox>
+                          </ReportItem>
+                          <ChildGroups>
+                            <TableGroup Name="Group30" />
+                          </ChildGroups>
+                        </TableGroup>
+                      </ChildGroups>
+                    </TableGroup>
+                    <TableGroup Name="Group91">
+                      <ReportItem>
+                        <TextBox Value="P" Size="0.401615801096255in, 0.200000011848965in" Name="textBox78" StyleName="">
+                          <Style TextAlign="Center" VerticalAlign="Middle">
+                            <BorderStyle Bottom="Solid" Left="Solid" />
+                            <BorderWidth Default="0.5pt" />
+                            <Font Size="8pt" Bold="True" />
+                          </Style>
+                        </TextBox>
+                      </ReportItem>
+                      <ChildGroups>
+                        <TableGroup Name="Group56">
+                          <ReportItem>
+                            <TextBox Value="11" Size="0.401615573138287in, 0.20000001338113in" Name="textBox93" StyleName="">
+                              <Style TextAlign="Center" VerticalAlign="Middle">
+                                <BorderStyle Bottom="Solid" Left="Solid" />
+                                <BorderWidth Default="0.5pt" />
+                                <Font Size="8pt" Bold="True" />
+                              </Style>
+                            </TextBox>
+                          </ReportItem>
+                          <ChildGroups>
+                            <TableGroup Name="Group31" />
+                          </ChildGroups>
+                        </TableGroup>
+                      </ChildGroups>
+                    </TableGroup>
+                  </ChildGroups>
+                </TableGroup>
+                <TableGroup Name="Group71">
+                  <ReportItem>
+                    <TextBox Value="4-14 Th" Size="0.803231636683146in, 0.200000009116496in" Name="textBox58" StyleName="">
+                      <Style Color="Black" TextAlign="Center" VerticalAlign="Middle">
+                        <BorderStyle Bottom="Solid" Left="Solid" />
+                        <BorderWidth Default="0.5pt" />
+                        <Font Size="8pt" Bold="True" />
+                      </Style>
+                    </TextBox>
+                  </ReportItem>
+                  <ChildGroups>
+                    <TableGroup Name="Group92">
+                      <ReportItem>
+                        <TextBox Value="L" Size="0.401615801096255in, 0.200000011848965in" Name="textBox79" StyleName="">
+                          <Style TextAlign="Center" VerticalAlign="Middle">
+                            <BorderStyle Bottom="Solid" Left="Solid" />
+                            <BorderWidth Default="0.5pt" />
+                            <Font Size="8pt" Bold="True" />
+                          </Style>
+                        </TextBox>
+                      </ReportItem>
+                      <ChildGroups>
+                        <TableGroup Name="Group57">
+                          <ReportItem>
+                            <TextBox Value="12" Size="0.401615573138287in, 0.20000001338113in" Name="textBox94" StyleName="">
+                              <Style TextAlign="Center" VerticalAlign="Middle">
+                                <BorderStyle Bottom="Solid" Left="Solid" />
+                                <BorderWidth Default="0.5pt" />
+                                <Font Size="8pt" Bold="True" />
+                              </Style>
+                            </TextBox>
+                          </ReportItem>
+                          <ChildGroups>
+                            <TableGroup Name="Group32" />
+                          </ChildGroups>
+                        </TableGroup>
+                      </ChildGroups>
+                    </TableGroup>
+                    <TableGroup Name="Group93">
+                      <ReportItem>
+                        <TextBox Value="P" Size="0.401615801096255in, 0.200000011848965in" Name="textBox80" StyleName="">
+                          <Style TextAlign="Center" VerticalAlign="Middle">
+                            <BorderStyle Bottom="Solid" Left="Solid" />
+                            <BorderWidth Default="0.5pt" />
+                            <Font Size="8pt" Bold="True" />
+                          </Style>
+                        </TextBox>
+                      </ReportItem>
+                      <ChildGroups>
+                        <TableGroup Name="Group58">
+                          <ReportItem>
+                            <TextBox Value="13" Size="0.401615573138287in, 0.20000001338113in" Name="textBox95" StyleName="">
+                              <Style TextAlign="Center" VerticalAlign="Middle">
+                                <BorderStyle Bottom="Solid" Left="Solid" />
+                                <BorderWidth Default="0.5pt" />
+                                <Font Size="8pt" Bold="True" />
+                              </Style>
+                            </TextBox>
+                          </ReportItem>
+                          <ChildGroups>
+                            <TableGroup Name="Group33" />
+                          </ChildGroups>
+                        </TableGroup>
+                      </ChildGroups>
+                    </TableGroup>
+                  </ChildGroups>
+                </TableGroup>
+                <TableGroup Name="Group73">
+                  <ReportItem>
+                    <TextBox Value="14-24 Th" Size="0.803231636683146in, 0.200000009116496in" Name="textBox60" StyleName="">
+                      <Style Color="Black" TextAlign="Center" VerticalAlign="Middle">
+                        <BorderStyle Bottom="Solid" Left="Solid" />
+                        <BorderWidth Default="0.5pt" />
+                        <Font Size="8pt" Bold="True" />
+                      </Style>
+                    </TextBox>
+                  </ReportItem>
+                  <ChildGroups>
+                    <TableGroup Name="Group94">
+                      <ReportItem>
+                        <TextBox Value="L" Size="0.401615801096255in, 0.200000011848965in" Name="textBox81" StyleName="">
+                          <Style TextAlign="Center" VerticalAlign="Middle">
+                            <BorderStyle Bottom="Solid" Left="Solid" />
+                            <BorderWidth Default="0.5pt" />
+                            <Font Size="8pt" Bold="True" />
+                          </Style>
+                        </TextBox>
+                      </ReportItem>
+                      <ChildGroups>
+                        <TableGroup Name="Group59">
+                          <ReportItem>
+                            <TextBox Value="14" Size="0.401615573138287in, 0.20000001338113in" Name="textBox96" StyleName="">
+                              <Style TextAlign="Center" VerticalAlign="Middle">
+                                <BorderStyle Bottom="Solid" Left="Solid" />
+                                <BorderWidth Default="0.5pt" />
+                                <Font Size="8pt" Bold="True" />
+                              </Style>
+                            </TextBox>
+                          </ReportItem>
+                          <ChildGroups>
+                            <TableGroup Name="Group34" />
+                          </ChildGroups>
+                        </TableGroup>
+                      </ChildGroups>
+                    </TableGroup>
+                    <TableGroup Name="Group95">
+                      <ReportItem>
+                        <TextBox Value="P" Size="0.401615801096255in, 0.200000011848965in" Name="textBox82" StyleName="">
+                          <Style TextAlign="Center" VerticalAlign="Middle">
+                            <BorderStyle Bottom="Solid" Left="Solid" />
+                            <BorderWidth Default="0.5pt" />
+                            <Font Size="8pt" Bold="True" />
+                          </Style>
+                        </TextBox>
+                      </ReportItem>
+                      <ChildGroups>
+                        <TableGroup Name="Group60">
+                          <ReportItem>
+                            <TextBox Value="15" Size="0.401615573138287in, 0.20000001338113in" Name="textBox97" StyleName="">
+                              <Style TextAlign="Center" VerticalAlign="Middle">
+                                <BorderStyle Bottom="Solid" Left="Solid" />
+                                <BorderWidth Default="0.5pt" />
+                                <Font Size="8pt" Bold="True" />
+                              </Style>
+                            </TextBox>
+                          </ReportItem>
+                          <ChildGroups>
+                            <TableGroup Name="Group35" />
+                          </ChildGroups>
+                        </TableGroup>
+                      </ChildGroups>
+                    </TableGroup>
+                  </ChildGroups>
+                </TableGroup>
+                <TableGroup Name="Group75">
+                  <ReportItem>
+                    <TextBox Value="24-44 Th" Size="0.803231636683146in, 0.200000009116496in" Name="textBox62" StyleName="">
+                      <Style Color="Black" TextAlign="Center" VerticalAlign="Middle">
+                        <BorderStyle Bottom="Solid" Left="Solid" />
+                        <BorderWidth Default="0.5pt" />
+                        <Font Size="8pt" Bold="True" />
+                      </Style>
+                    </TextBox>
+                  </ReportItem>
+                  <ChildGroups>
+                    <TableGroup Name="Group96">
+                      <ReportItem>
+                        <TextBox Value="L" Size="0.401615801096255in, 0.200000011848965in" Name="textBox83" StyleName="">
+                          <Style TextAlign="Center" VerticalAlign="Middle">
+                            <BorderStyle Bottom="Solid" Left="Solid" />
+                            <BorderWidth Default="0.5pt" />
+                            <Font Size="8pt" Bold="True" />
+                          </Style>
+                        </TextBox>
+                      </ReportItem>
+                      <ChildGroups>
+                        <TableGroup Name="Group61">
+                          <ReportItem>
+                            <TextBox Value="16" Size="0.401615573138287in, 0.20000001338113in" Name="textBox98" StyleName="">
+                              <Style TextAlign="Center" VerticalAlign="Middle">
+                                <BorderStyle Bottom="Solid" Left="Solid" />
+                                <BorderWidth Default="0.5pt" />
+                                <Font Size="8pt" Bold="True" />
+                              </Style>
+                            </TextBox>
+                          </ReportItem>
+                          <ChildGroups>
+                            <TableGroup Name="Group36" />
+                          </ChildGroups>
+                        </TableGroup>
+                      </ChildGroups>
+                    </TableGroup>
+                    <TableGroup Name="Group97">
+                      <ReportItem>
+                        <TextBox Value="P" Size="0.401615801096255in, 0.200000011848965in" Name="textBox84" StyleName="">
+                          <Style TextAlign="Center" VerticalAlign="Middle">
+                            <BorderStyle Bottom="Solid" Left="Solid" />
+                            <BorderWidth Default="0.5pt" />
+                            <Font Size="8pt" Bold="True" />
+                          </Style>
+                        </TextBox>
+                      </ReportItem>
+                      <ChildGroups>
+                        <TableGroup Name="Group76">
+                          <ReportItem>
+                            <TextBox Value="17" Size="0.401615573138287in, 0.20000001338113in" Name="textBox99" StyleName="">
+                              <Style TextAlign="Center" VerticalAlign="Middle">
+                                <BorderStyle Bottom="Solid" Left="Solid" />
+                                <BorderWidth Default="0.5pt" />
+                                <Font Size="8pt" Bold="True" />
+                              </Style>
+                            </TextBox>
+                          </ReportItem>
+                          <ChildGroups>
+                            <TableGroup Name="Group37" />
+                          </ChildGroups>
+                        </TableGroup>
+                      </ChildGroups>
+                    </TableGroup>
+                  </ChildGroups>
+                </TableGroup>
+                <TableGroup Name="Group77">
+                  <ReportItem>
+                    <TextBox Value="44-64 Th" Size="0.803231636683146in, 0.200000009116496in" Name="textBox64" StyleName="">
+                      <Style Color="Black" TextAlign="Center" VerticalAlign="Middle">
+                        <BorderStyle Bottom="Solid" Left="Solid" />
+                        <BorderWidth Default="0.5pt" />
+                        <Font Size="8pt" Bold="True" />
+                      </Style>
+                    </TextBox>
+                  </ReportItem>
+                  <ChildGroups>
+                    <TableGroup Name="Group98">
+                      <ReportItem>
+                        <TextBox Value="L" Size="0.401615801096255in, 0.200000011848965in" Name="textBox85" StyleName="">
+                          <Style TextAlign="Center" VerticalAlign="Middle">
+                            <BorderStyle Bottom="Solid" Left="Solid" />
+                            <BorderWidth Default="0.5pt" />
+                            <Font Size="8pt" Bold="True" />
+                          </Style>
+                        </TextBox>
+                      </ReportItem>
+                      <ChildGroups>
+                        <TableGroup Name="Group78">
+                          <ReportItem>
+                            <TextBox Value="18" Size="0.401615573138287in, 0.20000001338113in" Name="textBox100" StyleName="">
+                              <Style TextAlign="Center" VerticalAlign="Middle">
+                                <BorderStyle Bottom="Solid" Left="Solid" />
+                                <BorderWidth Default="0.5pt" />
+                                <Font Size="8pt" Bold="True" />
+                              </Style>
+                            </TextBox>
+                          </ReportItem>
+                          <ChildGroups>
+                            <TableGroup Name="Group38" />
+                          </ChildGroups>
+                        </TableGroup>
+                      </ChildGroups>
+                    </TableGroup>
+                    <TableGroup Name="Group99">
+                      <ReportItem>
+                        <TextBox Value="P" Size="0.401615801096255in, 0.200000011848965in" Name="textBox86" StyleName="">
+                          <Style TextAlign="Center" VerticalAlign="Middle">
+                            <BorderStyle Bottom="Solid" Left="Solid" />
+                            <BorderWidth Default="0.5pt" />
+                            <Font Size="8pt" Bold="True" />
+                          </Style>
+                        </TextBox>
+                      </ReportItem>
+                      <ChildGroups>
+                        <TableGroup Name="Group80">
+                          <ReportItem>
+                            <TextBox Value="19" Size="0.401615573138287in, 0.20000001338113in" Name="textBox101" StyleName="">
+                              <Style TextAlign="Center" VerticalAlign="Middle">
+                                <BorderStyle Bottom="Solid" Left="Solid" />
+                                <BorderWidth Default="0.5pt" />
+                                <Font Size="8pt" Bold="True" />
+                              </Style>
+                            </TextBox>
+                          </ReportItem>
+                          <ChildGroups>
+                            <TableGroup Name="Group39" />
+                          </ChildGroups>
+                        </TableGroup>
+                      </ChildGroups>
+                    </TableGroup>
+                  </ChildGroups>
+                </TableGroup>
+                <TableGroup Name="Group79">
+                  <ReportItem>
+                    <TextBox Value="&gt;64 Th" Size="0.803231636683146in, 0.200000009116496in" Name="textBox66" StyleName="">
+                      <Style Color="Black" TextAlign="Center" VerticalAlign="Middle">
+                        <BorderStyle Bottom="Solid" Left="Solid" />
+                        <BorderWidth Default="0.5pt" />
+                        <Font Size="8pt" Bold="True" />
+                      </Style>
+                    </TextBox>
+                  </ReportItem>
+                  <ChildGroups>
+                    <TableGroup Name="Group100">
+                      <ReportItem>
+                        <TextBox Value="L" Size="0.401615801096255in, 0.200000011848965in" Name="textBox87" StyleName="">
+                          <Style TextAlign="Center" VerticalAlign="Middle">
+                            <BorderStyle Bottom="Solid" Left="Solid" />
+                            <BorderWidth Default="0.5pt" />
+                            <Font Size="8pt" Bold="True" />
+                          </Style>
+                        </TextBox>
+                      </ReportItem>
+                      <ChildGroups>
+                        <TableGroup Name="Group82">
+                          <ReportItem>
+                            <TextBox Value="20" Size="0.401615530323844in, 0.20000001338113in" Name="textBox102" StyleName="">
+                              <Style TextAlign="Center" VerticalAlign="Middle">
+                                <BorderStyle Bottom="Solid" Left="Solid" />
+                                <BorderWidth Default="0.5pt" />
+                                <Font Size="8pt" Bold="True" />
+                              </Style>
+                            </TextBox>
+                          </ReportItem>
+                          <ChildGroups>
+                            <TableGroup Name="Group40" />
+                          </ChildGroups>
+                        </TableGroup>
+                      </ChildGroups>
+                    </TableGroup>
+                    <TableGroup Name="Group101">
+                      <ReportItem>
+                        <TextBox Value="P" Size="0.401615801096255in, 0.200000011848965in" Name="textBox88" StyleName="">
+                          <Style TextAlign="Center" VerticalAlign="Middle">
+                            <BorderStyle Bottom="Solid" Left="Solid" />
+                            <BorderWidth Default="0.5pt" />
+                            <Font Size="8pt" Bold="True" />
+                          </Style>
+                        </TextBox>
+                      </ReportItem>
+                      <ChildGroups>
+                        <TableGroup Name="Group83">
+                          <ReportItem>
+                            <TextBox Value="21" Size="0.401615530323844in, 0.20000001338113in" Name="textBox125" StyleName="">
+                              <Style TextAlign="Center" VerticalAlign="Middle">
+                                <BorderStyle Bottom="Solid" Left="Solid" />
+                                <BorderWidth Default="0.5pt" />
+                                <Font Size="8pt" Bold="True" />
+                              </Style>
+                            </TextBox>
+                          </ReportItem>
+                          <ChildGroups>
+                            <TableGroup Name="Group41" />
+                          </ChildGroups>
+                        </TableGroup>
+                      </ChildGroups>
+                    </TableGroup>
+                  </ChildGroups>
+                </TableGroup>
+              </ChildGroups>
+            </TableGroup>
+            <TableGroup Name="Group10">
+              <ReportItem>
+                <TextBox Value="Total" Size="0.846609227828811in, 0.600000023841858in" Name="textBox59" StyleName="">
+                  <Style TextAlign="Center" VerticalAlign="Middle">
+                    <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+                    <BorderWidth Default="0.5pt" />
+                    <Font Size="8pt" Bold="True" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+              <ChildGroups>
+                <TableGroup Name="Group106">
+                  <ReportItem>
+                    <TextBox Value="22" Size="0.846609455444193in, 0.20000001338113in" Name="textBox133" StyleName="">
+                      <Style TextAlign="Center" VerticalAlign="Middle">
+                        <BorderStyle Bottom="Solid" Left="Solid" Right="Solid" />
+                        <BorderWidth Default="0.5pt" />
+                        <Font Size="8pt" Bold="True" />
+                      </Style>
+                    </TextBox>
+                  </ReportItem>
+                  <ChildGroups>
+                    <TableGroup Name="Group44" />
+                  </ChildGroups>
+                </TableGroup>
+              </ChildGroups>
+            </TableGroup>
+          </ColumnGroups>
+        </Table>
+      </Items>
+    </ReportHeaderSection>
+  </Items>
+  <StyleSheet>
+    <StyleRule>
+      <Style>
+        <Padding Left="2pt" Right="2pt" />
+      </Style>
+      <Selectors>
+        <TypeSelector Type="TextItemBase" />
+        <TypeSelector Type="HtmlTextBox" />
+      </Selectors>
+    </StyleRule>
+  </StyleSheet>
+  <PageSettings>
+    <PageSettings PaperKind="A4" Landscape="True">
+      <Margins>
+        <MarginsU Left="0.100000001490116in" Right="0.100000001490116in" Top="0.300000011920929in" Bottom="0.300000011920929in" />
+      </Margins>
+    </PageSettings>
+  </PageSettings>
+</Report>

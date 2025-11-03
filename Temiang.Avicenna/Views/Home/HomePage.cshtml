@@ -1,0 +1,70 @@
+﻿<link rel="stylesheet" href="@(ViewBag.UrlRoot)/Bootstrap/adminlte/css/adminlte.min.css" />
+<link href="@(ViewBag.UrlRoot)/Bootstrap/plugins/daterangepicker/daterangepicker.css" rel="stylesheet" />
+<link rel="stylesheet" href="@(ViewBag.UrlRoot)/Bootstrap/plugins/fontawesome-free/css/all.min.css" />
+
+@*<link href="@(ViewBag.UrlRoot)/Bootstrap/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" />*@
+
+<script src="@(ViewBag.UrlRoot)/Bootstrap/plugins/jquery/jquery.min.js"></script>
+<script src="@(ViewBag.UrlRoot)/Bootstrap/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="@(ViewBag.UrlRoot)/Bootstrap/adminlte/js/adminlte.js"></script>
+
+@*<script src="@(ViewBag.UrlRoot)/Bootstrap/plugins/datatables/jquery.dataTables.js"></script>
+<script src="@(ViewBag.UrlRoot)/Bootstrap/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>*@
+
+<script src="@(ViewBag.UrlRoot)/Bootstrap/plugins/moment/moment.min.js"></script>
+<script src="@(ViewBag.UrlRoot)/Bootstrap/plugins/daterangepicker/daterangepicker.js"></script>
+<script src="@(ViewBag.UrlRoot)/Bootstrap/plugins/chart.js/Chart.min.js"></script>
+
+<script src="@(ViewBag.UrlRoot)/Bootstrap/js/settings.js"></script>
+<script src="@(ViewBag.UrlRoot)/Bootstrap/js/core.js"></script>
+<script src="@(ViewBag.UrlRoot)/Bootstrap/js/home.js"></script>
+
+<style>
+    .fa-spin {
+        -webkit-animation: fa-spin 0.75s infinite linear;
+        animation: fa-spin 0.75s infinite linear;
+    }
+</style>
+
+<div class="row">
+    <div class="col-3 col-md-2">
+        <div class="nav flex-column nav-tabs h-100" id="vert-tabs-tab" role="tablist" aria-orientation="vertical">
+            @{
+                int i = 0;
+                var appPrgLink = ((AppProgramCollection)ViewBag.AppLink).Where(a => a.ParentProgramID == "16").OrderBy(a => a.RowIndex);
+
+                foreach (var app in appPrgLink)
+                {
+                    <a onclick="@Html.Raw(string.Format(app.StoreProcedureName, "tabContent" + app.ProgramID.Replace(".", "_")))" class="nav-link @(i == 0 ? "active" : "")" id="tab@(app.ProgramID.Replace(".", "_"))" data-toggle="pill" href="#tabContent@(app.ProgramID.Replace(".", "_"))"
+                       role="tab" aria-controls="tabContent@(app.ProgramID.Replace(".", "_"))" aria-selected="@(i == 0 ? "true" : "false")"><i class="@(app.AssemblyClassName)"></i>&nbsp;@(app.ProgramName)</a>
+                    i++;
+                }
+            }
+        </div>
+    </div>
+    <div class="col-9 col-md-10">
+        <div class="tab-content" id="vert-tabs-tabContent">
+            @{
+                i = 0;
+                foreach (var app in appPrgLink)
+                {
+                    <div class="tab-pane fade @(i == 0 ? "show active" : "")" id="tabContent@(app.ProgramID.Replace(".", "_"))" role="tabpanel" aria-labelledby="tab@(app.ProgramID.Replace(".", "_"))">
+
+                    </div>
+                    i++;
+                }
+            }
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var BaseURL = '@ViewBag.UrlRoot';
+    $(document).ready(function () {
+        @{
+            if (appPrgLink.Count() > 0) {
+                @Html.Raw(string.Format(appPrgLink.FirstOrDefault().StoreProcedureName,"tabContent"+ appPrgLink.FirstOrDefault().ProgramID.Replace(".", "_")))
+            }
+        }
+    });
+</script>

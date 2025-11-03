@@ -1,0 +1,1746 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report DataSourceName="sqlDataSource1" Width="12.779in" Name="userReport1" SnapGridSize="0.1cm" xmlns="http://schemas.telerik.com/reporting/2019/2.0">
+  <Style VerticalAlign="Middle">
+    <Font Name="Tahoma" />
+  </Style>
+  <DataSources>
+    <SqlDataSource QueryDesignerState="null" ParameterValues="null" ConnectionString="Data Source=IMEL-NB-BA1B60Q\SQLSVR2017;Initial Catalog=RSMM_LIVE;User ID=sa;Password=123" ProviderName="System.Data.SqlClient" SelectCommand="sprpt_PenyakitTerbanyakInfeksi" SelectCommandType="StoredProcedure" Name="sqlDataSource1">
+      <Parameters>
+        <SqlDataSourceParameter DbType="DateTime" Name="@p_FromDate">
+          <Value>
+            <String>2018-01-01</String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="DateTime" Name="@p_ToDate">
+          <Value>
+            <String>2018-08-31</String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="AnsiString" Name="@p_Top10">
+          <Value>
+            <String>10</String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="AnsiString" Name="@p_RegistrationType">
+          <Value>
+            <String>OP</String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="AnsiString" Name="@p_DiseaseType">
+          <Value>
+            <String>1</String>
+          </Value>
+        </SqlDataSourceParameter>
+      </Parameters>
+    </SqlDataSource>
+  </DataSources>
+  <Items>
+    <DetailSection Height="0.052in" Name="detailSection1">
+      <Style Visible="False" />
+    </DetailSection>
+    <PageFooterSection Height="0.248in" Name="pageFooterSection1">
+      <Style VerticalAlign="Middle" />
+      <Items>
+        <TextBox Width="7.593in" Height="0.2in" Left="0in" Top="0.048in" Value="=Now()" Format="Avicenna HIS, Print Date : {0:dd-MM-yyyy HH:mm}" Name="textBox126">
+          <Style TextAlign="Left" VerticalAlign="Middle">
+            <Font Size="8pt" Bold="False" />
+            <BorderStyle Top="Solid" />
+            <BorderWidth Default="0.5pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="5.186in" Height="0.2in" Left="7.593in" Top="0.048in" Value="= PageNumber +' / '+ PageCount" Name="textBox135">
+          <Style TextAlign="Right">
+            <Font Size="8pt" Italic="True" />
+            <BorderStyle Top="Solid" />
+            <BorderWidth Default="0.5pt" />
+          </Style>
+        </TextBox>
+      </Items>
+    </PageFooterSection>
+    <ReportHeaderSection Height="2in" Name="reportHeaderSection1">
+      <Style Color="Black" VerticalAlign="Middle" />
+      <Items>
+        <Crosstab DataSourceName="sqlDataSource1" Width="12.447in" Height="1.857in" Left="0.1in" Top="0.1in" Name="crosstab1">
+          <Body>
+            <Cells>
+              <TableCell RowIndex="0" ColumnIndex="0" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.495in" Height="0.336in" Left="0in" Top="0in" Value="=SUM(Qty)" Format="{0:N0}" Name="textBox3">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="7pt" Bold="False" />
+                      <BorderStyle Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="0in" Right="3mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="1" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.505in" Height="0.336in" Left="0in" Top="0in" Value="=SUM(Qty)" Format="{0:N0}" Name="textBox128" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="7pt" Bold="False" />
+                      <BorderStyle Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="0in" Right="3mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="0" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.495in" Height="0.313in" Left="0in" Top="0in" Value="=SUM(Qty)" Format="{0:N0}" Name="textBox160" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="7pt" Bold="True" />
+                      <BorderStyle Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="0in" Right="3mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="1" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.505in" Height="0.313in" Left="0in" Top="0in" Value="=SUM(Qty)" Format="{0:N0}" Name="textBox161" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="7pt" Bold="True" />
+                      <BorderStyle Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="0in" Right="3mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+            </Cells>
+            <Columns>
+              <Column Width="0.495in" />
+              <Column Width="0.505in" />
+            </Columns>
+            <Rows>
+              <Row Height="0.336in" />
+              <Row Height="0.313in" />
+            </Rows>
+          </Body>
+          <Corner>
+            <Cells>
+              <TableCell RowIndex="1" ColumnIndex="3" RowSpan="1" ColumnSpan="2">
+                <ReportItem>
+                  <TextBox Width="1.125in" Height="0.313in" Left="0in" Top="0in" Value="Jenis Kelamin" Name="textBox177" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" Bold="True" />
+                      <BorderStyle Top="Solid" Bottom="None" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="0in" Right="3mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="3" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.583in" Height="0.312in" Left="0in" Top="0in" Name="textBox5" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" Bold="True" />
+                      <BorderStyle Top="None" Bottom="None" Right="None" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="0in" Right="3mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="4" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.542in" Height="0.312in" Left="0in" Top="0in" Name="textBox105" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" Bold="True" />
+                      <BorderStyle Top="None" Bottom="None" Right="None" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="0in" Right="3mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="7" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.27in" Height="0.312in" Left="0in" Top="0in" Name="textBox106" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" Bold="True" />
+                      <BorderStyle Top="None" Bottom="None" Right="None" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="0in" Right="3mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="9" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.27in" Height="0.312in" Left="0in" Top="0in" Name="textBox117" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" Bold="True" />
+                      <BorderStyle Top="None" Bottom="None" Right="None" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="0in" Right="3mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="11" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.27in" Height="0.312in" Left="0in" Top="0in" Name="textBox125" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" Bold="True" />
+                      <BorderStyle Top="None" Bottom="None" Right="None" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="0in" Right="3mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="13" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.27in" Height="0.312in" Left="0in" Top="0in" Name="textBox130" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" Bold="True" />
+                      <BorderStyle Top="None" Bottom="None" Right="None" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="0in" Right="3mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="15" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.27in" Height="0.312in" Left="0in" Top="0in" Name="textBox133" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" Bold="True" />
+                      <BorderStyle Top="None" Bottom="None" Right="None" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="0in" Right="3mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="17" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.27in" Height="0.312in" Left="0in" Top="0in" Name="textBox138" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" Bold="True" />
+                      <BorderStyle Top="None" Bottom="None" Right="None" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="0in" Right="3mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="19" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.27in" Height="0.312in" Left="0in" Top="0in" Name="textBox148" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" Bold="True" />
+                      <BorderStyle Top="None" Bottom="None" Right="None" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="0in" Right="3mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="21" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.27in" Height="0.312in" Left="0in" Top="0in" Name="textBox153" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" Bold="True" />
+                      <BorderStyle Top="None" Bottom="None" Right="None" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="0in" Right="3mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="23" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.573in" Height="0.312in" Left="0in" Top="0in" Name="textBox162" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" Bold="True" />
+                      <BorderStyle Top="None" Bottom="None" Right="None" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="0in" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="24" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.547in" Height="0.312in" Left="0in" Top="0in" Name="textBox165" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" Bold="True" />
+                      <BorderStyle Top="None" Bottom="None" Right="None" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="0in" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="25" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.656in" Height="0.312in" Left="0in" Top="0in" Name="textBox167" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" Bold="True" />
+                      <BorderStyle Top="None" Bottom="None" Right="None" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="0in" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="0" RowSpan="1" ColumnSpan="3">
+                <ReportItem>
+                  <TextBox Width="3.714in" Height="0.312in" Left="0in" Top="0in" Value="=ServiceUnitName" Name="textBox19" StyleName="">
+                    <Style TextAlign="Left" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="9pt" Bold="True" />
+                      <BorderStyle Top="None" Bottom="None" Left="None" Right="None" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="0in" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="6" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.27in" Height="0.312in" Left="0in" Top="0in" Name="textBox10" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" Bold="True" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="0in" Right="3mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="5" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.27in" Height="0.312in" Left="0in" Top="0in" Name="textBox20" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" Bold="True" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="0in" Right="3mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="22" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.27in" Height="0.312in" Left="0in" Top="0in" Name="textBox26" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" Bold="True" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="0in" Right="3mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="5" RowSpan="1" ColumnSpan="18">
+                <ReportItem>
+                  <TextBox Width="4.832in" Height="0.313in" Left="0in" Top="0in" Value="Umur Berdasarkan Jenis Kelamin" Name="textBox21" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" Bold="True" />
+                      <BorderStyle Top="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="0in" Right="3mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="8" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.27in" Height="0.312in" Left="0in" Top="0in" Name="textBox29" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" Bold="True" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="0in" Right="3mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="10" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.27in" Height="0.312in" Left="0in" Top="0in" Name="textBox36" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" Bold="True" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="0in" Right="3mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="12" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.27in" Height="0.312in" Left="0in" Top="0in" Name="textBox40" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" Bold="True" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="0in" Right="3mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="14" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.27in" Height="0.312in" Left="0in" Top="0in" Name="textBox44" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" Bold="True" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="0in" Right="3mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="16" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.242in" Height="0.312in" Left="0in" Top="0in" Name="textBox48" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" Bold="True" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="0in" Right="3mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="18" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.27in" Height="0.312in" Left="0in" Top="0in" Name="textBox52" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" Bold="True" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="0in" Right="3mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="20" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.27in" Height="0.312in" Left="0in" Top="0in" Name="textBox56" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" Bold="True" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="0in" Right="3mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="2" ColumnIndex="5" RowSpan="1" ColumnSpan="2">
+                <ReportItem>
+                  <TextBox Width="0.54in" Height="0.334in" Left="0in" Top="0in" Value="0 - 6 hr" Name="textBox22" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" Bold="True" />
+                      <BorderStyle Top="Solid" Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="0in" Right="0.5mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="2" ColumnIndex="7" RowSpan="1" ColumnSpan="2">
+                <ReportItem>
+                  <TextBox Width="0.54in" Height="0.334in" Left="0in" Top="0in" Value="7 - 27 &#xD;&#xA;hr" Name="textBox119" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" Bold="True" />
+                      <BorderStyle Top="Solid" Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="0in" Right="0.5mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="2" ColumnIndex="9" RowSpan="1" ColumnSpan="2">
+                <ReportItem>
+                  <TextBox Width="0.54in" Height="0.334in" Left="0in" Top="0in" Value="28 Hr &#xD;&#xA;&lt; 1 th" Name="textBox121" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" Bold="True" />
+                      <BorderStyle Top="Solid" Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="0in" Right="0.5mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="2" ColumnIndex="11" RowSpan="1" ColumnSpan="2">
+                <ReportItem>
+                  <TextBox Width="0.54in" Height="0.334in" Left="0in" Top="0in" Value="1 - 4 &#xD;&#xA;th" Name="textBox127" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" Bold="True" />
+                      <BorderStyle Top="Solid" Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="0in" Right="0.5mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="2" ColumnIndex="13" RowSpan="1" ColumnSpan="2">
+                <ReportItem>
+                  <TextBox Width="0.54in" Height="0.334in" Left="0in" Top="0in" Value="5 - 14 &#xD;&#xA;th" Name="textBox132" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" Bold="True" />
+                      <BorderStyle Top="Solid" Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="0in" Right="0.5mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="2" ColumnIndex="15" RowSpan="1" ColumnSpan="2">
+                <ReportItem>
+                  <TextBox Width="0.512in" Height="0.334in" Left="0in" Top="0in" Value="15 - 24 &#xD;&#xA;th" Name="textBox24" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" Bold="True" />
+                      <BorderStyle Top="Solid" Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="0in" Right="0.5mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="2" ColumnIndex="17" RowSpan="1" ColumnSpan="2">
+                <ReportItem>
+                  <TextBox Width="0.54in" Height="0.334in" Left="0in" Top="0in" Value="25 - 44 &#xD;&#xA;th" Name="textBox109" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" Bold="True" />
+                      <BorderStyle Top="Solid" Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="0in" Right="0.5mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="2" ColumnIndex="19" RowSpan="1" ColumnSpan="2">
+                <ReportItem>
+                  <TextBox Width="0.54in" Height="0.334in" Left="0in" Top="0in" Value="45 - 64&#xD;&#xA; th" Name="textBox145" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" Bold="True" />
+                      <BorderStyle Top="Solid" Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="0in" Right="0.5mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="2" ColumnIndex="21" RowSpan="1" ColumnSpan="2">
+                <ReportItem>
+                  <TextBox Width="0.54in" Height="0.334in" Left="0in" Top="0in" Value="65+ &#xD;&#xA;th" Name="textBox4" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" Bold="True" />
+                      <BorderStyle Top="Solid" Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="0in" Right="0.5mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="3" ColumnIndex="5" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.27in" Height="0.25in" Left="0in" Top="0in" Value="Lk" Name="textBox53" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" Bold="True" />
+                      <BorderStyle Top="Solid" Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="0in" Right="0.5mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="3" ColumnIndex="6" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.27in" Height="0.25in" Left="0in" Top="0in" Value="Pr" Name="textBox57" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" Bold="True" />
+                      <BorderStyle Top="Solid" Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="0in" Right="0.5mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="3" ColumnIndex="7" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.27in" Height="0.25in" Left="0in" Top="0in" Value="Lk" Name="textBox58" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" Bold="True" />
+                      <BorderStyle Top="Solid" Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="0in" Right="0.5mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="3" ColumnIndex="8" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.27in" Height="0.25in" Left="0in" Top="0in" Value="Pr" Name="textBox59" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" Bold="True" />
+                      <BorderStyle Top="Solid" Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="0in" Right="0.5mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="3" ColumnIndex="9" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.27in" Height="0.25in" Left="0in" Top="0in" Value="Lk" Name="textBox60" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" Bold="True" />
+                      <BorderStyle Top="Solid" Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="0in" Right="0.5mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="3" ColumnIndex="10" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.27in" Height="0.25in" Left="0in" Top="0in" Value="Pr" Name="textBox61" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" Bold="True" />
+                      <BorderStyle Top="Solid" Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="0in" Right="0.5mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="3" ColumnIndex="11" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.27in" Height="0.25in" Left="0in" Top="0in" Value="Lk" Name="textBox62" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" Bold="True" />
+                      <BorderStyle Top="Solid" Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="0in" Right="0.5mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="3" ColumnIndex="12" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.27in" Height="0.25in" Left="0in" Top="0in" Value="Pr" Name="textBox63" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" Bold="True" />
+                      <BorderStyle Top="Solid" Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="0in" Right="0.5mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="3" ColumnIndex="13" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.27in" Height="0.25in" Left="0in" Top="0in" Value="Lk" Name="textBox64" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" Bold="True" />
+                      <BorderStyle Top="Solid" Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="0in" Right="0.5mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="3" ColumnIndex="14" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.27in" Height="0.25in" Left="0in" Top="0in" Value="Pr" Name="textBox65" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" Bold="True" />
+                      <BorderStyle Top="Solid" Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="0in" Right="0.5mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="3" ColumnIndex="15" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.27in" Height="0.25in" Left="0in" Top="0in" Value="Lk" Name="textBox66" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" Bold="True" />
+                      <BorderStyle Top="Solid" Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="0in" Right="0.5mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="3" ColumnIndex="16" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.242in" Height="0.25in" Left="0in" Top="0in" Value="Pr" Name="textBox67" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" Bold="True" />
+                      <BorderStyle Top="Solid" Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="0in" Right="0.5mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="3" ColumnIndex="17" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.27in" Height="0.25in" Left="0in" Top="0in" Value="Lk" Name="textBox68" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" Bold="True" />
+                      <BorderStyle Top="Solid" Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="0in" Right="0.5mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="3" ColumnIndex="18" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.27in" Height="0.25in" Left="0in" Top="0in" Value="Pr" Name="textBox69" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" Bold="True" />
+                      <BorderStyle Top="Solid" Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="0in" Right="0.5mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="3" ColumnIndex="19" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.27in" Height="0.25in" Left="0in" Top="0in" Value="Lk" Name="textBox70" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" Bold="True" />
+                      <BorderStyle Top="Solid" Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="0in" Right="0.5mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="3" ColumnIndex="20" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.27in" Height="0.25in" Left="0in" Top="0in" Value="Pr" Name="textBox71" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" Bold="True" />
+                      <BorderStyle Top="Solid" Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="0in" Right="0.5mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="3" ColumnIndex="21" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.27in" Height="0.25in" Left="0in" Top="0in" Value="Lk" Name="textBox72" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" Bold="True" />
+                      <BorderStyle Top="Solid" Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="0in" Right="0.5mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="3" ColumnIndex="22" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.27in" Height="0.25in" Left="0in" Top="0in" Value="Pr" Name="textBox73" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" Bold="True" />
+                      <BorderStyle Top="Solid" Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="0in" Right="0.5mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="2" ColumnIndex="3" RowSpan="2" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.583in" Height="0.584in" Left="0in" Top="0in" Value="Lk" Name="textBox114" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" Bold="True" />
+                      <BorderStyle Top="Solid" Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="0in" Right="3mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="2" ColumnIndex="4" RowSpan="2" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.542in" Height="0.584in" Left="0in" Top="0in" Value="Pr" Name="textBox86" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" Bold="True" />
+                      <BorderStyle Top="Solid" Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="0in" Right="3mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="23" RowSpan="3" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.573in" Height="0.896in" Left="0in" Top="0in" Value="Jumlah" Name="textBox166" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" Bold="True" />
+                      <BorderStyle Top="Solid" Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="0in" Right="0in" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="24" RowSpan="3" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.547in" Height="0.896in" Left="0in" Top="0in" Value="%" Name="textBox149" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" Bold="True" />
+                      <BorderStyle Top="Solid" Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="0in" Right="0in" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="25" RowSpan="3" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.656in" Height="0.896in" Left="0in" Top="0in" Value="Jumlah Mati" Name="textBox154" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" Bold="True" />
+                      <BorderStyle Top="Solid" Bottom="Solid" Right="None" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="0in" Right="0in" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="2" RowSpan="3" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="2.583in" Height="0.896in" Left="0in" Top="0in" Value="Keterangan" Name="textBox112" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" Bold="True" />
+                      <BorderStyle Top="Solid" Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="0in" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="1" RowSpan="3" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.755in" Height="0.896in" Left="0in" Top="0in" Value="Kode Diagnosa" Name="textBox111" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" Bold="True" />
+                      <BorderStyle Top="Solid" Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="0in" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="0" RowSpan="3" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.375in" Height="0.896in" Left="0in" Top="0in" Value="No. &#xD;&#xA;Urut" Name="textBox110" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Font Name="Tahoma" Size="8pt" Bold="True" />
+                      <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+                      <BorderWidth Default="0.5pt" />
+                      <Padding Left="0in" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+            </Cells>
+          </Corner>
+          <RowGroups>
+            <TableGroup Name="ServiceUnitName">
+              <ChildGroups>
+                <TableGroup Name="DiagnoseID">
+                  <ChildGroups>
+                    <TableGroup Name="Group3">
+                      <ReportItem>
+                        <TextBox Width="0.375in" Height="0.336in" Left="0in" Top="0in" Value="=RowNumber(&quot;ServiceUnitName&quot;)" Name="textBox104" StyleName="">
+                          <Style VerticalAlign="Middle">
+                            <Font Name="Tahoma" Size="7pt" Bold="False" />
+                            <BorderStyle Bottom="Solid" Left="Solid" Right="Solid" />
+                            <BorderWidth Default="0.5pt" />
+                            <Padding Left="1mm" Right="1mm" />
+                          </Style>
+                        </TextBox>
+                      </ReportItem>
+                      <ChildGroups>
+                        <TableGroup Name="RowGroup">
+                          <ReportItem>
+                            <TextBox Width="0.755in" Height="0.336in" Left="0in" Top="0in" Value="=DiagnoseID" Name="textBox11">
+                              <Style VerticalAlign="Middle">
+                                <Font Name="Tahoma" Size="7pt" Bold="False" />
+                                <BorderStyle Bottom="Solid" Right="Solid" />
+                                <BorderWidth Default="0.5pt" />
+                                <Padding Left="1mm" Right="1mm" />
+                              </Style>
+                            </TextBox>
+                          </ReportItem>
+                          <ChildGroups>
+                            <TableGroup Name="Group2">
+                              <ReportItem>
+                                <TextBox Width="2.583in" Height="0.336in" Left="0in" Top="0in" Value="=DiagnoseName" Name="textBox85" StyleName="">
+                                  <Style VerticalAlign="Middle">
+                                    <Font Name="Tahoma" Size="7pt" Bold="False" />
+                                    <BorderStyle Bottom="Solid" Right="Solid" />
+                                    <BorderWidth Default="0.5pt" />
+                                    <Padding Left="1mm" Right="1mm" />
+                                  </Style>
+                                </TextBox>
+                              </ReportItem>
+                              <ChildGroups>
+                                <TableGroup Name="Group5">
+                                  <ReportItem>
+                                    <TextBox Width="0.583in" Height="0.336in" Left="0in" Top="0in" Value="=SUM(Lk)" Format="{0:N0}" Name="textBox91" StyleName="">
+                                      <Style TextAlign="Center" VerticalAlign="Middle">
+                                        <Font Name="Tahoma" Size="7pt" Bold="False" />
+                                        <BorderStyle Bottom="Solid" Right="Solid" />
+                                        <BorderWidth Default="0.5pt" />
+                                        <Padding Left="0in" Right="3mm" />
+                                      </Style>
+                                    </TextBox>
+                                  </ReportItem>
+                                  <ChildGroups>
+                                    <TableGroup Name="Group13">
+                                      <ReportItem>
+                                        <TextBox Width="0.542in" Height="0.336in" Left="0in" Top="0in" Value="=SUM(Pr)" Format="{0:N0}" Name="textBox7" StyleName="">
+                                          <Style TextAlign="Center" VerticalAlign="Middle">
+                                            <Font Name="Tahoma" Size="7pt" Bold="False" />
+                                            <BorderStyle Bottom="Solid" Right="Solid" />
+                                            <BorderWidth Default="0.5pt" />
+                                            <Padding Left="0in" Right="3mm" />
+                                          </Style>
+                                        </TextBox>
+                                      </ReportItem>
+                                      <ChildGroups>
+                                        <TableGroup Name="age06m">
+                                          <ReportItem>
+                                            <TextBox Width="0.27in" Height="0.336in" Left="0in" Top="0in" Value="=Sum(Fields.age06m)" Name="textBox28" StyleName="">
+                                              <Style TextAlign="Center" VerticalAlign="Middle">
+                                                <Font Size="7pt" />
+                                                <BorderStyle Bottom="Solid" Right="Solid" />
+                                                <BorderWidth Default="0.5pt" />
+                                                <Padding Left="0in" Right="3mm" />
+                                              </Style>
+                                            </TextBox>
+                                          </ReportItem>
+                                          <ChildGroups>
+                                            <TableGroup Name="age06f">
+                                              <ReportItem>
+                                                <TextBox Width="0.27in" Height="0.336in" Left="0in" Top="0in" Value="=Sum(Fields.age06f)" Name="textBox18" StyleName="">
+                                                  <Style TextAlign="Center" VerticalAlign="Middle">
+                                                    <Font Size="7pt" />
+                                                    <BorderStyle Bottom="Solid" Right="Solid" />
+                                                    <BorderWidth Default="0.5pt" />
+                                                    <Padding Left="0in" Right="3mm" />
+                                                  </Style>
+                                                </TextBox>
+                                              </ReportItem>
+                                              <ChildGroups>
+                                                <TableGroup Name="Group18">
+                                                  <ReportItem>
+                                                    <TextBox Width="0.27in" Height="0.336in" Left="0in" Top="0in" Value="=Sum(Fields.age727m)" Format="{0:N0}" Name="textBox116" StyleName="">
+                                                      <Style TextAlign="Center" VerticalAlign="Middle">
+                                                        <Font Name="Tahoma" Size="7pt" Bold="False" />
+                                                        <BorderStyle Bottom="Solid" Right="Solid" />
+                                                        <BorderWidth Default="0.5pt" />
+                                                        <Padding Left="0in" Right="3mm" />
+                                                      </Style>
+                                                    </TextBox>
+                                                  </ReportItem>
+                                                  <ChildGroups>
+                                                    <TableGroup Name="Group33">
+                                                      <ReportItem>
+                                                        <TextBox Width="0.27in" Height="0.336in" Left="0in" Top="0in" Value="=Sum(Fields.age727f)" Name="textBox12" StyleName="">
+                                                          <Style TextAlign="Center" VerticalAlign="Middle">
+                                                            <Font Size="7pt" />
+                                                            <BorderStyle Bottom="Solid" Right="Solid" />
+                                                            <BorderWidth Default="0.5pt" />
+                                                            <Padding Left="0in" Right="3mm" />
+                                                          </Style>
+                                                        </TextBox>
+                                                      </ReportItem>
+                                                      <ChildGroups>
+                                                        <TableGroup Name="Group14">
+                                                          <ReportItem>
+                                                            <TextBox Width="0.27in" Height="0.336in" Left="0in" Top="0in" Value="=Sum(Fields.age281m)" Format="{0:N0}" Name="textBox84" StyleName="">
+                                                              <Style TextAlign="Center" VerticalAlign="Middle">
+                                                                <Font Name="Tahoma" Size="7pt" Bold="False" />
+                                                                <BorderStyle Bottom="Solid" Right="Solid" />
+                                                                <BorderWidth Default="0.5pt" />
+                                                                <Padding Left="0in" Right="3mm" />
+                                                              </Style>
+                                                            </TextBox>
+                                                          </ReportItem>
+                                                          <ChildGroups>
+                                                            <TableGroup Name="Group35">
+                                                              <ReportItem>
+                                                                <TextBox Width="0.27in" Height="0.336in" Left="0in" Top="0in" Value="=Sum(Fields.age281f)" Name="textBox33" StyleName="">
+                                                                  <Style TextAlign="Center" VerticalAlign="Middle">
+                                                                    <Font Size="7pt" />
+                                                                    <BorderStyle Bottom="Solid" Right="Solid" />
+                                                                    <BorderWidth Default="0.5pt" />
+                                                                    <Padding Left="0in" Right="3mm" />
+                                                                  </Style>
+                                                                </TextBox>
+                                                              </ReportItem>
+                                                              <ChildGroups>
+                                                                <TableGroup Name="Group15">
+                                                                  <ReportItem>
+                                                                    <TextBox Width="0.27in" Height="0.336in" Left="0in" Top="0in" Value="=Sum(Fields.age14m)" Format="{0:N0}" Name="textBox123" StyleName="">
+                                                                      <Style TextAlign="Center" VerticalAlign="Middle">
+                                                                        <Font Name="Tahoma" Size="7pt" Bold="False" />
+                                                                        <BorderStyle Bottom="Solid" Right="Solid" />
+                                                                        <BorderWidth Default="0.5pt" />
+                                                                        <Padding Left="0in" Right="3mm" />
+                                                                      </Style>
+                                                                    </TextBox>
+                                                                  </ReportItem>
+                                                                  <ChildGroups>
+                                                                    <TableGroup Name="Group49">
+                                                                      <ReportItem>
+                                                                        <TextBox Width="0.27in" Height="0.336in" Left="0in" Top="0in" Value="=Sum(Fields.age14f)" Name="textBox38" StyleName="">
+                                                                          <Style TextAlign="Center" VerticalAlign="Middle">
+                                                                            <Font Size="7pt" />
+                                                                            <BorderStyle Bottom="Solid" Right="Solid" />
+                                                                            <BorderWidth Default="0.5pt" />
+                                                                            <Padding Left="0in" Right="3mm" />
+                                                                          </Style>
+                                                                        </TextBox>
+                                                                      </ReportItem>
+                                                                      <ChildGroups>
+                                                                        <TableGroup Name="Group16">
+                                                                          <ReportItem>
+                                                                            <TextBox Width="0.27in" Height="0.336in" Left="0in" Top="0in" Value="=Sum(Fields.age514m)" Format="{0:N0}" Name="textBox129" StyleName="">
+                                                                              <Style TextAlign="Center" VerticalAlign="Middle">
+                                                                                <Font Name="Tahoma" Size="7pt" Bold="False" />
+                                                                                <BorderStyle Bottom="Solid" Right="Solid" />
+                                                                                <BorderWidth Default="0.5pt" />
+                                                                                <Padding Left="0in" Right="3mm" />
+                                                                              </Style>
+                                                                            </TextBox>
+                                                                          </ReportItem>
+                                                                          <ChildGroups>
+                                                                            <TableGroup Name="Group51">
+                                                                              <ReportItem>
+                                                                                <TextBox Width="0.27in" Height="0.336in" Left="0in" Top="0in" Value="=Sum(Fields.age514f)" Name="textBox42" StyleName="">
+                                                                                  <Style TextAlign="Center" VerticalAlign="Middle">
+                                                                                    <Font Size="7pt" />
+                                                                                    <BorderStyle Bottom="Solid" Right="Solid" />
+                                                                                    <BorderWidth Default="0.5pt" />
+                                                                                    <Padding Left="0in" Right="3mm" />
+                                                                                  </Style>
+                                                                                </TextBox>
+                                                                              </ReportItem>
+                                                                              <ChildGroups>
+                                                                                <TableGroup Name="Group17">
+                                                                                  <ReportItem>
+                                                                                    <TextBox Width="0.27in" Height="0.336in" Left="0in" Top="0in" Value="=Sum(Fields.age1524m)" Format="{0:N0}" Name="textBox15" StyleName="">
+                                                                                      <Style TextAlign="Center" VerticalAlign="Middle">
+                                                                                        <Font Name="Tahoma" Size="7pt" Bold="False" />
+                                                                                        <BorderStyle Bottom="Solid" Right="Solid" />
+                                                                                        <BorderWidth Default="0.5pt" />
+                                                                                        <Padding Left="0in" Right="3mm" />
+                                                                                      </Style>
+                                                                                    </TextBox>
+                                                                                  </ReportItem>
+                                                                                  <ChildGroups>
+                                                                                    <TableGroup Name="Group53">
+                                                                                      <ReportItem>
+                                                                                        <TextBox Width="0.242in" Height="0.336in" Left="0in" Top="0in" Value="=Sum(Fields.age1524f)" Name="textBox46" StyleName="">
+                                                                                          <Style TextAlign="Center" VerticalAlign="Middle">
+                                                                                            <Font Size="7pt" />
+                                                                                            <BorderStyle Bottom="Solid" Right="Solid" />
+                                                                                            <BorderWidth Default="0.5pt" />
+                                                                                            <Padding Left="0in" Right="3mm" />
+                                                                                          </Style>
+                                                                                        </TextBox>
+                                                                                      </ReportItem>
+                                                                                      <ChildGroups>
+                                                                                        <TableGroup Name="Group7">
+                                                                                          <ReportItem>
+                                                                                            <TextBox Width="0.27in" Height="0.336in" Left="0in" Top="0in" Value="=Sum(Fields.age2544m)" Format="{0:N0}" Name="textBox31" StyleName="">
+                                                                                              <Style TextAlign="Center" VerticalAlign="Middle">
+                                                                                                <Font Name="Tahoma" Size="7pt" Bold="False" />
+                                                                                                <BorderStyle Bottom="Solid" Right="Solid" />
+                                                                                                <BorderWidth Default="0.5pt" />
+                                                                                                <Padding Left="0in" Right="3mm" />
+                                                                                              </Style>
+                                                                                            </TextBox>
+                                                                                          </ReportItem>
+                                                                                          <ChildGroups>
+                                                                                            <TableGroup Name="Group55">
+                                                                                              <ReportItem>
+                                                                                                <TextBox Width="0.27in" Height="0.336in" Left="0in" Top="0in" Value="=Sum(Fields.age2544f)" Name="textBox50" StyleName="">
+                                                                                                  <Style TextAlign="Center" VerticalAlign="Middle">
+                                                                                                    <Font Size="7pt" />
+                                                                                                    <BorderStyle Bottom="Solid" Right="Solid" />
+                                                                                                    <BorderWidth Default="0.5pt" />
+                                                                                                    <Padding Left="0in" Right="3mm" />
+                                                                                                  </Style>
+                                                                                                </TextBox>
+                                                                                              </ReportItem>
+                                                                                              <ChildGroups>
+                                                                                                <TableGroup Name="Group9">
+                                                                                                  <ReportItem>
+                                                                                                    <TextBox Width="0.27in" Height="0.336in" Left="0in" Top="0in" Value="=Sum(Fields.age4564m)" Format="{0:N0}" Name="textBox136" StyleName="">
+                                                                                                      <Style TextAlign="Center" VerticalAlign="Middle">
+                                                                                                        <Font Name="Tahoma" Size="7pt" Bold="False" />
+                                                                                                        <BorderStyle Bottom="Solid" Right="Solid" />
+                                                                                                        <BorderWidth Default="0.5pt" />
+                                                                                                        <Padding Left="0in" Right="3mm" />
+                                                                                                      </Style>
+                                                                                                    </TextBox>
+                                                                                                  </ReportItem>
+                                                                                                  <ChildGroups>
+                                                                                                    <TableGroup Name="Group57">
+                                                                                                      <ReportItem>
+                                                                                                        <TextBox Width="0.27in" Height="0.336in" Left="0in" Top="0in" Value="=Sum(Fields.age4564f)" Name="textBox54" StyleName="">
+                                                                                                          <Style TextAlign="Center" VerticalAlign="Middle">
+                                                                                                            <Font Size="7pt" />
+                                                                                                            <BorderStyle Bottom="Solid" Right="Solid" />
+                                                                                                            <BorderWidth Default="0.5pt" />
+                                                                                                            <Padding Left="0in" Right="3mm" />
+                                                                                                          </Style>
+                                                                                                        </TextBox>
+                                                                                                      </ReportItem>
+                                                                                                      <ChildGroups>
+                                                                                                        <TableGroup Name="Group11">
+                                                                                                          <ReportItem>
+                                                                                                            <TextBox Width="0.27in" Height="0.336in" Left="0in" Top="0in" Value="=Sum(Fields.age65m)" Format="{0:N0}" Name="textBox120" StyleName="">
+                                                                                                              <Style TextAlign="Center" VerticalAlign="Middle">
+                                                                                                                <Font Name="Tahoma" Size="7pt" Bold="False" />
+                                                                                                                <BorderStyle Bottom="Solid" Right="Solid" />
+                                                                                                                <BorderWidth Default="0.5pt" />
+                                                                                                                <Padding Left="0in" Right="3mm" />
+                                                                                                              </Style>
+                                                                                                            </TextBox>
+                                                                                                          </ReportItem>
+                                                                                                          <ChildGroups>
+                                                                                                            <TableGroup Name="Group31">
+                                                                                                              <ReportItem>
+                                                                                                                <TextBox Width="0.27in" Height="0.336in" Left="0in" Top="0in" Value="=Sum(Fields.age65f)" Name="textBox23" StyleName="">
+                                                                                                                  <Style TextAlign="Center" VerticalAlign="Middle">
+                                                                                                                    <Font Size="7pt" />
+                                                                                                                    <BorderStyle Bottom="Solid" Right="Solid" />
+                                                                                                                    <BorderWidth Default="0.5pt" />
+                                                                                                                    <Padding Left="0in" Right="3mm" />
+                                                                                                                  </Style>
+                                                                                                                </TextBox>
+                                                                                                              </ReportItem>
+                                                                                                              <ChildGroups>
+                                                                                                                <TableGroup Name="Group20">
+                                                                                                                  <ReportItem>
+                                                                                                                    <TextBox Width="0.573in" Height="0.336in" Left="0in" Top="0in" Value="=SUM(Jumlah)" Format="{0:N0}" Name="textBox163" StyleName="">
+                                                                                                                      <Style TextAlign="Center" VerticalAlign="Middle">
+                                                                                                                        <Font Name="Tahoma" Size="7pt" Bold="False" />
+                                                                                                                        <BorderStyle Bottom="Solid" Right="Solid" />
+                                                                                                                        <BorderWidth Default="0.5pt" />
+                                                                                                                        <Padding Left="0in" Right="3mm" />
+                                                                                                                      </Style>
+                                                                                                                    </TextBox>
+                                                                                                                  </ReportItem>
+                                                                                                                  <ChildGroups>
+                                                                                                                    <TableGroup Name="Group25">
+                                                                                                                      <ReportItem>
+                                                                                                                        <TextBox Width="0.547in" Height="0.336in" Left="0in" Top="0in" Value="=SUM(Jumlah)/pesentasi" Format="{0:N2}" Name="textBox146" StyleName="">
+                                                                                                                          <Style TextAlign="Center" VerticalAlign="Middle">
+                                                                                                                            <Font Name="Tahoma" Size="7pt" Bold="False" />
+                                                                                                                            <BorderStyle Bottom="Solid" Right="Solid" />
+                                                                                                                            <BorderWidth Default="0.5pt" />
+                                                                                                                            <Padding Left="0in" Right="3mm" />
+                                                                                                                          </Style>
+                                                                                                                        </TextBox>
+                                                                                                                      </ReportItem>
+                                                                                                                      <ChildGroups>
+                                                                                                                        <TableGroup Name="Group23">
+                                                                                                                          <ReportItem>
+                                                                                                                            <TextBox Width="0.656in" Height="0.336in" Left="0in" Top="0in" Value="=SUM(mati)" Format="{0:N0}" Name="textBox151" StyleName="">
+                                                                                                                              <Style TextAlign="Center" VerticalAlign="Middle">
+                                                                                                                                <Font Name="Tahoma" Size="7pt" Bold="False" />
+                                                                                                                                <BorderStyle Bottom="Solid" Right="Solid" />
+                                                                                                                                <BorderWidth Default="0.5pt" />
+                                                                                                                                <Padding Left="0in" Right="3mm" />
+                                                                                                                              </Style>
+                                                                                                                            </TextBox>
+                                                                                                                          </ReportItem>
+                                                                                                                        </TableGroup>
+                                                                                                                      </ChildGroups>
+                                                                                                                    </TableGroup>
+                                                                                                                  </ChildGroups>
+                                                                                                                </TableGroup>
+                                                                                                              </ChildGroups>
+                                                                                                            </TableGroup>
+                                                                                                          </ChildGroups>
+                                                                                                        </TableGroup>
+                                                                                                      </ChildGroups>
+                                                                                                    </TableGroup>
+                                                                                                  </ChildGroups>
+                                                                                                </TableGroup>
+                                                                                              </ChildGroups>
+                                                                                            </TableGroup>
+                                                                                          </ChildGroups>
+                                                                                        </TableGroup>
+                                                                                      </ChildGroups>
+                                                                                    </TableGroup>
+                                                                                  </ChildGroups>
+                                                                                </TableGroup>
+                                                                              </ChildGroups>
+                                                                            </TableGroup>
+                                                                          </ChildGroups>
+                                                                        </TableGroup>
+                                                                      </ChildGroups>
+                                                                    </TableGroup>
+                                                                  </ChildGroups>
+                                                                </TableGroup>
+                                                              </ChildGroups>
+                                                            </TableGroup>
+                                                          </ChildGroups>
+                                                        </TableGroup>
+                                                      </ChildGroups>
+                                                    </TableGroup>
+                                                  </ChildGroups>
+                                                </TableGroup>
+                                              </ChildGroups>
+                                            </TableGroup>
+                                          </ChildGroups>
+                                        </TableGroup>
+                                      </ChildGroups>
+                                    </TableGroup>
+                                  </ChildGroups>
+                                </TableGroup>
+                              </ChildGroups>
+                            </TableGroup>
+                          </ChildGroups>
+                          <Groupings>
+                            <Grouping Expression="='RowGroup'" />
+                          </Groupings>
+                        </TableGroup>
+                      </ChildGroups>
+                    </TableGroup>
+                  </ChildGroups>
+                  <Groupings>
+                    <Grouping Expression="=DiagnoseID" />
+                  </Groupings>
+                  <Sortings>
+                    <Sorting Expression="=sn" Direction="Asc" />
+                    <Sorting Expression="=SUM(Jumlah)" Direction="Desc" />
+                  </Sortings>
+                </TableGroup>
+              </ChildGroups>
+              <Groupings>
+                <Grouping Expression="=ServiceUnitName" />
+              </Groupings>
+              <Sortings>
+                <Sorting Expression="=ServiceUnitName" Direction="Asc" />
+              </Sortings>
+            </TableGroup>
+            <TableGroup Name="Group36">
+              <ChildGroups>
+                <TableGroup Name="Group37">
+                  <ChildGroups>
+                    <TableGroup Name="Group38">
+                      <ReportItem>
+                        <TextBox Width="0.375in" Height="0.313in" Left="0in" Top="0in" Name="textBox139" StyleName="">
+                          <Style TextAlign="Right" VerticalAlign="Middle">
+                            <Font Name="Tahoma" Size="7pt" Bold="True" />
+                            <BorderStyle Bottom="Solid" Left="Solid" />
+                            <BorderWidth Default="0.5pt" />
+                            <Padding Left="0in" Right="2mm" />
+                          </Style>
+                        </TextBox>
+                      </ReportItem>
+                      <ChildGroups>
+                        <TableGroup Name="Group39">
+                          <ReportItem>
+                            <TextBox Width="0.755in" Height="0.313in" Left="0in" Top="0in" Name="textBox140" StyleName="">
+                              <Style TextAlign="Right" VerticalAlign="Middle">
+                                <Font Name="Tahoma" Size="7pt" Bold="True" />
+                                <BorderStyle Bottom="Solid" />
+                                <BorderWidth Default="0.5pt" />
+                                <Padding Left="0in" Right="2mm" />
+                              </Style>
+                            </TextBox>
+                          </ReportItem>
+                          <ChildGroups>
+                            <TableGroup Name="Group40">
+                              <ReportItem>
+                                <TextBox Width="2.583in" Height="0.313in" Left="0in" Top="0in" Value="Total :" Name="textBox141" StyleName="">
+                                  <Style TextAlign="Right" VerticalAlign="Middle">
+                                    <Font Name="Tahoma" Size="7pt" Bold="True" />
+                                    <BorderStyle Bottom="Solid" Right="Solid" />
+                                    <BorderWidth Default="0.5pt" />
+                                    <Padding Left="0in" Right="2mm" />
+                                  </Style>
+                                </TextBox>
+                              </ReportItem>
+                              <ChildGroups>
+                                <TableGroup Name="Group41">
+                                  <ReportItem>
+                                    <TextBox Width="0.583in" Height="0.313in" Left="0in" Top="0in" Value="=SUM(Lk)" Name="textBox142" StyleName="">
+                                      <Style TextAlign="Center" VerticalAlign="Middle">
+                                        <Font Name="Tahoma" Size="7pt" Bold="True" />
+                                        <BorderStyle Bottom="Solid" Right="Solid" />
+                                        <BorderWidth Default="0.5pt" />
+                                        <Padding Left="0in" Right="3mm" />
+                                      </Style>
+                                    </TextBox>
+                                  </ReportItem>
+                                  <ChildGroups>
+                                    <TableGroup Name="Group42">
+                                      <ReportItem>
+                                        <TextBox Width="0.542in" Height="0.313in" Left="0in" Top="0in" Value="=SUM(Pr)" Name="textBox143" StyleName="">
+                                          <Style TextAlign="Center" VerticalAlign="Middle">
+                                            <Font Name="Tahoma" Size="7pt" Bold="True" />
+                                            <BorderStyle Bottom="Solid" Right="Solid" />
+                                            <BorderWidth Default="0.5pt" />
+                                            <Padding Left="0in" Right="3mm" />
+                                          </Style>
+                                        </TextBox>
+                                      </ReportItem>
+                                      <ChildGroups>
+                                        <TableGroup Name="age06m1">
+                                          <ReportItem>
+                                            <TextBox Width="0.27in" Height="0.313in" Left="0in" Top="0in" Value="=Sum(Fields.age06m)" Name="textBox17" StyleName="">
+                                              <Style TextAlign="Center" VerticalAlign="Middle">
+                                                <Font Size="7pt" Bold="True" />
+                                                <BorderStyle Bottom="Solid" Right="Solid" />
+                                                <BorderWidth Default="0.5pt" />
+                                                <Padding Left="0in" Right="3mm" />
+                                              </Style>
+                                            </TextBox>
+                                          </ReportItem>
+                                          <ChildGroups>
+                                            <TableGroup Name="age06f1">
+                                              <ReportItem>
+                                                <TextBox Width="0.27in" Height="0.313in" Left="0in" Top="0in" Value="=Sum(Fields.age06f)" Name="textBox8" StyleName="">
+                                                  <Style TextAlign="Center" VerticalAlign="Middle">
+                                                    <Font Size="7pt" Bold="True" />
+                                                    <BorderStyle Bottom="Solid" Right="Solid" />
+                                                    <BorderWidth Default="0.5pt" />
+                                                    <Padding Left="0in" Right="3mm" />
+                                                  </Style>
+                                                </TextBox>
+                                              </ReportItem>
+                                              <ChildGroups>
+                                                <TableGroup Name="Group27">
+                                                  <ReportItem>
+                                                    <TextBox Width="0.27in" Height="0.313in" Left="0in" Top="0in" Value="=Sum(Fields.age727m)" Format="{0:N0}" Name="textBox155" StyleName="">
+                                                      <Style TextAlign="Center" VerticalAlign="Middle">
+                                                        <Font Name="Tahoma" Size="7pt" Bold="True" />
+                                                        <BorderStyle Bottom="Solid" Right="Solid" />
+                                                        <BorderWidth Default="0.5pt" />
+                                                        <Padding Left="0in" Right="3mm" />
+                                                      </Style>
+                                                    </TextBox>
+                                                  </ReportItem>
+                                                  <ChildGroups>
+                                                    <TableGroup Name="Group34">
+                                                      <ReportItem>
+                                                        <TextBox Width="0.27in" Height="0.313in" Left="0in" Top="0in" Value="=Sum(Fields.age727f)" Name="textBox27" StyleName="">
+                                                          <Style TextAlign="Center" VerticalAlign="Middle">
+                                                            <Font Size="7pt" Bold="True" />
+                                                            <BorderStyle Bottom="Solid" Right="Solid" />
+                                                            <BorderWidth Default="0.5pt" />
+                                                            <Padding Left="0in" Right="3mm" />
+                                                          </Style>
+                                                        </TextBox>
+                                                      </ReportItem>
+                                                      <ChildGroups>
+                                                        <TableGroup Name="Group44">
+                                                          <ReportItem>
+                                                            <TextBox Width="0.27in" Height="0.313in" Left="0in" Top="0in" Value="=Sum(Fields.age281m)" Format="{0:N0}" Name="textBox156" StyleName="">
+                                                              <Style TextAlign="Center" VerticalAlign="Middle">
+                                                                <Font Name="Tahoma" Size="7pt" Bold="True" />
+                                                                <BorderStyle Bottom="Solid" Right="Solid" />
+                                                                <BorderWidth Default="0.5pt" />
+                                                                <Padding Left="0in" Right="3mm" />
+                                                              </Style>
+                                                            </TextBox>
+                                                          </ReportItem>
+                                                          <ChildGroups>
+                                                            <TableGroup Name="Group48">
+                                                              <ReportItem>
+                                                                <TextBox Width="0.27in" Height="0.313in" Left="0in" Top="0in" Value="=Sum(Fields.age281f)" Name="textBox35" StyleName="">
+                                                                  <Style TextAlign="Center" VerticalAlign="Middle">
+                                                                    <Font Size="7pt" Bold="True" />
+                                                                    <BorderStyle Bottom="Solid" Right="Solid" />
+                                                                    <BorderWidth Default="0.5pt" />
+                                                                    <Padding Left="0in" Right="3mm" />
+                                                                  </Style>
+                                                                </TextBox>
+                                                              </ReportItem>
+                                                              <ChildGroups>
+                                                                <TableGroup Name="Group45">
+                                                                  <ReportItem>
+                                                                    <TextBox Width="0.27in" Height="0.313in" Left="0in" Top="0in" Value="=Sum(Fields.age14m)" Format="{0:N0}" Name="textBox157" StyleName="">
+                                                                      <Style TextAlign="Center" VerticalAlign="Middle">
+                                                                        <Font Name="Tahoma" Size="7pt" Bold="True" />
+                                                                        <BorderStyle Bottom="Solid" Right="Solid" />
+                                                                        <BorderWidth Default="0.5pt" />
+                                                                        <Padding Left="0in" Right="3mm" />
+                                                                      </Style>
+                                                                    </TextBox>
+                                                                  </ReportItem>
+                                                                  <ChildGroups>
+                                                                    <TableGroup Name="Group50">
+                                                                      <ReportItem>
+                                                                        <TextBox Width="0.27in" Height="0.313in" Left="0in" Top="0in" Value="=Sum(Fields.age14f)" Name="textBox39" StyleName="">
+                                                                          <Style TextAlign="Center" VerticalAlign="Middle">
+                                                                            <Font Size="7pt" Bold="True" />
+                                                                            <BorderStyle Bottom="Solid" Right="Solid" />
+                                                                            <BorderWidth Default="0.5pt" />
+                                                                            <Padding Left="0in" Right="3mm" />
+                                                                          </Style>
+                                                                        </TextBox>
+                                                                      </ReportItem>
+                                                                      <ChildGroups>
+                                                                        <TableGroup Name="Group46">
+                                                                          <ReportItem>
+                                                                            <TextBox Width="0.27in" Height="0.313in" Left="0in" Top="0in" Value="=Sum(Fields.age514m)" Format="{0:N0}" Name="textBox158" StyleName="">
+                                                                              <Style TextAlign="Center" VerticalAlign="Middle">
+                                                                                <Font Name="Tahoma" Size="7pt" Bold="True" />
+                                                                                <BorderStyle Bottom="Solid" Right="Solid" />
+                                                                                <BorderWidth Default="0.5pt" />
+                                                                                <Padding Left="0in" Right="3mm" />
+                                                                              </Style>
+                                                                            </TextBox>
+                                                                          </ReportItem>
+                                                                          <ChildGroups>
+                                                                            <TableGroup Name="Group52">
+                                                                              <ReportItem>
+                                                                                <TextBox Width="0.27in" Height="0.313in" Left="0in" Top="0in" Value="=Sum(Fields.age514f)" Name="textBox43" StyleName="">
+                                                                                  <Style TextAlign="Center" VerticalAlign="Middle">
+                                                                                    <Font Size="7pt" Bold="True" />
+                                                                                    <BorderStyle Bottom="Solid" Right="Solid" />
+                                                                                    <BorderWidth Default="0.5pt" />
+                                                                                    <Padding Left="0in" Right="3mm" />
+                                                                                  </Style>
+                                                                                </TextBox>
+                                                                              </ReportItem>
+                                                                              <ChildGroups>
+                                                                                <TableGroup Name="Group47">
+                                                                                  <ReportItem>
+                                                                                    <TextBox Width="0.27in" Height="0.313in" Left="0in" Top="0in" Value="=Sum(Fields.age1524m)" Format="{0:N0}" Name="textBox159" StyleName="">
+                                                                                      <Style TextAlign="Center" VerticalAlign="Middle">
+                                                                                        <Font Name="Tahoma" Size="7pt" Bold="True" />
+                                                                                        <BorderStyle Bottom="Solid" Right="Solid" />
+                                                                                        <BorderWidth Default="0.5pt" />
+                                                                                        <Padding Left="0in" Right="3mm" />
+                                                                                      </Style>
+                                                                                    </TextBox>
+                                                                                  </ReportItem>
+                                                                                  <ChildGroups>
+                                                                                    <TableGroup Name="Group54">
+                                                                                      <ReportItem>
+                                                                                        <TextBox Width="0.242in" Height="0.313in" Left="0in" Top="0in" Value="=Sum(Fields.age1524f)" Name="textBox47" StyleName="">
+                                                                                          <Style TextAlign="Center" VerticalAlign="Middle">
+                                                                                            <Font Size="7pt" Bold="True" />
+                                                                                            <BorderStyle Bottom="Solid" Right="Solid" />
+                                                                                            <BorderWidth Default="0.5pt" />
+                                                                                            <Padding Left="0in" Right="3mm" />
+                                                                                          </Style>
+                                                                                        </TextBox>
+                                                                                      </ReportItem>
+                                                                                      <ChildGroups>
+                                                                                        <TableGroup Name="Group8">
+                                                                                          <ReportItem>
+                                                                                            <TextBox Width="0.27in" Height="0.313in" Left="0in" Top="0in" Value="=Sum(Fields.age2544m)" Format="{0:N0}" Name="textBox32" StyleName="">
+                                                                                              <Style TextAlign="Center" VerticalAlign="Middle">
+                                                                                                <Font Name="Tahoma" Size="7pt" Bold="True" />
+                                                                                                <BorderStyle Bottom="Solid" Right="Solid" />
+                                                                                                <BorderWidth Default="0.5pt" />
+                                                                                                <Padding Left="0in" Right="3mm" />
+                                                                                              </Style>
+                                                                                            </TextBox>
+                                                                                          </ReportItem>
+                                                                                          <ChildGroups>
+                                                                                            <TableGroup Name="Group56">
+                                                                                              <ReportItem>
+                                                                                                <TextBox Width="0.27in" Height="0.313in" Left="0in" Top="0in" Value="=Sum(Fields.age2544f)" Name="textBox51" StyleName="">
+                                                                                                  <Style TextAlign="Center" VerticalAlign="Middle">
+                                                                                                    <Font Size="7pt" Bold="True" />
+                                                                                                    <BorderStyle Bottom="Solid" Right="Solid" />
+                                                                                                    <BorderWidth Default="0.5pt" />
+                                                                                                    <Padding Left="0in" Right="3mm" />
+                                                                                                  </Style>
+                                                                                                </TextBox>
+                                                                                              </ReportItem>
+                                                                                              <ChildGroups>
+                                                                                                <TableGroup Name="Group10">
+                                                                                                  <ReportItem>
+                                                                                                    <TextBox Width="0.27in" Height="0.313in" Left="0in" Top="0in" Value="=Sum(Fields.age4564m)" Format="{0:N0}" Name="textBox137" StyleName="">
+                                                                                                      <Style TextAlign="Center" VerticalAlign="Middle">
+                                                                                                        <Font Name="Tahoma" Size="7pt" Bold="True" />
+                                                                                                        <BorderStyle Bottom="Solid" Right="Solid" />
+                                                                                                        <BorderWidth Default="0.5pt" />
+                                                                                                        <Padding Left="0in" Right="3mm" />
+                                                                                                      </Style>
+                                                                                                    </TextBox>
+                                                                                                  </ReportItem>
+                                                                                                  <ChildGroups>
+                                                                                                    <TableGroup Name="Group58">
+                                                                                                      <ReportItem>
+                                                                                                        <TextBox Width="0.27in" Height="0.313in" Left="0in" Top="0in" Value="=Sum(Fields.age4564f)" Name="textBox55" StyleName="">
+                                                                                                          <Style TextAlign="Center" VerticalAlign="Middle">
+                                                                                                            <Font Size="7pt" Bold="True" />
+                                                                                                            <BorderStyle Bottom="Solid" Right="Solid" />
+                                                                                                            <BorderWidth Default="0.5pt" />
+                                                                                                            <Padding Left="0in" Right="3mm" />
+                                                                                                          </Style>
+                                                                                                        </TextBox>
+                                                                                                      </ReportItem>
+                                                                                                      <ChildGroups>
+                                                                                                        <TableGroup Name="Group19">
+                                                                                                          <ReportItem>
+                                                                                                            <TextBox Width="0.27in" Height="0.313in" Left="0in" Top="0in" Value="=Sum(Fields.age65m)" Format="{0:N0}" Name="textBox122" StyleName="">
+                                                                                                              <Style TextAlign="Center" VerticalAlign="Middle">
+                                                                                                                <Font Name="Tahoma" Size="7pt" Bold="True" />
+                                                                                                                <BorderStyle Bottom="Solid" Right="Solid" />
+                                                                                                                <BorderWidth Default="0.5pt" />
+                                                                                                                <Padding Left="0in" Right="3mm" />
+                                                                                                              </Style>
+                                                                                                            </TextBox>
+                                                                                                          </ReportItem>
+                                                                                                          <ChildGroups>
+                                                                                                            <TableGroup Name="Group32">
+                                                                                                              <ReportItem>
+                                                                                                                <TextBox Width="0.27in" Height="0.313in" Left="0in" Top="0in" Value="=Sum(Fields.age65f)" Name="textBox25" StyleName="">
+                                                                                                                  <Style TextAlign="Center" VerticalAlign="Middle">
+                                                                                                                    <Font Size="7pt" Bold="True" />
+                                                                                                                    <BorderStyle Bottom="Solid" Right="Solid" />
+                                                                                                                    <BorderWidth Default="0.5pt" />
+                                                                                                                    <Padding Left="0in" Right="3mm" />
+                                                                                                                  </Style>
+                                                                                                                </TextBox>
+                                                                                                              </ReportItem>
+                                                                                                              <ChildGroups>
+                                                                                                                <TableGroup Name="Group22">
+                                                                                                                  <ReportItem>
+                                                                                                                    <TextBox Width="0.573in" Height="0.313in" Left="0in" Top="0in" Value="=SUM(Jumlah)" Format="{0:N0}" Name="textBox164" StyleName="">
+                                                                                                                      <Style TextAlign="Center" VerticalAlign="Middle">
+                                                                                                                        <Font Name="Tahoma" Size="7pt" Bold="True" />
+                                                                                                                        <BorderStyle Bottom="Solid" Right="Solid" />
+                                                                                                                        <BorderWidth Default="0.5pt" />
+                                                                                                                        <Padding Left="0in" Right="3mm" />
+                                                                                                                      </Style>
+                                                                                                                    </TextBox>
+                                                                                                                  </ReportItem>
+                                                                                                                  <ChildGroups>
+                                                                                                                    <TableGroup Name="Group26">
+                                                                                                                      <ReportItem>
+                                                                                                                        <TextBox Width="0.547in" Height="0.313in" Left="0in" Top="0in" Value="=SUM(Jumlah)/pesentasi" Format="{0:N2}" Name="textBox147" StyleName="">
+                                                                                                                          <Style TextAlign="Center" VerticalAlign="Middle">
+                                                                                                                            <Font Name="Tahoma" Size="7pt" Bold="True" />
+                                                                                                                            <BorderStyle Bottom="Solid" Right="Solid" />
+                                                                                                                            <BorderWidth Default="0.5pt" />
+                                                                                                                            <Padding Left="0in" Right="3mm" />
+                                                                                                                          </Style>
+                                                                                                                        </TextBox>
+                                                                                                                      </ReportItem>
+                                                                                                                      <ChildGroups>
+                                                                                                                        <TableGroup Name="Group24">
+                                                                                                                          <ReportItem>
+                                                                                                                            <TextBox Width="0.656in" Height="0.313in" Left="0in" Top="0in" Value="=SUM(mati)" Format="{0:N0}" Name="textBox152" StyleName="">
+                                                                                                                              <Style TextAlign="Center" VerticalAlign="Middle">
+                                                                                                                                <Font Name="Tahoma" Size="7pt" Bold="True" />
+                                                                                                                                <BorderStyle Bottom="Solid" Right="Solid" />
+                                                                                                                                <BorderWidth Default="0.5pt" />
+                                                                                                                                <Padding Left="0in" Right="3mm" />
+                                                                                                                              </Style>
+                                                                                                                            </TextBox>
+                                                                                                                          </ReportItem>
+                                                                                                                        </TableGroup>
+                                                                                                                      </ChildGroups>
+                                                                                                                    </TableGroup>
+                                                                                                                  </ChildGroups>
+                                                                                                                </TableGroup>
+                                                                                                              </ChildGroups>
+                                                                                                            </TableGroup>
+                                                                                                          </ChildGroups>
+                                                                                                        </TableGroup>
+                                                                                                      </ChildGroups>
+                                                                                                    </TableGroup>
+                                                                                                  </ChildGroups>
+                                                                                                </TableGroup>
+                                                                                              </ChildGroups>
+                                                                                            </TableGroup>
+                                                                                          </ChildGroups>
+                                                                                        </TableGroup>
+                                                                                      </ChildGroups>
+                                                                                    </TableGroup>
+                                                                                  </ChildGroups>
+                                                                                </TableGroup>
+                                                                              </ChildGroups>
+                                                                            </TableGroup>
+                                                                          </ChildGroups>
+                                                                        </TableGroup>
+                                                                      </ChildGroups>
+                                                                    </TableGroup>
+                                                                  </ChildGroups>
+                                                                </TableGroup>
+                                                              </ChildGroups>
+                                                            </TableGroup>
+                                                          </ChildGroups>
+                                                        </TableGroup>
+                                                      </ChildGroups>
+                                                    </TableGroup>
+                                                  </ChildGroups>
+                                                </TableGroup>
+                                              </ChildGroups>
+                                            </TableGroup>
+                                          </ChildGroups>
+                                        </TableGroup>
+                                      </ChildGroups>
+                                    </TableGroup>
+                                  </ChildGroups>
+                                </TableGroup>
+                              </ChildGroups>
+                            </TableGroup>
+                          </ChildGroups>
+                        </TableGroup>
+                      </ChildGroups>
+                    </TableGroup>
+                  </ChildGroups>
+                </TableGroup>
+              </ChildGroups>
+            </TableGroup>
+          </RowGroups>
+          <ColumnGroups>
+            <TableGroup Name="Group1">
+              <ReportItem>
+                <TextBox Width="0.495in" Height="0.312in" Left="0in" Top="0in" Name="textBox13" StyleName="">
+                  <Style TextAlign="Center" VerticalAlign="Middle">
+                    <Font Name="Tahoma" Size="8pt" Bold="True" />
+                    <BorderStyle Top="None" Bottom="None" Right="None" />
+                    <BorderWidth Default="0.5pt" />
+                    <Padding Left="0in" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+              <ChildGroups>
+                <TableGroup Name="Domisili">
+                  <ReportItem>
+                    <TextBox Width="0.495in" Height="0.313in" Left="0in" Top="0in" Value="=Domisili" Name="textBox176" StyleName="">
+                      <Style TextAlign="Center" VerticalAlign="Middle">
+                        <Font Name="Tahoma" Size="8pt" Bold="True" />
+                        <BorderStyle Top="Solid" Bottom="None" Left="Solid" Right="None" />
+                        <BorderWidth Default="0.5pt" />
+                        <Padding Left="0in" />
+                      </Style>
+                    </TextBox>
+                  </ReportItem>
+                  <ChildGroups>
+                    <TableGroup Name="Kab1">
+                      <ChildGroups>
+                        <TableGroup Name="ColumnGroup">
+                          <ReportItem>
+                            <TextBox Width="0.495in" Height="0.334in" Left="0in" Top="0in" Value="=Kab" Name="textBox6">
+                              <Style TextAlign="Center" VerticalAlign="Middle">
+                                <Font Name="Tahoma" Size="8pt" Bold="True" />
+                                <BorderStyle Top="Solid" Bottom="None" Left="Solid" Right="None" />
+                                <BorderWidth Default="0.5pt" />
+                                <Padding Left="0in" Right="0in" />
+                              </Style>
+                            </TextBox>
+                          </ReportItem>
+                          <ChildGroups>
+                            <TableGroup Name="Group59">
+                              <ReportItem>
+                                <TextBox Width="0.495in" Height="0.25in" Left="0in" Top="0in" Name="textBox16" StyleName="">
+                                  <Style>
+                                    <BorderStyle Bottom="Solid" Left="Solid" Right="None" />
+                                    <BorderWidth Default="0.5pt" />
+                                    <Padding Left="0in" />
+                                  </Style>
+                                </TextBox>
+                              </ReportItem>
+                              <ChildGroups>
+                                <TableGroup Name="Group4" />
+                              </ChildGroups>
+                            </TableGroup>
+                          </ChildGroups>
+                        </TableGroup>
+                      </ChildGroups>
+                      <Groupings>
+                        <Grouping Expression="=Kab" />
+                      </Groupings>
+                      <Sortings>
+                        <Sorting Expression="=Kab" Direction="Asc" />
+                      </Sortings>
+                    </TableGroup>
+                  </ChildGroups>
+                  <Groupings>
+                    <Grouping Expression="=Domisili" />
+                  </Groupings>
+                  <Sortings>
+                    <Sorting Expression="=Domisili" Direction="Asc" />
+                  </Sortings>
+                </TableGroup>
+              </ChildGroups>
+            </TableGroup>
+            <TableGroup Name="Group6">
+              <ReportItem>
+                <TextBox Width="0.505in" Height="0.312in" Left="0in" Top="0in" Name="textBox14" StyleName="">
+                  <Style TextAlign="Center" VerticalAlign="Middle">
+                    <Font Name="Tahoma" Size="8pt" Bold="True" />
+                    <BorderStyle Top="None" Bottom="None" Right="None" />
+                    <BorderWidth Default="0.5pt" />
+                    <Padding Left="0in" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+              <ChildGroups>
+                <TableGroup Name="Group28">
+                  <ReportItem>
+                    <TextBox Width="0.505in" Height="0.896in" Left="0in" Top="0in" Value="Total" Name="textBox83" StyleName="">
+                      <Style TextAlign="Center" VerticalAlign="Middle">
+                        <Font Name="Tahoma" Size="8pt" Bold="True" />
+                        <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+                        <BorderWidth Default="0.5pt" />
+                        <Padding Left="0in" Right="0in" />
+                      </Style>
+                    </TextBox>
+                  </ReportItem>
+                  <ChildGroups>
+                    <TableGroup Name="Group21" />
+                  </ChildGroups>
+                </TableGroup>
+              </ChildGroups>
+            </TableGroup>
+          </ColumnGroups>
+        </Crosstab>
+      </Items>
+    </ReportHeaderSection>
+    <PageHeaderSection Height="1.1in" Name="pageHeaderSection1">
+      <Style Color="Black" />
+      <Items>
+        <TextBox Width="6.283in" Height="0.2in" Left="3.281in" Top="0.6in" Value="=ReportName" Name="textBox1">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Size="12pt" Bold="True" />
+          </Style>
+        </TextBox>
+        <TextBox Width="6.283in" Height="0.2in" Left="3.281in" Top="0.8in" Value="=Fields.Period" Name="textBox2">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Bold="True" />
+          </Style>
+        </TextBox>
+      </Items>
+    </PageHeaderSection>
+  </Items>
+  <PageSettings PaperKind="Folio" Landscape="True">
+    <Margins>
+      <MarginsU Left="0.1in" Right="0.1in" Top="0.2in" Bottom="0.2in" />
+    </Margins>
+  </PageSettings>
+  <StyleSheet>
+    <StyleRule>
+      <Style>
+        <Padding Left="2pt" Right="2pt" />
+      </Style>
+      <Selectors>
+        <TypeSelector Type="TextItemBase" />
+        <TypeSelector Type="HtmlTextBox" />
+      </Selectors>
+    </StyleRule>
+  </StyleSheet>
+</Report>

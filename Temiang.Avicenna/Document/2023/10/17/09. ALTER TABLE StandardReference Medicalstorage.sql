@@ -1,0 +1,135 @@
+INSERT INTO AppStandardReference
+(
+	StandardReferenceID,
+	StandardReferenceName,
+	ItemLength,
+	IsUsedBySystem,
+	IsActive,
+	StandardReferenceGroup,
+	Note,
+	LastUpdateDateTime,
+	LastUpdateByUserID,
+	HasCOA,
+	IsNumericValue
+)
+VALUES
+(
+	'MedicalStorage',
+	'Medical Storage',
+	'20',
+	1,
+	1,
+	'PMKP',
+	'',
+	GETDATE(),
+	'sci',
+	NULL,
+	NULL
+)
+
+--Insert AppStandardReferenceItem Medicalstorage--
+
+INSERT INTO AppStandardReferenceItem
+(
+	StandardReferenceID,
+	ItemID,
+	ItemName,
+	Note,
+	IsUsedBySystem,
+	IsActive,
+	LastUpdateDateTime,
+	LastUpdateByUserID,
+	ReferenceID,
+	coaID,
+	subledgerID,
+	CustomField,
+	LineNumber,
+	NumericValue,
+	CustomField2
+)
+VALUES
+(
+	'MedicalStorage',
+	'01',
+	'Dresing set dan alat steril disimpan dalam lemari dan terpisah dari alat non medis',
+	'',
+	1,
+	1,
+	GETDATE(),
+	'sci',
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL
+),
+(
+	'MedicalStorage',
+	'02',
+	'Alat dan bahan steril masih belum kadaluarsa (lihat tanggal dan kondisi)',
+	'',
+	1,
+	1,
+	GETDATE(),
+	'sci',
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL
+),
+(
+	'MedicalStorage',
+	'03',
+	'Alat medis bersih disimpan terbungkus/tertutup, bersih, kering terbebas dari debu',
+	'',
+	1,
+	1,
+	GETDATE(),
+	'sci',
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL
+),
+(
+	'MedicalStorage',
+	'04',
+	'Lemari es penyimpanan obat tidak tercampur dengan benda lain',
+	'',
+	1,
+	1,
+	GETDATE(),
+	'sci',
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL
+),
+(
+	'MedicalStorage',
+	'05',
+	'Suhu lemari es tempat penyimpanan obat dicatat setiap hari (suhu 2°-8°)',
+	'',
+	1,
+	1,
+	GETDATE(),
+	'sci',
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL
+)

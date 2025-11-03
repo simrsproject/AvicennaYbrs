@@ -1,0 +1,48 @@
+﻿@{ 
+    var rt = ViewBag.rt as QueueingRunningText;
+    var suColl = ViewBag.suColl as ServiceUnitCollection;
+}
+
+<div class="card card-outline card-primary">
+    <div class="card-header">
+        <h3 class="card-title"></h3>
+        <div class="float-right">
+            <button type="button" class="btn btn-outline-success btn-lg" title="Save" id="btnRnTxSave"
+                    onclick="javascript:RnTxSave(this);">
+                <i class='fas fa-save'></i>
+            </button>
+            <button type="button" class="btn btn-outline-danger btn-lg" title="Cancel" id="btnRnTxCancel"
+                    onclick="javascript:RnTxCancel(this);">
+                <i class='fas fa-times'></i>
+            </button>
+        </div>
+    </div>
+    <div class="card-body">
+        <form class="form-horizontal">
+            <div class="form-group row mx-0 my-0">
+                <label class="col-sm-4 px-0 py-0">Service Unit</label>
+                <div class="col-8 px-0 py-0">
+                    <input type="hidden" id="hdnRnTxID" value="@(rt.RunningTextID)" />
+                    <select id="cboRnTxServiceUnit" class="form-control select2bs4" style="width: 100%;">
+                        <option value=""></option>
+                        @{
+                            foreach (var su in suColl.OrderBy(s => s.ServiceUnitID))
+                            {
+                                <option value="@(su.ServiceUnitID)" @((rt.ServiceUnitID == su.ServiceUnitID) ? "selected" : "")>@(su.ServiceUnitName)</option>
+                            }
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row mx-0 my-0">
+                <label class="col-sm-4 px-0 py-0">Running Text</label>
+                <div class="col-8 px-0 py-0">
+                    <textarea class="form-control" id="txtRunningText" rows="3" maxlength="1000" required>@(rt.RunningText)</textarea>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script type="text/javascript">
+
+</script>

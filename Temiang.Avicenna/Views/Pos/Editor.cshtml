@@ -1,0 +1,374 @@
+﻿    <div class="row">
+        <!-- left column -->
+        <div class="col-md-12">
+            <!-- general form elements -->
+            <div class="card card-primary card-outline">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <h3 class="card-title"><span class='fa fa-lg fa-list-alt'></span> Form Order</h3>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="row float-right">
+                                &nbsp;
+                                <button type="button" class="btn btn-outline-primary btn-lg" onclick="javascript:ShowList();" title="Back"><i class='fa fa-arrow-left'></i></button> &nbsp;
+                                <button type="button" id="btnShowMenu" name="btnShowMenu" class="btn btn-outline-primary btn-lg" onclick="javascript:ShowItemList();" title="Refresh"><i class='fa fa-sync'></i></button> &nbsp;
+                                <button type="button" class="btn btn-outline-success btn-lg" onclick="javascript:SaveReg(this);" title="Save"><i class='fa fa-save'></i></button> &nbsp;
+                                <button type="button" id="btnApprove" name="btnApprove" class="btn btn-outline-warning btn-lg" onclick="javascript:Approve(this);" title="Approve"><i class='fa fa-check'></i></button>
+
+                                <div class="btn-group" id="divBtnPrint">
+                                    &nbsp;
+                                    <button id="btnPrintDD" type="button" class="btn btn-outline-primary" data-toggle="dropdown" disabled title="Print">
+                                        <span class='fa fa-print'></span>
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-right" role="menu">
+                                        <!--<a class="dropdown-item" href="#">Action</a>
+                                        <a class="dropdown-item" href="#">Another action</a>
+                                        <a class="dropdown-item" href="#">Something else here</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="#">Separated link</a>-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+                
+                <div class="card-body">
+                    <div class="row">
+                        <div id="divDtDetail" class="col-lg-6">
+                            <div class="card card-primary card-outline">
+                                <div class="card-header">
+                                    <h3 class="card-title"><span class='fas fa-list'></span> Item List </h3>
+                                    <div class="card-tools">
+                                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                            <i class="fas fa-minus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <table class="table table-bordered" id="dtItemList" width="100%" cellspacing="0">
+                                        <thead>
+                                            <tr>
+                                                <th>Item ID</th>
+                                                <th>Item Name</th>
+                                                <th></th>
+                                                <th></th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="card card-success card-outline">
+                                <div class="card-header" id="divHeaderTrans">
+                                    <div id="divRibbonPayment"></div>
+                                    <h3 class="card-title"><span class='fas fa-shopping-basket'></span> Transaction List</h3>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <form role="form" id="formEd">
+                                                <div class="row">
+                                                    <div class="col-2 px-0 py-0">
+                                                        <div class="form-group">
+                                                            <label for="txtTableNo">Table</label>
+                                                            <input type="text" class="form-control" id="txtTableNo" name="txtTableNo" placeholder="Enter table number" readonly>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6 px-0 py-0">
+                                                        <div class="form-group">
+                                                            <label for="txtCustomerName">Customer Name</label>
+                                                            <input type="text" class="form-control" id="txtCustomerName" name="txtCustomerName" placeholder="Enter customer name" readonly />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-4 px-0 py-0">
+                                                        <div class="form-group">
+                                                            <label for="txtBarcode">Barcode</label>
+                                                            <input type="text" class="form-control" id="txtBarcode" name="txtBarcode" placeholder="Scan Barcode" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12 px-0 py-0">
+                                            <table class="table table-bordered" id="dtDetail" width="100%" cellspacing="0">
+                                                <thead>
+                                                    <tr>
+                                                        <th></th>
+                                                        <th></th>
+                                                        <th></th>
+                                                        <th></th>
+                                                        <th></th>
+                                                        <th></th>
+                                                        <th></th>
+                                                    </tr>
+                                                </thead>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="row">
+                                                <div class="col-6 text-right">
+                                                    Sub total
+                                                </div>
+                                                <div class="col-6 text-right">
+                                                    <span id="spanSubTotal" class="number"></span>
+                                                </div>
+                                            </div>
+                                            <div id="divAddCharges">
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-6 text-right">
+                                                    Total
+                                                </div>
+                                                <div class="col-6 text-right">
+                                                    <span id="spanTotal" class="number"></span>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-6 text-right">
+                                                    <hr />
+                                                </div>
+                                                <div class="col-6 text-right">
+                                                    <hr />
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-6 text-right">
+                                                    Amount Received
+                                                </div>
+                                                <div class="col-6 text-right">
+                                                    <span id="spanAmountReceived" class="number">0</span>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-6 text-right">
+                                                    Change
+                                                </div>
+                                                <div class="col-6 text-right">
+                                                    <span id="spanChange" class="number">0</span>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-6 text-right">
+                                                    <hr />
+                                                </div>
+                                                <div class="col-6 text-right">
+                                                    <hr />
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-6 text-right">
+                                                    Remainning
+                                                </div>
+                                                <div class="col-6 text-right">
+                                                    <span id="spanRemainning" class="number">0</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-6 px-3 py-3">
+                                            <div class="card card-success card-outline">
+                                                <div class="card-header card-header-pills">
+                                                    <h5 class="card-title"><span class='fab fa-cc-mastercard'></span> Payment </h5>
+
+                                                    <button type="button" id="btnPaymentOpen" class="btn btn-outline-success fa-pull-right px-2 py-1" style="width:40px;" onclick="javascript: PaymentOpen(this);">
+                                                        <i class="fab fa-cc-mastercard"></i>
+                                                    </button>
+                                                    <button type="button" id="btnPaymentApproval" class="btn btn-outline-warning fa-pull-right py-1" style="width:40px; display:none;" onclick="javascript: PaymentApprove(this);">
+                                                        <i class="fas fa-check"></i>
+                                                    </button>
+                                                    <button type="button" id="btnPaymentVoid" class="btn btn-outline-danger fa-pull-right py-1" style="width:40px; display:none" onclick="javascript: PaymentVoid(this);">
+                                                        <i class="fas fa-times"></i>
+                                                    </button>
+
+                                                </div>
+                                                <div class="card-body">
+                                                    <div id="divPaymentList">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="divPayment" class="col-lg-6" style="display:none">
+                            <div class="card card-warning card-outline">
+                                <div class="card-header">
+                                    <h3 class="card-title"><span class='fab fa-cc-mastercard'></span> Payment </h3>
+                                    <div class="card-tools">
+                                        <button type="button" class="btn btn-tool btn-outline-danger" onclick="javascript: PaymentCancel();">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <form class="form-horizontal">
+                                    <div class="card-body">
+                                        <div class="form-group row mx-0 my-0">
+                                            <label class="col-sm-4 px-0 py-0">Payment Method</label>
+                                            <div class="col-8 px-0 py-0" id="divPaymentMethod">
+                                                @foreach (var pm in (PaymentMethodCollection)ViewBag.PaymentMethodColl)
+                                                {
+                                                    <div class="float-left">
+                                                        <input type="radio" name="rbPayMethod" value="@pm.SRPaymentMethodID" id="@pm.SRPaymentMethodID" @((pm.PaymentMethodName == "Cash") ? "checked" : "") />
+                                                        <label class="form-check-label" for="@pm.SRPaymentMethodID">@pm.PaymentMethodName</label><text>&nbsp; &nbsp;</text>
+                                                    </div>
+                                                }
+                                            </div>
+                                        </div>
+
+                                        <div id="divCardOptions" style="display:none">
+                                            <div class="form-group row mx-0 my-0">
+                                                <label class="col-sm-4 px-0 py-0">Card Provider</label>
+                                                <div class="col-sm-8 px-0 py-0">
+                                                    <div class="input-group input-group-sm">
+                                                        <input type="text" class="form-control" id="txtCardProvider" disabled />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row mx-0 my-0">
+                                                <label class="col-sm-4 px-0 py-0">Card Type</label>
+                                                <div class="col-sm-8 px-0 py-0">
+                                                    <div class="input-group input-group-sm">
+                                                        <input type="text" class="form-control" id="txtCardType" disabled />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row mx-0 my-0">
+                                                <label class="col-sm-4 px-0 py-0">EDC</label>
+                                                <div class="col-sm-8 px-0 py-0">
+                                                    <div class="input-group input-group-sm">
+                                                        <input type="text" class="form-control" id="txtEdc" disabled />
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div id="divCardNo" style="display:none">
+                                            <div class="form-group row mx-0 my-0">
+                                                <label class="col-sm-4 px-0 py-0">CardNo</label>
+                                                <div class="col-sm-8 px-0 py-0">
+                                                    <div class="input-group input-group-sm">
+                                                        <input type="text" class="form-control" id="txtCardNo" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="divDiscReason" style="display:none">
+                                            <div class="form-group row mx-0 my-0">
+                                                <label class="col-sm-4 px-0 py-0">Discount Reason</label>
+                                                <div class="col-sm-8 px-0 py-0">
+                                                    <div class="input-group input-group-sm">
+                                                        <input type="text" class="form-control" id="txtDiscReason" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="divBank" style="display:none">
+                                            <div class="form-group row mx-0 my-0">
+                                                <label class="col-sm-4 px-0 py-0">Bank</label>
+                                                <div class="col-sm-8 px-0 py-0">
+                                                    <div class="input-group input-group-sm">
+                                                        <input type="text" class="form-control" id="txtBankTransfer" disabled />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row mx-0 my-0">
+                                            <label class="col-sm-4 px-0 py-0">Amount Received</label>
+                                            <div class="col-sm-8 px-0 py-0">
+                                                <div class="input-group input-group-sm">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text">Rp.</span>
+                                                    </div>
+                                                    <input type="text" class="form-control" id="txtAmountReceived" />
+                                                    <span class="input-group-append">
+                                                        <button type="button" class="btn btn-outline-danger btn-flat" onclick="javascript:PaymentSet('')"><i class="fas fa-times"></i></button>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row mx-0 my-0">
+                                            <label class="col-sm-4 px-0 py-0">Change</label>
+                                            <div class="col-sm-8 px-0 py-0">
+                                                <div class="input-group input-group-sm">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text">Rp.</span>
+                                                    </div>
+                                                    <input type="text" class="form-control" id="txtChange" disabled />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-4 text-center" id="divQuickCash">
+                                            <button type="button" class="btn btn-outline-success">
+                                                <i class="fab fa-cc-mastercard"></i>100
+                                            </button>
+                                        </div>
+                                        <div class="col-8">
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <button type="button" class="btn btn-outline-success btnKeyIn" onclick="javascript:PaymentSetKeyIn('1')">1</button>
+                                                    <button type="button" class="btn btn-outline-success btnKeyIn" onclick="javascript:PaymentSetKeyIn('2')">2</button>
+                                                    <button type="button" class="btn btn-outline-success btnKeyIn" onclick="javascript:PaymentSetKeyIn('3')">3</button>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <button type="button" class="btn btn-outline-success btnKeyIn" onclick="javascript:PaymentSetKeyIn('4')">4</button>
+                                                    <button type="button" class="btn btn-outline-success btnKeyIn" onclick="javascript:PaymentSetKeyIn('5')">5</button>
+                                                    <button type="button" class="btn btn-outline-success btnKeyIn" onclick="javascript:PaymentSetKeyIn('6')">6</button>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <button type="button" class="btn btn-outline-success btnKeyIn" onclick="javascript:PaymentSetKeyIn('7')">7</button>
+                                                    <button type="button" class="btn btn-outline-success btnKeyIn" onclick="javascript:PaymentSetKeyIn('8')">8</button>
+                                                    <button type="button" class="btn btn-outline-success btnKeyIn" onclick="javascript:PaymentSetKeyIn('9')">9</button>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <button type="button" class="btn btn-outline-success btnKeyIn" onclick="javascript:PaymentSetKeyIn('0')">0</button>
+                                                    <button type="button" class="btn btn-outline-success btnKeyIn" onclick="javascript:PaymentSetKeyIn('00')">00</button>
+                                                    <button type="button" class="btn btn-outline-success btnKeyIn" onclick="javascript:PaymentSetKeyIn('000')">000</button>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <button type="button" class="btn btn-outline-danger btnKeyIn" onclick="javascript:PaymentSet('')">Clear</button>
+                                                    <button type="button" class="btn btn-outline-success btnKeyIn" onclick="javascript:PaymentSetKeyIn('.')">.</button>
+                                                    <button type="button" class="btn btn-outline-danger btnKeyIn" onclick="javascript:PaymentRemoveLast()">Del</button>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <button type="button" class="btn btn-outline-danger btnKeyIn" onclick="javascript:PaymentSet('%')">%</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12 px-3 py-3">
+                                            <button type="button" class="btn btn-outline-success fa-pull-right" onclick="javascript: PaymentSave(this)">
+                                                <i class="fas fa-save"></i> Save
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

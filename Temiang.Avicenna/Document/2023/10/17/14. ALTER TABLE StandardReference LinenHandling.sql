@@ -1,0 +1,153 @@
+INSERT INTO AppStandardReference
+(
+	StandardReferenceID,
+	StandardReferenceName,
+	ItemLength,
+	IsUsedBySystem,
+	IsActive,
+	StandardReferenceGroup,
+	Note,
+	LastUpdateDateTime,
+	LastUpdateByUserID,
+	HasCOA,
+	IsNumericValue
+)
+VALUES
+(
+	'LinenHandling',
+	'Linen Handling',
+	'20',
+	1,
+	1,
+	'PMKP',
+	'',
+	GETDATE(),
+	'sci',
+	NULL,
+	NULL
+)
+
+--Insert AppStandardReferenceItem LinenHandling--
+
+INSERT INTO AppStandardReferenceItem
+(
+	StandardReferenceID,
+	ItemID,
+	ItemName,
+	Note,
+	IsUsedBySystem,
+	IsActive,
+	LastUpdateDateTime,
+	LastUpdateByUserID,
+	ReferenceID,
+	coaID,
+	subledgerID,
+	CustomField,
+	LineNumber,
+	NumericValue,
+	CustomField2
+)
+VALUES
+(
+	'LinenHandling',
+	'01',
+	'Linen bersih disimpan dalam lemari tertutup',
+	'',
+	1,
+	1,
+	GETDATE(),
+	'sci',
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL
+),
+(
+	'LinenHandling',
+	'02',
+	'Linen yang disimpan di luar lemari dalam kondisi dibungkus plastic',
+	'',
+	1,
+	1,
+	GETDATE(),
+	'sci',
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL
+),
+(
+	'LinenHandling',
+	'03',
+	'Tersedia troli linen yang bersih dan baik',
+	'',
+	1,
+	1,
+	GETDATE(),
+	'sci',
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL
+),
+(
+	'LinenHandling',
+	'04',
+	'Tersedia ember untuk pengangkutan',
+	'',
+	1,
+	1,
+	GETDATE(),
+	'sci',
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL
+),
+(
+	'LinenHandling',
+	'05',
+	'Tersedia ember khusus untuk linen infeksius yang tertutup dalam kondisi baik',
+	'',
+	1,
+	1,
+	GETDATE(),
+	'sci',
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL
+),
+(
+	'LinenHandling',
+	'06',
+	'Petugas menggunakan APD dalam menangani linen kotor',
+	'',
+	1,
+	1,
+	GETDATE(),
+	'sci',
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL
+)
+

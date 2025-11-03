@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report DataSourceName="sqlDataSource1" Width="2.992in" Name="userReport1" Zoom="2" ShowSnapGrid="True" xmlns="http://schemas.telerik.com/reporting/2019/2.0">
+  <Style TextAlign="Center" VerticalAlign="Middle">
+    <Font Name="Tahoma" Size="8pt" />
+  </Style>
+  <DataSources>
+    <SqlDataSource QueryDesignerState="null" ParameterValues="{&quot;@p_RegistrationNo&quot;:&quot;REG/IP/200226-0001&quot;}" ConnectionString="RSITRAIN4" SelectCommand="sprpt_RschRegistrationLabel" SelectCommandType="StoredProcedure" Name="sqlDataSource1">
+      <Parameters>
+        <SqlDataSourceParameter DbType="AnsiString" Name="@p_RegistrationNo">
+          <Value>
+            <String>REG/IP/200226-0001</String>
+          </Value>
+        </SqlDataSourceParameter>
+      </Parameters>
+    </SqlDataSource>
+  </DataSources>
+  <Items>
+    <DetailSection Height="0.052in" Name="detailSection1">
+      <Style Visible="False" />
+    </DetailSection>
+    <PageFooterSection Height="0.042in" Name="pageFooterSection1">
+      <Style Visible="False" />
+    </PageFooterSection>
+    <ReportHeaderSection Height="0.9in" Name="reportHeaderSection1">
+      <Items>
+        <TextBox Width="0.45in" Height="0.15in" Left="0.05in" Top="0.2in" Value="No. RM" Name="textBox2">
+          <Style TextAlign="Left" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="7pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.108in" Height="0.15in" Left="0.5in" Top="0.2in" Value=":" Name="textBox1">
+          <Style TextAlign="Left" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="7pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1.509in" Height="0.15in" Left="0.608in" Top="0.2in" Value="=Fields.MedicalNo + ' / ' + RegistrationNo" Name="textBox11">
+          <Style TextAlign="Left" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="7pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="2.067in" Height="0.15in" Left="0.05in" Top="0.05in" Value="= Fields.PatientName" Name="textBox13">
+          <Style TextAlign="Left" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="7pt" Bold="True" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.875in" Height="0.15in" Left="2.117in" Top="0.2in" Value="= Fields.DateOfBirth" Format="{0:dd/MM/yyyy}" Name="textBox10">
+          <Style VerticalAlign="Middle">
+            <Font Size="7pt" />
+          </Style>
+        </TextBox>
+        <Barcode Width="1.492in" Height="0.25in" Left="1.5in" Top="0.65in" Value="= Fields.MedicalNo" Module="1pt" BarAlign="Center" Name="barcode1">
+          <Style VerticalAlign="Top">
+            <Font Size="7pt" />
+          </Style>
+          <Encoder>
+            <Code128Encoder ShowText="False" />
+          </Encoder>
+        </Barcode>
+        <TextBox Width="0.875in" Height="0.15in" Left="2.117in" Top="0.05in" Value="= Fields.Age" Name="textBox14">
+          <Style VerticalAlign="Middle">
+            <Font Size="7pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="2.942in" Height="0.15in" Left="0.05in" Top="0.35in" Value="= Fields.ParamedicName" Name="textBox5">
+          <Style TextAlign="Left" VerticalAlign="Middle">
+            <Font Size="7pt" Bold="True" />
+          </Style>
+        </TextBox>
+        <TextBox Width="2.942in" Height="0.15in" Left="0.05in" Top="0.5in" Value="= Fields.GuarantorName" Name="textBox3">
+          <Style TextAlign="Left">
+            <Font Size="7pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1.45in" Height="0.25in" Left="0.05in" Top="0.65in" Value="= Fields.ClassName + ' / ' + RoomName" Name="textBox4">
+          <Style TextAlign="Left" VerticalAlign="Middle">
+            <Font Size="7pt" />
+          </Style>
+        </TextBox>
+      </Items>
+    </ReportHeaderSection>
+  </Items>
+  <PageSettings PaperKind="Custom" PaperSize="7.8cm, 2.7cm" Landscape="False" ColumnCount="1" ColumnSpacing="0in" ContinuousPaper="False">
+    <Margins>
+      <MarginsU Left="0.2cm" Right="0in" Top="0.1cm" Bottom="0in" />
+    </Margins>
+  </PageSettings>
+  <StyleSheet>
+    <StyleRule>
+      <Style>
+        <Padding Left="2pt" Right="2pt" />
+      </Style>
+      <Selectors>
+        <TypeSelector Type="TextItemBase" />
+        <TypeSelector Type="HtmlTextBox" />
+      </Selectors>
+    </StyleRule>
+  </StyleSheet>
+</Report>

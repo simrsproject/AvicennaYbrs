@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report DataSourceName="sqlDataSource1" Width="2.6in" UnitOfMeasure="Cm" Name="userReport1" xmlns="http://schemas.telerik.com/reporting/2012/2">
+  <DataSources>
+    <SqlDataSource ConnectionString="Data Source=128.129.130.26;Initial Catalog=RSMM_LIVE;User ID=avicenna;Password=Sciadmin88" ProviderName="System.Data.SqlClient" SelectCommand="xml_DistributionSnack" SelectCommandType="StoredProcedure" Name="sqlDataSource1">
+      <Parameters>
+        <SqlDataSourceParameter DbType="DateTime" Name="@p_Date">
+          <Value>
+            <String>1/16/2019</String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="AnsiString" Name="@p_Amount">
+          <Value>
+            <String>14</String>
+          </Value>
+        </SqlDataSourceParameter>
+      </Parameters>
+    </SqlDataSource>
+  </DataSources>
+  <Items>
+    <DetailSection PageBreak="None" Height="1.7in" Name="detailSection1">
+      <Style Visible="True">
+        <BorderStyle Default="None" Top="None" Bottom="None" />
+      </Style>
+      <Items>
+        <TextBox Value="=ServiceUnitName+'/' +ClassName" CanGrow="False" Size="4.31779963372311cm, 1.01589984865467cm" Location="0.00010012308484875cm, 0.00010012308478013cm" Name="textBox24">
+          <Style TextAlign="Left" VerticalAlign="Middle">
+            <BorderStyle Top="Solid" Left="Solid" Right="None" />
+            <Font Name="Tahoma" Size="12pt" />
+          </Style>
+        </TextBox>
+        <TextBox Value="=Jam" CanGrow="False" Size="1.77790117263794cm, 0.761899590492249cm" Location="4.82599973678589cm, 3.55620014725764cm" Name="textBox25">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <BorderStyle Bottom="Solid" Left="None" Right="Solid" />
+            <Font Name="Tahoma" Size="13pt" />
+          </Style>
+        </TextBox>
+        <TextBox Value="=Fields.PatientName" CanGrow="False" Size="6.60379892418149cm, 1.26980020297129cm" Location="0.00010044606460724cm, 1.01619989493132cm" Name="textBox26">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <BorderStyle Left="Solid" Right="Solid" />
+            <Font Name="Tahoma" Size="13pt" Underline="True" />
+          </Style>
+        </TextBox>
+        <TextBox Value="=DietID" CanGrow="False" Size="6.60379934310913cm, 2.03169973571341cm" Location="0cm, 2.28620018258333cm" Name="textBox1">
+          <Style TextAlign="Center" VerticalAlign="Top">
+            <BorderStyle Bottom="Solid" Left="Solid" Right="Solid" />
+            <Font Name="Tahoma" Size="13pt" />
+            <Padding Top="1mm" />
+          </Style>
+        </TextBox>
+        <TextBox Value="=Fields.Tgl" Format="{0:d/MM/yyyy}" Size="2.28569956715943cm, 1.01589984865467cm" Location="4.31810000297745cm, 0.00010012308484875cm" Name="textBox2">
+          <Style VerticalAlign="Middle">
+            <BorderStyle Top="Solid" Left="None" Right="Solid" />
+            <Font Name="Tahoma" Size="12pt" />
+          </Style>
+        </TextBox>
+      </Items>
+    </DetailSection>
+  </Items>
+  <StyleSheet>
+    <StyleRule>
+      <Style>
+        <Padding Left="2pt" Right="2pt" />
+      </Style>
+      <Selectors>
+        <TypeSelector Type="TextItemBase" />
+        <TypeSelector Type="HtmlTextBox" />
+      </Selectors>
+    </StyleRule>
+  </StyleSheet>
+  <PageSettings>
+    <PageSettings PaperKind="Custom" PaperSize="2.59999990463257in, 13in" Landscape="False">
+      <Margins>
+        <MarginsU Left="0mm" Right="0in" Top="0in" Bottom="0in" />
+      </Margins>
+    </PageSettings>
+  </PageSettings>
+  <Sortings>
+    <Sorting Expression="=Fields.ServiceUnitName" Direction="Asc" />
+    <Sorting Expression="=Fields.ClassName" Direction="Asc" />
+  </Sortings>
+</Report>

@@ -1,0 +1,333 @@
+@font-face {
+    font-family: 'GoldPlay'; /*a name to be used later*/
+    src: url(../font/goldplay-medium.otf);
+}
+
+body{
+    background-color: #1f2650;color:white;
+}
+.top-header-section-card {
+    min-height: 198px;
+    padding-left: 1450px;
+    padding-top: 1px;
+}
+.top-box-section-card {
+    min-height: 400px;
+    
+}
+
+.top-box-content-section-card{
+    height: 450px;
+    border: 2px solid;
+    border-color: #F8AC27;
+    border-radius:25px;
+   
+}
+.top-box-content-header-section-card{
+    height: 100px;
+    display: flex;
+    align-items: center; /* Vertical */
+    justify-content: center; /* Horizontal */
+   
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+}
+
+.top-box-content-body-section-card{
+
+    font-size: 52px;
+    font-weight: 700;
+    font-family: sans-serif;
+    font-style:normal;
+    font-weight: 700;
+    display: flex;
+    color: #1f2650;
+    align-items: center; /* Vertical */
+    justify-content: center; /* Horizontal */
+}
+
+.bottom-box-section-card {
+    min-height: 300px;
+}
+
+.bottom-box-content-section-card{
+    height: 300px;
+    border: 2px solid;
+    border-color: #F8AC27;
+    border-radius:25px;
+    
+}
+
+.bottom-box-content-header-section-card{
+    height: 70px;
+    display: flex;
+    align-items: center; /* Vertical */
+    justify-content: center; /* Horizontal */
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    font-family: sans-serif;
+    font-size: 38px;
+    font-style:normal;
+    font-weight: 700;
+    color: #1f2650;
+}
+
+.bottom-box-body-header-section-card{
+    width: 100%;
+    height: 200px;
+    display: flex;
+    font-family: sans-serif;
+    font-size: 100px;
+    font-weight:900;
+    align-items: center; /* Vertical */
+    justify-content: center; /* Horizontal */
+}
+
+
+.footer-section {
+    min-height:75px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+
+.top-box-content-number-body-section-card{
+    display: flex;
+    font-family: sans-serif;
+    font-size: 200px;
+    font-weight:900;
+    align-items: center; /* Vertical */
+    justify-content: center; /* Horizontal */
+}
+
+
+.footer-content{
+    height:75px;
+}
+.footer-content-left{
+    width:300px;
+    display: flex;
+    align-items: center; /* Vertical */
+    justify-content: center; /* Horizontal */
+    background-image: url(../images/footer_left.png);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    font-family: sans-serif;
+    font-size: 44px;
+    color: #1f2650;
+    font-weight:700;
+}
+.footer-content-right{
+    width:1620px;
+    display: flex;
+    align-items: center; /* Vertical */
+    justify-content: start; /* Horizontal */
+    background-image: url(../images/footer_right_new.png);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    font-family: sans-serif;
+    font-size: 44px;
+    color:white;
+    font-weight:300;
+}
+.marquee-parent {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  height: 30px;
+}
+.marquee-child {
+  display: block;
+  width: 147px;
+  /* width of your text div */
+  height: 30px;
+  /* height of your text div */
+  position: absolute;
+  animation: marquee 5s linear infinite; /* change 5s value to your desired speed */
+}
+.marquee-child:hover {
+  animation-play-state: paused;
+  cursor: pointer;
+}
+@keyframes marquee {
+  0% {
+    left: 100%;
+  }
+  100% {
+    left: -147px /* same as your text width */
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    /* Show 4th slide on md  if col-md-4*/
+        .carousel-inner .active.col-md-4.carousel-item + .carousel-item + .carousel-item + .carousel-item {
+            position: absolute;
+            top: 0;
+            right: -33.3333%;  /*change this with javascript in the future*/
+            z-index: -1;
+            display: block;
+            visibility: visible;
+        }
+    }
+    @media (min-width: 576px) and (max-width: 768px) {
+    /* Show 3rd slide on sm  if col-sm-6*/
+        .carousel-inner .active.col-sm-6.carousel-item + .carousel-item + .carousel-item {
+            position: absolute;
+            top: 0;
+            right: -50%;  /*change this with javascript in the future*/
+            z-index: -1;
+            display: block;
+            visibility: visible;
+        }
+    }
+    @media (min-width: 576px) {
+        .carousel-item {
+            margin-right: 0;
+        }
+        /* show 2 items */
+        .carousel-inner .active + .carousel-item {
+            display: block;
+        }
+        .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left),
+        .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item {
+            transition: none;
+        }
+        .carousel-inner .carousel-item-next {
+        position: relative;
+        transform: translate3d(0, 0, 0);
+        }
+        /* left or forward direction */
+        .active.carousel-item-left + .carousel-item-next.carousel-item-left,
+        .carousel-item-next.carousel-item-left + .carousel-item,
+        .carousel-item-next.carousel-item-left + .carousel-item + .carousel-item {
+            position: relative;
+            transform: translate3d(-100%, 0, 0);
+            visibility: visible;
+        }
+        /* farthest right hidden item must be abso position for animations */
+        .carousel-inner .carousel-item-prev.carousel-item-right {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            display: block;
+            visibility: visible;
+        }
+        /* right or prev direction */
+        .active.carousel-item-right + .carousel-item-prev.carousel-item-right,
+        .carousel-item-prev.carousel-item-right + .carousel-item,
+        .carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item {
+            position: relative;
+            transform: translate3d(100%, 0, 0);
+            visibility: visible;
+            display: block;
+            visibility: visible;
+        }
+    }
+    /*MD*/
+    @media (min-width: 768px) {
+        /* show 3rd of 3 item slide */
+    .carousel-inner .active + .carousel-item + .carousel-item {
+            display: block;
+        }
+        .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item + .carousel-item {
+            transition: none;
+        }
+        .carousel-inner .carousel-item-next {
+        position: relative;
+        transform: translate3d(0, 0, 0);
+        }
+        /* left or forward direction */
+        .carousel-item-next.carousel-item-left + .carousel-item + .carousel-item + .carousel-item {
+            position: relative;
+            transform: translate3d(-100%, 0, 0);
+            visibility: visible;
+        }
+        /* right or prev direction */
+        .carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item + .carousel-item {
+            position: relative;
+            transform: translate3d(100%, 0, 0);
+            visibility: visible;
+            display: block;
+            visibility: visible;
+        }
+    }
+    /*LG */
+    @media (min-width: 991px) {
+        /* show 4th item */
+        .carousel-inner .active + .carousel-item + .carousel-item + .carousel-item {
+            display: block;
+        }
+        .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item + .carousel-item + .carousel-item {
+            transition: none;
+        }
+        /* Show 5th slide on lg if col-lg-3 */
+        .carousel-inner .active.col-lg-3.carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item {
+            position: absolute;
+            top: 0;
+            right: -25%;  /*change this with javascript in the future*/
+            z-index: -1;
+            display: block;
+            visibility: visible;
+        }
+        /* left or forward direction */
+        .carousel-item-next.carousel-item-left + .carousel-item + .carousel-item + .carousel-item + .carousel-item {
+            position: relative;
+            transform: translate3d(-100%, 0, 0);
+            visibility: visible;
+        }
+        /* right or prev direction //t - previous slide direction last item animation fix */
+        .carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item + .carousel-item + .carousel-item {
+            position: relative;
+            transform: translate3d(100%, 0, 0);
+            visibility: visible;
+            display: block;
+            visibility: visible;
+        }
+    }
+    /*LG 6th  -  if you want a carousel with 6 slides */
+    @media (min-width: 991px) {
+            /* show 5th and 6th item */
+    /*   .carousel-inner .active + .carousel-item + .carousel-item + .carousel-item + .carousel-item,
+    .carousel-inner .active + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item {
+            display: block;
+        }
+        .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item + .carousel-item + .carousel-item + .carousel-item,
+    .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item {
+        transition: none;
+        }
+    */
+    /*show 7th slide for animation when its a 6 slides carousel */
+    /*      .carousel-inner .active.carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item  + .carousel-item {
+            position: absolute;
+            top: 0;
+            right: -16.666666666%;
+            z-index: -1;
+            display: block;
+            visibility: visible;
+    }
+    */
+        /* forward direction > */
+    /*   .carousel-item-next.carousel-item-left + .carousel-item + .carousel-item + .carousel-item + .carousel-item,
+    .carousel-item-next.carousel-item-left + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item {
+            position: relative;
+            transform: translate3d(-100%, 0, 0);
+            visibility: visible;
+        }
+    */
+        /* prev direction < last item animation fix */
+    /*   .carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item,
+        .carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item {
+            position: relative;
+            transform: translate3d(100%, 0, 0);
+            visibility: visible;
+            display: block;
+            visibility: visible;
+        }
+    */
+}

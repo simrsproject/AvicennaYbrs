@@ -1,0 +1,16 @@
+INSERT INTO RlMasterReportItemV2025 VALUES(11,N'01',N'1',N'Tumpatan Gigi Tetap','',1,'','2013-03-04T11:12:50.417',N'sci');
+INSERT INTO RlMasterReportItemV2025 VALUES(11,N'02',N'2',N'Tumpatan Gigi Sulung','',1,'','2013-03-04T11:12:50.417',N'sci');
+INSERT INTO RlMasterReportItemV2025 VALUES(11,N'03',N'3',N'Pengobatan Pulpa','',1,'','2013-03-04T11:12:50.417',N'sci');
+INSERT INTO RlMasterReportItemV2025 VALUES(11,N'04',N'4',N'Pencabutan Gigi Tetap','',1,'','2013-03-04T11:12:50.417',N'sci');
+INSERT INTO RlMasterReportItemV2025 VALUES(11,N'05',N'5',N'Pencabutan Gigi Sulung','',1,'','2013-03-04T11:12:50.417',N'sci');
+INSERT INTO RlMasterReportItemV2025 VALUES(11,N'06',N'6',N'Pengobatan Periodontal','',1,'','2013-03-04T11:12:50.417',N'sci');
+INSERT INTO RlMasterReportItemV2025 VALUES(11,N'07',N'7',N'Pengobatan Abses','',1,'','2013-03-04T11:12:50.417',N'sci');
+INSERT INTO RlMasterReportItemV2025 VALUES(11,N'08',N'8',N'Pembersihan Karang Gigi','',1,'','2013-03-04T11:12:50.417',N'sci');
+INSERT INTO RlMasterReportItemV2025 VALUES(11,N'09',N'9',N'Prothese Lengkap','',1,'','2013-03-04T11:12:50.417',N'sci');
+INSERT INTO RlMasterReportItemV2025 VALUES(11,N'10',N'10',N'Prothese Sebagian','',1,'','2013-03-04T11:12:50.417',N'sci');
+INSERT INTO RlMasterReportItemV2025 VALUES(11,N'11',N'11',N'Prothese Cekat','',1,'','2013-03-04T11:12:50.417',N'sci');
+INSERT INTO RlMasterReportItemV2025 VALUES(11,N'12',N'12',N'Orthodonti','',1,'','2013-03-04T11:12:50.417',N'sci');
+INSERT INTO RlMasterReportItemV2025 VALUES(11,N'13',N'13',N'Jacket/Bridge','',1,'','2013-03-04T11:12:50.417',N'sci');
+INSERT INTO RlMasterReportItemV2025 VALUES(11,N'14',N'14',N'Bedah Mulut','',1,'','2013-03-04T11:12:50.417',N'sci');
+INSERT INTO RlMasterReportItemV2025 VALUES(11,N'15',N'15',N'Implan Gigi','',1,'','2013-03-04T11:12:50.417',N'sci');
+INSERT INTO RlMasterReportItemV2025 VALUES(11,N'16',N'16',N'Penyakit Mulut','',1,'','2013-03-04T11:12:50.417',N'sci');

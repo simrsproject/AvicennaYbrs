@@ -1,0 +1,12 @@
+﻿<div class="form-group row mx-0 my-0">
+    <label class="col-sm-4 px-0 py-0">Bank</label>
+    <div class="col-8 px-0 py-0" id="divBanks">
+        @foreach (var bk in (BankCollection)ViewBag.BankColl)
+        {
+            <div class="float-left">
+                <input type="radio" name="rbBank" value="@bk.BankID.Replace(".", "_")" id="@bk.BankID" ) />
+                <label id="lblbk_@bk.BankID.Replace(".", "_")" class="form-check-label" for="bk_@bk.BankID">@bk.BankName</label>
+            </div>
+        }
+    </div>
+</div>

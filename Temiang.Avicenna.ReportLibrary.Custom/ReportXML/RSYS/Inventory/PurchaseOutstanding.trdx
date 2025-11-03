@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report DataSourceName="sqlDataSource1" Width="8.26767730712891in" Name="userReport1" xmlns="http://schemas.telerik.com/reporting/2012/2">
+  <Style Color="Black" />
+  <DataSources>
+    <SqlDataSource ConnectionString="Data Source=192.168.80.2;Initial Catalog=RSSMCB_LIVE;Persist Security Info=True;User ID=sa;Password=p@ssw0rd" ProviderName="System.Data.SqlClient" SelectCommand="sprpt_PoOutstanding" SelectCommandType="StoredProcedure" Name="sqlDataSource1">
+      <Parameters>
+        <SqlDataSourceParameter DbType="DateTime" Name="@p_FromDate">
+          <Value>
+            <String>01-27-2018</String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="DateTime" Name="@p_ToDate">
+          <Value>
+            <String>01-29-2018</String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="AnsiString" Name="@p_UserID">
+          <Value>
+            <String></String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="AnsiString" Name="@p_ServiceUnitID">
+          <Value>
+            <String></String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="AnsiString" Name="@p_SupplierID">
+          <Value>
+            <String></String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="AnsiString" Name="@p_ItemType">
+          <Value>
+            <String>11</String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="AnsiString" Name="@p_ItemID">
+          <Value>
+            <String></String>
+          </Value>
+        </SqlDataSourceParameter>
+      </Parameters>
+    </SqlDataSource>
+  </DataSources>
+  <Items>
+    <DetailSection Height="0.202140172322591in" Name="detailSection1">
+      <Style Visible="True" />
+      <Items>
+        <TextBox Value="=RowNumber()" Size="0.367486596107483in, 0.199999491373698in" Location="0.00003941853841146in, 0in" Name="textBox8">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <BorderStyle Default="None" Top="None" Bottom="None" />
+            <BorderWidth Default="0.5pt" />
+            <Font Name="Arial" Size="7pt" Bold="False" />
+          </Style>
+        </TextBox>
+        <TextBox Value="=Fields.TransactionDate" Format="{0:dd MMM yyyy}" Size="0.632434368133545in, 0.200000127156576in" Location="0.367604732513428in, 0.00214004516601563in" Name="textBox9">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Size="7pt" />
+          </Style>
+        </TextBox>
+        <TextBox Value="=Fields.TransactionNo" Size="1.19996039072673in, 0.200000127156576in" Location="1.0000786781311in, 0in" Name="textBox11">
+          <Style VerticalAlign="Middle">
+            <Font Size="7pt" />
+          </Style>
+        </TextBox>
+        <TextBox Value="=Fields.ItemID" Size="0.800000508626302in, 0.200000127156576in" Location="2.20003859202067in, 0in" Name="textBox14">
+          <Style VerticalAlign="Middle">
+            <Font Size="7pt" />
+          </Style>
+        </TextBox>
+        <TextBox Value="=Fields.ItemName" Size="2.31902154286702in, 0.200000127156576in" Location="3.0001179377238in, 0in" Name="textBox15">
+          <Style VerticalAlign="Middle">
+            <Font Size="7pt" />
+          </Style>
+        </TextBox>
+        <TextBox Value="=Fields.Price" Format="{0:N2}" Size="0.96999994913737in, 0.200000127156576in" Location="5.31921815872192in, 0in" Name="textBox16">
+          <Style TextAlign="Right" VerticalAlign="Middle">
+            <Font Size="7pt" />
+          </Style>
+        </TextBox>
+        <TextBox Value="=Quantity-QtyGet" Format="{0:N0}" Size="0.46999979019165in, 0.197859446207682in" Location="7.22945467631022in, 0in" Name="textBox17">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <BorderStyle Default="None" Left="None" />
+            <BorderWidth Default="0.5pt" />
+            <Font Name="Arial" Size="7pt" Bold="False" />
+          </Style>
+        </TextBox>
+        <TextBox Value="=Quantity" Format="{0:N0}" Size="0.46999979019165in, 0.197859446207682in" Location="6.28929710388184in, 0in" Name="textBox18">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <BorderStyle Default="None" Left="None" />
+            <BorderWidth Default="0.5pt" />
+            <Font Name="Arial" Size="7pt" Bold="False" />
+          </Style>
+        </TextBox>
+        <TextBox Value="=SRItemUnit" Format="{0:N2}" Size="0.568104684352875in, 0.197859446207682in" Location="7.69953346252441in, 0in" Name="textBox19">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <BorderStyle Default="None" Left="None" />
+            <BorderWidth Default="0.5pt" />
+            <Font Name="Arial" Size="7pt" Bold="False" />
+            <Padding Left="1mm" />
+          </Style>
+        </TextBox>
+        <TextBox Value="=QtyGet" Format="{0:N0}" Size="0.46999979019165in, 0.197859446207682in" Location="6.75937589009603in, 0in" Name="textBox35">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <BorderStyle Default="None" Left="None" />
+            <BorderWidth Default="0.5pt" />
+            <Font Name="Arial" Size="7pt" Bold="False" />
+          </Style>
+        </TextBox>
+      </Items>
+    </DetailSection>
+    <PageFooterSection Height="0.199999809265137in" Name="pageFooterSection1">
+      <Style Color="Black" />
+      <Items>
+        <TextBox Value="=Now()" Format="Avicenna HIS, Print Date : {0:dd-MM-yyyy HH:mm}" Size="2.95499038696289in, 0.199960708618164in" Location="0.125in, 0in" Name="textBox53">
+          <Style TextAlign="Left" VerticalAlign="Middle">
+            <BorderStyle Default="None" Left="None" />
+            <BorderWidth Default="0.5pt" />
+            <Font Name="Tahoma" Size="8pt" Italic="True" />
+            <Padding Left="1mm" Right="0.100000001490116in" />
+          </Style>
+        </TextBox>
+        <TextBox Value="='Page : ' + PageNumber +' / '+ PageCount" Size="3.32055346171061in, 0.199999809265137in" Location="4.84375in, 0in" Name="textBox22">
+          <Style TextAlign="Right">
+            <Font Size="8pt" Italic="True" />
+          </Style>
+        </TextBox>
+      </Items>
+    </PageFooterSection>
+    <ReportHeaderSection Height="1.59999990463257in" Name="reportHeaderSection1">
+      <Style Color="Black" />
+      <Items>
+        <TextBox Value="Laporan Pemesanan Barang Belum Terpenuhi" Size="8.26763788859049in, 0.199999968210856in" Location="0in, 0.899999936421712in" Name="textBox1">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Size="12pt" Bold="True" />
+          </Style>
+        </TextBox>
+        <TextBox Value="=Fields.ItemType" Size="8.26759847005208in, 0.200000047683716in" Location="0.00003941853841146in, 1.10007882118225in" Name="textBox2">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Bold="True" />
+          </Style>
+        </TextBox>
+        <TextBox Value="=Fields.Periode" Size="8.26759847005208in, 0.200000127156576in" Location="0.00003941853841146in, 1.30015786488851in" Name="textBox23">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Size="9pt" Bold="True" />
+          </Style>
+        </TextBox>
+      </Items>
+    </ReportHeaderSection>
+    <ReportFooterSection Height="0.970872561136881in" Name="reportFooterSection1">
+      <Items>
+        <TextBox Value="Pembuat Laporan" Size="2.79999995231628in, 0.199999809265137in" Location="5.20000076293945in, 0in" Name="textBox21">
+          <Style TextAlign="Center">
+            <Font Size="8pt" />
+          </Style>
+        </TextBox>
+        <TextBox Value="=UserName" Size="2.79999995231628in, 0.199999809265137in" Location="5.20000076293945in, 0.770872751871745in" Name="TxtUser">
+          <Style TextAlign="Center">
+            <Font Size="8pt" />
+          </Style>
+        </TextBox>
+      </Items>
+    </ReportFooterSection>
+  </Items>
+  <StyleSheet>
+    <StyleRule>
+      <Style>
+        <Padding Left="2pt" Right="2pt" />
+      </Style>
+      <Selectors>
+        <TypeSelector Type="TextItemBase" />
+        <TypeSelector Type="HtmlTextBox" />
+      </Selectors>
+    </StyleRule>
+  </StyleSheet>
+  <PageSettings>
+    <PageSettings PaperKind="A4" Landscape="False">
+      <Margins>
+        <MarginsU Left="0in" Right="0in" Top="0in" Bottom="0in" />
+      </Margins>
+    </PageSettings>
+  </PageSettings>
+  <Groups>
+    <Group Name="group1">
+      <Groupings>
+        <Grouping Expression="=Fields.SupplierName" />
+      </Groupings>
+      <GroupHeader>
+        <GroupHeaderSection Height="0.67412281036377in" Name="groupHeaderSection1">
+          <Style Color="Black" />
+          <Items>
+            <TextBox Value="Supplier :" Size="0.699999888737996in, 0.199999968210856in" Location="0.100000063578288in, 0in" Name="textBox3">
+              <Style Color="147, 35, 32" VerticalAlign="Middle">
+                <Font Size="8pt" />
+              </Style>
+            </TextBox>
+            <TextBox Value="=Fields.SupplierName" Size="7.46755917867025in, 0.199999968210856in" Location="0.800078709920247in, 0.0000394185371988in" Name="textBox4">
+              <Style Color="147, 35, 32" VerticalAlign="Middle">
+                <Font Size="8pt" />
+              </Style>
+            </TextBox>
+            <TextBox Value="Tanggal" Size="0.632434527079264in, 0.372061411539714in" Location="0.367565313975016in, 0.302061398824056in" Name="textBox12">
+              <Style TextAlign="Center" VerticalAlign="Middle">
+                <BorderStyle Default="None" Top="Solid" Bottom="Solid" Left="None" />
+                <BorderWidth Default="0.5pt" />
+                <Font Name="Arial" Size="8pt" Bold="False" />
+              </Style>
+            </TextBox>
+            <TextBox Value="Satuan" Size="0.568104326725006in, 0.370000203450521in" Location="7.69953346252441in, 0.302061398824056in" Name="textBox54">
+              <Style Visible="True" TextAlign="Center" VerticalAlign="Middle">
+                <BorderStyle Default="None" Top="Solid" Bottom="Solid" Left="None" />
+                <BorderWidth Default="0.5pt" />
+                <Font Name="Arial" Size="8pt" Bold="False" />
+              </Style>
+            </TextBox>
+            <TextBox Value="Qty &#xD;&#xA;Sisa" CanGrow="False" Size="0.47in, 0.370000203450521in" Location="7.22945467631022in, 0.302061398824056in" Name="textBox10">
+              <Style Visible="True" TextAlign="Center" VerticalAlign="Middle">
+                <BorderStyle Default="None" Top="Solid" Bottom="Solid" Left="None" />
+                <BorderWidth Default="0.5pt" />
+                <Font Name="Arial" Size="8pt" Bold="False" />
+              </Style>
+            </TextBox>
+            <TextBox Value="Qty Terima" CanGrow="False" Size="0.47in, 0.370000203450521in" Location="6.75937589009603in, 0.302061398824056in" Name="textBox36">
+              <Style Visible="True" TextAlign="Center" VerticalAlign="Middle">
+                <BorderStyle Default="None" Top="Solid" Bottom="Solid" Left="None" />
+                <BorderWidth Default="0.5pt" />
+                <Font Name="Arial" Size="8pt" Bold="False" />
+              </Style>
+            </TextBox>
+            <TextBox Value="Kode Barang" Size="0.799921035766602in, 0.370000203450521in" Location="2.20011806488037in, 0.302061398824056in" Name="textBox7">
+              <Style TextAlign="Center" VerticalAlign="Middle">
+                <BorderStyle Default="None" Top="Solid" Bottom="Solid" Left="None" />
+                <BorderWidth Default="0.5pt" />
+                <Font Name="Arial" Size="8pt" Bold="False" />
+              </Style>
+            </TextBox>
+            <TextBox Value="Nama Barang" Size="2.31902154286702in, 0.370000203450521in" Location="3.0001179377238in, 0.302061398824056in" Name="textBox5">
+              <Style TextAlign="Center" VerticalAlign="Middle">
+                <BorderStyle Default="None" Top="Solid" Bottom="Solid" Left="None" />
+                <BorderWidth Default="0.5pt" />
+                <Font Name="Arial" Size="8pt" Bold="False" />
+              </Style>
+            </TextBox>
+            <TextBox Value="Qty Order" CanGrow="False" Size="0.47in, 0.370000203450521in" Location="6.28929710388184in, 0.302061398824056in" Name="textBox55">
+              <Style Visible="True" TextAlign="Center" VerticalAlign="Middle">
+                <BorderStyle Default="None" Top="Solid" Bottom="Solid" Left="None" />
+                <BorderWidth Default="0.5pt" />
+                <Font Name="Arial" Size="8pt" Bold="False" />
+              </Style>
+            </TextBox>
+            <TextBox Value="No." Size="0.367486596107483in, 0.372061411539714in" Location="0in, 0.302061378955841in" Name="textBox20">
+              <Style TextAlign="Center" VerticalAlign="Middle">
+                <BorderStyle Default="None" Top="Solid" Bottom="Solid" />
+                <BorderWidth Default="0.5pt" />
+                <Font Name="Arial" Size="8pt" Bold="False" />
+              </Style>
+            </TextBox>
+            <TextBox Value="No. PO" Size="1.19996054967244in, 0.370000203450521in" Location="1.0000786781311in, 0.302061398824056in" Name="textBox13">
+              <Style TextAlign="Center" VerticalAlign="Middle">
+                <BorderStyle Default="None" Top="Solid" Bottom="Solid" Left="None" />
+                <BorderWidth Default="0.5pt" />
+                <Font Name="Arial" Size="8pt" Bold="False" />
+              </Style>
+            </TextBox>
+            <TextBox Value="Price" CanGrow="False" Size="0.970000028610229in, 0.370000203450521in" Location="5.31921831766764in, 0.302061398824056in" Name="textBox6">
+              <Style Visible="True" TextAlign="Center" VerticalAlign="Middle">
+                <BorderStyle Default="None" Top="Solid" Bottom="Solid" Left="None" />
+                <BorderWidth Default="0.5pt" />
+                <Font Name="Arial" Size="8pt" Bold="False" />
+              </Style>
+            </TextBox>
+          </Items>
+        </GroupHeaderSection>
+      </GroupHeader>
+      <GroupFooter>
+        <GroupFooterSection Height="0.0520833333333333in" Name="groupFooterSection1">
+          <Style Visible="True" />
+        </GroupFooterSection>
+      </GroupFooter>
+    </Group>
+  </Groups>
+</Report>

@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report DataSourceName="sqlDataSource1" Width="7.5in" Name="HasilMCU" Zoom="1.5" ShowSnapGrid="True" xmlns="http://schemas.telerik.com/reporting/2021/1.0">
+  <DataSources>
+    <SqlDataSource QueryDesignerState="null" ParameterValues="{&quot;@p_TransactionNo&quot;:&quot;PHR/20230315-0003&quot;,&quot;@p_RegistrationNo&quot;:&quot;REG/OP/230228-0456&quot;,&quot;@p_QuestionFormID&quot;:&quot;HMCU&quot;}" ConnectionString="RSYSHRD_VPN" SelectCommand="spxml_CetakanHasilMCU" SelectCommandType="StoredProcedure" Name="sqlDataSource1">
+      <Parameters>
+        <SqlDataSourceParameter DbType="AnsiString" Name="@p_TransactionNo">
+          <Value>
+            <String>PHR/20230315-0003</String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="AnsiString" Name="@p_RegistrationNo">
+          <Value>
+            <String>REG/OP/230228-0456</String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="AnsiString" Name="@p_QuestionFormID">
+          <Value>
+            <String>HMCU</String>
+          </Value>
+        </SqlDataSourceParameter>
+      </Parameters>
+    </SqlDataSource>
+  </DataSources>
+  <Items>
+    <PageHeaderSection Height="2.4in" Name="pageHeaderSection1">
+      <Items>
+        <TextBox Width="7.5in" Height="0.4in" Left="0in" Top="0.4in" Value="= ToUpper(Fields.HealthcareName)" Name="textBox1">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Name="Times New Roman" Size="20pt" Bold="True" />
+          </Style>
+        </TextBox>
+        <TextBox Width="7.5in" Height="0.2in" Left="0in" Top="0.8in" Value="= ToUpper(Fields.AddressLine1) + ' ' + ToUpper(Fields.City) + ' - ' + Fields.ZipCode" Name="textBox3">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Name="Times New Roman" Size="12pt" Bold="True" />
+          </Style>
+        </TextBox>
+        <TextBox Width="7.5in" Height="0.2in" Left="0in" Top="1in" Value="= 'Telp. ' + Fields.PhoneNo" Name="textBox4">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Name="Times New Roman" Size="12pt" Bold="True" />
+          </Style>
+        </TextBox>
+        <TextBox Width="7.5in" Height="0.2in" Left="0in" Top="1.25in" Value="='IGD : 30323 ICU - ICCU : 811079 ' + ' Fax. ' + Fields.FaxNo" Name="textBox5">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Name="Times New Roman" Size="10pt" Bold="False" />
+          </Style>
+        </TextBox>
+        <TextBox Width="7.5in" Height="0.3in" Left="0in" Top="1.8in" Value="= Fields.Title" Name="textBox6">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Name="Times New Roman" Size="14pt" Bold="True" Underline="True" />
+          </Style>
+        </TextBox>
+        <PictureBox Value="= Fields.HealthcareLogo" Width="0.9in" Height="0.8in" Left="0.3in" Top="0.2in" Sizing="Stretch" MimeType="" Name="pictureBox1" />
+      </Items>
+    </PageHeaderSection>
+    <DetailSection Height="0.052in" Name="detailSection1">
+      <Style Visible="False" />
+    </DetailSection>
+    <PageFooterSection Height="0.248in" Name="pageFooterSection1">
+      <Items>
+        <TextBox Width="2.802in" Height="0.2in" Left="0in" Top="0.048in" Value="=Now()" Format="Print Date : {0:dd-MM-yyyy HH:mm}" Name="textBox37">
+          <Style VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" Bold="False" Italic="True" />
+            <BorderStyle Top="Solid" />
+            <BorderWidth Default="0.5pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="4.698in" Height="0.2in" Left="2.802in" Top="0.048in" Value="='Page : ' + PageNumber + '/' + PageCount" Name="textBox39">
+          <Style TextAlign="Right" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" Bold="False" Italic="True" />
+            <BorderStyle Top="Solid" />
+            <BorderWidth Default="0.5pt" />
+          </Style>
+        </TextBox>
+      </Items>
+    </PageFooterSection>
+    <ReportHeaderSection Height="2.5in" Name="reportHeaderSection1">
+      <Items>
+        <Table DataSourceName="sqlDataSource1" Width="6.177in" Height="0.64in" Left="0in" Top="0.2in" Name="table1">
+          <Body>
+            <Cells>
+              <TableCell RowIndex="1" ColumnIndex="0" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="2.656in" Height="0.24in" Left="0in" Top="0in" Value="= Fields.QuestionText" Name="textBox7">
+                    <Style VerticalAlign="Middle">
+                      <Font Name="Times New Roman" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="2" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="3.413in" Height="0.24in" Left="0in" Top="0in" Value="= Fields.QuestionAnswerText" Name="textBox9">
+                    <Style VerticalAlign="Middle">
+                      <Font Name="Times New Roman" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="0" RowSpan="1" ColumnSpan="3">
+                <ReportItem>
+                  <TextBox Width="6.177in" Height="0.2in" Left="0in" Top="0in" Value="= Fields.QuestionGroupName" Name="textBox12" StyleName="">
+                    <Style VerticalAlign="Middle">
+                      <Font Name="Times New Roman" Size="12pt" Bold="True" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="1" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.108in" Height="0.24in" Left="0in" Top="0in" Value=":" Name="textBox2" StyleName="">
+                    <Style VerticalAlign="Middle">
+                      <Font Name="Times New Roman" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="2" ColumnIndex="0" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="2.656in" Height="0.2in" Left="0in" Top="0in" Name="textBox8" StyleName="">
+                    <Style VerticalAlign="Middle">
+                      <Font Name="Times New Roman" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="2" ColumnIndex="1" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.108in" Height="0.2in" Left="0in" Top="0in" Name="textBox10" StyleName="">
+                    <Style VerticalAlign="Middle">
+                      <Font Name="Times New Roman" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="2" ColumnIndex="2" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="3.413in" Height="0.2in" Left="0in" Top="0in" Name="textBox11" StyleName="">
+                    <Style VerticalAlign="Middle">
+                      <Font Name="Times New Roman" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+            </Cells>
+            <Columns>
+              <Column Width="2.656in" />
+              <Column Width="0.108in" />
+              <Column Width="3.413in" />
+            </Columns>
+            <Rows>
+              <Row Height="0.2in" />
+              <Row Height="0.24in" />
+              <Row Height="0.2in" />
+            </Rows>
+          </Body>
+          <Corner />
+          <RowGroups>
+            <TableGroup Name="questionGroupID">
+              <ChildGroups>
+                <TableGroup Name="group" />
+                <TableGroup Name="detailTableGroup">
+                  <Groupings>
+                    <Grouping />
+                  </Groupings>
+                </TableGroup>
+                <TableGroup Name="group2" />
+              </ChildGroups>
+              <Groupings>
+                <Grouping Expression="= Fields.QuestionGroupID" />
+              </Groupings>
+              <Sortings>
+                <Sorting Expression="= Fields.QuestionGroupID" Direction="Asc" />
+              </Sortings>
+            </TableGroup>
+          </RowGroups>
+          <ColumnGroups>
+            <TableGroup Name="tableGroup" />
+            <TableGroup Name="group1" />
+            <TableGroup Name="tableGroup1" />
+          </ColumnGroups>
+        </Table>
+        <TextBox Width="3.413in" Height="0.24in" Left="0in" Top="1.1in" Value="= Fields.City + ', ' + Format('{0:dd MMMM yyyy}', Now())" Name="textBox13">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Name="Times New Roman" />
+          </Style>
+        </TextBox>
+        <TextBox Width="3.413in" Height="0.24in" Left="0in" Top="1.34in" Value="Dokter Yang Memeriksa," Name="textBox14">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Name="Times New Roman" />
+          </Style>
+        </TextBox>
+        <PictureBox Value="= Fields.Paraf" Width="1.1in" Height="0.92in" Left="1.1in" Top="1.58in" Sizing="Stretch" MimeType="" Name="pictureBox2" />
+      </Items>
+    </ReportHeaderSection>
+  </Items>
+  <PageSettings PaperKind="Legal" Landscape="False" ColumnCount="1" ColumnSpacing="0in" ContinuousPaper="False">
+    <Margins>
+      <MarginsU Left="0.5in" Right="0.5in" Top="0.5in" Bottom="0.5in" />
+    </Margins>
+  </PageSettings>
+  <StyleSheet>
+    <StyleRule>
+      <Style>
+        <Padding Left="2pt" Right="2pt" />
+      </Style>
+      <Selectors>
+        <TypeSelector Type="TextItemBase" />
+        <TypeSelector Type="HtmlTextBox" />
+      </Selectors>
+    </StyleRule>
+  </StyleSheet>
+</Report>

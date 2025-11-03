@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report DataSourceName="sqlDataSource1" Width="8in" Name="userReport1" xmlns="http://schemas.telerik.com/reporting/2012/2">
+  <DataSources>
+    <SqlDataSource ConnectionString="Data Source=192.168.80.2;Initial Catalog=RSSMCB_LIVE;Persist Security Info=True;User ID=sa;Password=p@ssw0rd" ProviderName="System.Data.SqlClient" SelectCommand="sprpt_Accounting_Ledger_LedgerDetail" SelectCommandType="StoredProcedure" Name="sqlDataSource1">
+      <Parameters>
+        <SqlDataSourceParameter DbType="AnsiStringFixedLength" Name="@pSinglePostingPeriode_Month">
+          <Value>
+            <String>02</String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="AnsiStringFixedLength" Name="@pSinglePostingPeriode_Year">
+          <Value>
+            <String>2018</String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="AnsiStringFixedLength" Name="@pCodeBetween_Start">
+          <Value>
+            <String>1.01.01.01.01</String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="AnsiStringFixedLength" Name="@pCodeBetween_End">
+          <Value>
+            <String>1.01.01.01.01</String>
+          </Value>
+        </SqlDataSourceParameter>
+      </Parameters>
+    </SqlDataSource>
+  </DataSources>
+  <Items>
+    <DetailSection Height="0.200078964233398in" Name="detailSection1">
+      <Style VerticalAlign="Middle">
+        <Font Size="8pt" />
+      </Style>
+      <Items>
+        <TextBox Value="=Fields.TransactionDate" Format="{0:dd-MM-yyyy}" Size="0.699921210606893in, 0.199999968210856in" Location="0.00011825561523438in, 0.00007899602254232in" Name="textBox3">
+          <Style VerticalAlign="Middle">
+            <Font Size="8pt" />
+          </Style>
+        </TextBox>
+        <TextBox Value="=Fields.ChartOfAccountCode" Size="0.499802907307943in, 0.19999997317791in" Location="0.700118243694305in, 0in" Name="textBox7">
+          <Style VerticalAlign="Middle" />
+        </TextBox>
+        <TextBox Value="=Fields.TransactionNumber" Size="0.799921194712321in, 0.19999997317791in" Location="1.19999996821086in, 0in" Name="textBox8">
+          <Style VerticalAlign="Middle" />
+        </TextBox>
+        <TextBox Value="=Fields.DocumentNumber" Size="0.499920845031738in, 0.19999997317791in" Location="2in, 0in" Name="textBox9">
+          <Style VerticalAlign="Middle" />
+        </TextBox>
+        <TextBox Value="=Fields.Description" Size="2.69984277089437in, 0.19999997317791in" Location="2.5in, 0in" Name="textBox10">
+          <Style VerticalAlign="Middle" />
+        </TextBox>
+        <TextBox Value="=Fields.Debit" Format="{0:N2}" Size="0.800039291381836in, 0.19999997317791in" Location="5.19992129007975in, 0in" Name="textBox11">
+          <Style TextAlign="Right" VerticalAlign="Middle" />
+        </TextBox>
+        <TextBox Value="=Fields.Credit" Format="{0:N2}" Size="0.999802887439728in, 0.19999997317791in" Location="6.00023651123047in, 0in" Name="textBox12">
+          <Style TextAlign="Right" VerticalAlign="Middle" />
+        </TextBox>
+        <TextBox Value="=Fields.balance" Format="{0:N2}" Size="0.999684631824493in, 0.19999997317791in" Location="7.00011825561523in, 0in" Name="textBox13">
+          <Style TextAlign="Right" VerticalAlign="Middle" />
+        </TextBox>
+      </Items>
+    </DetailSection>
+    <PageFooterSection Height="0.200039545694987in" Name="pageFooterSection1">
+      <Items>
+        <TextBox Value="= Now()" Format="{0:F}" Size="3.30000019073486in, 0.200000122189522in" Location="0.00011825561523438in, 0.00003941853841146in" Name="txtPrintDateTime">
+          <Style TextAlign="Left" VerticalAlign="Middle">
+            <Font Size="8pt" />
+          </Style>
+        </TextBox>
+        <TextBox Value="= &quot;Page &quot; + PageNumber + &quot; Of &quot; + PageCount" Format="" Size="3.29996085166931in, 0.200000122189522in" Location="4.6980349222819in, 0.00003941853841146in" Name="txtPageNumber">
+          <Style TextAlign="Right" VerticalAlign="Middle">
+            <Font Size="8pt" />
+          </Style>
+        </TextBox>
+      </Items>
+    </PageFooterSection>
+    <ReportHeaderSection Height="1.19999996821086in" Name="reportHeaderSection1">
+      <Style Color="Black">
+        <BorderStyle Bottom="Solid" />
+        <BorderWidth Default="0.5pt" />
+      </Style>
+      <Items>
+        <TextBox Value="LEDGER DETAIL REPORT" Size="5.9999213218689in, 0.200000122189522in" Location="0.0000394185371988in, 0.0999999865889549in" Name="txtReportTitle">
+          <Style Color="54, 119, 171" TextAlign="Left" VerticalAlign="Middle">
+            <BorderColor Bottom="Blue" />
+            <Font Size="12pt" Bold="True" />
+          </Style>
+        </TextBox>
+        <TextBox Value="=Fields.Priode" Size="1.99976348876953in, 0.200000047683716in" Location="6.00023651123047in, 0.0999999841054281in" Name="textBox1">
+          <Style TextAlign="Right" VerticalAlign="Middle">
+            <Font Size="8pt" />
+          </Style>
+        </TextBox>
+        <TextBox Value="=Fields.CompanyName" Size="7.00003941853841in, 0.200000047683716in" Location="0in, 0.300078789393107in" Name="textBox2">
+          <Style VerticalAlign="Middle">
+            <Font Size="8pt" />
+          </Style>
+        </TextBox>
+        <TextBox Value="Reff Number" Angle="0" Size="0.49992099404335in, 0.39999994635582in" Location="2.00000015894572in, 0.800000131130219in" Name="textBox4">
+          <Style Color="Black">
+            <Font Size="8pt" Bold="True" />
+          </Style>
+        </TextBox>
+        <TextBox Value="Balance" Size="0.999763309955597in, 0.200000122189522in" Location="7in, 0.800000131130219in" Name="txtBalance">
+          <Style Color="Black" TextAlign="Right">
+            <Font Size="8pt" Bold="True" />
+          </Style>
+        </TextBox>
+        <TextBox Value="Journal&#xD;&#xA;Code" Size="0.499999841054281in, 0.39999994635582in" Location="0.699921290079753in, 0.800000131130219in" Name="txtJournalCode">
+          <Style Color="Black">
+            <Font Size="8pt" Bold="True" />
+          </Style>
+        </TextBox>
+        <TextBox Value="Credit" Size="0.999999821186066in, 0.200000122189522in" Location="6in, 0.800000131130219in" Name="txtCredit">
+          <Style Color="Black" TextAlign="Right">
+            <Font Size="8pt" Bold="True" />
+          </Style>
+        </TextBox>
+        <TextBox Value="Debit" Size="0.799920241038005in, 0.200000122189522in" Location="5.20000076293945in, 0.800000131130219in" Name="txtDebit">
+          <Style Color="Black" TextAlign="Right">
+            <Font Size="8pt" Bold="True" />
+          </Style>
+        </TextBox>
+        <TextBox Value="Description" Size="2.69992160797119in, 0.39999994635582in" Location="2.5in, 0.800000131130219in" Name="txtDescription">
+          <Style Color="Black">
+            <Font Size="8pt" Bold="True" />
+          </Style>
+        </TextBox>
+        <TextBox Value="Trx Number" Angle="0" Size="0.79992135365804in, 0.39999994635582in" Location="1.19999996821086in, 0.800000131130219in" Name="txtTransactionNumber">
+          <Style Color="Black">
+            <Font Size="8pt" Bold="True" />
+          </Style>
+        </TextBox>
+        <TextBox Value="Date" Size="0.700000047683716in, 0.39999994635582in" Location="0in, 0.800000111262004in" Name="txtTransactionDate">
+          <Style Color="Black">
+            <Font Size="8pt" Bold="True" />
+          </Style>
+        </TextBox>
+      </Items>
+    </ReportHeaderSection>
+  </Items>
+  <StyleSheet>
+    <StyleRule>
+      <Style>
+        <Padding Left="2pt" Right="2pt" />
+      </Style>
+      <Selectors>
+        <TypeSelector Type="TextItemBase" />
+        <TypeSelector Type="HtmlTextBox" />
+      </Selectors>
+    </StyleRule>
+  </StyleSheet>
+  <PageSettings>
+    <PageSettings PaperKind="Letter" Landscape="False">
+      <Margins>
+        <MarginsU Left="0.25in" Right="0.25in" Top="0.25in" Bottom="0.25in" />
+      </Margins>
+    </PageSettings>
+  </PageSettings>
+  <Groups>
+    <Group Name="group1">
+      <Groupings>
+        <Grouping Expression="=Fields.ChartOfAccountId" />
+        <Grouping Expression="=Fields.ChartOfAccountName" />
+      </Groupings>
+      <Sortings>
+        <Sorting Expression="=Fields.ChartOfAccountId" Direction="Asc" />
+        <Sorting Expression="=Fields.TransactionDate" Direction="Asc" />
+        <Sorting Expression="=Fields.DetailId" Direction="Asc" />
+      </Sortings>
+      <GroupHeader>
+        <GroupHeaderSection Height="0.2in" Name="groupHeaderSection1">
+          <Style>
+            <BorderStyle Bottom="Dotted" />
+            <BorderWidth Default="0.5pt" />
+          </Style>
+          <Items>
+            <TextBox Value="=ChartOfAccountName" Angle="0" TextWrap="True" Size="3.99984240531921in, 0.200000122189522in" Location="1.19999996821086in, 0in" Name="textBox5">
+              <Style VerticalAlign="Middle">
+                <Font Size="8pt" />
+              </Style>
+            </TextBox>
+            <TextBox Value="=ChartOfAccountCode" TextWrap="True" Size="1.1998028755188in, 0.200000122189522in" Location="0.00011825561523438in, 0in" Name="textBox6">
+              <Style VerticalAlign="Middle">
+                <Font Size="8pt" />
+              </Style>
+            </TextBox>
+          </Items>
+        </GroupHeaderSection>
+      </GroupHeader>
+      <GroupFooter>
+        <GroupFooterSection Height="0.2in" Name="groupFooterSection1">
+          <Items>
+            <TextBox Value="=SUM(Fields.Credit)" Format="{0:N2}" Size="0.999802887439728in, 0.19999997317791in" Location="6.00003957748413in, 0.0000394185371988in" Name="textBox14">
+              <Style TextAlign="Right" VerticalAlign="Middle">
+                <Font Size="8pt" />
+              </Style>
+            </TextBox>
+            <TextBox Value="=sum(Fields.Debit)" Format="{0:N2}" Size="0.800039291381836in, 0.19999997317791in" Location="5.19992129007975in, 0.0000394185371988in" Name="textBox15">
+              <Style TextAlign="Right" VerticalAlign="Middle">
+                <Font Size="8pt" />
+              </Style>
+            </TextBox>
+          </Items>
+        </GroupFooterSection>
+      </GroupFooter>
+    </Group>
+  </Groups>
+</Report>

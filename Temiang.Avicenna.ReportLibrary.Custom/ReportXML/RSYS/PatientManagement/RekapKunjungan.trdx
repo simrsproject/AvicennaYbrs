@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report DataSourceName="sqlDataSource1" Width="6.268in" Name="userReport1" xmlns="http://schemas.telerik.com/reporting/2019/2.0">
+  <Style>
+    <Font Name="Tahoma" />
+  </Style>
+  <DataSources>
+    <SqlDataSource QueryDesignerState="null" ParameterValues="{&quot;@p_FromDate&quot;:&quot;9/1/2020&quot;,&quot;@p_ToDate&quot;:&quot;9/30/2020&quot;}" ConnectionString="RSI_LIVE" SelectCommand="dbo.Rxml_VisitRecap" SelectCommandType="StoredProcedure" Name="sqlDataSource1">
+      <Parameters>
+        <SqlDataSourceParameter DbType="DateTime" Name="@p_FromDate">
+          <Value>
+            <String>9/1/2020</String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="DateTime" Name="@p_ToDate">
+          <Value>
+            <String>9/30/2020</String>
+          </Value>
+        </SqlDataSourceParameter>
+      </Parameters>
+    </SqlDataSource>
+  </DataSources>
+  <Items>
+    <DetailSection Height="0.052in" Name="detailSection1">
+      <Style Visible="False" />
+    </DetailSection>
+    <PageFooterSection Height="0.2in" Name="pageFooterSection1">
+      <Items>
+        <TextBox Width="2.425in" Height="0.2in" Left="3.8in" Top="0in" Value="='Page : ' + PageNumber + '/' + PageCount" Name="textBox41">
+          <Style TextAlign="Right" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" Italic="True" />
+            <BorderStyle Top="Solid" />
+            <BorderWidth Default="0.5pt" />
+            <Padding Right="2mm" />
+          </Style>
+        </TextBox>
+        <TextBox Width="3.8in" Height="0.2in" Left="0in" Top="0in" Value="='AVICENNA_HIS  ' + Now()" Format="{0:dd-MM-yyyy HH:mm}" Name="textBox53">
+          <Style VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" Italic="True" />
+            <BorderStyle Top="Solid" />
+            <BorderWidth Default="0.5pt" />
+          </Style>
+        </TextBox>
+      </Items>
+    </PageFooterSection>
+    <ReportHeaderSection Height="2.8in" Name="reportHeaderSection1">
+      <Items>
+        <TextBox Width="6.225in" Height="0.2in" Left="0in" Top="1in" Value="=Fields.ReportName" Name="textBox1">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Size="12pt" Bold="True" />
+          </Style>
+        </TextBox>
+        <TextBox Width="6.225in" Height="0.2in" Left="0in" Top="1.2in" Value="=Fields.Periode" Name="textBox2">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Bold="True" />
+          </Style>
+        </TextBox>
+        <Table DataSourceName="sqlDataSource1" Width="6.225in" Height="0.775in" Left="0in" Top="1.6in" Name="table1" StyleName="Normal.TableNormal">
+          <Body>
+            <Cells>
+              <TableCell RowIndex="0" ColumnIndex="1" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="1.258in" Height="0.2in" Left="0in" Top="0in" Value="= Fields.RegistrationDate" Format="{0:dd-MMM-yyyy}" Name="textBox8" StyleName="Normal.TableBody">
+                    <Style TextAlign="Center">
+                      <Font Size="11pt" />
+                      <Padding Left="2mm" Right="2mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="2" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="1.142in" Height="0.2in" Left="0in" Top="0in" Value="= Fields.JmRd" Format="{0:N0}" Name="textBox9" StyleName="Normal.TableBody">
+                    <Style TextAlign="Right">
+                      <Font Size="11pt" />
+                      <Padding Left="2mm" Right="2mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="3" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="1.108in" Height="0.2in" Left="0in" Top="0in" Value="= Fields.JmRj" Format="{0:N0}" Name="textBox10" StyleName="Normal.TableBody">
+                    <Style TextAlign="Right">
+                      <Font Size="11pt" />
+                      <Padding Left="2mm" Right="2mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="4" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="1.1in" Height="0.2in" Left="0in" Top="0in" Value="= Fields.JmRjPnj" Format="{0:N0}" Name="textBox11" StyleName="Normal.TableBody">
+                    <Style TextAlign="Right">
+                      <Font Size="11pt" />
+                      <Padding Left="2mm" Right="2mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="5" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="1.175in" Height="0.2in" Left="0in" Top="0in" Value="= Fields.JmRi" Format="{0:N0}" Name="textBox12" StyleName="Normal.TableBody">
+                    <Style TextAlign="Right">
+                      <Font Size="11pt" />
+                      <Padding Left="2mm" Right="2mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="1" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="1.258in" Height="0.2in" Left="0in" Top="0in" Value="Total" Name="textBox13" StyleName="Normal.TableBody">
+                    <Style TextAlign="Center">
+                      <Font Size="11pt" Bold="True" />
+                      <Padding Left="2mm" Right="2mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="2" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="1.142in" Height="0.2in" Left="3.8in" Top="0.3in" Value="=Sum(Fields.JmRd)" Format="{0:N0}" Name="textBox18" StyleName="Normal.TableBody">
+                    <Style TextAlign="Right">
+                      <Font Size="11pt" Bold="True" />
+                      <Padding Left="2mm" Right="2mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="5" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="1.175in" Height="0.2in" Left="3.8in" Top="0.3in" Value="=Sum(Fields.JmRi)" Format="{0:N0}" Name="textBox14" StyleName="Normal.TableBody">
+                    <Style TextAlign="Right">
+                      <Font Size="11pt" Bold="True" />
+                      <Padding Left="2mm" Right="2mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="3" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="1.108in" Height="0.2in" Left="3.8in" Top="0.3in" Value="=Sum(Fields.JmRj)" Format="{0:N0}" Name="textBox17" StyleName="Normal.TableBody">
+                    <Style TextAlign="Right">
+                      <Font Size="11pt" Bold="True" />
+                      <Padding Left="2mm" Right="2mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="4" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="1.1in" Height="0.2in" Left="3.8in" Top="0.3in" Value="=Sum(Fields.JmRjPnj)" Format="{0:N0}" Name="textBox15" StyleName="Normal.TableBody">
+                    <Style TextAlign="Right">
+                      <Font Size="11pt" Bold="True" />
+                      <Padding Left="2mm" Right="2mm" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="0" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.442in" Height="0.2in" Left="0in" Top="0in" Value="=RowNumber()" Format="{0}." Name="textBox19" StyleName="Normal.TableBody">
+                    <Style TextAlign="Right">
+                      <Font Size="11pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="0" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.442in" Height="0.2in" Left="0in" Top="0in" Name="textBox20" StyleName="Normal.TableBody">
+                    <Style>
+                      <Font Size="11pt" Bold="True" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+            </Cells>
+            <Columns>
+              <Column Width="0.442in" />
+              <Column Width="1.258in" />
+              <Column Width="1.142in" />
+              <Column Width="1.108in" />
+              <Column Width="1.1in" />
+              <Column Width="1.175in" />
+            </Columns>
+            <Rows>
+              <Row Height="0.2in" />
+              <Row Height="0.2in" />
+            </Rows>
+          </Body>
+          <Corner />
+          <RowGroups>
+            <TableGroup Name="detail">
+              <Groupings>
+                <Grouping />
+              </Groupings>
+            </TableGroup>
+            <TableGroup Name="group" />
+          </RowGroups>
+          <ColumnGroups>
+            <TableGroup Name="group1">
+              <ReportItem>
+                <TextBox Width="0.442in" Height="0.375in" Left="0in" Top="0in" Value="No." Name="textBox16" StyleName="Normal.TableHeader">
+                  <Style TextAlign="Center">
+                    <Font Size="12pt" Bold="True" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup Name="registrationDate">
+              <ReportItem>
+                <TextBox Width="1.258in" Height="0.375in" Left="0in" Top="0in" Value="Tanggal" Name="textBox3" StyleName="Normal.TableHeader">
+                  <Style TextAlign="Center">
+                    <Font Size="12pt" Bold="True" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup Name="jmRd">
+              <ReportItem>
+                <TextBox Width="1.142in" Height="0.375in" Left="0in" Top="0in" Value="IGD&#xD;&#xA;" Name="textBox4" StyleName="Normal.TableHeader">
+                  <Style TextAlign="Center">
+                    <Font Size="12pt" Bold="True" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup Name="jmRj">
+              <ReportItem>
+                <TextBox Width="1.108in" Height="0.375in" Left="0in" Top="0in" Value="Rawat Jalan" Name="textBox5" StyleName="Normal.TableHeader">
+                  <Style TextAlign="Center">
+                    <Font Size="12pt" Bold="True" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup Name="jmRjPnj">
+              <ReportItem>
+                <TextBox Width="1.1in" Height="0.375in" Left="0in" Top="0in" Value="Penunjang" Name="textBox6" StyleName="Normal.TableHeader">
+                  <Style TextAlign="Center">
+                    <Font Size="12pt" Bold="True" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+            <TableGroup Name="jmRi">
+              <ReportItem>
+                <TextBox Width="1.175in" Height="0.375in" Left="0in" Top="0in" Value="Rawat Inap" Name="textBox7" StyleName="Normal.TableHeader">
+                  <Style TextAlign="Center">
+                    <Font Size="12pt" Bold="True" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+            </TableGroup>
+          </ColumnGroups>
+        </Table>
+      </Items>
+    </ReportHeaderSection>
+  </Items>
+  <PageSettings PaperKind="A4" Landscape="False" ColumnCount="1" ColumnSpacing="0in" ContinuousPaper="False">
+    <Margins>
+      <MarginsU Left="1in" Right="1in" Top="1in" Bottom="1in" />
+    </Margins>
+  </PageSettings>
+  <StyleSheet>
+    <StyleRule>
+      <Style>
+        <Padding Left="2pt" Right="2pt" />
+      </Style>
+      <Selectors>
+        <TypeSelector Type="TextItemBase" />
+        <TypeSelector Type="HtmlTextBox" />
+      </Selectors>
+    </StyleRule>
+    <StyleRule>
+      <Style Color="Black">
+        <Font Name="Tahoma" Size="9pt" />
+        <BorderStyle Default="Solid" />
+        <BorderColor Default="Black" />
+        <BorderWidth Default="1px" />
+      </Style>
+      <Selectors>
+        <StyleSelector Type="Table" StyleName="Normal.TableNormal" />
+      </Selectors>
+    </StyleRule>
+    <StyleRule>
+      <Style>
+        <Font Name="Tahoma" Size="9pt" />
+        <BorderStyle Default="Solid" />
+        <BorderColor Default="Black" />
+        <BorderWidth Default="1px" />
+      </Style>
+      <Selectors>
+        <DescendantSelector>
+          <Selectors>
+            <TypeSelector Type="Table" />
+            <StyleSelector Type="ReportItem" StyleName="Normal.TableBody" />
+          </Selectors>
+        </DescendantSelector>
+      </Selectors>
+    </StyleRule>
+    <StyleRule>
+      <Style VerticalAlign="Middle">
+        <Font Name="Tahoma" Size="10pt" />
+        <BorderStyle Default="Solid" />
+        <BorderColor Default="Black" />
+        <BorderWidth Default="1px" />
+      </Style>
+      <Selectors>
+        <DescendantSelector>
+          <Selectors>
+            <TypeSelector Type="Table" />
+            <StyleSelector Type="ReportItem" StyleName="Normal.TableHeader" />
+          </Selectors>
+        </DescendantSelector>
+      </Selectors>
+    </StyleRule>
+  </StyleSheet>
+</Report>

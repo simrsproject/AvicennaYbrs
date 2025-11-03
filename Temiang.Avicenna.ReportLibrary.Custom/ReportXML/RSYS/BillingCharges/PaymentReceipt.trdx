@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report DataSourceName="sqlDataSource1" Width="7.9in" Name="PaymentReceipt" ShowSnapGrid="True" xmlns="http://schemas.telerik.com/reporting/2019/2.0">
+  <DataSources>
+    <SqlDataSource QueryDesignerState="null" ParameterValues="{&quot;@PaymentReceiptNo&quot;:&quot;PM200826-00741&quot;,&quot;@RegNo&quot;:&quot;REG/IP/200824-0028&quot;,&quot;@UserID&quot;:&quot;Billy&quot;}" ConnectionString="RSI1" SelectCommand="spxml_PaymentReceipt" SelectCommandType="StoredProcedure" Name="sqlDataSource1">
+      <Parameters>
+        <SqlDataSourceParameter DbType="AnsiString" Name="@PaymentReceiptNo">
+          <Value>
+            <String>PM200826-00741</String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="AnsiString" Name="@RegNo">
+          <Value>
+            <String>REG/IP/200824-0028</String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="AnsiString" Name="@UserID">
+          <Value>
+            <String>Billy</String>
+          </Value>
+        </SqlDataSourceParameter>
+      </Parameters>
+    </SqlDataSource>
+  </DataSources>
+  <Items>
+    <DetailSection Height="0.052in" Name="detailSection1">
+      <Style Visible="False" />
+    </DetailSection>
+    <PageFooterSection Height="0.2in" Name="pageFooterSection1">
+      <Items>
+        <TextBox Width="3.608in" Height="0.2in" Left="4.092in" Top="0in" Value="= 'Page ' + PageNumber + ' of ' + PageCount" Name="textBox30">
+          <Style TextAlign="Right" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" Italic="True" />
+            <BorderStyle Top="Solid" />
+          </Style>
+        </TextBox>
+        <TextBox Width="3.892in" Height="0.2in" Left="0.2in" Top="0in" Value="=Now()" Format="Print Date : {0:dd -MM-yyyy HH:mm}" Name="textBox29">
+          <Style TextAlign="Left" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" Italic="True" />
+            <BorderStyle Top="Solid" />
+          </Style>
+        </TextBox>
+      </Items>
+    </PageFooterSection>
+    <ReportHeaderSection Height="4.21in" Name="reportHeaderSection1">
+      <Items>
+        <TextBox Width="2.8in" Height="0.29in" Left="4.9in" Top="0.5in" Value="Kwitansi Pembayaran" Name="textBox1">
+          <Style TextAlign="Left" VerticalAlign="Middle">
+            <Font Size="14pt" Bold="True" />
+          </Style>
+        </TextBox>
+        <TextBox Width="2.8in" Height="0.2in" Left="4.9in" Top="0.79in" Value="= Fields.PaymentReceiptNo" Name="textBox2">
+          <Style TextAlign="Left" VerticalAlign="Middle" />
+        </TextBox>
+        <TextBox Width="1.492in" Height="0.2in" Left="0.2in" Top="1.4in" Value="Registration No" Name="textBox3">
+          <Style TextAlign="Left" VerticalAlign="Middle" />
+        </TextBox>
+        <TextBox Width="1.492in" Height="0.2in" Left="0.2in" Top="1.6in" Value="No. MR" Name="textBox4">
+          <Style TextAlign="Left" VerticalAlign="Middle" />
+        </TextBox>
+        <TextBox Width="1.492in" Height="0.2in" Left="0.2in" Top="1.8in" Value="Sudah Terima Dari" Name="textBox5">
+          <Style TextAlign="Left" VerticalAlign="Middle" />
+        </TextBox>
+        <TextBox Width="1.492in" Height="0.2in" Left="0.2in" Top="2in" Value="Uang Sebesar" Name="textBox6">
+          <Style TextAlign="Left" VerticalAlign="Middle" />
+        </TextBox>
+        <TextBox Width="1.492in" Height="0.2in" Left="0.2in" Top="2.293in" Value="Keterangan" Name="textBox7">
+          <Style TextAlign="Left" VerticalAlign="Middle" />
+        </TextBox>
+        <TextBox Width="1.492in" Height="0.2in" Left="0.2in" Top="2.61in" Value="Nama Pasien" Name="textBox8">
+          <Style TextAlign="Left" VerticalAlign="Middle" />
+        </TextBox>
+        <TextBox Width="1.492in" Height="0.2in" Left="0.2in" Top="2.81in" Value="Alamat" Name="textBox9">
+          <Style TextAlign="Left" VerticalAlign="Middle" />
+        </TextBox>
+        <TextBox Width="7.5in" Height="0.2in" Left="0.2in" Top="3.01in" Value="Untuk pembayaran biaya perawatan &amp; pengobatan sesuai rincian terlampir." Name="textBox10">
+          <Style TextAlign="Left" VerticalAlign="Middle" />
+        </TextBox>
+        <TextBox Width="2.9in" Height="0.4in" Left="0.7in" Top="3.3in" Value="=SUM(Amount)" Format="{0:N2}" Name="textBox11">
+          <Style TextAlign="Left" VerticalAlign="Middle">
+            <Font Size="14pt" Bold="True" Italic="False" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.108in" Height="0.2in" Left="1.692in" Top="1.4in" Value=":" Name="textBox12">
+          <Style TextAlign="Left" VerticalAlign="Middle" />
+        </TextBox>
+        <TextBox Width="0.108in" Height="0.2in" Left="1.692in" Top="1.6in" Value=":" Name="textBox13">
+          <Style TextAlign="Left" VerticalAlign="Middle" />
+        </TextBox>
+        <TextBox Width="0.108in" Height="0.2in" Left="1.692in" Top="1.8in" Value=":" Name="textBox15">
+          <Style TextAlign="Left" VerticalAlign="Middle" />
+        </TextBox>
+        <TextBox Width="0.108in" Height="0.2in" Left="1.692in" Top="2in" Value=":" Name="textBox14">
+          <Style TextAlign="Left" VerticalAlign="Middle" />
+        </TextBox>
+        <TextBox Width="0.108in" Height="0.2in" Left="1.692in" Top="2.61in" Value=":" Name="textBox17">
+          <Style TextAlign="Left" VerticalAlign="Middle" />
+        </TextBox>
+        <TextBox Width="0.108in" Height="0.2in" Left="1.692in" Top="2.81in" Value=":" Name="textBox16">
+          <Style TextAlign="Left" VerticalAlign="Middle" />
+        </TextBox>
+        <TextBox Width="0.108in" Height="0.2in" Left="1.692in" Top="2.293in" Value=":" Name="textBox18">
+          <Style TextAlign="Left" VerticalAlign="Middle" />
+        </TextBox>
+        <TextBox Width="5.9in" Height="0.2in" Left="1.8in" Top="1.4in" Value="= Fields.RegistrationNo" Name="textBox19">
+          <Style VerticalAlign="Middle" />
+        </TextBox>
+        <TextBox Width="5.9in" Height="0.2in" Left="1.8in" Top="1.6in" Value="= Fields.MedicalNo" Name="textBox20">
+          <Style VerticalAlign="Middle" />
+        </TextBox>
+        <TextBox Width="5.9in" Height="0.2in" Left="1.8in" Top="1.8in" Value="= Fields.PrintReceiptAsName" Name="textBox21">
+          <Style VerticalAlign="Middle" />
+        </TextBox>
+        <TextBox Width="5.9in" Height="0.2in" Left="1.8in" Top="2in" Value="= Fields.terbilang" Name="textBox22">
+          <Style VerticalAlign="Middle" />
+        </TextBox>
+        <TextBox Width="5.9in" Height="0.2in" Left="1.8in" Top="2.293in" Value="= Fields.Notes" Name="textBox23">
+          <Style VerticalAlign="Middle" />
+        </TextBox>
+        <TextBox Width="5.9in" Height="0.2in" Left="1.8in" Top="2.61in" Value="= Fields.PatientName" Name="textBox24">
+          <Style VerticalAlign="Middle" />
+        </TextBox>
+        <TextBox Width="5.9in" Height="0.2in" Left="1.8in" Top="2.81in" Value="= Fields.PatientAddress" Name="textBox25">
+          <Style VerticalAlign="Middle" />
+        </TextBox>
+        <TextBox Width="0.9in" Height="0.2in" Left="5.7in" Top="3.21in" Value="= Fields.HospitalCity" Format="{0}," Name="textBox26">
+          <Style VerticalAlign="Middle" />
+        </TextBox>
+        <TextBox Width="2in" Height="0.2in" Left="5.7in" Top="4.01in" Value="= Fields.UserName" Name="textBox28">
+          <Style TextAlign="Center" VerticalAlign="Middle" />
+        </TextBox>
+        <TextBox Width="1.1in" Height="0.2in" Left="6.6in" Top="3.21in" Value="=Now()" Format="{0:dd -MM-yyyy}" Name="textBox27">
+          <Style TextAlign="Left" VerticalAlign="Middle" />
+        </TextBox>
+      </Items>
+    </ReportHeaderSection>
+  </Items>
+  <PageSettings PaperKind="Custom" PaperSize="8.5in, 5.5in" Landscape="False" ColumnCount="1" ColumnSpacing="0in" ContinuousPaper="False">
+    <Margins>
+      <MarginsU Left="0.3in" Right="0.3in" Top="0in" Bottom="0in" />
+    </Margins>
+  </PageSettings>
+  <StyleSheet>
+    <StyleRule>
+      <Style>
+        <Padding Left="2pt" Right="2pt" />
+      </Style>
+      <Selectors>
+        <TypeSelector Type="TextItemBase" />
+        <TypeSelector Type="HtmlTextBox" />
+      </Selectors>
+    </StyleRule>
+  </StyleSheet>
+</Report>

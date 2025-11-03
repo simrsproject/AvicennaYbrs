@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{41B5F94B-9F51-4AC8-8EB9-A4D8AFA13D38}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Temiang.Avicenna.Bridging.PCare</RootNamespace>
+    <AssemblyName>Temiang.Avicenna.Bridging.PCare</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Temiang.Dal.Core">
+      <HintPath>..\Reference\Temiang.Dal.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Temiang.Dal.Interfaces">
+      <HintPath>..\Reference\Temiang.Dal.Interfaces.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BusinessObject\Asuransi.cs" />
+    <Compile Include="BusinessObject\SubSpesialis.cs" />
+    <Compile Include="BusinessObject\Spesialis.cs" />
+    <Compile Include="BusinessObject\KunjunganTindakanGet.cs" />
+    <Compile Include="BusinessObject\KunjunganObatGet.cs" />
+    <Compile Include="BusinessObject\Diagnosa.cs" />
+    <Compile Include="BusinessObject\Dokter.cs" />
+    <Compile Include="BusinessObject\Kesadaran.cs" />
+    <Compile Include="BusinessObject\Prolanis.cs" />
+    <Compile Include="BusinessObject\Jenis.cs" />
+    <Compile Include="BusinessObject\McuPost.cs" />
+    <Compile Include="BusinessObject\KunjunganGet.cs" />
+    <Compile Include="BusinessObject\Obat.cs" />
+    <Compile Include="BusinessObject\KunjunganObatPost.cs" />
+    <Compile Include="BusinessObject\Peserta.cs" />
+    <Compile Include="BusinessObject\Poli.cs" />
+    <Compile Include="BusinessObject\Provider.cs" />
+    <Compile Include="BusinessObject\StatusPulang.cs" />
+    <Compile Include="BusinessObject\TindakanPost.cs" />
+    <Compile Include="BusinessObject\PendaftaranPost.cs" />
+    <Compile Include="BusinessObject\TindakanGet.cs" />
+    <Compile Include="BusinessObject\StatusPulangGet.cs" />
+    <Compile Include="BusinessObject\ProviderGet.cs" />
+    <Compile Include="BusinessObject\PoliGet.cs" />
+    <Compile Include="BusinessObject\ObatGet.cs" />
+    <Compile Include="BusinessObject\DokterGet.cs" />
+    <Compile Include="BusinessObject\DiagnosaGet.cs" />
+    <Compile Include="Common\BaseGetResponse.cs" />
+    <Compile Include="BusinessObject\KunjunganPost.cs" />
+    <Compile Include="BusinessObject\KesadaranGet.cs" />
+    <Compile Include="Common\Constant.cs" />
+    <Compile Include="Common\PostResponseMultiField.cs" />
+    <Compile Include="Common\PostResponse.cs" />
+    <Compile Include="Common\Response.cs" />
+    <Compile Include="Utils.cs" />
+    <Compile Include="Common\MetaData.cs" />
+    <Compile Include="BusinessObject\PesertaGet.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Temiang.Avicenna.BusinessObject\Temiang.Avicenna.BusinessObject.csproj">
+      <Project>{9fbc1acc-80b1-4d9f-894b-1fceb31d337c}</Project>
+      <Name>Temiang.Avicenna.BusinessObject</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

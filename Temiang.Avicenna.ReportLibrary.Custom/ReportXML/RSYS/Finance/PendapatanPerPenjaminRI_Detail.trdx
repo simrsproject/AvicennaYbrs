@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report DataSourceName="sqlDataSource1" Width="14.17in" Name="userReport1" Zoom="0.6666667" ShowSnapGrid="True" xmlns="http://schemas.telerik.com/reporting/2019/2.0">
+  <Style>
+    <Font Name="Tahoma" />
+  </Style>
+  <DataSources>
+    <SqlDataSource QueryDesignerState="null" ParameterValues="null" ConnectionString="Data Source=192.168.56.1;Initial Catalog=RSMM_LIVE;User ID=sa;Password=123" ProviderName="System.Data.SqlClient" SelectCommand="spxml_PendapatanPerPenjaminRI" SelectCommandType="StoredProcedure" Name="sqlDataSource1">
+      <Parameters>
+        <SqlDataSourceParameter DbType="DateTime" Name="@p_FromDate">
+          <Value>
+            <String>2018-08-11</String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="DateTime" Name="@p_ToDate">
+          <Value>
+            <String>2018-08-28</String>
+          </Value>
+        </SqlDataSourceParameter>
+      </Parameters>
+    </SqlDataSource>
+  </DataSources>
+  <Items>
+    <DetailSection Height="0.052in" Name="detailSection1">
+      <Style Visible="False" />
+    </DetailSection>
+    <PageFooterSection Height="0.6in" Name="pageFooterSection1">
+      <Items>
+        <TextBox Width="6.489in" Height="0.2in" Left="6.5in" Top="0.251in" Value="= &quot;Page &quot; + PageNumber + &quot; Of &quot; + PageCount" Format="{0:N2}" Name="textBox46">
+          <Style TextAlign="Right" VerticalAlign="Middle" LineWidth="0.5pt">
+            <Font Size="7pt" />
+            <BorderStyle Top="Solid" Bottom="None" />
+            <BorderWidth Default="0.5pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="6.5in" Height="0.2in" Left="0in" Top="0.251in" Value="='Avicenna_HIS ' +  Now()" Format="{0:F}" Name="textBox49">
+          <Style VerticalAlign="Middle" LineWidth="0.5pt">
+            <Font Size="7pt" Italic="True" />
+            <BorderStyle Top="Solid" Bottom="None" />
+            <BorderWidth Default="0.5pt" />
+          </Style>
+        </TextBox>
+      </Items>
+    </PageFooterSection>
+    <ReportHeaderSection KeepTogether="False" Height="2.397in" Name="reportHeaderSection1">
+      <Items>
+        <TextBox Width="14.17in" Height="0.2in" Left="0in" Top="0.851in" Value="LAPORAN PENDAPATAN PASIEN RAWAT INAP - AKUNTING DETAIL" Name="textBox1">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Size="12pt" Bold="True" />
+          </Style>
+        </TextBox>
+        <TextBox Width="14.17in" Height="0.2in" Left="0in" Top="1.051in" Value="=Fields.Periode" Name="textBox2">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Bold="True" />
+          </Style>
+        </TextBox>
+        <Crosstab DataSourceName="sqlDataSource1" Width="5.899in" Height="0.996in" Left="0cm" Top="3.179cm" RowHeadersPrintOnEveryPage="True" ColumnHeadersPrintOnEveryPage="True" KeepTogether="False" Name="crosstab1">
+          <Body>
+            <Cells>
+              <TableCell RowIndex="0" ColumnIndex="0" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="2.983cm" Height="0.508cm" Left="0in" Top="0in" KeepTogether="True" Name="textBox11" StyleName="">
+                    <Style VerticalAlign="Middle">
+                      <Font Size="8pt" Bold="True" />
+                      <BorderStyle Top="None" Bottom="None" Left="None" Right="None" />
+                      <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+                      <BorderWidth Default="0.7pt" Top="1pt" Bottom="1pt" Left="1pt" Right="1pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="0" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="1.174in" Height="0.2in" Left="0in" Top="0in" KeepTogether="True" Value="=Sum(Fields.Amount)" Format="{0:N2}" Name="textBox4" StyleName="">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <Font Size="8pt" />
+                      <BorderWidth Default="0.7pt" Top="1pt" Bottom="1pt" Left="1pt" Right="1pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="2" ColumnIndex="0" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="1.174in" Height="0.199in" Left="0in" Top="0in" KeepTogether="True" Value="=Sum(Fields.Amount)" Format="{0:N2}" Name="textBox7" StyleName="">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <Font Size="8pt" Bold="True" />
+                      <BorderStyle Top="Dotted" />
+                      <BorderWidth Default="0.7pt" Top="1pt" Bottom="1pt" Left="1pt" Right="1pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="3" ColumnIndex="0" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="1.174in" Height="0.2in" Left="0in" Top="0in" KeepTogether="True" Value="=Sum(Fields.Amount)" Format="{0:N2}" Name="textBox19" StyleName="">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <Font Size="8pt" Bold="True" />
+                      <BorderStyle Top="Solid" Bottom="Solid" />
+                      <BorderWidth Default="0.7pt" Top="1pt" Bottom="1pt" Left="1pt" Right="1pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="1" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="1.17in" Height="0.2in" Left="0in" Top="0in" Name="textBox25" StyleName="">
+                    <Style VerticalAlign="Middle">
+                      <Font Size="8pt" Bold="True" />
+                      <BorderWidth Default="0.7pt" Top="1pt" Bottom="1pt" Left="1pt" Right="1pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="1" ColumnIndex="1" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="1.17in" Height="0.2in" Left="0in" Top="0in" Value="=Sum(Fields.Selisih)" Format="{0:N2}" Name="textBox29" StyleName="">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <Font Size="8pt" />
+                      <BorderWidth Default="0.7pt" Top="1pt" Bottom="1pt" Left="1pt" Right="1pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="2" ColumnIndex="1" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="1.17in" Height="0.199in" Left="0in" Top="0in" Value="=Sum(Fields.Selisih)" Format="{0:N2}" Name="textBox26" StyleName="">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <Font Size="8pt" Bold="True" />
+                      <BorderStyle Top="Dotted" />
+                      <BorderWidth Default="0.7pt" Top="1pt" Bottom="1pt" Left="1pt" Right="1pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="3" ColumnIndex="1" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="1.17in" Height="0.2in" Left="0in" Top="0in" Value="=Sum(Fields.Selisih)" Format="{0:N2}" Name="textBox27" StyleName="">
+                    <Style TextAlign="Right" VerticalAlign="Middle">
+                      <Font Size="8pt" Bold="True" />
+                      <BorderStyle Top="Solid" Bottom="Solid" />
+                      <BorderWidth Default="0.7pt" Top="1pt" Bottom="1pt" Left="1pt" Right="1pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+            </Cells>
+            <Columns>
+              <Column Width="1.174in" />
+              <Column Width="1.17in" />
+            </Columns>
+            <Rows>
+              <Row Height="0.2in" />
+              <Row Height="0.2in" />
+              <Row Height="0.199in" />
+              <Row Height="0.2in" />
+            </Rows>
+          </Body>
+          <Corner>
+            <Cells>
+              <TableCell RowIndex="0" ColumnIndex="1" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="1.185in" Height="0.198in" Left="0in" Top="0in" Value="NO. REG" Name="textBox13" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Font Size="8pt" Bold="True" />
+                      <BorderStyle Top="Solid" Bottom="Solid" Left="None" Right="None" />
+                      <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+                      <BorderWidth Default="0.7pt" Top="1pt" Bottom="1pt" Left="1pt" Right="1pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="0" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="0.438in" Height="0.198in" Left="0in" Top="0in" Value="NO." Name="textBox16" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Font Size="8pt" Bold="True" />
+                      <BorderStyle Top="Solid" Bottom="Solid" />
+                      <BorderWidth Default="0.7pt" Top="1pt" Bottom="1pt" Left="1pt" Right="1pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="2" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Width="1.932in" Height="0.198in" Left="0in" Top="0in" Value="NAMA PASIEN" Name="textBox12" StyleName="">
+                    <Style TextAlign="Center" VerticalAlign="Middle">
+                      <Font Size="8pt" Bold="True" />
+                      <BorderStyle Top="Solid" Bottom="Solid" />
+                      <BorderWidth Default="0.7pt" Top="1pt" Bottom="1pt" Left="1pt" Right="1pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+            </Cells>
+          </Corner>
+          <Style Color="Black">
+            <BorderStyle Default="None" />
+          </Style>
+          <RowGroups>
+            <TableGroup Name="GuarantorHeader1">
+              <ChildGroups>
+                <TableGroup Name="Group3">
+                  <ChildGroups>
+                    <TableGroup Name="Group7">
+                      <ReportItem>
+                        <TextBox Width="3.554in" Height="0.2in" Left="0in" Top="0in" KeepTogether="True" Value="=Fields.GuarantorHeader" Name="textBox18" StyleName="">
+                          <Style VerticalAlign="Middle">
+                            <Font Size="8pt" Bold="True" />
+                            <BorderStyle Bottom="Dotted" />
+                            <BorderWidth Default="0.7pt" Top="1pt" Bottom="1pt" Left="1pt" Right="1pt" />
+                          </Style>
+                        </TextBox>
+                      </ReportItem>
+                    </TableGroup>
+                    <TableGroup Name="RegistrationNo">
+                      <ReportItem>
+                        <TextBox Width="0.438in" Height="0.2in" Left="0in" Top="0in" KeepTogether="True" Value="=RowNumber(&quot;GuarantorHeader1&quot;)" Name="textBox14" StyleName="">
+                          <Style VerticalAlign="Middle">
+                            <Font Size="8pt" />
+                          </Style>
+                        </TextBox>
+                      </ReportItem>
+                      <ChildGroups>
+                        <TableGroup Name="Group1">
+                          <ReportItem>
+                            <TextBox Width="1.185in" Height="0.2in" Left="0in" Top="0in" KeepTogether="True" Value="=Fields.RegistrationNo" Name="textBox10" StyleName="">
+                              <Style VerticalAlign="Middle">
+                                <Font Size="8pt" />
+                              </Style>
+                            </TextBox>
+                          </ReportItem>
+                          <ChildGroups>
+                            <TableGroup Name="PatientName">
+                              <ReportItem>
+                                <TextBox Width="1.932in" Height="0.2in" Left="0in" Top="0in" KeepTogether="True" Value="=Fields.PatientName" CanShrink="True" Multiline="False" TextWrap="False" Name="textBox3" StyleName="">
+                                  <Style VerticalAlign="Middle">
+                                    <Font Size="8pt" />
+                                  </Style>
+                                </TextBox>
+                              </ReportItem>
+                              <Groupings>
+                                <Grouping Expression="=Fields.PatientName" />
+                              </Groupings>
+                              <Sortings>
+                                <Sorting Expression="=Fields.PatientName" Direction="Asc" />
+                              </Sortings>
+                            </TableGroup>
+                          </ChildGroups>
+                        </TableGroup>
+                      </ChildGroups>
+                      <Groupings>
+                        <Grouping Expression="=Fields.RegistrationNo" />
+                      </Groupings>
+                      <Sortings>
+                        <Sorting Expression="=Fields.RegistrationNo" Direction="Asc" />
+                      </Sortings>
+                    </TableGroup>
+                    <TableGroup Name="Group5">
+                      <ReportItem>
+                        <TextBox Width="0.438in" Height="0.199in" Left="0in" Top="0in" KeepTogether="True" Name="textBox15" StyleName="">
+                          <Style>
+                            <Font Size="8pt" />
+                          </Style>
+                        </TextBox>
+                      </ReportItem>
+                      <ChildGroups>
+                        <TableGroup Name="Group4">
+                          <ReportItem>
+                            <TextBox Width="1.185in" Height="0.199in" Left="0in" Top="0in" KeepTogether="True" Name="textBox9" StyleName="">
+                              <Style>
+                                <Font Size="8pt" />
+                                <BorderStyle Top="None" Bottom="None" Left="None" Right="None" />
+                                <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+                                <BorderWidth Top="1pt" Bottom="1pt" Left="1pt" Right="1pt" />
+                              </Style>
+                            </TextBox>
+                          </ReportItem>
+                          <ChildGroups>
+                            <TableGroup Name="Group8">
+                              <ReportItem>
+                                <TextBox Width="1.932in" Height="0.199in" Left="0in" Top="0in" KeepTogether="True" Name="textBox6" StyleName="">
+                                  <Style>
+                                    <Font Size="8pt" />
+                                  </Style>
+                                </TextBox>
+                              </ReportItem>
+                            </TableGroup>
+                          </ChildGroups>
+                        </TableGroup>
+                      </ChildGroups>
+                    </TableGroup>
+                  </ChildGroups>
+                </TableGroup>
+              </ChildGroups>
+              <Groupings>
+                <Grouping Expression="=Fields.GuarantorHeader" />
+              </Groupings>
+              <Sortings>
+                <Sorting Expression="=Fields.GuarantorHeaderID" Direction="Asc" />
+              </Sortings>
+            </TableGroup>
+            <TableGroup Name="Group2">
+              <ChildGroups>
+                <TableGroup Name="Group6">
+                  <ChildGroups>
+                    <TableGroup Name="Group9">
+                      <ReportItem>
+                        <TextBox Width="3.554in" Height="0.2in" Left="0in" Top="0in" KeepTogether="True" Value="Grand Total" Name="textBox5" StyleName="">
+                          <Style TextAlign="Right" VerticalAlign="Middle">
+                            <Font Size="8pt" Bold="True" />
+                            <BorderWidth Default="0.7pt" Top="1pt" Bottom="1pt" Left="1pt" Right="1pt" />
+                          </Style>
+                        </TextBox>
+                      </ReportItem>
+                    </TableGroup>
+                  </ChildGroups>
+                </TableGroup>
+              </ChildGroups>
+            </TableGroup>
+          </RowGroups>
+          <ColumnGroups>
+            <TableGroup Name="Judul">
+              <ChildGroups>
+                <TableGroup Name="Group11">
+                  <ReportItem>
+                    <TextBox Width="1.174in" Height="0.503cm" Left="0in" Top="0in" Value="=Fields.Judul" Name="textBox8" StyleName="">
+                      <Style TextAlign="Center" VerticalAlign="Middle">
+                        <Font Size="8pt" Bold="True" />
+                        <BorderStyle Top="Solid" Bottom="Solid" />
+                        <BorderWidth Default="0.7pt" Top="1pt" Bottom="1pt" Left="1pt" Right="1pt" />
+                      </Style>
+                    </TextBox>
+                  </ReportItem>
+                  <ChildGroups>
+                    <TableGroup Name="MonthName" />
+                  </ChildGroups>
+                </TableGroup>
+              </ChildGroups>
+              <Groupings>
+                <Grouping Expression="=Fields.Judul" />
+              </Groupings>
+              <Sortings>
+                <Sorting Expression="=Fields.IDJudul" Direction="Asc" />
+              </Sortings>
+            </TableGroup>
+            <TableGroup Name="Group14">
+              <ChildGroups>
+                <TableGroup Name="Group15">
+                  <ReportItem>
+                    <TextBox Width="1.17in" Height="0.503cm" Left="0in" Top="0in" Value="Selisih" Name="textBox24" StyleName="">
+                      <Style TextAlign="Center" VerticalAlign="Middle">
+                        <Font Size="8pt" Bold="True" />
+                        <BorderStyle Top="Solid" Bottom="Solid" />
+                        <BorderWidth Default="0.7pt" Top="1pt" Bottom="1pt" Left="1pt" Right="1pt" />
+                      </Style>
+                    </TextBox>
+                  </ReportItem>
+                  <ChildGroups>
+                    <TableGroup Name="Group16" />
+                  </ChildGroups>
+                </TableGroup>
+              </ChildGroups>
+            </TableGroup>
+          </ColumnGroups>
+        </Crosstab>
+      </Items>
+    </ReportHeaderSection>
+  </Items>
+  <PageSettings PaperKind="Custom" PaperSize="210mm, 365mm" Landscape="True" ColumnCount="1" ColumnSpacing="0in">
+    <Margins>
+      <MarginsU Left="0.1in" Right="0.1in" Top="0.2in" Bottom="0.2in" />
+    </Margins>
+  </PageSettings>
+  <StyleSheet>
+    <StyleRule>
+      <Style>
+        <Padding Left="2pt" Right="2pt" />
+      </Style>
+      <Selectors>
+        <TypeSelector Type="TextItemBase" />
+        <TypeSelector Type="HtmlTextBox" />
+      </Selectors>
+    </StyleRule>
+  </StyleSheet>
+</Report>

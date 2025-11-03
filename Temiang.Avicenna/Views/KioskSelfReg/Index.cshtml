@@ -1,0 +1,1117 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutKiosk.cshtml";
+}
+<link href="@(ViewBag.UrlRoot)/Bootstrap/plugins/flag-icon-css/css/flag-icon.min.css" rel="stylesheet" />
+<style>
+    .bpjsIco {
+        background-image: url('@(ViewBag.UrlRoot)/Bootstrap/adminlte/img/icons/bpjs_32.png');
+    }
+
+    .mycontainer {
+        /*display: flex;*/
+        width: 100%;
+        margin: auto;
+    }
+
+    .keypad-area {
+        /*display: inline-block;*/
+        /*width: 260px;*/
+        /*display:block;*/
+        @*background-image: url('@(ViewBag.UrlRoot)/Images/logo_medium.png');
+        background-repeat: no-repeat;
+        *@
+        width: 270px;
+        float: left;
+    }
+
+    .keypad-group {
+        width: 255px;
+    }
+
+    .qrcode-area {
+        margin-left: 275px;
+    }
+    .slide-area {
+        /*display: inline-block;
+        margin-left: 335px;*/
+        /*flex-grow: 1;
+        margin-left: 5px;*/
+        margin-left: 275px;
+        height: calc(100vh - 60px);
+        overflow: scroll;
+    }
+
+    .keyPad {
+        height: 70px;
+        /*width: 70px;*/
+    }
+
+    .btn-poli {
+        display: inline-block;
+        height: 90px;
+        width: 200px;
+        font-size: 22px;
+    }
+    .btn-poli-closed {
+        display: inline-block;
+        height: 90px;
+        width: 200px;
+        font-size: 22px;
+        background-color:lightgray;
+    }
+    .btn-dokter {
+        display: inline-block;
+        height: 220px;
+        width: 180px;
+        font-size: 16px;
+        text-align: center;
+    }
+    .btn-dokter-closed {
+        display: inline-block;
+        height: 220px;
+        width: 180px;
+        font-size: 16px;
+        background-color: lightgray;
+        text-align: center;
+    }
+    .img-dokter {
+        border: solid;
+        /*width: 170px;
+        height: 120px;*/
+        text-align: center;
+        /*max-height: 100%;*/
+        max-width: 100%;
+        height: auto;
+    }
+    .sch-dokter {
+        font-size: 10px;
+    }
+    .dokter-slide {
+        /*display: inline-block;*/
+        /*height: 420px;*/
+        display: inline-block;
+        width: 260px;
+        vertical-align: top;
+        /*border: 1px solid black;*/
+    }
+    .dokter-slide .pimg {
+        border: solid;
+        /*width: 170px;
+        height: 120px;*/
+        text-align: center;
+        /*max-height: 100%;*/
+        max-width: 100%;
+        height: auto;
+    }
+    .dokter-slide .pname {
+        font-size: 18px;
+        /*text-align: center;*/
+    }
+        .dokter-slide .poliname {
+            font-size: 14px;
+            /*text-align: center;*/
+        }
+    .dokter-slide .psch {
+        font-size: 12px;
+        /*text-align: center;*/
+    }
+
+
+    .spin3d {
+         -webkit-animation-name: spinner;
+        -webkit-animation-timing-function: linear;
+        -webkit-animation-iteration-count: infinite;
+        -webkit-animation-duration: 2s;
+        animation-name: spinner;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+        animation-duration: 10s;
+        -webkit-transform-style: preserve-3d;
+        -moz-transform-style: preserve-3d;
+        -ms-transform-style: preserve-3d;
+        transform-style: preserve-3d;
+    }
+
+    /* WebKit and Opera browsers */ @@-webkit-keyframes spinner {
+        from
+        {
+            -webkit-transform: rotateY(0deg);
+        }
+        to {
+            -webkit-transform: rotateY(-360deg);
+        }
+    } /* all other browsers */
+    @@keyframes spinner {
+        from {
+            -moz-transform: rotateY(0deg);
+            -ms-transform: rotateY(0deg);
+            transform: rotateY(0deg);
+        }
+        to
+        {
+            -moz-transform: rotateY(-360deg);
+            -ms-transform: rotateY(-360deg);
+            transform: rotateY(-360deg);
+
+        }
+    }
+
+    .well {
+        position: relative;
+        display: inline-block;
+    }
+    .scanner-laser {
+        position: absolute;
+        margin: 20px;
+        height: 30px;
+        width: 30px;
+        opacity: 0.5;
+    }
+    .laser-leftTop {
+        top: 0;
+        left: 0;
+        border-top: solid red 5px;
+        border-left: solid red 5px;
+    }
+    .laser-leftBottom {
+        bottom: 0;
+        left: 0;
+        border-bottom: solid red 5px;
+        border-left: solid red 5px;
+    }
+    .laser-rightTop {
+        top: 0;
+        right: 0;
+        border-top: solid red 5px;
+        border-right: solid red 5px;
+    }
+    .laser-rightBottom {
+        bottom: 0;
+        right: 0;
+        border-bottom: solid red 5px;
+        border-right: solid red 5px;
+    }
+</style>
+
+<style>
+    .cButton {
+        display: inline-block;
+        height: 90px;
+        width: 200px;
+        font-size: 22px;
+    }
+
+    .pButton {
+        display: inline-block;
+        height: 100px;
+        width: 270px;
+        font-size: 28px;
+    }
+
+    .myInfoBtn {
+        font-size: 18px;
+    }
+
+    .overlay {
+        position: fixed; /* Sit on top of the page content */
+        display: inline-block; /* Hidden by default */
+        width: 90%; /* Full width (cover the whole page) */
+        height: 90%; /* Full height (cover the whole page) */
+        opacity: 0.1;
+        background-image: url('@(ViewBag.UrlRoot)/Images/logo_medium.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+        z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+        pointer-events: none;
+    }
+</style>
+
+<div id="divKiosk" class="mycontainer" @*style="border:solid"*@>
+    <div class="keypad-area" @*style="border:solid"*@>
+        <div class="callout callout-info px-0 pt-0 pb-1">
+            <div class="btn-group-vertical ml-1 mr-1 keypad-group" role="group" aria-label="Basic example">
+                <div class="btn-group">
+                    <span id="spanMainInstr"></span>
+                </div>
+                <div class="btn-group">
+                    <input class="text-center form-control-lg mb-2 keypad-group" id="txtMRN">
+                </div>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-outline-secondary keyPad" onclick="NumPad('1');">1&nbsp;</button>
+                    <button type="button" class="btn btn-outline-secondary keyPad" onclick="NumPad('2');">2&nbsp;</button>
+                    <button type="button" class="btn btn-outline-secondary keyPad" onclick="NumPad('3');">&nbsp;3&nbsp;</button>
+                </div>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-outline-secondary keyPad" onclick="NumPad('4');">4&nbsp;</button>
+                    <button type="button" class="btn btn-outline-secondary keyPad" onclick="NumPad('5');">5&nbsp;</button>
+                    <button type="button" class="btn btn-outline-secondary keyPad" onclick="NumPad('6');">&nbsp;6&nbsp;</button>
+                </div>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-outline-secondary keyPad" onclick="NumPad('7');">7&nbsp;</button>
+                    <button type="button" class="btn btn-outline-secondary keyPad" onclick="NumPad('8');">8&nbsp;</button>
+                    <button type="button" class="btn btn-outline-secondary keyPad" onclick="NumPad('9');">&nbsp;9&nbsp;</button>
+                </div>
+                <div class="btn-group" id="keypadCtrl">
+                    <button type="button" class="btn btn-outline-secondary keyPad" onclick="NumPad('<');">&lt;&nbsp;</button>
+                    <button type="button" class="btn btn-outline-secondary keyPad" onclick="NumPad('0');">0&nbsp;</button>
+                    <button type="button" class="btn btn-outline-primary keyPad" onclick="BtnGoMRN(false);">Go</button>
+                </div>
+                @*<div class="btn-group">
+                        <button type="button" class="btn btn-outline-primary keyPad" onclick="BtnGoMRN(false);">Lanjut Pakai No Med Rec</button>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-outline-primary keyPad" onclick="BtnGoReferenceNo('1',false);">Lanjut Pakai No Rujukan FASKES 1</button>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-outline-primary keyPad" onclick="BtnGoReferenceNo('2',false);">Lanjut Pakai No Rujukan RS</button>
+                    </div>
+                    <div></div>*@
+            </div>
+        </div>
+
+
+        <div class="text-center">
+            <img id="logoMedium" src="@(ViewBag.UrlRoot)/Images/logo_medium.png" alt="Logo" style="opacity: .8">
+        </div>
+    </div>
+
+    <div class="callout callout-info px-0 pt-0 pb-1 qrcode-area" id="qrCodeArea">
+        <h5><span id="spanQRCodeInstr"></span></h5>
+        <div class="well" style="position: relative;display: inline-block;">
+            <canvas width="160" height="120" id="webcodecam-canvas"></canvas>
+            <div class="scanner-laser laser-rightBottom" style="opacity: 0.5;"></div>
+            <div class="scanner-laser laser-rightTop" style="opacity: 0.5;"></div>
+            <div class="scanner-laser laser-leftBottom" style="opacity: 0.5;"></div>
+            <div class="scanner-laser laser-leftTop" style="opacity: 0.5;"></div>
+        </div>
+    </div>
+
+
+    <div id="divSlide" class="slide-area" @*style="border:solid"*@>
+
+    </div>
+</div>
+
+<div id="divQueue">
+    <div class="overlay"></div>
+    <div class="row">
+        <div class="col-12">
+            <div id="divList" class="card" style="width:100%; border:none;">
+                <div class="card-header">
+                    <h3 class="card-title"><span class='fa fa-lg fa-book'></span> <span id="spanSub1TitleQueue"></span> </h3>
+                </div>
+                <div class="card-body">
+                    <div id="divBtnEntry">
+                        <a class="btn btn-outline-primary">
+                            <i class="fa fa-list fa-1x"></i> Queue Button
+                            <span class="badge bg-success navbar-badge-left">0 / 0</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div id="divDetail"></div>
+            <div id="divEntry"></div>
+        </div>
+    </div>
+</div>
+
+<div id="divAppt">
+    appt goes here
+</div>
+<div id="divCheckIn">
+    checkin goes here
+</div>
+
+<div class="row">
+    <div></div>
+</div>
+
+@section Scripts
+{
+    <script language="javascript">
+        var lang = {
+            "pageTitleKiosk": { "en": "Self-Registration Service", "id": "Pendaftaran Mandiri" },
+            "pageTitleQueue": { "en": "Queuing System", "id": "Sistem Antrean" },
+            "pageTitleAppt": { "en": "Appointment", "id": "Rencana Kunjungan" },
+            "pageTitleCheckIn": { "en": "Check In", "id": "Check In" },
+            "sub1TitleQueue": { "id": "Silahkan pilih antrean berikut", "en": "Please choose one of the following queue" },
+            "mainInstruction": { "en": "Please Enter Your Medical Number", "id": "Silahkan Memasukan Nomor Medrec" },
+            "go": { "en": "Go", "id": "Cari" },
+            "suSelection": { "en": "Service Unit Selection", "id": "Pilihan Unit Layanan" },
+            "parSelection": { "en": "Physician Selection", "id": "Pilihan Dokter" },
+            "patInfo": { "en": "Patient Information", "id": "Informasi Pasien" },
+            "bpjsInstruction": { "en": "Please Enter BPJS Referral Number", "id": "Silahkan Memasukan Nomor Rujukan BPJS" },
+            "qrCodeInstr": { "en": "Scan your QR-Code here", "id": "Pindai kode QR disini" }
+        };
+
+        var EnableBPJS = @(((bool)ViewBag.enableBPJS).ToString().ToLower());
+        var IsBpjsAntrolIntegration = @(((bool)ViewBag.isBpjsAntrolIntegration).ToString().ToLower());
+        var EnableQRCode = @(((bool)ViewBag.enableQRCode).ToString().ToLower());
+
+
+        $(document).ready(function () {
+            //$('[data-widget="pushmenu"]').PushMenu('collapse');
+
+            @*if (EnableBPJS) {
+                NavLeftAddItemNonIcon("Tunai / Cash", "@(ViewBag.UrlRoot)/Bootstrap/adminlte/img/icons/cash_32.png", "NonBpjs()");
+                NavLeftAddItemNonIcon("BPJS", "@(ViewBag.UrlRoot)/Bootstrap/adminlte/img/icons/bpjs_32.png", "BpjsRujukan()");
+
+                NavLeftAddItem("<br />");
+
+                // add keyboard
+                $('#keypadCtrl').prepend('<button type="button" class="btn btn-outline-secondary keyPad" onclick="SelectMRN();"><i class="fas fa-keyboard"></i></button>');
+
+                $('#txtMRN').keyboard({
+                    layout: 'qwerty',
+                    css: {
+                        // input & preview
+                        input: 'form-control input-sm',
+                        // keyboard container
+                        container: 'center-block dropdown-menu', // jumbotron
+                        // default state
+                        buttonDefault: 'btn btn-default',
+                        // hovered button
+                        buttonHover: 'btn-primary',
+                        // Action keys (e.g. Accept, Cancel, Tab, etc);
+                        // this replaces "actionClass" option
+                        buttonAction: 'active',
+                        // used when disabling the decimal button {dec}
+                        // when a decimal exists in the input area
+                        buttonDisabled: 'disabled'
+                    },
+                    language: 'id',
+                    accepted: function (event, keyboard, el) {
+                        //console.log('The content "' + el.value + '" was accepted!');
+                        BtnGoMRN(false);
+                    },
+                    canceled: function (event, keyboard, el) {
+                        //console.log('changes canceled, value restored to ' + el.value);
+                        ResetMRN();
+                    }
+                });
+            }*@
+
+            NavLeftAddItem("Bahasa", "flag-icon flag-icon-id", "SetLang('id')");
+            NavLeftAddItem("English", "flag-icon flag-icon-us", "SetLang('en')");
+            //NavLeftAddItem("RESET", "fas fa-sync", "ResetMRN()");
+
+            //console.log(GetRefID());
+
+            NavLeftAddItem("<br />");
+            NavLeftAddItem("<span lang='id'>Pendaftaran Mandiri</span><span lang='en'>Self Registration</span>", "fas fa-chalkboard-teacher text-primary", "SetPage(0)");
+            if (IsBpjsAntrolIntegration) {
+                NavLeftAddItem("<span lang='id'>Rencana Kunjungan<br />(Antrean Online)</span><span lang='en'>Appointment</span>", "fas fa-hospital-user text-primary", "SetPage(2)");
+                NavLeftAddItem("<span lang='id'>Check In<br />(Antrean Online)</span><span lang='en'>Check In</span>", "fas fa-hospital-user text-primary", "SetPage(3)");
+            }
+
+            if (!CoreIsNullOrEmpty(GetRefID())) {
+                NavLeftAddItem("<span lang='id'>Sistem Antrean</span><span lang='en'>Queuing System</span>", "fas fa-list-ol text-primary","SetPage(1)");
+            }
+
+            SetLang("id");
+            SetPage(0);
+
+            AttachFN();
+            AttachFNQueue();
+
+            if (EnableQRCode) {
+                CreateQRCodeReader();
+            } else {
+                $("#qrCodeArea").hide();
+            }
+
+            ParamedicSlideShow();
+        });
+
+        function GetRefID() {
+            var refid = getUrlVars()["refid"];
+            if (refid == undefined) refid = "";
+            return refid;
+        }
+
+        function AttachFN() {
+            var args = [];
+            if (!EnableBPJS) {
+                var jSonFnTic = { fn: SelectMRN, args: [], tic: 1000 };
+                _FNTOEXEC.push(jSonFnTic);
+            }
+
+            var args = [];
+            var jSonFnRotateLogo = { fn: RotateLogo, args: [], tic: 10000 };
+            _FNTOEXEC.push(jSonFnRotateLogo);
+
+            var jSonFnAjaxCounter = { fn: GetAjaxCounter, args: args, tic: 600000 };
+            _FNTOEXEC.push(jSonFnAjaxCounter);
+        }
+
+        var iRotateCounter = 0;
+        function RotateLogo() {
+            //console.log(iRotateCounter);
+            switch (iRotateCounter) {
+                case 0: {
+                    $('#logoMedium').addClass("spin3d");
+                    iRotateCounter++;
+                    break;
+                }
+                case 1: {
+                    $('#logoMedium').removeClass();
+                    iRotateCounter++;
+                    break;
+                }
+                case 2: {
+                    iRotateCounter = 0;
+                    break;
+                }
+                default: {
+                    iRotateCounter++;
+                    break;
+                }
+            }
+        }
+
+        var selectedLang = 'id';
+        var selectedMenu = 0; /*0 registrasi mandiri tunai, 1 registrasi mandiri bpjs rujukan*/
+        var selectedPage = 0; /*0 registrasi mandiri, 1 antrian*/
+
+        var aPage = ["divKiosk", "divQueue", "divAppt", "divCheckIn"];
+
+        function SetPage(i) {
+            selectedPage = i;
+            CoreToggleShowHide(aPage, i);
+            SetLang(selectedLang);
+
+            if (selectedPage == 2) {
+                CoreLoadContentToContainerDiv("@(ViewBag.UrlRoot)/Kioskselfreg/ApptIndex", "divAppt", "POST", function () { SetLangBySpan(selectedLang); });
+            }
+            else if (selectedPage == 3) {
+                CoreLoadContentToContainerDiv("@(ViewBag.UrlRoot)/Kioskselfreg/CheckInIndex", "divCheckIn", "POST", function () { SetLangBySpan(selectedLang); });
+            }
+
+        }
+
+        function SetLang(l) {
+            selectedLang = l;
+            SetPageTitle();
+
+            if (selectedMenu == 0) {
+                SetHtml('spanMainInstr', ShowLang(lang.mainInstruction));
+            } else {
+                SetHtml('spanMainInstr', ShowLang(lang.bpjsInstruction));
+            }
+
+            SetHtml('spanSub1TitleQueue', ShowLang(lang.sub1TitleQueue));
+
+            SetHtml('spanQRCodeInstr', ShowLang(lang.qrCodeInstr));
+
+            SetLangBySpan(l);
+        }
+
+        function SetLangBySpan(l) {
+            //alert(selectedLang);
+            // set button lang
+            var spans = $("[lang=id]");
+            //console.log(spans);
+            for (var i = 0; i < spans.length; i++) {
+                if (l == "id")
+                    $(spans[i]).fadeIn('slow');
+                else
+                    $(spans[i]).hide();
+            }
+
+            var spans = $("[lang=en]");
+            //console.log(spans);
+            for (var i = 0; i < spans.length; i++) {
+                if (l == "en")
+                    $(spans[i]).fadeIn('slow');
+                else
+                    $(spans[i]).hide();
+            }
+            //alert(selectedLang);
+        }
+
+        function SetPageTitle() {
+            switch (selectedPage) {
+                case 0: {
+                    SetHtml('spanPageTitle', ShowLang(lang.pageTitleKiosk));
+                    break;
+                } case 1: {
+                    SetHtml('spanPageTitle', ShowLang(lang.pageTitleQueue));
+                    break;
+                } case 2: {
+                    SetHtml('spanPageTitle', ShowLang(lang.pageTitleAppt));
+                    break;
+                } case 3: {
+                    SetHtml('spanPageTitle', ShowLang(lang.pageTitleCheckIn));
+                    break;
+                }
+            }
+        }
+        function ShowLang(key) {
+            return selectedLang == "id" ? key.id : key.en;
+        }
+
+        function BpjsRujukan() {
+            if (selectedPage != 0) {
+                SetPage(0);
+            }
+            selectedMenu = 1;
+            ResetMRN();
+            SetHtml('spanMainInstr', ShowLang(lang.bpjsInstruction));
+        }
+        function NonBpjs() {
+            if (selectedPage != 0) {
+                SetPage(0);
+            }
+            selectedMenu = 0;
+            ResetMRN();
+            SetHtml('spanMainInstr', ShowLang(lang.mainInstruction));
+        }
+
+        function NumPad(num) {
+            if (num == "<") {
+                document.getElementById('txtMRN').value = document.getElementById('txtMRN').value.slice(0, -1);
+            } else {
+                document.getElementById('txtMRN').value = document.getElementById('txtMRN').value + num;
+            }
+        }
+        function ResetMRN() {
+            $('#txtMRN').val('');
+        }
+        function SelectMRN() {
+            $('#txtMRN').focus();
+        }
+
+        var MedicalNo = ''; // akan diset dari view GoMRN
+        var ReferenceNo = '';
+        function BtnGoMRN(ForceCreateNew) {
+            //console.log($('#txtMRN').val());
+
+            if (selectedMenu == 1) {
+                BtnGoReferenceNo(1, false);
+                return;
+            }
+            ReferenceNo = '';
+            MedicalNo = '';
+            ShowProgress();
+
+            var header = '<h3><i class="fas fa-list"></i> ' + ShowLang(lang.suSelection) + '</h3>';
+            var body = "";
+            var footer = '';
+
+            // load custom menu
+            $.ajax({
+                type: 'POST',
+                url: "@(ViewBag.UrlRoot)/Kioskselfreg/GoMRN",
+                data: { MedicalNo: $('#txtMRN').val(), ForceCreateNew: ForceCreateNew, lang: selectedLang },
+                success: function (data) {
+                    // do something
+                    body = data;
+                    //console.log(data);
+                    CoreFnCustomDialog(header, body, footer, null, "modal-xl");
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    //console.log("ERROR");
+                    ShowError(xhr.responseText);
+                },
+                dataType: 'html'
+            });
+        }
+
+        var TipeRujukan='';
+        function BtnGoReferenceNo(ReferenceType, ForceCreateNew) {
+            TipeRujukan = ReferenceType;
+            MedicalNo = '';
+            ReferenceNo = $('#txtMRN').val();
+            ShowProgress();
+
+            var header = '<h3><i class="fas fa-list"></i> ' + ShowLang(lang.suSelection) + '</h3>';
+            var body = "";
+            var footer = '';
+
+            // load custom menu
+            $.ajax({
+                type: 'POST',
+                url: "@(ViewBag.UrlRoot)/Kioskselfreg/GoReferenceNo",
+                data: { ReferenceNo: $('#txtMRN').val(), ReferenceType: ReferenceType, ForceCreateNew: ForceCreateNew, lang: selectedLang },
+                success: function (data) {
+                    // do something
+                    body = data;
+                    //console.log(data);
+                    CoreFnCustomDialog(header, body, footer, null, "modal-xl");
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    //console.log("ERROR");
+                    ShowError(xhr.responseText);
+                },
+                dataType: 'html'
+            });
+        }
+
+        var ServiceUnitID = '';
+        function BtnPoliClick(suid) {
+            ServiceUnitID = suid;
+            ShowProgress();
+
+            var header = '<h3><i class="fas fa-list"></i> ' + ShowLang(lang.parSelection) + '</h3>';
+            var body = "";
+            var footer = '';
+
+            $.ajax({
+                type: 'POST',
+                url: "@(ViewBag.UrlRoot)/Kioskselfreg/ParamedicByUnit",
+                data: { ServiceUnitID: ServiceUnitID, MedicalNo: MedicalNo, lang: selectedLang },
+                success: function (data) {
+                    // do something
+                    body = data;
+                    CoreFnCustomDialog(header, body, footer, function () {
+                        ModalFooterReplace(_modalFooterDefault.replace('Close', 'Cancel'));
+                    }, "modal-xl");
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    ShowError(xhr.responseText);
+                },
+                dataType: 'html'
+            });
+        }
+
+        var ParamedicID = '';
+        function BtnParamedicClick(parid, suid, medicalno) {
+            ParamedicID = parid;
+            ServiceUnitID = suid;
+            MedicalNo = medicalno
+            ShowProgress();
+
+            var header = '<h3><i class="fas fa-info"></i> ' + ShowLang(lang.patInfo) + '</h3>';
+            var body = "";
+            var footer = '';
+
+            $.ajax({
+                type: 'POST',
+                url: "@(ViewBag.UrlRoot)/Kioskselfreg/PatientInfo",
+                data: { AppointmentNo: '', ReferenceNo: ReferenceNo, MedicalNo: MedicalNo, ServiceUnitID: ServiceUnitID, ParamedicID: ParamedicID, lang: selectedLang },
+                success: function (data) {
+                    // do something
+                    body = data;
+                    CoreFnCustomDialog(header, body, footer, function () {
+                        ModalFooterReplace(_modalFooterDefault.replace('Close', 'Cancel'));
+                    }, "modal-lg");
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    ShowError(xhr.responseText);
+                },
+                dataType: 'html'
+            });
+        }
+
+        function BtnAppointmentClick(AppointmentNo) {
+            ShowProgress();
+
+            var header = '<h3><i class="fab fa-info"></i> ' + ShowLang(lang.patInfo) + '</h3>';
+            var body = "";
+            var footer = '';
+
+            $.ajax({
+                type: 'POST',
+                url: "@(ViewBag.UrlRoot)/Kioskselfreg/PatientInfo",
+                data: { AppointmentNo: AppointmentNo, MedicalNo: '', ServiceUnitID: '', ParamedicID: '', lang: selectedLang },
+                success: function (data) {
+                    // do something
+                    body = data;
+                    CoreFnCustomDialog(header, body, footer, function () {
+                        ModalFooterReplace(_modalFooterDefault.replace('Close', 'Cancel'));
+                    }, "modal-lg");
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    ShowError(xhr.responseText);
+                },
+                dataType: 'html'
+            });
+        }
+
+        function BtnRegisterClick() {
+            ShowProgress();
+
+            $.ajax({
+                type: 'POST',
+                url: "@(ViewBag.UrlRoot)/Kioskselfreg/Register",
+                data: { AppointmentNo: AppointmentNo, ReferenceNo: ReferenceNo, MedicalNo: MedicalNo, ServiceUnitID: ServiceUnitID, ParamedicID: ParamedicID, lang: selectedLang, TipeRujukan:TipeRujukan },
+                success: function (data) {
+                    if (data.status == _sJsonRequestOkStatus) {
+                        dlgInfo = ShowSuccess(data.data);
+                        setTimeout(function () {
+                            var isShown = dlgInfo.hasClass('show');
+                            if (isShown) {
+                                dlgInfo.modal('hide');
+                            }
+                        }, 2000);
+                    } else {
+                        ShowError(data.data);
+                    }
+                    ResetMRN();
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    ShowError(xhr.responseText);
+                    ResetMRN();
+                },
+                dataType: 'json'
+            });
+        }
+        function BtnPrintSlipClick(RegistrationNo) {
+            ShowProgress();
+
+            $.ajax({
+                type: 'POST',
+                url: "@(ViewBag.UrlRoot)/Kioskselfreg/RegistrationPrint",
+                data: { RegistrationNo: RegistrationNo },
+                success: function (data) {
+                    if (data.status == _sJsonRequestOkStatus) {
+                        dlgInfo = ShowSuccess(data.data);
+                        setTimeout(function () {
+                            var isShown = dlgInfo.hasClass('show');
+                            if (isShown) {
+                                dlgInfo.modal('hide');
+                            }
+                        }, 2000);
+                    } else {
+                        ShowError(data.data);
+                    }
+                    ResetMRN();
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    ShowError(xhr.responseText);
+                    ResetMRN();
+                },
+                dataType: 'json'
+            });
+        }
+
+        @*var aPoli = []; BLM DIPAKAI, RIBET
+        var _PoliUpdateIsRunning = false;
+        function PoliUpdateActiveParamedicCount() {
+            console.log(aPoli);
+            // cek poli yang aktif
+            var aActivePoli = [];
+            for (var i = 0; i < aPoli.length; i++) {
+                console.log('#aPoli' + (aPoli[i]).split(".").join("_"));
+                if ($('#aPoli' + (aPoli[i]).split(".").join("_")).length) {
+                    aActivePoli.push(aPoli[i]);
+                }
+            }
+            aPoli = aActivePoli;
+
+            if (aPoli.length > 0) {
+                //do ajax request
+                if (_PoliUpdateIsRunning) {
+                    setTimeout(PoliUpdateActiveParamedicCount, 5000);
+                } else {
+                    $.ajax({
+                        type: 'POST',
+                        url: "@(ViewBag.UrlRoot)/Kioskselfreg/GetToDayParamedic",
+                        data: { lang: selectedLang },
+                        success: function (data) {
+                            if (data.status == _sJsonRequestOkStatus) {
+                                console.log(data.data);
+                                setTimeout(PoliUpdateActiveParamedicCount, 5000);
+                            }
+                            _PoliUpdateIsRunning = false;
+                        },
+                        error: function (xhr, ajaxOptions, thrownError) {
+                            _PoliUpdateIsRunning = false;
+                        },
+                        dataType: 'json'
+                    });
+                }
+
+            }
+        }*@
+
+        function ParamedicSlideShow() {
+            var url = "@(ViewBag.UrlRoot)/Kioskselfreg/ParamedicSlideShow?lang=" + selectedLang;
+            CoreLoadContentToContainerDiv(url, 'divSlide');
+        }
+
+        function CreateQRCodeReader() {
+            var arg = {
+                width: 160,                             // canvas width
+                height: 120,
+                resultFunction: function (result) {
+                    //$('body').append($('<li>' + result.format + ': ' + result.code + '</li>'));
+                    //console.log(result);
+                    //alert(result.code);
+                    GoAppointmentNo(result.code);
+                }
+            };
+            $("canvas").WebCodeCamJQuery(arg).data().plugin_WebCodeCamJQuery.play();
+        }
+
+        function GoAppointmentNo(AppointmentNo) {
+            ShowProgress();
+
+            var header = '<h3><i class="fab fa-info"></i> ' + ShowLang(lang.patInfo) + '</h3>';
+            var body = "";
+            var footer = '';
+
+            $.ajax({
+                type: 'POST',
+                url: "@(ViewBag.UrlRoot)/Kioskselfreg/GoAppointmentNo",
+                data: { AppointmentNo: AppointmentNo, lang: selectedLang },
+                success: function (data) {
+                    // do something
+                    body = data;
+                    CoreFnCustomDialog(header, body, footer, function () {
+                        ModalFooterReplace(_modalFooterDefault.replace('Close', 'Cancel'));
+                    }, "modal-lg");
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    ShowError(xhr.responseText);
+                },
+                dataType: 'html'
+            });
+        }
+    </script>
+
+    <script language="javascript">
+        function AttachFNQueue() {
+            // load queue buttons
+            if (!CoreIsNullOrEmpty(GetRefID())) {
+                //GetRefID();
+                LoadQueueButtons();
+            }
+        }
+
+        function LoadQueueButtons() {
+            var divMsg = StartProgressByDivName("divBtnEntry", _htmlLoading)
+
+            var refid = GetRefID();
+            var url = BaseURL + '/WebService/KioskQueue.asmx/GetQueueCode';
+            //alert(url);
+
+            $.ajax({
+                type: 'POST',
+                url: url,
+                data: { RefID: refid },
+                success: function (ret) {
+                    StopProgressByDivName("divBtnEntry", "");
+                    if (ret.status === 'OK') {
+                        databtn = ret.data;
+                        for (var i = 0; i < ret.data.length; i++) {
+                            $('#divBtnEntry').append(GenerateButton(ret.data[i], false));
+                            //$('#divBtnEntry').append("<br /><br />");
+                        }
+
+                        AttachNotifQueue();
+                    } else {
+                        ShowError(ret.data);
+                    }
+
+                    _fnNextIsRunning = false;
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    _fnNextIsRunning = false;
+                    StopProgressByDivName("divBtnEntry", "");
+                    ShowError(xhr.responseText);
+                },
+                dataType: 'json'
+            });
+        }
+
+        function GenerateButton(iData, isChild) {
+            //var btn = $('<a id="btn' + iData.ItemID +
+            //    '" class="btn btn-outline-primary"><i class="fa fa-list fa-1x"></i> ' +
+            //    '<span lang="id">' + iData.ItemName + '</span><span lang="en" style="display:none">' + iData.ItemNameEn + '</span>' +
+            //    '<span id="btn' + iData.ItemID + 'info" class="badge bg-success navbar-badge-left"></span></a>');
+
+            var sty = CoreIsNullOrEmpty(iData.CustomField) ? "" : iData.CustomField;
+            var btn = $('<a id="btn' + iData.ItemID +
+                '" class="btn btn-app ' + (isChild ? 'cButton' : 'pButton') + '" ' + (CoreIsNullOrEmpty(sty) ? '' : sty) + '>' +
+                '<span lang="id">' + iData.ItemName + '</span><span lang="en" style="display:none">' + iData.ItemNameEn + '</span>' +
+                '<span id="btn' + iData.ItemID + 'info" class="badge bg-success myInfoBtn"></span></a>');
+
+            if (iData.ChildCount > 0) {
+                btn.click({
+                    param1: iData.ItemID,
+                    param2: iData.ItemName
+                }, function (params) {
+                    return ShowButtonChild(params.data.param1, params.data.param2);
+                });
+                //btn.prop("onclick", "javascript:ShowButtonChild('" + ret.data[i].ItemID + "')");
+            } else {
+                btn.click({ param1: iData.ItemID }, function (params) {
+                    return QueueAdd(params.data.param1);
+                });
+                //btn.prop("onclick", "javascript:QueueAdd('" + ret.data[i].ItemID + "')");
+            }
+            return btn;
+        }
+
+        function GetRefID() {
+            var refid = getUrlVars()["refid"];
+            if (refid == undefined) refid = "";
+            return refid;
+        }
+
+        function AttachNotifQueue() {
+            var args = [];
+            var jSonFnTic = { fn: GetLastData, args: args, tic: 5000 };
+            _FNTOEXEC.push(jSonFnTic);
+
+            //var jSonFnAjaxCounter = { fn: GetAjaxCounter, args: args, tic: 600000 };
+            //_FNTOEXEC.push(jSonFnAjaxCounter);
+        }
+
+        var _fnGetDataIsRunning = false;
+        function GetLastData() {
+            if (_fnGetDataIsRunning == true) return;
+
+            _fnGetDataIsRunning = true;
+
+            var refid = GetRefID();
+            var url = BaseURL + '/WebService/KioskQueue.asmx/GetLastQueueByRefID';
+
+            $.ajax({
+                type: 'POST',
+                url: url,
+                data: { RefID: refid, },
+                success: function (ret) {
+                    if (ret.status === 'OK') {
+                        ParsingQueueLast(ret.data);
+                    } else {
+                        DisplayToast(ret.data, "error");
+                    }
+
+                    _fnGetDataIsRunning = false;
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    _fnGetDataIsRunning = false;
+                    DisplayToast(xhr.responseText, "error");
+                },
+                dataType: 'json'
+            });
+        }
+        function ParsingQueueLast(oData) {
+            var o = oData[0];
+            for (var i = 0; i < o.length; i++) {
+                //alert(o[i].next);
+                var oSpan = $('#btn' + o[i].kioskQueueType + 'info');
+                if (oSpan.length) {
+                    //oSpan.html((o[i].next == "") ? "" : o[i].next + " / " + o[i].last);
+                    oSpan.html(o[i].count == 0 ? "" : o[i].count);
+                }
+            }
+        }
+
+        var _fnQueueAddIsRunning = false;
+        function QueueAdd(code) {
+            if (_fnQueueAddIsRunning == true) {
+                ShowInfo("Please try again in a few seconds");
+                return;
+            }
+
+            _fnQueueAddIsRunning = true;
+
+            var refid = GetRefID();
+            var url = BaseURL + '/WebService/KioskQueue.asmx/QueueAdd';
+
+            ShowProgress();
+
+            $.ajax({
+                type: 'POST',
+                url: url,
+                data: { code: code },
+                success: function (ret) {
+                    if (ret.status === 'OK') {
+                        //PrintEpsonTM(ret.data);
+                        dlgInfo = ShowInfo("Terima kasih untuk mengantre, nomor antrean Anda adalah: <br />Thank you for queuing, your queue number is:<hr /><H1>" + ret.data + "</H1>");
+                        setTimeout(function () {
+                            var isShown = dlgInfo.hasClass('show');
+                            if (isShown) {
+                                dlgInfo.modal('hide');
+                            }
+                        }, 1000);
+                    } else {
+                        ShowError(ret.data);
+                    }
+
+                    _fnQueueAddIsRunning = false;
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    _fnQueueAddIsRunning = false;
+                    ShowError(xhr.responseText);
+                },
+                dataType: 'json'
+            });
+        }
+
+        // ============= child queue
+        function ShowButtonChild(RefID, HeaderName) {
+            // show editor form
+            var header = "<h3><span class='fa fa-lg fa-edit'></span> " + HeaderName.replace("<br />", "") + "</h3>";
+            var body = "<div class='row'>" +
+                "<div class='col-sm-12'>" +
+                "<div class='form-group' id='divDlgContent'>" +
+                "</div>" +
+                "</div></div>";
+            var footer = "";//"<a id='lnSubmit' class='btn text-success'><span class='fa fa-lg fa-check'></span> Submit</a>";
+
+            CoreFnCustomDialog(header, body, footer, function () {
+                LoadButtonChild(RefID);
+            }, "modal-xl");
+        }
+        function LoadButtonChild(RefID) {
+            var divMsg = StartProgressByDivName("divDlgContent", _htmlLoading)
+
+            var url = BaseURL + '/WebService/KioskQueue.asmx/GetQueueCodeChild';
+
+            $.ajax({
+                type: 'POST',
+                url: url,
+                data: { RefID: RefID },
+                success: function (ret) {
+                    StopProgressByDivName("divDlgContent", "");
+                    if (ret.status === 'OK') {
+                        for (var i = 0; i < ret.data.length; i++) {
+                            //var queueBtn = $('<a id="btn' + ret.data[i].ItemID +
+                            //    '" class="btn btn-outline-primary"><i class="fa fa-list fa-1x"></i> ' +
+                            //    ret.data[i].ItemName
+                            //    + '<span id="btn' + ret.data[i].ItemID + 'info" class="badge bg-success navbar-badge-left"></span></a>');
+                            //if (ret.data[i].ChildCount > 0) {
+                            //    queueBtn.click({
+                            //        param1: ret.data[i].ItemID,
+                            //        param2: ret.data[i].ItemName
+                            //    }, function (params) {
+                            //        return ShowButtonChild(params.data.param1, params.data.param2);
+                            //    });
+                            //    //queueBtn.prop("onclick", "javascript:ShowButtonChild('" + ret.data[i].ItemID + "')");
+                            //} else {
+                            //    queueBtn.click({ param1: ret.data[i].ItemID }, function (params) {
+                            //        return QueueAdd(params.data.param1);
+                            //    });
+                            //    //queueBtn.prop("onclick", "javascript:QueueAdd('" + ret.data[i].ItemID + "')");
+                            //}
+
+                            $('#divDlgContent').append(GenerateButton(ret.data[i], true));
+                            //$('#divDlgContent').append("<br /><br />");
+                        }
+
+                        //AttachNotifQueue();
+                    } else {
+                        ShowError(ret.data);
+                    }
+
+                    _fnNextIsRunning = false;
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    _fnNextIsRunning = false;
+                    StopProgressByDivName("divDlgContent", "");
+                    ShowError(xhr.responseText);
+                },
+                dataType: 'json'
+            });
+        }
+        // ============================
+        var _aElements = ["divList", "divDetail", "divEntry"];
+    </script>
+}
+

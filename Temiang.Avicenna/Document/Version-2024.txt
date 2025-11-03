@@ -1,0 +1,538 @@
+﻿---[02-01-2024 - Fajri]---
+1.  Penambahan kolom "Responsible Name" dan "Phone No" pada Header PHR
+
+---[03-01-2024 - Apip]---
+1. Nambah validasi di mds control plan supaya tidak terjadi double jikas sudah di isi control plan di patient discharge
+
+---[04-01-2024 - Deby]---
+1. modif settingan casemix
+
+---[08-01-2024 - dk]---
+1. modif WO realisasi list ditambah implement by
+
+---[09-01-2024 - dk]---
+1. modif list master Printer di order by desc
+2. modif monitoring blood bank tab vital sign & rection di tambah 5 kolom 30' dan post transfusi 
+
+---[11-01-2024 - dk]---
+1. modif penamaan ttd menjadi Doctor Sign yang sebelumnya phycian sign
+
+---[13-01-2024 - Apip]---
+1. tambah nama FromServiceUnit TOserviceUnit, WorkType, WorkStatus, di WorkOrderRealizationList 
+
+---[15-01-2024 - Fajri]---
+1. Bugfix jurnal rsi yg tidak balance karena diskon penjamin, diskon reset menjadi 0 saat recalculate billing
+
+---[19-01-2024 - Fajri]---
+1. Ganti tampilan EWS Di EMR list diambil dari total score berdasarkan EWS terakhir
+
+---[26-01-2024 - Fajri]---
+1. Hari Pertama Haid Terakhir (HPHT) sudah disesuaikan dengan request, dengan rumus Year +1, Month -3, Day + 7, ditempatkan di bawah vital sign
+2. Physical Examination di NursingPeCtl.ascx jika notes diisi maka otomatis terisi abnormal
+
+---[27-01-2024 - Deby]---
+1. bugfix template resep, cek settingan casemix (disamakan dg ComboBoxDataService/PrescriptionItemSelection)
+2. remark validasi casemix pada saat save prescription order (tidak diperlukan lagi karena sudah divalidasi saat pemilihan item)
+
+---[30-01-2024 - Deby]---
+1. bugfix control plan di mds (#data appointment ter-create bbrp x u/ 1 tgl, unit dan dokter yg sama)
+   --> kejadian kalo pake tombol Save&Edit, grid control plan-nya tidak refresh (kolom Appointment No masih kosong) sehingga dianggap belum create appointment
+   --> add validasi hanya yg belum ada appointment aja yg di-create, kalo sudah ada di-skip
+
+---[31-01-2024 - Fajri]---
+1. Penyesuaian control assessment dan phr PatientChildBirthHistCtl
+
+---[01-02-2024 - Fajri]---
+1. Bugfix control HPHT assessment dan phr, tidak terkait satu sama lain
+
+---[04-02-2024 - Dewi]---
+1. penambahan SRBirthMethodPhr --> insert document 20240204 - 01
+2. Penyesuaian Assessment KID INPATIENT MEDICAL ASSESSMENT dengan phr --> insert document 20240204 - 02
+3. Penambahan pada BirthFoodGrowthHistCtl --> insert document 20240204 - 03
+
+---[07-02-2024 - Fajri]---
+1. Revisi control PatientChildBirthHistCtl hapus birth type dan ganti spontan dengan alive
+
+---[12-02-2024 - Deby]---
+1. modif payroll (pph21 th 2024)
+	- add master TER Monthly (Payroll >> Government Tax Regulation >> TER Monthly), untuk penginputan master TER Bulanan per status pajak
+	- alter sp_wage_process_main & sp_wage_process_3 (disesuaikan u/ masing2 RS)
+	- insert document 20240212 - PPh21 th 2024
+	  --> script folder Rsi/ Rsbk/ Rsrg dijalankan terakhir setelah script yg lain dijalankan
+	- u/ cata setting bisa dilihat di ReadMeFirst!!!!.docx
+2. bugfix prescription order (emr), copy from prescription (cek settingan casemix)
+
+---[12-02-2024 - Ilham]---
+1. Bugfix assessment Obgyn nullable object must have a value
+
+---[12-02-2024 - Fajri]---
+1. Bugfix control phr FdolmCtl, akan error saat save dan view jika control tidak diisi/null value
+
+---[13-02-2024 - Dewi]---
+1. Menambahkan script dan penjelasn Penyesuaian Assessment KID INPATIENT MEDICAL ASSESSMENT dengan phr 
+	--> insert document 20240213 - 01 & penjelasn CR
+
+---[15-02-2024 - Dewi]---
+1. Modifikasi PhrCtl untuk penggunaan Table BirthRecord pada RelatedEntityName & RelatedColumnName
+
+---[15-02-2024 - Nuno]---
+1. Modifikasi MedicationReconEntry menghidden TTD Pasien pada Transfer Drug Reconcilation & memunculkan TTD Dokter pada Discharge Drug Reconcilation
+
+---[16-02-2024 - Fajri]---
+1. Melanjutkan pekerjaan penambahan informasi riwayat imunisasi pasien (perwira diky)
+   --> daftar imunisasi yang tampil bisa di sesuaikan berdasarkan master imunisasi
+
+---[19-02-2024 - Deby]---
+1. modif plafond information, ++ filter naik/ turun kelas
+
+---[20-02-2024 - BT]---
+- bugfix pencarian jurnal by noreg
+
+---[20-02-2024 - Naufal]---
+- bugfix menu pencarian payment process dimana Tampilan Total Amount tidak muncul pada saat menggunakan fitur search
+- bugfix menu Return of Materials / Instruments dimana fitur searching tidak berfungsi
+
+---[21-02-2024 - Dewi]---
+- Penambahan parameter IsSoapFromPysicalExamIncludeNormalValue
+
+---[21-02-2024 - DK]---
+- Bugfix saat load menu emr karna history pasien imunisasi yang tidak ada tanggal nya
+
+---[23-02-2024 - Fajri]----
+1. Bugfix score ews jika diinput lebih dari satu, score selanjutnya akan mengikuti
+
+---[26-02-2024- Dewi]---
+- penerapan parameter IsSoapFromPysicalExamIncludeNormalValue agar Pemeriksaaan fisik yang normal pada assessmen dokter yang di munculkan di intergrated Notes
+
+---[26-02-2024 - BT]----
+- modif pph 21 dokter, progressive bulanan
+  --> doc 20240226 - ParamedicFeeTaxCalculation.sql
+
+---[26-02-2024- Naufal]---
+- penerapan parameter IsSoapFromPysicalExamIncludeNormalValue agar Pemeriksaaan fisik yang normal pada assessmen dokter yang di munculkan di intergrated Notes
+1. Bugfix score ews jika diinput lebih dari satu, score selanjutnya akan mengikuti
+
+---[29-02-2024 - Fajri]----
+1. Add Patient Dialysis di PatientDetail dan EMR
+  --> insert document 20240229 -> 01
+
+---[01-03-2024 - Dewi]---
+1. Fitur Search di Closing Period di hide
+
+---[05-03-2024 - Dewi]---
+1. Bugfix Employee Working Information (saat next, Supervisor dan Manager tidak berubah)
+
+---[06-03-2024 - Naufal]---
+1. Add beberapa kondisi ketinggalan untuk ctl assesment dokter untuk IsSoapFromPysicalExamIncludeNormalValue
+
+---[06-03-2024 - Dewi]---
+1. modifikasi bugfix Employee Working Information
+
+---[12-03-2024 - Fahri]---
+1. Menampilkan inputan assessment dokter History of Medikamentosa dan Other ke Integrated Notes
+
+---[18-03-2024 - Ilham]---
+1.  Menambahkan Filter Approve, Non Approve, Void pada di Payment Process
+
+---[27-03-2024 - Ilham]---
+1.  menambahkan validasi BpjsSepNo is empty di casemix center
+
+---[03-04-2024 - Nuno]---
+1.  menambahkan validasi IsBillingStatementLosCalculationWithAdd1Day di BillingIntermStatementPatientIncComponentRecap agar lama rawatnya sama dengan BillingIntermStatementPatientIncComponentNoLogo
+
+---[03-04-2024 - Apip]---
+1. Bug fix , saat pengambilan transaction list di payment received , ambil dari source-emr
+
+---[04-04-2024 - Ilham]---
+1.  revisi validasi tidak muncul BpjsSepNo is empty di casemix center
+
+---[04-04-2024 - Handono]---
+1. Tambah menu Entry untuk MDS casemix Ranap dan Rajal dengan fitur:
+	- Tambah tombol approve pada MDS Casemix yg berefek hasil edit dokter tidak "dicopy ulang" ke MDS casemix
+	- Jika casemix edit MDS maka status approve otomatis ter check
+	- Editan MDS Casemix tidak mengalir / update MDS DPJP
+	- Edit MDS dokter tetap mengalir ke MDS casemix selama status Mds Casemix belum di approve
+	- Entri ICD10 MDS casemix tidak update ke Episode Diagnose karena hanya untuk keperluan klaim
+	- Entri ICD10 MDS dokter mengupdate Episode Diagnose untuk keperluan rekap
+	- Save To SEP Doc otomatis dijalankan saat Save
+	- Save To SEP Doc otomatis dijalankan saat approve
+	- Ketika casemix edit lalu save / approve akan menimpa SEP Doc
+	- Diagnose hasil entri dokter disimpan pada note sehingga masih terlihat diagnose versi dokter jika diedit oleh bagian coder (E-Claim)
+2. Cetakan MDS versi Casemix Ranap dan Rajal 
+
+---[16-04-2024 - Fajri]---
+1. Penambahan flag IsChronic untuk identifikasi obat kronis di master obat alkes
+
+---[17-04-2024 - Luthfi]---
+1. Tambah OrderBy DESC RegistrationDate saat cari Patient Name di Ambulance Order
+
+---[18-04-2024 - Fajri]---
+1. Bugfix immunization entry emr, menimpa inputan yang sebelumnya ada jika input baru dari emr
+
+---[18-04-2024 - Dewi]---
+1. Bugfix Patient Incident Investigation & Patient Incident Investigation Realization, gambar view nya crash
+
+---[19-04-2024 - Ilham]---
+1. Hide kolom Subjective dan Assessment pada Continued Assessment
+2. Hide kolom Assessment pada Integrated Notes
+
+---[29-04-2024 - Deby]---
+1. bugfix itembalance.cs, remark validasi itemBalanceDetailEds.Count == 0 (langsung di-add jika tidak ada)
+
+---[08-05-2024 - Apip]---
+1. Penambahan serviceunit name , untuk menampilkan unit request, karena ada po yg dari re-order po
+
+---[08-05-2024 - BT]---
+- Payment AP
+  - restore tombol control jasmed hilang
+  - bugfix expand menyebabkan layar blank putih
+
+---[13-05-2024 - Dewi]---
+1. bugfix EventMealOrderDetail, ketika edit akan muncul error dan tidak bisa di edit
+
+---[14-05-2024 - Naufal]---
+1. Bugfix Menu Blood Transformation tidak bisa update
+
+---[16-05-2024 - Dewi]---
+1. Bugfix MenuItemDetail dan WorkOrderDetail, saat memilih item dan cancel terjadi error
+
+---[16-05-2024 - Deby]---
+1. bugfix error approval distribusai dg item tanpa kontrol ed
+
+---[17-05-2024 - Nuno]---
+1. bugfix Appointment memunculkan alert ketika pilih slot yang sudah ada regisnya
+
+---[27-05-2024 - Danang]---
+1. brigding radiology pacs ELVA RSBK
+	- IsUsingRisPacsInterop Value Yes & risPacsInteropVendor Value ELVA
+	- Modif Tabel Item Group kolom Initial ditambah 2 lagi length untuk keperluan 2 kode modality(alat radiology) -koordinasi pak sure rsbk
+		- Co Initial: RAD.01P. -> RAD.01P + CT -> RAD.01P.CT
+	- ALTER TABLE ItemGroup ALTER COLUMN Initial VARCHAR(10) NULL
+
+---[29-05-2024 - Danang]---
+1. modif paramedicID -> paramedicName + Nama Radiografer pada saat kirim data ke alat
+
+---[30-05-2024 - Dewi]---
+- Modif Purchase Order Return (bagian tax nya dibulatkan)
+
+---[07-06-2024 - Nuno]---
+1. Bugfix Filter Medical No di menu Job Order Realization
+
+---[07-06-2024 - Danang]---
+1. Modif item yang di order ke alat & modif data kiriman ancillary (nama dokter tidak ada) --> (bridging pacs RSBK)
+
+---[07-06-2024 - Ilham]---
+1. Menampilkan ICD X di Progress Note untuk Reg IP/EMR saja
+
+---[10-06-2024 - Fajri]---
+1. Bugfix grafik ews, grafik tetap muncul jika template sudah di delete
+
+---[10-06-2024 - Apip]---
+1. Add filter Registration Date, Discharge Date, Guarantor, No. SEP, Registration Type di menu Casemix Center, CR YBRS
+
+---[10-06-2024 - Deby]---
+1. modif order resep dokter, ++ pengecekan obat kronis u/ konsumsi max 7 hari
+   -- u/ max brp hari bisa disetting di parameter MaxChronicDrugPrescriptionInDays (default value: 7). jika function ini tidak mau digunakan, set value-nya menjadi 0
+   -- rumus:
+        max = [Iteration Qty] * [Consume Qty] * [xFactor] * [MaxChronic]
+
+		Iteration Qty : master Consume Methode kolom Iteration Qty
+		Consume Qty	  : qty consume obat pada saat peresepan
+		xFactor       : faktor pengali antara unit item obat yg dipilih dg consume unit (consume unit conversion di master item product medic, default value 1 jika tidak ada)
+		MaxChronic	  : parameter MaxChronicDrugPrescriptionInDays
+
+		Jika numero yg diinput melebihi max maka akan muncul msg bahwa numero melebih qt max yg bisa diresepkan.
+
+---[10-06-2024 - Nuno]---
+1. CR 0001754: Kolom Nama Obat di buat lebih lebar supaya tampilan restriction note dapat lebih lebar dan tidak banyak makan tempat ke bawah
+
+---[13-06-2024 - Fahri]---
+1. bugfix button delete PatientIncident
+
+---[14-06-2024 - BT]---
+1. Bugfixing issue mantis 0001671: Masalah Appointment, perbaikan kemungkinan duplikasi appointment
+   - Penambahan validasi: pengecekan data registrasi atas nomor appointment, jika sudah teregistrasi maka appointment tidak bisa di-save untuk menjaga jika ternyata tombol edit masih aktif karena hal yang belum diketahui.
+   - Penambahan validasi saat mengganti jam praktek, jika sudah ada appointment maka jam praktek hanya boleh diubah jika jam start-nya sama sehingga urutan appointment tidak berubah.
+
+---[20-06-2024 - Apip]---
+1. Modif CoverageClass di Plafond Information menjadi ComboBox dan dapat diedit - CR YBRS Casemix - Point 4
+
+---[24-06-2024 - Dewi]---
+1. Bugfix Address dan Temporary Address, saat zip code diganti (ZipPostalCode sama tapi district nya berbeda) tidak berubah sama sekali
+
+---[26-06-2024 - Luthfi]---
+1. Bugfix typo ambil kuota dokter di antrianV2
+
+---[01-07-2024 - BT]---
+- Modifikasi plafon information:
+  - Angka plafon diambil dari satu inputan terakhir dan tidak pandang kelas coverage ataupun kelas charge --> issue 0001874
+
+---[02-07-2024 - Deby]---
+1. modif order resep dokter, pengecekan peresepan maksimal khusus pasien BPJS yg disesuaikan dg settingan di master item product medic --> insert document 20240702 - 01 & 02
+   1.1. pengecekan tidak boleh melebih qty sudah ditentukan di master
+   1.2. pengecekan khusus pasien rawat jalan u/ obat kronis jumlahnya tidak boleh melebihi qty dalam periode 1 bulan terakhir (periode 1 bulan disetting di parameter MaxChronicDrugPrescriptionInDays --> dalam hari)
+
+---[12-07-2024 - BT]---
+- bugfix print slip kiosk locking tabel printer
+
+---[17-07-2024 - Deby]---
+1. modif order resep dokter, ++ pengecekan peresepan maksimal khusus pasien BPJS u/ obat non kronis 
+   --> qty tidak boleh melebihi qty yg sudah diresepkan dalam 1 registrasi
+
+---[24-07-2024 - Danang]---
+1. modif item product medic -> mapping bridging apotek online (RSI)
+
+---[25-07-2024 - Dewi]---
+1. Bugfix ketika ada item service baru belum ada tarif di Recalculate pada menu Verification & Finalize Billing terjadi error
+2. Modifikasi ItemTransactionDetail dan FinalizeBillingVerification, agar ketika Item Tariff = null maka muncul notifikasi yang memberitahukan bahwa item tariff null
+
+---[26-07-2024 - Dewi]---
+1. bugfix pada menu Employee Training - Proposal dan Employee Training - Proposal (Admin), Schedule tidak terceklis.
+
+---[29-07-2024 - Dewi]---
+1. insert document untuk alter table TCI (untuk entry specimen) -> 20240729 (01. Alter Table TransChargesItem (entry specimen))
+
+---[30-07-2024 - Dewi]---
+1. insert document untuk alter table add & drop table TCI (untuk entry specimen) -> 20240730 (01. Alter Table & Drop Table TransChargesItem (Entry Specimen))
+
+---[02-08-2024 - Dewi]---
+1. Penambahan Entry untuk Specimen Collect & Specimen Received
+2. insert document 01. Insert AppStandardReference & Item SpecimenCollectionMethod (20240802)
+
+---[06-08-2024 - Dewi]---
+1. modifikasi untuk entry specimen collect & specimen received
+
+---[08-08-2024 - Handono]
+1. Resume medis: bugfix error duplicate key diagnose saat save MDS versi casemix
+
+---[09-08-2024 - Dewi]---
+1. modifikasi untuk entry specimen collect & specimen received untuk tampilan dan tooltip
+
+---[13-08-2024 - BT]---
+bugfix perhitungan proporsi jasa medis untuk angka verifikasi, penambahan biaya adm
+
+---[14-08-2024 - Nuno]---
+1. Penambahan paramedic sign di Report data source di ambil dari create userid RIM MDS
+
+---[22-08-2024 - Luthfi]---
+1. Tambah validasi menu Payment Orders jika invoices sudah void tidak muncul
+
+---[30-08-2024 - Fahri]---
+1. bugfix delete Sub Component Incident Type
+
+---[04-09-2024 - BT]---
+- Modif payment jasmed, tambah ajax timeout
+
+---[04-09-2024 - Danang]---
+- Bugfix Send Data SatuSehat Allergy
+
+---[05-09-2024 - Fahri]---
+1. bugfix filter search by no kartu menu BPJS Rencana Kontrol
+
+---[06-09-2024 - Handono]---
+Tambah parameter ComboBoxDataServiceMaxResultRecord (default 50) untuk  seting jumlah result pencarian pada combobox yg menggunakan webservice
+
+---[09-09-2024 - BT]---
+- bugfix repro jurnal void payment jasmed
+
+---[10-09-2024 - Nuno]---
+1. 0002072: Modifikasi Nama Guarantor di Prescription Sales Handling (Outpatient)
+	- Add parameter Is23DaysPrescriptionUseChronicGuarantor
+
+---[11-09-2024 - Nuno]---
+1. modif file add PrescriptionTemplate prescription sales handling (op)
+
+---[18-09-2024 - Fajri]
+1. Modif Total Score EWS pada EmrList -> tampilkan grafik yang paling terakhir diinput (EWS/PEWS/MEOWS)
+
+---[19-09-2024 - Naufal]
+1. Modif Display Antrian Poli Lanjutan CR RSI 06/24
+
+---[19-09-2024 - Fajri]
+1. Modif Pengambilan Antrian V2 (GetQueue), ditambah parameter qLocation untuk pengambilan antrian tiap gedung/lokasi
+   - Setting terdapat pada menu master Queueing Sound -> Registration Queueing dan pada master service unit ->  Show On KIOSK harus di checklist
+2. Penyesuaian display antrian registrasi (DisplayReg) terisi default value berdasarkan panggilan terakhir
+
+---[19-09-2024 - Fahri]
+1. modif cetakan verif billing patient RSI
+
+---[20-09-2024 - Fahri]
+1. perbaikan cetakan MDS Inpatient Casemix
+
+---[22-09-2024 - Fajri]
+1. Modif Pengambilan Antrian V2 (GetQueue), penyesuaian aturan pengambilan antrian berdasarkan jadwal dokter dan settingan parameter -> ValueForTakingQueueBeforeStartTime
+
+---[23-09-2024 - Dewi]
+1. Modif AppoinmentChangePatientDialog, ditambahkan ssn, guarantorCard dan mobile phone. dibuat bisa di edit juga dan akan otomatis mengedit di tabel patient juga.
+
+---[23-09-2024 - BT]---
+- bugfix rebalance kas bank, hanya boleh rebalance transaksi yang sudah approve
+
+---[24-09-2024 - Fahri]---
+- modif pengambilan ttd dokter di mds dan assessment
+
+---[25-09-2024 - Fajri]
+1. Modif Pengambilan Antrian V2 (GetQueue), pilihan guarantor disesuaikan dengan master physician schedule pada kolom quota limit direct
+
+--[01-10-2024 - BL]
+1. CR: Hasil pemeriksan laboratorium nilai di atas atau di bawah nilai rujukan (kode L dan H) yang sebelumna berwarna orange jadi warna biru
+
+--[02-10-2024 - Luthfi]
+1. Bugfix payment yang sudah di void dan mau di bayarkan lagi untuk tindakan tidak muncul, mantis 0002312
+
+--[04-10-2024 - Handono]
+PrintManager:
+- Modif Last PrintNo jadi disimpan di table AppAutoNumberLast
+- Pengecekan PrintNo double dan parameter print double
+
+---[14-10-2024 - BT]---
+- bugfix antrol kasus locking table printer
+
+---[14-10-2024 - Deby]---
+1. optimize query list casemix center
+
+---[15-10-2024 - Deby]---
+1. optimize query di payment history encounter history 
+
+---[16-10-2024 - Nuno]---
+1. Bugfix filter menu Transfusion Monitoring - Nitip Bayu
+
+---[17-10-2024 - Deby]---
+1. optimize query list casemix center, ++ filter by tgl transaksi di list outstanding
+
+---[17-10-2024 - HN]---
+- Reduce load AppParameter dengan menyimpannya di cache untuk yg sudah diload sehingga tinggal dipakai lagi 
+- EMR List result record menggunakan parameter MaxResultRecordEmrList
+- Result record menggunakan parameter MaxResultRecord
+- Optimized query memory grant Prescription History dan dipindah ke SP pada EMR Detail (2024\10\17\01. spHis_Emr_MedicationHist_PrescriptionDetail.sql)
+- Optimized query memory grant untuk EWS total score dan dipindah ke SP pada EMR List (2024\10\17\02. spHis_Emr_VitalSign_LastVitalSignRecordByQuestionForm.sql)
+
+---[25-10-2024 - Deby]---
+1. bugfix control plan dari form resume medis perawat, ganti fungsi AppointmentSetEntityValue menjadi AppointmentPostRanapSetEntityValue.
+
+---[30-10-2024 - HN]---
+- Bugfix query filter AppointmentNo pada table Registration yg isinya bisa kosong sehingga overload yg menyebabkan out of memory
+
+---[05-11-2024 - Deby]---
+1. bugfix issue mantis 0002508: Poli appointment berbeda antara MDS dan List appointment --> insert document 20241105 - 01
+	1.1. cek no appointment (query data appointment berdasarkan no appointment): 
+	   - jika sudah ada, cek apakah tgl, unit dan dokter sudah sesuai 
+		 - jika sesuai, lanjut
+		 - jika tidak sesuai, cancel no appointment tsb dan bikin appointment baru
+	   - jika tidak ada, cancel no appointment tsb dan bikin appointment baru
+	1.2. jika no appointment kosong, QUERY DATA data appointment berdasarkan tgl, unit, dan dokter:
+		- jika sudah ada, lanjut
+		- jika tidak ada, bikin appointment baru
+	1.3. cancel semua no appointment dg type CP yg tidak sesuai dg data control plan
+
+---[14-10-2024 - BT]---
+- Modif antrian v2
+  - tambah opsi nama poli di group antrian
+  - tambah entry running text
+  - modif display poli, tampilan running text
+    - running text ambil data dari 
+	  - parameter AppParam_QueueDisplayScrollingText (parameter lama)
+	  - entrian running text dari queue caller
+	  - jadwal cuti dokter
+
+---[07-11-2024 - Deby]---
+1. modif list grid, jika tidak ada filter di-default filter tgl hari ini
+   affected menu:
+   - A/R Creating Invoice
+   - A/R Payment Receive
+   - A/P Receiving Invoice
+   - A/P Payment Process
+
+---[12-11-2024 - HN]---
+- Optimize query EMR List filter MedicalNo
+- Optimize query EMR List filter Patient Name
+- Optimize query EMR Detail Integrated Notes
+   - A/P Payment Process
+
+---[12-11-2024 - Danang]---
+1. modif optimasi pacs RSBK
+
+---[19-11-2024 - Deby]---
+1. modif master service unit & paramedic u/ mapping servic unit paramedic (++ checklist Accept Non BPJS) --> insert document 20241119 - 01
+2. ++ parameter RegistrationWithMobileAppDayLimit (u/ API) --> insert document 20241119 - 02
+
+---[21-11-2024 - dk]---
+1. Modif AppointmentWS menambahkan sisa quota  & RegistrationWS PrescriptionQueueByMedicalNoAndRegNo untuk kebutuhan rsi --> insert document 20241121 - 01
+
+---[25-11-2024 - dk]---
+1. add PatientUpdateWS  & PatientUpdatePhotonWS untuk parameter fileData disisi dimana tempat image nya diambil untuk kebutuhan rsi
+
+---[26-11-2024 - Danang]---
+1. Optimize query EMR Detail Allergy
+
+---[28-11-2024 - dk]---
+1. add AppointmentGetListByMedicalNoAndSortAppointmentStatus ditambah pagination dan sort by status  untuk kebutuhan rsi
+
+---[28-11-2024 - Apip]---
+1. Modif Cetakan untuk ttd dokter di PhysicianStatement titipan Bayu
+
+---[29-11-2024 - Fahri]---
+1. bugfix menu Print Out Billing Statement tidak bisa search by Medical No
+
+---[29-11-2024 - BT]---
+- Optimasi Aplikasi: 
+  - Optimasi trans charges di encounter history
+  - Optimasi fee verification untuk pencarian by noreg atau norm
+  - Optimasi payment receive untuk pencarian by noreg atau norm 
+- Bugfix API /WebService/V1_1/AppointmentWS.asmx.cs/AppointmentCreate
+  - Bugfix error kirim email:
+    - Kalau email kosong tidak usah send email
+	- Kalau send email error tidak usah return error karena appointment sudah tercreate, cukup return appointment yang sudah tercreate
+
+---[02-12-2024 - Deby]---
+1. modif list outstanding casemix center, ++ filter dischage date = null (inpatient) & tgl reg d-1 (outpatient)
+
+---[05-12-2024 - Fahri]---
+1. tambah signature image untuk cetakan SOAP (titipan bayu)
+
+---[09-12-2024 - Deby]---
+1. optimasi aplikasi u/ pencarian berdasarkan noreg, norm, nama pasien
+   - registration 
+   - service unit transaction
+   - job order realization
+   - prescription
+   - verification billing
+   - payment receive, down payment receive (include return)
+   - plafond information
+   - casemix center
+   - test result
+   - update physician transaction
+
+---[13-12-2024 - BT]---
+- Modif payment return, update status paid jasa medis ketika payment di-return
+
+---[16-12-2024 - Deby]---
+1. mantis 0001623: Kredensial Medis --> insert document 20241216 - 01 & 02
+   - modif menu "Medic - Approval by Director", add checklist dan tombol Approval di outstanding list u/ melakukan proses approval bbrp transaksi secara bersamaan
+   - add menu "Clinical Assignment Letter (Print) - Medic", u/ melakukan cetak pdf SPK yg sudah diproses oleh hukmas
+     --> setting parameter "EmployeeClinicalAssignmentLetterKomedRpt", isi value dg programId cetakan SPK yg digunakan
+	 --> pengaturan hak akses menu:
+        • Dokter ybs --> otomasti terfilter sesuai user login (settingan Employee No di master User)
+        • Kepala KSM ybs --> otomatis terfilter sesuai login (settingan Employee No di master User, link ke Employee Working Info sbg supervisor)
+        • Komite Medis dan sub komite Kredensial --> setting otorisasi menu sbg power user
+        • HUKMAS --> setting otorisasi menu sbg power user
+        • SDM --> setting otorisasi menu sbg power user
+
+---[17-12-2024 - Deby]---
+1. bugfix prescription order, ++ validasi saat save (pengecekan peresepan maksimal khusus pasien BPJS yg disesuaikan dg settingan di master item product medic) u/ item yg di-insert dari template
+
+--[19-12-2024 - Deby]---
+1. mantis 0002558: Modifikasi Assesment Klinik Kandungan 
+   --> ++ tombol u/ pengisian test result di tab other exam order
+
+--[20-12-2024 - Naufal]---
+1. bugfix shortname display poli muncul double
+
+--[23-12-2024 - Deby]---
+1. modif form test result (emr), ++ parameter IsAutoSaveOtherExamResultToDocFolderAfterSave u/ auto save test result other exam ke doc folder pada saat save (default:No, RSI:Yes)
+
+---[23-12-2024 - Dewi]---
+1. modifikasi PrescriptionOrderHandlingList dan PrescriptionSalesList, saat scan barcode harus melakukan tahap 'set complete' lebih dulu sebelum 'set delivered', jika tidak maka akan muncul notifikasi.
+
+---[31-12-2024 - Dewi]---
+1. modifikasi PrescriptionSalesList, saat scan barcode untuk search tidak muncul.

@@ -1,0 +1,110 @@
+﻿<div class="row">
+    <div class="col-12">
+        @if (string.IsNullOrEmpty(ViewBag.ErrMsg))
+        {
+            if (((System.Data.DataTable)ViewBag.dtAppt).Rows.Count > 0)
+            {
+                <table class="table table-sm">
+                    <thead>
+                        <tr>
+                            <th>@(ViewBag.Lang == "en" ? "Appointment No" : "Nomor Booking")</th>
+                            <th>@(ViewBag.Lang == "en" ? "Patient Name" : "Nama Pasien")</th>
+                            <th>@(ViewBag.Lang == "en" ? "Service Unit" : "Bagian Layanan")</th>
+                            <th>@(ViewBag.Lang == "en" ? "Physician" : "Dokter")</th>
+                            <th style="width: 100px"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (System.Data.DataRow dr in ((System.Data.DataTable)ViewBag.dtAppt).Rows)
+                        {
+                            <tr>
+                                <td>@dr["AppointmentNo"]</td>
+                                <td>@dr["PatientName"]</td>
+                                <td>@dr["ServiceUnitName"]</td>
+                                <td>@dr["ParamedicName"]</td>
+                                <td><button type="button" class="btn btn-outline-primary" onclick="BtnAppointmentClick('@dr["AppointmentNo"]')"><i class="far fa-hand-point-up"></i> @(ViewBag.Lang == "en" ? "Select" : "Pilih")</button></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <script language="javascript">
+                    $(document).ready(function () {
+                        ModalHeaderUpdate('@(ViewBag.Lang == "en" ? "Appointment list" : "List booking")', '', 'fas fa-list');
+                    });
+                </script>
+            }
+            else if (((System.Data.DataTable)ViewBag.dtRegistered).Rows.Count > 0)
+            {
+                // show registered
+                <table class="table table-sm">
+                    <thead>
+                        <tr>
+                            <th>@(ViewBag.Lang == "en" ? "Registration No" : "No Registrasi")</th>
+                            <th>@(ViewBag.Lang == "en" ? "Patient Name" : "Nama Pasien")</th>
+                            <th>@(ViewBag.Lang == "en" ? "Service Unit" : "Bagian Layanan")</th>
+                            <th>@(ViewBag.Lang == "en" ? "Physician" : "Dokter")</th>
+                            <th style="width: 100px"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (System.Data.DataRow dr in ((System.Data.DataTable)ViewBag.dtRegistered).Rows)
+                        {
+                            <tr>
+                                <td>@dr["RegistrationNo"]</td>
+                                <td>@dr["PatientName"]</td>
+                                <td>@dr["ServiceUnitName"]</td>
+                                <td>@dr["ParamedicName"]</td>
+                                <td><button type="button" class="btn btn-outline-primary" onclick="BtnPrintSlipClick('@dr["RegistrationNo"]')"><i class="fas fa-print"></i> @(ViewBag.Lang == "en" ? "Print" : "Cetak")</button></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <script language="javascript">
+                    $(document).ready(function () {
+                        ModalHeaderUpdate('@(ViewBag.Lang == "en" ? "Your are registered to:" : "Anda sudah terdaftar pada:")', '', 'fas fa-info');
+                        ModalFooterAppend('<button type="button" class="btn btn-outline-success" onclick="BtnGoMRN(true)"><i class="fas fa-plus"></i> @(ViewBag.Lang == "en" ? "New Registraion" : "Daftar Baru")</button>');
+                    });
+                </script>
+            }
+            else
+            {
+                foreach (ServiceUnit su in ViewBag.suColl)
+                {
+                    <a id="aPoli@(su.ServiceUnitID.Replace(".","_"))" class="btn btn-app @(su.TodayAvailableParamedics > 0 ? "btn-poli":"btn-poli-closed") " @((string.IsNullOrEmpty(su.CustomDisplay)) ? Html.Raw(""):Html.Raw(su.CustomDisplay)) onclick="javascript: BtnPoliClick('@su.ServiceUnitID')">
+                        <span>@su.ServiceUnitName</span>
+                        @if (su.TodayAvailableParamedics == 0)
+                        {
+                            <div class="ribbon-wrapper ribbon"><div class="ribbon bg-secondary">@(ViewBag.Lang == "en" ? "CLOSED" : "TUTUP")</div></div>
+                        }
+                        else { 
+                            <span class="badge bg-gradient-success myInfoBtn">@(su.TodayAvailableParamedics)</span>
+                        }
+                        
+                    </a>
+                }
+                <script language="javascript">
+                    $(document).ready(function () {
+                        MedicalNo = '@ViewBag.MedicalNo';
+
+                        @*@foreach (ServiceUnit su in ViewBag.suColl) {
+                            if (su.TodayAvailableParamedics > 0) { 
+                                @:aPoli.push('@su.ServiceUnitID');
+                            }
+                        }
+                        PoliUpdateActiveParamedicCount();*@
+                    });
+                </script>
+            }
+        }
+        else
+        {
+            // show error
+            <div class="alert alert-danger">
+                <h5><i class="icon fas fa-ban"></i> Error</h5>
+                @ViewBag.ErrMsg
+            </div>
+        }
+    </div>
+</div>
+    
+

@@ -1,0 +1,1 @@
+ALTER TABLE PathologyAnatomy ADD ItemID VARCHAR(10) NULL

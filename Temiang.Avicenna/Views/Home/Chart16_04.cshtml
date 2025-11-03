@@ -1,0 +1,277 @@
+﻿
+<div class="row">
+    <div class="col-12 text-right border border-top-0 border-left-0 border-right-0">
+        <div style="float:right;margin-left:5px;margin-right:5px;"><h4><span id="spanTitleChart16_04">Title</span></h4></div>
+    </div>
+</div>
+<div class="row">
+    @{
+        var appPrgChart = ((AppProgramCollection)ViewBag.AppLink).Where(a => a.ParentProgramID.Equals("16.04"));
+        foreach (var appChart in appPrgChart)
+        {
+            @*<div class="col-sm-12 col-md-6 col-lg-4 text-center">*@
+            <div class="@(string.IsNullOrEmpty(appChart.AssemblyClassName) ? "col-sm-12 col-md-6 col-lg-4 text-center" : appChart.AssemblyClassName)">
+                @(appChart.ProgramName)
+                <canvas id="chart@(appChart.ProgramID.Replace(".", "_"))"></canvas>
+                <div id="divLoadingChart@(appChart.ProgramID.Replace(".", "_"))" style="display:none;">
+                    <h3><i class='fas fa-radiation fa-lg fa-spin'></i> Loading...</h3>
+                </div>
+            </div>
+        }
+    }
+</div>
+
+<script type="text/javascript">
+    var dateChart16_03;
+
+    $(document).ready(function () {
+        var d = new Date();
+        //console.log(d);
+
+        dateChart16_03 = new Date(d.getFullYear(), d.getMonth(), 1);
+        //console.log(dateChart);
+
+        CreateCharts16_04();
+    });
+
+    function PrevChart16_03() {
+        dateChart16_03.setMonth(dateChart16_03.getMonth() - 1);
+        CreateCharts16_03();
+    }
+    function NextChart16_03() {
+        dateChart16_03.setMonth(dateChart16_03.getMonth() + 1);
+        CreateCharts16_03();
+    }
+
+    function CreateCharts16_04() {
+        $('#spanTitleChart16_04').html('&nbsp;');
+
+        @{
+            var starter = "@";
+            foreach (var appChart in appPrgChart)
+            {
+                starter = starter.Replace("@",
+                    string.Format("{1}{3}Chart{0}(@);{4}{2}",
+                        appChart.ProgramID.Replace(".", "_"),
+                        starter.Length == 1 ? "" : "function(){",
+                        starter.Length == 1 ? "" : "}",
+                        "try{", "}catch{}"));
+            }
+            starter = starter.Replace("@", "");
+                @:@starter
+        }
+    }
+
+    var cfg16_04_01 = null;
+    var obj16_04_01 = null;
+    var ajax16_04_01 = null;
+    var ajax16_04_01_InProgress = false;
+    function Chart16_04_01(fnCallBack) {
+        $('#chart16_04_01').hide();
+        var divLoading = $('#divLoadingChart16_04_01');
+        CoreAHrefLoadingOn(divLoading);
+        divLoading.show();
+        ajax16_04_01 = $.ajax({
+            type: 'POST',
+            url: BaseURL + "/Home/ChartBedByClass",
+            data: {},
+            beforeSend: function () {
+                if (ajax16_04_01 !== null) {
+                    if (ajax16_04_01_InProgress) ajax16_04_01.abort();
+                }
+                ajax16_04_01_InProgress = true;
+            },
+            success: function (data) {
+                ajax16_04_01_InProgress = false;
+                $('#chart16_04_01').show();
+                divLoading.hide();
+
+                if (data.status == _sJsonRequestOkStatus) {
+
+                    if (obj16_04_01 == null) {
+                        var ctx16_04_01 = $('#chart16_04_01');
+                        cfg16_04_01 = {
+                            type: 'bar',
+                            data: data.data,
+                            options: {
+                                responsive: true,
+                                scales: {
+                                    xAxes: [{
+                                        stacked: true,
+                                        ticks: {
+                                            beginAtZero: true
+                                        }
+                                    }],
+                                    yAxes: [{
+                                        stacked: true
+                                    }]
+                                }, tooltips: {
+                                    mode: 'index',
+                                    intersect: false
+                                }
+                            }
+                        };
+                        obj16_04_01 = new Chart(ctx16_04_01, cfg16_04_01);
+                    } else {
+                        cfg16_04_01.data = data.data;
+                        obj16_04_01.update();
+                        //console.log(dcConfig);
+                    }
+                } else {
+                    ShowError(data.data);
+                }
+
+                if (!CoreIsNullOrEmpty(fnCallBack)) {
+                    fnCallBack();
+                }
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                ajax16_04_01_InProgress = false;
+                ShowError(xhr.responseText);
+            },
+            dataType: 'json'
+        });
+    }
+
+
+    var cfg16_04_02 = null;
+    var obj16_04_02 = null;
+    function Chart16_04_02(fnCallBack) {
+        //alert(fnCallBack);
+        //console.log(BaseURL + "/Home/ChartRegIpVisitByGuarantor");
+        $('#chart16_04_02').hide();
+        var divLoading = $('#divLoadingChart16_04_02');
+        CoreAHrefLoadingOn(divLoading);
+        divLoading.show();
+        $.ajax({
+            type: 'POST',
+            url: BaseURL + "/Home/ChartBedByStatus",
+            data: {},
+            success: function (data) {
+                //console.log(data);
+                if (data.status == _sJsonRequestOkStatus) {
+
+                    $('#chart16_04_02').show();
+                    divLoading.hide();
+
+                    // for pie, remove borderColor
+                    //console.log(data.data);
+                    delete data.data.datasets[0].borderColor;
+                    delete data.data.datasets[0].fill;
+                    //console.log(data.data);
+
+                    if (obj16_04_02 == null) {
+                        var ctx16_04_02 = $('#chart16_04_02');
+                        cfg16_04_02 = {
+                            type: 'pie',
+                            data: data.data,
+                            options: {
+                                responsive: true,
+                                tooltips: {
+                                    callbacks: {
+                                        label: (tooltipItems, data) => {
+                                            // hitung persentase
+                                            var sumx = data.datasets[tooltipItems.datasetIndex].data.reduce(function (a, b) {
+                                                return a + b;
+                                            }, 0);
+                                            return data.datasets[tooltipItems.datasetIndex].data[tooltipItems.index] +
+                                                ' / ' + sumx + ' (' + (data.datasets[tooltipItems.datasetIndex].data[tooltipItems.index] / sumx * 100).toFixed(2) + '%)';
+                                        }
+                                    },
+                                }
+                            }
+                        };
+                        obj16_04_02 = new Chart(ctx16_04_02, cfg16_04_02);
+                    } else {
+                        cfg16_04_02.data = data.data;
+                        obj16_04_02.update();
+                        //console.log(dcConfig);
+                    }
+                } else {
+                    ShowError(data.data);
+                }
+
+                if (!CoreIsNullOrEmpty(fnCallBack)) {
+                    fnCallBack();
+                }
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                ShowError(xhr.responseText);
+            },
+            dataType: 'json'
+        });
+    }
+
+
+    var cfg16_04_03 = null;
+    var obj16_04_03 = null;
+    var ajax16_04_03 = null;
+    var ajax16_04_03_InProgress = false;
+    function Chart16_04_03(fnCallBack) {
+        $('#chart16_04_03').hide();
+        var divLoading = $('#divLoadingChart16_04_03');
+        CoreAHrefLoadingOn(divLoading);
+        divLoading.show();
+        ajax16_04_03 = $.ajax({
+            type: 'POST',
+            url: BaseURL + "/Home/ChartBedByServiceUnit",
+            data: {},
+            beforeSend: function () {
+                if (ajax16_04_03 !== null) {
+                    if (ajax16_04_03_InProgress) ajax16_04_03.abort();
+                }
+                ajax16_04_03_InProgress = true;
+            },
+            success: function (data) {
+                ajax16_04_03_InProgress = false;
+                $('#chart16_04_03').show();
+                divLoading.hide();
+
+                if (data.status == _sJsonRequestOkStatus) {
+
+                    if (obj16_04_03 == null) {
+                        var ctx16_04_03 = $('#chart16_04_03');
+                        cfg16_04_03 = {
+                            type: 'bar',
+                            data: data.data,
+                            options: {
+                                responsive: true,
+                                scales: {
+                                    xAxes: [{
+                                        stacked: true,
+                                        ticks: {
+                                            beginAtZero: true
+                                        }
+                                    }],
+                                    yAxes: [{
+                                        stacked: true
+                                    }]
+                                }, tooltips: {
+                                    mode: 'index',
+                                    intersect: false
+                                }
+                            }
+                        };
+                        obj16_04_03 = new Chart(ctx16_04_03, cfg16_04_03);
+                    } else {
+                        cfg16_04_03.data = data.data;
+                        obj16_04_03.update();
+                        //console.log(dcConfig);
+                    }
+                } else {
+                    ShowError(data.data);
+                }
+
+                if (!CoreIsNullOrEmpty(fnCallBack)) {
+                    fnCallBack();
+                }
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                ajax16_04_03_InProgress = false;
+                ShowError(xhr.responseText);
+            },
+            dataType: 'json'
+        });
+    }
+
+</script>

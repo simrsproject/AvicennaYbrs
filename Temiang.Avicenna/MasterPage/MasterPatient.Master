@@ -1,0 +1,82 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterPatient.master.cs"
+    Inherits="Temiang.Avicenna.MasterPage.MasterPatient" %>
+
+<%@ Register Assembly="System.Web.Extensions, Version=1.0.61025.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+    Namespace="System.Web.UI" TagPrefix="asp" %>
+<%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Untitled Page</title>
+</head>
+
+<script language="javascript">   
+
+    function cancelBack() {
+        //if ((event.keyCode == 8 ||    
+        //   (event.keyCode == 37 && event.altKey) ||    
+        //   (event.keyCode == 39 && event.altKey))   
+        //    &&    
+        //   (event.srcElement.form == null || event.srcElement.isTextEdit == false)   
+        //  )   
+        //{   
+        //    event.cancelBubble = true;   
+        //    event.returnValue = false;   
+        //}   
+    }
+
+</script>
+
+<body onkeydown="cancelBack()">
+    <form id="form1" runat="server">
+        <telerik:RadScriptManager ID="fw_RadScriptManager" runat="server">
+        </telerik:RadScriptManager>
+        <telerik:RadAjaxManager ID="fw_RadAjaxManager" runat="server">
+        </telerik:RadAjaxManager>
+        <asp:HiddenField runat="server" ID="fw_hdnPageID" Value="" />
+        <div id="Header" style="height: 100px; width: 100%; background-color: dimgray">
+        </div>
+        <div id="MainMenu" style="height: 26px; width: 100%; background-color: darkgray; vertical-align: middle;">
+            <telerik:RadMenu ID="fw_mnuMain" runat="server">
+                <CollapseAnimation Duration="200" Type="OutQuint" />
+                <Items>
+                    <telerik:RadMenuItem runat="server" Text="RADT">
+                        <Items>
+                            <telerik:RadMenuItem runat="server" Text="Master">
+                                <Items>
+                                    <telerik:RadMenuItem runat="server" Text="Department">
+                                    </telerik:RadMenuItem>
+                                    <telerik:RadMenuItem runat="server" Text="Location">
+                                    </telerik:RadMenuItem>
+                                </Items>
+                            </telerik:RadMenuItem>
+                            <telerik:RadMenuItem runat="server" Text="Transaction">
+                            </telerik:RadMenuItem>
+                        </Items>
+                    </telerik:RadMenuItem>
+                </Items>
+            </telerik:RadMenu>
+            <div align="right">
+                <asp:Label ID="fw_lblUserName" runat="server" Text="User Name"></asp:Label>
+                &nbsp;[<asp:LinkButton ID="LinkButton1" runat="server">Logout</asp:LinkButton>,
+            &nbsp;<asp:LinkButton ID="LinkButton2" runat="server">Change Password</asp:LinkButton>]
+            </div>
+        </div>
+        <div id="ProgramCaption" style="height: 25px; width: 100%; background-color: lightgrey">
+            .:
+        <asp:Label ID="fw_lblProgramCation" runat="server" Text="Program Caption"></asp:Label>
+        </div>
+        <div style="width: 100%">
+            <telerik:RadSplitter ID="RadSplitter2" runat="server" Height="100%" Width="100%">
+                <telerik:RadPane runat="server" ID="RadPane1" Width="30%">
+                </telerik:RadPane>
+                <telerik:RadSplitBar runat="server" ID="RadSplitbar1" CollapseMode="Forward" />
+                <telerik:RadPane runat="server" ID="Radpane2" Width="70%">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    </asp:ContentPlaceHolder>
+                </telerik:RadPane>
+            </telerik:RadSplitter>
+        </div>
+    </form>
+</body>
+</html>

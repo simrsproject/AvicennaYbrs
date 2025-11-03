@@ -1,0 +1,5 @@
+﻿INSERT INTO AppProgram (ProgramID,ParentProgramID,ProgramName,TopLevelProgramID,RootLevel,RowIndex,Note,IsParentProgram,IsProgram,IsBeginGroup,ProgramType,IsProgramAddAble,IsProgramEditAble,IsProgramDeleteAble,IsProgramViewAble,IsProgramApprovalAble,IsProgramUnApprovalAble,IsProgramVoidAble,IsProgramUnVoidAble,IsProgramDirectVoid,IsProgramPrintAble,IsMenuAddVisible,IsMenuHomeVisible,IsVisible,IsDiscontinue,NavigateUrl,HelpLinkID,AssemblyName,AssemblyClassName,StoreProcedureName,AccessKey,IsUsingReportHeader,IsDirectPrintEnable,IsListLoadRecordOnInit,IsListLoadRecordIfFiltered,IsProgramRedirected,ApplicationID,ZplCommandTemplate,IsProgramExportAble,IsProgramCrossUnitAble,IsProgramPowerUserAble,SRProgramCategory) VALUES
+	 (N'XML.01.0042e',N'01',N'Cetak e-SEP',N'01',0,0,N'',0,0,0,N'XML',0,0,0,0,0,0,0,0,0,0,0,0,1,0,N'PatientManagement/bpjs_esep.trdx',N'',N'',N'',N'sprpt_xml_bpjssep',N'1',0,1,1,0,NULL,N'HIS2015',NULL,0,0,0,NULL);
+
+INSERT INTO AppProgramRelated (ProgramID,RelatedProgramID,ReferenceID) VALUES
+	 (N'01.20.01',N'XML.01.0042e',N'');

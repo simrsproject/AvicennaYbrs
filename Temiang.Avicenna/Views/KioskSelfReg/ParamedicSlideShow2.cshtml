@@ -1,0 +1,82 @@
+﻿<div class="row">
+    <div class="col-12" id="divSlideshow">
+        @foreach (ServiceUnit su in ViewBag.ServiceUnitPar)
+        {
+            foreach (var par in su.ScheduledParamedics)
+            {
+                <div class="dokter-slide info-box" id="divPar@(par.ParamedicID)">
+                    <table cellpadding="0" cellspacing="0">
+                        <tr>
+                            <td colspan="2">
+                                <div class="poliname">
+                                    <span>Poli @su.ServiceUnitName</span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <div class="pname">
+                                    <span>@par.ParamedicName</span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="">
+                                    <img class="pimg" src="@(par.Foto != null ? ("data:image;base64," + Convert.ToBase64String(par.Foto)) : ((ViewBag.UrlRoot) + "/Images/dr_m.png"))" />
+                                </div>
+                            </td>
+                            <td>
+                                <div class="psch">
+                                    <span>@Html.Raw(par.ScheduleText.Replace(",", "<br />")) </span>
+                                </div>
+                            </td>
+                        </tr>
+
+                    </table>
+                </div>
+            }
+        }
+    </div>
+    
+</div>
+<script language="javascript">
+    var pars = [];
+    $(document).ready(function () {
+        @{
+            foreach (ServiceUnit su in ViewBag.ServiceUnitPar)
+            {
+                @://console.log(@su.ServiceUnitName);
+                foreach (var par in su.ScheduledParamedics)
+                {
+                    @:pars.push({
+                    @:    id: '@par.ParamedicID',
+                    @:    name: '@par.ParamedicName',
+                    @:    su: '@su.ServiceUnitName',
+                    @:    sch: '@Html.Raw(par.ScheduleText.Replace(",", "<br />"))',
+                    @:    photo: '@(par.Foto != null ? ("data:image;base64," + Convert.ToBase64String(par.Foto)) : ((ViewBag.UrlRoot) + "/Images/dr_m.png"))'
+                    @:});
+                }
+            }
+            if (((ServiceUnit[])ViewBag.ServiceUnitPar).Count() > 1)
+            {
+                @:AutoScroll();
+            }
+        }
+    });
+
+    // https://forum.jquery.com/topic/simple-div-slideshow
+
+    var cIndex = 0;
+    function AutoScroll()
+    {
+        //$('#divSlideshow .dokter-slide').hide(); // hide all slides
+        //$('#divSlideshow .dokter-slide:first-child').show(); // show first slide
+        setInterval(function () {
+            $('#divSlideshow .dokter-slide:last-child').hide().prependTo('#divSlideshow').fadeIn(1000);
+        }, 3000);
+    }
+</script>
+
+
+

@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report DataSourceName="sqlDataSource" Width="11.9289296468099in" Name="userReport1" xmlns="http://schemas.telerik.com/reporting/2012/2">
+  <DataSources>
+    <SqlDataSource ConnectionString="Data Source=192.168.80.2;Initial Catalog=RSSMCB_TRAIN;User ID=sa;Password=p@ssw0rd" ProviderName="System.Data.SqlClient" SelectCommand="dbo.sprpt_outdistributioncr" SelectCommandType="StoredProcedure" Name="sqlDataSource">
+      <Parameters>
+        <SqlDataSourceParameter DbType="DateTime" Name="@p_FromDate">
+          <Value>
+            <String>2018-01-01</String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="DateTime" Name="@p_ToDate">
+          <Value>
+            <String>2018-01-30</String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="AnsiString" Name="@p_ServiceUnitID">
+          <Value>
+            <String>B-39</String>
+          </Value>
+        </SqlDataSourceParameter>
+      </Parameters>
+    </SqlDataSource>
+  </DataSources>
+  <Items>
+    <ReportFooterSection Height="0.0520833333333333in" Name="reportFooter">
+      <Style Visible="True">
+        <BorderStyle Bottom="Solid" />
+        <BorderColor Bottom="Black" />
+        <BorderWidth Bottom="1pt" />
+      </Style>
+    </ReportFooterSection>
+    <PageHeaderSection Height="0.0520833333333333in" Name="pageHeader" />
+    <PageFooterSection Height="0.28125in" Name="pageFooter">
+      <Items>
+        <TextBox Value="=NOW()" Size="5.94791666666667in, 0.200000007947286in" Location="0in, 0in" Name="currentTimeTextBox" StyleName="PageInfo" />
+        <TextBox Value="='Page : ' + PageNumber + '/' + PageCount" Size="8.81033833821615in, 0.200000007947286in" Location="5.94799550374349in, 0in" Name="pageInfoTextBox" StyleName="PageInfo">
+          <Style TextAlign="Right" />
+        </TextBox>
+      </Items>
+    </PageFooterSection>
+    <ReportHeaderSection Height="1.26603591442108in" Name="reportHeader">
+      <Items>
+        <TextBox Value="Laporan Outstanding Distribution Confirm" Size="11.9289293289185in, 0.682939211527506in" Location="0in, 0.00003937880198161in" Name="titleTextBox" StyleName="Title">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Name="Tw Cen MT" Size="14pt" Underline="True" />
+          </Style>
+        </TextBox>
+        <TextBox Value="Service Unit" CanGrow="True" Size="1.47504075368245in, 0.291410485903422in" Location="0in, 0.683037757873535in" Name="toServiceUnitNameCaptionTextBox" StyleName="Caption">
+          <Style TextAlign="Left">
+            <BorderStyle Top="None" Bottom="None" Left="None" Right="None" />
+            <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+            <BorderWidth Top="1pt" Bottom="1pt" Left="1pt" Right="1pt" />
+            <Font Name="Tw Cen MT" Size="9pt" Bold="True" />
+          </Style>
+        </TextBox>
+        <TextBox Value="Location" CanGrow="True" Size="1.47500133514404in, 0.291410485903422in" Location="0.00003941853841146in, 0.974546591440837in" Name="toLocationNameCaptionTextBox" StyleName="Caption">
+          <Style TextAlign="Left">
+            <BorderStyle Top="None" Bottom="None" Left="None" Right="None" />
+            <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+            <BorderWidth Top="1pt" Bottom="1pt" Left="1pt" Right="1pt" />
+            <Font Name="Tw Cen MT" Size="9pt" Bold="True" />
+          </Style>
+        </TextBox>
+        <TextBox Value="=Fields.ToServiceUnitName" CanGrow="True" Size="10.4538097381592in, 0.291410485903422in" Location="1.47511959075928in, 0.683037757873535in" Name="toServiceUnitNameDataTextBox" StyleName="Data">
+          <Style TextAlign="Left">
+            <BorderStyle Top="None" Bottom="None" Left="None" Right="None" />
+            <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+            <BorderWidth Top="1pt" Bottom="1pt" Left="1pt" Right="1pt" />
+            <Font Name="Tw Cen MT" Size="9pt" />
+          </Style>
+        </TextBox>
+        <TextBox Value="=Fields.ToLocationName" CanGrow="True" Size="10.4538097381592in, 0.291430036226908in" Location="1.47511959075928in, 0.974527060985565in" Name="toLocationNameDataTextBox" StyleName="Data">
+          <Style TextAlign="Left">
+            <BorderStyle Top="None" Bottom="None" Left="None" Right="None" />
+            <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+            <BorderWidth Top="1pt" Bottom="1pt" Left="1pt" Right="1pt" />
+            <Font Name="Tw Cen MT" Size="9pt" />
+          </Style>
+        </TextBox>
+      </Items>
+    </ReportHeaderSection>
+    <DetailSection Height="0.412973125775655in" Name="detail">
+      <Items>
+        <TextBox Value="=Fields.DistributionNo" CanGrow="True" Size="1.79575443267822in, 0.412973125775655in" Location="0.400000015894572in, 0in" Name="distributionNoDataTextBox" StyleName="Data">
+          <Style TextAlign="Center">
+            <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+            <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+            <BorderWidth Top="0.5pt" Bottom="0.5pt" Left="0.5pt" Right="0.5pt" />
+            <Font Name="Tw Cen MT" Size="9pt" />
+          </Style>
+        </TextBox>
+        <TextBox Value="=Fields.DistributionApprovedDate" Format="{0:dd/MM/yyyy}" CanGrow="True" Size="1.30416679382324in, 0.412933707237244in" Location="2.19583320617676in, 0.00003941853841146in" Name="distributionApprovedDateDataTextBox" StyleName="Data">
+          <Style TextAlign="Center">
+            <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+            <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+            <BorderWidth Top="0.5pt" Bottom="0.5pt" Left="0.5pt" Right="0.5pt" />
+            <Font Name="Tw Cen MT" Size="9pt" />
+          </Style>
+        </TextBox>
+        <TextBox Value="=Fields.FromServiceUnitName" CanGrow="True" Size="1.5708335240682in, 0.412973125775655in" Location="3.50007883707682in, 0in" Name="fromServiceUnitNameDataTextBox" StyleName="Data">
+          <Style TextAlign="Center">
+            <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+            <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+            <BorderWidth Top="0.5pt" Bottom="0.5pt" Left="0.5pt" Right="0.5pt" />
+            <Font Name="Tw Cen MT" Size="9pt" />
+          </Style>
+        </TextBox>
+        <TextBox Value="=Fields.FromLocationName" CanGrow="True" Size="1.54984315236409in, 0.412973125775655in" Location="5.0709908803304in, 0in" Name="fromLocationNameDataTextBox" StyleName="Data">
+          <Style TextAlign="Center">
+            <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+            <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+            <BorderWidth Top="0.5pt" Bottom="0.5pt" Left="0.5pt" Right="0.5pt" />
+            <Font Name="Tw Cen MT" Size="9pt" />
+          </Style>
+        </TextBox>
+        <TextBox Value="=Fields.ItemName" CanGrow="True" Size="2.2246052424113in, 0.412973125775655in" Location="7.40000025431315in, 0in" Name="itemNameDataTextBox" StyleName="Data">
+          <Style TextAlign="Center">
+            <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+            <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+            <BorderWidth Top="0.5pt" Bottom="0.5pt" Left="0.5pt" Right="0.5pt" />
+            <Font Name="Tw Cen MT" Size="9pt" />
+          </Style>
+        </TextBox>
+        <TextBox Value="=Fields.Quantity" CanGrow="True" Size="0.429167191187541in, 0.412973125775655in" Location="9.62468465169271in, 0in" Name="quantityDataTextBox" StyleName="Data">
+          <Style TextAlign="Center">
+            <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+            <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+            <BorderWidth Top="0.5pt" Bottom="0.5pt" Left="0.5pt" Right="0.5pt" />
+            <Font Name="Tw Cen MT" Size="9pt" />
+          </Style>
+        </TextBox>
+        <TextBox Value="=Fields.SRItemUnit" CanGrow="True" Size="0.775in, 0.412973125775655in" Location="10.0539296468099in, 0in" Name="sRItemUnitDataTextBox" StyleName="Data">
+          <Style TextAlign="Center">
+            <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+            <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+            <BorderWidth Top="0.5pt" Bottom="0.5pt" Left="0.5pt" Right="0.5pt" />
+            <Font Name="Tw Cen MT" Size="9pt" />
+          </Style>
+        </TextBox>
+        <TextBox Value="=Fields.ItemTypeName" CanGrow="True" Size="1.09992059071859in, 0.412973125775655in" Location="10.8290087381999in, 0in" Name="itemTypeNameDataTextBox" StyleName="Data">
+          <Style TextAlign="Center">
+            <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+            <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+            <BorderWidth Top="0.5pt" Bottom="0.5pt" Left="0.5pt" Right="0.5pt" />
+            <Font Name="Tw Cen MT" Size="9pt" />
+          </Style>
+        </TextBox>
+        <TextBox Value="=Fields.ItemID" CanGrow="True" Size="0.775000015894572in, 0.412973125775655in" Location="6.62492179870605in, 0in" Name="itemIDDataTextBox" StyleName="Data">
+          <Style TextAlign="Center">
+            <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+            <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+            <BorderWidth Top="0.5pt" Bottom="0.5pt" Left="0.5pt" Right="0.5pt" />
+            <Font Name="Tw Cen MT" Size="9pt" />
+          </Style>
+        </TextBox>
+        <TextBox Value="=RowNumber()" Size="0.399881998697917in, 0.412894407908122in" Location="0.00003933906555176in, 0.00007867813110352in" Name="textBox1">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+            <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+            <BorderWidth Top="0.5pt" Bottom="0.5pt" Left="0.5pt" Right="0.5pt" />
+            <Font Name="Tw Cen MT" Size="9pt" />
+          </Style>
+        </TextBox>
+      </Items>
+    </DetailSection>
+  </Items>
+  <StyleSheet>
+    <StyleRule>
+      <Style Color="Black">
+        <Font Name="Tahoma" Size="18pt" Bold="True" Italic="False" Underline="False" Strikeout="False" />
+      </Style>
+      <Selectors>
+        <StyleSelector Type="ReportItemBase" StyleName="Title" />
+      </Selectors>
+    </StyleRule>
+    <StyleRule>
+      <Style Color="Black" VerticalAlign="Middle">
+        <Font Name="Tahoma" Size="10pt" />
+      </Style>
+      <Selectors>
+        <StyleSelector Type="ReportItemBase" StyleName="Caption" />
+      </Selectors>
+    </StyleRule>
+    <StyleRule>
+      <Style VerticalAlign="Middle">
+        <Font Name="Tahoma" Size="9pt" />
+      </Style>
+      <Selectors>
+        <StyleSelector Type="ReportItemBase" StyleName="Data" />
+      </Selectors>
+    </StyleRule>
+    <StyleRule>
+      <Style VerticalAlign="Middle">
+        <Font Name="Tahoma" Size="8pt" />
+      </Style>
+      <Selectors>
+        <StyleSelector Type="ReportItemBase" StyleName="PageInfo" />
+      </Selectors>
+    </StyleRule>
+  </StyleSheet>
+  <PageSettings>
+    <PageSettings PaperKind="Legal" Landscape="True">
+      <Margins>
+        <MarginsU Left="1in" Right="1in" Top="0.5in" Bottom="1in" />
+      </Margins>
+    </PageSettings>
+  </PageSettings>
+  <Groups>
+    <Group Name="labelsGroup">
+      <GroupHeader>
+        <GroupHeaderSection PrintOnEveryPage="True" Height="0.635042309761047in" Name="labelsGroupHeader">
+          <Items>
+            <TextBox Value="No. Distribusi" CanGrow="True" Size="1.79575443267822in, 0.624605933825175in" Location="0.400000015894572in, 0in" Name="distributionNoCaptionTextBox" StyleName="Caption">
+              <Style TextAlign="Center">
+                <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+                <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+                <BorderWidth Top="0.5pt" Bottom="0.5pt" Left="0.5pt" Right="0.5pt" />
+                <Font Name="Tw Cen MT" Size="9pt" Bold="True" />
+              </Style>
+            </TextBox>
+            <TextBox Value="Approved Date" CanGrow="True" Size="1.30416679382324in, 0.624527096748352in" Location="2.19583320617676in, 0.00007875760396322in" Name="distributionApprovedDateCaptionTextBox" StyleName="Caption">
+              <Style TextAlign="Center">
+                <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+                <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+                <BorderWidth Top="0.5pt" Bottom="0.5pt" Left="0.5pt" Right="0.5pt" />
+                <Font Name="Tw Cen MT" Size="9pt" Bold="True" />
+              </Style>
+            </TextBox>
+            <TextBox Value="Location" CanGrow="True" Size="1.54984378814697in, 0.301846861839294in" Location="5.0709908803304in, 0.322759062051773in" Name="fromLocationNameCaptionTextBox" StyleName="Caption">
+              <Style TextAlign="Center">
+                <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+                <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+                <BorderWidth Top="0.5pt" Bottom="0.5pt" Left="0.5pt" Right="0.5pt" />
+                <Font Name="Tw Cen MT" Size="9pt" Bold="True" />
+              </Style>
+            </TextBox>
+            <TextBox Value="Nama Item" CanGrow="True" Size="2.2246052424113in, 0.624605854352315in" Location="7.40000025431315in, 0in" Name="itemNameCaptionTextBox" StyleName="Caption">
+              <Style TextAlign="Center">
+                <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+                <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+                <BorderWidth Top="0.5pt" Bottom="0.5pt" Left="0.5pt" Right="0.5pt" />
+                <Font Name="Tw Cen MT" Size="9pt" Bold="True" />
+              </Style>
+            </TextBox>
+            <TextBox Value="Qty" CanGrow="True" Size="0.429165919621785in, 0.624527096748352in" Location="9.62468465169271in, 0.00007875760638854in" Name="quantityCaptionTextBox" StyleName="Caption">
+              <Style TextAlign="Center">
+                <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+                <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+                <BorderWidth Top="0.5pt" Bottom="0.5pt" Left="0.5pt" Right="0.5pt" />
+                <Font Name="Tw Cen MT" Size="9pt" Bold="True" />
+              </Style>
+            </TextBox>
+            <TextBox Value="Item Type Name" CanGrow="True" Size="1.09992059071859in, 0.624566594759623in" Location="10.8290087381999in, 0.00003933906555176in" Name="itemTypeNameCaptionTextBox" StyleName="Caption">
+              <Style TextAlign="Center">
+                <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+                <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+                <BorderWidth Top="0.5pt" Bottom="0.5pt" Left="0.5pt" Right="0.5pt" />
+                <Font Name="Tw Cen MT" Size="9pt" Bold="True" />
+              </Style>
+            </TextBox>
+            <TextBox Value="Satuan" CanGrow="True" Size="0.775in, 0.624605854352315in" Location="10.0539296468099in, 0in" Name="sRItemUnitCaptionTextBox" StyleName="Caption">
+              <Style TextAlign="Center">
+                <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+                <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+                <BorderWidth Top="0.5pt" Bottom="0.5pt" Left="0.5pt" Right="0.5pt" />
+                <Font Name="Tw Cen MT" Size="9pt" Bold="True" />
+              </Style>
+            </TextBox>
+            <TextBox Value="Kode Item" CanGrow="True" Size="0.775000015894572in, 0.624605854352315in" Location="6.62492116292318in, 0in" Name="itemIDCaptionTextBox" StyleName="Caption">
+              <Style TextAlign="Center">
+                <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+                <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+                <BorderWidth Top="0.5pt" Bottom="0.5pt" Left="0.5pt" Right="0.5pt" />
+                <Font Name="Tw Cen MT" Size="9pt" Bold="True" />
+              </Style>
+            </TextBox>
+            <TextBox Value="Service Unit" CanGrow="True" Size="1.57083320617676in, 0.301846861839294in" Location="3.50007891654968in, 0.322758913040161in" Name="fromServiceUnitNameCaptionTextBox" StyleName="Caption">
+              <Style TextAlign="Center">
+                <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+                <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+                <BorderWidth Top="0.5pt" Bottom="0.5pt" Left="0.5pt" Right="0.5pt" />
+                <Font Name="Tw Cen MT" Size="9pt" Bold="True" />
+              </Style>
+            </TextBox>
+            <TextBox Value="No." CanGrow="True" Size="0.399921337763468in, 0.624527255694071in" Location="0in, 0.00007859865824382in" Name="textBox2" StyleName="Caption">
+              <Style TextAlign="Center">
+                <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+                <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+                <BorderWidth Top="0.5pt" Bottom="0.5pt" Left="0.5pt" Right="0.5pt" />
+                <Font Name="Tw Cen MT" Size="9pt" Bold="True" />
+              </Style>
+            </TextBox>
+            <TextBox Value="Asal" CanGrow="True" Size="3.12075551350911in, 0.322680205106735in" Location="3.50007883707682in, 0in" Name="textBox3" StyleName="Caption">
+              <Style TextAlign="Center">
+                <BorderStyle Top="Solid" Bottom="Solid" Left="Solid" Right="Solid" />
+                <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+                <BorderWidth Top="0.5pt" Bottom="0.5pt" Left="0.5pt" Right="0.5pt" />
+                <Font Name="Tw Cen MT" Size="9pt" Bold="True" />
+              </Style>
+            </TextBox>
+          </Items>
+        </GroupHeaderSection>
+      </GroupHeader>
+      <GroupFooter>
+        <GroupFooterSection Height="0.0520833333333333in" Name="labelsGroupFooter">
+          <Style Visible="False" />
+        </GroupFooterSection>
+      </GroupFooter>
+    </Group>
+  </Groups>
+</Report>

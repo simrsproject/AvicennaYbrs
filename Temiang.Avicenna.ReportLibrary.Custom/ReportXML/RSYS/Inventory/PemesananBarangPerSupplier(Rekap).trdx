@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report DataSourceName="sqlDataSource1" Width="9.291in" Name="userReport1" ShowSnapGrid="True" xmlns="http://schemas.telerik.com/reporting/2021/1.0">
+  <DataSources>
+    <SqlDataSource QueryDesignerState="null" ParameterValues="{&quot;@p_FromDate&quot;:&quot;2021-09-01&quot;,&quot;@p_ToDate&quot;:&quot;2021-09-10&quot;,&quot;@p_SupplierID&quot;:&quot;%&quot;,&quot;@p_ItemType&quot;:&quot;11&quot;}" ConnectionString="RSI10" SelectCommand="spxml_PemesananBarangPerSupplier" SelectCommandType="StoredProcedure" Name="sqlDataSource1">
+      <Parameters>
+        <SqlDataSourceParameter DbType="DateTime" Name="@p_FromDate">
+          <Value>
+            <String>2021-09-01</String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="DateTime" Name="@p_ToDate">
+          <Value>
+            <String>2021-09-10</String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="AnsiString" Name="@p_SupplierID">
+          <Value>
+            <String>%</String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="AnsiString" Name="@p_ItemType">
+          <Value>
+            <String>11</String>
+          </Value>
+        </SqlDataSourceParameter>
+      </Parameters>
+    </SqlDataSource>
+  </DataSources>
+  <Items>
+    <DetailSection Height="0.2in" Name="detailSection1">
+      <Items>
+        <TextBox Width="0.982in" Height="0.2in" Left="6.147in" Top="0in" Value="= Fields.Quantity*DiscountInCurrency " Format="{0:N2}" Name="textBox19">
+          <Style TextAlign="Right" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1.129in" Height="0.2in" Left="5.015in" Top="0in" Value="= Fields.Quantity* (PriceInCurrency - DiscountInCurrency)" Format="{0:N2}" Name="textBox20">
+          <Style TextAlign="Right" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.882in" Height="0.2in" Left="7.136in" Top="0in" Value="= Fields.Quantity*Ppn" Format="{0:N2}" Name="textBox18">
+          <Style TextAlign="Right" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1.273in" Height="0.2in" Left="8.018in" Top="0in" Value="= Fields.Quantity* (PriceInCurrency - DiscountInCurrency+Ppn)" Format="{0:N2}" Name="textBox54">
+          <Style TextAlign="Right" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.427in" Height="0.2in" Left="0in" Top="0in" Value="=RowNumber()" Name="textBox7">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" Bold="False" />
+            <BorderStyle Default="None" />
+            <BorderWidth Default="0.5pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.759in" Height="0.2in" Left="0.427in" Top="0in" Value="=TransactionDate" Format="{0:dd.MM.yyyy}" Name="textBox5">
+          <Style TextAlign="Left" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1.3in" Height="0.2in" Left="1.2in" Top="0in" Value="=TransactionNo" Name="textBox6">
+          <Style TextAlign="Left" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1.233in" Height="0.2in" Left="2.5in" Top="0in" Value="= Fields.Description" Name="textBox26">
+          <Style VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1.278in" Height="0.2in" Left="3.733in" Top="0in" Value="= Fields.FromServiceUnit" Name="textBox27">
+          <Style VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" />
+          </Style>
+        </TextBox>
+      </Items>
+    </DetailSection>
+    <PageFooterSection Height="0.2in" Name="pageFooterSection1">
+      <Items>
+        <TextBox Width="5.458in" Height="0.2in" Left="3.833in" Top="0in" Value="='Page : ' + PageNumber + '/' + PageCount" Name="textBox21">
+          <Style TextAlign="Right" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" Italic="True" />
+            <BorderStyle Top="Solid" />
+            <BorderWidth Default="0.5pt" />
+            <Padding Right="2mm" />
+          </Style>
+        </TextBox>
+        <TextBox Width="3.8in" Height="0.2in" Left="0.033in" Top="0in" Value="='AVICENNA_HIS  ' + Now()" Format="Avicenna HIS, Print Date : {0:dd-MM-yyyy HH:mm}" Name="textBox22">
+          <Style VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" Italic="True" />
+            <BorderStyle Top="Solid" />
+            <BorderWidth Default="0.5pt" />
+          </Style>
+        </TextBox>
+      </Items>
+    </PageFooterSection>
+    <PageHeaderSection Height="1.7in" Name="pageHeaderSection1">
+      <Items>
+        <TextBox Width="4in" Height="0.15in" Left="0.8in" Top="0.417in" Value="='Telp. ' + Fields.PhoneNo +', Fax. ' + FaxNo" Name="textBox11">
+          <Style TextAlign="Left" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="9.291in" Height="0.2in" Left="0in" Top="0.758in" Value="=Fields.ReportName" Name="textBox1">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Size="12pt" Bold="True" />
+          </Style>
+        </TextBox>
+        <TextBox Width="4in" Height="0.15in" Left="0.8in" Top="0.267in" Value="=Fields.AddressLine1 + ', ' + Fields.AddressLine2 +' - ' +Fields.City" Name="textBox10">
+          <Style TextAlign="Left" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="2.15in" Height="0.15in" Left="0.8in" Top="0.117in" Value="=Fields.HealthcareName" Name="textBox9">
+          <Style TextAlign="Left" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="9.291in" Height="0.2in" Left="0in" Top="0.958in" Value="=Fields.Periode" Name="textBox2">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Bold="True" />
+          </Style>
+        </TextBox>
+        <Shape Width="23.599cm" Height="0.133cm" Left="0in" Top="1.558in" Name="shape2">
+          <Style>
+            <Font Name="Tahoma" Size="8pt" />
+          </Style>
+          <ShapeType>
+            <LineShape Direction="EW" />
+          </ShapeType>
+        </Shape>
+        <TextBox Width="0.427in" Height="0.19in" Left="0in" Top="1.325in" Value="No." Name="textBox55">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" Bold="True" />
+            <BorderStyle Default="None" />
+            <BorderWidth Default="0.5pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1.3in" Height="0.19in" Left="1.2in" Top="1.325in" Value="No. PO" Name="textBox53">
+          <Style TextAlign="Left" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" Bold="True" />
+            <BorderStyle Default="None" />
+            <BorderWidth Default="0.5pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.758in" Height="0.19in" Left="0.442in" Top="1.325in" Value="Tgl." Name="textBox52">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" Bold="True" />
+            <BorderStyle Default="None" />
+            <BorderWidth Default="0.5pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1.133in" Height="0.19in" Left="5.011in" Top="1.325in" Value="Sub Total" Name="textBox49">
+          <Style TextAlign="Right" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" Bold="True" />
+            <BorderStyle Default="None" />
+            <BorderWidth Default="0.5pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.881in" Height="0.19in" Left="7.128in" Top="1.325in" Value="PPN" Name="textBox48">
+          <Style TextAlign="Right" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" Bold="True" />
+            <BorderStyle Default="None" />
+            <BorderWidth Default="0.5pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1.28in" Height="0.19in" Left="8.011in" Top="1.325in" Value="Grand Total" Name="textBox47">
+          <Style TextAlign="Right" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" Bold="True" />
+            <BorderStyle Default="None" />
+            <BorderWidth Default="0.5pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.982in" Height="0.19in" Left="6.144in" Top="1.325in" Value="Discount" Name="textBox46">
+          <Style TextAlign="Right" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" Bold="True" />
+            <BorderStyle Default="None" />
+            <BorderWidth Default="0.5pt" />
+          </Style>
+        </TextBox>
+        <Shape Width="23.599cm" Height="0.132cm" Left="0in" Top="1.208in" Name="shape3">
+          <Style>
+            <Font Name="Tahoma" Size="7pt" />
+          </Style>
+          <ShapeType>
+            <LineShape Direction="EW" />
+          </ShapeType>
+        </Shape>
+        <PictureBox Image="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" Width="58px" Height="58px" Left="0.1in" Top="0.1in" Sizing="ScaleProportional" MimeType="image/jpeg" Name="pictureBox1" />
+        <TextBox Width="1.233in" Height="0.19in" Left="2.5in" Top="1.325in" Value="Nama Barang" Name="textBox23">
+          <Style TextAlign="Left" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" Bold="True" />
+            <BorderStyle Default="None" />
+            <BorderWidth Default="0.5pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1.278in" Height="0.19in" Left="3.733in" Top="1.325in" Value="Gudang" Name="textBox24">
+          <Style TextAlign="Left" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" Bold="True" />
+            <BorderStyle Default="None" />
+            <BorderWidth Default="0.5pt" />
+          </Style>
+        </TextBox>
+      </Items>
+    </PageHeaderSection>
+    <ReportFooterSection Height="0.2in" Name="reportFooterSection1">
+      <Items>
+        <TextBox Width="1.274in" Height="0.19in" Left="8.017in" Top="0in" Value="=SUM(Fields.Quantity* (PriceInCurrency - DiscountInCurrency+Ppn))" Format="{0:N2}" Name="textBox3">
+          <Style Color="Black" TextAlign="Right" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" Bold="True" />
+            <BorderStyle Default="None" Top="Solid" Left="None" />
+            <BorderWidth Default="0.5pt" Top="1pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.881in" Height="0.19in" Left="7.136in" Top="0in" Value="=SUM(Fields.Quantity*Ppn)" Format="{0:N2}" Name="textBox4">
+          <Style Color="Black" TextAlign="Right" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" Bold="True" />
+            <BorderStyle Default="None" Top="Solid" Left="None" />
+            <BorderWidth Default="0.5pt" Top="1pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.982in" Height="0.19in" Left="6.152in" Top="0in" Value="=SUM(Fields.Quantity*DiscountInCurrency )" Format="{0:N2}" Name="textBox14">
+          <Style Color="Black" TextAlign="Right" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" Bold="True" />
+            <BorderStyle Default="None" Top="Solid" Left="None" />
+            <BorderWidth Default="0.5pt" Top="1pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1.13in" Height="0.19in" Left="5.015in" Top="0in" Value="=SUM( Fields.Quantity* (PriceInCurrency))" Format="{0:N2}" Name="textBox15">
+          <Style Color="Black" TextAlign="Right" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" Bold="True" />
+            <BorderStyle Default="None" Top="Solid" Left="None" />
+            <BorderWidth Default="0.5pt" Top="1pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="2.504in" Height="0.2in" Left="0.699in" Top="0in" Value="Grand Total :" Name="textBox16">
+          <Style Color="Black" TextAlign="Right" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" Bold="True" />
+            <BorderStyle Default="None" Left="None" />
+            <BorderWidth Default="0.5pt" />
+          </Style>
+        </TextBox>
+      </Items>
+    </ReportFooterSection>
+  </Items>
+  <PageSettings PaperKind="Custom" PaperSize="250mm, 297mm" Landscape="False" ContinuousPaper="False">
+    <Margins>
+      <MarginsU Left="0.7cm" Right="0.7cm" Top="1cm" Bottom="1cm" />
+    </Margins>
+  </PageSettings>
+  <StyleSheet>
+    <StyleRule>
+      <Style>
+        <Padding Left="2pt" Right="2pt" />
+      </Style>
+      <Selectors>
+        <TypeSelector Type="TextItemBase" />
+        <TypeSelector Type="HtmlTextBox" />
+      </Selectors>
+    </StyleRule>
+  </StyleSheet>
+  <Sortings>
+    <Sorting Expression="=Fields.TransactionNo" Direction="Asc" />
+    <Sorting Expression="=Fields.TransactionDate" Direction="Asc" />
+  </Sortings>
+  <Groups>
+    <Group Name="Supplier">
+      <GroupHeader>
+        <GroupHeaderSection Height="0.2in" Name="groupHeaderSection3">
+          <Items>
+            <TextBox Width="5in" Height="0.2in" Left="1.2in" Top="0in" Value="=SupplierName" Name="textBox8">
+              <Style TextAlign="Left" VerticalAlign="Middle">
+                <Font Name="Tahoma" Size="8pt" Bold="True" />
+              </Style>
+            </TextBox>
+            <TextBox Width="1in" Height="0.19in" Left="0in" Top="0.01in" Value="Nama Supplier" Name="textBox12">
+              <Style TextAlign="Left" VerticalAlign="Middle">
+                <Font Name="Tahoma" Size="8pt" Bold="True" />
+                <BorderStyle Default="None" />
+                <BorderWidth Default="0.5pt" />
+              </Style>
+            </TextBox>
+            <TextBox Width="0.2in" Height="0.2in" Left="1in" Top="0in" Value=":" Name="textBox13">
+              <Style Color="DarkBlue" TextAlign="Center" VerticalAlign="Middle">
+                <Font Name="Tahoma" Size="8pt" Bold="True" />
+                <BorderStyle Default="None" Left="None" />
+                <BorderWidth Default="0.5pt" />
+              </Style>
+            </TextBox>
+          </Items>
+        </GroupHeaderSection>
+      </GroupHeader>
+      <GroupFooter>
+        <GroupFooterSection Height="0.2in" Name="groupFooterSection3">
+          <Items>
+            <TextBox Width="3.2in" Height="0.2in" Left="0in" Top="0in" Value="='Total  ' + SupplierName + ' : '" Name="textBox17">
+              <Style Color="Black" TextAlign="Right" VerticalAlign="Middle">
+                <Font Name="Tahoma" Size="8pt" Bold="True" />
+                <BorderStyle Default="None" Left="None" />
+                <BorderWidth Default="0.5pt" />
+              </Style>
+            </TextBox>
+            <TextBox Width="1.137in" Height="0.19in" Left="5.011in" Top="0.01in" Value="=SUM( Fields.Quantity* (PriceInCurrency))" Format="{0:N2}" Name="textBox25">
+              <Style Color="Black" TextAlign="Right" VerticalAlign="Middle">
+                <Font Name="Tahoma" Size="8pt" Bold="True" />
+                <BorderStyle Default="None" Top="Solid" Left="None" />
+                <BorderWidth Default="0.5pt" Top="1pt" />
+              </Style>
+            </TextBox>
+            <TextBox Width="0.982in" Height="0.19in" Left="6.153in" Top="0.01in" Value="=SUM(Fields.Quantity*DiscountInCurrency )" Format="{0:N2}" Name="textBox29">
+              <Style Color="Black" TextAlign="Right" VerticalAlign="Middle">
+                <Font Name="Tahoma" Size="8pt" Bold="True" />
+                <BorderStyle Default="None" Top="Solid" Left="None" />
+                <BorderWidth Default="0.5pt" Top="1pt" />
+              </Style>
+            </TextBox>
+            <TextBox Width="0.881in" Height="0.19in" Left="7.136in" Top="0.01in" Value="=SUM(Fields.Quantity*Ppn)" Format="{0:N2}" Name="textBox40">
+              <Style Color="Black" TextAlign="Right" VerticalAlign="Middle">
+                <Font Name="Tahoma" Size="8pt" Bold="True" />
+                <BorderStyle Default="None" Top="Solid" Left="None" />
+                <BorderWidth Default="0.5pt" Top="1pt" />
+              </Style>
+            </TextBox>
+            <TextBox Width="1.274in" Height="0.19in" Left="8.017in" Top="0.01in" Value="=SUM(Fields.Quantity* (PriceInCurrency - DiscountInCurrency+Ppn))" Format="{0:N2}" Name="textBox45">
+              <Style Color="Black" TextAlign="Right" VerticalAlign="Middle">
+                <Font Name="Tahoma" Size="8pt" Bold="True" />
+                <BorderStyle Default="None" Top="Solid" Left="None" />
+                <BorderWidth Default="0.5pt" Top="1pt" />
+              </Style>
+            </TextBox>
+          </Items>
+        </GroupFooterSection>
+      </GroupFooter>
+      <Groupings>
+        <Grouping Expression="=Fields.BusinessPartnerID" />
+      </Groupings>
+    </Group>
+  </Groups>
+</Report>

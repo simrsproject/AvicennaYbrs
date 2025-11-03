@@ -1,0 +1,97 @@
+﻿<div>
+    <div class="row">
+        <div class="col-12">
+            <div id="divList" class="card" style="width:100%; border:none;">
+                <div class="card-header">
+                    <h3 class="card-title"><span class='fa fa-lg fa-book'></span> <span lang='id'>Check In</span><span lang='en'>Check In</span> </h3>
+                </div>
+                <form class="form-horizontal">
+                    <div class="card-body">
+                        <div class="form-group row">
+                            <label for="txtNomor" class="col-sm-3 col-form-label"><span lang='id'>No. Rujukan / No. Booking / No. Peserta</span><span lang='en'>BPJS Ref. Number</span></label>
+                            <div class="input-group col-sm-9">
+                                <input type="text" class="form-control" id="txtNomor" placeholder="Nomor">
+                                <span class="input-group-append">
+                                    <button type="button" id="btnReset" class="btn btn-info btn-flat" onclick="ResetValue();"><i class="fas fa-sync"></i> Reset</button>
+                                </span>
+                                <span class="input-group-append">
+                                    <a class="btn btn-outline-info btn-flat" href="fsbpjs://test/"><i class="fas fa-fingerprint"></i> Finger Scan</a>
+                                    <button type="button" id="btnGoNomor" class="btn btn-info btn-flat" onclick="JamSlotGO(this);"><i class="fas fa-search"></i> Go! Check In</button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script language="javascript">
+    var input = document.getElementById("txtNomor");
+    input.addEventListener("keypress", function (event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            document.getElementById("btnGoNomor").click();
+        }
+    });
+
+    function ResetValue() {
+        $("#txtNomor").val("");
+    }
+
+    function JamSlotGO(btn) {
+        if ($("#txtNomor").val() == '') {
+            ShowError('Nomor belum diisi');
+            return;
+        }
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const param = urlParams.get('param') == null ? '' : urlParams.get('param');
+
+        CoreButtonLoadingOn($(btn));
+
+        var RootParam = {
+            NoRujukan: $("#txtNomor").val(),
+            Tipe: '2',
+            Param: param
+        };
+        //console.log(RootParam)
+        var rpSTR = JSON.stringify(RootParam);
+
+        $.ajax({
+            type: 'POST',
+            cache: false,
+            contentType: 'application/json; charset=utf-8',
+            url: BaseURL + "/antrol/selfcheckin/postselfcheckIn",
+            data: rpSTR,
+            success: function (data) {
+                console.log(data);
+                if (data.metadata.Code == "200") {
+                    //console.log(data.Response);
+                    //dlgInfo = ShowSuccess("Terima kasih untuk mengantre, nomor antrean Anda adalah:<hr /><H1>" + data.metadata.code + "</H1>");
+                    ShowSuccess("Terima kasih, proses check in selesai");
+                    setTimeout(function () {
+                        var isShown = dlgInfo.hasClass('show');
+                        if (isShown) {
+                            dlgInfo.modal('hide');
+                        }
+                    }, 2000);
+                    ResetValue();
+                } else {
+                    ShowError(data.metadata.message);
+                }
+                CoreButtonLoadingOff($(btn));
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                CoreButtonLoadingOff($(btn));
+                try {
+                    ShowError(xhr.responseJSON.metadata.Message);
+                } catch {
+                    ShowError(xhr.responseText);
+                }
+            },
+            dataType: 'json'
+        });
+    }
+</script>

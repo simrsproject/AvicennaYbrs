@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report DataSourceName="sqlDataSource1" Width="10.7000007629395in" Name="userReport1" xmlns="http://schemas.telerik.com/reporting/2012/2">
+  <DataSources>
+    <SqlDataSource ConnectionString="Data Source=192.168.11.69;Initial Catalog=RSMP_DEV;Persist Security Info=True;User ID=sa;Password=P@ssw0rd" ProviderName="System.Data.SqlClient" SelectCommand="sprpt_FeeVerifByDischargeDate_all" SelectCommandType="StoredProcedure" Name="sqlDataSource1">
+      <Parameters>
+        <SqlDataSourceParameter DbType="DateTime" Name="@p_FromDate">
+          <Value>
+            <String>11/01/2016</String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="DateTime" Name="@p_ToDate">
+          <Value>
+            <String>11/30/2016</String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="AnsiString" Name="@p_ParamedicID" />
+      </Parameters>
+    </SqlDataSource>
+  </DataSources>
+  <Items>
+    <DetailSection Height="0.0999999046325684in" Name="detailSection1">
+      <Style Visible="False" />
+    </DetailSection>
+    <PageFooterSection Height="0.200000127156576in" Name="pageFooterSection1" />
+    <ReportFooterSection Height="0.600000381469727in" Name="reportFooterSection1">
+      <Items>
+        <Crosstab DataSourceName="sqlDataSource1" Size="10.5729192097982in, 0.416666527589162in" Location="0.0104153951009115in, 0.00003925959269206in" Name="crosstab1">
+          <Style>
+            <BorderStyle Default="Solid" />
+            <BorderWidth Default="0.7pt" />
+            <Font Size="8pt" />
+          </Style>
+          <Body>
+            <Cells>
+              <TableCell RowIndex="0" ColumnIndex="0" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="=Sum(Fields.DeductionAmount)" Format="{0:N2}" Size="0.916666388511658in, 0.16666653752327in" Name="textBox3" StyleName="">
+                    <Style TextAlign="Right">
+                      <BorderStyle Default="Solid" Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="1" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="=Fields.FeeAmount - Fields.SumDeductionAmount" Format="{0:N2}" Size="0.875in, 0.16666653752327in" Name="textBox17" StyleName="">
+                    <Style TextAlign="Right">
+                      <BorderStyle Default="Solid" Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="3" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="=Fields.FeeAmount - Fields.SumDeductionAmount - TaxAmount" Format="{0:N2}" Size="0.916666686534882in, 0.16666653752327in" Name="textBox22" StyleName="">
+                    <Style TextAlign="Right">
+                      <BorderStyle Default="Solid" Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="2" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="=Fields.TaxAmount" Format="{0:N2}" Size="0.791666626930237in, 0.16666653752327in" Name="textBox23" StyleName="">
+                    <Style TextAlign="Right">
+                      <BorderStyle Default="Solid" Bottom="Solid" Right="Solid" />
+                      <BorderWidth Default="0.7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+            </Cells>
+            <Columns>
+              <Column Width="0.916667052542323in" />
+              <Column Width="0.8750003647552in" />
+              <Column Width="0.79166683163218in" />
+              <Column Width="0.916667288865483in" />
+            </Columns>
+            <Rows>
+              <Row Height="0.16666655143104in" />
+            </Rows>
+          </Body>
+          <Corner>
+            <Cells>
+              <TableCell RowIndex="0" ColumnIndex="0" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="Paramedic Name" Size="1.3125in, 0.25in" Name="textBox1">
+                    <Style>
+                      <BorderStyle Default="Solid" Bottom="None" Right="None" />
+                      <BorderWidth Default="0.7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="1" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="Item Name" Size="1.62499988079071in, 0.250000029802322in" Name="textBox10" StyleName="">
+                    <Style>
+                      <BorderStyle Default="Solid" Bottom="None" Right="None" />
+                      <BorderWidth Default="0.7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="4" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="Gross" Size="0.958333969116211in, 0.249999985098839in" Name="textBox12" StyleName="">
+                    <Style TextAlign="Right">
+                      <BorderStyle Default="Solid" Bottom="None" Right="None" />
+                      <BorderWidth Default="0.7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="2" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="Patient Name" Size="1.67708325386047in, 0.249999985098839in" Name="textBox6" StyleName="">
+                    <Style>
+                      <BorderStyle Default="Solid" Bottom="None" Right="None" />
+                      <BorderWidth Default="0.7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+              <TableCell RowIndex="0" ColumnIndex="3" RowSpan="1" ColumnSpan="1">
+                <ReportItem>
+                  <TextBox Value="Guarantor" Size="1.49999997259257in, 0.250000000993383in" Name="textBox13" StyleName="">
+                    <Style>
+                      <BorderStyle Default="Solid" Bottom="None" Right="None" />
+                      <BorderWidth Default="0.7pt" />
+                    </Style>
+                  </TextBox>
+                </ReportItem>
+              </TableCell>
+            </Cells>
+          </Corner>
+          <RowGroups>
+            <TableGroup Name="ParamedicName1">
+              <Groupings>
+                <Grouping Expression="=Fields.ParamedicName" />
+              </Groupings>
+              <Sortings>
+                <Sorting Expression="=Fields.ParamedicName" Direction="Asc" />
+              </Sortings>
+              <ReportItem>
+                <TextBox Value="=Fields.ParamedicName" Size="1.31249988079071in, 0.166666522622108in" Name="textBox2" StyleName="">
+                  <Style>
+                    <BorderStyle Default="Solid" Bottom="Solid" Right="Solid" />
+                    <BorderWidth Default="0.7pt" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+              <ChildGroups>
+                <TableGroup Name="ItemName">
+                  <Groupings>
+                    <Grouping Expression="=Fields.ItemName" />
+                    <Grouping Expression="=Fields.TransactionNo" />
+                    <Grouping Expression="=Fields.SequenceNo" />
+                    <Grouping Expression="=Fields.TariffComponentID" />
+                  </Groupings>
+                  <Sortings>
+                    <Sorting Expression="=Fields.id" Direction="Asc" />
+                  </Sortings>
+                  <ReportItem>
+                    <TextBox Value="=Fields.ItemName" Size="1.625in, 0.166666522622108in" Name="textBox7" StyleName="">
+                      <Style>
+                        <BorderStyle Default="Solid" Bottom="Solid" Right="Solid" />
+                        <BorderWidth Default="0.7pt" />
+                      </Style>
+                    </TextBox>
+                  </ReportItem>
+                  <ChildGroups>
+                    <TableGroup Name="PatientName">
+                      <Groupings>
+                        <Grouping Expression="=Fields.PatientName" />
+                      </Groupings>
+                      <Sortings>
+                        <Sorting Expression="=Fields.PatientName" Direction="Asc" />
+                      </Sortings>
+                      <ReportItem>
+                        <TextBox Value="=Fields.PatientName" Size="1.67708325386047in, 0.16666653752327in" Name="textBox8" StyleName="">
+                          <Style TextAlign="Left">
+                            <BorderStyle Default="Solid" Bottom="Solid" Right="Solid" />
+                            <BorderWidth Default="0.7pt" />
+                          </Style>
+                        </TextBox>
+                      </ReportItem>
+                      <ChildGroups>
+                        <TableGroup Name="Group6">
+                          <ReportItem>
+                            <TextBox Value="=Fields.GuarantorName" Size="1.49999997259257in, 0.16666655143104in" Name="textBox5" StyleName="">
+                              <Style TextAlign="Left">
+                                <BorderStyle Default="Solid" Bottom="Solid" Right="Solid" />
+                                <BorderWidth Default="0.7pt" />
+                              </Style>
+                            </TextBox>
+                          </ReportItem>
+                          <ChildGroups>
+                            <TableGroup Name="FeeAmount">
+                              <Groupings>
+                                <Grouping Expression="=Fields.FeeAmount" />
+                              </Groupings>
+                              <Sortings>
+                                <Sorting Expression="=Fields.FeeAmount" Direction="Asc" />
+                              </Sortings>
+                              <ReportItem>
+                                <TextBox Value="=Fields.FeeAmount" Format="{0:N2}" Size="0.958333969116211in, 0.16666653752327in" Name="textBox9" StyleName="">
+                                  <Style TextAlign="Right">
+                                    <BorderStyle Default="Solid" Bottom="Solid" Right="Solid" />
+                                    <BorderWidth Default="0.7pt" />
+                                  </Style>
+                                </TextBox>
+                              </ReportItem>
+                            </TableGroup>
+                          </ChildGroups>
+                        </TableGroup>
+                      </ChildGroups>
+                    </TableGroup>
+                  </ChildGroups>
+                </TableGroup>
+              </ChildGroups>
+            </TableGroup>
+          </RowGroups>
+          <ColumnGroups>
+            <TableGroup Name="DeductionName">
+              <Groupings>
+                <Grouping Expression="=Fields.DeductionName" />
+              </Groupings>
+              <Sortings>
+                <Sorting Expression="=Fields.DeductionName" Direction="Asc" />
+              </Sortings>
+              <ReportItem>
+                <TextBox Value="=Fields.DeductionName" Size="0.916666388511658in, 0.249999985098839in" Name="textBox4" StyleName="">
+                  <Style TextAlign="Right">
+                    <BorderStyle Default="Solid" Bottom="None" Right="None" />
+                    <BorderWidth Default="0.7pt" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+              <ChildGroups>
+                <TableGroup Name="Group1" />
+              </ChildGroups>
+            </TableGroup>
+            <TableGroup Name="Group2">
+              <ReportItem>
+                <TextBox Value="Fee Amount" Size="0.875in, 0.249999985098839in" Name="textBox11" StyleName="">
+                  <Style TextAlign="Right">
+                    <BorderStyle Default="Solid" Bottom="None" Right="None" />
+                    <BorderWidth Default="0.7pt" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+              <ChildGroups>
+                <TableGroup Name="Group3" />
+              </ChildGroups>
+            </TableGroup>
+            <TableGroup Name="Group4">
+              <ReportItem>
+                <TextBox Value="Tax" Size="0.791666626930237in, 0.249999985098839in" Name="textBox16" StyleName="">
+                  <Style TextAlign="Right">
+                    <BorderStyle Default="Solid" Bottom="None" Right="None" />
+                    <BorderWidth Default="0.7pt" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+              <ChildGroups>
+                <TableGroup Name="Group5" />
+              </ChildGroups>
+            </TableGroup>
+            <TableGroup Name="Group8">
+              <ReportItem>
+                <TextBox Value="Nett" Size="0.916666686534882in, 0.249999985098839in" Name="textBox21" StyleName="">
+                  <Style TextAlign="Right">
+                    <BorderStyle Default="Solid" Bottom="None" Right="Solid" />
+                    <BorderWidth Default="0.7pt" />
+                  </Style>
+                </TextBox>
+              </ReportItem>
+              <ChildGroups>
+                <TableGroup Name="Group9" />
+              </ChildGroups>
+            </TableGroup>
+          </ColumnGroups>
+        </Crosstab>
+      </Items>
+    </ReportFooterSection>
+    <ReportHeaderSection Height="1.34999942779541in" Name="reportHeaderSection1">
+      <Items>
+        <TextBox Value="=Fields.Title" Size="10.5729192097982in, 0.199999968210856in" Location="0.0104153951009115in, 0.800000031789144in" Name="textBox14">
+          <Style TextAlign="Center" />
+        </TextBox>
+        <TextBox Value="=Fields.SubTitle" Size="10.5729188919067in, 0.19999997317791in" Location="0.0104153951009115in, 1.00007883707682in" Name="textBox15">
+          <Style TextAlign="Center" />
+        </TextBox>
+      </Items>
+    </ReportHeaderSection>
+  </Items>
+  <StyleSheet>
+    <StyleRule>
+      <Style>
+        <Padding Left="2pt" Right="2pt" />
+      </Style>
+      <Selectors>
+        <TypeSelector Type="TextItemBase" />
+        <TypeSelector Type="HtmlTextBox" />
+      </Selectors>
+    </StyleRule>
+  </StyleSheet>
+  <PageSettings>
+    <PageSettings PaperKind="Letter" Landscape="True">
+      <Margins>
+        <MarginsU Left="1in" Right="0.5in" Top="1in" Bottom="0.5in" />
+      </Margins>
+    </PageSettings>
+  </PageSettings>
+</Report>

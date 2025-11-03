@@ -1,0 +1,23 @@
+CREATE TABLE [dbo].[PATemplate](
+	[TemplateID] BIGINT NOT NULL,
+	[ItemID] VARCHAR(10) NOT NULL,
+	[ParamedicID] VARCHAR(10) NULL,
+	[TemplateName] VARCHAR(100) NOT NULL,
+	[ResultType] VARCHAR(20) NOT NULL,
+	[ClinicalDiagnosis] VARCHAR(MAX) NULL,
+	[ClinicalData] VARCHAR(MAX) NULL,
+	[ExaminationMaterial] VARCHAR(MAX) NULL,
+	[LocationID] VARCHAR(20) NULL,
+	[Macroscopic] VARCHAR(MAX) NULL,
+	[Microscopic] VARCHAR(MAX) NULL,
+	[Impression] VARCHAR(MAX) NULL,
+	[ConclusionOrPADiagnosis] VARCHAR(MAX) NULL,
+	[AdditionalNotes] VARCHAR(MAX) NULL,
+	[LastUpdateDateTime] DATETIME NULL,
+	[LastUpdateByUserID] VARCHAR(15) NULL,
+	CONSTRAINT [PK_PATemplate] PRIMARY KEY CLUSTERED 
+	(
+		[TemplateID] ASC
+	)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO

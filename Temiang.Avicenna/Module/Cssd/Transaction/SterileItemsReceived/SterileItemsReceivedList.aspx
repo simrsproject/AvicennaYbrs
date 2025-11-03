@@ -1,0 +1,120 @@
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage/MasterList.Master" AutoEventWireup="true"
+    CodeBehind="SterileItemsReceivedList.aspx.cs" Inherits="Temiang.Avicenna.Module.Cssd.Transaction.SterileItemsReceivedList" %>
+
+<%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <telerik:RadCodeBlock ID="RadCodeBlock1" runat="server">
+
+        <script language="javascript" type="text/javascript">
+            function viewItemDetail(rno, seqNo, itemId, itemName, srItemUnit, qty, type) {
+                var oWnd = $find("<%= winDetailItem.ClientID %>");
+                
+                oWnd.setUrl('SterileItemsReceivedDetailItemInfo.aspx?itemid=' + itemId + '&itemname=' + itemName + '&unit=' + srItemUnit + '&qty=' + qty + '&rno=' + rno + '&seq=' + seqNo + '&type=' + type + '&from=rec');
+
+                oWnd.set_width(document.body.offsetWidth);
+                oWnd.show();
+                oWnd.add_pageLoad(onClientPageLoad);
+            }
+        </script>
+
+    </telerik:RadCodeBlock>
+    <telerik:RadWindow runat="server" Animation="None" Width="600px" Height="500px" Behavior="Move, Close"
+        ShowContentDuringLoad="False" VisibleStatusbar="false" Modal="true" ID="winDetailItem">
+    </telerik:RadWindow>
+    <telerik:RadGrid ID="grdList" runat="server" OnNeedDataSource="grdList_NeedDataSource"
+        OnDetailTableDataBind="grdList_DetailTableDataBind" AllowPaging="true" PageSize="15"
+        AutoGenerateColumns="false">
+        <MasterTableView DataKeyNames="ReceivedNo" GroupLoadMode="Client">
+            <Columns>
+                <telerik:GridHyperLinkColumn HeaderStyle-Width="150px" DataTextField="ReceivedNo"
+                    DataNavigateUrlFields="RUrl" HeaderText="Received No" UniqueName="ReceivedNo"
+                    SortExpression="ReceivedNo" HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" />
+                <telerik:GridDateTimeColumn HeaderStyle-Width="80px" DataField="ReceivedDate" HeaderText="Date"
+                    UniqueName="ReceivedDate" SortExpression="ReceivedDate" HeaderStyle-HorizontalAlign="Center"
+                    ItemStyle-HorizontalAlign="Center" />
+                <telerik:GridBoundColumn HeaderStyle-Width="50px" DataField="ReceivedTime" HeaderText="Time"
+                    UniqueName="ReceivedTime" SortExpression="ReceivedTime" HeaderStyle-HorizontalAlign="Left"
+                    ItemStyle-HorizontalAlign="Left" />
+                <telerik:GridBoundColumn DataField="FromServiceUnitName" HeaderText="From Unit" UniqueName="FromServiceUnitName"
+                    SortExpression="FromServiceUnitName" HeaderStyle-HorizontalAlign="Left" ItemStyle-HorizontalAlign="Left" />
+                <telerik:GridBoundColumn DataField="FromRoomName" HeaderText="From Room" UniqueName="FromRoomName"
+                    SortExpression="FromRoomName" HeaderStyle-HorizontalAlign="Left" ItemStyle-HorizontalAlign="Left" />
+                <telerik:GridBoundColumn HeaderStyle-Width="200px" DataField="SenderBy" HeaderText="Sender By"
+                    UniqueName="SenderBy" SortExpression="SenderBy" HeaderStyle-HorizontalAlign="Left"
+                    ItemStyle-HorizontalAlign="Left" />
+                <telerik:GridBoundColumn HeaderStyle-Width="200px" DataField="ReceivedByUserName"
+                    HeaderText="Received By" UniqueName="ReceivedByUserName" SortExpression="ReceivedByUserName"
+                    HeaderStyle-HorizontalAlign="Left" ItemStyle-HorizontalAlign="Left" />
+                <telerik:GridCheckBoxColumn HeaderStyle-Width="70px" DataField="IsApproved" HeaderText="Approved"
+                    UniqueName="IsApproved" SortExpression="IsApproved" HeaderStyle-HorizontalAlign="Center"
+                    ItemStyle-HorizontalAlign="Center" />
+                <telerik:GridCheckBoxColumn HeaderStyle-Width="60px" DataField="IsVoid" HeaderText="Void"
+                    UniqueName="IsVoid" SortExpression="IsVoid" HeaderStyle-HorizontalAlign="Center"
+                    ItemStyle-HorizontalAlign="Center" />
+            </Columns>
+            <DetailTables>
+                <telerik:GridTableView DataKeyNames="ReceivedNo, ReceivedSeqNo" Name="grdDetail"
+                    AutoGenerateColumns="False" AllowPaging="true" PageSize="15">
+                    <Columns>
+                        <telerik:GridTemplateColumn UniqueName="listDetailView" HeaderText="" Groupable="false">
+                            <ItemTemplate>
+                                <%# (string.Format("<a href=\"#\" onclick=\"viewItemDetail('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', 'info'); return false;\">{6}</a>",
+                           DataBinder.Eval(Container.DataItem, "ReceivedNo"), DataBinder.Eval(Container.DataItem, "ReceivedSeqNo"), DataBinder.Eval(Container.DataItem, "ItemID"), DataBinder.Eval(Container.DataItem, "ItemName"),
+                           DataBinder.Eval(Container.DataItem, "CssdItemUnit"), DataBinder.Eval(Container.DataItem, "Qty"), "<img src=\"../../../../Images/Toolbar/details16.png\" border=\"0\" title=\"View Item Detail\" />"))%>
+                            </ItemTemplate>
+                            <HeaderStyle HorizontalAlign="Center" Width="35px" />
+                            <ItemStyle HorizontalAlign="Center" />
+                        </telerik:GridTemplateColumn>
+                        <telerik:GridBoundColumn HeaderStyle-Width="70px" DataField="ReceivedNo" HeaderText="Received No"
+                            UniqueName="ReceivedNo" SortExpression="ReceivedNo" HeaderStyle-HorizontalAlign="Left"
+                            ItemStyle-HorizontalAlign="Left" Visible="false" />
+                        <telerik:GridBoundColumn HeaderStyle-Width="70px" DataField="ReceivedSeqNo" HeaderText="Seq No"
+                            UniqueName="ReceivedSeqNo" SortExpression="ReceivedSeqNo" HeaderStyle-HorizontalAlign="Left"
+                            ItemStyle-HorizontalAlign="Left" />
+                        <telerik:GridBoundColumn HeaderStyle-Width="100px" DataField="ItemNo" HeaderText="Item #"
+                            UniqueName="ItemNo" SortExpression="ItemNo" HeaderStyle-HorizontalAlign="Center"
+                            ItemStyle-HorizontalAlign="Center" Visible="false" />
+                        <telerik:GridBoundColumn HeaderStyle-Width="100px" DataField="ItemID" HeaderText="Item ID"
+                            UniqueName="ItemID" SortExpression="ItemID" HeaderStyle-HorizontalAlign="Center"
+                            ItemStyle-HorizontalAlign="Center" />
+                        <telerik:GridBoundColumn HeaderStyle-Width="350px" DataField="ItemName" HeaderText="Item Name"
+                            UniqueName="ItemName" SortExpression="ItemName" HeaderStyle-HorizontalAlign="Left"
+                            ItemStyle-HorizontalAlign="Left" />
+                        <telerik:GridNumericColumn HeaderStyle-Width="80px" DataField="Qty" HeaderText="Qty"
+                            UniqueName="Qty" SortExpression="Qty" HeaderStyle-HorizontalAlign="Right" ItemStyle-HorizontalAlign="Right"
+                            DataFormatString="{0:n2}" />
+                        <telerik:GridNumericColumn HeaderStyle-Width="80px" DataField="QtyProcessed" HeaderText="Processed"
+                            UniqueName="QtyProcessed" SortExpression="QtyProcessed" HeaderStyle-HorizontalAlign="Right"
+                            ItemStyle-HorizontalAlign="Right" DataFormatString="{0:n2}" />
+                        <telerik:GridNumericColumn HeaderStyle-Width="80px" DataField="QtyReturn" HeaderText="Return"
+                            UniqueName="QtyReturn" SortExpression="QtyReturn" HeaderStyle-HorizontalAlign="Right"
+                            ItemStyle-HorizontalAlign="Right" DataFormatString="{0:n2}" />
+                        <telerik:GridBoundColumn HeaderStyle-Width="120px" DataField="CssdItemUnit" HeaderText="Unit"
+                            UniqueName="CssdItemUnit" SortExpression="CssdItemUnit" HeaderStyle-HorizontalAlign="Left"
+                            ItemStyle-HorizontalAlign="Left" />
+                        <telerik:GridBoundColumn DataField="Notes" HeaderText="Notes" UniqueName="Notes"
+                            SortExpression="Notes" HeaderStyle-HorizontalAlign="Left" ItemStyle-HorizontalAlign="Left" />
+                        <telerik:GridDateTimeColumn HeaderStyle-Width="80px" DataField="ExpiredDate" HeaderText="Expire Date"
+                            UniqueName="ExpiredDate" SortExpression="ExpiredDate" HeaderStyle-HorizontalAlign="Center"
+                            ItemStyle-HorizontalAlign="Center" Visible="false" />
+                        <telerik:GridNumericColumn HeaderStyle-Width="80px" DataField="ReuseTo" HeaderText="Reuse To"
+                            UniqueName="ReuseTo" SortExpression="ReuseTo" HeaderStyle-HorizontalAlign="Center"
+                            ItemStyle-HorizontalAlign="Center" DataFormatString="{0:n0}" Visible="false" />
+                        <telerik:GridCheckBoxColumn HeaderStyle-Width="80px" DataField="IsNeedUltrasound"
+                            HeaderText="Need Ultrasound" UniqueName="IsNeedUltrasound" SortExpression="IsNeedUltrasound"
+                            HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" Visible="false" />
+                        <telerik:GridCheckBoxColumn HeaderStyle-Width="80px" DataField="IsDtt"
+                            HeaderText="DTT Process" UniqueName="IsDtt" SortExpression="IsDtt"
+                            HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" Visible="false" />
+                    </Columns>
+                </telerik:GridTableView>
+            </DetailTables>
+        </MasterTableView>
+        <FilterMenu>
+        </FilterMenu>
+        <ClientSettings EnableRowHoverStyle="true">
+            <Resizing AllowColumnResize="True" />
+            <Selecting AllowRowSelect="True" />
+        </ClientSettings>
+    </telerik:RadGrid>
+</asp:Content>

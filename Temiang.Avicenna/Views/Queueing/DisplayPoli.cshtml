@@ -1,0 +1,350 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Display Antrean Poliklinik</title>
+
+    <!-- Fonts -->
+    <link href="@(ViewBag.UrlRoot)/Bootstrap/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="@(ViewBag.UrlRoot)/Bootstrap/Queue/Display/assets/css/appDisplay.css" rel="stylesheet">
+
+    <script src="@(ViewBag.UrlRoot)/Bootstrap/plugins/jquery/jquery.min.js"></script>
+    <script src="@(ViewBag.UrlRoot)/Bootstrap/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Styles -->
+</head>
+<body>
+    <header>
+        <div class="header-section-content row d-flex align-items-center py-3">
+            <div class="col-8 header-left d-flex flex-row align-items-center px-2">
+                <div class="logo-header-section-card px-2">
+                    <img src="data:image/png;base64, @(Convert.ToBase64String((byte[])ViewData["Healthcare_HealthcareLogo"]))" alt="Logo RS" style="width: 3.5vw;" />
+                </div>
+                <div class="title-header-section-card align-items-center">
+                    <div class="title-1" style="font: bold 1.2vw arial, verdana; text-shadow: 1px 1px #738678;">@ViewData["Healthcare_HealthcareName"]</div>
+                    <div class="title-2" style="font: 550 0.8vw arial, verdana; text-shadow: 0.5px 1px #738678;">@ViewData["AppParam_QueueDisplaySloganHealthcare"]</div>
+                </div>
+            </div>
+            <div class="col-4 header-right text-right pr-3">
+                <div class="times" style="font: bolder 1.2vw arial, verdana;"><span id="hours"></span>:<span id="minutes">:</span>:<span id="seconds"></span>&nbsp;<span id="ampm"></span></div>
+                <div class="hari" id="date" style="font: bold 0.8vw arial, verdana;"></div>
+                <div class="vendor-name">Powered by @ViewBag.Brand.VendorName</div>
+            </div>
+        </div>
+        <div class="header-section-title">
+            ANTREAN POLIKLINIK
+        </div>
+    </header>
+
+    <main>
+        <div class="container-fluid">
+            <div class="main-top-box-section my-3">
+                <div class="row main-top-box-content-section text-center">
+                    <div class="col-12">
+                        <span id="mainPolyclinicName">POLIKLINIK</span>
+                    </div>
+                </div>
+
+                <div class="row text-center">
+                    <div class="col-12 main-top-box-content-number-section"><span id="mainLoket">A-000</span></div>
+                </div>
+            </div>
+
+            <div id="counter" class="row">
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="row">
+            <div class="col-12 footer-section mt-3">
+                <div class="footer-content-section text-dark">
+                    <span>@ViewData["AppParam_QueueDisplayScrollingText"]</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="audio">
+        @{
+            foreach (var af in (QueueingSoundCollection)ViewBag.audioColl)
+            {
+                <audio id="a_@(af.Name.Replace(" " ,"_"))" src="@(ViewBag.audioPathURL)/@(af.FilePath)"></audio>
+            }
+        }
+    </div>
+
+    <script src="@(ViewBag.UrlRoot)/Bootstrap/rscideres/assets/js/clock.js"></script>
+    <script type="text/javascript">
+        var BaseURL = '@ViewBag.UrlRoot';
+        var Location = '@(ViewBag.qLocation)' != '' ? '@(ViewBag.qLocation)' : '02';
+
+        $(document).ready(function () {
+            $('.footer-content-section span').css('animation-duration', '@ViewData["AppParam_QueueDisplayScrollingDurationText"]');
+
+            GenerateCounter();
+
+            GetQueueing();
+
+            setInterval(function () {
+                GetQueueing();
+            }, 4000);
+
+            setInterval(function () {
+                SayIt();
+            }, 800);
+
+            GetRunningText();
+        });
+
+        function GenerateCounter() {
+        let counter = '@(ViewBag.qCounter)' != '' ? '@(ViewBag.qCounter)' : 4;
+            let i = 0;
+            while (i < counter) {
+                let poliNumber = i + 1;
+                let str = $(`
+                    <div class="col bottom-box-section-card">
+                        <div class="bottom-box-content-section-card">
+                            <div class="bottom-box-content-header-section-card">
+                                <span id="poli_${poliNumber}">DOKTER ${poliNumber}</span>
+                             </div>
+                            <div class="bottom-box-body-header-section-card">
+                                <span id="code_${poliNumber}">A-000</span>
+                            </div>
+                        </div>
+                    </div>
+                `);
+                $('#counter').append(str);
+                i++;
+            }
+        }
+
+        var queData = [];
+        var _fnGetDataIsRunning = false;
+        function GetQueueing() {
+            if (_fnGetDataIsRunning == true) return;
+
+            _fnGetDataIsRunning = true;
+
+            $.ajax({
+                type: 'POST',
+                url: "@(ViewBag.UrlRoot)/Queueing/GetQueueing",
+                data: { qLocation: Location },
+                success: function (data) {
+                    //console.log(data);
+                    if (data.status === 'OK') {
+                        //console.log(data.data);
+                        if (data.data != null) {
+
+                            for (var i = 0; i < data.data.length; i++) {
+                                queData.push(data.data[i]);
+                                //console.log(data.data[i]);
+                            }
+                        }
+                    } else {
+                        //DisplayToast(ret.data, "error");
+                    }
+
+                    _fnGetDataIsRunning = false;
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    _fnGetDataIsRunning = false;
+                    //DisplayToast(xhr.responseText, "error");
+                },
+                dataType: 'json'
+            });
+        }
+
+        //var ctr = [
+        //    { "NamaPoli": "", "NoAntrian": "", "LastDateTime": new Date() },
+        //    { "NamaPoli": "", "NoAntrian": "", "LastDateTime": new Date() },
+        //    { "NamaPoli": "", "NoAntrian": "", "LastDateTime": new Date() },
+        //    { "NamaPoli": "", "NoAntrian": "", "LastDateTime": new Date() }
+        //];
+
+        var ctr = Array.from({ length: 9 }, () => ({
+            NamaPoli: "",
+            NoAntrian: "",
+            LastDateTime: new Date()
+        }));
+
+        function SayIt() {
+            if (SetMediaIsRunning) return;
+
+            if (queData.length > 0) {
+                var que = queData.shift();
+                //console.log(que);
+                UpdateDisplay(que);
+                SetMedia(que, 0);
+            }
+        }
+
+        function UpdateDisplayChild(que, i) {
+            ctr[i].NamaPoli = que.ServiceUnitName;
+            ctr[i].NoAntrian = que.FormattedNo;
+            ctr[i].LastDateTime = new Date();
+
+            $('#poli_' + (i+1)).html(que.ParamedicName);
+            $('#code_' + (i + 1)).html(que.FormattedNo);
+            BlinkSpan($('#code_' + (i + 1)), 0);
+        }
+
+        function DisplayLoketSelection(que) {
+            var j = 0; var lDate = new Date();
+
+            for (i = 0; i < 4; i++) {
+                if (ctr[i].NamaPoli == que.ServiceUnitName) {
+                    UpdateDisplayChild(que, i);
+                    return 0;
+                }
+
+                if (ctr[i].LastDateTime < lDate) {
+                    lDate = ctr[i].LastDateTime;
+                    j = i;
+                }
+            }
+
+            UpdateDisplayChild(que, j);
+        }
+
+        function UpdateDisplay(que) {
+            // main
+            $('#mainLoket').html(que.FormattedNo);
+            $('#mainPolyclinicName').html(function (_, html) {
+                const mainPolyclinicName = html.split(" ")[0];
+                const updatedText = mainPolyclinicName + " " + que.ServiceUnitShortName;
+                console.log(updatedText);
+                return updatedText;
+            });
+            BlinkSpan($('#mainLoket'), 0);
+
+            DisplayLoketSelection(que);
+        }
+
+        function BlinkSpan(objSpan, i) {
+            //console.log(i);
+            if (i < 10) {
+                if ((i % 2) == 0) {
+                    // change css
+                    objSpan.addClass("text-warning");
+                } else {
+                    // remove css
+                    objSpan.removeClass("text-warning");
+                }
+
+                setTimeout(function () {
+                    i++;
+                    BlinkSpan(objSpan, i);
+                }, 1000);
+            }
+        }
+
+        var SetMediaIsRunning = false;
+        function SetMedia(que, iDelay) {
+            //console.log(que.AudioInfo.length);
+
+            SetMediaIsRunning = true;
+            if (que.AudioInfo.length == 0) {
+                SetMediaIsRunning = false;
+                return;
+            }
+
+            setTimeout(function () {
+                var jDelay = 0;
+                var af = que.AudioInfo.shift();
+                var m = document.getElementById('a_' + af.Name.replace(" ","_"));
+                //console.log('a_' + af.Name);
+                //console.log(m);
+                if (m != null) {
+                    m.pause();
+                    m.currentTime = 0;
+                    jDelay = m.duration * 1000;
+                    m.play();
+                }
+                //return;
+                SetMedia(que, jDelay);
+            }, iDelay);
+        }
+
+        //=============== running text
+        var _rtData = [];
+        var _fnGetDataRtIsRunning = false;
+        function GetRunningText() {
+            if (_fnGetDataRtIsRunning == true) return;
+
+            _fnGetDataRtIsRunning = true;
+
+            $.ajax({
+                type: 'POST',
+                url: "@(ViewBag.UrlRoot)/Queueing/RunningTextGetDataByLocation",
+                data: { qLocation: Location },
+                success: function (data) {
+                    //console.log(data);
+                    if (data.status === 'OK') {
+                        //console.log(data.data);
+                        DisplayRunningText(data.data);
+                    } else {
+                        //DisplayToast(ret.data, "error");
+                    }
+
+                    _fnGetDataRtIsRunning = false;
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    _fnGetDataRtIsRunning = false;
+                },
+                dataType: 'json'
+            });
+        }
+
+        function DisplayRunningText(data) {
+            _rtData = data;
+            Fetch(0);
+        }
+
+        function Fetch(iCounter) {
+            var textDiv = $('.footer-content-section');
+            textDiv.html("");
+
+            //console.log(_rtData.length);
+            //console.log(iCounter);
+            if (_rtData.length == 0) {
+                if (iCounter == 0) {
+                    // kasih delay agak lama karena kemungkinan data masih kosong
+                    setTimeout(function () {
+                        GetRunningText();
+                    }, 60000);
+                    return;
+                } else {
+                    setTimeout(function () {
+                        GetRunningText();
+                    }, 1000);
+                    return;
+                }
+            };
+
+            //console.log(_rtData[0].RunningText);
+
+            var textSpan = $("<span></span>");
+
+            var idur = 20 + (_rtData[0].TextLength / 10);
+            textSpan.html(_rtData[0].RunningText);
+            textSpan.css('animation-duration', idur + 's');
+
+            textDiv.append(textSpan);
+
+            _rtData.shift();
+
+            setTimeout(function () {
+                Fetch(iCounter+1);
+            }, (idur * 1000));
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+
+INSERT INTO AppStandardReference(
+           StandardReferenceID,
+           StandardReferenceName,
+           ItemLength,
+           IsUsedBySystem,
+           IsActive,
+           StandardReferenceGroup,
+           Note,
+           LastUpdateDateTime,
+           LastUpdateByUserID,
+           HasCOA,
+           IsNumericValue
+       )
+       VALUES
+       (
+           'CauseOfDisease' /* { StandardReferenceID } */,
+           'Cause Of Disease' /* { StandardReferenceName } */,
+           '20' /* { ItemLength } */,
+           1 /* { IsUsedBySystem } */,
+           1 /* { IsActive } */,
+           '' /* { StandardReferenceGroup } */,
+           '' /* { Note } */,
+           GETDATE() /* { LastUpdateDateTime } */,
+           'sci' /* { LastUpdateByUserID } */,
+           0 /* { HasCOA } */,
+           NULL /* { IsNumericValue } */
+       )
+
+INSERT INTO AppStandardReferenceItem(
+           StandardReferenceID,
+           ItemID,
+           ItemName,
+           Note,
+           IsUsedBySystem,
+           IsActive,
+           LastUpdateDateTime,
+           LastUpdateByUserID,
+           ReferenceID,
+           coaID,
+           subledgerID,
+           CustomField,
+           LineNumber,
+           NumericValue,
+           CustomField2
+       )
+       VALUES
+       (
+           'CauseOfDisease' /* { StandardReferenceID } */,
+           'CauseOfDisease-001' /* { ItemID } */,
+           'Kosmetik' /* { ItemName } */,
+           '' /* { Note } */,
+           1 /* { IsUsedBySystem } */,
+           1 /* { IsActive } */,
+           GETDATE() /* { LastUpdateDateTime } */,
+           'sci' /* { LastUpdateByUserID } */,
+           '' /* { ReferenceID } */,
+           0 /* { coaID } */,
+           0 /* { subledgerID } */,
+           NULL /* { CustomField } */,
+           0 /* { LineNumber } */,
+           0 /* { NumericValue } */,
+           NULL /* { CustomField2 } */
+       ),
+	   (
+	       'CauseOfDisease' /* { StandardReferenceID } */,
+	       'CauseOfDisease-002' /* { ItemID } */,
+	       'Infetilitas' /* { ItemName } */,
+	       '' /* { Note } */,
+	       1 /* { IsUsedBySystem } */,
+	       1 /* { IsActive } */,
+	       GETDATE() /* { LastUpdateDateTime } */,
+	       'sci' /* { LastUpdateByUserID } */,
+	       '' /* { ReferenceID } */,
+	       0 /* { coaID } */,
+	       0 /* { subledgerID } */,
+	       NULL /* { CustomField } */,
+	       0 /* { LineNumber } */,
+	       0 /* { NumericValue } */,
+	       NULL /* { CustomField2 } */
+	   ),
+	   (
+	       'CauseOfDisease' /* { StandardReferenceID } */,
+	       'CauseOfDisease-003' /* { ItemID } */,
+	       'Kngenital/Herediter' /* { ItemName } */,
+	       '' /* { Note } */,
+	       1 /* { IsUsedBySystem } */,
+	       1 /* { IsActive } */,
+	       GETDATE() /* { LastUpdateDateTime } */,
+	       'sci' /* { LastUpdateByUserID } */,
+	       '' /* { ReferenceID } */,
+	       0 /* { coaID } */,
+	       0 /* { subledgerID } */,
+	       NULL /* { CustomField } */,
+	       0 /* { LineNumber } */,
+	       0 /* { NumericValue } */,
+	       NULL /* { CustomField2 } */
+	   ),
+	   (
+	       'CauseOfDisease' /* { StandardReferenceID } */,
+	       'CauseOfDisease-004' /* { ItemID } */,
+	       'Hormonal' /* { ItemName } */,
+	       '' /* { Note } */,
+	       1 /* { IsUsedBySystem } */,
+	       1 /* { IsActive } */,
+	       GETDATE() /* { LastUpdateDateTime } */,
+	       'sci' /* { LastUpdateByUserID } */,
+	       '' /* { ReferenceID } */,
+	       0 /* { coaID } */,
+	       0 /* { subledgerID } */,
+	       NULL /* { CustomField } */,
+	       0 /* { LineNumber } */,
+	       0 /* { NumericValue } */,
+	       NULL /* { CustomField2 } */
+	   )

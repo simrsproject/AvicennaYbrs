@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report DataSourceName="sqlDataSource1" Width="3.071in" Name="cafe" ShowSnapGrid="True" xmlns="http://schemas.telerik.com/reporting/2019/2.0">
+  <DataSources>
+    <SqlDataSource QueryDesignerState="null" ParameterValues="{&quot;@p_PaymentNo&quot;:&quot;PM200720-00005&quot;}" ConnectionString="RSITRAIN" SelectCommand="sprpt_xml_PaymentReceiptCafe" SelectCommandType="StoredProcedure" Name="sqlDataSource1">
+      <Parameters>
+        <SqlDataSourceParameter DbType="AnsiString" Name="@p_PaymentNo">
+          <Value>
+            <String>PM200720-00005</String>
+          </Value>
+        </SqlDataSourceParameter>
+      </Parameters>
+    </SqlDataSource>
+  </DataSources>
+  <Items>
+    <DetailSection Height="0.2in" Name="detailSection1">
+      <Items>
+        <TextBox Width="1.2in" Height="0.2in" Left="0in" Top="0in" Value="= Fields.ItemName" Name="textBox1">
+          <Style VerticalAlign="Middle">
+            <Font Size="8pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.4in" Height="0.2in" Left="1.9in" Top="0in" Value="= Fields.Qty" Format="{0:N0}" Name="textBox7">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Size="8pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.7in" Height="0.2in" Left="1.2in" Top="0in" Value="= Fields.hargasatuan" Format="{0:N0}" Name="textBox8">
+          <Style TextAlign="Right" VerticalAlign="Middle">
+            <Font Size="8pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.7in" Height="0.2in" Left="2.3in" Top="0in" Value="= Fields.tot" Format="{0:N0}" Name="textBox6">
+          <Style TextAlign="Right" VerticalAlign="Middle">
+            <Font Size="8pt" />
+          </Style>
+        </TextBox>
+      </Items>
+    </DetailSection>
+    <PageFooterSection Height="0.2in" Name="pageFooterSection1">
+      <Items>
+        <TextBox Width="2.171in" Height="0.2in" Left="0in" Top="0in" Value="=Now()" Format="Avicenna HIS, Print Date : {0:dd-MM-yyyy HH:mm}" Name="textBox44">
+          <Style VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="6pt" Italic="True" />
+            <BorderStyle Top="Solid" />
+            <BorderWidth Default="0.5pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.9in" Height="0.2in" Left="2.171in" Top="0in" Value="='Page : ' + PageNumber + '/' + PageCount" Name="textBox45">
+          <Style TextAlign="Right" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="6pt" Italic="True" />
+            <BorderStyle Top="Solid" />
+            <BorderWidth Default="0.5pt" />
+            <Padding Right="2mm" />
+          </Style>
+        </TextBox>
+      </Items>
+    </PageFooterSection>
+    <ReportFooterSection Height="1.853in" Name="reportFooterSection1">
+      <Items>
+        <TextBox Width="1.092in" Height="0.2in" Left="1.9in" Top="0.052in" Value="= Sum(Fields.tot)" Format="{0:N0}" Name="textBox9">
+          <Style TextAlign="Right" VerticalAlign="Middle">
+            <Font Size="8pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1in" Height="0.2in" Left="0.792in" Top="0.052in" Value="Total Jual" Format="{0:N0}" Name="textBox10">
+          <Style TextAlign="Right" VerticalAlign="Middle">
+            <Font Size="8pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1in" Height="0.2in" Left="0.792in" Top="0.252in" Value="Diskon" Format="{0:N0}" Name="textBox11">
+          <Style TextAlign="Right" VerticalAlign="Middle">
+            <Font Size="8pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1in" Height="0.2in" Left="0.792in" Top="0.452in" Value="Jual Bersih" Format="{0:N0}" Name="textBox12">
+          <Style TextAlign="Right" VerticalAlign="Middle">
+            <Font Size="8pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1in" Height="0.2in" Left="0.792in" Top="0.652in" Value="PPD 10%" Format="{0:N0}" Name="textBox13">
+          <Style TextAlign="Right" VerticalAlign="Middle">
+            <Font Size="8pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1in" Height="0.2in" Left="0.792in" Top="0.852in" Value="Jumlah total" Format="{0:N0}" Name="textBox14">
+          <Style TextAlign="Right" VerticalAlign="Middle">
+            <Font Size="8pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1in" Height="0.2in" Left="0.792in" Top="1.053in" Value="Pembulatan" Format="{0:N0}" Name="textBox15">
+          <Style TextAlign="Right" VerticalAlign="Middle">
+            <Font Size="8pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1in" Height="0.2in" Left="0.792in" Top="1.253in" Value="Total Bayar" Format="{0:N0}" Name="textBox16">
+          <Style TextAlign="Right" VerticalAlign="Middle">
+            <Font Size="8pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1in" Height="0.2in" Left="0.792in" Top="1.453in" Value="Uang Bayar" Format="{0:N0}" Name="textBox17">
+          <Style TextAlign="Right" VerticalAlign="Middle">
+            <Font Size="8pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1in" Height="0.2in" Left="0.792in" Top="1.653in" Value="Uang Kembali" Format="{0:N0}" Name="textBox18">
+          <Style TextAlign="Right" VerticalAlign="Middle">
+            <Font Size="8pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.108in" Height="0.2in" Left="1.792in" Top="0.052in" Value=":" Format="{0:N0}" Name="textBox19">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Size="8pt" Bold="True" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.108in" Height="0.2in" Left="1.792in" Top="0.252in" Value=":" Format="{0:N0}" Name="textBox21">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Size="8pt" Bold="True" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.108in" Height="0.2in" Left="1.792in" Top="0.452in" Value=":" Format="{0:N0}" Name="textBox23">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Size="8pt" Bold="True" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.108in" Height="0.2in" Left="1.792in" Top="0.652in" Value=":" Format="{0:N0}" Name="textBox24">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Size="8pt" Bold="True" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.108in" Height="0.2in" Left="1.792in" Top="0.853in" Value=":" Format="{0:N0}" Name="textBox25">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Size="8pt" Bold="True" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.108in" Height="0.2in" Left="1.792in" Top="1.053in" Value=":" Format="{0:N0}" Name="textBox26">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Size="8pt" Bold="True" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.108in" Height="0.2in" Left="1.792in" Top="1.253in" Value=":" Format="{0:N0}" Name="textBox27">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Size="8pt" Bold="True" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.108in" Height="0.2in" Left="1.792in" Top="1.453in" Value=":" Format="{0:N0}" Name="textBox28">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Size="8pt" Bold="True" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.108in" Height="0.2in" Left="1.792in" Top="1.653in" Value=":" Format="{0:N0}" Name="textBox29">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Size="8pt" Bold="True" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1.092in" Height="0.2in" Left="1.9in" Top="0.252in" Value="= Fields.diskon" Format="{0:N0}" Name="textBox20">
+          <Style TextAlign="Right">
+            <Font Size="8pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1.092in" Height="0.2in" Left="1.9in" Top="0.452in" Value="= Sum(Fields.tot)- Fields.diskon" Format="{0:N0}" Name="textBox22">
+          <Style TextAlign="Right">
+            <Font Size="8pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1.092in" Height="0.2in" Left="1.9in" Top="0.652in" Value="= Fields.ppn" Format="{0:N0}" Name="textBox30">
+          <Style TextAlign="Right">
+            <Font Size="8pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1.092in" Height="0.2in" Left="1.9in" Top="0.852in" Value="= Sum(Fields.tot)- Fields.diskon+ Fields.ppn+ Fields.SERVICE" Format="{0:N0}" Name="textBox31">
+          <Style TextAlign="Right">
+            <Font Size="8pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1.092in" Height="0.2in" Left="1.9in" Top="1.053in" Value="= Fields.Pembulatan" Format="{0:N0}" Name="textBox32">
+          <Style TextAlign="Right">
+            <Font Size="8pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1.092in" Height="0.2in" Left="1.9in" Top="1.253in" Value="= Sum(Fields.tot)- Fields.diskon+ Fields.ppn+ Fields.SERVICE+ Fields.Pembulatan" Format="{0:N0}" Name="textBox33">
+          <Style TextAlign="Right">
+            <Font Size="8pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1.092in" Height="0.2in" Left="1.9in" Top="1.453in" Value="= Fields.AmountReceived" Format="{0:N0}" Name="textBox34">
+          <Style TextAlign="Right">
+            <Font Size="8pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1.092in" Height="0.2in" Left="1.9in" Top="1.653in" Value="= Sum(Fields.tot)- Fields.diskon+ Fields.ppn+ Fields.SERVICE+ Fields.Pembulatan- Fields.AmountReceived" Format="{0:N0}" Name="textBox35">
+          <Style TextAlign="Right">
+            <Font Size="8pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="3in" Height="0.05in" Left="0in" Top="0in" Value="" Format="{0:N0}" Name="textBox36">
+          <Style TextAlign="Right" VerticalAlign="Middle">
+            <BorderStyle Top="Solid" />
+            <BorderColor Top="Black" />
+            <BorderWidth Top="1pt" />
+          </Style>
+        </TextBox>
+      </Items>
+    </ReportFooterSection>
+    <ReportHeaderSection Height="1.7in" Name="reportHeaderSection1">
+      <Items>
+        <TextBox Width="1.2in" Height="0.2in" Left="0in" Top="1.5in" Value="Nama Barang" Name="textBox2">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Size="8pt" />
+            <BorderStyle Top="Solid" Bottom="Solid" />
+            <BorderColor Top="Black" Bottom="Black" />
+            <BorderWidth Top="1pt" Bottom="1pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.7in" Height="0.2in" Left="1.2in" Top="1.5in" Value="Harga" Name="textBox3">
+          <Style TextAlign="Right" VerticalAlign="Middle">
+            <Font Size="8pt" />
+            <BorderStyle Top="Solid" Bottom="Solid" />
+            <BorderColor Top="Black" Bottom="Black" />
+            <BorderWidth Top="1pt" Bottom="1pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.4in" Height="0.2in" Left="1.9in" Top="1.5in" Value="Jum" Name="textBox4">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Size="8pt" />
+            <BorderStyle Top="Solid" Bottom="Solid" />
+            <BorderColor Top="Black" Bottom="Black" />
+            <BorderWidth Top="1pt" Bottom="1pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.7in" Height="0.2in" Left="2.3in" Top="1.5in" Value="Total" Name="textBox5">
+          <Style TextAlign="Right" VerticalAlign="Middle">
+            <Font Size="8pt" />
+            <BorderStyle Top="Solid" Bottom="Solid" />
+            <BorderColor Top="Black" Bottom="Black" />
+            <BorderWidth Top="1pt" Bottom="1pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1.392in" Height="0.2in" Left="1.008in" Top="1in" Value="= Fields.PaymentNo" Name="textBox37">
+          <Style VerticalAlign="Middle">
+            <Font Size="8pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.9in" Height="0.2in" Left="0in" Top="0.8in" Value="= Fields.PaymentDate" Format="{0:dd-MM-yyyy}" Name="textBox38">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Size="8pt" />
+            <BorderStyle Top="None" Bottom="None" Left="None" Right="None" />
+            <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+            <BorderWidth Top="1pt" Bottom="1pt" Left="1pt" Right="1pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.5in" Height="0.2in" Left="0.9in" Top="0.8in" Value="= Fields.PaymentTime" Format="{0:t}" Name="textBox39">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Size="8pt" />
+            <BorderStyle Top="None" Bottom="None" Left="None" Right="None" />
+            <BorderColor Top="Black" Bottom="Black" Left="Black" Right="Black" />
+            <BorderWidth Top="1pt" Bottom="1pt" Left="1pt" Right="1pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.9in" Height="0.2in" Left="0in" Top="1in" Value="No.Payment" Name="textBox40">
+          <Style VerticalAlign="Middle">
+            <Font Size="8pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.108in" Height="0.2in" Left="0.9in" Top="1in" Value=":" Format="{0:N0}" Name="textBox41">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Size="8pt" Bold="True" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.9in" Height="0.2in" Left="0in" Top="1.2in" Value="Kasir" Name="textBox42">
+          <Style VerticalAlign="Middle">
+            <Font Size="8pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.108in" Height="0.2in" Left="0.9in" Top="1.2in" Value=":" Format="{0:N0}" Name="textBox43">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Size="8pt" Bold="True" />
+          </Style>
+        </TextBox>
+        <TextBox Width="3in" Height="0.2in" Left="0in" Top="0.3in" Value="= Fields.alamat" Name="textBox46">
+          <Style VerticalAlign="Middle">
+            <Font Size="8pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="3in" Height="0.2in" Left="0in" Top="0.1in" Value="= Fields.Namacafe" Name="textBox47">
+          <Style VerticalAlign="Middle">
+            <Font Size="8pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="3in" Height="0.2in" Left="0in" Top="0.5in" Value="= Fields.NPWP" Name="textBox48">
+          <Style VerticalAlign="Middle">
+            <Font Size="8pt" />
+            <BorderStyle Bottom="Solid" />
+            <BorderColor Bottom="Black" />
+            <BorderWidth Bottom="1pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1.392in" Height="0.2in" Left="1.008in" Top="1.2in" Value="= Fields.CreatedBy" Name="textBox49">
+          <Style VerticalAlign="Middle">
+            <Font Size="8pt" />
+          </Style>
+        </TextBox>
+      </Items>
+    </ReportHeaderSection>
+  </Items>
+  <PageSettings PaperKind="Custom" PaperSize="80mm, 120mm" Landscape="False" ColumnCount="1" ColumnSpacing="0in" ContinuousPaper="False">
+    <Margins>
+      <MarginsU Left="1mm" Right="1mm" Top="1mm" Bottom="1mm" />
+    </Margins>
+  </PageSettings>
+  <StyleSheet>
+    <StyleRule>
+      <Style>
+        <Padding Left="2pt" Right="2pt" />
+      </Style>
+      <Selectors>
+        <TypeSelector Type="TextItemBase" />
+        <TypeSelector Type="HtmlTextBox" />
+      </Selectors>
+    </StyleRule>
+  </StyleSheet>
+</Report>

@@ -1,0 +1,118 @@
+INSERT INTO AppStandardReference
+(
+	StandardReferenceID,
+	StandardReferenceName,
+	ItemLength,
+	IsUsedBySystem,
+	IsActive,
+	StandardReferenceGroup,
+	Note,
+	LastUpdateDateTime,
+	LastUpdateByUserID,
+	HasCOA,
+	IsNumericValue
+)
+VALUES
+(
+	'MonitoringToilet',
+	'Monitoring Toilet',
+	'20',
+	1,
+	1,
+	'PMKP',
+	'',
+	GETDATE(),
+	'sci',
+	NULL,
+	NULL
+)
+
+--Insert AppStandardReferenceItem Monitoringtoilet--
+
+INSERT INTO AppStandardReferenceItem
+(
+	StandardReferenceID,
+	ItemID,
+	ItemName,
+	Note,
+	IsUsedBySystem,
+	IsActive,
+	LastUpdateDateTime,
+	LastUpdateByUserID,
+	ReferenceID,
+	coaID,
+	subledgerID,
+	CustomField,
+	LineNumber,
+	NumericValue,
+	CustomField2
+)
+VALUES
+(
+	'MonitoringToilet',
+	'01',
+	'Area Kamar Mandi/Toilet kondisi bersih',
+	'',
+	1,
+	1,
+	GETDATE(),
+	'sci',
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL
+),
+(
+	'MonitoringToilet',
+	'02',
+	'Kamar mandi dalam kondisi baik',
+	'',
+	1,
+	1,
+	GETDATE(),
+	'sci',
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL
+),
+(
+	'MonitoringToilet',
+	'03',
+	'Kamar mandi terbebas dari benda-benda yang tidak perlu',
+	'',
+	1,
+	1,
+	GETDATE(),
+	'sci',
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL
+),
+(
+	'MonitoringToilet',
+	'04',
+	'Tersedia fasilitas pembuangan Sampah',
+	'',
+	1,
+	1,
+	GETDATE(),
+	'sci',
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL
+)

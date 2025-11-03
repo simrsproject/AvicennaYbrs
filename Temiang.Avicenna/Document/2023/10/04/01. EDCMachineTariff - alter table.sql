@@ -1,0 +1,2 @@
+ALTER TABLE dbo.EDCMachineTariff ADD
+	AddFeeAmount NUMERIC(18,2) NULL

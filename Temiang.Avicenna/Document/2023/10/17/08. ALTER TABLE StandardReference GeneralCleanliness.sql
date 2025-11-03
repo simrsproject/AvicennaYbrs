@@ -1,0 +1,153 @@
+INSERT INTO AppStandardReference
+(
+	StandardReferenceID,
+	StandardReferenceName,
+	ItemLength,
+	IsUsedBySystem,
+	IsActive,
+	StandardReferenceGroup,
+	Note,
+	LastUpdateDateTime,
+	LastUpdateByUserID,
+	HasCOA,
+	IsNumericValue
+)
+VALUES
+(
+	'GeneralCleanliness',
+	'General Cleanliness',
+	'20',
+	1,
+	1,
+	'PMKP',
+	'',
+	GETDATE(),
+	'sci',
+	NULL,
+	NULL
+)
+
+--Insert AppStandardReferenceItem GeneralCleanliness--
+
+INSERT INTO AppStandardReferenceItem
+(
+	StandardReferenceID,
+	ItemID,
+	ItemName,
+	Note,
+	IsUsedBySystem,
+	IsActive,
+	LastUpdateDateTime,
+	LastUpdateByUserID,
+	ReferenceID,
+	coaID,
+	subledgerID,
+	CustomField,
+	LineNumber,
+	NumericValue,
+	CustomField2
+)
+VALUES
+(
+	'GeneralCleanliness',
+	'01',
+	'Kursi, Meja, Lemari tampak bersih dan kondisi baik',
+	'',
+	1,
+	1,
+	GETDATE(),
+	'sci',
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL
+),
+(
+	'GeneralCleanliness',
+	'02',
+	'Troli tindakan tampak bersih',
+	'',
+	1,
+	1,
+	GETDATE(),
+	'sci',
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL
+),
+(
+	'GeneralCleanliness',
+	'03',
+	'Troli tindakan dibersihkan dengan cairan desinfektran',
+	'',
+	1,
+	1,
+	GETDATE(),
+	'sci',
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL
+),
+(
+	'GeneralCleanliness',
+	'04',
+	'Lantai bersih dan dalam kondisi baik',
+	'',
+	1,
+	1,
+	GETDATE(),
+	'sci',
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL
+),
+(
+	'GeneralCleanliness',
+	'05',
+	'Tidak ada debu dipermukaan alat',
+	'',
+	1,
+	1,
+	GETDATE(),
+	'sci',
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL
+),
+(
+	'GeneralCleanliness',
+	'06',
+	'Tirai pemisah dan tirai jendela kondisi bersih dan baik',
+	'',
+	1,
+	1,
+	GETDATE(),
+	'sci',
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL
+)
+

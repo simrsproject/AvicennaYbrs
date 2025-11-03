@@ -1,0 +1,1 @@
+UPDATE AppParameter SET ParameterName = ParameterName + ' **OBSOLETE', IsUsedBySystem = 1 WHERE ParameterID = 'IsInventoryIssueUsingRequest'

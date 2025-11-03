@@ -1,0 +1,37 @@
+INSERT [dbo].[AppStandardReferenceItem]
+  (
+    [StandardReferenceID],
+    [ItemID],
+    [ItemName],
+    [Note],
+    [IsUsedBySystem],
+    [IsActive],
+    [LastUpdateDateTime],
+    [LastUpdateByUserID],
+    [ReferenceID],
+    [coaID],
+    [subledgerID],
+    [CustomField],
+    [LineNumber],
+    [NumericValue],
+    [CustomField2]
+  )
+VALUES
+  (
+    N'AnswerType',
+    N'RBT',
+    N'Radio Button',
+    N'',
+    1,
+    1,
+    GETDATE(),
+    N'sci',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL
+  )
+GO

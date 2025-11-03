@@ -1,0 +1,209 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="@(ViewBag.UrlRoot)/Bootstrap/plugins/fontawesome-free-5.13/css/all.min.css" />
+    <link rel="stylesheet" href="@(ViewBag.UrlRoot)/Bootstrap/adminlte/css/adminlte.min.css" />
+    <style>
+        .main-wrapper {
+            height: 100vh;
+        }
+        .section {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .cb-slideshow,
+        .cb-slideshow:after {
+            position: fixed;
+            width: 65%;
+            height: 100%;
+            top: 0px;
+            left: 0px;
+            z-index: 0;
+            list-style-type:none;
+        }
+        .cb-slideshow:after {
+            content: '';
+        }
+            .cb-slideshow li span {
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 0px;
+                left: 0px;
+                color: transparent;
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                opacity: 0;
+                z-index: 0;
+                animation: imageAnimation 24s linear infinite 0s;
+            }
+            .cb-slideshow li div {
+                z-index: 1000;
+                position: absolute;
+                bottom: 30px;
+                left: 0px;
+                width: 100%;
+                text-align: center;
+                opacity: 0;
+                color: #fff;
+                animation: titleAnimation 24s linear infinite 0s;
+            }
+        .cb-slideshow li div h3 {
+            font-family: 'BebasNeueRegular', 'Arial Narrow', Arial, sans-serif;
+            font-size: 48px;
+            padding: 0;
+            line-height: 200px;
+        }
+            .cb-slideshow li:nth-child(1) span {
+                background: linear-gradient(to right, rgba(244,246,249,0) 0%, rgba(244,246,249,1)), url('@(ViewBag.UrlRoot)/Images/wallpaper01.jpg');
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: cover;
+            }
+            .cb-slideshow li:nth-child(2) span {
+                background: linear-gradient(to right, rgba(244,246,249,0) 0%, rgba(244,246,249,1)), url('@(ViewBag.UrlRoot)/Images/wallpaper02.jpg');
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: cover;
+                animation-delay: 6s;
+            }
+            .cb-slideshow li:nth-child(3) span {
+                background: linear-gradient(to right, rgba(244,246,249,0) 0%, rgba(244,246,249,1)), url('@(ViewBag.UrlRoot)/Images/wallpaper03.jpg');
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: cover;
+                animation-delay: 12s;
+            }
+            .cb-slideshow li:nth-child(4) span {
+                background: linear-gradient(to right, rgba(244,246,249,0) 0%, rgba(244,246,249,1)), url('@(ViewBag.UrlRoot)/Images/wallpaper04.jpg');
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: cover;
+                animation-delay: 18s;
+            }
+        .cb-slideshow li:nth-child(2) div {
+            animation-delay: 6s;
+        }
+        .cb-slideshow li:nth-child(3) div {
+            animation-delay: 12s;
+        }
+        .cb-slideshow li:nth-child(4) div {
+            animation-delay: 18s;
+        }
+        @@keyframes imageAnimation {
+            0% {
+                opacity: 0;
+                animation-timing-function: ease-in;
+            }
+            8% { opacity: 1 }
+            17% { opacity: 1 }
+            25% {
+                opacity: 1
+            }
+            35% { opacity: 0 }
+            100% { opacity: 0 }
+        }
+        @@keyframes titleAnimation {
+            0% { opacity: 0 }
+            8% { opacity: 1 }
+            17% { opacity: 1 }
+            19% { opacity: 0 }
+            100% { opacity: 0 }
+        }
+        .no-cssanimations .cb-slideshow li span {
+            opacity: 1;
+        }
+
+        @@media screen and (max-width: 1140px) {
+            .cb-slideshow li div h3 { font-size: 48px }
+        }
+        @@media screen and (max-width: 600px) {
+            .cb-slideshow li div h3 { font-size: 48px }
+        }
+    </style>
+</head>
+<body class="hold-transition layout-top-nav">
+    <div class="wrapper">
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Main row -->
+            <div class="row main-wrapper mx-0 my-0">
+                <div class="col-md-6">
+                    <ul class="cb-slideshow">
+                        <li>
+                            <span>Image 01</span>
+                            <div>
+                                <h3></h3>
+                            </div>
+                        </li>
+                        <li>
+                            <span>Image 02</span>
+                            <div>
+                                <h3></h3>
+                            </div>
+                        </li>
+                        <li>
+                            <span>Image 03</span>
+                            <div>
+                                <h3></h3>
+                            </div>
+                        </li>
+                        <li>
+                            <span>Image 04</span>
+                            <div>
+                                <h3></h3>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-6 section">
+                    @RenderBody()
+                </div>
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.content-wrapper -->
+        @*<footer class="main-footer">
+            <strong><a href="http://www.sciptaintegrasi.com">Solusi Cipta Integrasi</a>.</strong>
+            <div class="float-right d-none d-sm-inline-block">
+                <b>Version</b> 1.0.0
+            </div>
+        </footer>*@
+    </div>
+    <!-- ./wrapper -->
+    <!-- jQuery -->
+    <script src="@(ViewBag.UrlRoot)/Bootstrap/plugins/jquery/jquery.min.js"></script>
+    <!-- jQuery UI 1.11.4 -->
+    <script src="@(ViewBag.UrlRoot)/Bootstrap/plugins/jquery-ui/jquery-ui.min.js"></script>
+    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+    <script>
+        $.widget.bridge('uibutton', $.ui.button)
+    </script>
+    <!-- Bootstrap 4 -->
+    <script src="@(ViewBag.UrlRoot)/Bootstrap/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="@(ViewBag.UrlRoot)/Bootstrap/adminlte/js/adminlte.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="@(ViewBag.UrlRoot)/Bootstrap/adminlte/js/demo.js"></script>
+
+    <script src="@(ViewBag.UrlRoot)/Bootstrap/js/settings.js"></script>
+    <script src="@(ViewBag.UrlRoot)/Bootstrap/js/core.js"></script>
+
+    <script language="javascript">
+        //$ = $telerik.$;
+        var BaseURL = '@ViewBag.UrlRoot';
+
+    </script>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

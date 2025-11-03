@@ -1,0 +1,547 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ambil Antrean</title>
+
+    <!-- Fonts -->
+    <!--<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">-->
+    <link href="@(ViewBag.UrlRoot)/Bootstrap/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    @*<link href="@(ViewBag.UrlRoot)/Bootstrap/Queue/GetQueue/assets/css/app.css" rel="stylesheet">*@
+
+    <script src="@(ViewBag.UrlRoot)/Bootstrap/plugins/jquery/jquery.min.js"></script>
+    @*<script src="@(ViewBag.UrlRoot)/Bootstrap/Queue/GetQueue/assets/js/popper.min.js"></script>*@
+    <script src="@(ViewBag.UrlRoot)/Bootstrap/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="@(ViewBag.UrlRoot)/Bootstrap/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Styles -->
+    <style>
+        .header-section p {
+            font: bolder 24px 'Monsterrat', sans-serif;
+            -webkit-text-stroke-width: 0.8px;
+            -webkit-text-stroke-color: lightslategray;
+            margin-bottom: 0;
+        }
+
+        .header-section .vendor-name {
+            font-size: x-small;
+            font-weight: bold;
+            margin-bottom: 8px;
+            line-height: 8px;
+        }
+
+        .main-section {
+            width: 90vw;
+            margin: auto;
+        }
+
+        .main-section-element {
+            width: 28.5vw;
+            margin: auto;
+            margin-bottom: 15px;
+        }
+
+        .main-section-content .row {
+            border-radius: 5px;
+            text-align: center;
+            align-items: center;
+            font: bolder 1.25vw 'Monsterrat', sans-serif;
+            background: #21519b;
+            margin: 0;
+            height: 58px;
+            border: 4px outset black;
+        }
+
+        .main-section-content-logo {
+            background-image: url('~/../../Bootstrap/Queue/GetQueue/assets/image/Create.png');
+            background-position: center;
+            background-repeat: no-repeat;
+            width: 80%;
+            height: 80%;
+            border-right: 2px solid white;
+        }
+
+        .main-section-content-name {
+            text-align: left;
+            padding: 0.5vh 20px;
+            color: white;
+            text-shadow: 1px 1.5px #000;
+        }
+
+        .modal-body h5 {
+            padding-bottom: 10px;
+            font: bold 19px 'Monsterrat', sans-serif;
+        }
+
+        .modal-header {
+            background-color: #21519b;
+            color: white;
+        }
+
+        .modal-content {
+            border: none;
+            border-radius: 0.4rem;
+        }
+
+        .button-close {
+            border-radius: 3px;
+        }
+
+        /* Physician */
+        .button-physician {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .button-click-physician-section {
+            background-color: lightgray;
+            padding: 5px 15px;
+            width: 85%;
+            border-radius: 5px;
+            border: 3px outset lightgray;
+            font: bolder 16px 'Monsterrat', sans-serif;
+            margin-bottom: 15px;
+        }
+
+        .button-click-physician-section:nth-last-child(1), .button-click-physician-section p {
+            margin-bottom: 0px;
+        }
+
+        .button-click-physician-section-quota {
+            border-right: 2px solid #000;
+            padding-right: 15px;
+            color: #000;
+            text-shadow: 1px 1px #fff;
+        }
+
+        .button-click-physician-section-quota p span {
+            font-size: 13px;
+        }
+
+        .button-click-physician-section-name {
+            padding-left: 10px;
+            color: #000;
+            text-shadow: 1px 1px #fff;
+        }
+
+        /* Guarantor */
+        .button-click-guarantor-section {
+            background-color: lightgray;
+            width: 50%;
+            padding: 20px 0;
+            border: 3px outset lightgray;
+            font: bolder 18px 'Monsterrat', sans-serif;
+            text-shadow: 1px 1px #fff;
+            border-radius: 10px;
+            margin: 10px 30px;
+        }
+
+        .button-details {
+            width: 70%;
+            margin: auto;
+            font: bold 18px 'Monsterrat', sans-serif;
+        }
+
+        .modal-footer button {
+            background-color: #21519b;
+            color: white;
+            border-radius: 5px;
+        }
+
+        .button-details p {
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="header-section">
+            <div class="row">
+                <div class="col-12 text-center py-3">
+                    <img src="data:image/png;base64, @(Convert.ToBase64String((byte[])ViewData["Healthcare_HealthcareLogo"]))" alt="Logo RS" width="90" class="my-1" />
+                    <p>ANTREAN PENDAFTARAN</p>
+                    <div class="vendor-name">Powered by @ViewBag.Brand.VendorName</div>
+                </div>
+            </div>
+        </div>
+        <div class="main-section d-flex flex-wrap" id="divMainSection">
+        </div>
+    </div>
+
+    <!-- Modal dokter & penjamin -->
+    <div class="modal fade" id="PopupPhysician" tabindex="-1" role="dialog" aria-labelledby="PopupPhysicianTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content popup-physician">
+                <div class="modal-header">
+                    <h5 class="modal-title font-weight-bold" id="PopupPhysicianTitle">Pilih Dokter</h5>
+                    <button type="button" data-dismiss="modal" class="button-close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body text-center">
+                    <div class="button-physician d-grid my-3" id="divModalPhysician">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="PopupGuarantor" tabindex="-1" role="dialog" aria-labelledby="PopupGuarantorTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content popup-Guarantor">
+                <div class="modal-header popup-guarantor">
+                    <h5 class="modal-title font-weight-bold" id="PopupGuarantorTitle">Pilih Penjamin</h5>
+                    <button type="button" data-dismiss="modal" class="button-close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body text-center">
+                    <div class="button-guarantor d-flex flex-column align-items-center">
+                        <a data-toggle="modal" data-target="#PopupDetails" data-dismiss="modal" data-backdrop="static" class="button-click-guarantor-section" id="01">
+                            <span>UMUM</span>
+                        </a>
+                        <a data-toggle="modal" data-target="#PopupDetails" data-dismiss="modal" data-backdrop="static" class="button-click-guarantor-section" id="02">
+                            <span>BPJS</span>
+                        </a>
+                        <a data-toggle="modal" data-target="#PopupDetails" data-dismiss="modal" data-backdrop="static" class="button-click-guarantor-section" id="03">
+                            <span>MITRA</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Modal dokter & penjamin -->
+
+    <!-- Modal rincian -->
+    <div class="modal fade" id="PopupDetails" tabindex="-1" role="dialog" aria-labelledby="PopupDetailsTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content popup-Details">
+                <div class="modal-header popup-details">
+                    <h5 class="modal-title font-weight-bold" id="PopupDetailsTitle">Detail</h5>
+                </div>
+                <div class="modal-body text-center">
+                    <div class="button-details">
+                        <p>Terima Kasih Untuk Mengantre<br>No Antrean Anda</p>
+                        <h1 id="AntreanNumber" class="display-3"><strong>00</strong></h1>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" data-dismiss="modal" class="button-close px-3 py-1 font-weight-bold">
+                        <span aria-hidden="true">Close</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Modal rincian -->
+
+    <script type="text/javascript">
+        var _location = '@(ViewBag.qLocation)' != '' ? '@(ViewBag.qLocation)' : '01';
+        var _addjustStartTime = '@(ViewBag.addjustStartTime)' != '' ? '@(ViewBag.addjustStartTime)' : '120';
+        var _poliID = "";
+        var _physicianID = "";
+        var _guarantorID = "";
+
+        $(document).ready(function () {
+            GetListPoli();
+        });
+
+        setTimeout(function () {
+            window.location.reload(true);
+        }, 600000);
+
+        $('.button-close').click(function () {
+            window.location.reload(true);
+        })
+        $(document).keydown(function (e) {
+            if (e.keyCode === 27) {
+                window.location.reload(true);
+            }
+        });
+
+        function CloseModalAutomatic() {
+            setTimeout(function () {
+                $('.modal').modal('hide');
+                window.location.reload(true);
+            }, 6000);
+        }
+
+        function GetFormattedDate() {
+            let today = new Date();
+            let year = today.getFullYear();
+            let month = (today.getMonth() + 1).toString().padStart(2, '0');
+            let date = today.getDate().toString().padStart(2, '0');
+            let formattedDate = `${year}-${month}-${date}`;
+            return formattedDate;
+        }
+
+        function IsWithinRange(range, currentTime) {
+            const [startHour, startMinute] = range.startTime.split(":").map(Number);
+            const [endHour, endMinute] = range.endTime.split(":").map(Number);
+            const [currentHour, currentMinute] = currentTime.split(":").map(Number);
+
+            const startMinutes = startHour * 60 + startMinute - _addjustStartTime;
+            const endMinutes = endHour * 60 + endMinute;
+            const currentMinutes = currentHour * 60 + currentMinute;
+
+            const adjustedStartMinutes = startMinutes < 0 ? 24 * 60 + startMinutes : startMinutes;
+
+            return currentMinutes >= adjustedStartMinutes && currentMinutes <= endMinutes;
+        }
+
+        function GetListPoli() {
+            $.ajax({
+                type: 'GET',
+                url: '@(ViewBag.UrlRoot)/WebService/V1_1/AppointmentWS.asmx/ParamedicScheduleDateGetList',
+                data: {
+                    AccessKey: 'sciadmin88',
+                    DateStart: GetFormattedDate(),
+                    DateEnd: GetFormattedDate(),
+                    ParamedicID: '',
+                    ServiceUnitID: ''
+                },
+                success: function (ret) {
+                    if (ret.status === 'OK') {
+                        if (ret.data != null) {
+                            for (let i = 0; i < ret.data.length; i++) {
+                                if (ret.data[i].SRQueueingLocation_Reg == _location) {
+                                    AddNewPoli(ret.data[i].ServiceUnitName, ret.data[i].ServiceUnitID);
+                                }
+                            }
+                            GetPoliID();
+                        }
+                    } else {
+                    // DisplayToast(ret.data, "error");
+                        alert(ret.data);
+                    }
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    //DisplayToast(xhr.responseText, "error");
+                    alert(xhr.responseText);
+                },
+                dataType: 'json'
+            });
+        }
+
+        function AddNewPoli(serviceUnitName, serviceUnitID) {
+            let str = $(`
+            <div class="main-section-element">
+                <a data-toggle="modal" data-target="#PopupPhysician" data-backdrop="static">
+                    <div class="main-section-content">
+                        <div class="row">
+                            <div class="col-2 main-section-content-logo">
+                            </div>
+                            <div class="col-10 main-section-content-name">
+                                <span class="poli-name" id="${serviceUnitID}">${serviceUnitName}</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>`);
+
+            let isExist = $('.main-section-element').find('.main-section-content-name span').filter(function () {
+                return $(this).attr('id') === serviceUnitID;
+            }).length > 0;
+            if (!isExist) {
+                $("#divMainSection").append(str);
+            }
+        }
+
+        function GetPoliID() {
+            $(".main-section-content").click(function () {
+                let poliName = $(this).find('span').text();
+                let str = $(`<p>Service Unit : ${poliName}</p>`);
+                $('.button-details').append(str);
+
+                let poliID = $(this).find('span').attr('id');
+                _poliID = poliID;
+                GetListPhysician(poliID);
+            });
+        }
+
+        function GetListPhysician(serviceUnitID) {
+            $.ajax({
+                type: 'GET',
+                url: '@(ViewBag.UrlRoot)/WebService/V1_1/AppointmentWS.asmx/ParamedicScheduleDateGetList',
+                data: {
+                    AccessKey: 'sciadmin88',
+                    DateStart: GetFormattedDate(),
+                    DateEnd: GetFormattedDate(),
+                    ParamedicID: '',
+                    ServiceUnitID: serviceUnitID
+                },
+                success: function (ret) {
+                    if (ret.status === 'OK') {
+                        if (ret.data != null) {
+                            GetQuotaPhysician(serviceUnitID, ret.data);
+                        }
+                    } else {
+                        // DisplayToast(ret.data, "error");
+                        alert(ret.data);
+                    }
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    //DisplayToast(xhr.responseText, "error");
+                    alert(xhr.responseText);
+                },
+                dataType: 'json'
+            });
+        }
+
+        function GetQuotaPhysician(serviceUnitId, parSchedules) {
+            $.ajax({
+                type: 'GET',
+                url:`@(ViewBag.UrlRoot)/api/sciadmin88/Queuing/GetQuota/${GetFormattedDate()}`,
+                success: function (ret) {
+                    if (ret.status === 'OK') {
+                        for (let i = 0; i < ret.data.length; i++) {
+                            if (ret.data[i].ServiceUnit.ServiceUnitID == serviceUnitId) {
+                                if (ret.data[i].QuotaTotal > 0) {
+                                    const d = new Date();
+                                    const timeNow = `${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}`;
+
+                                    let schedule = parSchedules.find(s => s.ParamedicID === ret.data[i].Paramedic.ParamedicID);
+                                    const timeRanges = [
+                                        { startTime: schedule.StartTime1, endTime: schedule.EndTime1 },
+                                        { startTime: schedule.StartTime2, endTime: schedule.EndTime2 },
+                                        { startTime: schedule.StartTime3, endTime: schedule.EndTime3 },
+                                        { startTime: schedule.StartTime4, endTime: schedule.EndTime4 },
+                                        { startTime: schedule.StartTime5, endTime: schedule.EndTime5 }
+                                    ];
+
+                                    const isInAllowedTime = timeRanges.some(range => IsWithinRange(range, timeNow));
+
+                                    if (isInAllowedTime) {
+                                        AddNewPhysician(ret.data[i].Paramedic.ParamedicID, ret.data[i].Paramedic.ParamedicName, ret.data[i].QuotaAvailable, ret.data[i].QuotaTotal);
+                                        let button = $('.button-click-physician-section');
+                                        if (ret.data[i].QuotaAvailable == 0) {
+                                            button.prop('disabled', true);
+                                            button.css({
+                                                'cursor': 'not-allowed',
+                                                'color': 'gray',
+                                                'opacity': '0.5'
+                                            });
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        ShowAllInfo();
+                    } else {
+                        alert(ret.data);
+                    }
+                },
+                error: function (xhr, ajaxoptions, thrownerror) {
+                    alert(xhr.responsetext);
+                },
+                dataType: 'json'
+            });
+        }
+
+        function AddNewPhysician(physicianId, physicianName, quotaAvailable, quotaTotal) {
+            let str = $(`
+                <a data-toggle="modal" data-target="#PopupGuarantor" data-backdrop="static" data-dismiss="modal" class="button-click-physician-section">
+                    <div class="d-flex align-items-center">
+                        <div class="button-click-physician-section-quota justify-content-center">
+                            <p><span>Tersedia</span><br>${quotaAvailable}/${quotaTotal}</p>
+                        </div>
+                        <div class="button-click-physician-section-name flex-shrink-1 justify-content-start">
+                            <p class="physician" id="${physicianId}">${physicianName}</p>
+                        </div>
+                    </div>
+                </a>`
+            );
+
+            let isExist = $('.button-click-physician-section').find('.physician').filter(function () {
+                return $(this).attr('id') === physicianId;
+            }).length > 0;
+            if (!isExist) {
+                $('#divModalPhysician').append(str);
+            }
+        }
+
+        function GetListGuarantor(serviceUnitId, paramedicId) {
+            $.ajax({
+                type: 'GET',
+                url: '@(ViewBag.UrlRoot)/WebService/V1_1/AppointmentWS.asmx/ParamedicScheduleDateGetList',
+                data: {
+                    AccessKey: 'sciadmin88',
+                    DateStart: GetFormattedDate(),
+                    DateEnd: GetFormattedDate(),
+                    ParamedicID: paramedicId,
+                    ServiceUnitID: serviceUnitId
+                },
+                success: function (ret) {
+                    if (ret.status === 'OK') {
+                        if (ret.data != null) {
+                            let quota = '';
+                            let quotaBpjs = '';
+                            for (let i = 0; i < ret.data.length; i++) {
+                                quota = ret.data[i].Quota;
+                                quotaBpjs = ret.data[i].QuotaBpjs;
+                            }
+
+                            if (quota == 0) {
+                                $('.button-click-guarantor-section#01').hide();
+                                $('.button-click-guarantor-section#03').hide();
+                            }
+                            if (quotaBpjs == 0) {
+                                $('.button-click-guarantor-section#02').hide();
+                            }
+                        }
+                    } else {
+                        alert(ret.data);
+                    }
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    alert(xhr.responseText);
+                },
+                dataType: 'json'
+            });
+        }
+
+        function ShowAllInfo() {
+            $('.button-click-physician-section').click(function () {
+                let physicianName = $(this).find('.physician').text();
+                let str = $(`<p>Dokter : ${physicianName}</p>`);
+                $('.button-details').append(str);
+
+                let physicianId = $(this).find('.physician').attr('id');
+                _physicianID = physicianId;
+                GetListGuarantor(_poliID, _physicianID);
+            });
+            $('.button-click-guarantor-section').click(function () {
+                let guarantorName = $(this).find('span').text();
+                let str = $(`<p>Penjamin : ${guarantorName}</p>`);
+                $('.button-details').append(str);
+
+                let guarantorId = $(this).attr('id');
+                _guarantorID = guarantorId;
+
+                CloseModalAutomatic();
+
+                //save data
+                let url = `@(ViewBag.UrlRoot)/api/sciadmin88/Queuing/SetQueueByType/${GetFormattedDate()}/${_poliID}/${_physicianID}/${_guarantorID}`;
+                //console.log(url);
+                $.ajax({
+                    url: url,
+                    success: function (ret) {
+                        if (ret.status === 'OK') {
+                            $("#AntreanNumber").text(ret.data.QueueingCode);
+                        } else {
+                            //displaytoast(ret.data, "error");
+                            alert(ret.data);
+                        }
+                    },
+                    error: function (xhr, ajaxoptions, thrownerror) {
+                        //displaytoast(xhr.responsetext, "error");
+                        alert(xhr.responsetext);
+                    }
+                });
+            });
+        }
+    </script>
+</body>
+</html>

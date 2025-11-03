@@ -1,0 +1,431 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report DataSourceName="sqlDataSource1" Width="7.537in" Name="userReport1" SnapGridSize="0.1cm" xmlns="http://schemas.telerik.com/reporting/2019/2.0">
+  <DataSources>
+    <SqlDataSource QueryDesignerState="null" ParameterValues="{&quot;@p_FromDate&quot;:&quot;2022-04-01&quot;,&quot;@p_ToDate&quot;:&quot;2022-04-16&quot;,&quot;@p_ItemGroupID&quot;:&quot;&quot;,&quot;@p_ServiceUnitID&quot;:&quot;&quot;}" ConnectionString="RSYSTRAIN1" SelectCommand="sprpt_ReceivedByItem" SelectCommandType="StoredProcedure" Name="sqlDataSource1">
+      <Parameters>
+        <SqlDataSourceParameter DbType="DateTime" Name="@p_FromDate">
+          <Value>
+            <String>2022-04-01</String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="DateTime" Name="@p_ToDate">
+          <Value>
+            <String>2022-04-16</String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="AnsiString" Name="@p_ItemID" />
+        <SqlDataSourceParameter DbType="AnsiString" Name="@p_ItemGroupID">
+          <Value>
+            <String></String>
+          </Value>
+        </SqlDataSourceParameter>
+        <SqlDataSourceParameter DbType="AnsiString" Name="@p_ServiceUnitID">
+          <Value>
+            <String></String>
+          </Value>
+        </SqlDataSourceParameter>
+      </Parameters>
+    </SqlDataSource>
+  </DataSources>
+  <Items>
+    <DetailSection Height="0.2in" Name="detailSection1">
+      <Items>
+        <TextBox Width="0.398in" Height="0.2in" Left="2.308in" Top="0in" Value="=Quantity" Name="textBox15">
+          <Style TextAlign="Right" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="7pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.494in" Height="0.2in" Left="2.706in" Top="0in" Value="=SRItemUnit" Name="textBox16">
+          <Style TextAlign="Left" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="7pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.982in" Height="0.2in" Left="4.337in" Top="0in" Value="=Discount" Format="{0:N2}" Name="textBox19">
+          <Style TextAlign="Right" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="7pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1.137in" Height="0.2in" Left="3.2in" Top="0in" Value="=Total +Discount" Format="{0:N2}" Name="textBox20">
+          <Style TextAlign="Right" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="7pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.882in" Height="0.2in" Left="5.318in" Top="0in" Value="=TaxAmount" Format="{0:N2}" Name="textBox18">
+          <Style TextAlign="Right" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="7pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1.28in" Height="0.2in" Left="6.2in" Top="0in" Value="=Total+TaxAmount" Format="{0:N2}" Name="textBox54">
+          <Style TextAlign="Right" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="7pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.427in" Height="0.2in" Left="0in" Top="0in" Value="=RowNumber()" Name="textBox7">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="7pt" Bold="False" />
+            <BorderStyle Default="None" />
+            <BorderWidth Default="0.5pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.573in" Height="0.2in" Left="0.427in" Top="0in" Value="=TransactionDate" Format="{0:dd.MM.yyyy}" Name="textBox5">
+          <Style TextAlign="Left" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="7pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1.2in" Height="0.2in" Left="1in" Top="0in" Value="=TransactionNo" Name="textBox6">
+          <Style TextAlign="Left" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="7pt" />
+          </Style>
+        </TextBox>
+      </Items>
+    </DetailSection>
+    <PageFooterSection Height="0.2in" Name="pageFooterSection1">
+      <Items>
+        <TextBox Width="3.6in" Height="0.2in" Left="3.865in" Top="0in" Value="='Page : ' + PageNumber + '/' + PageCount" Name="textBox14">
+          <Style TextAlign="Right" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" Italic="True" />
+            <BorderStyle Top="Solid" />
+            <BorderWidth Default="0.5pt" />
+            <Padding Right="2mm" />
+          </Style>
+        </TextBox>
+        <TextBox Width="3.865in" Height="0.2in" Left="0in" Top="0in" Value="='AVICENNA_HIS  ' + Now()" Format="Avicenna HIS, Print Date : {0:dd-MM-yyyy HH:mm}" Name="textBox23">
+          <Style VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="8pt" Italic="True" />
+            <BorderStyle Top="Solid" />
+            <BorderWidth Default="0.5pt" />
+          </Style>
+        </TextBox>
+      </Items>
+    </PageFooterSection>
+    <PageHeaderSection Height="1.7in" Name="pageHeaderSection1">
+      <Items>
+        <Shape Width="19cm" Height="0.132cm" Left="0.056in" Top="1.215in" Name="shape3">
+          <Style>
+            <Font Name="Tahoma" Size="7pt" />
+          </Style>
+          <ShapeType>
+            <LineShape Direction="EW" />
+          </ShapeType>
+        </Shape>
+        <TextBox Width="0.982in" Height="0.19in" Left="4.39in" Top="1.331in" Value="Discount" Name="textBox46">
+          <Style TextAlign="Right" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="7pt" Bold="True" />
+            <BorderStyle Default="None" />
+            <BorderWidth Default="0.5pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1.28in" Height="0.19in" Left="6.257in" Top="1.331in" Value="Grand Total" Name="textBox47">
+          <Style TextAlign="Right" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="7pt" Bold="True" />
+            <BorderStyle Default="None" />
+            <BorderWidth Default="0.5pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.881in" Height="0.19in" Left="5.373in" Top="1.331in" Value="PPN" Name="textBox48">
+          <Style TextAlign="Right" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="7pt" Bold="True" />
+            <BorderStyle Default="None" />
+            <BorderWidth Default="0.5pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1.137in" Height="0.19in" Left="3.253in" Top="1.331in" Value="Sub Total" Name="textBox49">
+          <Style TextAlign="Right" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="7pt" Bold="True" />
+            <BorderStyle Default="None" />
+            <BorderWidth Default="0.5pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.5in" Height="0.19in" Left="2.753in" Top="1.331in" Value="Satuan" Name="textBox50">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="7pt" Bold="True" />
+            <BorderStyle Default="None" />
+            <BorderWidth Default="0.5pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.386in" Height="0.19in" Left="2.365in" Top="1.331in" Value="Qty" Name="textBox51">
+          <Style TextAlign="Right" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="7pt" Bold="True" />
+            <BorderStyle Default="None" />
+            <BorderWidth Default="0.5pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.573in" Height="0.19in" Left="0.498in" Top="1.331in" Value="Tgl." Name="textBox52">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="7pt" Bold="True" />
+            <BorderStyle Default="None" />
+            <BorderWidth Default="0.5pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="1.2in" Height="0.19in" Left="1.071in" Top="1.331in" Value="No. PO" Name="textBox53">
+          <Style TextAlign="Left" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="7pt" Bold="True" />
+            <BorderStyle Default="None" />
+            <BorderWidth Default="0.5pt" />
+          </Style>
+        </TextBox>
+        <TextBox Width="0.427in" Height="0.19in" Left="0.056in" Top="1.331in" Value="No." Name="textBox55">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Name="Tahoma" Size="7pt" Bold="True" />
+            <BorderStyle Default="None" />
+            <BorderWidth Default="0.5pt" />
+          </Style>
+        </TextBox>
+        <Shape Width="18.987cm" Height="0.132cm" Left="0.056in" Top="1.565in" Name="shape2">
+          <Style>
+            <Font Name="Tahoma" Size="7pt" />
+          </Style>
+          <ShapeType>
+            <LineShape Direction="EW" />
+          </ShapeType>
+        </Shape>
+        <TextBox Width="7.48in" Height="0.2in" Left="0.057in" Top="0.965in" Value="=Fields.Periode" Name="textBox2">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Bold="True" />
+          </Style>
+        </TextBox>
+        <TextBox Width="7.48in" Height="0.2in" Left="0.057in" Top="0.765in" Value="=Fields.ReportName" Name="textBox1">
+          <Style TextAlign="Center" VerticalAlign="Middle">
+            <Font Size="12pt" Bold="True" />
+          </Style>
+        </TextBox>
+      </Items>
+    </PageHeaderSection>
+  </Items>
+  <PageSettings PaperKind="A4" Landscape="False" ColumnCount="1" ColumnSpacing="0cm">
+    <Margins>
+      <MarginsU Left="0.7cm" Right="0.7cm" Top="1cm" Bottom="1cm" />
+    </Margins>
+  </PageSettings>
+  <StyleSheet>
+    <StyleRule>
+      <Style>
+        <Padding Left="2pt" Right="2pt" />
+      </Style>
+      <Selectors>
+        <TypeSelector Type="TextItemBase" />
+        <TypeSelector Type="HtmlTextBox" />
+      </Selectors>
+    </StyleRule>
+  </StyleSheet>
+  <Sortings>
+    <Sorting Expression="=Fields.InvoiceNo" Direction="Asc" />
+  </Sortings>
+  <Groups>
+    <Group Name="group1">
+      <GroupHeader>
+        <GroupHeaderSection Height="0.15in" Name="groupHeaderSection1">
+          <Items>
+            <TextBox Width="3.806in" Height="0.15in" Left="2.594in" Top="0in" Value="=itemName" Name="textBox4">
+              <Style Color="DarkRed">
+                <Font Name="Tahoma" Size="7pt" Bold="True" />
+              </Style>
+            </TextBox>
+            <TextBox Width="1in" Height="0.15in" Left="0in" Top="0in" Value="Nama Barang" Name="textBox3">
+              <Style Color="DarkRed">
+                <Font Name="Tahoma" Size="7pt" Bold="True" />
+              </Style>
+            </TextBox>
+            <TextBox Width="0.2in" Height="0.15in" Left="1in" Top="0in" Value=": " Name="textBox35">
+              <Style Color="DarkRed" TextAlign="Center">
+                <Font Name="Tahoma" Size="7pt" Bold="True" />
+              </Style>
+            </TextBox>
+            <TextBox Width="1.194in" Height="0.15in" Left="1.2in" Top="0in" Value="=itemID" Name="textBox21">
+              <Style Color="DarkRed">
+                <Font Name="Tahoma" Size="7pt" Bold="True" />
+              </Style>
+            </TextBox>
+            <TextBox Width="0.2in" Height="0.15in" Left="2.394in" Top="0in" Value="-" Name="textBox22">
+              <Style Color="DarkRed" TextAlign="Center">
+                <Font Name="Tahoma" Size="7pt" Bold="True" />
+              </Style>
+            </TextBox>
+          </Items>
+        </GroupHeaderSection>
+      </GroupHeader>
+      <GroupFooter>
+        <GroupFooterSection Height="0.21in" Name="groupFooterSection1">
+          <Items>
+            <TextBox Width="2.206in" Height="0.2in" Left="0.994in" Top="0in" Value="Total pemesanan per item :" Name="textBox28">
+              <Style Color="DarkRed" TextAlign="Right">
+                <Font Name="Tahoma" Size="7pt" Bold="True" />
+              </Style>
+            </TextBox>
+            <TextBox Width="0.881in" Height="0.2in" Left="5.318in" Top="0in" Value="=sum(TaxAmount)" Format="{0:N2}" Name="textBox30">
+              <Style Color="DarkRed" TextAlign="Right">
+                <Font Name="Tahoma" Size="7pt" Bold="True" />
+                <BorderStyle Top="Solid" />
+              </Style>
+            </TextBox>
+            <TextBox Width="0.982in" Height="0.2in" Left="4.337in" Top="0in" Value="=sum(Discount)" Format="{0:N2}" Name="textBox31">
+              <Style Color="DarkRed" TextAlign="Right">
+                <Font Name="Tahoma" Size="7pt" Bold="True" />
+                <BorderStyle Top="Solid" />
+              </Style>
+            </TextBox>
+            <TextBox Width="1.137in" Height="0.2in" Left="3.2in" Top="0in" Value="=sum(Total +Discount)" Format="{0:N2}" Name="textBox32">
+              <Style Color="DarkRed" TextAlign="Right">
+                <Font Name="Tahoma" Size="7pt" Bold="True" />
+                <BorderStyle Top="Solid" />
+              </Style>
+            </TextBox>
+            <TextBox Width="1.28in" Height="0.2in" Left="6.2in" Top="0in" Value="=sum(Total+TaxAmount)" Format="{0:N2}" Name="textBox58">
+              <Style Color="DarkRed" TextAlign="Right">
+                <Font Name="Tahoma" Size="7pt" Bold="True" />
+                <BorderStyle Top="Solid" />
+              </Style>
+            </TextBox>
+          </Items>
+        </GroupFooterSection>
+      </GroupFooter>
+      <Groupings>
+        <Grouping Expression="=Fields.ItemID" />
+      </Groupings>
+    </Group>
+    <Group Name="group2">
+      <GroupHeader>
+        <GroupHeaderSection Height="0.158in" Name="groupHeaderSection2">
+          <Items>
+            <TextBox Width="1in" Height="0.157in" Left="0in" Top="0in" Value="Dari Service Unit" Name="textBox37">
+              <Style Color="DarkSlateBlue" TextAlign="Left" VerticalAlign="Middle">
+                <Font Name="Tahoma" Size="7pt" Bold="True" />
+                <BorderStyle Default="None" Left="None" />
+                <BorderWidth Default="0.5pt" />
+              </Style>
+            </TextBox>
+            <TextBox Width="5.4in" Height="0.157in" Left="1.2in" Top="0in" Value="=ServiceUnitName" Format="{0:D}" Name="textBox36">
+              <Style Color="DarkSlateBlue" TextAlign="Left" VerticalAlign="Middle">
+                <Font Name="Tahoma" Size="7pt" Bold="True" />
+                <BorderStyle Default="None" Left="None" />
+                <BorderWidth Default="0.5pt" />
+              </Style>
+            </TextBox>
+            <TextBox Width="0.2in" Height="0.157in" Left="1in" Top="0in" Value=":" Name="textBox39">
+              <Style Color="DarkBlue" TextAlign="Center" VerticalAlign="Middle">
+                <Font Name="Tahoma" Size="7pt" Bold="True" />
+                <BorderStyle Default="None" Left="None" />
+                <BorderWidth Default="0.5pt" />
+              </Style>
+            </TextBox>
+          </Items>
+        </GroupHeaderSection>
+      </GroupHeader>
+      <GroupFooter>
+        <GroupFooterSection Height="0.24in" Name="groupFooterSection2">
+          <Items>
+            <TextBox Width="1.28in" Height="0.19in" Left="6.2in" Top="0.01in" Value="=sum(Total+TaxAmount)" Format="{0:N2}" Name="textBox44">
+              <Style Color="DarkSlateBlue" TextAlign="Right" VerticalAlign="Middle">
+                <Font Name="Tahoma" Size="7pt" Bold="True" />
+                <BorderStyle Default="None" Top="Solid" Left="None" />
+                <BorderWidth Default="0.5pt" Top="1pt" />
+              </Style>
+            </TextBox>
+            <TextBox Width="0.881in" Height="0.19in" Left="5.318in" Top="0.01in" Value="=sum(TaxAmount)" Format="{0:N2}" Name="textBox43">
+              <Style Color="DarkSlateBlue" TextAlign="Right" VerticalAlign="Middle">
+                <Font Name="Tahoma" Size="7pt" Bold="True" />
+                <BorderStyle Default="None" Top="Solid" Left="None" />
+                <BorderWidth Default="0.5pt" Top="1pt" />
+              </Style>
+            </TextBox>
+            <TextBox Width="0.982in" Height="0.19in" Left="4.337in" Top="0.01in" Value="=sum(Discount)" Format="{0:N2}" Name="textBox41">
+              <Style Color="DarkSlateBlue" TextAlign="Right" VerticalAlign="Middle">
+                <Font Name="Tahoma" Size="7pt" Bold="True" />
+                <BorderStyle Default="None" Top="Solid" Left="None" />
+                <BorderWidth Default="0.5pt" Top="1pt" />
+              </Style>
+            </TextBox>
+            <TextBox Width="1.137in" Height="0.19in" Left="3.2in" Top="0.01in" Value="=sum(Total +Discount)" Format="{0:N2}" Name="textBox42">
+              <Style Color="DarkSlateBlue" TextAlign="Right" VerticalAlign="Middle">
+                <Font Name="Tahoma" Size="7pt" Bold="True" />
+                <BorderStyle Default="None" Top="Solid" Left="None" />
+                <BorderWidth Default="0.5pt" Top="1pt" />
+              </Style>
+            </TextBox>
+            <TextBox Width="2.504in" Height="0.2in" Left="0.696in" Top="0in" Value="Total Pemesanan per Service Unit : " Name="textBox38">
+              <Style Color="DarkSlateBlue" TextAlign="Right" VerticalAlign="Middle">
+                <Font Name="Tahoma" Size="7pt" Bold="True" />
+                <BorderStyle Default="None" Left="None" />
+                <BorderWidth Default="0.5pt" />
+              </Style>
+            </TextBox>
+          </Items>
+        </GroupFooterSection>
+      </GroupFooter>
+      <Groupings>
+        <Grouping Expression="=Fields.ServiceUnitName" />
+      </Groupings>
+    </Group>
+    <Group Name="Supplier">
+      <GroupHeader>
+        <GroupHeaderSection Height="0.2in" Name="groupHeaderSection3">
+          <Items>
+            <TextBox Width="5in" Height="0.2in" Left="1.2in" Top="0in" Value="=SupplierName" Name="textBox8">
+              <Style TextAlign="Left" VerticalAlign="Middle">
+                <Font Name="Tahoma" Size="7pt" />
+              </Style>
+            </TextBox>
+            <TextBox Width="1in" Height="0.19in" Left="0in" Top="0.01in" Value="Nama Supplier" Name="textBox12">
+              <Style TextAlign="Left" VerticalAlign="Middle">
+                <Font Name="Tahoma" Size="7pt" Bold="True" />
+                <BorderStyle Default="None" />
+                <BorderWidth Default="0.5pt" />
+              </Style>
+            </TextBox>
+            <TextBox Width="0.2in" Height="0.2in" Left="1in" Top="0in" Value=":" Name="textBox13">
+              <Style Color="DarkBlue" TextAlign="Center" VerticalAlign="Middle">
+                <Font Name="Tahoma" Size="7pt" Bold="True" />
+                <BorderStyle Default="None" Left="None" />
+                <BorderWidth Default="0.5pt" />
+              </Style>
+            </TextBox>
+          </Items>
+        </GroupHeaderSection>
+      </GroupHeader>
+      <GroupFooter>
+        <GroupFooterSection Height="0.242in" Name="groupFooterSection3">
+          <Items>
+            <TextBox Width="2.504in" Height="0.2in" Left="0.696in" Top="0in" Value="Total Pemesanan per Supplier : " Name="textBox17">
+              <Style Color="Black" TextAlign="Right" VerticalAlign="Middle">
+                <Font Name="Tahoma" Size="7pt" Bold="True" />
+                <BorderStyle Default="None" Left="None" />
+                <BorderWidth Default="0.5pt" />
+              </Style>
+            </TextBox>
+            <TextBox Width="1.137in" Height="0.19in" Left="3.2in" Top="0.01in" Value="=sum(Total +Discount)" Format="{0:N2}" Name="textBox25">
+              <Style Color="Black" TextAlign="Right" VerticalAlign="Middle">
+                <Font Name="Tahoma" Size="7pt" Bold="True" />
+                <BorderStyle Default="None" Top="Solid" Left="None" />
+                <BorderWidth Default="0.5pt" Top="1pt" />
+              </Style>
+            </TextBox>
+            <TextBox Width="0.982in" Height="0.19in" Left="4.342in" Top="0.01in" Value="=sum(Discount)" Format="{0:N2}" Name="textBox29">
+              <Style Color="Black" TextAlign="Right" VerticalAlign="Middle">
+                <Font Name="Tahoma" Size="7pt" Bold="True" />
+                <BorderStyle Default="None" Top="Solid" Left="None" />
+                <BorderWidth Default="0.5pt" Top="1pt" />
+              </Style>
+            </TextBox>
+            <TextBox Width="0.881in" Height="0.19in" Left="5.325in" Top="0.01in" Value="=sum(TaxAmount)" Format="{0:N2}" Name="textBox40">
+              <Style Color="Black" TextAlign="Right" VerticalAlign="Middle">
+                <Font Name="Tahoma" Size="7pt" Bold="True" />
+                <BorderStyle Default="None" Top="Solid" Left="None" />
+                <BorderWidth Default="0.5pt" Top="1pt" />
+              </Style>
+            </TextBox>
+            <TextBox Width="1.274in" Height="0.19in" Left="6.207in" Top="0.01in" Value="=sum(Total+TaxAmount)" Format="{0:N2}" Name="textBox45">
+              <Style Color="Black" TextAlign="Right" VerticalAlign="Middle">
+                <Font Name="Tahoma" Size="7pt" Bold="True" />
+                <BorderStyle Default="None" Top="Solid" Left="None" />
+                <BorderWidth Default="0.5pt" Top="1pt" />
+              </Style>
+            </TextBox>
+          </Items>
+        </GroupFooterSection>
+      </GroupFooter>
+      <Groupings>
+        <Grouping Expression="=Fields.BusinessPartnerID" />
+      </Groupings>
+    </Group>
+  </Groups>
+</Report>

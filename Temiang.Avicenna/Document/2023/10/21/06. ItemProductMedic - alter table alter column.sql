@@ -1,0 +1,1 @@
+ALTER TABLE ItemProductMedic ALTER COLUMN SpecificInfo VARCHAR(1000)
