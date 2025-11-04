@@ -48,6 +48,8 @@ namespace Temiang.Avicenna.ReportLibrary.Accounting.SubLedgers
             this.pageFooter = new Telerik.Reporting.PageFooterSection();
             this.txtPageNumber = new Telerik.Reporting.TextBox();
             this.txtPrintDateTime = new Telerik.Reporting.TextBox();
+            this.textBox8 = new Telerik.Reporting.TextBox();
+            this.textBox9 = new Telerik.Reporting.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
             // groupFooterChartOfAccount
@@ -118,7 +120,9 @@ namespace Temiang.Avicenna.ReportLibrary.Accounting.SubLedgers
             this.groupFooterSubLedger.Height = Telerik.Reporting.Drawing.Unit.Inch(0.3D);
             this.groupFooterSubLedger.Items.AddRange(new Telerik.Reporting.ReportItemBase[] {
             this.textBox4,
-            this.textBox7});
+            this.textBox7,
+            this.textBox8,
+            this.textBox9});
             this.groupFooterSubLedger.Name = "groupFooterSubLedger";
             this.groupFooterSubLedger.Style.Visible = true;
             // 
@@ -403,6 +407,24 @@ namespace Temiang.Avicenna.ReportLibrary.Accounting.SubLedgers
             this.txtPrintDateTime.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Left;
             this.txtPrintDateTime.Value = "= Now()";
             // 
+            // textBox8
+            // 
+            this.textBox8.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(0.8D), Telerik.Reporting.Drawing.Unit.Inch(0D));
+            this.textBox8.Name = "textBox8";
+            this.textBox8.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(1.6D), Telerik.Reporting.Drawing.Unit.Inch(0.2D));
+            this.textBox8.Style.Font.Bold = true;
+            this.textBox8.TextWrap = true;
+            this.textBox8.Value = "=SubLedgerName";
+            // 
+            // textBox9
+            // 
+            this.textBox9.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(2.4D), Telerik.Reporting.Drawing.Unit.Inch(0D));
+            this.textBox9.Name = "textBox9";
+            this.textBox9.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(2.482D), Telerik.Reporting.Drawing.Unit.Inch(0.2D));
+            this.textBox9.Style.Font.Bold = true;
+            this.textBox9.TextWrap = true;
+            this.textBox9.Value = "=subledger_description";
+            // 
             // SubLedgerDetailReport
             // 
             this.DocumentName = "Subledger Detail Report";
@@ -476,5 +498,7 @@ namespace Temiang.Avicenna.ReportLibrary.Accounting.SubLedgers
         private Telerik.Reporting.TextBox textBox7;
         private Telerik.Reporting.TextBox txtPageNumber;
         private Telerik.Reporting.TextBox txtPrintDateTime;
+        private Telerik.Reporting.TextBox textBox8;
+        private Telerik.Reporting.TextBox textBox9;
     }
 }
