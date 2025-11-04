@@ -12,6 +12,8 @@ using Temiang.Avicenna.BusinessObject.Common;
 using Temiang.Dal.Core;
 using Temiang.Dal.DynamicQuery;
 using Temiang.Dal.Interfaces;
+using System.Text.RegularExpressions;
+using System.Web; // pastikan namespace ini ada di atas
 
 namespace Temiang.Avicenna.Module.RADT.Emr
 {
@@ -38,6 +40,26 @@ namespace Temiang.Avicenna.Module.RADT.Emr
             {
                 return string.IsNullOrEmpty(Request.QueryString["type"]) ? "" : Request.QueryString["type"];
             }
+        }
+
+        // fungsi kecil untuk membersihkan semua tag HTML
+        string CleanHtml(string input)
+        {
+            if (string.IsNullOrEmpty(input))
+                return string.Empty;
+
+            // decode entity seperti &nbsp;, &amp;, &lt;, dll
+            input = HttpUtility.HtmlDecode(input);
+
+            // ganti <br> / <br /> jadi newline dulu
+            input = input.Replace("<br />", Environment.NewLine)
+                         .Replace("<br>", Environment.NewLine);
+
+            // hapus semua tag HTML lain seperti <p>, <b>, <i>, <span>, dll
+            input = Regex.Replace(input, "<.*?>", string.Empty);
+
+            // hilangkan spasi kosong berlebih
+            return input.Trim();
         }
 
         protected void Page_Init(object sender, EventArgs e)
@@ -73,10 +95,21 @@ namespace Temiang.Avicenna.Module.RADT.Emr
 
                 foreach (var soap in soapColl)
                 {
-                    txtS.Text = string.IsNullOrEmpty(soap.Subjective.Trim()) ? txtS.Text : txtS.Text + soap.Subjective + System.Environment.NewLine;
-                    txtO.Text = string.IsNullOrEmpty(soap.Objective.Trim()) ? txtO.Text : txtO.Text + soap.Objective + System.Environment.NewLine;
-                    txtA.Text = string.IsNullOrEmpty(soap.Assesment.Trim()) ? txtA.Text : txtA.Text + soap.Assesment + System.Environment.NewLine;
-                    txtP.Text = string.IsNullOrEmpty(soap.Planning.Trim()) ? txtP.Text : txtP.Text + soap.Planning.Replace("<br />", Environment.NewLine) + System.Environment.NewLine;
+                    txtS.Text = string.IsNullOrEmpty(soap.Subjective?.Trim())
+                        ? txtS.Text
+                        : txtS.Text + CleanHtml(soap.Subjective) + Environment.NewLine;
+
+                    txtO.Text = string.IsNullOrEmpty(soap.Objective?.Trim())
+                        ? txtO.Text
+                        : txtO.Text + CleanHtml(soap.Objective) + Environment.NewLine;
+
+                    txtA.Text = string.IsNullOrEmpty(soap.Assesment?.Trim())
+                        ? txtA.Text
+                        : txtA.Text + CleanHtml(soap.Assesment) + Environment.NewLine;
+
+                    txtP.Text = string.IsNullOrEmpty(soap.Planning?.Trim())
+                        ? txtP.Text
+                        : txtP.Text + CleanHtml(soap.Planning) + Environment.NewLine;
                 }
 
                 if (string.IsNullOrEmpty(txtS.Text) && string.IsNullOrEmpty(txtO.Text) && string.IsNullOrEmpty(txtA.Text) && string.IsNullOrEmpty(txtP.Text))
@@ -91,10 +124,21 @@ namespace Temiang.Avicenna.Module.RADT.Emr
 
                     foreach (var rim in rimColl)
                     {
-                        txtS.Text = string.IsNullOrEmpty(rim.Info1.Trim()) ? txtS.Text : txtS.Text + rim.Info1 + System.Environment.NewLine;
-                        txtO.Text = string.IsNullOrEmpty(rim.Info2.Trim()) ? txtO.Text : txtO.Text + rim.Info2 + System.Environment.NewLine;
-                        txtA.Text = string.IsNullOrEmpty(rim.Info3.Trim()) ? txtA.Text : txtA.Text + rim.Info3 + System.Environment.NewLine;
-                        txtP.Text = string.IsNullOrEmpty(rim.Info4.Trim()) ? txtP.Text : txtP.Text + rim.Info4.Replace("<br />", Environment.NewLine) + System.Environment.NewLine;
+                        txtS.Text = string.IsNullOrEmpty(rim.Info1?.Trim())
+                            ? txtS.Text
+                            : txtS.Text + CleanHtml(rim.Info1) + Environment.NewLine;
+
+                        txtO.Text = string.IsNullOrEmpty(rim.Info2?.Trim())
+                            ? txtO.Text
+                            : txtO.Text + CleanHtml(rim.Info2) + Environment.NewLine;
+
+                        txtA.Text = string.IsNullOrEmpty(rim.Info3?.Trim())
+                            ? txtA.Text
+                            : txtA.Text + CleanHtml(rim.Info3) + Environment.NewLine;
+
+                        txtP.Text = string.IsNullOrEmpty(rim.Info4?.Trim())
+                            ? txtP.Text
+                            : txtP.Text + CleanHtml(rim.Info4) + Environment.NewLine;
                     }
                 }
             }
