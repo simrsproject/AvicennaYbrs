@@ -115,7 +115,7 @@ namespace Temiang.Avicenna.BusinessObject.Common
 
                 var client = new RestClient(url);
                 var request = new RestRequest();
-                request.Method = Method.GET;
+                request.Method = Method.Get;
                 request.AddParameter("user_id", userdctr, ParameterType.QueryString);
 
                 request.AddHeader("AccessKey", "SimRSI25");
