@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -15,7 +16,7 @@ namespace Temiang.Avicenna.Module.RADT.InPatient
     public partial class PhysicianTeamDetail : BasePageDetail
     {
         private bool _isSaveReg;
-
+        
         #region Page Event & Initialize
 
         protected void Page_Init(object sender, EventArgs e)
@@ -97,10 +98,22 @@ namespace Temiang.Avicenna.Module.RADT.InPatient
                 return;
             }
 
+            foreach(var paramedicTeam in ParamedicNewItems)
+            {
+                if(IsDuplicateDoctor(txtRegistrationNo.Text, paramedicTeam.ParamedicID, "INSERT"))
+                {
+                    args.MessageText = paramedicTeam.ParamedicName + " already exist. Please choose other Physician";
+                    args.IsCancel = true;
+                    return;
+                }
+            }
+
             var entity = new Registration();
             entity.AddNew();
             SetEntityValue(entity);
             SaveEntity(entity);
+
+            ParamedicNewItems = new List<ParamedicTeam>();
         }
 
         protected override void OnMenuSaveEditClick(ValidateArgs args)
@@ -108,6 +121,17 @@ namespace Temiang.Avicenna.Module.RADT.InPatient
             var entity = new Registration();
             if (entity.LoadByPrimaryKey(txtRegistrationNo.Text))
             {
+                foreach (var paramedicTeam in ParamedicNewItems)
+                {
+                    if (IsDuplicateDoctor(txtRegistrationNo.Text, paramedicTeam.ParamedicID, "INSERT"))
+                    {
+                        args.MessageText = paramedicTeam.ParamedicName + " already exist. Please choose other Physician";
+                        args.IsCancel = true;
+                        return;
+                    }
+                }
+
+
                 SetEntityValue(entity);
                 SaveEntity(entity);
             }
@@ -275,6 +299,41 @@ namespace Temiang.Avicenna.Module.RADT.InPatient
 
         #region Record Detail Method Function ParamedicTeam
 
+        private List<ParamedicTeam> ParamedicNewItems
+        {
+            get
+            {
+                if (IsPostBack)
+                {
+                    object obj = Session["listParamedicNewItems"];
+                    if (obj != null)
+                    {
+                        return ((List<ParamedicTeam>)(obj));
+                    }
+                }
+
+                return new List<ParamedicTeam>();
+            }
+
+            set
+            {
+                Session["listParamedicNewItems"] = value;
+            }
+
+        }
+
+        private void SetParamedicNewItems(ParamedicTeam newItem, bool clearExisting = false)
+        {
+            var list = ParamedicNewItems ?? new List<ParamedicTeam>();
+
+            if (clearExisting)
+                list.Clear();
+
+            list.Add(newItem);
+
+            ParamedicNewItems = list; // simpan kembali ke Session
+        }
+
         private ParamedicTeamCollection ParamedicTeams
         {
             get
@@ -361,7 +420,7 @@ namespace Temiang.Avicenna.Module.RADT.InPatient
             ParamedicTeam entity = FindParamedicTeam(regNo, parId, sDate);
 
             if (entity != null)
-                SetEntityValue(entity, e);
+                SetEntityValue(entity, e, "UPDATE");
         }
 
         protected void grdPhyscianTeam_DeleteCommand(object source, GridCommandEventArgs e)
@@ -380,19 +439,113 @@ namespace Temiang.Avicenna.Module.RADT.InPatient
 
             if (entity != null)
             {
+                var list = ParamedicNewItems;
+                list.RemoveAll(x => x.ParamedicID == entity.ParamedicID);
+                ParamedicNewItems = list; // update Session
+
                 entity.MarkAsDeleted();
             }
+        }
+
+        private bool IsDuplicateDoctor(string registrationNo, string paramedicId, string mode)
+        {
+            var coll = new ParamedicTeamCollection();
+            var query = new ParamedicTeamQuery("a");
+
+            if(mode == "INSERT")
+            {
+                // ambil data dokter dengan registrasi & ID dokter yang sama
+                query.Where(
+                    query.RegistrationNo == registrationNo &
+                    query.ParamedicID == paramedicId
+                );
+            }else
+            {
+                query.Where(
+                    query.RegistrationNo == registrationNo &
+                    query.ParamedicID != paramedicId
+                );
+            }
+
+               coll.Load(query);
+
+            // kalau ada satu atau lebih data berarti duplikat
+            return coll.Count > 0;
         }
 
         protected void grdPhyscianTeam_InsertCommand(object source, GridCommandEventArgs e)
         {
             ParamedicTeam entity = ParamedicTeams.AddNew();
 
-            SetEntityValue(entity, e);
+            SetEntityValue(entity, e, "INSERT");
 
             //Stay in insert mode
             e.Canceled = true;
             grdPhyscianTeam.Rebind();
+        }
+
+       /* protected void grdPhyscianTeam_InsertCommand(object source, GridCommandEventArgs e)
+        {
+            var userControl = (PhysicianTeamDetailItem)e.Item.FindControl(GridEditFormItem.EditFormUserControlID);
+            if (userControl == null)
+                return;
+
+            string regNo = txtRegistrationNo.Text;
+            string paramedicId = userControl.ParamedicID;
+
+            // 🔹 Ambil koleksi dari Session
+            var coll = (ParamedicTeamCollection)Session["collParamedicTeam"];
+            if (coll == null)
+            {
+                ShowMessage("Data dokter tidak dapat ditemukan di sesi. Silakan refresh halaman.");
+                e.Canceled = true;
+                return;
+            }
+
+            // 🔹 Cek duplikat di session (data ini biasanya hasil sync dari DB)
+            bool isDuplicate = coll
+                .Cast<ParamedicTeam>()
+                .Any(x =>
+                    string.Equals(x.ParamedicID, paramedicId, StringComparison.OrdinalIgnoreCase) &&
+                    string.Equals(x.RegistrationNo, regNo, StringComparison.OrdinalIgnoreCase)
+                );
+
+            if (isDuplicate)
+            {
+                ShowMessage("Dokter tersebut sudah terdaftar (baik oleh user ini maupun user lain).");
+                e.Canceled = true;
+                return;
+            }
+
+            // 🔹 Tambah baru jika lolos semua validasi
+            var newEntity = coll.AddNew();
+            newEntity.RegistrationNo = regNo;
+            newEntity.ParamedicID = paramedicId;
+            newEntity.SRParamedicTeamStatus = userControl.SRParamedicTeamStatus;
+            newEntity.StartDate = userControl.StartDate;
+            newEntity.EndDate = userControl.EndDate;
+            newEntity.Notes = userControl.Notes;
+            newEntity.SourceType = string.IsNullOrEmpty(userControl.SourceType) ? null : userControl.SourceType;
+
+            // 🔹 Lengkapi data Paramedic dan status
+            var par = new Paramedic();
+            par.LoadByPrimaryKey(newEntity.ParamedicID);
+            newEntity.ParamedicName = par.ParamedicName;
+
+            var asri = new AppStandardReferenceItem();
+            asri.LoadByPrimaryKey("ParamedicTeamStatus", newEntity.SRParamedicTeamStatus);
+            newEntity.ParamedicTeamStatus = asri.ItemName;
+
+            // Simpan kembali ke session
+            Session["collParamedicTeam"] = coll;
+
+            e.Canceled = true;
+            grdPhyscianTeam.Rebind();
+        }*/
+
+        private void ShowMessage(string message)
+        {
+            RadAjaxManager.GetCurrent(Page).Alert(message);
         }
 
         private ParamedicTeam FindParamedicTeam(String regNo, String parId, DateTime sDate)
@@ -410,13 +563,20 @@ namespace Temiang.Avicenna.Module.RADT.InPatient
             return retEntity;
         }
 
-        private void SetEntityValue(ParamedicTeam entity, GridCommandEventArgs e)
+        private void SetEntityValue(ParamedicTeam entity, GridCommandEventArgs e, string mode)
         {
             var userControl = (PhysicianTeamDetailItem)e.Item.FindControl(GridEditFormItem.EditFormUserControlID);
             if (userControl != null)
             {
                 entity.RegistrationNo = txtRegistrationNo.Text;
                 entity.ParamedicID = userControl.ParamedicID;
+
+                if (IsDuplicateDoctor(entity.RegistrationNo, entity.ParamedicID, mode))
+                {
+                    ShowMessage("Dokter ini sudah terdaftar pada registrasi yang sama!");
+                    return;
+                }
+
                 
                 entity.SRParamedicTeamStatus = userControl.SRParamedicTeamStatus;
                 entity.StartDate = userControl.StartDate;
@@ -434,6 +594,9 @@ namespace Temiang.Avicenna.Module.RADT.InPatient
                 asri.LoadByPrimaryKey("ParamedicTeamStatus", entity.SRParamedicTeamStatus);
                 entity.ParamedicTeamStatus = asri.ItemName;
                 entity.SourceType = string.IsNullOrEmpty(userControl.SourceType) ? null : userControl.SourceType;
+
+                if (mode == "INSERT") SetParamedicNewItems(entity);
+
             }
         }
 
