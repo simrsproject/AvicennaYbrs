@@ -43,6 +43,7 @@ namespace Temiang.Avicenna.Module.RADT.InPatient
                 ParamedicTeams = null;
             }
             WindowSearch.Height = 300;
+            ParamedicNewItems = new List<ParamedicTeam>();
         }
 
         protected override void OnInitializeAjaxManagerSettingsCollection(AjaxSettingsCollection ajax)
@@ -134,6 +135,8 @@ namespace Temiang.Avicenna.Module.RADT.InPatient
 
                 SetEntityValue(entity);
                 SaveEntity(entity);
+
+                ParamedicNewItems = new List<ParamedicTeam>();
             }
             else
             {
@@ -570,14 +573,7 @@ namespace Temiang.Avicenna.Module.RADT.InPatient
             {
                 entity.RegistrationNo = txtRegistrationNo.Text;
                 entity.ParamedicID = userControl.ParamedicID;
-
-                if (IsDuplicateDoctor(entity.RegistrationNo, entity.ParamedicID, mode))
-                {
-                    ShowMessage("Dokter ini sudah terdaftar pada registrasi yang sama!");
-                    return;
-                }
-
-                
+                                
                 entity.SRParamedicTeamStatus = userControl.SRParamedicTeamStatus;
                 entity.StartDate = userControl.StartDate;
                 if (userControl.EndDate == null)
