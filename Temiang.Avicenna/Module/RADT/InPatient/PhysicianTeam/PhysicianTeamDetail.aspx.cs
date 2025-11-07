@@ -101,7 +101,7 @@ namespace Temiang.Avicenna.Module.RADT.InPatient
 
             foreach(var paramedicTeam in ParamedicNewItems)
             {
-                if(IsDuplicateDoctor(txtRegistrationNo.Text, paramedicTeam.ParamedicID, "INSERT"))
+                if(IsDuplicateDoctor(txtRegistrationNo.Text, paramedicTeam.ParamedicID))
                 {
                     args.MessageText = paramedicTeam.ParamedicName + " already exist. Please choose other Physician";
                     args.IsCancel = true;
@@ -124,7 +124,7 @@ namespace Temiang.Avicenna.Module.RADT.InPatient
             {
                 foreach (var paramedicTeam in ParamedicNewItems)
                 {
-                    if (IsDuplicateDoctor(txtRegistrationNo.Text, paramedicTeam.ParamedicID, "INSERT"))
+                    if (IsDuplicateDoctor(txtRegistrationNo.Text, paramedicTeam.ParamedicID))
                     {
                         args.MessageText = paramedicTeam.ParamedicName + " already exist. Please choose other Physician";
                         args.IsCancel = true;
@@ -450,7 +450,7 @@ namespace Temiang.Avicenna.Module.RADT.InPatient
             }
         }
 
-        private bool IsDuplicateDoctor(string registrationNo, string paramedicId, string mode)
+        private bool IsDuplicateDoctor(string registrationNo, string paramedicId, string mode = "INSERT")
         {
             var coll = new ParamedicTeamCollection();
             var query = new ParamedicTeamQuery("a");
@@ -486,65 +486,6 @@ namespace Temiang.Avicenna.Module.RADT.InPatient
             e.Canceled = true;
             grdPhyscianTeam.Rebind();
         }
-
-       /* protected void grdPhyscianTeam_InsertCommand(object source, GridCommandEventArgs e)
-        {
-            var userControl = (PhysicianTeamDetailItem)e.Item.FindControl(GridEditFormItem.EditFormUserControlID);
-            if (userControl == null)
-                return;
-
-            string regNo = txtRegistrationNo.Text;
-            string paramedicId = userControl.ParamedicID;
-
-            // 🔹 Ambil koleksi dari Session
-            var coll = (ParamedicTeamCollection)Session["collParamedicTeam"];
-            if (coll == null)
-            {
-                ShowMessage("Data dokter tidak dapat ditemukan di sesi. Silakan refresh halaman.");
-                e.Canceled = true;
-                return;
-            }
-
-            // 🔹 Cek duplikat di session (data ini biasanya hasil sync dari DB)
-            bool isDuplicate = coll
-                .Cast<ParamedicTeam>()
-                .Any(x =>
-                    string.Equals(x.ParamedicID, paramedicId, StringComparison.OrdinalIgnoreCase) &&
-                    string.Equals(x.RegistrationNo, regNo, StringComparison.OrdinalIgnoreCase)
-                );
-
-            if (isDuplicate)
-            {
-                ShowMessage("Dokter tersebut sudah terdaftar (baik oleh user ini maupun user lain).");
-                e.Canceled = true;
-                return;
-            }
-
-            // 🔹 Tambah baru jika lolos semua validasi
-            var newEntity = coll.AddNew();
-            newEntity.RegistrationNo = regNo;
-            newEntity.ParamedicID = paramedicId;
-            newEntity.SRParamedicTeamStatus = userControl.SRParamedicTeamStatus;
-            newEntity.StartDate = userControl.StartDate;
-            newEntity.EndDate = userControl.EndDate;
-            newEntity.Notes = userControl.Notes;
-            newEntity.SourceType = string.IsNullOrEmpty(userControl.SourceType) ? null : userControl.SourceType;
-
-            // 🔹 Lengkapi data Paramedic dan status
-            var par = new Paramedic();
-            par.LoadByPrimaryKey(newEntity.ParamedicID);
-            newEntity.ParamedicName = par.ParamedicName;
-
-            var asri = new AppStandardReferenceItem();
-            asri.LoadByPrimaryKey("ParamedicTeamStatus", newEntity.SRParamedicTeamStatus);
-            newEntity.ParamedicTeamStatus = asri.ItemName;
-
-            // Simpan kembali ke session
-            Session["collParamedicTeam"] = coll;
-
-            e.Canceled = true;
-            grdPhyscianTeam.Rebind();
-        }*/
 
         private void ShowMessage(string message)
         {
