@@ -566,7 +566,7 @@ namespace Temiang.Avicenna.Common
                 var item = new ItemQuery("b");
                 //var unit = new ServiceUnitQuery("c");
                 var view = new VwTransactionQuery("d");
-
+                
                 //db:29-09-2023 --> diremark, filter langsung dari view
                 //var charges = new TransChargesQuery("i"); // utk MCU cek biar paket dan detil ga terhitung 2x
                 //var chargesitem = new TransChargesItemQuery("j");
