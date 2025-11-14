@@ -249,6 +249,15 @@ namespace Temiang.Avicenna.Module.RADT.EmrIp
         protected global::System.Web.UI.WebControls.Label lblBpjsSepNo;
 
         /// <summary>
+        /// lblTglRanap control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTglRanap;
+
+        /// <summary>
         /// trCovClass control.
         /// </summary>
         /// <remarks>

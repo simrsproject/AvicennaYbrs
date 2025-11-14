@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -7,12 +8,12 @@ using System.Text.RegularExpressions;
 using System.Web.Caching;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Temiang.Avicenna.Common;
-using Temiang.Avicenna.BusinessObject;
 using Telerik.Web.UI;
+using Temiang.Avicenna.BusinessObject;
 using Temiang.Avicenna.BusinessObject.Common;
+using Temiang.Avicenna.Common;
 using Temiang.Dal.DynamicQuery;
-using System.Configuration;
+using Temiang.Dal.Interfaces;
 
 namespace Temiang.Avicenna.Module.RADT.EmrIp
 {
@@ -780,6 +781,13 @@ namespace Temiang.Avicenna.Module.RADT.EmrIp
             divClinicalPathway.Visible = AppSession.Parameter.ClinicalPathwayRegistrationType.Contains(RegistrationType);
 
             lblPhysicianTeam.Text = ParamedicTeamHtml(RegistrationNo, RegistrationCurrent.ParamedicID);
+
+            /**
+             * Last Ranap Date
+             */
+            DateTime? latestRanapDate = LatestInpatientRegistrationDate();
+            lblTglRanap.Text = latestRanapDate?.ToString(AppConstant.DisplayFormat.DateShortMonth) ?? "-";
+
             var grr = new Guarantor();
             grr.LoadByPrimaryKey(reg.GuarantorID);
             lblGuarantor.Text = grr.GuarantorName;
@@ -808,6 +816,22 @@ namespace Temiang.Avicenna.Module.RADT.EmrIp
             PopulatePatientImage(PatientID);
         }
 
+        #region latest ranap
+        private DateTime? LatestInpatientRegistrationDate()
+        {
+            var pars = new esParameters();
+            pars.Add("MedicalNo", PatientCurrent.MedicalNo);
+            var dtLatestRanap = BusinessObject.Common.Utils.LoadDataTableFromStoreProcedure("sp_GetLatestIPRRegistration", pars, 0);
+            if (dtLatestRanap.Rows.Count > 0)
+            {
+                DataRow row = dtLatestRanap.Rows[0];
+                DateTime latestRegistration = DateTime.Parse(row["RegistrationDate"].ToString());
+                return latestRegistration;
+            }
+            return null;
+        }
+
+        #endregion
 
         private void PopulatePatientAllergy()
         {
